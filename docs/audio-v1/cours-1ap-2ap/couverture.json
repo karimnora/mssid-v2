@@ -3,24 +3,24 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 982,
-    "missingTexts": 2371,
-    "reusedFiles": 981,
-    "integrityCheckedArabicFiles": 1419,
+    "recordedTexts": 1213,
+    "missingTexts": 2140,
+    "reusedFiles": 1212,
+    "integrityCheckedArabicFiles": 1650,
     "byGrade": [
       {
         "grade": "1AP",
         "lessons": 57,
         "requestedSegments": 2412,
-        "recordedSegments": 1185,
-        "lessonsWithAnyRecording": 47
+        "recordedSegments": 1440,
+        "lessonsWithAnyRecording": 51
       },
       {
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 47,
-        "lessonsWithAnyRecording": 25
+        "recordedSegments": 53,
+        "lessonsWithAnyRecording": 30
       }
     ]
   },
@@ -338,49 +338,49 @@
       "grade": "1AP",
       "titleAr": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ 🤲",
       "requestedSegments": 38,
-      "recordedSegments": 3
+      "recordedSegments": 34
     },
     {
       "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
       "grade": "1AP",
       "titleAr": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ 🌅",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 37
     },
     {
       "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
       "grade": "1AP",
       "titleAr": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ 📖",
       "requestedSegments": 38,
-      "recordedSegments": 0
+      "recordedSegments": 34
     },
     {
       "lessonId": "islamic-1ap-t2-shahada-pillars",
       "grade": "1AP",
       "titleAr": "أَحْفَظُ الشَّهَادَتَيْنِ 🤲",
       "requestedSegments": 39,
-      "recordedSegments": 1
+      "recordedSegments": 38
     },
     {
       "lessonId": "islamic-1ap-t3-thanks-manners",
       "grade": "1AP",
       "titleAr": "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ 🙏🧼",
       "requestedSegments": 39,
-      "recordedSegments": 1
+      "recordedSegments": 38
     },
     {
       "lessonId": "islamic-1ap-t3-parents-kindness",
       "grade": "1AP",
       "titleAr": "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا 👨‍👩‍👧",
       "requestedSegments": 38,
-      "recordedSegments": 0
+      "recordedSegments": 37
     },
     {
       "lessonId": "islamic-1ap-t3-surah-masad-nasr",
       "grade": "1AP",
       "titleAr": "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ 📖",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 39
     },
     {
       "lessonId": "civics-1ap-t1-greetings-respect",
@@ -394,7 +394,7 @@
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ 🪪",
       "requestedSegments": 39,
-      "recordedSegments": 37
+      "recordedSegments": 38
     },
     {
       "lessonId": "civics-1ap-t2-sharing-cooperation",
@@ -408,14 +408,14 @@
       "grade": "1AP",
       "titleAr": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ 🇩🇿",
       "requestedSegments": 39,
-      "recordedSegments": 38
+      "recordedSegments": 39
     },
     {
       "lessonId": "civics-1ap-t3-classroom-rules",
       "grade": "1AP",
       "titleAr": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ 🏫📏",
       "requestedSegments": 40,
-      "recordedSegments": 38
+      "recordedSegments": 39
     },
     {
       "lessonId": "civics-1ap-t3-child-rights",
@@ -660,7 +660,7 @@
       "grade": "2AP",
       "titleAr": "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً ✍️",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-2ap-t3-ism-fil-harf",
@@ -744,14 +744,14 @@
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ 📖",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
       "grade": "2AP",
       "titleAr": "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ 🕌",
       "requestedSegments": 20,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "islamic-2ap-t1-wudu-steps",
@@ -765,14 +765,14 @@
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ 📖",
       "requestedSegments": 22,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
       "grade": "2AP",
       "titleAr": "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ 🤲",
       "requestedSegments": 20,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
@@ -793,7 +793,7 @@
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ 📖",
       "requestedSegments": 22,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "islamic-2ap-t3-surah-takathur",
@@ -13565,6 +13565,3681 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-3f501a59488dedef.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-072ec1dfb924edb3.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول قبل أن نبدأ الأكل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-213e2c6a10571c37.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفَاتِحَةِ هي أول سورة في القرآن، ونقرؤها في كل صلاة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7b9ed56f0af23c34.mp3"
+      ]
+    },
+    {
+      "text": "البَسْمَلَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-fatiha-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5073229035cdf39e.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول قبل الأكل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2c1490af8c55235.mp3"
+      ]
+    },
+    {
+      "text": "بِسْمِ اللهِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d5401464f9edfe5.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ مع الطفل سورة الفاتحة آية آية من الأداة التفاعلية، دون تشغيل صوت تلقائي.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e8e7ed759c9860d4.mp3"
+      ]
+    },
+    {
+      "text": "أحفظ سورة الفاتحة، وأقول \"بسم الله\" قبل كل عمل، و\"الحمد لله\" بعد الانتهاء منه.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1057355da0a12669.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول قبل بدء الأكل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-fatiha"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8cbe8bfc25c4c802.mp3"
+      ]
+    },
+    {
+      "text": "ما هي أول سورة في المصحف؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-fatiha"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92a1a765f017a05c.mp3"
+      ]
+    },
+    {
+      "text": "قبل الأكل نقول",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-fatiha"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fe7f067ba03f2c15.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول عند بداية أي عمل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-fatiha"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bacb9fdca90a390f.mp3"
+      ]
+    },
+    {
+      "text": "بِسْمِ اللهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-fatiha-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        },
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92a6dc914d5acb3f.mp3"
+      ]
+    },
+    {
+      "text": "أول سورة في المصحف",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-fatiha"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-240563c260ce5293.mp3"
+      ]
+    },
+    {
+      "text": "الفَاتِحَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-fatiha-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2d6c85b311cb3e0c.mp3"
+      ]
+    },
+    {
+      "text": "النَّاسُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-fatiha-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1adbefae8e0d20e0.mp3"
+      ]
+    },
+    {
+      "text": "النَّشِيدُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-fatiha-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3e99ec2c738c388b.mp3"
+      ]
+    },
+    {
+      "text": "شُكْرٌ لِلَّهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-fatiha-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62863a814f0140d7.mp3"
+      ]
+    },
+    {
+      "text": "طَلَبُ نَوْمٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-fatiha-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1aca3bea11f041c9.mp3"
+      ]
+    },
+    {
+      "text": "اختر الجواب الصحيح!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4a5853e733eadc44.mp3"
+      ]
+    },
+    {
+      "text": "بعد الانتهاء من الأكل نقول:",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5d4d548d08bffdf8.mp3"
+      ]
+    },
+    {
+      "text": "الحَمْدُ لِلَّهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-manners-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-997e143bd782a108.mp3"
+      ]
+    },
+    {
+      "text": "بعد الأكل",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ff378eced6b452d.mp3"
+      ]
+    },
+    {
+      "text": "الفاتحة نقرؤها في",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ce7de91361108ba0.mp3"
+      ]
+    },
+    {
+      "text": "الصَّلَاةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5600ba09f0c94f3f.mp3"
+      ]
+    },
+    {
+      "text": "قبل الشرب نقول",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-fatiha-basmala",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-da9d6beb5e9c7922.mp3"
+      ]
+    },
+    {
+      "text": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-15dad51915359f68.mp3"
+      ]
+    },
+    {
+      "text": "متى نطلب من الله أن يحمينا من الظلام والخوف؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-45fcb6c562e0e89d.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفَلَقِ: نطلب فيها من الله الحماية من كل شر عند الصباح.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-04cbf743adf793b3.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الكَوْثَرِ: أقصر سورة في القرآن، نشكر فيها الله على نعمه الكثيرة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2e718e4367f94cc4.mp3"
+      ]
+    },
+    {
+      "text": "الكَوْثَرُ نهر عظيم في الجنة أعطاه الله لنبينا محمد ﷺ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6fe8f62ac98cf28d.mp3"
+      ]
+    },
+    {
+      "text": "الفَلَقُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e8f7ab0e2f98fb6.mp3"
+      ]
+    },
+    {
+      "text": "الكَوْثَرُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1dc403fb3f198581.mp3"
+      ]
+    },
+    {
+      "text": "ما هي أقصر سورة في القرآن الكريم؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1466eb817f8f5687.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الكَوْثَرِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ace903793c671e3.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ السورتين كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-527d641a734daa02.mp3"
+      ]
+    },
+    {
+      "text": "سورة الفلق: أطلب حماية الله. سورة الكوثر: أشكر الله على خيره الكثير.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d1a2afd680e4c90.mp3"
+      ]
+    },
+    {
+      "text": "ما هي أقصر سورة في القرآن؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-falaqkawthar"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db7bef0c6240c592.mp3"
+      ]
+    },
+    {
+      "text": "في أي سورة نطلب حماية الله من الشر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-falaqkawthar"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8e36e0b76c3c12c3.mp3"
+      ]
+    },
+    {
+      "text": "أقصر سورة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-falaqkawthar"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-31f592041f21a7c3.mp3"
+      ]
+    },
+    {
+      "text": "ماذا أعطى الله نبينا محمداً ﷺ في سورة الكوثر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-falaqkawthar"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80f2b616645b6db3.mp3"
+      ]
+    },
+    {
+      "text": "الخَيْرَ الكَثِيرَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-falaqkawthar-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c4e3ffb6d2f40526.mp3"
+      ]
+    },
+    {
+      "text": "المَالَ فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-falaqkawthar-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1bf67453b1a239ce.mp3"
+      ]
+    },
+    {
+      "text": "الفَلَقِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-falaqkawthar-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-falaqkawthar-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9bf9b3a40e0df02e.mp3"
+      ]
+    },
+    {
+      "text": "الكَوْثَرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-falaqkawthar-opt-b"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-falaqkawthar-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-08cbe4eb1637a756.mp3"
+      ]
+    },
+    {
+      "text": "الفلق ضوء",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-falaqkawthar"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9052909d751abd35.mp3"
+      ]
+    },
+    {
+      "text": "الصَّبَاحِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-falaqkawthar-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c153259b48efc9b3.mp3"
+      ]
+    },
+    {
+      "text": "اللَّيْلِ فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-falaqkawthar-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e73b7fa22e8e746d.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل سورة بمعناها البسيط!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        },
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        },
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b8fa41e59dbcd46c.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الكَوْثَرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-534b55b6b992a367.mp3"
+      ]
+    },
+    {
+      "text": "شُكْرُ اللهِ عَلَى الخَيْرِ الكَثِيرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bff35019cac02b1d.mp3"
+      ]
+    },
+    {
+      "text": "طَلَبُ الحِمَايَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0816e4d8a5aba568.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفَلَقِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-af897c5c36378572.mp3"
+      ]
+    },
+    {
+      "text": "طَلَبُ الحِمَايَةِ مِنَ الشَّرِّ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75667a51ad8fc3e0.mp3"
+      ]
+    },
+    {
+      "text": "الفلق نطلب فيها",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4608fd6a0167b88.mp3"
+      ]
+    },
+    {
+      "text": "الحِمَايَةَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8631e3d631e0ab42.mp3"
+      ]
+    },
+    {
+      "text": "الطَّعَامَ فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4453d06f555e4236.mp3"
+      ]
+    },
+    {
+      "text": "الكوثر معناها",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7854089ddee633e2.mp3"
+      ]
+    },
+    {
+      "text": "خَيْرٌ كَثِيرٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2873d7d8604d1884.mp3"
+      ]
+    },
+    {
+      "text": "لَيْلٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b408f7d2be549907.mp3"
+      ]
+    },
+    {
+      "text": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4c2cde7471e6d1b6.mp3"
+      ]
+    },
+    {
+      "text": "من يحمينا من كل شيء يخيفنا؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a9029d80a7d5a7a7.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الإِخْلَاصِ: تُخبرنا أن الله واحد لا شريك له.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0eb4670ec5867da1.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ النَّاسِ: نطلب فيها من الله أن يحمينا من كل شر.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-632c51d949fe2ff2.mp3"
+      ]
+    },
+    {
+      "text": "الحِمَايَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c65f3105c9592dd6.mp3"
+      ]
+    },
+    {
+      "text": "أي سورة تخبرنا أن الله واحد؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-947db04fd82d32d8.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الإِخْلَاصِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-efac6d996f8f283b.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ سورتي الإخلاص والناس كاملتين من الأداة التفاعلية، دون صوت تلقائي.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f1411ff1887d6142.mp3"
+      ]
+    },
+    {
+      "text": "سورة الإخلاص: الله واحد. سورة الناس: نطلب حماية الله من كل شر.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5ddbd91c34827c3c.mp3"
+      ]
+    },
+    {
+      "text": "أي سورة نطلب فيها حماية الله؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-shortsurahs"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5171835bac9a9a7b.mp3"
+      ]
+    },
+    {
+      "text": "ماذا تخبرنا سورة الإخلاص عن الله؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-shortsurahs"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2efc9e83528a8629.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نطلب من الله في سورة الناس؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-shortsurahs"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-06c2d6899abcec10.mp3"
+      ]
+    },
+    {
+      "text": "الحِمَايَةَ مِنْ كُلِّ شَرٍّ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-shortsurahs-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aaa642aaa74b9c51.mp3"
+      ]
+    },
+    {
+      "text": "المَالَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-shortsurahs-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-17af5bcf4fa81311.mp3"
+      ]
+    },
+    {
+      "text": "سورة الإخلاص تتحدث عن",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-shortsurahs"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf529a5ad849858a.mp3"
+      ]
+    },
+    {
+      "text": "اللهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-shortsurahs-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-masad-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-424aad89d7ba9397.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانَاتِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-shortsurahs-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1d0538403ffba30a.mp3"
+      ]
+    },
+    {
+      "text": "النَّاسِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-shortsurahs-opt-a"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ae08335c9a2a67dd.mp3"
+      ]
+    },
+    {
+      "text": "الإِخْلَاصِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-shortsurahs-opt-b"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db0651a96fa32d9b.mp3"
+      ]
+    },
+    {
+      "text": "نردد السور",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-shortsurahs"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea54850a3a3c01fc.mp3"
+      ]
+    },
+    {
+      "text": "بِهُدُوءٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-shortsurahs-opt-a"
+        },
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        },
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-rules-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62301e2ba801713d.mp3"
+      ]
+    },
+    {
+      "text": "بِصُرَاخٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-shortsurahs-opt-b"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf1444b2e7936df2.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الإِخْلَاصِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ed271e544bab3cb.mp3"
+      ]
+    },
+    {
+      "text": "اللهُ وَاحِدٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-pillars-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-54e03b28b832b606.mp3"
+      ]
+    },
+    {
+      "text": "الناس نطلب حماية من",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-351506e0451c5f81.mp3"
+      ]
+    },
+    {
+      "text": "الشَّرِّ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e0fc58c10da29d10.mp3"
+      ]
+    },
+    {
+      "text": "اللَّعِبِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0f067303b30bc320.mp3"
+      ]
+    },
+    {
+      "text": "الله أحد يعني",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b53987de3ef580d.mp3"
+      ]
+    },
+    {
+      "text": "وَاحِدٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4e8cccfad7d2295.mp3"
+      ]
+    },
+    {
+      "text": "ثَلَاثَةٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cc74ecac44fbc89a.mp3"
+      ]
+    },
+    {
+      "text": "أَحْفَظُ الشَّهَادَتَيْنِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c0ae5bd92c985502.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يقول المسلم ليشهد أن الله واحد وأن محمداً رسوله؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e0896060aacd88fe.mp3"
+      ]
+    },
+    {
+      "text": "الشَّهَادَةُ الأُولَى: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-077172a430e82028.mp3"
+      ]
+    },
+    {
+      "text": "الشَّهَادَةُ الثَّانِيَةُ: وَأَشْهَدُ أَنَّ مُحَمَّداً رَسُولُ اللهِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-98b17f7ce1be47cc.mp3"
+      ]
+    },
+    {
+      "text": "نقولهما معاً: هذا ذكر جميل مثل البسملة والحمدلة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4369c113736e809e.mp3"
+      ]
+    },
+    {
+      "text": "أَشْهَدُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e5db708d3fa6eea1.mp3"
+      ]
+    },
+    {
+      "text": "رَسُولُ اللهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-58e9a01533c8410d.mp3"
+      ]
+    },
+    {
+      "text": "أكمل: أشهد أن لا إله إلا …",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        },
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ede2f8795f7bd24d.mp3"
+      ]
+    },
+    {
+      "text": "اللهُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-84b0cf116ba71325.mp3"
+      ]
+    },
+    {
+      "text": "ردّد مع الطفل الجملة مرتين ببطء، نصفين: لا إله إلا الله، ثم محمد رسول الله.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53da7331db0d4bcb.mp3"
+      ]
+    },
+    {
+      "text": "أشهد أن لا إله إلا الله وأن محمداً رسول الله.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-653b32cba21d786c.mp3"
+      ]
+    },
+    {
+      "text": "من رسول الله الذي نذكره في الشهادة الثانية؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8e2a0c558b99b67c.mp3"
+      ]
+    },
+    {
+      "text": "أشهد أن لا إله إلا الله. هذه",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7a090f46b391b9cd.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول في الشهادتين؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-pillars"
+        },
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c9a9e09f42bca333.mp3"
+      ]
+    },
+    {
+      "text": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَأَنَّ مُحَمَّداً رَسُولُ اللهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-pillars-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b7ac66cffce1248.mp3"
+      ]
+    },
+    {
+      "text": "لا إله إلا الله تعني",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-38ec396e8d14876b.mp3"
+      ]
+    },
+    {
+      "text": "آلِهَةٌ كَثِيرَةٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-pillars-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ef66036aa7603719.mp3"
+      ]
+    },
+    {
+      "text": "نبينا هو",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e95d061db664c775.mp3"
+      ]
+    },
+    {
+      "text": "مُحَمَّدٌ ﷺ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-pillars-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-524abc713178d620.mp3"
+      ]
+    },
+    {
+      "text": "مَلِكٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-pillars-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7921318e5a84d5f6.mp3"
+      ]
+    },
+    {
+      "text": "الشهادتان",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8ea85fca7bee3432.mp3"
+      ]
+    },
+    {
+      "text": "ذِكْرٌ جَمِيلٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-pillars-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40359c4bb5fc636a.mp3"
+      ]
+    },
+    {
+      "text": "اختر التتمة الصحيحة!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7af51419630d858f.mp3"
+      ]
+    },
+    {
+      "text": "أشهد أن لا إله إلا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d990047ce92cf62a.mp3"
+      ]
+    },
+    {
+      "text": "اللهُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d66a89e8d6b484f3.mp3"
+      ]
+    },
+    {
+      "text": "المَلَكُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c5ee207075df98ab.mp3"
+      ]
+    },
+    {
+      "text": "محمد … الله",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2d06baa63c03444a.mp3"
+      ]
+    },
+    {
+      "text": "رَسُولُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80bfddeeec31601e.mp3"
+      ]
+    },
+    {
+      "text": "كِتَابُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2923277ed7cb1405.mp3"
+      ]
+    },
+    {
+      "text": "محمد رسول الله جزء من",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-113f272592f28a27.mp3"
+      ]
+    },
+    {
+      "text": "الشَّهَادَتَيْنِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a8ba9b5edb6c913.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةِ الفَلَقِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1b3ad76241866855.mp3"
+      ]
+    },
+    {
+      "text": "نقول الشهادة",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4552c14403af4c11.mp3"
+      ]
+    },
+    {
+      "text": "بِصِدْقٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-681578f53c6726e2.mp3"
+      ]
+    },
+    {
+      "text": "بِمَزْحٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t2-shahada-pillars",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7172c42190cbe160.mp3"
+      ]
+    },
+    {
+      "text": "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-654a94c7d6534d7b.mp3"
+      ]
+    },
+    {
+      "text": "أعطاك صديقك قلماً. ماذا تقول له؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a310846499888bbd.mp3"
+      ]
+    },
+    {
+      "text": "الشُّكْرُ: أقول \"شُكْراً\" أو \"جَزَاكَ اللهُ خَيْراً\" لمن أحسن إليّ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4390c95a0e86bdc9.mp3"
+      ]
+    },
+    {
+      "text": "الاسْتِئْذَانُ: أقول \"السَّلَامُ عَلَيْكُمْ\" وأطرق الباب قبل الدخول.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e90d2edaae25a562.mp3"
+      ]
+    },
+    {
+      "text": "الصِّدْقُ: أقول الحق ولو كان صعباً. الكذب يؤذي.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ccc8819b90ae0345.mp3"
+      ]
+    },
+    {
+      "text": "الطَّهَارَةُ: أغسل يديّ قبل الأكل وبعد الخلاء، وثوبي نظيف.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4f022d388155ded.mp3"
+      ]
+    },
+    {
+      "text": "الاسْتِئْذَانُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-50cbb5b743b67eff.mp3"
+      ]
+    },
+    {
+      "text": "تريد الدخول إلى غرفة والدتك وهي مغلقة الباب. ماذا تفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72adcadceebf8e09.mp3"
+      ]
+    },
+    {
+      "text": "أَطْرُقُ البَابَ وَأَسْتَأْذِنُ قَبْلَ الدُّخُولِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5b74cfda06c90a10.mp3"
+      ]
+    },
+    {
+      "text": "العب مع الطفل مسرحية قصيرة: يطرق الباب، يقول السلام، وينتظر الإذن قبل الدخول.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-48e5e31ba97e6fb6.mp3"
+      ]
+    },
+    {
+      "text": "أقول \"شكراً\" عند تلقي معروف، و\"من فضلك\" عند الطلب، وأستأذن قبل دخول أي غرفة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-19f6261130a5234c.mp3"
+      ]
+    },
+    {
+      "text": "أعطاك جارك حلوى. ماذا تقول له؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ff38d8164ee54a73.mp3"
+      ]
+    },
+    {
+      "text": "تريد دخول غرفة أختك. ماذا تفعل قبل الدخول؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21fa41034af425fc.mp3"
+      ]
+    },
+    {
+      "text": "الصدق هو",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c7fc3dfe10731966.mp3"
+      ]
+    },
+    {
+      "text": "ماذا أقول قبل دخول غرفة مغلقة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed7f119ebbab69d0.mp3"
+      ]
+    },
+    {
+      "text": "أَسْتَأْذِنُ وَأَطْرُقُ البَابَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-manners-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-191579476333386a.mp3"
+      ]
+    },
+    {
+      "text": "أَدْخُلُ مُبَاشَرَةً",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-manners-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-538f2f1cc388a0ec.mp3"
+      ]
+    },
+    {
+      "text": "شكراً لله نقول",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-18de2c2e8fee1277.mp3"
+      ]
+    },
+    {
+      "text": "اذْهَبْ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-manners-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4274cdc2cae3bec.mp3"
+      ]
+    },
+    {
+      "text": "الطهارة",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f50c1deccf68322b.mp3"
+      ]
+    },
+    {
+      "text": "فَوْضَى",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-manners-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e0b10ac065212b67.mp3"
+      ]
+    },
+    {
+      "text": "الكذب",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-352adf3dc74e1b3e.mp3"
+      ]
+    },
+    {
+      "text": "نَعَمْ نَكْذِبُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-manners-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5ac40ea3056310bf.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف المؤدب الصحيح!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ba7656b718729d7.mp3"
+      ]
+    },
+    {
+      "text": "تريد قلم أخيك",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f49c05ca2e5886b8.mp3"
+      ]
+    },
+    {
+      "text": "أَقُولُ: مِنْ فَضْلِكَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-39f9163e563ada10.mp3"
+      ]
+    },
+    {
+      "text": "آخُذُهُ بِدُونِ كَلَامٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7605a9a2c8210c2f.mp3"
+      ]
+    },
+    {
+      "text": "كسرت كأساً. ماذا تقول؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d4e52c0298081b9.mp3"
+      ]
+    },
+    {
+      "text": "أَصْدُقُ: أَنَا كَسَرْتُهُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a298bab92a3e38e.mp3"
+      ]
+    },
+    {
+      "text": "أَكْذِبُ: لَسْتُ أَنَا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3a7c174ee4418e8d.mp3"
+      ]
+    },
+    {
+      "text": "بعد الوضوء نكون",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4053dea68aff4db6.mp3"
+      ]
+    },
+    {
+      "text": "طَاهِرِينَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bc14dee5927bbdde.mp3"
+      ]
+    },
+    {
+      "text": "وَسِخِينَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-90a4eacaa0c16a8a.mp3"
+      ]
+    },
+    {
+      "text": "نعمة الطعام نحمد عليها بـ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a389c080007e8ffa.mp3"
+      ]
+    },
+    {
+      "text": "الصُّرَاخِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-thanks-manners",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e8d8c8c5be514e5b.mp3"
+      ]
+    },
+    {
+      "text": "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a598ae4ff5b37490.mp3"
+      ]
+    },
+    {
+      "text": "من يعتني بك ويحبك أكثر من كل أحد؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8dcb0c05e48921e6.mp3"
+      ]
+    },
+    {
+      "text": "بِرُّ الوَالِدَيْنِ: حبهما واحترامهما وطاعتهما وعدم رفع الصوت عليهما.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-897b8f1da8ccddf1.mp3"
+      ]
+    },
+    {
+      "text": "رِضَا الوَالِدَيْنِ مِنْ رِضَا اللهِ، وَغَضَبُهُمَا مِنْ غَضَبِ اللهِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ff636a58cddddd44.mp3"
+      ]
+    },
+    {
+      "text": "أُسَاعِدُ وَالِدَتِي فِي تَرْتِيبِ أَلْعَابِي، وَأُسَاعِدُ وَالِدِي فِي الأَعْمَالِ الخَفِيفَةِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebab69488d25f24e.mp3"
+      ]
+    },
+    {
+      "text": "البِرُّ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f9032e40d0221e28.mp3"
+      ]
+    },
+    {
+      "text": "طلبت منك أمك ترتيب ألعابك، ماذا تفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c2fe0117b972a367.mp3"
+      ]
+    },
+    {
+      "text": "أُرَتِّبُ أَلْعَابِي فَوْراً وَبِابْتِسَامَةٍ.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7071c65411f4a991.mp3"
+      ]
+    },
+    {
+      "text": "اطلب من الطفل رسم قلب صغير وكتابة اسم أمه وأبيه بداخله، وتحدث معه عن كيف يسعدهما.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-efa24ce9dcf4a252.mp3"
+      ]
+    },
+    {
+      "text": "أحب والديّ وأحترمهما وأطيعهما، وأساعدهما دائماً بابتسامة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3c9d89aecce9c114.mp3"
+      ]
+    },
+    {
+      "text": "طلب منك أبوك أن تخفض صوت التلفاز. ماذا تفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9aa417216ba90889.mp3"
+      ]
+    },
+    {
+      "text": "رضا من يوصلنا إلى رضا الله؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4b313baf5a4b8186.mp3"
+      ]
+    },
+    {
+      "text": "أمي طلبت ماءً. أفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ef8c8a191e7b7c19.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يوصل إليه رضا الوالدين؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-61f77987a9096cad.mp3"
+      ]
+    },
+    {
+      "text": "رِضَا اللهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-parents-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-94ebe3350d6d738a.mp3"
+      ]
+    },
+    {
+      "text": "لَا شَيْءَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-parents-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4284ad6f2f8784ed.mp3"
+      ]
+    },
+    {
+      "text": "بر الوالدين",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac63b99fad8aa8d4.mp3"
+      ]
+    },
+    {
+      "text": "إِحْسَانٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-parents-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-112d7c075bb643bf.mp3"
+      ]
+    },
+    {
+      "text": "إِيذَاءٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-parents-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-32cdd583caa30c03.mp3"
+      ]
+    },
+    {
+      "text": "كلمة جميلة للأم",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5fb235449fe14c63.mp3"
+      ]
+    },
+    {
+      "text": "أُحِبُّكِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-parents-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1f9cb0142b37e476.mp3"
+      ]
+    },
+    {
+      "text": "اذْهَبِي",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-parents-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6c0899587d8b55e.mp3"
+      ]
+    },
+    {
+      "text": "نطيع الوالدين في",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-parents"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b549a9d657626d8a.mp3"
+      ]
+    },
+    {
+      "text": "الخَيْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-parents-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f82093cd6637b97.mp3"
+      ]
+    },
+    {
+      "text": "الأَذَى",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-parents-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33813a890c887bca.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف البار الصحيح!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb3363339e6cf629.mp3"
+      ]
+    },
+    {
+      "text": "طلبت منك أمك المساعدة في ترتيب الطاولة",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ce4356dde6eb99d1.mp3"
+      ]
+    },
+    {
+      "text": "أُسَاعِدُهَا بِسُرْعَةٍ وَابْتِسَامَةٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e6d9f91a97a6052.mp3"
+      ]
+    },
+    {
+      "text": "أَتَجَاهَلُ طَلَبَهَا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-240a5043d16eaa36.mp3"
+      ]
+    },
+    {
+      "text": "نكلم الوالدين",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed560312dcde2619.mp3"
+      ]
+    },
+    {
+      "text": "بِلُطْفٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6c7f351cf83e9b58.mp3"
+      ]
+    },
+    {
+      "text": "أبي نعيناه",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0baa2da509131cf6.mp3"
+      ]
+    },
+    {
+      "text": "لَا أَبَدًا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        },
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-identity-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-143ff8f77384df14.mp3"
+      ]
+    },
+    {
+      "text": "الأم نقبل رأسها",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16afc138d9ca8993.mp3"
+      ]
+    },
+    {
+      "text": "بِحُبٍّ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bd6d9d7e7ddfae9f.mp3"
+      ]
+    },
+    {
+      "text": "بِغِلْظَةٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-parents-kindness",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-218fce712c01117d.mp3"
+      ]
+    },
+    {
+      "text": "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6114eebc25358db3.mp3"
+      ]
+    },
+    {
+      "text": "سور قصيرة في آخر المصحف: بعد الكوثر والناس… المسد والنصر.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-45ce410731d435bc.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ المَسَدِ قصيرة، نحفظها آية آية مع المعلم.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b74bcb73cb5ea1a9.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ النَّصْرِ تتحدث عن نصر الله. نحمد الله على النصر.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8b856b50895be7a8.mp3"
+      ]
+    },
+    {
+      "text": "نردّد بعد البسملة، ببطء، كما في الفاتحة والإخلاص.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-56bd06b432428516.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ المَسَدِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-669272aa185f2310.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ النَّصْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c8ea657e5b03b96.mp3"
+      ]
+    },
+    {
+      "text": "متى نقول البسملة قبل السورة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6704128bdaf5f5ba.mp3"
+      ]
+    },
+    {
+      "text": "دائماً قبل التلاوة.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d478daa60a363a55.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ سورتي المسد والنصر كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b385724fa0d79f7f.mp3"
+      ]
+    },
+    {
+      "text": "أحفظ المسد والنصر مع السور القصيرة الأخرى.",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-363b38ece1eb63e5.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول قبل تلاوة أي سورة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b9cb0f1845fb8768.mp3"
+      ]
+    },
+    {
+      "text": "سورة تتحدث عن نصر الله. ما اسمها؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aeb2b7e31ae28fdb.mp3"
+      ]
+    },
+    {
+      "text": "سورة النصر تتحدث عن",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex3-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f1dcc5a29eeeffc2.mp3"
+      ]
+    },
+    {
+      "text": "أي سورتيْن نحفظ في هذا الدرس؟",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e61c6ad79094bb12.mp3"
+      ]
+    },
+    {
+      "text": "المَسَدُ وَالنَّصْرُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-masad-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a7d313c82a1c93ef.mp3"
+      ]
+    },
+    {
+      "text": "البَقَرَةُ وَآلُ عِمْرَانَ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl1ap-masad-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-afa73a30721b2b1b.mp3"
+      ]
+    },
+    {
+      "text": "إذا جاء نصر الله من سورة",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-41bed3ec48a0d0f1.mp3"
+      ]
+    },
+    {
+      "text": "النَّصْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-masad-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-35fa81dab88609cf.mp3"
+      ]
+    },
+    {
+      "text": "المَسَدِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q2-isl1ap-masad-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ed622ba30c88994.mp3"
+      ]
+    },
+    {
+      "text": "نحفظ السور",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e24e0c17ddece24b.mp3"
+      ]
+    },
+    {
+      "text": "بِالتَّكْرَارِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-masad-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4c19ea3b05ec2846.mp3"
+      ]
+    },
+    {
+      "text": "بِالإِهْمَالِ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q3-isl1ap-masad-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-82cf717bbeaceb48.mp3"
+      ]
+    },
+    {
+      "text": "القرآن كلام",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-masad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a9cef7b2e8ad800f.mp3"
+      ]
+    },
+    {
+      "text": "الأَطْفَالِ فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q4-isl1ap-masad-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e29fe9cf9cec7ddb.mp3"
+      ]
+    },
+    {
+      "text": "اربط الاسم!",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6c2e72fc077227ec.mp3"
+      ]
+    },
+    {
+      "text": "نصر الله والفتح",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bd65a40a622d4cd2.mp3"
+      ]
+    },
+    {
+      "text": "النَّصْرُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ded405ec07333ebf.mp3"
+      ]
+    },
+    {
+      "text": "المَسَدُ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d2831a873180126d.mp3"
+      ]
+    },
+    {
+      "text": "سورة قصيرة في جزء عمّ بعد الناس",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d464b3732acac01e.mp3"
+      ]
+    },
+    {
+      "text": "المسد سورة",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d44a81b61c4a252.mp3"
+      ]
+    },
+    {
+      "text": "قَصِيرَةٌ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e3a0aaccbb6b7a23.mp3"
+      ]
+    },
+    {
+      "text": "طَوِيلَةٌ جِدًّا",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-52fce94f3fef48bc.mp3"
+      ]
+    },
+    {
+      "text": "آيَةً آيَةً",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-38bb0e9198656a6b.mp3"
+      ]
+    },
+    {
+      "text": "دَفْعَةً بِلَا فَهْمٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+          "grade": "1AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-acad845963304f70.mp3"
       ]
     },
     {

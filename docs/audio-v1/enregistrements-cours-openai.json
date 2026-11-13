@@ -14729,6 +14729,3501 @@
         "uses": [
           "course:civics-1ap-t3-child-rights:game-3"
         ]
+      },
+      {
+        "texte": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ",
+        "fichier": "course-cedar-072ec1dfb924edb3.mp3",
+        "duration": 4.35,
+        "sha256": "2ec587c153eb128fa05d57ef3bdda03885e72bfa29ac958f91813c8f45ef355a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:01.731Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eaf82c9534bd34c678c65314e878811ed261405927f81015433a61201e0b4ac1",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:title"
+        ]
+      },
+      {
+        "texte": "أَحْفَظُ الشَّهَادَتَيْنِ",
+        "fichier": "course-cedar-c0ae5bd92c985502.mp3",
+        "duration": 2.45,
+        "sha256": "b48c780b65c263de079260c8265181da6988f91f02e302a4f38834b8f14ae07e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:01.824Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c360f0214fb0a41b2a8ced49753868c1ea00c61f03652493dee61b4e956d30b",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:title"
+        ]
+      },
+      {
+        "texte": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ",
+        "fichier": "course-cedar-4c2cde7471e6d1b6.mp3",
+        "duration": 4.5,
+        "sha256": "421550289c4b756c4a04190e1c1aef6874a9fa7dd567eb0055d805a726d09bd2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:01.902Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2bedfc08178233ca792086d5d87d74e6fcfa2ada30964031233edbbb56a0d04f",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:title"
+        ]
+      },
+      {
+        "texte": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ",
+        "fichier": "course-cedar-15dad51915359f68.mp3",
+        "duration": 3.75,
+        "sha256": "23b3947b65e56f4e009b23b051e1d01471b083ef88ea0fb4f1dfdcecf7770ee9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:02.103Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4bcb497a13a9bd913006e86a07d64826d30de583bd16f23f679cac7d278fe859",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:title"
+        ]
+      },
+      {
+        "texte": "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا",
+        "fichier": "course-cedar-a598ae4ff5b37490.mp3",
+        "duration": 3.2,
+        "sha256": "7e40d3b4e27432a9d63b30b107ace9a31f12b4d474b745d17d60cb99322e0ebe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:03.128Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "200cc6a3d6e63e390957b22417f90270d8b609d6c0eb2af4fe8b407e895ee2a6",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:title"
+        ]
+      },
+      {
+        "texte": "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ",
+        "fichier": "course-cedar-654a94c7d6534d7b.mp3",
+        "duration": 5.05,
+        "sha256": "4793274dc7e998a767ede7f404eb09cbc67adc83e24eee1b2c36d20d2c4d04c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:03.299Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d1817cc295d91f8e832606709a6535dd1b6a04837ee61971e098d282952a2852",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:title"
+        ]
+      },
+      {
+        "texte": "ماذا نقول قبل أن نبدأ الأكل؟",
+        "fichier": "course-cedar-213e2c6a10571c37.mp3",
+        "duration": 3.05,
+        "sha256": "1d93098bfe2070dff78a0c102aa871fab9de1557de201c397f4ac09cb0faae3e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:03.498Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5241434b1031969362922c4007ae6df14bd3d2f045b6ef2850af525005811921",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:discovery-0"
+        ]
+      },
+      {
+        "texte": "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ",
+        "fichier": "course-cedar-6114eebc25358db3.mp3",
+        "duration": 3.95,
+        "sha256": "bc64f0bd35caaadfee716e29bda018cee82a009f184b0162ccae832dd8022842",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:03.557Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1cd6e76152223db40b8e84ba4c7f77c453163d9d1a2b705a7ecb3a918aed0835",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:title"
+        ]
+      },
+      {
+        "texte": "البَسْمَلَةُ",
+        "fichier": "course-cedar-5073229035cdf39e.mp3",
+        "duration": 1.55,
+        "sha256": "8163b4d28d8262c70b361f8ec44c17d88df3d2b125bf0a6e00723bcdeed9913c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:04.218Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b04a70191c166954690e2578b5a2ea9dd12f200c413f65ab9d6ddd26b58f6d3f",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:vocab-0",
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q3-isl1ap-fatiha-opt-a"
+        ]
+      },
+      {
+        "texte": "بِسْمِ اللهِ.",
+        "fichier": "course-cedar-3d5401464f9edfe5.mp3",
+        "duration": 1.55,
+        "sha256": "9686d9dbd622abac8bcdc22d2b6b31d54c5016abcd172eb45b5bc806e5f9ad25",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:04.559Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "02cf54c65801eff8de7e0248ddcca0f9c825d48c7f9cf0dee4002dfe418f3abd",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:example-solution"
+        ]
+      },
+      {
+        "texte": "ماذا نقول قبل الأكل؟",
+        "fichier": "course-cedar-e2c1490af8c55235.mp3",
+        "duration": 2.6,
+        "sha256": "343d027f5aa9bb19e0b4b32c5582b77d7e09307eddf39bb2c216e25ade0f1c73",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:04.638Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "272050be57c50b97cb88026a879ed3d48b3d365110b106a75ef92f372c0bd475",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:example-problem"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الفَاتِحَةِ هي أول سورة في القرآن، ونقرؤها في كل صلاة.",
+        "fichier": "course-cedar-7b9ed56f0af23c34.mp3",
+        "duration": 7.15,
+        "sha256": "25b19b7001f65da8f7fc84ec994d2efd33a37b14dff817bd539c7ee885438b30",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:05.516Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6506bb92ebd3e21e6793db0b4c871d231c262d2eb0369c85953a2fd4cd8042f4",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:rule-0"
+        ]
+      },
+      {
+        "texte": "ماذا نقول قبل بدء الأكل؟",
+        "fichier": "course-cedar-8cbe8bfc25c4c802.mp3",
+        "duration": 2.65,
+        "sha256": "37012f91ec2cecb5eb424ce889c363d1846fcd6f28ff5d9991a6ee0d63796f1b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:05.921Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "71d0178651456447dccab9ab0b15db678a690bd9b39a5c8954b9c64dd82159ff",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:practice-ex1-isl1ap-fatiha"
+        ]
+      },
+      {
+        "texte": "أحفظ سورة الفاتحة، وأقول \"بسم الله\" قبل كل عمل، و\"الحمد لله\" بعد الانتهاء منه.",
+        "fichier": "course-cedar-1057355da0a12669.mp3",
+        "duration": 8.25,
+        "sha256": "3b2828519117d8d6e4b6f71adefbb773b8106a802888d53f83fa6cd14068e87e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:06.439Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "63fd6af43faa128c74d91dbd608d08906bf0a4f056a7c3382fc3892bad93c625",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:takeaway"
+        ]
+      },
+      {
+        "texte": "اقرأ مع الطفل سورة الفاتحة آية آية من الأداة التفاعلية، دون تشغيل صوت تلقائي.",
+        "fichier": "course-cedar-e8e7ed759c9860d4.mp3",
+        "duration": 8,
+        "sha256": "498162c5f03807700e0879173868b21ceb9df58ac02f729efe860f3cb5091f07",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:06.505Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "da9683c1ce7a955a0a20b21e13510428b8e4c0647bbbe28f520d5e97d396315d",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:home-activity"
+        ]
+      },
+      {
+        "texte": "ما هي أول سورة في المصحف؟",
+        "fichier": "course-cedar-92a1a765f017a05c.mp3",
+        "duration": 3.85,
+        "sha256": "4aea7d64a33566d5360b9440e6226841745e19d5013f1f1fe4847d5ee490f127",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:06.939Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1673fd07040538a6ae095530470a1e6b512fe03601945985a17816d11c3486db",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:practice-ex2-isl1ap-fatiha"
+        ]
+      },
+      {
+        "texte": "قبل الأكل نقول",
+        "fichier": "course-cedar-fe7f067ba03f2c15.mp3",
+        "duration": 2.2,
+        "sha256": "b86f15b4e86313fb13d189c380786b68715f021e86e5cb527529053d3b70d774",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:07.474Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "33eea18b68c52649eae5c0732cabe4e9ec1c9d5abc84485506b70124da15fef6",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:practice-ex3-isl1ap-fatiha"
+        ]
+      },
+      {
+        "texte": "بِسْمِ اللهِ",
+        "fichier": "course-cedar-92a6dc914d5acb3f.mp3",
+        "duration": 1.4,
+        "sha256": "ff83b810eba5d4789e84fce4cd1ecb16e619bb15f54cf398c81936df61aae550",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:07.530Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "68c6d1bb964fd21600369778d36a6eff71d4df1fa97b08691e9e9ef000c94cd1",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q1-isl1ap-fatiha-opt-a",
+          "course:islamic-1ap-t1-fatiha-basmala:game-0-opt-1",
+          "course:islamic-1ap-t1-fatiha-basmala:game-1-opt-1",
+          "course:islamic-1ap-t1-fatiha-basmala:game-3-opt-0",
+          "course:islamic-2ap-t2-manners-eating-cleanliness:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "أول سورة في المصحف",
+        "fichier": "course-cedar-240563c260ce5293.mp3",
+        "duration": 3.85,
+        "sha256": "de0e48a230efae6a984a39594924a418b7d8d66b87e63b6fb44725c19ca8c516",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:08.145Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dedef617e7b38d3a3c5910ff87e5e2caa3c265670dec823cd042724f923495d2",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q2-isl1ap-fatiha"
+        ]
+      },
+      {
+        "texte": "ماذا نقول عند بداية أي عمل؟",
+        "fichier": "course-cedar-bacb9fdca90a390f.mp3",
+        "duration": 3.85,
+        "sha256": "35bcd168d7bb3db16d86f490cf9e56e69bb3c28282aa206e2889e6e7d0d4247d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:08.171Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e17853c785691f537a8712944aa68aaed515f470aa9d5ae2ce4ef70ffdb96068",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q1-isl1ap-fatiha"
+        ]
+      },
+      {
+        "texte": "النَّاسُ",
+        "fichier": "course-cedar-1adbefae8e0d20e0.mp3",
+        "duration": 1.5,
+        "sha256": "8762838a540d90baeb73c17b36876c275e372654476cc8c8779ea8e86b699148",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:08.509Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "17c1156500981a01937f745637e4831d9c228c9e4224ae476b774efa5c29480b",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q2-isl1ap-fatiha-opt-b"
+        ]
+      },
+      {
+        "texte": "الفَاتِحَةُ",
+        "fichier": "course-cedar-2d6c85b311cb3e0c.mp3",
+        "duration": 2,
+        "sha256": "624e5c580d8313af5c3756e51ca79b9ce82ce17251e7843f2600f3b645901d30",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:08.570Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6bfb08b85d78f3935a8af0ffb19f8b38954e60d9b5eb23f90cafaf2579384763",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q2-isl1ap-fatiha-opt-a",
+          "course:islamic-1ap-t3-surah-masad-nasr:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "النَّشِيدُ",
+        "fichier": "course-cedar-3e99ec2c738c388b.mp3",
+        "duration": 1.4,
+        "sha256": "da9c52a22f78d77de190e864142d2b90097977bf2bf63a2e0f8a3473e81945a1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:09.265Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "582241cdc700590603c857c7b2bb9f0f9de9fc2d4b180e5fd508f8cc6ad57d5b",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q3-isl1ap-fatiha-opt-b"
+        ]
+      },
+      {
+        "texte": "شُكْرٌ لِلَّهِ",
+        "fichier": "course-cedar-62863a814f0140d7.mp3",
+        "duration": 1.95,
+        "sha256": "53a346099c7e2a4882bdd3ee25ba372514f045c4d06643f38701caf65242b33c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:09.308Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d29e51b4ac62e4206715662829353b1bfe457ff87dd090113afc9293a7ee8aa4",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q4-isl1ap-fatiha-opt-a"
+        ]
+      },
+      {
+        "texte": "طَلَبُ نَوْمٍ",
+        "fichier": "course-cedar-1aca3bea11f041c9.mp3",
+        "duration": 1.5,
+        "sha256": "787391ca7134ec24cf55454ddd6d30ccf1d77e0df28658adb3de7040e827e914",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:10.207Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d80ac10e0269cd75fba0ba6ad4f330b99696f9a8a3715eb3958236998f5572e1",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:quiz-q4-isl1ap-fatiha-opt-b"
+        ]
+      },
+      {
+        "texte": "الحَمْدُ لِلَّهِ",
+        "fichier": "course-cedar-997e143bd782a108.mp3",
+        "duration": 1.65,
+        "sha256": "b12051065f48aeb8c94b72930675eebdd279ed5afede0e445affd4666f2475e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:10.567Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d2f6935f8e32f73e45dbe085dfeb23a29c4f2a13b9365a7530ba35545cc0d174",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-0-opt-0",
+          "course:islamic-1ap-t1-fatiha-basmala:game-1-opt-0",
+          "course:islamic-1ap-t3-thanks-manners:quiz-q2-isl1ap-manners-opt-a",
+          "course:islamic-1ap-t3-thanks-manners:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "اختر الجواب الصحيح!",
+        "fichier": "course-cedar-4a5853e733eadc44.mp3",
+        "duration": 2.2,
+        "sha256": "d662c3be45ece47ea5eb5e132aec59ca8605fe5f3ee466bf0d1e255a08662726",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:10.656Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fe278adefebcc1ce9703683c4ec346a9d4ce32de52df9dae1ff706f38c250dfe",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-instructions"
+        ]
+      },
+      {
+        "texte": "بعد الانتهاء من الأكل نقول:",
+        "fichier": "course-cedar-5d4d548d08bffdf8.mp3",
+        "duration": 2.75,
+        "sha256": "b8ff27e8960ebaee8333fa811ae47da9ca41d5a0db2360d7c3facc3e476da232",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:11.060Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fccfd3c2904e460ce504681cbacb1ee9595474228df2fac5a8d824ba0b4db1de",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-0"
+        ]
+      },
+      {
+        "texte": "بعد الأكل",
+        "fichier": "course-cedar-6ff378eced6b452d.mp3",
+        "duration": 2.05,
+        "sha256": "82241fc25a9b784cd73c9460e18bc1c36f1cbeccec42dfd0268531551fe37f18",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:11.215Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a788dc14b30750c7021a5c745b74fdef2df1644270160f70948bbc50a12dc843",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-1"
+        ]
+      },
+      {
+        "texte": "الصَّلَاةِ",
+        "fichier": "course-cedar-5600ba09f0c94f3f.mp3",
+        "duration": 1.35,
+        "sha256": "e009defd294f5c399f8ed4439a9a40cf86b41626fb540de5ca86ab0f8597091c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:11.899Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "50c92f55e77f9782729868a431f20315eea426e1ab9175aad9aa318e6893f363",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "قبل الشرب نقول",
+        "fichier": "course-cedar-da9d6beb5e9c7922.mp3",
+        "duration": 2.6,
+        "sha256": "69bd3a7fc1e87bd3bd50a450b9746986ef5aac54c2f4b1fa861ebeca35d59383",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:12.189Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba8565cce6528009c897db84f8cf0df50ae5301229338d1323c051d02a3f73a1",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-3"
+        ]
+      },
+      {
+        "texte": "الفاتحة نقرؤها في",
+        "fichier": "course-cedar-ce7de91361108ba0.mp3",
+        "duration": 2.7,
+        "sha256": "b8d2cf8a987491f613ee94b723a673e473be0eafde67ff2f9dfb5d95dbdb4798",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:12.225Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2d0a7089e4f03960b88a9f18a9febec27b454db762ff201b571f3c939eba6e7b",
+        "uses": [
+          "course:islamic-1ap-t1-fatiha-basmala:game-2"
+        ]
+      },
+      {
+        "texte": "متى نطلب من الله أن يحمينا من الظلام والخوف؟",
+        "fichier": "course-cedar-45fcb6c562e0e89d.mp3",
+        "duration": 4.95,
+        "sha256": "4a7144a95a10502f0a77c12e027fe7ca13e3cbf68e957a93319e9908e2b8f7ab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:12.964Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "02675249652f7892cafbb7da5b261217641dc617eb4dac2c672c0dce118c40e2",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:discovery-0"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الفَلَقِ: نطلب فيها من الله الحماية من كل شر عند الصباح.",
+        "fichier": "course-cedar-04cbf743adf793b3.mp3",
+        "duration": 8.05,
+        "sha256": "89aff6bb69a33d68e097284832822c0b46bad629f313e1be8f598c78d5b77442",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:13.576Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "302b6d81cefb37a7231d3ae59f24cb6d08e8f80993270bf6fe978c852d1f46ed",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:rule-0"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الكَوْثَرِ: أقصر سورة في القرآن، نشكر فيها الله على نعمه الكثيرة.",
+        "fichier": "course-cedar-2e718e4367f94cc4.mp3",
+        "duration": 7.35,
+        "sha256": "05363942a7a368b1ef2ba970f3baeaa067e7eb02cf2327ed1244d4f1c5e13ad2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:13.915Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "488ab9484c4bb46011b8a03659a4b8c868ab1c0dc8d5cb548997ead78918f6aa",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:rule-1"
+        ]
+      },
+      {
+        "texte": "الفَلَقُ",
+        "fichier": "course-cedar-5e8f7ab0e2f98fb6.mp3",
+        "duration": 1.3,
+        "sha256": "4c638ba412f84e474a48c791a03d8a9dc432c8e871601954fb0356542c10b931",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:14.175Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2f02d5001f2d1b0ea0358c59378e2fc6ecee76e234468b828e13d564427325bb",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:vocab-0"
+        ]
+      },
+      {
+        "texte": "الكَوْثَرُ نهر عظيم في الجنة أعطاه الله لنبينا محمد ﷺ.",
+        "fichier": "course-cedar-6fe8f62ac98cf28d.mp3",
+        "duration": 9,
+        "sha256": "e76cbd978eee5f529aafb68005415d88605e462d48f4f6d0408a3c8877377b25",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:14.617Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ebbb04ee8f2a36dbb808f537b3b9229a8a70239007bfcc07646cba772a7c303f",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:rule-2"
+        ]
+      },
+      {
+        "texte": "الكَوْثَرُ",
+        "fichier": "course-cedar-1dc403fb3f198581.mp3",
+        "duration": 1.9,
+        "sha256": "9d7ceb0a437ea2f3ffadfec3a5a606e12c9ca2c9ac7c0b275d903560890617c9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:14.897Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37559db874b6b6e881b6578be68d46e4d2efab9a2633556f68d6aa80135924f0",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:vocab-1"
+        ]
+      },
+      {
+        "texte": "ما هي أقصر سورة في القرآن الكريم؟",
+        "fichier": "course-cedar-1466eb817f8f5687.mp3",
+        "duration": 3.55,
+        "sha256": "b2f832d1ebc8c2ba6f09cd0d28a6d58678410ca6b6b9892713bd95a0dea349cf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:15.405Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2f2bd75fbbe8dee61a36c3467acc59d157892e1851983b6548b0e702c61ac3c8",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:example-problem"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الكَوْثَرِ.",
+        "fichier": "course-cedar-7ace903793c671e3.mp3",
+        "duration": 2.2,
+        "sha256": "4957303edf3ad19a265d6e353dc5676e90e02ce21617f6c1f0c7723c021d5865",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:15.558Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7119a079e2710f48719f80e7d0643e040af20ed91d2af862adf5336d78312b1e",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:example-solution"
+        ]
+      },
+      {
+        "texte": "ما هي أقصر سورة في القرآن؟",
+        "fichier": "course-cedar-db7bef0c6240c592.mp3",
+        "duration": 3.5,
+        "sha256": "f0ac85ad50f3705e4d2271c782e8b98846674d6160c6ac2f2cd21e266a239bce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:16.791Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f606c71dc8943934f1e175dd0bf2b8a93f9470a95fb3130ba14269ac8019a59f",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:practice-ex1-isl1ap-falaqkawthar"
+        ]
+      },
+      {
+        "texte": "اقرأ السورتين كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+        "fichier": "course-cedar-527d641a734daa02.mp3",
+        "duration": 8.1,
+        "sha256": "410a462fb3ca937e7121cb1c7750751eaffe53beb7ce56f1eb5239edce5753ac",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:17.257Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3795e1a39dde410b52e2e5242c298a3a023b28edeec9f29e3a4ac9715ae01bb2",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:home-activity"
+        ]
+      },
+      {
+        "texte": "في أي سورة نطلب حماية الله من الشر؟",
+        "fichier": "course-cedar-8e36e0b76c3c12c3.mp3",
+        "duration": 5,
+        "sha256": "5cf680d53ea5d9648bba7ba0997eff96090d6821745d886cd2145b958236f17e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:17.290Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3887ff8b6610c0d58ca88dd8f9ca5cc034568f9d8521dd17b3b1ed4779b8ba1e",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:practice-ex2-isl1ap-falaqkawthar"
+        ]
+      },
+      {
+        "texte": "سورة الفلق: أطلب حماية الله. سورة الكوثر: أشكر الله على خيره الكثير.",
+        "fichier": "course-cedar-8d1a2afd680e4c90.mp3",
+        "duration": 8.2,
+        "sha256": "41868748ec4e4c54aa3c9706826c91a1052759fa574bb1232034a409d94056c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:17.417Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aaf8d3a87e90d13d9e9fa18d2ad7a6744368991e322b26ba34845b918c26e849",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:takeaway"
+        ]
+      },
+      {
+        "texte": "أقصر سورة؟",
+        "fichier": "course-cedar-31f592041f21a7c3.mp3",
+        "duration": 1.9,
+        "sha256": "1135ee97615ccb6d1823c58a2b3d9d9291795cb6b93613fd1c8e968618a3b0b4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:17.964Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "42735fc6ca1a039af45a2bad7c03ddd6d3ac6559a6c8efbaae54f1c29818c3f4",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:practice-ex3-isl1ap-falaqkawthar"
+        ]
+      },
+      {
+        "texte": "الخَيْرَ الكَثِيرَ",
+        "fichier": "course-cedar-c4e3ffb6d2f40526.mp3",
+        "duration": 3.15,
+        "sha256": "c875a570fca2bfa9475079915d179ea7c4103f28d293bcba667e3faccc243edb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:18.766Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "65002e9dabc7a696d6e7fc5a43fdc48a223b6911feca8ada8b05eb8a0f0c0527",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q1-isl1ap-falaqkawthar-opt-a"
+        ]
+      },
+      {
+        "texte": "ماذا أعطى الله نبينا محمداً ﷺ في سورة الكوثر؟",
+        "fichier": "course-cedar-80f2b616645b6db3.mp3",
+        "duration": 6.7,
+        "sha256": "2feebe20a0a114dab9079ba28ec059ec9d373d186b87e6914a88fda6cdaa588e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:18.984Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6f68cf08b65c92e802bb503523d0b927d8846d596e273149f7d002650ae959d1",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q1-isl1ap-falaqkawthar"
+        ]
+      },
+      {
+        "texte": "المَالَ فَقَطْ",
+        "fichier": "course-cedar-1bf67453b1a239ce.mp3",
+        "duration": 1.95,
+        "sha256": "1f3428bb73b9fbd3e6cfa9003dbe5c0894a2e73947eb167aa7749fcbb8cc6e55",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:19.043Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c9a5f2752a929eafa6af79db2bd887377adaedfaa8f3f8e6af43871d88276bdb",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q1-isl1ap-falaqkawthar-opt-b"
+        ]
+      },
+      {
+        "texte": "الكَوْثَرِ",
+        "fichier": "course-cedar-08cbe4eb1637a756.mp3",
+        "duration": 1.55,
+        "sha256": "b5ab0a56e5e4a4c51acd0f680f4b6abb033cb70a50dbaab237001f88c4727a61",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:20.046Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2401f67c8749b745a4376d1d9e49671364f376b8a4c8f51162c54fb6d7713d52",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q2-isl1ap-falaqkawthar-opt-b",
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q3-isl1ap-falaqkawthar-opt-a"
+        ]
+      },
+      {
+        "texte": "الفَلَقِ",
+        "fichier": "course-cedar-9bf9b3a40e0df02e.mp3",
+        "duration": 1.1,
+        "sha256": "93dbc8c29abf7192d426855246634816a3290a145884d78ff1106a3533255547",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:20.145Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f987e50dc3da00e85ff2777c98e700d43ccc2f50238e9a33ed3917e71be4228b",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q2-isl1ap-falaqkawthar-opt-a",
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q3-isl1ap-falaqkawthar-opt-b"
+        ]
+      },
+      {
+        "texte": "الفلق ضوء",
+        "fichier": "course-cedar-9052909d751abd35.mp3",
+        "duration": 1.8,
+        "sha256": "f99e37776aaceb2a8206bdf037b998a24cbd55a998b1fe427f31c6957aae1fb1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:20.165Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1319301fea0abbd62329c086d51bd67de9ea55f68d99b3b2a7297567bc2cafbb",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q4-isl1ap-falaqkawthar"
+        ]
+      },
+      {
+        "texte": "الصَّبَاحِ",
+        "fichier": "course-cedar-c153259b48efc9b3.mp3",
+        "duration": 2.75,
+        "sha256": "af1572d1438b88e4921e587153e7364a641d73237468027dc7e020c05dc16baa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:20.385Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b020bffd4f51e8bd4d7d43c767f8975540a22502bdc87110e83ec4c48eeba75",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q4-isl1ap-falaqkawthar-opt-a"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الكَوْثَرِ",
+        "fichier": "course-cedar-534b55b6b992a367.mp3",
+        "duration": 1.9,
+        "sha256": "513c9ea60523265d236aab68e56f1d8c5acbc96037c42d2b469b8e270a19fa5a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:21.405Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7d96a537f53624404eaf091ae8e17033da24a88f88aa29db6d8d8f487bf40f8a",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-0"
+        ]
+      },
+      {
+        "texte": "اللَّيْلِ فَقَطْ",
+        "fichier": "course-cedar-e73b7fa22e8e746d.mp3",
+        "duration": 2.55,
+        "sha256": "d155335d7282a019ccdf959e67e2c3f25790e761e65acfb44eee324689ec2918",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:21.810Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2ddf5e30c850f7aa10ae1d4048c328c6d985a5d4e6a634f566963cb6fe2e4666",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:quiz-q4-isl1ap-falaqkawthar-opt-b"
+        ]
+      },
+      {
+        "texte": "اربط كل سورة بمعناها البسيط!",
+        "fichier": "course-cedar-b8fa41e59dbcd46c.mp3",
+        "duration": 3.1,
+        "sha256": "5a4da1935dbbc0fc78f703f3494e93f7d54cc6e846bbb2cb1c8f1000b2f73df6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:21.932Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dcc835cf3e56e16d9963363973daf296f04ff43a10103db1782e4c84d1f10b2f",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-instructions",
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-instructions",
+          "course:islamic-2ap-t1-short-surahs-1:game-instructions",
+          "course:islamic-2ap-t3-surah-maun-asr:game-instructions"
+        ]
+      },
+      {
+        "texte": "شُكْرُ اللهِ عَلَى الخَيْرِ الكَثِيرِ",
+        "fichier": "course-cedar-bff35019cac02b1d.mp3",
+        "duration": 3.5,
+        "sha256": "a9fbe226670ea603f14dfb5b8556db0df5db15816975241a9355c2225eb015e2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:22.074Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8f6eda69c6878ec18f6b72c59a911042bdd2536736965915aced50dbfa8d34bd",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-0-opt-0",
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "طَلَبُ الحِمَايَةِ",
+        "fichier": "course-cedar-0816e4d8a5aba568.mp3",
+        "duration": 2,
+        "sha256": "ed90272ae53b2650d31fe064d36b12ac792de4c76fd6c8e3788291bf25e82f6f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:22.645Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "495d754e284081c1f7a63d57cf05e0df62ef2b9950780b44f7bcfa8af1722d09",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الفَلَقِ",
+        "fichier": "course-cedar-af897c5c36378572.mp3",
+        "duration": 1.55,
+        "sha256": "6e9e189d3aab38b8313682fe3f01fc58c48d66c1fe32dfc06cb1f8c9ebfa5a83",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:22.821Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b046bf367c58feb18e3f959f0522649e489972a4aea40f9de498eb58ccca6ab1",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-1"
+        ]
+      },
+      {
+        "texte": "طَلَبُ الحِمَايَةِ مِنَ الشَّرِّ",
+        "fichier": "course-cedar-75667a51ad8fc3e0.mp3",
+        "duration": 2.4,
+        "sha256": "15e6dc26b788ac0d0dc2c656fb7bc2219b029818b7722cd627fbc7255571dd5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:23.291Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3917e844eccc27918c375f7df30b56e9db77f412aa257f9aa8bb1edf104023fd",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الحِمَايَةَ",
+        "fichier": "course-cedar-8631e3d631e0ab42.mp3",
+        "duration": 1.8,
+        "sha256": "7529a491411c7529d72c3947eb8a3850d202a63c3af53664c4be6bfd9086c70f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:24.108Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "90d58603d3815e493b0636320643d21204c02ab85fdd24b99d94912556f6b35e",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "الفلق نطلب فيها",
+        "fichier": "course-cedar-a4608fd6a0167b88.mp3",
+        "duration": 3.2,
+        "sha256": "4e8640fcf5b113b70db09149af8487b48a5d1766308342dae858d34c7b15c72b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:24.168Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3b250aab130fdba63edd68a82745a5726d51cac40a70989d135a6d652337516f",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-2"
+        ]
+      },
+      {
+        "texte": "الطَّعَامَ فَقَطْ",
+        "fichier": "course-cedar-4453d06f555e4236.mp3",
+        "duration": 2.25,
+        "sha256": "70cfd91cde714317a4fb4ac71079f59618c4cd6a6c4310d52eb8ea7325be6064",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:24.246Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "43f62aa331a4098f20501746fba52ec82025646bd5f5f9638b95947d85a5c6bf",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "الكوثر معناها",
+        "fichier": "course-cedar-7854089ddee633e2.mp3",
+        "duration": 2.55,
+        "sha256": "38f11825c4178bf165268ce9c33b37b9465b143623bcdd270966f0928d330c8f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:24.906Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c4bf6dcdcd1ca479f39be632300dc6af30577f4f0a824acd7c3dbe35f74e4b5e",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-3"
+        ]
+      },
+      {
+        "texte": "خَيْرٌ كَثِيرٌ",
+        "fichier": "course-cedar-2873d7d8604d1884.mp3",
+        "duration": 2.2,
+        "sha256": "a009adc5dbdfbfd4f1199250ef9a76b2916405a146746dd5b42df03d3b5e93d9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:25.277Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "34d7143f2bf8bbbaee994a011db8efe171f918b20fce8de8653138637518877f",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "لَيْلٌ",
+        "fichier": "course-cedar-b408f7d2be549907.mp3",
+        "duration": 1.05,
+        "sha256": "79b7372ec1972b0978fea9f92bbb0f2fda6f60de9d2f565491bd27f37ad1755b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:25.460Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1907a1ed0de47ee8abed399caaa7a771eb9e700e7c610f39c5513054fc07a84b",
+        "uses": [
+          "course:islamic-1ap-t1-surah-falaq-kawthar:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "من يحمينا من كل شيء يخيفنا؟",
+        "fichier": "course-cedar-a9029d80a7d5a7a7.mp3",
+        "duration": 3.45,
+        "sha256": "3475962c0f197ef5a5a22fe51a2d58750ee2c9e943c3f5282ce9a05d3941524e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:25.689Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b162e33de00b0e15c26435eef69996a2b40b971da819007dad3ff53245c4210f",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:discovery-0"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الإِخْلَاصِ: تُخبرنا أن الله واحد لا شريك له.",
+        "fichier": "course-cedar-0eb4670ec5867da1.mp3",
+        "duration": 6.45,
+        "sha256": "90066f57755bb74e259a648b26b0f405a466440485564c8adbb0af952893aca1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:26.470Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b027da890f18f51304b352fe5f892309838d202a83e6fe72a47392809256ca4a",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:rule-0"
+        ]
+      },
+      {
+        "texte": "الحِمَايَةُ",
+        "fichier": "course-cedar-c65f3105c9592dd6.mp3",
+        "duration": 2.6,
+        "sha256": "0819c5efd67ebd6fe1748c90dd0514861ff182cf32bc41bce71e89778d0e6ee2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:26.923Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2d9964a0027b7aa2450a598efc95c858bfd042b88dda9c26105f54c036bc232f",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:vocab-0",
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "سُورَةُ النَّاسِ: نطلب فيها من الله أن يحمينا من كل شر.",
+        "fichier": "course-cedar-632c51d949fe2ff2.mp3",
+        "duration": 5.4,
+        "sha256": "fa3ce907af56b0ca7104b01c716b5729cb738fdfce4ee30d2e7429aa471fa66a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:26.993Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "29c5eaf6c7ac5157039fb90765c2cb6931e6fd7eabfec0b6bb7c00c7221cbdc5",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:rule-1"
+        ]
+      },
+      {
+        "texte": "أي سورة تخبرنا أن الله واحد؟",
+        "fichier": "course-cedar-947db04fd82d32d8.mp3",
+        "duration": 4,
+        "sha256": "6f54567c690df2f508e7465f36165df975e295579fcd5bd7bafd22c986359c1c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:27.132Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ef7ae9341e99de2503ebf8dccb14c8a241c5a3d00631ad7425a6c5ec691c5cbd",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:example-problem"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الإِخْلَاصِ.",
+        "fichier": "course-cedar-efac6d996f8f283b.mp3",
+        "duration": 2.25,
+        "sha256": "40f720e94d73e575a5a7cfa0db563cf4ca7e071ee32d140b35ceba4ac7b532e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:27.687Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "02c1b7d14f0ec38059488c259921c9fa2b5b425bc874d4ac2cc34a3ed7f5d741",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:example-solution"
+        ]
+      },
+      {
+        "texte": "اقرأ سورتي الإخلاص والناس كاملتين من الأداة التفاعلية، دون صوت تلقائي.",
+        "fichier": "course-cedar-f1411ff1887d6142.mp3",
+        "duration": 7.8,
+        "sha256": "66b41aa1e33f33cd21cb010c987d4bfbb44bdacb180e716c290769d0b49b322d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:29.076Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8457c4359e5f583704c71ddc522f58f2fa8d7674d87a3dacdae2d0d0f581267e",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:home-activity"
+        ]
+      },
+      {
+        "texte": "ماذا نطلب من الله في سورة الناس؟",
+        "fichier": "course-cedar-06c2d6899abcec10.mp3",
+        "duration": 4.2,
+        "sha256": "8201b11b0c2d01165e890a2965ea24e2cb5e9c30edeff3a5a53a027aef14fc41",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:30.378Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ca00a62f03dec53b2260ba9aba24b4fc5c1daf53e8be1d3ca3c8cddafd774209",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q1-isl1ap-shortsurahs"
+        ]
+      },
+      {
+        "texte": "أي سورة نطلب فيها حماية الله؟",
+        "fichier": "course-cedar-5171835bac9a9a7b.mp3",
+        "duration": 4.6,
+        "sha256": "ee6d34777f226b7713284ce54bafc8006fd095e5c4fde88c2322055beb7eba49",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:30.430Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c28438a6103d1888f8e73fa6d3df08302f896a62af44e0c74b2f2b35ab036d91",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:practice-ex1-isl1ap-shortsurahs"
+        ]
+      },
+      {
+        "texte": "ماذا تخبرنا سورة الإخلاص عن الله؟",
+        "fichier": "course-cedar-2efc9e83528a8629.mp3",
+        "duration": 4.2,
+        "sha256": "dc167cf05bb6cdd1de797c689c5a39c88867ea4bd5087ab71d69445c85d5945b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:30.499Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc7bd94430edc7b105f691cccbeaa638b9296e936c4a94ac11010bed6d337d6f",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:practice-ex2-isl1ap-shortsurahs"
+        ]
+      },
+      {
+        "texte": "سورة الإخلاص: الله واحد. سورة الناس: نطلب حماية الله من كل شر.",
+        "fichier": "course-cedar-5ddbd91c34827c3c.mp3",
+        "duration": 8.2,
+        "sha256": "325f664a9ffa1509e5f929418511e1e6c19e666856c5761c3d2abcbb62c88f68",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:30.846Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9ebbfa541a09ff3e3c451546116098324a9055f95115014fbdf71b6bf65a353e",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:takeaway"
+        ]
+      },
+      {
+        "texte": "المَالَ",
+        "fichier": "course-cedar-17af5bcf4fa81311.mp3",
+        "duration": 1.4,
+        "sha256": "08754550f46095386562c755cc5ed3029c11fc1bb9518b38e29ca3580fbf062d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:31.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4ead16829705f385c5969ad93cd3c85294fd3f94f196fe29a89161d478bf86ef",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q1-isl1ap-shortsurahs-opt-b"
+        ]
+      },
+      {
+        "texte": "الحِمَايَةَ مِنْ كُلِّ شَرٍّ",
+        "fichier": "course-cedar-aaa642aaa74b9c51.mp3",
+        "duration": 3.1,
+        "sha256": "bbe69ee245f624734363230a6124164de2173f5a8c8637cee17e8a88616c4c1a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:31.784Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1434b46883b43758ac311993c9e077a8fd554dce73b9a97aba6b2fa84cf8fe86",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q1-isl1ap-shortsurahs-opt-a"
+        ]
+      },
+      {
+        "texte": "سورة الإخلاص تتحدث عن",
+        "fichier": "course-cedar-bf529a5ad849858a.mp3",
+        "duration": 3.05,
+        "sha256": "909763042ce71d72a7d8d14fa59996f561d064f990f34bd14e91041a678d0a96",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:31.803Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bff8ab40e9dd7d3d5a3f7636ca9dabd5d2faa3a33707865d1094887f555c8d7e",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q2-isl1ap-shortsurahs"
+        ]
+      },
+      {
+        "texte": "اللهِ",
+        "fichier": "course-cedar-424aad89d7ba9397.mp3",
+        "duration": 1.2,
+        "sha256": "f44dc65e12306a72aef24f60f3451eaa2528640efd8c15d76aee4218d975f9f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:31.829Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1fe0f8364831335fe756c4c91847f857ed3f414dbab34e2feb87734985e30272",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q2-isl1ap-shortsurahs-opt-a",
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q4-isl1ap-masad-opt-a"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانَاتِ",
+        "fichier": "course-cedar-1d0538403ffba30a.mp3",
+        "duration": 1.85,
+        "sha256": "a234fff489e2842a07f8bc30bec9709af5eac6a59978672cab138d91ed57a76c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:32.225Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d584830e30b43bf1e12ebc25d6ba5672c3088d3874701f2899bd4e9bfe1fbed",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q2-isl1ap-shortsurahs-opt-b"
+        ]
+      },
+      {
+        "texte": "الإِخْلَاصِ",
+        "fichier": "course-cedar-db0651a96fa32d9b.mp3",
+        "duration": 1.8,
+        "sha256": "b5cde55ca92806dc869821dbee2b1adace151716dd45295b582085bfcc59ce4f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:33.211Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cad660eed4642a5c9f80c9d9ed4dea62d4fbc88d602f301d4a925ede87524cfb",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q3-isl1ap-shortsurahs-opt-b",
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "النَّاسِ",
+        "fichier": "course-cedar-ae08335c9a2a67dd.mp3",
+        "duration": 2.1,
+        "sha256": "cffe802314bcc40516e9909bcb3fcf765541850af0100461e67d609791d17fb9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:33.336Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "50999c7d62da1eefd748456cf9e27453c44264ee1b34baf0f39821bd8db173e3",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q3-isl1ap-shortsurahs-opt-a",
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "نردد السور",
+        "fichier": "course-cedar-ea54850a3a3c01fc.mp3",
+        "duration": 2.6,
+        "sha256": "ae2613d974abf543ae4d4eb7ed28757a8345cf19611ffddf42e5283afbbe04e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:33.362Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6dddc01eafa2fc0d46796870a0f4cc3751edb67f3f11554e776684affd45e674",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q4-isl1ap-shortsurahs",
+          "course:islamic-1ap-t3-surah-masad-nasr:game-3"
+        ]
+      },
+      {
+        "texte": "بِهُدُوءٍ",
+        "fichier": "course-cedar-62301e2ba801713d.mp3",
+        "duration": 1.7,
+        "sha256": "f11231a0a76d4fb2368954a4bfd90abd832bf401ecb794968c06202c17d3d0a9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:33.395Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "df951bcd525ceb529c3da2f61fb04a32987f8f3ab6f0b807ed026a2942878917",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q4-isl1ap-shortsurahs-opt-a",
+          "course:civics-1ap-t2-flag-anthem:game-3-opt-0",
+          "course:civics-1ap-t3-classroom-rules:quiz-q2-civics1ap-rules-opt-a"
+        ]
+      },
+      {
+        "texte": "بِصُرَاخٍ",
+        "fichier": "course-cedar-bf1444b2e7936df2.mp3",
+        "duration": 1.95,
+        "sha256": "8ce27ebd4deaa04dbe6590f335ea30c5f993be439df8aa188c307b56ac171deb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:34.283Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b943844aa6c9b411feac99467c873aefc8dc6132db12e5e22968e0d4f102c67d",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:quiz-q4-isl1ap-shortsurahs-opt-b",
+          "course:islamic-1ap-t3-parents-kindness:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "اللهُ وَاحِدٌ",
+        "fichier": "course-cedar-54e03b28b832b606.mp3",
+        "duration": 2.4,
+        "sha256": "7fa856d42999e9fd6fd619d98f4a183a0b0d2192d2279354f991cd1d70944b9e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:34.567Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7e448726c53f8cc3d745014bf009832960bd5a9ea7b20d66e3a11106e43a30a4",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-0-opt-0",
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q2-isl1ap-pillars-opt-a"
+        ]
+      },
+      {
+        "texte": "سُورَةُ الإِخْلَاصِ",
+        "fichier": "course-cedar-4ed271e544bab3cb.mp3",
+        "duration": 2.3,
+        "sha256": "69c3f16ba534a4213628964c5a57c47fc9ca733067cde976ec9800c18a0f8c6e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:34.629Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fb75f5ab95f8d2643ed0b62adc0dcacca9de5a4580c341edec07fc100415d7d8",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-0"
+        ]
+      },
+      {
+        "texte": "الناس نطلب حماية من",
+        "fichier": "course-cedar-351506e0451c5f81.mp3",
+        "duration": 3.45,
+        "sha256": "3283b12aff475f426911a4da86c52fece105fcd58d8106977a6467dc6a3f6a3b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:34.690Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "93a00cea38d86a70d2ab5ec8516617d048350faa2c12d598994b8c743794e6f6",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-1"
+        ]
+      },
+      {
+        "texte": "الشَّرِّ",
+        "fichier": "course-cedar-e0fc58c10da29d10.mp3",
+        "duration": 1.15,
+        "sha256": "9e144641e5af3fcd8b46e034ce33d2c2e5e58b6ccc5796e0eab06e95c0b51222",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:35.077Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4e5921d660d3a4c51d14e55bb0cc32194104bac2b8c8e2935adc71f46e71e1e2",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "اللَّعِبِ",
+        "fichier": "course-cedar-0f067303b30bc320.mp3",
+        "duration": 1.75,
+        "sha256": "6d669297e352ed7400bf93887d051bc50e18e7640b727bb138834250772c8226",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:35.559Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8bbb7f35037d6b607181032f1f419835893374e7dfb00b65fe0935778b87a854",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-1-opt-1",
+          "course:arabic-2ap-t3-copy-dictation:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "وَاحِدٌ",
+        "fichier": "course-cedar-a4e8cccfad7d2295.mp3",
+        "duration": 1.05,
+        "sha256": "4296ddf204db2c6d7841645281879d3e9c1681f6f581b62295fdd664a81dd73f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:35.768Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6d7f9b8b18327cc25d3d45e34d008f751af5bbae1e07bdef7faba598f752be73",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "الله أحد يعني",
+        "fichier": "course-cedar-9b53987de3ef580d.mp3",
+        "duration": 2.45,
+        "sha256": "34a65d967698fa204625682b25d052c4ece6a04324a0d6038c4d52e3842ba8e3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:35.812Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "19fbc3bb9faf56c9a78bf139db45ce4bbe2c96e34d8cba8fbc60db195d049a86",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-2"
+        ]
+      },
+      {
+        "texte": "ثَلَاثَةٌ",
+        "fichier": "course-cedar-cc74ecac44fbc89a.mp3",
+        "duration": 2,
+        "sha256": "39e6096afa6d6a840de64f55c381fdd984eff82e1e0f1fa56516be83afecf187",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:36.252Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7c13b2a15e97c6503b31abcbe4971f5ba542fbbf054bf5d3ad0afc17298f5e4e",
+        "uses": [
+          "course:islamic-1ap-t2-short-surahs-ikhlas-nas:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "ماذا يقول المسلم ليشهد أن الله واحد وأن محمداً رسوله؟",
+        "fichier": "course-cedar-e0896060aacd88fe.mp3",
+        "duration": 6.75,
+        "sha256": "ccf49a4a14571403948ff18b370654c6c482da9c3eb4b460469af66c67f65cc1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:37.158Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9f1a5bd2a524935244257c752ca81fc81b5848f7cdf20177e8f35de2f7ba520f",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:discovery-0"
+        ]
+      },
+      {
+        "texte": "الشَّهَادَةُ الأُولَى: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ.",
+        "fichier": "course-cedar-077172a430e82028.mp3",
+        "duration": 5.5,
+        "sha256": "3794558c03e4297060ced3931a01882122211f3b7a4bb936f6f0d33cc7071a5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:37.202Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1d5ef2ae9a12b5cb91c16b0c7d8b8066763099d9fa99bb43785d1ecdc6ee97c9",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:rule-0"
+        ]
+      },
+      {
+        "texte": "أَشْهَدُ",
+        "fichier": "course-cedar-e5db708d3fa6eea1.mp3",
+        "duration": 0.9,
+        "sha256": "8c4609469b6fe133f53e7f7ccf585548bb7b68d9f7c860400f618b1ece8800c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:38.232Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3537fd34a35d0c65f75f41b75bf2acfb0466462c2f04f6c18830e2c61ced0ced",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:vocab-0"
+        ]
+      },
+      {
+        "texte": "رَسُولُ اللهِ",
+        "fichier": "course-cedar-58e9a01533c8410d.mp3",
+        "duration": 2.5,
+        "sha256": "38ecd8617f62af184a95174518c376fd64b3e5229bd955927bd680498bf01cf9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:38.464Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5ed7c72a035242407163343f0432539c4e01c12c36a0dc38819b0f3039448447",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:vocab-1"
+        ]
+      },
+      {
+        "texte": "الشَّهَادَةُ الثَّانِيَةُ: وَأَشْهَدُ أَنَّ مُحَمَّداً رَسُولُ اللهِ.",
+        "fichier": "course-cedar-98b17f7ce1be47cc.mp3",
+        "duration": 5.6,
+        "sha256": "3d7232541b247a5bc5418b38fdff90a14272b9d98e328e19213a3206d5fa1d29",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:38.810Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "096dcd1a9a5713ac4bca644a05e3c0444107d78f85502e861e4e3f024df3ba0a",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:rule-1"
+        ]
+      },
+      {
+        "texte": "نقولهما معاً: هذا ذكر جميل مثل البسملة والحمدلة.",
+        "fichier": "course-cedar-4369c113736e809e.mp3",
+        "duration": 6.25,
+        "sha256": "de005768a244957152ef293655f9cd39be60cf7ef60f80cbcabc3206b7c62b4d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:38.872Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a8700454642f234e0b4fd8726d4a70a7fb9af53934f5c6beacf6ec0cb0fab604",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:rule-2"
+        ]
+      },
+      {
+        "texte": "اللهُ.",
+        "fichier": "course-cedar-84b0cf116ba71325.mp3",
+        "duration": 1.25,
+        "sha256": "0089ae73793625b8562a74ae3c3aef3a4432e7ced49c5990cf167e50d034ed4e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:39.284Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f30bd97d36cd4b853d74d8027c1b8fc23411848264c6ab7505f3a7ac7982851a",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:example-solution"
+        ]
+      },
+      {
+        "texte": "أكمل: أشهد أن لا إله إلا …",
+        "fichier": "course-cedar-ede2f8795f7bd24d.mp3",
+        "duration": 3.2,
+        "sha256": "1ba5b9ff420c72c18f73db1801550674ad6bef815aff2a10713b43077eedefd5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:39.335Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9a43c6d5e68c88c2b98aaa0b17316988a660435f059468c3b9831c26a5151432",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:example-problem",
+          "course:islamic-1ap-t2-shahada-pillars:practice-ex1-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "أشهد أن لا إله إلا الله وأن محمداً رسول الله.",
+        "fichier": "course-cedar-653b32cba21d786c.mp3",
+        "duration": 6.35,
+        "sha256": "fd6dc673f1bc605da0e83d7729bbdafb5d75d21568e419609b3f33c8240803f7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:40.587Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0a12471ce320f8a29505433c69328aefbc8eec4503abc095d3cce1b6e9d36480",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:takeaway"
+        ]
+      },
+      {
+        "texte": "أشهد أن لا إله إلا الله. هذه",
+        "fichier": "course-cedar-7a090f46b391b9cd.mp3",
+        "duration": 3.75,
+        "sha256": "4efe59bc2544b5609df5fd1cb37198db25236378a91ce7827bdafd2bffd77738",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:40.949Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f426f57a96528666aef6bade698a87c987b767c440bef6ca261848a6e91c4d8d",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:practice-ex3-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "من رسول الله الذي نذكره في الشهادة الثانية؟",
+        "fichier": "course-cedar-8e2a0c558b99b67c.mp3",
+        "duration": 5.25,
+        "sha256": "df090feaaef536d52b61f599760b18f070486bf7e5f64b8b7cff0e0ddf35c013",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:41.051Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4415789049ae4b89277fa266bf2cc45969d1b0b111ee02d7800ff84704a85ebb",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:practice-ex2-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "ردّد مع الطفل الجملة مرتين ببطء، نصفين: لا إله إلا الله، ثم محمد رسول الله.",
+        "fichier": "course-cedar-53da7331db0d4bcb.mp3",
+        "duration": 9.75,
+        "sha256": "c137e73d62dcd6099806ab603a76bff62ffc16d31d558e3f67bd7cfb424b9d7e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:41.265Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1995b0b4e0c72252a5a80c0242da8417a1b5f45af9da2f59343d640551acaeb6",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:home-activity"
+        ]
+      },
+      {
+        "texte": "ماذا نقول في الشهادتين؟",
+        "fichier": "course-cedar-c9a9e09f42bca333.mp3",
+        "duration": 3.95,
+        "sha256": "5fa29f6362a85bbeb6ae84e00dba1e17f6ed85225b913c414bd76278066dbfeb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:41.903Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f48e678017268802dc2a1ff4195685f01719732a2881d6c184546c658e951b40",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q1-isl1ap-pillars",
+          "course:islamic-2ap-t1-pillars-shahada-prayer:quiz-q1-isl2ap-pillars"
+        ]
+      },
+      {
+        "texte": "لا إله إلا الله تعني",
+        "fichier": "course-cedar-38ec396e8d14876b.mp3",
+        "duration": 3.2,
+        "sha256": "e405eedbfa90c2f43461ca78916e66762c780dd7113f19aee307b819395ca8b6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:42.350Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e401cf9a41f228c1ecbfd8e277caf8aa5acf0b859d6262485b82f3dba2fb6c5c",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q2-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "آلِهَةٌ كَثِيرَةٌ",
+        "fichier": "course-cedar-ef66036aa7603719.mp3",
+        "duration": 3.1,
+        "sha256": "424c6e669f7d0d78b5e524368df249c3c652576438afd3d92aaf912e64be0c47",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:42.599Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7d1de1180349c0ac3bda9d4f3bb7f369c43ffa39e524da4d84e55c6b2ee45003",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q2-isl1ap-pillars-opt-b"
+        ]
+      },
+      {
+        "texte": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَأَنَّ مُحَمَّداً رَسُولُ اللهِ",
+        "fichier": "course-cedar-3b7ac66cffce1248.mp3",
+        "duration": 6.15,
+        "sha256": "bae9f0de185c651454760ef5086e7303056d5e39a54ea4ff7f5b072e4ac8784c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:43.014Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a9d70285be49f37737f3ebb237bd124c5c1e1f167a8209eebb2c52b08a63bd43",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q1-isl1ap-pillars-opt-a"
+        ]
+      },
+      {
+        "texte": "نبينا هو",
+        "fichier": "course-cedar-e95d061db664c775.mp3",
+        "duration": 2.05,
+        "sha256": "08c87e10063166c02853f12d36029d38862c7f1ef3be90c362d7d75dff637acc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:43.078Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e38dda59dd998dcdc32c2a108fe51b1b47c5a368a32d345ece3304eefe01ab1",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q3-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "مَلِكٌ",
+        "fichier": "course-cedar-7921318e5a84d5f6.mp3",
+        "duration": 1.7,
+        "sha256": "7244cbfed94853b7f0448286ce6be88ca5839aeb5018425fe17713abf6c171b0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:43.545Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "862cb80326e43a9714bd56d3c51001344ec78608e8e7e45ed34516449be48c3c",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q3-isl1ap-pillars-opt-b"
+        ]
+      },
+      {
+        "texte": "مُحَمَّدٌ ﷺ",
+        "fichier": "course-cedar-524abc713178d620.mp3",
+        "duration": 4.8,
+        "sha256": "b0b92e113b7de1577f8ed1219fd7dc4bcc08f58ab8f55fa9cc6ec429edfbe0be",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:43.811Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ac5d27bca671146bd194cfba1916e4d831fd024f5e1994118877e244b3dd3029",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q3-isl1ap-pillars-opt-a"
+        ]
+      },
+      {
+        "texte": "الشهادتان",
+        "fichier": "course-cedar-8ea85fca7bee3432.mp3",
+        "duration": 1.75,
+        "sha256": "98eea57a441ab08cb257697959c70ebeb7fe05ff56b17262570339affe91fa1e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:44.198Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4290c6d34a05ea4e0c03c38816832d1a620853bc63f7f6dbcf4f6111b59f9388",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q4-isl1ap-pillars"
+        ]
+      },
+      {
+        "texte": "ذِكْرٌ جَمِيلٌ",
+        "fichier": "course-cedar-40359c4bb5fc636a.mp3",
+        "duration": 2.05,
+        "sha256": "8b7975900e64641591bb0ff5921261f67dbba261771836b80bb3c768e37da14f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:44.830Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "18e0fd1feffa35c0412a5321a8017d05dbadae3811cbf4eb3dd9ffdabba072b7",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:quiz-q4-isl1ap-pillars-opt-a"
+        ]
+      },
+      {
+        "texte": "اختر التتمة الصحيحة!",
+        "fichier": "course-cedar-7af51419630d858f.mp3",
+        "duration": 2.4,
+        "sha256": "d55b4b8439f870a02c2dec790facc3cb9fb95a8dac29f49736f1522c1068fe23",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:45.083Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "821baa1bea679f9334497f593823b30e6b76fc43e682ee770ee16ab221abfe1f",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-instructions"
+        ]
+      },
+      {
+        "texte": "أشهد أن لا إله إلا",
+        "fichier": "course-cedar-d990047ce92cf62a.mp3",
+        "duration": 3.7,
+        "sha256": "1323c6bc92d2a8e7ccb4538b51f6b89d5e1f36c45e0498b335aa8d34c51244aa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:45.125Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0a5a39cfaffc3b30999fa2be118151b92cc4f598fbf8113f05b2be20cc688712",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-0"
+        ]
+      },
+      {
+        "texte": "اللهُ",
+        "fichier": "course-cedar-d66a89e8d6b484f3.mp3",
+        "duration": 1.35,
+        "sha256": "d8a3c33fdc889dc7af1b30154f9d7c3cec15b7af6b013783b0fb8108054d1b9e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:45.288Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7df92cb631c2444c5f40f5e40c5dd85a61fb3632bee8140fe7e287797f061dea",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "المَلَكُ",
+        "fichier": "course-cedar-c5ee207075df98ab.mp3",
+        "duration": 1.15,
+        "sha256": "ad569a9bb8ae2818997c829be354c25cacce253bbf1893e4c87e44520d699d04",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:45.937Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "118da8dff1d5e9f2c6442dd0f7b0d6a4732c72accfdd49fda9245aafd22f356c",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "محمد … الله",
+        "fichier": "course-cedar-2d06baa63c03444a.mp3",
+        "duration": 2.75,
+        "sha256": "9b5c882c1a933558581bd1e5234ac50de7d8aba9f25c7c9561d969a68f31550c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:46.376Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2fb8464b3fbfa0d981ad67c01a5dc2f67d682cc2795890d5dbc8c89a51b76b9d",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-1"
+        ]
+      },
+      {
+        "texte": "كِتَابُ",
+        "fichier": "course-cedar-2923277ed7cb1405.mp3",
+        "duration": 1.25,
+        "sha256": "2f2a35a69c254512317572bb1defa2fe50ada523a45ee2d5e773214a46483f41",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:47.238Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d1ff8d4ce47c315eb8c9d55a8c21ede582ad8c64a2e07f587c5e29fc59deb2ee",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "رَسُولُ",
+        "fichier": "course-cedar-80bfddeeec31601e.mp3",
+        "duration": 1.55,
+        "sha256": "90aed77567c13ae00f2bcd6fd53f75f94d43ab4de6fdf19b33fdf72caed2b9a8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:47.716Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fe6a18363782ec426a1ca0adbc34ee7dde5ef862f61b09739586d1aaba03e6ce",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الشَّهَادَتَيْنِ",
+        "fichier": "course-cedar-0a8ba9b5edb6c913.mp3",
+        "duration": 1.9,
+        "sha256": "cbf1b0782e40003a3fa2bcab70628a4644264ff23f56bebf26ed7ea343ff3cc1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:47.742Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f67103de921cab6148720e9b984cfa18400147013ba5c4fa0a66248c72e77b0b",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "محمد رسول الله جزء من",
+        "fichier": "course-cedar-113f272592f28a27.mp3",
+        "duration": 3,
+        "sha256": "cce2ef45a98f0f09ed746bcc1ac67477015a27839577b27500e521aa75b4aeb9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:47.787Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f7e0774fd159a998b14464514722a15d56a738d6545393c342830635f4fb8975",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-2"
+        ]
+      },
+      {
+        "texte": "سُورَةِ الفَلَقِ",
+        "fichier": "course-cedar-1b3ad76241866855.mp3",
+        "duration": 1.7,
+        "sha256": "6f93bf3f8c0c13c269661b31107fb1dc77fdc2b5a0c7ed36b6e9d1aa902bd61f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:48.391Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ffffc77ca543c1f4c6c50cfc152d6d9fa14ee331b8ad57816279bff787169bd2",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "بِصِدْقٍ",
+        "fichier": "course-cedar-681578f53c6726e2.mp3",
+        "duration": 1.45,
+        "sha256": "51e51afc4382f946cfe3a7dfda99f1cbd70bfe800da23e26aea70477a53d5378",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:48.950Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a769f0db5f68995561b8a2dd41b3676ea69dbb57bb67fbbb80f2c786fe7ada15",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "بِمَزْحٍ",
+        "fichier": "course-cedar-7172c42190cbe160.mp3",
+        "duration": 1.55,
+        "sha256": "a82ec51be5b95e505cbf46382daa494d8cd8a7bdde7dad94fb537644bc490d6b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:49.009Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1098b18e1d2cb3629cbc8f4239171701c99c3baf11532ce0d175b6bd79933aaa",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "نقول الشهادة",
+        "fichier": "course-cedar-4552c14403af4c11.mp3",
+        "duration": 1.95,
+        "sha256": "1fb23f8368c5d30f8d107c0d1767b0f8db1ae5abe8de302250539e54ed73c825",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:49.455Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ce1c6d2bc60fdf7da934b1409b1a6477a51f42684a5fa94388c63bd10ea87891",
+        "uses": [
+          "course:islamic-1ap-t2-shahada-pillars:game-3"
+        ]
+      },
+      {
+        "texte": "أعطاك صديقك قلماً. ماذا تقول له؟",
+        "fichier": "course-cedar-a310846499888bbd.mp3",
+        "duration": 4.5,
+        "sha256": "e04c513d02c2f601b08227d945308a438bfafed3f2767f598222d1734d843a5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:49.754Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "564ea2ad902996af8cd731c820ebf925fe3174914af528d6cd4d63a31a7c082d",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:discovery-0"
+        ]
+      },
+      {
+        "texte": "الشُّكْرُ: أقول \"شُكْراً\" أو \"جَزَاكَ اللهُ خَيْراً\" لمن أحسن إليّ.",
+        "fichier": "course-cedar-4390c95a0e86bdc9.mp3",
+        "duration": 5.9,
+        "sha256": "1d6df5006c3b82a146c1a0390a900f297c0f2a85e7eeb6b886c30c89d121bd92",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:50.542Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc4ed2acf950da072700982c08871a4aa29c101e88a8ccafe8198811a4c5d10f",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:rule-0"
+        ]
+      },
+      {
+        "texte": "الاسْتِئْذَانُ: أقول \"السَّلَامُ عَلَيْكُمْ\" وأطرق الباب قبل الدخول.",
+        "fichier": "course-cedar-e90d2edaae25a562.mp3",
+        "duration": 7.7,
+        "sha256": "7b21b8cf83f317cf2878a43acd578b44a596e1b315595407a4c2453e6a639e1d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:50.679Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bd6a7ee97d5b1f21f31e0ce72ef0bea7618a7688691eaaa560c332348f4e02cf",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:rule-1"
+        ]
+      },
+      {
+        "texte": "الطَّهَارَةُ: أغسل يديّ قبل الأكل وبعد الخلاء، وثوبي نظيف.",
+        "fichier": "course-cedar-e4f022d388155ded.mp3",
+        "duration": 7.3,
+        "sha256": "779c5ca7bb6089acebf49c8e26e8ce69380d15f73e355b1d9a5a068fbc804a63",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:51.328Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2457bff3702b690ea5d5f805acc9effc6c000ec0e9766c4bf06288952fb53064",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:rule-3"
+        ]
+      },
+      {
+        "texte": "الاسْتِئْذَانُ",
+        "fichier": "course-cedar-50cbb5b743b67eff.mp3",
+        "duration": 1.6,
+        "sha256": "2b240ad9e8940eb95e1d13a1bd3dc50fc8082e1cc9b154cd55f033e5f152b4d0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:51.527Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "00c763ae0414c6feb7ed2a462bf451ed8035418abdcaa5ea539d9f78aa498ca8",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:vocab-0"
+        ]
+      },
+      {
+        "texte": "الصِّدْقُ: أقول الحق ولو كان صعباً. الكذب يؤذي.",
+        "fichier": "course-cedar-ccc8819b90ae0345.mp3",
+        "duration": 7.35,
+        "sha256": "440589d37c422bf226201ae2b383a38c12c78ee653bfbe19d3ea5382d3f7478e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:51.571Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f460d6460b1527edf1959fc72e6f63f20680f36e6cc04c76cdfdb2e13c620098",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:rule-2"
+        ]
+      },
+      {
+        "texte": "تريد الدخول إلى غرفة والدتك وهي مغلقة الباب. ماذا تفعل؟",
+        "fichier": "course-cedar-72adcadceebf8e09.mp3",
+        "duration": 6.6,
+        "sha256": "0c9cf69b03e2d3d21e159d60507aaf75f7163bbc06072f62664b64a18b2f367f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:52.216Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6d8b40b3c0095780b2b992abeba5c020e3447e19f1afeb07253c61b5059bf248",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:example-problem"
+        ]
+      },
+      {
+        "texte": "أَطْرُقُ البَابَ وَأَسْتَأْذِنُ قَبْلَ الدُّخُولِ.",
+        "fichier": "course-cedar-5b74cfda06c90a10.mp3",
+        "duration": 3.4,
+        "sha256": "36f05db37320711a60ee49ef5d5453c6e61bb21e41ad66aae5ac8a53cd417397",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:52.722Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ee47ff0c6498c972748008fe610a3b619ba2b371d13efcf623f8beb5c2ecaeff",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:example-solution"
+        ]
+      },
+      {
+        "texte": "أقول \"شكراً\" عند تلقي معروف، و\"من فضلك\" عند الطلب، وأستأذن قبل دخول أي غرفة.",
+        "fichier": "course-cedar-19f6261130a5234c.mp3",
+        "duration": 8.1,
+        "sha256": "d42baa0cebe4035bef93d5891485fa8cd8bcfaea7e5c4f509d3b33d5857f190d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:53.374Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b0ca024f944fc8204bb49e46fe4b9be82ac0ae4b0de08bf1af52217089be9d09",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:takeaway"
+        ]
+      },
+      {
+        "texte": "العب مع الطفل مسرحية قصيرة: يطرق الباب، يقول السلام، وينتظر الإذن قبل الدخول.",
+        "fichier": "course-cedar-48e5e31ba97e6fb6.mp3",
+        "duration": 8.65,
+        "sha256": "c99ec6945e19ab4a5ab6583a05c4f41e29e86412e406347b0191d5fd4ea6a482",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:53.541Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3f136029a57efc15b949520c31c1dea4f4bd5c3eccb8453b6476ca5dc809b788",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:home-activity"
+        ]
+      },
+      {
+        "texte": "أعطاك جارك حلوى. ماذا تقول له؟",
+        "fichier": "course-cedar-ff38d8164ee54a73.mp3",
+        "duration": 4.45,
+        "sha256": "fa93422f83d1e5a2bb5ff5d0fca562b87f27c021e92e660656519f880de37c0a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:53.698Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a794395b49ee2b4c5e09a36bac9b7dde15d3e5603f50f13643720ab5eefeb2b7",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:practice-ex1-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "تريد دخول غرفة أختك. ماذا تفعل قبل الدخول؟",
+        "fichier": "course-cedar-21fa41034af425fc.mp3",
+        "duration": 5.3,
+        "sha256": "da97b0da710f279f71aac050132ab9d08c36ad7690ee3a446b7481b52aa8b8d3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:54.162Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c724283c7be32833d6352db511cbd96ca9be7ae88ffbeaacd409c9347749acba",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:practice-ex2-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "الصدق هو",
+        "fichier": "course-cedar-c7fc3dfe10731966.mp3",
+        "duration": 2.3,
+        "sha256": "0eebad896ecc782ae5a050f994a6b5db870cd63308eb41c979646fc055d87641",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:54.559Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ceb3a40fa1791f9890536097d5d0495e8387f2ccec83131fb59e1ddd1d0da425",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:practice-ex3-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "ماذا أقول قبل دخول غرفة مغلقة؟",
+        "fichier": "course-cedar-ed7f119ebbab69d0.mp3",
+        "duration": 4.05,
+        "sha256": "cf0f4110853d45616bf6bb782d4afe6c65dedc4b323d899ab3c81cabbbb37edb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:54.912Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "69aef302335bc7980eec51cf8071c45ed23f02eacae2803afaee02ef00ef439b",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q1-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "أَسْتَأْذِنُ وَأَطْرُقُ البَابَ",
+        "fichier": "course-cedar-191579476333386a.mp3",
+        "duration": 2.45,
+        "sha256": "476ea46bbd0859c451d4ae726eb752adfef2a1ecc1c2ab95bf22f8dc9c6a036a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:54.973Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b3da59e5add5c92fe5f5d2945ef4425ae97fc55d2927f5a6af6204372a9fb8f5",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q1-isl1ap-manners-opt-a"
+        ]
+      },
+      {
+        "texte": "أَدْخُلُ مُبَاشَرَةً",
+        "fichier": "course-cedar-538f2f1cc388a0ec.mp3",
+        "duration": 2.35,
+        "sha256": "ed7ee7757aa448ec16e9ffdb0b825a5b4d24086efeebc68780f076220fb0df4d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:55.619Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a03e096e71a35c00a3cac5871e0d7c827aab28db7992d79bb65fd407cb4edc58",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q1-isl1ap-manners-opt-b"
+        ]
+      },
+      {
+        "texte": "الطهارة",
+        "fichier": "course-cedar-f50c1deccf68322b.mp3",
+        "duration": 1.55,
+        "sha256": "c0756a6f8956756c477cead725f4251d5a8fe8db6d21f5cb54eb8f44b738c6a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:56.943Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "83d6dbd963af58135631d51107fb36e3a32e7a2fe45f775dff27ffbfe04f1fea",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q3-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "شكراً لله نقول",
+        "fichier": "course-cedar-18de2c2e8fee1277.mp3",
+        "duration": 2.4,
+        "sha256": "bdc46f6f6db169757edaae0edd6169db4bc4443722512f1e109baede1329facc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:57.009Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b0dff830f38b7ff2a69239192508fb5845c0b2eb4095439658e552b7152fb22",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q2-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "اذْهَبْ",
+        "fichier": "course-cedar-a4274cdc2cae3bec.mp3",
+        "duration": 1.1,
+        "sha256": "da21d47f1db5b3115ac4373bb178df6c34a3959fe73ef6d70baa9a318a7c0240",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:57.035Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "674215a21a806cb6275c63908e98ae91f9df7de06ca74b627ec964abb9251b7c",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q2-isl1ap-manners-opt-b"
+        ]
+      },
+      {
+        "texte": "فَوْضَى",
+        "fichier": "course-cedar-e0b10ac065212b67.mp3",
+        "duration": 1.55,
+        "sha256": "48719aba27418475be40022c5f508e5dfe720ec0c06dc5db4afe2d5ce19e5e77",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:57.093Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a9cf9e5b45110172cc72b9df92ada1328b85e23998bfc0de905ad32c316e3eea",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q3-isl1ap-manners-opt-b"
+        ]
+      },
+      {
+        "texte": "الكذب",
+        "fichier": "course-cedar-352adf3dc74e1b3e.mp3",
+        "duration": 0.9,
+        "sha256": "2adf9759e7a231bab690af0001449d8dd50db7682f4148248b59aae6e49b1406",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:57.861Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7b2b4013cb79652a67d8925ee608e6b77c3a0a044908e6e16bc8b269e4603d06",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q4-isl1ap-manners"
+        ]
+      },
+      {
+        "texte": "نَعَمْ نَكْذِبُ",
+        "fichier": "course-cedar-5ac40ea3056310bf.mp3",
+        "duration": 2.3,
+        "sha256": "efacf0f6f2e0b3b7a17bef625bce7c564eb29ae9a54ac0bf4ca697351ad40c58",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:58.205Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "20300daba966f633bd47b742e258ea07819308e8814267f7d963906208fc9b5b",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:quiz-q4-isl1ap-manners-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر التصرف المؤدب الصحيح!",
+        "fichier": "course-cedar-4ba7656b718729d7.mp3",
+        "duration": 2.65,
+        "sha256": "c5f69a16cbd0ed06e456e6babacb026c7748e93d069b936647031a7ba75348fb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:58.390Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "92aa9a8e5993f56a5de98c84e5587dc0ec90846ed94a1257d10902844e267b3d",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-instructions"
+        ]
+      },
+      {
+        "texte": "تريد قلم أخيك",
+        "fichier": "course-cedar-f49c05ca2e5886b8.mp3",
+        "duration": 2.85,
+        "sha256": "d4f8ca8daf3dee1ac4d4d3a947848ec7395d4babe06beef3fb3c75f7c9ecc755",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:58.464Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6dde9e76330b118a52fb29cf1f1de43d08e61f948d8863825ae6c50991e517a2",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-0"
+        ]
+      },
+      {
+        "texte": "أَقُولُ: مِنْ فَضْلِكَ",
+        "fichier": "course-cedar-39f9163e563ada10.mp3",
+        "duration": 2.7,
+        "sha256": "91300d021d0ee44446f4c270a31018a38a3279b625a99efbae3826f2638cf01f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:59.148Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b90722f63082f7c45cfa14b49b43fa60409850d31de4edfcbf2fe6b2cfc7b129",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "آخُذُهُ بِدُونِ كَلَامٍ",
+        "fichier": "course-cedar-7605a9a2c8210c2f.mp3",
+        "duration": 2.55,
+        "sha256": "359b3caedbac6e5814aded779365515949b03fe7e024f3ec6b68b7b3eb2775a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:59.659Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ea48c938fa3897c25e9a1483be9090afe9eb42b4f94d0f986c26cb4623af495f",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "أَصْدُقُ: أَنَا كَسَرْتُهُ",
+        "fichier": "course-cedar-0a298bab92a3e38e.mp3",
+        "duration": 2.45,
+        "sha256": "bd3905e89395d3f729f3b94ec43c1a6a12814756739957e99b78f35e69f6ae01",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:59.691Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "243000188eff570242c15106c7cedf97d4efaf5ab94471bc79f858d45e728a60",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "كسرت كأساً. ماذا تقول؟",
+        "fichier": "course-cedar-8d4e52c0298081b9.mp3",
+        "duration": 3.4,
+        "sha256": "18536b3ce4fdd907fc517041fd688da7975e958ebe2e6bf0d612d972015d9ebc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:48:59.709Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2fd1affac2cf1347a8f8be8ea2419cf58085293d517ea09ce59045b07b0afdfd",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-1"
+        ]
+      },
+      {
+        "texte": "أَكْذِبُ: لَسْتُ أَنَا",
+        "fichier": "course-cedar-3a7c174ee4418e8d.mp3",
+        "duration": 2.65,
+        "sha256": "302315b77dc7efe334298fa8b3884617860ff4b54f5f07498d734dd6a9a930b4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:00.363Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8503b00ea26aa3984be59a5d79be241bb9e4015f91a1149252e76ff7c53961a9",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "طَاهِرِينَ",
+        "fichier": "course-cedar-bc14dee5927bbdde.mp3",
+        "duration": 1.6,
+        "sha256": "90c8a4dc3b2411e9f97d608b9a4c882dbeba128e66cd7bfad2ede6b5192bee3b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:00.717Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5bd0cddc6d80492f6639013e7c144c3b68ecb2a3eb3017de81898addbaaed902",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "بعد الوضوء نكون",
+        "fichier": "course-cedar-4053dea68aff4db6.mp3",
+        "duration": 2.5,
+        "sha256": "679db1ec2277d931c0eabc89f86b7b432019d4beec036ad802716d23e77612d4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:00.833Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ea935e0faf8af2d89546bfe159a6a6ef8555818b6b23f1ce5090ed0de9fb0d96",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-2"
+        ]
+      },
+      {
+        "texte": "وَسِخِينَ",
+        "fichier": "course-cedar-90a4eacaa0c16a8a.mp3",
+        "duration": 1.2,
+        "sha256": "b2fab5da5485a5ad40a6852ef8679a1fc2adaadc2055ab3f439887374f10cf7d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:00.881Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ad1fe89f8af7604a46b4a60222d28de26a8a0fda6621e36d01a866c6ff5ab96d",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "نعمة الطعام نحمد عليها بـ",
+        "fichier": "course-cedar-a389c080007e8ffa.mp3",
+        "duration": 3.35,
+        "sha256": "1ed432d92eeff877e5bf23445c0633104897ccd26e40c1538efd217413cb99e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:01.740Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b4ba790557a34223fbdbff5dbbe1c8cb65be2d01a99e768d934d4980980f9c50",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-3"
+        ]
+      },
+      {
+        "texte": "الصُّرَاخِ",
+        "fichier": "course-cedar-e8d8c8c5be514e5b.mp3",
+        "duration": 1.8,
+        "sha256": "eb1247c8cc546ecf1a0655f8f32715bd6245606d3025fedc92d55f26f7fbb1a0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:01.897Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a93c7e95b5baddb8bb6027b5fed98a20f9ab51c5f126dae49435ae3011df7bb1",
+        "uses": [
+          "course:islamic-1ap-t3-thanks-manners:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "من يعتني بك ويحبك أكثر من كل أحد؟",
+        "fichier": "course-cedar-8dcb0c05e48921e6.mp3",
+        "duration": 4.1,
+        "sha256": "bba48f3c1f978ac2365714d674c05dc10960c003fce31a46f0e24f748c7dea07",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:02.122Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c9f940503f3d5a6d81920a623607a739ec556acfeba3fadb289042a046f914ec",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:discovery-0"
+        ]
+      },
+      {
+        "texte": "بِرُّ الوَالِدَيْنِ: حبهما واحترامهما وطاعتهما وعدم رفع الصوت عليهما.",
+        "fichier": "course-cedar-897b8f1da8ccddf1.mp3",
+        "duration": 9.45,
+        "sha256": "c37c26fa0e40c383d9ce0ef25f3124a4ba54f8423c5377e9d34fff212d7e9fdd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:02.979Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25e9dd67f2c3c6cae4dff7cc05aa4875e208c565ee670fb71ce14992b1f97ae3",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:rule-0"
+        ]
+      },
+      {
+        "texte": "البِرُّ",
+        "fichier": "course-cedar-f9032e40d0221e28.mp3",
+        "duration": 1.4,
+        "sha256": "016e2125457f1ba60c6fdc0227c2c9e76641f0f0f3239a2dab7f9cc7c58fd41e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:03.194Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e0771e24e7eda4c84032c1fbace74d4ac1b24b3a96f863881007f6d48dfc53a1",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:vocab-0"
+        ]
+      },
+      {
+        "texte": "رِضَا الوَالِدَيْنِ مِنْ رِضَا اللهِ، وَغَضَبُهُمَا مِنْ غَضَبِ اللهِ.",
+        "fichier": "course-cedar-ff636a58cddddd44.mp3",
+        "duration": 6.95,
+        "sha256": "eb88b1bd73e17b92a35b9b714af845fa01711160e99000e04b543c9d685437ff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:03.407Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1e79eaf2542c5645830f0fd6d511c83d98a0122d245cad6d8f314ff036b3b9c2",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:rule-1"
+        ]
+      },
+      {
+        "texte": "أُسَاعِدُ وَالِدَتِي فِي تَرْتِيبِ أَلْعَابِي، وَأُسَاعِدُ وَالِدِي فِي الأَعْمَالِ الخَفِيفَةِ.",
+        "fichier": "course-cedar-ebab69488d25f24e.mp3",
+        "duration": 6.6,
+        "sha256": "39241a48ee996e8c4fcffea8df0af9be44e6a3e759d511822cc79e7a0f82d16d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:03.735Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "080ec821b1617a7b4b38dce734a99701e8ab5167dd5d1911591dc02c7476d148",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:rule-2"
+        ]
+      },
+      {
+        "texte": "طلبت منك أمك ترتيب ألعابك، ماذا تفعل؟",
+        "fichier": "course-cedar-c2fe0117b972a367.mp3",
+        "duration": 4.85,
+        "sha256": "521667923a7e94f0dd86bac7cc0eef35bfaaacfcc7af8dfe4adbd3eab59ceeaf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:04.301Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "295120b9ff1b3fe8c571e20e9b271b8d553ac7f9dd51f43e173e57b0f53eda3b",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:example-problem"
+        ]
+      },
+      {
+        "texte": "طلب منك أبوك أن تخفض صوت التلفاز. ماذا تفعل؟",
+        "fichier": "course-cedar-9aa417216ba90889.mp3",
+        "duration": 4.85,
+        "sha256": "a7fa9ed572c5cd65afdbe9f1e6db9b51eb20b51b9d51a7b00e8b189dd5b8e494",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:06.020Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eaa74047f01c7688cb521ffe210a0847572cd46d8ce11dbe29303f1c06b063b8",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:practice-ex1-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "أُرَتِّبُ أَلْعَابِي فَوْراً وَبِابْتِسَامَةٍ.",
+        "fichier": "course-cedar-7071c65411f4a991.mp3",
+        "duration": 5.15,
+        "sha256": "97f331d8e3fbc586994d3fdbe73fab4f1391709a52b96e14a02e407d4849d0c4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:06.292Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "21796c4d07e2a26111fa777ec3141b2bf0bce2a4bf861a522fb36e6a5e329a47",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:example-solution"
+        ]
+      },
+      {
+        "texte": "أحب والديّ وأحترمهما وأطيعهما، وأساعدهما دائماً بابتسامة.",
+        "fichier": "course-cedar-3c9d89aecce9c114.mp3",
+        "duration": 7.2,
+        "sha256": "764acde465aa7e08ae8311fe5cff0a08f079a31836458b1e4ee989eba899ba1f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:06.332Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f9283f57b5e85ae9e96f39456870d267fe12febb1ee14876ce5e7c6e65ae76da",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:takeaway"
+        ]
+      },
+      {
+        "texte": "اطلب من الطفل رسم قلب صغير وكتابة اسم أمه وأبيه بداخله، وتحدث معه عن كيف يسعدهما.",
+        "fichier": "course-cedar-efa24ce9dcf4a252.mp3",
+        "duration": 9.45,
+        "sha256": "2ea31210a0c7c8d3de37cf76315ef3baa6d045a73b6f1b2a40041a3050fc2f31",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:06.488Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0675db750ceb02dd4b7ed7f45c5f38832ef2c103a4c99188ee2bc1ec17a1a628",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:home-activity"
+        ]
+      },
+      {
+        "texte": "رضا من يوصلنا إلى رضا الله؟",
+        "fichier": "course-cedar-4b313baf5a4b8186.mp3",
+        "duration": 3.7,
+        "sha256": "9c077bd8ac1354f5238de0e5bb38958bc16fbc8f1855fb43850006da1a80756e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:07.272Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b548770c95e6ba47a80f73f8e1d195af2aaa44801da78441ae45dd4dcab49d5f",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:practice-ex2-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "أمي طلبت ماءً. أفعل؟",
+        "fichier": "course-cedar-ef8c8a191e7b7c19.mp3",
+        "duration": 3.75,
+        "sha256": "60b9ea8a92fe41045525c48518dac6d46fad9f879f5719f1acce090c6a1215ca",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:07.767Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e9f3c43b4768d5f7e78b1762813ac314788799ed23976d5334df21b07ae33a58",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:practice-ex3-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "رِضَا اللهِ",
+        "fichier": "course-cedar-94ebe3350d6d738a.mp3",
+        "duration": 1.75,
+        "sha256": "9bea8dcf9db2c90822054d46cd1626189a11606450e7a67695198e9be587d464",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:07.829Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9d3d3c0087ab65249eedce014be68e88a9d474b5cbbc3192093ceca5c4a5129d",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q1-isl1ap-parents-opt-a"
+        ]
+      },
+      {
+        "texte": "ماذا يوصل إليه رضا الوالدين؟",
+        "fichier": "course-cedar-61f77987a9096cad.mp3",
+        "duration": 3.5,
+        "sha256": "5e25c1e4df2cac7b93da614ade1dec1071d8bb09e2e91a4abfa8038d76dcdbbb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:07.915Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b05b07f72df4ae5612b19fc447a9d3c2374ec855844ada39b6ab79dfb376ecd1",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q1-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "لَا شَيْءَ",
+        "fichier": "course-cedar-4284ad6f2f8784ed.mp3",
+        "duration": 1.8,
+        "sha256": "be77fe41a0e50b7dc3dc8d37dec6449c6b7c67970331c33113db0a1adad5025f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:08.254Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f28f1615aaf61ee0f11256252ce85c3b0ff092435843436b9314f3fbe6d5d1d1",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q1-isl1ap-parents-opt-b"
+        ]
+      },
+      {
+        "texte": "بر الوالدين",
+        "fichier": "course-cedar-ac63b99fad8aa8d4.mp3",
+        "duration": 2.1,
+        "sha256": "11809e9d1fee27fc6934f3288ff1be378bf1444cbdce429ec365c19d3822dbb5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:08.760Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "27c7f4f1722af306c4c9f3e14b8f9837bb5fb2e0c104f1770f6fee9ddfe6392b",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q2-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "إِحْسَانٌ",
+        "fichier": "course-cedar-112d7c075bb643bf.mp3",
+        "duration": 1.45,
+        "sha256": "9ba0fb1f92a51e0a90a70c0277f071885796f906a7b3925331cea9d60987a9b3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:08.795Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bb2f0728cab168f1c0b7cd3a80533cb5dc690dffcd760b027707592292e960b8",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q2-isl1ap-parents-opt-a"
+        ]
+      },
+      {
+        "texte": "إِيذَاءٌ",
+        "fichier": "course-cedar-32cdd583caa30c03.mp3",
+        "duration": 1.85,
+        "sha256": "9ed53be4f890f95b32b90c654f9ed62a37662408d41b52e030a3cb40a32af0cc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:09.138Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6ed5e23c65446d3e121aa3156eda418b19b31f7bc5d807626424e0c8e71d98a3",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q2-isl1ap-parents-opt-b"
+        ]
+      },
+      {
+        "texte": "أُحِبُّكِ",
+        "fichier": "course-cedar-1f9cb0142b37e476.mp3",
+        "duration": 1.2,
+        "sha256": "b9f4f9adcc8fca1a24d0082f4870279d91602dacce88da44278e357407bce7e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:09.758Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4c21af8aeafd82dbdbb957640dac6cd0e54518b6d2f5fab5ee18ee99dd48620b",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q3-isl1ap-parents-opt-a"
+        ]
+      },
+      {
+        "texte": "اذْهَبِي",
+        "fichier": "course-cedar-e6c0899587d8b55e.mp3",
+        "duration": 1.2,
+        "sha256": "375d5c6c8e2cf2c9adbb6cbe0fa7b6f9c96ab82c6d8b71517994e02e4b1ed129",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:09.830Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3021d04adc75785e180136467b0488af466df27be5ed5a35813f9facff93bbbb",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q3-isl1ap-parents-opt-b"
+        ]
+      },
+      {
+        "texte": "كلمة جميلة للأم",
+        "fichier": "course-cedar-5fb235449fe14c63.mp3",
+        "duration": 3.2,
+        "sha256": "79ec8b75e88fdb49ce04d7d36946e280f7b25cc433248e6b9f0ade6b31fa924a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:10.045Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8273766e979b1e6dde4d3785b79067aef4146175db4ab088c611facaea2869fe",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q3-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "نطيع الوالدين في",
+        "fichier": "course-cedar-b549a9d657626d8a.mp3",
+        "duration": 3.3,
+        "sha256": "8f6f069d6c2487cc60a57245c8bff3e1a4e8ee54c0caa55d09ae71e339fea463",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:10.333Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6f7e94c95d678740fa1440f52df2de886fdccb671c4808665e02f6202a858a70",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q4-isl1ap-parents"
+        ]
+      },
+      {
+        "texte": "الأَذَى",
+        "fichier": "course-cedar-33813a890c887bca.mp3",
+        "duration": 1.3,
+        "sha256": "1b7ecd602a4c8eaa5f80d073868a2ffda74cc54202bb5e6e02e5997f018dc8db",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:10.859Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "558b95d4a8517b23f9fb766fdd7d6e6f9123bd5e70bc6759bcf896d778569123",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q4-isl1ap-parents-opt-b"
+        ]
+      },
+      {
+        "texte": "الخَيْرِ",
+        "fichier": "course-cedar-7f82093cd6637b97.mp3",
+        "duration": 2.05,
+        "sha256": "2a033ca91caef8773b8bc2b9cfed9854737dd0b66fd15d36178280c3d65c3a60",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:10.990Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d0560389c5e02927328af4cb5919f2afdfea9aba56c99177c480c2527629c260",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:quiz-q4-isl1ap-parents-opt-a"
+        ]
+      },
+      {
+        "texte": "اختر التصرف البار الصحيح!",
+        "fichier": "course-cedar-eb3363339e6cf629.mp3",
+        "duration": 2.9,
+        "sha256": "ad9533ffe42508cceaa6f88ad89c64b391da37e3122cbefdbe8e7caeb01c91e5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:11.171Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9d76e2512bdaadc66168b78acec34a08f61fb392fb96389a2835927cde4a098a",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-instructions"
+        ]
+      },
+      {
+        "texte": "طلبت منك أمك المساعدة في ترتيب الطاولة",
+        "fichier": "course-cedar-ce4356dde6eb99d1.mp3",
+        "duration": 3.8,
+        "sha256": "5751670e9ac4b0bd37ddd2db865b2a3ca31d33fdb442b51f0ad549ff7baffc3a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:11.611Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a429ea19a15ece00163ddffc58f288d807fdadaa3812e0f225c699adc87a3087",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-0"
+        ]
+      },
+      {
+        "texte": "أَتَجَاهَلُ طَلَبَهَا",
+        "fichier": "course-cedar-240a5043d16eaa36.mp3",
+        "duration": 1.8,
+        "sha256": "e6d1251bfc7672f08b3d993236034bf5426e93d36bc9e9144d3952a0daeef5e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:12.168Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7bfb9f220403e69d1a9d9e14441c36e0a0ec1ae481bc949de2612623c4f6fc3b",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "نكلم الوالدين",
+        "fichier": "course-cedar-ed560312dcde2619.mp3",
+        "duration": 2.8,
+        "sha256": "34d43a6f981e4308e8e1b32f717aa1c983842d8a74cd175041c90542b3c256c4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:12.417Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a96ced95707229f2651d17cd4ca33a38b570e05c523c7f24d805d4b9e090ec44",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-1"
+        ]
+      },
+      {
+        "texte": "أُسَاعِدُهَا بِسُرْعَةٍ وَابْتِسَامَةٍ",
+        "fichier": "course-cedar-1e6d9f91a97a6052.mp3",
+        "duration": 3.1,
+        "sha256": "a55d967f4294202fd7c3e36b18e7a9cae21f320523ef40cb36bd33a44ba60ff5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:12.564Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "32aa05a3e1c398f9865e1f898b16e24c648a4cf4f52df2642af397597e7ee172",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "بِلُطْفٍ",
+        "fichier": "course-cedar-6c7f351cf83e9b58.mp3",
+        "duration": 1.2,
+        "sha256": "93e8d93dca9289845c212eb48e43bf39901a06fb67b93d72507123f818dee3f4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:12.601Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "16d09bad6295e8e28137617e999033f11dd0cd43f429b913295797c32dcc0cee",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "أبي نعيناه",
+        "fichier": "course-cedar-0baa2da509131cf6.mp3",
+        "duration": 1.7,
+        "sha256": "03314a4a1ac7c1c9691adfc28ae6c751d6910634686abc86f77d9926c42f8c49",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:13.692Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1392b76c476af6c2dc88efbfe587bc89367c4ee108a7523f0e2b26dd1928c65d",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-2"
+        ]
+      },
+      {
+        "texte": "بِحُبٍّ",
+        "fichier": "course-cedar-bd6d9d7e7ddfae9f.mp3",
+        "duration": 1.35,
+        "sha256": "81b9146ce4ae244f2b60a1fce5eaedab19735e722786ed01b390f06b69e958ed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:13.748Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e2bd39fc3ef2c218e5891c370cb08c8e57ea2e433436e7e1b2afe3844852a93c",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "لَا أَبَدًا",
+        "fichier": "course-cedar-143ff8f77384df14.mp3",
+        "duration": 1.4,
+        "sha256": "979f05c681e986571d167f07ce3c647ac578d812503784711e18533ff4b4d653",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:13.774Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0cd8fbfd0dada673a60cb0ea9aa86b3d239a8e6ab3b853bc7676f743032ccef0",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-2-opt-1",
+          "course:civics-1ap-t1-identity-school-card:quiz-q2-civics1ap-identity-opt-b"
+        ]
+      },
+      {
+        "texte": "الأم نقبل رأسها",
+        "fichier": "course-cedar-16afc138d9ca8993.mp3",
+        "duration": 2.75,
+        "sha256": "98eb7fc2323916705acd76a9c12e0dd76f6bf2d3b0243771e35157fa09837165",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:13.818Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c780f5cdc37fb557bfc9a6eb76969f1794a5b25fab39e2c65aa2da1db1728624",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-3"
+        ]
+      },
+      {
+        "texte": "بِغِلْظَةٍ",
+        "fichier": "course-cedar-218fce712c01117d.mp3",
+        "duration": 1.7,
+        "sha256": "db579d293d4bb403d1c5a9dda7ea442236d98b946fe06087ade88b898845bc76",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:14.512Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ea5db5d20a0c3429366e77ab9a7fda6f6cc77db18358712baaafce47dcd2fa0c",
+        "uses": [
+          "course:islamic-1ap-t3-parents-kindness:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "سُورَةُ النَّصْرِ تتحدث عن نصر الله. نحمد الله على النصر.",
+        "fichier": "course-cedar-8b856b50895be7a8.mp3",
+        "duration": 7.25,
+        "sha256": "0b8a570c6fc190af401cfb1b146f4b2ac788368a6e8f181ff31479327e57c90f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:15.414Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "39d2686fbb6fb22b0dc2fe5580b325c12f8c0a993fa66824221248ab90c0b7b3",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:rule-1"
+        ]
+      },
+      {
+        "texte": "سور قصيرة في آخر المصحف: بعد الكوثر والناس… المسد والنصر.",
+        "fichier": "course-cedar-45ce410731d435bc.mp3",
+        "duration": 7.25,
+        "sha256": "7e5480c2c2112ed501181b61c11a90d06145426c308b33a84f27922a1e0eca97",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:15.536Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ecc065dfdeb7982de3e52739a0babe1130a82429bed88c074f030a8b5df05b9",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:discovery-0"
+        ]
+      },
+      {
+        "texte": "سُورَةُ المَسَدِ قصيرة، نحفظها آية آية مع المعلم.",
+        "fichier": "course-cedar-b74bcb73cb5ea1a9.mp3",
+        "duration": 6.5,
+        "sha256": "e9a7c92da569fd51043cfe7612e0c31fd6ddebe2e80467b946821d2440e87924",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:15.751Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1a55af88c680e904346810ad1ecb9db0e53b9c2ca58b75ae0b09fbf678b34e14",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:rule-0"
+        ]
+      },
+      {
+        "texte": "نردّد بعد البسملة، ببطء، كما في الفاتحة والإخلاص.",
+        "fichier": "course-cedar-56bd06b432428516.mp3",
+        "duration": 6.35,
+        "sha256": "36f7da0edd4a15c8c16ab625e11789b5fba2a844fdb35c21daf731de43e7206d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:16.027Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ac411c2b23f89286adf2c94acf94332dd6860ea288707e5e3f7a004f500e2a8e",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:rule-2"
+        ]
+      },
+      {
+        "texte": "سُورَةُ المَسَدِ",
+        "fichier": "course-cedar-669272aa185f2310.mp3",
+        "duration": 1.75,
+        "sha256": "cc8d578d643e916a18c4c51d59c7e50dd34e91681f6fdbe12c4cf6d1789e408a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:16.625Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1efef69f36ecbfe69b1d6d56945d93bff38cb1a4aae84de66e0436d412133027",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:vocab-0"
+        ]
+      },
+      {
+        "texte": "سُورَةُ النَّصْرِ",
+        "fichier": "course-cedar-5c8ea657e5b03b96.mp3",
+        "duration": 1.55,
+        "sha256": "5555d5c4e2ca40a97be07a9ba54d4f64e45aa3f3d50cc6a74964495a090fee48",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:16.677Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ecbebaaed1c2c0fc561dcb4571b95e800ab391f1124116d0387d4a621998a92d",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:vocab-1"
+        ]
+      },
+      {
+        "texte": "متى نقول البسملة قبل السورة؟",
+        "fichier": "course-cedar-6704128bdaf5f5ba.mp3",
+        "duration": 3.15,
+        "sha256": "8d502378f799e9371ce4e20b267d7cda819800127eafacfbab824c1416b1bfcd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:17.021Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3bf2f7b8349cb8dedae69016309fdf499e4c162b13e4877de1a4063cd9f9a4cc",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:example-problem"
+        ]
+      },
+      {
+        "texte": "دائماً قبل التلاوة.",
+        "fichier": "course-cedar-d478daa60a363a55.mp3",
+        "duration": 2.5,
+        "sha256": "4ebb97322a28549b45819e24607b6c3f006165aca892df312d43ca0f8a97d07b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:17.209Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4f83e342ff728b96ad6b8b3c00837a6733cdc903fdbe6e44f199af3bd7f0ba1e",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:example-solution"
+        ]
+      },
+      {
+        "texte": "أحفظ المسد والنصر مع السور القصيرة الأخرى.",
+        "fichier": "course-cedar-363b38ece1eb63e5.mp3",
+        "duration": 4.8,
+        "sha256": "9431783ebdee84eee1bff8cc3960683e9868df964fc5c63a54161c3b111ee636",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:18.096Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e8b264a4abae09d5b53b7314aeecff5dc8c4f95cecc6a065d64541145a50979f",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:takeaway"
+        ]
+      },
+      {
+        "texte": "ماذا نقول قبل تلاوة أي سورة؟",
+        "fichier": "course-cedar-b9cb0f1845fb8768.mp3",
+        "duration": 4.85,
+        "sha256": "924d56a3e53ba0c214dcd7d952ffa9a8983a267836ca5d26af6d150dd3b3485e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:18.302Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bea9913b5a1427aa39b1c511c0cf22fb4ec45f96558ba599c3c22cf1cf843ad0",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:practice-ex1-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "سورة تتحدث عن نصر الله. ما اسمها؟",
+        "fichier": "course-cedar-aeb2b7e31ae28fdb.mp3",
+        "duration": 4,
+        "sha256": "f293bf3bfe65aa7128fe1661961c149f87e8df3c54528faa5e5d9170e19bd944",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:18.629Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1c69a3e0ba279540f830d97bac711c0aa6aa70c1e032ad31dbe4f8a62e7c953c",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:practice-ex2-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "اقرأ سورتي المسد والنصر كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+        "fichier": "course-cedar-b385724fa0d79f7f.mp3",
+        "duration": 10.35,
+        "sha256": "b94cb30585d78815f57397d9411aeb42f3b0621f2bc2d9d11ce103df0cc1cfd7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:18.901Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6fdd2d701837516d170c1066e94247acb0ebfd994ecf3ae53d628130f67f71ee",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:home-activity"
+        ]
+      },
+      {
+        "texte": "أي سورتيْن نحفظ في هذا الدرس؟",
+        "fichier": "course-cedar-e61c6ad79094bb12.mp3",
+        "duration": 3.6,
+        "sha256": "35f0e828ca3e80b0d83cf827316754227ecdd048905d3892b650bfcba19776ef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:19.635Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "99b173b0d74385e15f9b5ce6dbf65fff6259a6a235db40a4efe0c03030553c88",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q1-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "المَسَدُ وَالنَّصْرُ",
+        "fichier": "course-cedar-a7d313c82a1c93ef.mp3",
+        "duration": 1.75,
+        "sha256": "2ca6fc01fa343872b1e7d2c675ec550ea27548f369146e236b79a4aad8d891ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:19.687Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1dcf197adbb48b470636b8e78a7d80497abc766d29a7f138eab604fee0a8e6cf",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q1-isl1ap-masad-opt-a"
+        ]
+      },
+      {
+        "texte": "سورة النصر تتحدث عن",
+        "fichier": "course-cedar-f1dcc5a29eeeffc2.mp3",
+        "duration": 3.05,
+        "sha256": "b7dd8cbde876d9fffc6b159ba512b53ed861dc0b921207e355591c54d0f47b46",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:19.826Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c794494d79668d33a309e8a51efb51c9b79a35b71194bc50575a139d0262fc5a",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:practice-ex3-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "البَقَرَةُ وَآلُ عِمْرَانَ",
+        "fichier": "course-cedar-afa73a30721b2b1b.mp3",
+        "duration": 3.7,
+        "sha256": "62fcd19f0d44f3bc956d26d3df0fd747aa78f200517adb157de027c9b659a6da",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:20.162Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25d5fd1cba2c42abf29cdd9ff0d83f42102b32caecab1aee61e3f6dfe2d9b57f",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q1-isl1ap-masad-opt-b"
+        ]
+      },
+      {
+        "texte": "المَسَدِ",
+        "fichier": "course-cedar-7ed622ba30c88994.mp3",
+        "duration": 1.65,
+        "sha256": "d74763df1fe65efdedd70efc47a286e7cc89203156d8e91cf68ed1fc152d97e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:20.926Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4ab0906dcfff22b66a0d493617238acb4e490651f8a69c76f1859c62ce666158",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q2-isl1ap-masad-opt-b"
+        ]
+      },
+      {
+        "texte": "النَّصْرِ",
+        "fichier": "course-cedar-35fa81dab88609cf.mp3",
+        "duration": 1.65,
+        "sha256": "31646b9eddf24cb0f6bee602d38a8cf1a6cd31039e84c2673dcfb32c6d35f2cd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:20.968Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "74e46bdea6471c3402a320c9b875b7d0a3a814754c60b397b10a6a3b8d2ac223",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q2-isl1ap-masad-opt-a"
+        ]
+      },
+      {
+        "texte": "إذا جاء نصر الله من سورة",
+        "fichier": "course-cedar-41bed3ec48a0d0f1.mp3",
+        "duration": 3.9,
+        "sha256": "e4ba0afb6995e65d1099ec86bdc662f297ce67b4c0b3866833a6aebbbb6d9ba8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:21.348Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1262b8583a3c168e364cc4258292a950d695f14bbc92e4fee57ffd8efd01b9ee",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q2-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "بِالتَّكْرَارِ",
+        "fichier": "course-cedar-4c19ea3b05ec2846.mp3",
+        "duration": 1.7,
+        "sha256": "79d8b8476f636f726590f7a011ed64cbe9e30c57026c69307f5e3609ed65cf8b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:22.371Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c5251fabace9bcf58d29adaf6d15bad5816d3cd23c674b9c35f72db9f065cf1d",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q3-isl1ap-masad-opt-a"
+        ]
+      },
+      {
+        "texte": "نحفظ السور",
+        "fichier": "course-cedar-e24e0c17ddece24b.mp3",
+        "duration": 1.55,
+        "sha256": "cce7427d7ac9dfb2f9fcb29750027456919ae7087cfe8cf1438306b0c7265daa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:22.418Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5912d5f8b106e1e6a8225d870e739e5468c77cb1fd416453d4d2570d89a5f0d2",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q3-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "بِالإِهْمَالِ",
+        "fichier": "course-cedar-82cf717bbeaceb48.mp3",
+        "duration": 1.8,
+        "sha256": "ceed3c396e1a3c291f11d31cc62ad6401b385523e4cbfa064f65f205b6286622",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:22.559Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f098b3c125b2f39c4a8f48e25ab1d9b183b7213f21878d7f5188dd0434ceb6d7",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q3-isl1ap-masad-opt-b"
+        ]
+      },
+      {
+        "texte": "القرآن كلام",
+        "fichier": "course-cedar-a9cef7b2e8ad800f.mp3",
+        "duration": 2.75,
+        "sha256": "027e856b8ab57df425ec84070be4871e438c35b730633b74d59fcb8fb8901d68",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:22.784Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ab95bb6d9bd0fc18fd09e522b784ec946c21aa1156e9cc1c1154f380f7f37eef",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q4-isl1ap-masad"
+        ]
+      },
+      {
+        "texte": "الأَطْفَالِ فَقَطْ",
+        "fichier": "course-cedar-e29fe9cf9cec7ddb.mp3",
+        "duration": 1.95,
+        "sha256": "cf1088d696cfd85e041876f89b850c7f99f72e61a142c347c48a9561db59a24f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:23.558Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7df093d3b91dd6c71a5b9dc815870076f405d25094c0a340d499549b2b594821",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:quiz-q4-isl1ap-masad-opt-b"
+        ]
+      },
+      {
+        "texte": "اربط الاسم!",
+        "fichier": "course-cedar-6c2e72fc077227ec.mp3",
+        "duration": 1.7,
+        "sha256": "249f336d6d326403fab629249fee83d4793dd4fa6c096ee11ff5664dae1f1bf5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:23.759Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b29d35e568907f563ab7f52bf70e3e627bb69751cb7c1e82cee1d59bcf8c4ae6",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-instructions"
+        ]
+      },
+      {
+        "texte": "النَّصْرُ",
+        "fichier": "course-cedar-ded405ec07333ebf.mp3",
+        "duration": 1.55,
+        "sha256": "9b893d99a5e9c30804afaf827e53d69e2fd028e52e55ddbbb439e91a444b4bfd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:23.817Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "91f65351a388f56f34ec5185435bd299bcfd398d0bda64aef1014db10baa17d3",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-0-opt-0",
+          "course:islamic-2ap-t2-short-surahs-2:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "نصر الله والفتح",
+        "fichier": "course-cedar-bd65a40a622d4cd2.mp3",
+        "duration": 3.05,
+        "sha256": "ad2aa3c851cca759a85002c145e058c34a74618014af2011535265540852c949",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:23.963Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5c4bba50ae406b7da5afc29b5364efaf5e1876abdd022e648e31c4458e795a50",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-0"
+        ]
+      },
+      {
+        "texte": "المَسَدُ",
+        "fichier": "course-cedar-d2831a873180126d.mp3",
+        "duration": 1.75,
+        "sha256": "cef919872e27baa49c6cc39b72be79c02d1fae2f98f8c16bb99b0a332dd3965c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:24.484Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fce0c3c6a2342005b66c0ef0d578a3cc7ed1a8ba7bffebb4cfa6053b209c0a4e",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-0-opt-1",
+          "course:islamic-1ap-t3-surah-masad-nasr:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "المسد سورة",
+        "fichier": "course-cedar-7d44a81b61c4a252.mp3",
+        "duration": 2.05,
+        "sha256": "97f617d3a8390b5b0b9a3bb54d03cfe0ecb3cb3eb7a2ddc1805163cb5be1711c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:24.973Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "deaecc81e0def21cb9de3ab595e57eb0cfa76692f6a807041317ec9acd1a7450",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-2"
+        ]
+      },
+      {
+        "texte": "قَصِيرَةٌ",
+        "fichier": "course-cedar-e3a0aaccbb6b7a23.mp3",
+        "duration": 2.15,
+        "sha256": "f9d738eccd7bbaf29556c87370f691ea967f6419d63257eb85548dc2da98fef0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:25.027Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "26a5333550697c6cfebae0b108f002d90581233b385fd523c865bc07efc9b966",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "سورة قصيرة في جزء عمّ بعد الناس",
+        "fichier": "course-cedar-d464b3732acac01e.mp3",
+        "duration": 5.75,
+        "sha256": "837540ace5dabc38a3ce5a53af59592fe2826892199a47fb0ee9eca9bc1108bb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:25.444Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "880f82411904394fa71d1f54d1905a76ae34290b09ccc769952a52f6ade6e160",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-1"
+        ]
+      },
+      {
+        "texte": "طَوِيلَةٌ جِدًّا",
+        "fichier": "course-cedar-52fce94f3fef48bc.mp3",
+        "duration": 2.55,
+        "sha256": "ec48706691e235eca10376263df1e392ae16f25644d44bfbd14e7191028d31d9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:25.488Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7b4d9f91eedabbcec05e5c10982be4b661db4a82c7e3edb8a4abb37e2d8ca8de",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "دَفْعَةً بِلَا فَهْمٍ",
+        "fichier": "course-cedar-acad845963304f70.mp3",
+        "duration": 2.6,
+        "sha256": "fd8d784f5f863c11b8b7f6a874c2d8620d3b1b7b22fe45dcfc0009129118e409",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:26.246Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba6beb67269049e6c5ef6d71eb4b43c825df2f0783ce8217a74e5d88816e49c0",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "آيَةً آيَةً",
+        "fichier": "course-cedar-38bb0e9198656a6b.mp3",
+        "duration": 3,
+        "sha256": "304b9552a402f2823f29e38fecc49d1f88fe7b5a12cd674f6d240f73307a79f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:49:26.374Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37da314b1dcc7e3e451871a2b5170408a5803c7481882ac620a271328019243a",
+        "uses": [
+          "course:islamic-1ap-t3-surah-masad-nasr:game-3-opt-0"
+        ]
       }
     ]
   },

@@ -4269,6 +4269,930 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-b6926cc68bfc5387.mp3",
       "durationMs": 2250
     },
+    "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-072ec1dfb924edb3.mp3",
+      "durationMs": 4350
+    },
+    "أَحْفَظُ الشَّهَادَتَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c0ae5bd92c985502.mp3",
+      "durationMs": 2450
+    },
+    "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4c2cde7471e6d1b6.mp3",
+      "durationMs": 4500
+    },
+    "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-15dad51915359f68.mp3",
+      "durationMs": 3750
+    },
+    "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا": {
+      "src": "/sounds/preschool/ar/course-cedar-a598ae4ff5b37490.mp3",
+      "durationMs": 3200
+    },
+    "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-654a94c7d6534d7b.mp3",
+      "durationMs": 5050
+    },
+    "ماذا نقول قبل أن نبدأ الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-213e2c6a10571c37.mp3",
+      "durationMs": 3050
+    },
+    "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6114eebc25358db3.mp3",
+      "durationMs": 3950
+    },
+    "البَسْمَلَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5073229035cdf39e.mp3",
+      "durationMs": 1550
+    },
+    "بِسْمِ اللهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-3d5401464f9edfe5.mp3",
+      "durationMs": 1550
+    },
+    "ماذا نقول قبل الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e2c1490af8c55235.mp3",
+      "durationMs": 2600
+    },
+    "سُورَةُ الفَاتِحَةِ هي أول سورة في القرآن، ونقرؤها في كل صلاة.": {
+      "src": "/sounds/preschool/ar/course-cedar-7b9ed56f0af23c34.mp3",
+      "durationMs": 7150
+    },
+    "ماذا نقول قبل بدء الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8cbe8bfc25c4c802.mp3",
+      "durationMs": 2650
+    },
+    "أحفظ سورة الفاتحة، وأقول \"بسم الله\" قبل كل عمل، و\"الحمد لله\" بعد الانتهاء منه.": {
+      "src": "/sounds/preschool/ar/course-cedar-1057355da0a12669.mp3",
+      "durationMs": 8250
+    },
+    "اقرأ مع الطفل سورة الفاتحة آية آية من الأداة التفاعلية، دون تشغيل صوت تلقائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-e8e7ed759c9860d4.mp3",
+      "durationMs": 8000
+    },
+    "ما هي أول سورة في المصحف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-92a1a765f017a05c.mp3",
+      "durationMs": 3850
+    },
+    "قبل الأكل نقول": {
+      "src": "/sounds/preschool/ar/course-cedar-fe7f067ba03f2c15.mp3",
+      "durationMs": 2200
+    },
+    "بِسْمِ اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-92a6dc914d5acb3f.mp3",
+      "durationMs": 1400
+    },
+    "أول سورة في المصحف": {
+      "src": "/sounds/preschool/ar/course-cedar-240563c260ce5293.mp3",
+      "durationMs": 3850
+    },
+    "ماذا نقول عند بداية أي عمل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bacb9fdca90a390f.mp3",
+      "durationMs": 3850
+    },
+    "النَّاسُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1adbefae8e0d20e0.mp3",
+      "durationMs": 1500
+    },
+    "الفَاتِحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2d6c85b311cb3e0c.mp3",
+      "durationMs": 2000
+    },
+    "النَّشِيدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3e99ec2c738c388b.mp3",
+      "durationMs": 1400
+    },
+    "شُكْرٌ لِلَّهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-62863a814f0140d7.mp3",
+      "durationMs": 1950
+    },
+    "طَلَبُ نَوْمٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-1aca3bea11f041c9.mp3",
+      "durationMs": 1500
+    },
+    "الحَمْدُ لِلَّهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-997e143bd782a108.mp3",
+      "durationMs": 1650
+    },
+    "اختر الجواب الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-4a5853e733eadc44.mp3",
+      "durationMs": 2200
+    },
+    "بعد الانتهاء من الأكل نقول:": {
+      "src": "/sounds/preschool/ar/course-cedar-5d4d548d08bffdf8.mp3",
+      "durationMs": 2750
+    },
+    "بعد الأكل": {
+      "src": "/sounds/preschool/ar/course-cedar-6ff378eced6b452d.mp3",
+      "durationMs": 2050
+    },
+    "الصَّلَاةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5600ba09f0c94f3f.mp3",
+      "durationMs": 1350
+    },
+    "قبل الشرب نقول": {
+      "src": "/sounds/preschool/ar/course-cedar-da9d6beb5e9c7922.mp3",
+      "durationMs": 2600
+    },
+    "الفاتحة نقرؤها في": {
+      "src": "/sounds/preschool/ar/course-cedar-ce7de91361108ba0.mp3",
+      "durationMs": 2700
+    },
+    "متى نطلب من الله أن يحمينا من الظلام والخوف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-45fcb6c562e0e89d.mp3",
+      "durationMs": 4950
+    },
+    "سُورَةُ الفَلَقِ: نطلب فيها من الله الحماية من كل شر عند الصباح.": {
+      "src": "/sounds/preschool/ar/course-cedar-04cbf743adf793b3.mp3",
+      "durationMs": 8050
+    },
+    "سُورَةُ الكَوْثَرِ: أقصر سورة في القرآن، نشكر فيها الله على نعمه الكثيرة.": {
+      "src": "/sounds/preschool/ar/course-cedar-2e718e4367f94cc4.mp3",
+      "durationMs": 7350
+    },
+    "الفَلَقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5e8f7ab0e2f98fb6.mp3",
+      "durationMs": 1300
+    },
+    "الكَوْثَرُ نهر عظيم في الجنة أعطاه الله لنبينا محمد ﷺ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6fe8f62ac98cf28d.mp3",
+      "durationMs": 9000
+    },
+    "الكَوْثَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1dc403fb3f198581.mp3",
+      "durationMs": 1900
+    },
+    "ما هي أقصر سورة في القرآن الكريم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1466eb817f8f5687.mp3",
+      "durationMs": 3550
+    },
+    "سُورَةُ الكَوْثَرِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-7ace903793c671e3.mp3",
+      "durationMs": 2200
+    },
+    "ما هي أقصر سورة في القرآن؟": {
+      "src": "/sounds/preschool/ar/course-cedar-db7bef0c6240c592.mp3",
+      "durationMs": 3500
+    },
+    "اقرأ السورتين كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-527d641a734daa02.mp3",
+      "durationMs": 8100
+    },
+    "في أي سورة نطلب حماية الله من الشر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8e36e0b76c3c12c3.mp3",
+      "durationMs": 5000
+    },
+    "سورة الفلق: أطلب حماية الله. سورة الكوثر: أشكر الله على خيره الكثير.": {
+      "src": "/sounds/preschool/ar/course-cedar-8d1a2afd680e4c90.mp3",
+      "durationMs": 8200
+    },
+    "أقصر سورة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-31f592041f21a7c3.mp3",
+      "durationMs": 1900
+    },
+    "الخَيْرَ الكَثِيرَ": {
+      "src": "/sounds/preschool/ar/course-cedar-c4e3ffb6d2f40526.mp3",
+      "durationMs": 3150
+    },
+    "ماذا أعطى الله نبينا محمداً ﷺ في سورة الكوثر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-80f2b616645b6db3.mp3",
+      "durationMs": 6700
+    },
+    "المَالَ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-1bf67453b1a239ce.mp3",
+      "durationMs": 1950
+    },
+    "الكَوْثَرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-08cbe4eb1637a756.mp3",
+      "durationMs": 1550
+    },
+    "الفَلَقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9bf9b3a40e0df02e.mp3",
+      "durationMs": 1100
+    },
+    "الفلق ضوء": {
+      "src": "/sounds/preschool/ar/course-cedar-9052909d751abd35.mp3",
+      "durationMs": 1800
+    },
+    "الصَّبَاحِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c153259b48efc9b3.mp3",
+      "durationMs": 2750
+    },
+    "سُورَةُ الكَوْثَرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-534b55b6b992a367.mp3",
+      "durationMs": 1900
+    },
+    "اللَّيْلِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-e73b7fa22e8e746d.mp3",
+      "durationMs": 2550
+    },
+    "اربط كل سورة بمعناها البسيط!": {
+      "src": "/sounds/preschool/ar/course-cedar-b8fa41e59dbcd46c.mp3",
+      "durationMs": 3100
+    },
+    "شُكْرُ اللهِ عَلَى الخَيْرِ الكَثِيرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-bff35019cac02b1d.mp3",
+      "durationMs": 3500
+    },
+    "طَلَبُ الحِمَايَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-0816e4d8a5aba568.mp3",
+      "durationMs": 2000
+    },
+    "سُورَةُ الفَلَقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-af897c5c36378572.mp3",
+      "durationMs": 1550
+    },
+    "طَلَبُ الحِمَايَةِ مِنَ الشَّرِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-75667a51ad8fc3e0.mp3",
+      "durationMs": 2400
+    },
+    "الحِمَايَةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8631e3d631e0ab42.mp3",
+      "durationMs": 1800
+    },
+    "الفلق نطلب فيها": {
+      "src": "/sounds/preschool/ar/course-cedar-a4608fd6a0167b88.mp3",
+      "durationMs": 3200
+    },
+    "الطَّعَامَ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-4453d06f555e4236.mp3",
+      "durationMs": 2250
+    },
+    "الكوثر معناها": {
+      "src": "/sounds/preschool/ar/course-cedar-7854089ddee633e2.mp3",
+      "durationMs": 2550
+    },
+    "خَيْرٌ كَثِيرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2873d7d8604d1884.mp3",
+      "durationMs": 2200
+    },
+    "لَيْلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-b408f7d2be549907.mp3",
+      "durationMs": 1050
+    },
+    "من يحمينا من كل شيء يخيفنا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a9029d80a7d5a7a7.mp3",
+      "durationMs": 3450
+    },
+    "سُورَةُ الإِخْلَاصِ: تُخبرنا أن الله واحد لا شريك له.": {
+      "src": "/sounds/preschool/ar/course-cedar-0eb4670ec5867da1.mp3",
+      "durationMs": 6450
+    },
+    "الحِمَايَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c65f3105c9592dd6.mp3",
+      "durationMs": 2600
+    },
+    "سُورَةُ النَّاسِ: نطلب فيها من الله أن يحمينا من كل شر.": {
+      "src": "/sounds/preschool/ar/course-cedar-632c51d949fe2ff2.mp3",
+      "durationMs": 5400
+    },
+    "أي سورة تخبرنا أن الله واحد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-947db04fd82d32d8.mp3",
+      "durationMs": 4000
+    },
+    "سُورَةُ الإِخْلَاصِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-efac6d996f8f283b.mp3",
+      "durationMs": 2250
+    },
+    "اقرأ سورتي الإخلاص والناس كاملتين من الأداة التفاعلية، دون صوت تلقائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-f1411ff1887d6142.mp3",
+      "durationMs": 7800
+    },
+    "ماذا نطلب من الله في سورة الناس؟": {
+      "src": "/sounds/preschool/ar/course-cedar-06c2d6899abcec10.mp3",
+      "durationMs": 4200
+    },
+    "أي سورة نطلب فيها حماية الله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5171835bac9a9a7b.mp3",
+      "durationMs": 4600
+    },
+    "ماذا تخبرنا سورة الإخلاص عن الله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2efc9e83528a8629.mp3",
+      "durationMs": 4200
+    },
+    "سورة الإخلاص: الله واحد. سورة الناس: نطلب حماية الله من كل شر.": {
+      "src": "/sounds/preschool/ar/course-cedar-5ddbd91c34827c3c.mp3",
+      "durationMs": 8200
+    },
+    "المَالَ": {
+      "src": "/sounds/preschool/ar/course-cedar-17af5bcf4fa81311.mp3",
+      "durationMs": 1400
+    },
+    "الحِمَايَةَ مِنْ كُلِّ شَرٍّ": {
+      "src": "/sounds/preschool/ar/course-cedar-aaa642aaa74b9c51.mp3",
+      "durationMs": 3100
+    },
+    "سورة الإخلاص تتحدث عن": {
+      "src": "/sounds/preschool/ar/course-cedar-bf529a5ad849858a.mp3",
+      "durationMs": 3050
+    },
+    "اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-424aad89d7ba9397.mp3",
+      "durationMs": 1200
+    },
+    "الحَيَوَانَاتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1d0538403ffba30a.mp3",
+      "durationMs": 1850
+    },
+    "الإِخْلَاصِ": {
+      "src": "/sounds/preschool/ar/course-cedar-db0651a96fa32d9b.mp3",
+      "durationMs": 1800
+    },
+    "النَّاسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ae08335c9a2a67dd.mp3",
+      "durationMs": 2100
+    },
+    "نردد السور": {
+      "src": "/sounds/preschool/ar/course-cedar-ea54850a3a3c01fc.mp3",
+      "durationMs": 2600
+    },
+    "بِهُدُوءٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-62301e2ba801713d.mp3",
+      "durationMs": 1700
+    },
+    "بِصُرَاخٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-bf1444b2e7936df2.mp3",
+      "durationMs": 1950
+    },
+    "اللهُ وَاحِدٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-54e03b28b832b606.mp3",
+      "durationMs": 2400
+    },
+    "سُورَةُ الإِخْلَاصِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4ed271e544bab3cb.mp3",
+      "durationMs": 2300
+    },
+    "الناس نطلب حماية من": {
+      "src": "/sounds/preschool/ar/course-cedar-351506e0451c5f81.mp3",
+      "durationMs": 3450
+    },
+    "الشَّرِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-e0fc58c10da29d10.mp3",
+      "durationMs": 1150
+    },
+    "اللَّعِبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-0f067303b30bc320.mp3",
+      "durationMs": 1750
+    },
+    "وَاحِدٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a4e8cccfad7d2295.mp3",
+      "durationMs": 1050
+    },
+    "الله أحد يعني": {
+      "src": "/sounds/preschool/ar/course-cedar-9b53987de3ef580d.mp3",
+      "durationMs": 2450
+    },
+    "ثَلَاثَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-cc74ecac44fbc89a.mp3",
+      "durationMs": 2000
+    },
+    "ماذا يقول المسلم ليشهد أن الله واحد وأن محمداً رسوله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e0896060aacd88fe.mp3",
+      "durationMs": 6750
+    },
+    "الشَّهَادَةُ الأُولَى: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-077172a430e82028.mp3",
+      "durationMs": 5500
+    },
+    "أَشْهَدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e5db708d3fa6eea1.mp3",
+      "durationMs": 900
+    },
+    "رَسُولُ اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-58e9a01533c8410d.mp3",
+      "durationMs": 2500
+    },
+    "الشَّهَادَةُ الثَّانِيَةُ: وَأَشْهَدُ أَنَّ مُحَمَّداً رَسُولُ اللهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-98b17f7ce1be47cc.mp3",
+      "durationMs": 5600
+    },
+    "نقولهما معاً: هذا ذكر جميل مثل البسملة والحمدلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-4369c113736e809e.mp3",
+      "durationMs": 6250
+    },
+    "اللهُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-84b0cf116ba71325.mp3",
+      "durationMs": 1250
+    },
+    "أكمل: أشهد أن لا إله إلا …": {
+      "src": "/sounds/preschool/ar/course-cedar-ede2f8795f7bd24d.mp3",
+      "durationMs": 3200
+    },
+    "أشهد أن لا إله إلا الله وأن محمداً رسول الله.": {
+      "src": "/sounds/preschool/ar/course-cedar-653b32cba21d786c.mp3",
+      "durationMs": 6350
+    },
+    "أشهد أن لا إله إلا الله. هذه": {
+      "src": "/sounds/preschool/ar/course-cedar-7a090f46b391b9cd.mp3",
+      "durationMs": 3750
+    },
+    "من رسول الله الذي نذكره في الشهادة الثانية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8e2a0c558b99b67c.mp3",
+      "durationMs": 5250
+    },
+    "ردّد مع الطفل الجملة مرتين ببطء، نصفين: لا إله إلا الله، ثم محمد رسول الله.": {
+      "src": "/sounds/preschool/ar/course-cedar-53da7331db0d4bcb.mp3",
+      "durationMs": 9750
+    },
+    "ماذا نقول في الشهادتين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c9a9e09f42bca333.mp3",
+      "durationMs": 3950
+    },
+    "لا إله إلا الله تعني": {
+      "src": "/sounds/preschool/ar/course-cedar-38ec396e8d14876b.mp3",
+      "durationMs": 3200
+    },
+    "آلِهَةٌ كَثِيرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ef66036aa7603719.mp3",
+      "durationMs": 3100
+    },
+    "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَأَنَّ مُحَمَّداً رَسُولُ اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3b7ac66cffce1248.mp3",
+      "durationMs": 6150
+    },
+    "نبينا هو": {
+      "src": "/sounds/preschool/ar/course-cedar-e95d061db664c775.mp3",
+      "durationMs": 2050
+    },
+    "مَلِكٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-7921318e5a84d5f6.mp3",
+      "durationMs": 1700
+    },
+    "مُحَمَّدٌ ﷺ": {
+      "src": "/sounds/preschool/ar/course-cedar-524abc713178d620.mp3",
+      "durationMs": 4800
+    },
+    "الشهادتان": {
+      "src": "/sounds/preschool/ar/course-cedar-8ea85fca7bee3432.mp3",
+      "durationMs": 1750
+    },
+    "ذِكْرٌ جَمِيلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-40359c4bb5fc636a.mp3",
+      "durationMs": 2050
+    },
+    "اختر التتمة الصحيحة!": {
+      "src": "/sounds/preschool/ar/course-cedar-7af51419630d858f.mp3",
+      "durationMs": 2400
+    },
+    "أشهد أن لا إله إلا": {
+      "src": "/sounds/preschool/ar/course-cedar-d990047ce92cf62a.mp3",
+      "durationMs": 3700
+    },
+    "اللهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d66a89e8d6b484f3.mp3",
+      "durationMs": 1350
+    },
+    "المَلَكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c5ee207075df98ab.mp3",
+      "durationMs": 1150
+    },
+    "محمد … الله": {
+      "src": "/sounds/preschool/ar/course-cedar-2d06baa63c03444a.mp3",
+      "durationMs": 2750
+    },
+    "كِتَابُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2923277ed7cb1405.mp3",
+      "durationMs": 1250
+    },
+    "رَسُولُ": {
+      "src": "/sounds/preschool/ar/course-cedar-80bfddeeec31601e.mp3",
+      "durationMs": 1550
+    },
+    "الشَّهَادَتَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-0a8ba9b5edb6c913.mp3",
+      "durationMs": 1900
+    },
+    "محمد رسول الله جزء من": {
+      "src": "/sounds/preschool/ar/course-cedar-113f272592f28a27.mp3",
+      "durationMs": 3000
+    },
+    "سُورَةِ الفَلَقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1b3ad76241866855.mp3",
+      "durationMs": 1700
+    },
+    "بِصِدْقٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-681578f53c6726e2.mp3",
+      "durationMs": 1450
+    },
+    "بِمَزْحٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-7172c42190cbe160.mp3",
+      "durationMs": 1550
+    },
+    "نقول الشهادة": {
+      "src": "/sounds/preschool/ar/course-cedar-4552c14403af4c11.mp3",
+      "durationMs": 1950
+    },
+    "أعطاك صديقك قلماً. ماذا تقول له؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a310846499888bbd.mp3",
+      "durationMs": 4500
+    },
+    "الشُّكْرُ: أقول \"شُكْراً\" أو \"جَزَاكَ اللهُ خَيْراً\" لمن أحسن إليّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-4390c95a0e86bdc9.mp3",
+      "durationMs": 5900
+    },
+    "الاسْتِئْذَانُ: أقول \"السَّلَامُ عَلَيْكُمْ\" وأطرق الباب قبل الدخول.": {
+      "src": "/sounds/preschool/ar/course-cedar-e90d2edaae25a562.mp3",
+      "durationMs": 7700
+    },
+    "الطَّهَارَةُ: أغسل يديّ قبل الأكل وبعد الخلاء، وثوبي نظيف.": {
+      "src": "/sounds/preschool/ar/course-cedar-e4f022d388155ded.mp3",
+      "durationMs": 7300
+    },
+    "الاسْتِئْذَانُ": {
+      "src": "/sounds/preschool/ar/course-cedar-50cbb5b743b67eff.mp3",
+      "durationMs": 1600
+    },
+    "الصِّدْقُ: أقول الحق ولو كان صعباً. الكذب يؤذي.": {
+      "src": "/sounds/preschool/ar/course-cedar-ccc8819b90ae0345.mp3",
+      "durationMs": 7350
+    },
+    "تريد الدخول إلى غرفة والدتك وهي مغلقة الباب. ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-72adcadceebf8e09.mp3",
+      "durationMs": 6600
+    },
+    "أَطْرُقُ البَابَ وَأَسْتَأْذِنُ قَبْلَ الدُّخُولِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-5b74cfda06c90a10.mp3",
+      "durationMs": 3400
+    },
+    "أقول \"شكراً\" عند تلقي معروف، و\"من فضلك\" عند الطلب، وأستأذن قبل دخول أي غرفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-19f6261130a5234c.mp3",
+      "durationMs": 8100
+    },
+    "العب مع الطفل مسرحية قصيرة: يطرق الباب، يقول السلام، وينتظر الإذن قبل الدخول.": {
+      "src": "/sounds/preschool/ar/course-cedar-48e5e31ba97e6fb6.mp3",
+      "durationMs": 8650
+    },
+    "أعطاك جارك حلوى. ماذا تقول له؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ff38d8164ee54a73.mp3",
+      "durationMs": 4450
+    },
+    "تريد دخول غرفة أختك. ماذا تفعل قبل الدخول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-21fa41034af425fc.mp3",
+      "durationMs": 5300
+    },
+    "الصدق هو": {
+      "src": "/sounds/preschool/ar/course-cedar-c7fc3dfe10731966.mp3",
+      "durationMs": 2300
+    },
+    "ماذا أقول قبل دخول غرفة مغلقة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ed7f119ebbab69d0.mp3",
+      "durationMs": 4050
+    },
+    "أَسْتَأْذِنُ وَأَطْرُقُ البَابَ": {
+      "src": "/sounds/preschool/ar/course-cedar-191579476333386a.mp3",
+      "durationMs": 2450
+    },
+    "أَدْخُلُ مُبَاشَرَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-538f2f1cc388a0ec.mp3",
+      "durationMs": 2350
+    },
+    "الطهارة": {
+      "src": "/sounds/preschool/ar/course-cedar-f50c1deccf68322b.mp3",
+      "durationMs": 1550
+    },
+    "شكراً لله نقول": {
+      "src": "/sounds/preschool/ar/course-cedar-18de2c2e8fee1277.mp3",
+      "durationMs": 2400
+    },
+    "اذْهَبْ": {
+      "src": "/sounds/preschool/ar/course-cedar-a4274cdc2cae3bec.mp3",
+      "durationMs": 1100
+    },
+    "فَوْضَى": {
+      "src": "/sounds/preschool/ar/course-cedar-e0b10ac065212b67.mp3",
+      "durationMs": 1550
+    },
+    "الكذب": {
+      "src": "/sounds/preschool/ar/course-cedar-352adf3dc74e1b3e.mp3",
+      "durationMs": 900
+    },
+    "نَعَمْ نَكْذِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5ac40ea3056310bf.mp3",
+      "durationMs": 2300
+    },
+    "اختر التصرف المؤدب الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-4ba7656b718729d7.mp3",
+      "durationMs": 2650
+    },
+    "تريد قلم أخيك": {
+      "src": "/sounds/preschool/ar/course-cedar-f49c05ca2e5886b8.mp3",
+      "durationMs": 2850
+    },
+    "أَقُولُ: مِنْ فَضْلِكَ": {
+      "src": "/sounds/preschool/ar/course-cedar-39f9163e563ada10.mp3",
+      "durationMs": 2700
+    },
+    "آخُذُهُ بِدُونِ كَلَامٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-7605a9a2c8210c2f.mp3",
+      "durationMs": 2550
+    },
+    "أَصْدُقُ: أَنَا كَسَرْتُهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0a298bab92a3e38e.mp3",
+      "durationMs": 2450
+    },
+    "كسرت كأساً. ماذا تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8d4e52c0298081b9.mp3",
+      "durationMs": 3400
+    },
+    "أَكْذِبُ: لَسْتُ أَنَا": {
+      "src": "/sounds/preschool/ar/course-cedar-3a7c174ee4418e8d.mp3",
+      "durationMs": 2650
+    },
+    "طَاهِرِينَ": {
+      "src": "/sounds/preschool/ar/course-cedar-bc14dee5927bbdde.mp3",
+      "durationMs": 1600
+    },
+    "بعد الوضوء نكون": {
+      "src": "/sounds/preschool/ar/course-cedar-4053dea68aff4db6.mp3",
+      "durationMs": 2500
+    },
+    "وَسِخِينَ": {
+      "src": "/sounds/preschool/ar/course-cedar-90a4eacaa0c16a8a.mp3",
+      "durationMs": 1200
+    },
+    "نعمة الطعام نحمد عليها ب": {
+      "src": "/sounds/preschool/ar/course-cedar-a389c080007e8ffa.mp3",
+      "durationMs": 3350
+    },
+    "الصُّرَاخِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e8d8c8c5be514e5b.mp3",
+      "durationMs": 1800
+    },
+    "من يعتني بك ويحبك أكثر من كل أحد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8dcb0c05e48921e6.mp3",
+      "durationMs": 4100
+    },
+    "بِرُّ الوَالِدَيْنِ: حبهما واحترامهما وطاعتهما وعدم رفع الصوت عليهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-897b8f1da8ccddf1.mp3",
+      "durationMs": 9450
+    },
+    "البِرُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-f9032e40d0221e28.mp3",
+      "durationMs": 1400
+    },
+    "رِضَا الوَالِدَيْنِ مِنْ رِضَا اللهِ، وَغَضَبُهُمَا مِنْ غَضَبِ اللهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ff636a58cddddd44.mp3",
+      "durationMs": 6950
+    },
+    "أُسَاعِدُ وَالِدَتِي فِي تَرْتِيبِ أَلْعَابِي، وَأُسَاعِدُ وَالِدِي فِي الأَعْمَالِ الخَفِيفَةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ebab69488d25f24e.mp3",
+      "durationMs": 6600
+    },
+    "طلبت منك أمك ترتيب ألعابك، ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c2fe0117b972a367.mp3",
+      "durationMs": 4850
+    },
+    "طلب منك أبوك أن تخفض صوت التلفاز. ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9aa417216ba90889.mp3",
+      "durationMs": 4850
+    },
+    "أُرَتِّبُ أَلْعَابِي فَوْراً وَبِابْتِسَامَةٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-7071c65411f4a991.mp3",
+      "durationMs": 5150
+    },
+    "أحب والديّ وأحترمهما وأطيعهما، وأساعدهما دائماً بابتسامة.": {
+      "src": "/sounds/preschool/ar/course-cedar-3c9d89aecce9c114.mp3",
+      "durationMs": 7200
+    },
+    "اطلب من الطفل رسم قلب صغير وكتابة اسم أمه وأبيه بداخله، وتحدث معه عن كيف يسعدهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-efa24ce9dcf4a252.mp3",
+      "durationMs": 9450
+    },
+    "رضا من يوصلنا إلى رضا الله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4b313baf5a4b8186.mp3",
+      "durationMs": 3700
+    },
+    "أمي طلبت ماءً. أفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ef8c8a191e7b7c19.mp3",
+      "durationMs": 3750
+    },
+    "رِضَا اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-94ebe3350d6d738a.mp3",
+      "durationMs": 1750
+    },
+    "ماذا يوصل إليه رضا الوالدين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-61f77987a9096cad.mp3",
+      "durationMs": 3500
+    },
+    "لَا شَيْءَ": {
+      "src": "/sounds/preschool/ar/course-cedar-4284ad6f2f8784ed.mp3",
+      "durationMs": 1800
+    },
+    "بر الوالدين": {
+      "src": "/sounds/preschool/ar/course-cedar-ac63b99fad8aa8d4.mp3",
+      "durationMs": 2100
+    },
+    "إِحْسَانٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-112d7c075bb643bf.mp3",
+      "durationMs": 1450
+    },
+    "إِيذَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-32cdd583caa30c03.mp3",
+      "durationMs": 1850
+    },
+    "أُحِبُّكِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1f9cb0142b37e476.mp3",
+      "durationMs": 1200
+    },
+    "اذْهَبِي": {
+      "src": "/sounds/preschool/ar/course-cedar-e6c0899587d8b55e.mp3",
+      "durationMs": 1200
+    },
+    "كلمة جميلة للأم": {
+      "src": "/sounds/preschool/ar/course-cedar-5fb235449fe14c63.mp3",
+      "durationMs": 3200
+    },
+    "نطيع الوالدين في": {
+      "src": "/sounds/preschool/ar/course-cedar-b549a9d657626d8a.mp3",
+      "durationMs": 3300
+    },
+    "الأَذَى": {
+      "src": "/sounds/preschool/ar/course-cedar-33813a890c887bca.mp3",
+      "durationMs": 1300
+    },
+    "الخَيْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-7f82093cd6637b97.mp3",
+      "durationMs": 2050
+    },
+    "اختر التصرف البار الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-eb3363339e6cf629.mp3",
+      "durationMs": 2900
+    },
+    "طلبت منك أمك المساعدة في ترتيب الطاولة": {
+      "src": "/sounds/preschool/ar/course-cedar-ce4356dde6eb99d1.mp3",
+      "durationMs": 3800
+    },
+    "أَتَجَاهَلُ طَلَبَهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-240a5043d16eaa36.mp3",
+      "durationMs": 1800
+    },
+    "نكلم الوالدين": {
+      "src": "/sounds/preschool/ar/course-cedar-ed560312dcde2619.mp3",
+      "durationMs": 2800
+    },
+    "أُسَاعِدُهَا بِسُرْعَةٍ وَابْتِسَامَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-1e6d9f91a97a6052.mp3",
+      "durationMs": 3100
+    },
+    "بِلُطْفٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-6c7f351cf83e9b58.mp3",
+      "durationMs": 1200
+    },
+    "أبي نعيناه": {
+      "src": "/sounds/preschool/ar/course-cedar-0baa2da509131cf6.mp3",
+      "durationMs": 1700
+    },
+    "بِحُبٍّ": {
+      "src": "/sounds/preschool/ar/course-cedar-bd6d9d7e7ddfae9f.mp3",
+      "durationMs": 1350
+    },
+    "لَا أَبَدًا": {
+      "src": "/sounds/preschool/ar/course-cedar-143ff8f77384df14.mp3",
+      "durationMs": 1400
+    },
+    "الأم نقبل رأسها": {
+      "src": "/sounds/preschool/ar/course-cedar-16afc138d9ca8993.mp3",
+      "durationMs": 2750
+    },
+    "بِغِلْظَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-218fce712c01117d.mp3",
+      "durationMs": 1700
+    },
+    "سُورَةُ النَّصْرِ تتحدث عن نصر الله. نحمد الله على النصر.": {
+      "src": "/sounds/preschool/ar/course-cedar-8b856b50895be7a8.mp3",
+      "durationMs": 7250
+    },
+    "سور قصيرة في آخر المصحف: بعد الكوثر والناس… المسد والنصر.": {
+      "src": "/sounds/preschool/ar/course-cedar-45ce410731d435bc.mp3",
+      "durationMs": 7250
+    },
+    "سُورَةُ المَسَدِ قصيرة، نحفظها آية آية مع المعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-b74bcb73cb5ea1a9.mp3",
+      "durationMs": 6500
+    },
+    "نردّد بعد البسملة، ببطء، كما في الفاتحة والإخلاص.": {
+      "src": "/sounds/preschool/ar/course-cedar-56bd06b432428516.mp3",
+      "durationMs": 6350
+    },
+    "سُورَةُ المَسَدِ": {
+      "src": "/sounds/preschool/ar/course-cedar-669272aa185f2310.mp3",
+      "durationMs": 1750
+    },
+    "سُورَةُ النَّصْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5c8ea657e5b03b96.mp3",
+      "durationMs": 1550
+    },
+    "متى نقول البسملة قبل السورة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6704128bdaf5f5ba.mp3",
+      "durationMs": 3150
+    },
+    "دائماً قبل التلاوة.": {
+      "src": "/sounds/preschool/ar/course-cedar-d478daa60a363a55.mp3",
+      "durationMs": 2500
+    },
+    "أحفظ المسد والنصر مع السور القصيرة الأخرى.": {
+      "src": "/sounds/preschool/ar/course-cedar-363b38ece1eb63e5.mp3",
+      "durationMs": 4800
+    },
+    "ماذا نقول قبل تلاوة أي سورة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b9cb0f1845fb8768.mp3",
+      "durationMs": 4850
+    },
+    "سورة تتحدث عن نصر الله. ما اسمها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-aeb2b7e31ae28fdb.mp3",
+      "durationMs": 4000
+    },
+    "اقرأ سورتي المسد والنصر كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-b385724fa0d79f7f.mp3",
+      "durationMs": 10350
+    },
+    "أي سورتيْن نحفظ في هذا الدرس؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e61c6ad79094bb12.mp3",
+      "durationMs": 3600
+    },
+    "المَسَدُ وَالنَّصْرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a7d313c82a1c93ef.mp3",
+      "durationMs": 1750
+    },
+    "سورة النصر تتحدث عن": {
+      "src": "/sounds/preschool/ar/course-cedar-f1dcc5a29eeeffc2.mp3",
+      "durationMs": 3050
+    },
+    "البَقَرَةُ وَآلُ عِمْرَانَ": {
+      "src": "/sounds/preschool/ar/course-cedar-afa73a30721b2b1b.mp3",
+      "durationMs": 3700
+    },
+    "المَسَدِ": {
+      "src": "/sounds/preschool/ar/course-cedar-7ed622ba30c88994.mp3",
+      "durationMs": 1650
+    },
+    "النَّصْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-35fa81dab88609cf.mp3",
+      "durationMs": 1650
+    },
+    "إذا جاء نصر الله من سورة": {
+      "src": "/sounds/preschool/ar/course-cedar-41bed3ec48a0d0f1.mp3",
+      "durationMs": 3900
+    },
+    "بِالتَّكْرَارِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4c19ea3b05ec2846.mp3",
+      "durationMs": 1700
+    },
+    "نحفظ السور": {
+      "src": "/sounds/preschool/ar/course-cedar-e24e0c17ddece24b.mp3",
+      "durationMs": 1550
+    },
+    "بِالإِهْمَالِ": {
+      "src": "/sounds/preschool/ar/course-cedar-82cf717bbeaceb48.mp3",
+      "durationMs": 1800
+    },
+    "القرآن كلام": {
+      "src": "/sounds/preschool/ar/course-cedar-a9cef7b2e8ad800f.mp3",
+      "durationMs": 2750
+    },
+    "الأَطْفَالِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-e29fe9cf9cec7ddb.mp3",
+      "durationMs": 1950
+    },
+    "اربط الاسم!": {
+      "src": "/sounds/preschool/ar/course-cedar-6c2e72fc077227ec.mp3",
+      "durationMs": 1700
+    },
+    "النَّصْرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ded405ec07333ebf.mp3",
+      "durationMs": 1550
+    },
+    "نصر الله والفتح": {
+      "src": "/sounds/preschool/ar/course-cedar-bd65a40a622d4cd2.mp3",
+      "durationMs": 3050
+    },
+    "المَسَدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d2831a873180126d.mp3",
+      "durationMs": 1750
+    },
+    "المسد سورة": {
+      "src": "/sounds/preschool/ar/course-cedar-7d44a81b61c4a252.mp3",
+      "durationMs": 2050
+    },
+    "قَصِيرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-e3a0aaccbb6b7a23.mp3",
+      "durationMs": 2150
+    },
+    "سورة قصيرة في جزء عمّ بعد الناس": {
+      "src": "/sounds/preschool/ar/course-cedar-d464b3732acac01e.mp3",
+      "durationMs": 5750
+    },
+    "طَوِيلَةٌ جِدًّا": {
+      "src": "/sounds/preschool/ar/course-cedar-52fce94f3fef48bc.mp3",
+      "durationMs": 2550
+    },
+    "دَفْعَةً بِلَا فَهْمٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-acad845963304f70.mp3",
+      "durationMs": 2600
+    },
+    "آيَةً آيَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-38bb0e9198656a6b.mp3",
+      "durationMs": 3000
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

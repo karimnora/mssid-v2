@@ -126,48 +126,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-b864548f9d10b20f.mp3",
-    "texte": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ",
-    "targets": [
-      {
-        "lessonId": "islamic-1ap-t1-fatiha-basmala",
-        "grade": "1AP",
-        "subject": "islamic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-7d9e1fbcc888e2b9.mp3",
-    "texte": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ",
-    "targets": [
-      {
-        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
-        "grade": "1AP",
-        "subject": "islamic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-297e0c63e76f4933.mp3",
-    "texte": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ",
-    "targets": [
-      {
-        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
-        "grade": "1AP",
-        "subject": "islamic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-de25df5119c256d1.mp3",
     "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ",
     "targets": [
