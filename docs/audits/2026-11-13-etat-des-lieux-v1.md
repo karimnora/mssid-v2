@@ -99,3 +99,9 @@ La base est plus cohérente, plus attractive et mieux guidée. Rétention et aut
 | Concision | 4/5 | Tableaux et liens ; détail conservé pour les preuves |
 
 Moyenne : 4/5. Priorités : recette téléphone, observation enfant et mesure de la première activité. Cette appréciation de l'agent ne remplace pas la validation de Karim.
+
+## Complément audio demandé après l’audit
+
+Les 49 manques fixes repérés sont enregistrés avec la voix cedar de Didou V2 : 12 messages Didou (arabe/français), 13 répliques anglaises et 24 supports ou mots français. Vérification V2 préalable : aucun équivalent exact réutilisable pour ces 49 textes. Les 109 sons V2 déjà importés et tous les anciens fichiers sont conservés. Le studio Didou lit ses MP3 même sans voix système installée.
+
+Le [rapport audio actualisé](audio-2026-11-13/README.md) détaille 97 / 97 demandes fixes couvertes et 1 517 entrées vérifiées sans erreur d’empreinte. Ce résultat ne signifie pas que tous les passages des cours 1AP–2AP disposent d’un enregistrement : leur inventaire séparé reste à traiter par priorités. Validation linguistique à l’écoute et recette Android restent nécessaires. Aucun push ni déploiement.

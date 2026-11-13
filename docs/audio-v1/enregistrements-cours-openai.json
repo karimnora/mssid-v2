@@ -545,6 +545,366 @@
         "uses": [
           "dialogue-5"
         ]
+      },
+      {
+        "texte": "J’ai un chat. Il s’appelle Minou. Il est petit et gris. Il aime le lait et le poisson. Il dort sur le tapis du salon. Minou est très gentil.",
+        "fichier": "course-cedar-afa68e8d82638e3f.mp3",
+        "duration": 11.05,
+        "sha256": "41b52a97be1d9e964eb0755761bdc70009c4183eb06922a9db6eae445efe94c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:27.016Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b6a767313c0799a24d019d7bd3444f72c122d5f25e05b4ccf5a7afaa8e8f3bc9",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:118"
+        ]
+      },
+      {
+        "texte": "Le chat",
+        "fichier": "course-cedar-eb4dc61e43151195.mp3",
+        "duration": 1.15,
+        "sha256": "28fb048c2eac4ca6ec596ee929584f7dbf2efa44533461f0259b1e39ba8a0bd4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:28.878Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b35330b420e35760a33b0c33aade00bba4c6a2da3c042457bdcbe9599820e6cb",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:120"
+        ]
+      },
+      {
+        "texte": "Petit",
+        "fichier": "course-cedar-41c6e0e5f0391270.mp3",
+        "duration": 0.75,
+        "sha256": "0aac2f6b3d71ab4a0dee54303d0baab5caa9a0656e09aad750a25cce5effb937",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:30.161Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ca211ffb83a6c59f745efb0116c3bb840e197bdf5a8644bf3a98e3472f4d62ff",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:121"
+        ]
+      },
+      {
+        "texte": "Le lait",
+        "fichier": "course-cedar-69f24f271a1a00e7.mp3",
+        "duration": 1.1,
+        "sha256": "93792ef7b6040a9c5cbc552ae0c101e91dac4596bb8db2862cf2427e4aefb82f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:31.441Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cf87e6b7f346435e8624d7f525bdc6198f157cfa7f728c85d828306bb33d5d25",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:122"
+        ]
+      },
+      {
+        "texte": "Le matin, je mange du pain avec du beurre et je bois du lait. À midi, je mange du couscous ou de la chorba. Le soir, je mange des fruits : des oranges et des dattes.",
+        "fichier": "course-cedar-a5e5ce1c84eaa288.mp3",
+        "duration": 11.5,
+        "sha256": "df5fe84bce6571eba8980e0422739533fc12a2361df26473ab564fc8b6ce4280",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:34.128Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4dec7b5ecc59ad5b116dfbc0fba668ae8662098397675dd834a843820d42195c",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:142"
+        ]
+      },
+      {
+        "texte": "Le pain",
+        "fichier": "course-cedar-15acc990fb3fb92b.mp3",
+        "duration": 1.1,
+        "sha256": "1c5ca8aab63a39b87b58f179ad2ba2b6628f387c8969094b143cc5e12ffbcd0b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:35.187Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "58a8fe7db03b4a6dfe654fb0ed9aa6e7d07b1b69436111075f04da901fe63e9a",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:144"
+        ]
+      },
+      {
+        "texte": "Le couscous",
+        "fichier": "course-cedar-5ceaaaf58eea56ff.mp3",
+        "duration": 1.6,
+        "sha256": "e40540a260249016de8e866e8df6a82c27e42759eddec353ae3f879bb3f0c0fa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:36.445Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8320a9586c954b052e7906df9db66ec46c4f633af53d4a3f88d041c45e30c2f0",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:145"
+        ]
+      },
+      {
+        "texte": "Les fruits",
+        "fichier": "course-cedar-ca483a8e63b359e8.mp3",
+        "duration": 1.65,
+        "sha256": "45ce9321690b73af20b610fbce79d1a69b2afbf34979cc08f7684c50b6537935",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:37.643Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e54a6cef2f3ecb0fa3cb7cff7875618137148b36c6abf2d3f07c842a22df34e4",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:146"
+        ]
+      },
+      {
+        "texte": "La gazelle de l’Atlas est un animal herbivore élégant. Elle vit dans le Sahara et les montagnes du Sud algérien. Elle a de jolies cornes noires et de longues pattes fines pour courir très vite.",
+        "fichier": "course-cedar-a4887b01d07a308c.mp3",
+        "duration": 11.85,
+        "sha256": "580931bca9d5b0ec4722b9eb065dd322a35ca3f630e3c64f8e83134c9ec089ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:40.088Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8aa3d5f7cc25e75849a068437ad89833895e5f1c73501d60c8e6e5d8c97c7510",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:167"
+        ]
+      },
+      {
+        "texte": "Herbivore",
+        "fichier": "course-cedar-92040a616baab335.mp3",
+        "duration": 1.25,
+        "sha256": "929dbb08fa5765b9d3213c110dca21fdf596c841b29e9c1b791cb2039b59ba9a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:41.649Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d342d5d36c769fc61c7ca23ef79641ef0d3e9256ceab335e541d3cec82337d3",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:169"
+        ]
+      },
+      {
+        "texte": "Les cornes",
+        "fichier": "course-cedar-b3b3c8a8f0177144.mp3",
+        "duration": 1.4,
+        "sha256": "8d3e970c5eb65e928d8f538cc3f8f4818e0de18fe4076f4cddc5146c34cf0ab1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:42.814Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5703ea18433acf38aa789a1f36a3644b526a1fc79b69c57c251aa2476c2b0846",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:170"
+        ]
+      },
+      {
+        "texte": "Le fennec",
+        "fichier": "course-cedar-ebff3663c501a30d.mp3",
+        "duration": 1,
+        "sha256": "611afb1b6f7b547482e148217ae83de0db78c4ce3cc7c11e9974878276bd5e61",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:43.880Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "43da0a7c8f8b1338ed0636b9c843cf4d6b342c0d504c9b0980cff165c6a172c1",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:171"
+        ]
+      },
+      {
+        "texte": "Le fennec est le plus petit renard du monde. Il vit dans les dunes de sable du Sahara algérien. Ses grandes oreilles lui permettent d’entendre les bruits de très loin et de réguler sa température.",
+        "fichier": "course-cedar-371c247ede671b4d.mp3",
+        "duration": 13.75,
+        "sha256": "458b5845b6433073f1944abcf62dd44d636d54d47b1646e3c0a204724f1571a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:46.763Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "254878ba6e7a8e74e81c572e1b0066d3295fadf58a289015c3f3885672f09165",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:180"
+        ]
+      },
+      {
+        "texte": "Les dunes",
+        "fichier": "course-cedar-3cd5b7ac66843182.mp3",
+        "duration": 1.35,
+        "sha256": "9b1359ec8b0529f9f432cee35c0214ab90c82713244fc74d7e854f419622faab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:48.587Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2a035ce8b8b1e9ece9eda496b2bc9168d3412b9349f098db222b6cf0175048ae",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:182"
+        ]
+      },
+      {
+        "texte": "Les oreilles",
+        "fichier": "course-cedar-0bac069b4d10b413.mp3",
+        "duration": 1.95,
+        "sha256": "806a589621077cfa29a6b9f08a4a047e4c02cba29c2198dcb5955b3442302d09",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:50.361Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d6cc553f5033252d6e0ba8202976ae2c8cc8f934e8a847acba7c34e705a12c19",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:183"
+        ]
+      },
+      {
+        "texte": "La température",
+        "fichier": "course-cedar-fd7eadebbb19e90a.mp3",
+        "duration": 1.6,
+        "sha256": "4e7b580488017cdcd050dd16eb2caa8f535a6cfa2b71262ad8f660bfbdc687b5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:51.975Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d75f51c2d220650a63ec8b5f6de25f209852d126b719bf877ea24589158fe9f1",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:184"
+        ]
+      },
+      {
+        "texte": "Le séisme est une secousse violente de la terre. Les courageux agents de la Protection Civile algérienne arrivent immédiatement pour secourir les blessés et déblayer les décombres.",
+        "fichier": "course-cedar-c1de93621c2faadc.mp3",
+        "duration": 13.45,
+        "sha256": "71635cee52d0de3e0d759a45624ef6f8c8a96edab7f3818807746ceb0de8c69e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:55.427Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a8afddbb440599866648c3532d5605439005de47c3838cb2d592c08e512b0a11",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:204"
+        ]
+      },
+      {
+        "texte": "Le séisme",
+        "fichier": "course-cedar-2631edb7b558453c.mp3",
+        "duration": 1.6,
+        "sha256": "1f091ccae345cf2638c191c329f07690109341cfa02c3548d2a0b346ca49f001",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:57.055Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "40fe6c6831d5d19d4fd2ba5217b4dd0e57f471769e7250cd6c9a9ea4e691048a",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:206"
+        ]
+      },
+      {
+        "texte": "La Protection Civile",
+        "fichier": "course-cedar-3610bc145fb707b2.mp3",
+        "duration": 2.5,
+        "sha256": "f0580d2c3272ea59493528c0994407ef150564d90d05f9856daaadba7f0809c2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:58.843Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "644010c2bc59ff6ac01c361063b74da831ca12c40ecb7c1191a5ae85d1e35723",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:207"
+        ]
+      },
+      {
+        "texte": "Les secouristes",
+        "fichier": "course-cedar-16c08c48080d72a6.mp3",
+        "duration": 1.75,
+        "sha256": "1c9466961d6ed9d524443eeb57121f0ddb60eb2721391f97be0caa63ddcaeb8f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:49:00.791Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d8821d9de1553ffa34aeec5bef0941251334fc8a01b89f5bc7329e56c4d8fca8",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:208"
+        ]
+      },
+      {
+        "texte": "L’eau est la source de la vie. Pour protéger notre pays contre la sécheresse, nous devons fermer le robinet pendant le brossage des dents et réparer les fuites.",
+        "fichier": "course-cedar-bf7b331a95ecf7b5.mp3",
+        "duration": 9.55,
+        "sha256": "916671f0521976ddc00644adcbd321ffb870d588d9c319eb8b3128dca084cf02",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:49:04.007Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b0363de3b61f292c5f165ceb8e127032628d83ff63446b783efe685a8b283bcc",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:228"
+        ]
+      },
+      {
+        "texte": "Économiser",
+        "fichier": "course-cedar-552781aa94ee95c6.mp3",
+        "duration": 2.1,
+        "sha256": "4bf113975d1959e43793af0884fdb73b7e7b2a79000597ae64dca95f9ee8d9c5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:49:05.838Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a5e017a74bcd13e79f28d41f8dab10023b38066077740284c64408a6294c0eb4",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:230"
+        ]
+      },
+      {
+        "texte": "L’énergie solaire",
+        "fichier": "course-cedar-4f8b5e9ff88f1467.mp3",
+        "duration": 2.15,
+        "sha256": "dcee0296113c473f50e72012ce3caaff63079f1f2704c197dce55c719cf527d4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:49:07.602Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a4012a637f88ac642e68e27dc3d5ab4459cffcddfb84e75c3ebff53056afb29e",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:231"
+        ]
+      },
+      {
+        "texte": "Le recyclage",
+        "fichier": "course-cedar-25a07e1aeccd1b5f.mp3",
+        "duration": 1.35,
+        "sha256": "45ced66fb2617c62128ce1a94bce8046d50dc8aa213abee3a61fe986cf185bf8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:49:30.167Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e5e656a56d8de1404551359787d6be71c271d7a2da15a55e7f60540c4ce69778",
+        "uses": [
+          "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:232"
+        ]
       }
     ]
   },
@@ -728,6 +1088,21 @@
         "sourceWavSha256": "efafe6916f01b5cc8cef99bc6c6855f09db9f2f3e9c8fb173767c679f758c33f",
         "uses": [
           "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:113"
+        ]
+      },
+      {
+        "texte": "Go backward",
+        "fichier": "course-cedar-de1e62abc48f6cb2.mp3",
+        "duration": 1.25,
+        "sha256": "be16a54313f3d569159e58ef6efd131b40bc2cd85e406b67f68de7660c858815",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T12:48:24.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "774a132fdcff517b7f43dc75a84b40f3ff56751a9e353cbcdd511e47f114eec5",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:114"
         ]
       }
     ]

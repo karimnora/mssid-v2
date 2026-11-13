@@ -1,12 +1,12 @@
 {
   "summary": {
-    "sourceFilesInspected": 467,
+    "sourceFilesInspected": 470,
     "catalogTexts": {
-      "ar": 477,
-      "fr": 446,
-      "en": 448
+      "ar": 483,
+      "fr": 476,
+      "en": 461
     },
-    "integrityEntriesChecked": 1468,
+    "integrityEntriesChecked": 1517,
     "integrityErrors": 0,
     "localAssetReferences": 957,
     "brokenReferences": 0,
@@ -40,7 +40,7 @@
     },
     "speechCalls": 35,
     "fixedRequestsAudited": 97,
-    "fixedRequestsWithoutRecordings": 49,
+    "fixedRequestsWithoutRecordings": 0,
     "v2ReusableRequests": 0
   },
   "brokenReferences": [],
@@ -9812,7 +9812,7 @@
     },
     {
       "file": "frontend/src/components/DidouDressingRoomModal.tsx",
-      "line": 265,
+      "line": 266,
       "language": "dynamic",
       "fixedText": false,
       "wrapper": "speakText"
@@ -10027,84 +10027,84 @@
       "language": "ar",
       "text": "أهلاً يا بطل! أنا ديدو صديقك المفضل، هل نراجع الرياضيات أو العلوم اليوم؟",
       "use": "dialogue-0",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "ar",
       "text": "أنت تتقدم بشكل رائع! كل درس تقرؤه يجعلك أقوى وأذكى!",
       "use": "dialogue-1",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "ar",
       "text": "العقل السليم في الجسم السليم! تذكر شرب الماء والجلوس بوضعية مريحة",
       "use": "dialogue-2",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "ar",
       "text": "العلم نور والجهل ظلام، خطوة بخطوة سنحصل على علامة 10/10 في الامتحان!",
       "use": "dialogue-3",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "ar",
       "text": "ما رأيك في تذوق حبة تمر من بسكرة؟ تعطيني طاقة لأشجعك أكثر!",
       "use": "dialogue-4",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "ar",
       "text": "أنا فخور بك جداً يا صديقي، شكراً لأنك تجتهد كل يوم!",
       "use": "dialogue-5",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Salut champion ! Prêt pour une nouvelle aventure d’apprentissage aujourd’hui ?",
       "use": "dialogue-0",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Chaque exercice réussi te rapproche de ton grand diplôme de fin d’année !",
       "use": "dialogue-1",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Prends une petite pause, bois un verre d’eau et étire-toi !",
       "use": "dialogue-2",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Bravo pour ta persévérance ! Les grands savants ont tous commencé comme toi !",
       "use": "dialogue-3",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Tu peux me donner une datte ou un verre de lait pour recharger mon énergie ?",
       "use": "dialogue-4",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "didou",
       "language": "fr",
       "text": "Je suis tellement fier d’être ton compagnon d’étude ! Continuons ensemble !",
       "use": "dialogue-5",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "pronunciation-models",
@@ -10363,21 +10363,21 @@
       "language": "en",
       "text": "8 years old",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:62",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "10 years old",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:63",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "5 years old",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:64",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
@@ -10412,70 +10412,70 @@
       "language": "en",
       "text": "Milk and dates",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:87",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Pizza and cola",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:88",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Fish and rice",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:89",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Excuse me, how can we get to the Martyrs’ Memorial from here?",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:102",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Go straight ahead, then turn left at the big park. It is next to the museum.",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:103",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "And how do we get to the Casbah of Algiers?",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:104",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Turn right after the port, then walk straight until you see the old white houses.",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:105",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Turn right after the port",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:112",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Turn left at the school",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:113",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "english-dialogues",
       "language": "en",
       "text": "Go backward",
       "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:114",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
@@ -10538,464 +10538,169 @@
       "language": "fr",
       "text": "J’ai un chat. Il s’appelle Minou. Il est petit et gris. Il aime le lait et le poisson. Il dort sur le tapis du salon. Minou est très gentil.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:118",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le chat",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:120",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Petit",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:121",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le lait",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:122",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le matin, je mange du pain avec du beurre et je bois du lait. À midi, je mange du couscous ou de la chorba. Le soir, je mange des fruits : des oranges et des dattes.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:142",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le pain",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:144",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le couscous",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:145",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Les fruits",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:146",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "La gazelle de l’Atlas est un animal herbivore élégant. Elle vit dans le Sahara et les montagnes du Sud algérien. Elle a de jolies cornes noires et de longues pattes fines pour courir très vite.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:167",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Herbivore",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:169",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Les cornes",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:170",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le fennec",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:171",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le fennec est le plus petit renard du monde. Il vit dans les dunes de sable du Sahara algérien. Ses grandes oreilles lui permettent d’entendre les bruits de très loin et de réguler sa température.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:180",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Les dunes",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:182",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Les oreilles",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:183",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "La température",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:184",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le séisme est une secousse violente de la terre. Les courageux agents de la Protection Civile algérienne arrivent immédiatement pour secourir les blessés et déblayer les décombres.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:204",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le séisme",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:206",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "La Protection Civile",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:207",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Les secouristes",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:208",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "L’eau est la source de la vie. Pour protéger notre pays contre la sécheresse, nous devons fermer le robinet pendant le brossage des dents et réparer les fuites.",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:228",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Économiser",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:230",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "L’énergie solaire",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:231",
-      "recorded": false
+      "recorded": true
     },
     {
       "zone": "french-projects",
       "language": "fr",
       "text": "Le recyclage",
       "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:232",
-      "recorded": false
+      "recorded": true
     }
   ],
-  "missing": [
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "أهلاً يا بطل! أنا ديدو صديقك المفضل، هل نراجع الرياضيات أو العلوم اليوم؟",
-      "use": "dialogue-0"
-    },
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "أنت تتقدم بشكل رائع! كل درس تقرؤه يجعلك أقوى وأذكى!",
-      "use": "dialogue-1"
-    },
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "العقل السليم في الجسم السليم! تذكر شرب الماء والجلوس بوضعية مريحة",
-      "use": "dialogue-2"
-    },
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "العلم نور والجهل ظلام، خطوة بخطوة سنحصل على علامة 10/10 في الامتحان!",
-      "use": "dialogue-3"
-    },
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "ما رأيك في تذوق حبة تمر من بسكرة؟ تعطيني طاقة لأشجعك أكثر!",
-      "use": "dialogue-4"
-    },
-    {
-      "zone": "didou",
-      "language": "ar",
-      "text": "أنا فخور بك جداً يا صديقي، شكراً لأنك تجتهد كل يوم!",
-      "use": "dialogue-5"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Salut champion ! Prêt pour une nouvelle aventure d’apprentissage aujourd’hui ?",
-      "use": "dialogue-0"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Chaque exercice réussi te rapproche de ton grand diplôme de fin d’année !",
-      "use": "dialogue-1"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Prends une petite pause, bois un verre d’eau et étire-toi !",
-      "use": "dialogue-2"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Bravo pour ta persévérance ! Les grands savants ont tous commencé comme toi !",
-      "use": "dialogue-3"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Tu peux me donner une datte ou un verre de lait pour recharger mon énergie ?",
-      "use": "dialogue-4"
-    },
-    {
-      "zone": "didou",
-      "language": "fr",
-      "text": "Je suis tellement fier d’être ton compagnon d’étude ! Continuons ensemble !",
-      "use": "dialogue-5"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "8 years old",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:62"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "10 years old",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:63"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "5 years old",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:64"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Milk and dates",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:87"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Pizza and cola",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:88"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Fish and rice",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:89"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Excuse me, how can we get to the Martyrs’ Memorial from here?",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:102"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Go straight ahead, then turn left at the big park. It is next to the museum.",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:103"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "And how do we get to the Casbah of Algiers?",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:104"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Turn right after the port, then walk straight until you see the old white houses.",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:105"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Turn right after the port",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:112"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Turn left at the school",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:113"
-    },
-    {
-      "zone": "english-dialogues",
-      "language": "en",
-      "text": "Go backward",
-      "use": "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:114"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "J’ai un chat. Il s’appelle Minou. Il est petit et gris. Il aime le lait et le poisson. Il dort sur le tapis du salon. Minou est très gentil.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:118"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le chat",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:120"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Petit",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:121"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le lait",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:122"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le matin, je mange du pain avec du beurre et je bois du lait. À midi, je mange du couscous ou de la chorba. Le soir, je mange des fruits : des oranges et des dattes.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:142"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le pain",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:144"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le couscous",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:145"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Les fruits",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:146"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "La gazelle de l’Atlas est un animal herbivore élégant. Elle vit dans le Sahara et les montagnes du Sud algérien. Elle a de jolies cornes noires et de longues pattes fines pour courir très vite.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:167"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Herbivore",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:169"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Les cornes",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:170"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le fennec",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:171"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le fennec est le plus petit renard du monde. Il vit dans les dunes de sable du Sahara algérien. Ses grandes oreilles lui permettent d’entendre les bruits de très loin et de réguler sa température.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:180"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Les dunes",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:182"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Les oreilles",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:183"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "La température",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:184"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le séisme est une secousse violente de la terre. Les courageux agents de la Protection Civile algérienne arrivent immédiatement pour secourir les blessés et déblayer les décombres.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:204"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le séisme",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:206"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "La Protection Civile",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:207"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Les secouristes",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:208"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "L’eau est la source de la vie. Pour protéger notre pays contre la sécheresse, nous devons fermer le robinet pendant le brossage des dents et réparer les fuites.",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:228"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Économiser",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:230"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "L’énergie solaire",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:231"
-    },
-    {
-      "zone": "french-projects",
-      "language": "fr",
-      "text": "Le recyclage",
-      "use": "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:232"
-    }
-  ]
+  "missing": []
 }

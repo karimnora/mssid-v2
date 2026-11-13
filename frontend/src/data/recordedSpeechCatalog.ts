@@ -2363,6 +2363,102 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/course-cedar-664866acd7dce753.mp3",
       "durationMs": 5000
     },
+    "J’ai un chat. Il s’appelle Minou. Il est petit et gris. Il aime le lait et le poisson. Il dort sur le tapis du salon. Minou est très gentil.": {
+      "src": "/sounds/preschool/fr/course-cedar-afa68e8d82638e3f.mp3",
+      "durationMs": 11050
+    },
+    "Le chat": {
+      "src": "/sounds/preschool/fr/course-cedar-eb4dc61e43151195.mp3",
+      "durationMs": 1150
+    },
+    "Petit": {
+      "src": "/sounds/preschool/fr/course-cedar-41c6e0e5f0391270.mp3",
+      "durationMs": 750
+    },
+    "Le lait": {
+      "src": "/sounds/preschool/fr/course-cedar-69f24f271a1a00e7.mp3",
+      "durationMs": 1100
+    },
+    "Le matin, je mange du pain avec du beurre et je bois du lait. À midi, je mange du couscous ou de la chorba. Le soir, je mange des fruits : des oranges et des dattes.": {
+      "src": "/sounds/preschool/fr/course-cedar-a5e5ce1c84eaa288.mp3",
+      "durationMs": 11500
+    },
+    "Le pain": {
+      "src": "/sounds/preschool/fr/course-cedar-15acc990fb3fb92b.mp3",
+      "durationMs": 1100
+    },
+    "Le couscous": {
+      "src": "/sounds/preschool/fr/course-cedar-5ceaaaf58eea56ff.mp3",
+      "durationMs": 1600
+    },
+    "Les fruits": {
+      "src": "/sounds/preschool/fr/course-cedar-ca483a8e63b359e8.mp3",
+      "durationMs": 1650
+    },
+    "La gazelle de l’Atlas est un animal herbivore élégant. Elle vit dans le Sahara et les montagnes du Sud algérien. Elle a de jolies cornes noires et de longues pattes fines pour courir très vite.": {
+      "src": "/sounds/preschool/fr/course-cedar-a4887b01d07a308c.mp3",
+      "durationMs": 11850
+    },
+    "Herbivore": {
+      "src": "/sounds/preschool/fr/course-cedar-92040a616baab335.mp3",
+      "durationMs": 1250
+    },
+    "Les cornes": {
+      "src": "/sounds/preschool/fr/course-cedar-b3b3c8a8f0177144.mp3",
+      "durationMs": 1400
+    },
+    "Le fennec": {
+      "src": "/sounds/preschool/fr/course-cedar-ebff3663c501a30d.mp3",
+      "durationMs": 1000
+    },
+    "Le fennec est le plus petit renard du monde. Il vit dans les dunes de sable du Sahara algérien. Ses grandes oreilles lui permettent d’entendre les bruits de très loin et de réguler sa température.": {
+      "src": "/sounds/preschool/fr/course-cedar-371c247ede671b4d.mp3",
+      "durationMs": 13750
+    },
+    "Les dunes": {
+      "src": "/sounds/preschool/fr/course-cedar-3cd5b7ac66843182.mp3",
+      "durationMs": 1350
+    },
+    "Les oreilles": {
+      "src": "/sounds/preschool/fr/course-cedar-0bac069b4d10b413.mp3",
+      "durationMs": 1950
+    },
+    "La température": {
+      "src": "/sounds/preschool/fr/course-cedar-fd7eadebbb19e90a.mp3",
+      "durationMs": 1600
+    },
+    "Le séisme est une secousse violente de la terre. Les courageux agents de la Protection Civile algérienne arrivent immédiatement pour secourir les blessés et déblayer les décombres.": {
+      "src": "/sounds/preschool/fr/course-cedar-c1de93621c2faadc.mp3",
+      "durationMs": 13450
+    },
+    "Le séisme": {
+      "src": "/sounds/preschool/fr/course-cedar-2631edb7b558453c.mp3",
+      "durationMs": 1600
+    },
+    "La Protection Civile": {
+      "src": "/sounds/preschool/fr/course-cedar-3610bc145fb707b2.mp3",
+      "durationMs": 2500
+    },
+    "Les secouristes": {
+      "src": "/sounds/preschool/fr/course-cedar-16c08c48080d72a6.mp3",
+      "durationMs": 1750
+    },
+    "L’eau est la source de la vie. Pour protéger notre pays contre la sécheresse, nous devons fermer le robinet pendant le brossage des dents et réparer les fuites.": {
+      "src": "/sounds/preschool/fr/course-cedar-bf7b331a95ecf7b5.mp3",
+      "durationMs": 9550
+    },
+    "Économiser": {
+      "src": "/sounds/preschool/fr/course-cedar-552781aa94ee95c6.mp3",
+      "durationMs": 2100
+    },
+    "L’énergie solaire": {
+      "src": "/sounds/preschool/fr/course-cedar-4f8b5e9ff88f1467.mp3",
+      "durationMs": 2150
+    },
+    "Le recyclage": {
+      "src": "/sounds/preschool/fr/course-cedar-25a07e1aeccd1b5f.mp3",
+      "durationMs": 1350
+    },
     "L’école": {
       "src": "/sounds/preschool/fr/language-next-fr-1.mp3",
       "durationMs": 900
@@ -4196,6 +4292,10 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Turn left at the school": {
       "src": "/sounds/preschool/en/course-cedar-e987ed370204170e.mp3",
       "durationMs": 2550
+    },
+    "Go backward": {
+      "src": "/sounds/preschool/en/course-cedar-de1e62abc48f6cb2.mp3",
+      "durationMs": 1250
     },
     "Hello! My name is Amine. What is your name?": {
       "src": "/sounds/preschool/en/language-next-en-1.mp3",
