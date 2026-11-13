@@ -1,0 +1,156 @@
+[
+  {
+    "fichier": "course-ar-ba82308b73d5efd1.mp3",
+    "texte": "البَسْمَلَةُ: أقول \"بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ\" عند بداية أي عمل.",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-940e97ef5599285f.mp3",
+    "texte": "الحَمْدَلَةُ: أقول \"الحَمْدُ لِلَّهِ رَبِّ العَالَمِينَ\" شكراً لله بعد الانتهاء.",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-be5fb71b2b9dfe63.mp3",
+    "texte": "بسم الله الرحمن الرحيم هي",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-fatiha"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-c6818a11739652ce.mp3",
+    "texte": "الحمد لله رب العالمين",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-fatiha"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-f8b8b9dc246a6e45.mp3",
+    "texte": "قل أعوذ برب الفلق من سورة",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-falaqkawthar"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-e9a34ee3390437e1.mp3",
+    "texte": "إنا أعطيناك الكوثر من سورة",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-falaqkawthar"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-ddf1c9cb33fb7b66.mp3",
+    "texte": "نقول \"بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ\" قبل قراءة أي سورة.",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-2e52a4d6b3ba575f.mp3",
+    "texte": "قل هو الله أحد من سورة",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-shortsurahs"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-71f5d039a62f4a7d.mp3",
+    "texte": "قل أعوذ برب الناس من سورة",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-shortsurahs"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-0d20b6c1ce51fccb.mp3",
+    "texte": "لم يلد ولم يولد من سورة",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-a76749b854677b49.mp3",
+    "texte": "الحَمْدُ لِلَّهِ رَبِّ العَالَمِينَ",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-pillars-opt-b"
+      }
+    ],
+    "reviewRequired": true
+  }
+]

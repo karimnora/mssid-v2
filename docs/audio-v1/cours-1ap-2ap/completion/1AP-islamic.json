@@ -1,0 +1,3215 @@
+[
+  {
+    "texte": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْفَظُ الشَّهَادَتَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول قبل أن نبدأ الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الفَاتِحَةِ هي أول سورة في القرآن، ونقرؤها في كل صلاة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "البَسْمَلَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-fatiha-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول قبل الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "بِسْمِ اللهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ مع الطفل سورة الفاتحة آية آية من الأداة التفاعلية، دون تشغيل صوت تلقائي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أحفظ سورة الفاتحة، وأقول \"بسم الله\" قبل كل عمل، و\"الحمد لله\" بعد الانتهاء منه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول قبل بدء الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-fatiha"
+      }
+    ]
+  },
+  {
+    "texte": "ما هي أول سورة في المصحف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-fatiha"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الأكل نقول",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-fatiha"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول عند بداية أي عمل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-fatiha"
+      }
+    ]
+  },
+  {
+    "texte": "بِسْمِ اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-fatiha-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أول سورة في المصحف",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-fatiha"
+      }
+    ]
+  },
+  {
+    "texte": "الفَاتِحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-fatiha-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "النَّاسُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-fatiha-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشِيدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-fatiha-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "شُكْرٌ لِلَّهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-fatiha-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "طَلَبُ نَوْمٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-fatiha-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الجواب الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الانتهاء من الأكل نقول:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَمْدُ لِلَّهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-manners-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الأكل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "الفاتحة نقرؤها في",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّلَاةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الشرب نقول",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "متى نطلب من الله أن يحمينا من الظلام والخوف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الفَلَقِ: نطلب فيها من الله الحماية من كل شر عند الصباح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الكَوْثَرِ: أقصر سورة في القرآن، نشكر فيها الله على نعمه الكثيرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكَوْثَرُ نهر عظيم في الجنة أعطاه الله لنبينا محمد ﷺ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الفَلَقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الكَوْثَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ما هي أقصر سورة في القرآن الكريم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الكَوْثَرِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ السورتين كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الفلق: أطلب حماية الله. سورة الكوثر: أشكر الله على خيره الكثير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما هي أقصر سورة في القرآن؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-falaqkawthar"
+      }
+    ]
+  },
+  {
+    "texte": "في أي سورة نطلب حماية الله من الشر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-falaqkawthar"
+      }
+    ]
+  },
+  {
+    "texte": "أقصر سورة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-falaqkawthar"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أعطى الله نبينا محمداً ﷺ في سورة الكوثر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-falaqkawthar"
+      }
+    ]
+  },
+  {
+    "texte": "الخَيْرَ الكَثِيرَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-falaqkawthar-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "المَالَ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-falaqkawthar-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الفَلَقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-falaqkawthar-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-falaqkawthar-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الكَوْثَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-falaqkawthar-opt-b"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-falaqkawthar-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الفلق ضوء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-falaqkawthar"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّبَاحِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-falaqkawthar-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّيْلِ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-falaqkawthar-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل سورة بمعناها البسيط!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      },
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      },
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الكَوْثَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "شُكْرُ اللهِ عَلَى الخَيْرِ الكَثِيرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "طَلَبُ الحِمَايَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الفَلَقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "طَلَبُ الحِمَايَةِ مِنَ الشَّرِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفلق نطلب فيها",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "الحِمَايَةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّعَامَ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكوثر معناها",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "خَيْرٌ كَثِيرٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لَيْلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "من يحمينا من كل شيء يخيفنا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الإِخْلَاصِ: تُخبرنا أن الله واحد لا شريك له.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ النَّاسِ: نطلب فيها من الله أن يحمينا من كل شر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الحِمَايَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أي سورة تخبرنا أن الله واحد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الإِخْلَاصِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ سورتي الإخلاص والناس كاملتين من الأداة التفاعلية، دون صوت تلقائي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الإخلاص: الله واحد. سورة الناس: نطلب حماية الله من كل شر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي سورة نطلب فيها حماية الله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-shortsurahs"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا تخبرنا سورة الإخلاص عن الله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-shortsurahs"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نطلب من الله في سورة الناس؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-shortsurahs"
+      }
+    ]
+  },
+  {
+    "texte": "الحِمَايَةَ مِنْ كُلِّ شَرٍّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-shortsurahs-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "المَالَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-shortsurahs-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الإخلاص تتحدث عن",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-shortsurahs"
+      }
+    ]
+  },
+  {
+    "texte": "اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-shortsurahs-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-masad-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانَاتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-shortsurahs-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "النَّاسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-shortsurahs-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الإِخْلَاصِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-shortsurahs-opt-b"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نردد السور",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-shortsurahs"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِهُدُوءٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-shortsurahs-opt-a"
+      },
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-rules-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِصُرَاخٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-shortsurahs-opt-b"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الإِخْلَاصِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللهُ وَاحِدٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-pillars-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الناس نطلب حماية من",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّرِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّعِبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الله أحد يعني",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "وَاحِدٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلَاثَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يقول المسلم ليشهد أن الله واحد وأن محمداً رسوله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّهَادَةُ الأُولَى: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّهَادَةُ الثَّانِيَةُ: وَأَشْهَدُ أَنَّ مُحَمَّداً رَسُولُ اللهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نقولهما معاً: هذا ذكر جميل مثل البسملة والحمدلة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَشْهَدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "رَسُولُ اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل: أشهد أن لا إله إلا …",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      },
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "اللهُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ردّد مع الطفل الجملة مرتين ببطء، نصفين: لا إله إلا الله، ثم محمد رسول الله.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أشهد أن لا إله إلا الله وأن محمداً رسول الله.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "من رسول الله الذي نذكره في الشهادة الثانية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "أشهد أن لا إله إلا الله. هذه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول في الشهادتين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-pillars"
+      },
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَأَنَّ مُحَمَّداً رَسُولُ اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-pillars-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "لا إله إلا الله تعني",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "آلِهَةٌ كَثِيرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-pillars-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "نبينا هو",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "مُحَمَّدٌ ﷺ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-pillars-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "مَلِكٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-pillars-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الشهادتان",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "ذِكْرٌ جَمِيلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-pillars-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التتمة الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "أشهد أن لا إله إلا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "المَلَكُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "محمد … الله",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "رَسُولُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "كِتَابُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "محمد رسول الله جزء من",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّهَادَتَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةِ الفَلَقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نقول الشهادة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِصِدْقٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِمَزْحٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t2-shahada-pillars",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أعطاك صديقك قلماً. ماذا تقول له؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشُّكْرُ: أقول \"شُكْراً\" أو \"جَزَاكَ اللهُ خَيْراً\" لمن أحسن إليّ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الاسْتِئْذَانُ: أقول \"السَّلَامُ عَلَيْكُمْ\" وأطرق الباب قبل الدخول.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الصِّدْقُ: أقول الحق ولو كان صعباً. الكذب يؤذي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّهَارَةُ: أغسل يديّ قبل الأكل وبعد الخلاء، وثوبي نظيف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الاسْتِئْذَانُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "تريد الدخول إلى غرفة والدتك وهي مغلقة الباب. ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "أَطْرُقُ البَابَ وَأَسْتَأْذِنُ قَبْلَ الدُّخُولِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "العب مع الطفل مسرحية قصيرة: يطرق الباب، يقول السلام، وينتظر الإذن قبل الدخول.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أقول \"شكراً\" عند تلقي معروف، و\"من فضلك\" عند الطلب، وأستأذن قبل دخول أي غرفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أعطاك جارك حلوى. ماذا تقول له؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "تريد دخول غرفة أختك. ماذا تفعل قبل الدخول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "الصدق هو",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أقول قبل دخول غرفة مغلقة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "أَسْتَأْذِنُ وَأَطْرُقُ البَابَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-manners-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أَدْخُلُ مُبَاشَرَةً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-manners-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "شكراً لله نقول",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "اذْهَبْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-manners-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الطهارة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْضَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-manners-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الكذب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "نَعَمْ نَكْذِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-manners-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف المؤدب الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "تريد قلم أخيك",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَقُولُ: مِنْ فَضْلِكَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "آخُذُهُ بِدُونِ كَلَامٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كسرت كأساً. ماذا تقول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَصْدُقُ: أَنَا كَسَرْتُهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَكْذِبُ: لَسْتُ أَنَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الوضوء نكون",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "طَاهِرِينَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "وَسِخِينَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نعمة الطعام نحمد عليها بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "الصُّرَاخِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "من يعتني بك ويحبك أكثر من كل أحد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِرُّ الوَالِدَيْنِ: حبهما واحترامهما وطاعتهما وعدم رفع الصوت عليهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "رِضَا الوَالِدَيْنِ مِنْ رِضَا اللهِ، وَغَضَبُهُمَا مِنْ غَضَبِ اللهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أُسَاعِدُ وَالِدَتِي فِي تَرْتِيبِ أَلْعَابِي، وَأُسَاعِدُ وَالِدِي فِي الأَعْمَالِ الخَفِيفَةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "البِرُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "طلبت منك أمك ترتيب ألعابك، ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "أُرَتِّبُ أَلْعَابِي فَوْراً وَبِابْتِسَامَةٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اطلب من الطفل رسم قلب صغير وكتابة اسم أمه وأبيه بداخله، وتحدث معه عن كيف يسعدهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أحب والديّ وأحترمهما وأطيعهما، وأساعدهما دائماً بابتسامة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "طلب منك أبوك أن تخفض صوت التلفاز. ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "رضا من يوصلنا إلى رضا الله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "أمي طلبت ماءً. أفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يوصل إليه رضا الوالدين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "رِضَا اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-parents-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "لَا شَيْءَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-parents-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "بر الوالدين",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "إِحْسَانٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-parents-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "إِيذَاءٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-parents-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة جميلة للأم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "أُحِبُّكِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-parents-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "اذْهَبِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-parents-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "نطيع الوالدين في",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-parents"
+      }
+    ]
+  },
+  {
+    "texte": "الخَيْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-parents-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الأَذَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-parents-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف البار الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "طلبت منك أمك المساعدة في ترتيب الطاولة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُسَاعِدُهَا بِسُرْعَةٍ وَابْتِسَامَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَجَاهَلُ طَلَبَهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نكلم الوالدين",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "بِلُطْفٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أبي نعيناه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "لَا أَبَدًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-identity-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الأم نقبل رأسها",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِحُبٍّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِغِلْظَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سور قصيرة في آخر المصحف: بعد الكوثر والناس… المسد والنصر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ المَسَدِ قصيرة، نحفظها آية آية مع المعلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ النَّصْرِ تتحدث عن نصر الله. نحمد الله على النصر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نردّد بعد البسملة، ببطء، كما في الفاتحة والإخلاص.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ المَسَدِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ النَّصْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "متى نقول البسملة قبل السورة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "دائماً قبل التلاوة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ سورتي المسد والنصر كاملتين من الأداة التفاعلية، آية آية، دون صوت تلقائي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أحفظ المسد والنصر مع السور القصيرة الأخرى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول قبل تلاوة أي سورة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "سورة تتحدث عن نصر الله. ما اسمها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "سورة النصر تتحدث عن",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex3-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "أي سورتيْن نحفظ في هذا الدرس؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "المَسَدُ وَالنَّصْرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-masad-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "البَقَرَةُ وَآلُ عِمْرَانَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl1ap-masad-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "إذا جاء نصر الله من سورة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "النَّصْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-masad-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "المَسَدِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q2-isl1ap-masad-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "نحفظ السور",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "بِالتَّكْرَارِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-masad-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِالإِهْمَالِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q3-isl1ap-masad-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "القرآن كلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-masad"
+      }
+    ]
+  },
+  {
+    "texte": "الأَطْفَالِ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-masad-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اربط الاسم!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "نصر الله والفتح",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّصْرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "المَسَدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "سورة قصيرة في جزء عمّ بعد الناس",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "المسد سورة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "قَصِيرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "طَوِيلَةٌ جِدًّا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "آيَةً آيَةً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "دَفْعَةً بِلَا فَهْمٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  }
+]

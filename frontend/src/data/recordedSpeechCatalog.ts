@@ -529,6 +529,102 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-e6089203b5536657.mp3",
       "durationMs": 7000
     },
+    "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ": {
+      "src": "/sounds/preschool/ar/course-cedar-62743703041bc35a.mp3",
+      "durationMs": 2400
+    },
+    "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ": {
+      "src": "/sounds/preschool/ar/course-cedar-6312b3c166b712b1.mp3",
+      "durationMs": 4950
+    },
+    "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ": {
+      "src": "/sounds/preschool/ar/course-cedar-ac5b7eb08c235872.mp3",
+      "durationMs": 4550
+    },
+    "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ": {
+      "src": "/sounds/preschool/ar/course-cedar-1046ce479c021cb0.mp3",
+      "durationMs": 4900
+    },
+    "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي": {
+      "src": "/sounds/preschool/ar/course-cedar-5281fcb438bb4e09.mp3",
+      "durationMs": 3850
+    },
+    "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d367a3bb31617766.mp3",
+      "durationMs": 5400
+    },
+    "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d3d7f21e0e243175.mp3",
+      "durationMs": 4850
+    },
+    "أَتَعَرَّفُ عَلَى المُدُودِ: ا و ي": {
+      "src": "/sounds/preschool/ar/course-cedar-a84fa5cdac4a3f44.mp3",
+      "durationMs": 5000
+    },
+    "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ": {
+      "src": "/sounds/preschool/ar/course-cedar-00f5ba97844b5123.mp3",
+      "durationMs": 4550
+    },
+    "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ": {
+      "src": "/sounds/preschool/ar/course-cedar-87dd7f05339f2b1a.mp3",
+      "durationMs": 4750
+    },
+    "أَصْوَاتُ الحُرُوفِ: زَ": {
+      "src": "/sounds/preschool/ar/course-cedar-7899a0b1137b5765.mp3",
+      "durationMs": 2450
+    },
+    "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ": {
+      "src": "/sounds/preschool/ar/course-cedar-f403efcc3e24ea00.mp3",
+      "durationMs": 4850
+    },
+    "التَّنْوِينُ: ً ٌ ٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-6d6b3c627038dcca.mp3",
+      "durationMs": 3450
+    },
+    "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-b456bd30fd63ae62.mp3",
+      "durationMs": 4850
+    },
+    "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-6340da5e59e96775.mp3",
+      "durationMs": 4150
+    },
+    "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء": {
+      "src": "/sounds/preschool/ar/course-cedar-050f66874086fd4b.mp3",
+      "durationMs": 2750
+    },
+    "عَائِلَتِي: أَبِي، أُمِّي، أَخِي": {
+      "src": "/sounds/preschool/ar/course-cedar-81d1f7fda5015abd.mp3",
+      "durationMs": 3550
+    },
+    "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-177c68ec11ea9624.mp3",
+      "durationMs": 4950
+    },
+    "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ": {
+      "src": "/sounds/preschool/ar/course-cedar-6ff52e103d265034.mp3",
+      "durationMs": 5100
+    },
+    "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-0ed70adfa0c4ef5d.mp3",
+      "durationMs": 4950
+    },
+    "استمع وركّز: أَسَدٌ ، بَطَّةٌ ، تُفَّاحَةٌ ، ثَعْلَبٌ — ما الصوت الأول في كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bbf55c2449325213.mp3",
+      "durationMs": 9500
+    },
+    "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى": {
+      "src": "/sounds/preschool/ar/course-cedar-e68a5ff0a132777c.mp3",
+      "durationMs": 5050
+    },
+    "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-059801204ecbfde3.mp3",
+      "durationMs": 5300
+    },
+    "حرف الأَلِفِ (أ): صوته \"أَ\" مثل أَسَدٌ وَأَرْنَبٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-8cfc034c9eb3fcce.mp3",
+      "durationMs": 6600
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

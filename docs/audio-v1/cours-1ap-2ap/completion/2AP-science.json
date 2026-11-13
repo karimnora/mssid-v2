@@ -1,0 +1,2906 @@
+[
+  {
+    "texte": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الهَوَاءُ مِنْ حَوْلِنَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على مظاهر النمو عند الطفل، وإدراك أهمية الفطور الصباحي والغذاء المتوازن.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قارن بين حذائك القديم وحذائك الحالي: هل أصبح صغيراً عليك؟ لماذا برأيك؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ علامات نموه (يكبر طوله ووزنه) وأهمية تناول وجبة فطور متوازنة قبل الذهاب إلى المدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "جسمي يتغير كل سنة: أصبح أطول وأثقل قليلاً، وهذا أمر طبيعي وجميل. ولكي أنمو بشكل سليم، يجب أن آكل غذاءً متنوعاً ومتوازناً كل يوم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أُنَمُو وَأَكْبَرُ: يزداد طولي ووزني تدريجياً كل سنة، وتتبدل أسناني اللبنية بأسنان دائمة أقوى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفُطُورُ الصَّبَاحِيُّ ضَرُورِيٌّ: يمنحني الطاقة اللازمة للتركيز واللعب طيلة الصباح في المدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الغِذَاءُ المُتَوَازِنُ يشمل: الحليب ومشتقاته، الخضر والفواكه، اللحوم والبيض، والخبز والحبوب — كلٌّ بكمية مناسبة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "النُّمُوُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفُطُورُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الغِذَاءُ المُتَوَازِنُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "تخطي الفطور يجعل الجسم يفتقر للطاقة، فيشعر التلميذ بالتعب وصعوبة التركيز في الدرس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفطور المتوازن يحتاج حليباً أو بيضاً أو خبزاً مع فاكهة، وليس الحلويات فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْمُو كل سنة (طولاً ووزناً)، وأحتاج فطوراً صباحياً متوازناً (حليب، خبز، فاكهة) ليمنحني الطاقة والنمو السليم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما الوجبة الأولى التي نتناولها في الصباح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-growth"
+      }
+    ]
+  },
+  {
+    "texte": "اذكر عنصرين من عناصر الفطور المتوازن.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-growth"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث لجسمي وأنا أكبر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-growth"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما يجب وضعه في صندوق الفطور المتوازن!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كوب حليب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُنَاسِبٌ لِلْفُطُورِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "غَيْرُ مُنَاسِبٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قطعة شوكولاتة فقط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "غَيْرُ كَافٍ وَحْدَهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-growth-nutrition",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تطبيق قواعد النظافة الشخصية اليومية وربطها بالوقاية من المرض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا ننصحك دائماً بغسل يديك قبل تناول الطعام؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ قواعد النظافة الأساسية (غسل اليدين، تنظيف الأسنان، الاستحمام) وأهميتها في الوقاية من الأمراض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "جسمي أمانة يجب أن أعتني بها. النظافة اليومية البسيطة تحميني من جراثيم صغيرة جداً لا أراها بعيني، لكنها قد تسبب المرض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَغْسِلُ يَدَيَّ بِالمَاءِ وَالصَّابُونِ: قبل الأكل، بعد استعمال الحمام، وبعد اللعب في الخارج.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُنَظِّفُ أَسْنَانِي بِالفُرْشَاةِ مرتين يومياً على الأقل: صباحاً ومساءً قبل النوم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجَرَاثِيمُ صَغِيرَةٌ جِدّاً لا نراها بالعين، لكنها قد تسبب المرض إذا لم نتنظف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الجَرَاثِيمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةُ الشَّخْصِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الصابون ضروري لأنه يزيل الجراثيم بفعالية أكبر من الماء وحده.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "تنظيف الأسنان مساءً ضروري لإزالة بقايا الطعام التي تتراكم طوال اليوم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أغسل يديّ بالماء والصابون قبل الأكل وبعد الحمام واللعب، وأنظف أسناني صباحاً ومساءً — هذا يحميني من الجراثيم والمرض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا نغسل أيدينا لإزالة الجراثيم بفعالية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-hygiene"
+      }
+    ]
+  },
+  {
+    "texte": "كم مرة يجب تنظيف الأسنان في اليوم على الأقل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-hygiene"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا نغسل أيدينا قبل الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-hygiene"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح في كل موقف!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "قبل تناول وجبة الغداء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَغْسِلُ يَدَيَّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "آكُلُ مُبَاشَرَةً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-hygiene-body-care",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ملاحظة تسارع التنفس ونبض القلب أثناء الجهد العضلي، وإدراك عودتهما للوضع الطبيعي بعد الراحة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "اجرِ في الساحة لمدة دقيقة واحدة، ثم ضع يدك على صدرك. ماذا تلاحظ بالمقارنة مع وقت الجلوس الهادئ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يلاحظ التلميذ أن تنفسه ونبض قلبه يتسارعان عند الجري أو اللعب الرياضي، ويعودان إلى وضعهما الهادئ بعد الراحة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "جسمي يعمل كآلة ذكية: عندما ألعب وأجري، يحتاج جسمي طاقة أكبر، فيسرّع قلبي ضرباته ورئتاي تنفسهما لإيصال الهواء والطاقة لعضلاتي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنَفُّسُ: أخذ الهواء عبر الأنف أو الفم إلى الرئتين ثم إخراجه، وهذا يحدث طوال الوقت دون أن نفكر فيه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "عِنْدَ الجَهْدِ العَضَلِيِّ (الجري، القفز، اللعب النشيط): يتسارع تنفسي ويصبح أعمق، ويزداد نبض قلبي لأن عضلاتي تحتاج طاقة وهواء أكثر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بَعْدَ الرَّاحَةِ: يعود تنفسي ونبض قلبي تدريجياً إلى وتيرتهما الهادئة الطبيعية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "يُمْكِنُنِي الإِحْسَاسُ بِنَبَضَاتِ قَلْبِي بِوَضْعِ يَدِي عَلَى صَدْرِي أَوْ عَلَى رَسْغِي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "نَبَضَاتُ القَلْبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجَهْدُ العَضَلِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "هذا أمر طبيعي وصحي تماماً، فهو يدل على أن الجسم يعمل بكفاءة لتزويد العضلات بالطاقة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أثناء الجهد العضلي (الجري، اللعب) يتسارع تنفسي ونبض قلبي، وبعد الراحة يعودان هادئين تدريجياً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث لتنفسي عندما أجري بسرعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-heartbeat"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث لنبض قلبي ونفسي بعد فترة راحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-heartbeat"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا يتسارع نبض قلبي أثناء الجري؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-heartbeat"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما يحدث لجسمك في كل موقف!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بعد القفز على الحبل لمدة دقيقتين",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَبَضِي وَتَنَفُّسِي يَتَسَارَعَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لَا يَتَغَيَّرُ شَيْءٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ملاحظة مراحل نمو نبتة بسيطة، وإدراك حاجتها للماء والضوء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "إذا نسينا سقي نبتة في المنزل لمدة أسبوع، ماذا سيحدث لها في رأيك؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ أن النباتات كائنات حية تنمو وتحتاج إلى الماء والضوء لتعيش، من خلال ملاحظة نبتة حقيقية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "النباتات مثلنا كائنات حية: تولد وتنمو وتحتاج إلى الغذاء لتعيش. لكن غذاءها يأتي من الماء وضوء الشمس بدل الطعام الذي نأكله نحن.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "النَّبَاتُ كَائِنٌ حَيٌّ: يولد من بذرة، ينمو، ثم يزهر ويثمر (عند بعض النباتات).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَحْتَاجُ النَّبَاتُ إِلَى المَاءِ لِيَبْقَى حَيّاً وطرياً؛ بدونه يذبل ويجف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَحْتَاجُ النَّبَاتُ إِلَى ضَوْءِ الشَّمْسِ لينمو بشكل سليم وأخضر اللون.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الذُّبُولُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "النبات يحتاج أيضاً الماء وضوء الشمس، وليس التراب فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "بعض النباتات تُزهر فقط دون أن تعطي ثماراً نأكلها، مثل الزهور الزينة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "النبتة كائن حي: تنمو من بذرة، وتحتاج الماء وضوء الشمس لتبقى حية وخضراء. بدون ماء تذبل وتجف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "من أين تبدأ حياة نبتة جديدة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-plants"
+      }
+    ]
+  },
+  {
+    "texte": "اذكر شيئين تحتاجهما النبتة لتبقى حية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-plants"
+      }
+    ]
+  },
+  {
+    "texte": "نبتة ذبلت قرب النافذة. اقترح سببين وعلاجاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc2ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا تذبل النبتة إذا لم نسقها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-plants"
+      }
+    ]
+  },
+  {
+    "texte": "النبتة الخضراء تحتاج أساساً إلى:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-pl-2"
+      }
+    ]
+  },
+  {
+    "texte": "أين تثبت النبتة غالباً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-pl-3"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث إن لم تُسق النبتة أسابيع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-pl-4"
+      }
+    ]
+  },
+  {
+    "texte": "أوراق النبات تساعد على:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-pl-5"
+      }
+    ]
+  },
+  {
+    "texte": "نبتة في خزانة مغلقة بلا ضوء:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-pl-6"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما يحتاجه النبات ليبقى حياً بصحة جيدة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ماء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "ضَرُورِيٌّ لِلنَّبَاتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "غَيْرُ مُهِمٍّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ضوء الشمس",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين الحيوان الأليف والحيوان البري، وربط كل حيوان بصوته وغذائه المناسب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "هل يمكن أن يعيش الأسد في بيتنا مثل القطة؟ لماذا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على الفرق بين الحيوانات الأليفة (التي يربيها الإنسان) والحيوانات البرية، ويربط كل حيوان بصوته وغذائه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "حولنا حيوانات كثيرة ومختلفة: بعضها يعيش معنا في بيوتنا ومزارعنا، وبعضها يعيش بعيداً في الغابات والصحاري بمفرده.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانُ الأَلِيفُ: يعيش قرب الإنسان ويعتني به الإنسان، مثل: القطة، الكلب، الدجاجة، الغنم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانُ البَرِّيُّ: يعيش بعيداً عن الإنسان في الغابة أو الصحراء، مثل: الأسد، الذئب، الثعلب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ حَيَوَانٍ صَوْتٌ مُمَيَّزٌ: البقرة تخور، القطة تموء، الكلب ينبح، الأسد يزأر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانُ الأَلِيفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيَوَانُ البَرِّيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الفراء لا يحدد إن كان الحيوان أليفاً أم برياً؛ الذئب مثلاً له فراء لكنه حيوان بري.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل أن الكلب \"ينبح\" وهو أليف، أما الذئب فيعوي وهو بري.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الحيوان الأليف يعيش قرب الإنسان ويعتني به (قطة، كلب، دجاجة). الحيوان البري يعيش بعيداً وحراً (أسد، ذئب، ثعلب). لكل حيوان صوت مميز.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي صوت يصدر عن القطة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-animals"
+      }
+    ]
+  },
+  {
+    "texte": "هل الأسد حيوان أليف أم بري؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-animals"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا الأرنب في البيت أليف والأسد في الغابة بري؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc2ap-an"
+      }
+    ]
+  },
+  {
+    "texte": "أي حيوان من هذه الحيوانات أليف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-animals"
+      }
+    ]
+  },
+  {
+    "texte": "القط في البيت حيوان:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-an-2"
+      }
+    ]
+  },
+  {
+    "texte": "الثعلب حيوان:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-an-3"
+      }
+    ]
+  },
+  {
+    "texte": "من الحيوانات الأليفة:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-an-4"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا لا نلمس حيواناً برياً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-an-5"
+      }
+    ]
+  },
+  {
+    "texte": "الكلب الذي يحرس البيت:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-an-6"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل حيوان بصوته الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الكَلْبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَنْبَحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَزْأَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَمُوءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "الأَسَدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَخُورُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين الجسم الصلب والسائل، والتعرف على بعض مصادر الصوت من حولنا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "صب كأس ماء في إناء مستدير ثم في إناء مربع. هل يتغير شكل الماء؟ والآن انظر إلى قلمك، هل يتغير شكله إذا نقلته من مكان لآخر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميز التلميذ بين الأجسام الصلبة (تحتفظ بشكلها) والأجسام السائلة (تأخذ شكل إنائها)، ويكتشف أن الصوت ينتج عن اهتزاز أشياء مختلفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الأشياء من حولنا نوعان: أشياء صلبة تحتفظ بشكلها دائماً، وأشياء سائلة تتغير شكلها حسب الإناء. وكل الأصوات التي نسمعها تأتي من اهتزاز شيء ما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الجِسْمُ الصُّلْبُ: يحتفظ بشكله الخاص أينما وضعناه، مثل: القلم، الكتاب، الكرسي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجِسْمُ السَّائِلُ: يأخذ شكل الإناء الذي يوضع فيه، ويتحرك بسهولة، مثل: الماء، الحليب، العصير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَصْدُرُ الصَّوْتُ عن اهتزاز الأشياء: عندما نطرق الطاولة، أو نضرب على طبل، أو نتكلم، تهتز أشياء صغيرة تُصدر صوتاً نسمعه بآذاننا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الجِسْمُ الصُّلْبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجِسْمُ السَّائِلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الاهْتِزَازُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "الرمل والسكر أجسام صلبة مكونة من حبيبات صغيرة صلبة، حتى لو بدت تتدفق كالسوائل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصوت يمكن أن يصدر عن أشياء كثيرة مختلفة: الأدوات، الأصوات البشرية، الآلات الموسيقية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجسم الصلب يحتفظ بشكله (القلم، الكتاب). الجسم السائل يأخذ شكل إنائه (الماء، الحليب). الصوت ينتج عن اهتزاز الأشياء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "هل القلم جسم صلب أم سائل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-matter"
+      }
+    ]
+  },
+  {
+    "texte": "كيف ينتج صوت الطبل عندما نضربه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-matter"
+      }
+    ]
+  },
+  {
+    "texte": "قارن شكل الحجر وشكل الماء إذا نقلناهما إلى علبة أخرى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc2ap-sol"
+      }
+    ]
+  },
+  {
+    "texte": "ما الذي يُنتج الصوت عندما نتكلم أو نقرع طبلاً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-matter"
+      }
+    ]
+  },
+  {
+    "texte": "الحجر مادة:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-sol-2"
+      }
+    ]
+  },
+  {
+    "texte": "الماء في الكأس:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-sol-3"
+      }
+    ]
+  },
+  {
+    "texte": "الهواء من حولنا:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-sol-4"
+      }
+    ]
+  },
+  {
+    "texte": "الصوت ينتقل جيداً عبر:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-sol-5"
+      }
+    ]
+  },
+  {
+    "texte": "العصير في الكأس:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-sol-6"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف كل شيء حسب حالته!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "العصير",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "سَائِلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "صُلْبٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الكِتَابُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على حالات الماء الثلاث وملاحظة تحول الماء من حالة إلى أخرى بتأثير الحرارة أو البرودة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "أخرجت مكعب ثلج من الفريزر ووضعته في طبق على الطاولة. ماذا سيحدث له بعد قليل من الوقت؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ أن الماء يتخذ ثلاث حالات (صلبة، سائلة، غازية)، وأن الحرارة تحوّله من حالة إلى أخرى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الماء ساحر: يمكنه أن يكون صلباً كالجليد، أو سائلاً كما نشربه، أو غازياً كالبخار الذي نراه فوق كوب الشاي الساخن. والحرارة والبرودة هما ما يغيران حالته.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المَاءُ لَهُ 3 حَالَاتٍ: الحَالَةُ الصُّلْبَةُ (الجليد أو الثلج)، الحَالَةُ السَّائِلَةُ (الماء العادي)، وَالحَالَةُ الغَازِيَّةُ (بخار الماء).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الانْصِهَارُ: عندما نُسَخِّنُ الجليد الصلب، يتحول تدريجياً إلى ماء سائل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّبَخُّرُ: عندما نُسَخِّنُ الماء السائل كثيراً (كما في القدر على النار)، يتحول جزء منه إلى بخار غازي يتصاعد في الهواء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّجَمُّدُ: عندما نضع الماء السائل في البرودة الشديدة (الفريزر)، يتحول إلى جليد صلب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الانْصِهَارُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّبَخُّرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّجَمُّدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "بخار الماء لا يختفي، بل يبقى في الهواء وقد يتكاثف لاحقاً ليعود ماءً من جديد (كما في تكوّن السحب والمطر).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الانصهار يبدأ من الجليد، والتبخر يبدأ من الماء السائل — كل واحد له نقطة انطلاق مختلفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "للماء 3 حالات: صلبة (جليد)، سائلة (ماء)، غازية (بخار). الحرارة تُذيب الجليد (انصهار) وتُبخّر الماء (تبخر)، والبرودة تُجمّد الماء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم عملية تحول الجليد إلى ماء سائل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-waterstates"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم عملية تحول الماء السائل إلى بخار؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-waterstates"
+      }
+    ]
+  },
+  {
+    "texte": "سمّ التحولين: جليد في الشمس / ماء في المجمّد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc2ap-wat"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث للماء السائل إذا وضعناه في الفريزر لوقت طويل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-waterstates"
+      }
+    ]
+  },
+  {
+    "texte": "الثلج إذا سخن يصبح:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-wat-2"
+      }
+    ]
+  },
+  {
+    "texte": "ماء في المجمّد يصبح:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-wat-3"
+      }
+    ]
+  },
+  {
+    "texte": "البخار فوق القدر:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-wat-4"
+      }
+    ]
+  },
+  {
+    "texte": "قطرات على غطاء القدر:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-wat-5"
+      }
+    ]
+  },
+  {
+    "texte": "ثلاث حالات الماء:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-qb-sc2ap-wat-6"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل مثال بحالة الماء الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "مُكَعَّبُ ثَلْجٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَالَةٌ صُلْبَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حَالَةٌ سَائِلَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "حَالَةٌ غَازِيَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "البُخَارُ فَوْقَ كُوبِ الشَّايِ السَّاخِنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "ربط حيوان مألوف بطريقة تنقّله.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "في الحديقة عصفور وقطة وحلزون. كيف يصل كل واحد إلى الغصن أو العشب؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميّز التلميذ أنماط التنقل: المشي، الطيران، السباحة، والزحف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "كل حيوان يتنقل بما يناسب جسمه ومكان عيشه: أرض، هواء، ماء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المَشْيُ: أرجل على الأرض (قط، كلب، حصان).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّيَرَانُ: أجنحة في الهواء (عصفور، فراشة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "السِّبَاحَةُ: زعانف في الماء (سمكة). البط يسبح أيضاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّحْفُ: بلا أرجل ظاهرة أو بأرجل قصيرة جداً (ثعبان، حلزون).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الزِّعْنِفَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجَنَاحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الدجاجة تمشي كثيراً وتطير قليلاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أرجل → مشي. أجنحة → طيران. زعانف → سباحة. زحف بلا أرجل طويلة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كيف يتنقل القط؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-move"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا تسبح السمكة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-move"
+      }
+    ]
+  },
+  {
+    "texte": "الحلزون يتنقل بـ:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-move"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التنقل!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الحِصَانُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَمْشِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفَرَاشَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَطِيرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَسْبَحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "إدراك وجود الهواء ببعض الآثار البسيطة (الريح، البالون، التنفس).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "لوّح بمروحة ورقية أو كيس فارغ: لماذا يتحرّك؟ هل «لا شيء» يدفعه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ أن الهواء موجود رغم أنه لا يُرى، وأنه يحرّك الأشياء ونتنفسه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "ما لا نراه قد يكون موجوداً. الهواء نلمسه بآثاره.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الهَوَاءُ مَادَّةٌ شَفَّافَةٌ تَمْلَأُ المَكَانَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرِّيحُ هَوَاءٌ يَتَحَرَّكُ: تُحَرِّكُ الأَوْرَاقَ وَالرَّايَةَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نَمْلَأُ البَالُونَ بِالهَوَاءِ عِنْدَ النَّفْخِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَحْتَاجُ الهَوَاءَ لِلتَّنَفُّسِ (رَبْطٌ بِدَرْسِ القَلْبِ وَالرِّئَتَيْنِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الرِّيحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّفْخُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الهواء مادة: يحرّك ويُتنفَّس ويُنفخ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الهواء موجود دون أن نراه. الريح أثره. نتنفسه وننفخ به.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "هل نرى الهواء بأعيننا عادة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc2ap-air"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نضع داخل البالون عند النفخ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc2ap-air"
+      }
+    ]
+  },
+  {
+    "texte": "الريح هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc2ap-air"
+      }
+    ]
+  },
+  {
+    "texte": "تحريك الغسيل على الحبل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الهَوَاءُ / الرِّيحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَجَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نملأ البالون بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "الحَجَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  }
+]

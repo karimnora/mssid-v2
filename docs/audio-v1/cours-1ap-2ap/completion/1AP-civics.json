@@ -1,0 +1,2979 @@
+[
+  {
+    "texte": "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "دخل معلمك الفاضل إلى القسم صباحاً مبتسماً. ماذا تقول له بصوت واضح ومؤدب؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّحِيَّةُ: أقول \"السَّلاَمُ عَلَيْكُمْ\" عند دخول القسم أو لقاء الجيران والأصدقاء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّدُّ: أقول \"وَعَلَيْكُمُ السَّلاَمُ\" عندما يحييني أحد بابتسامة طيبة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "احْتِرَامُ الكَبِيرِ: أستمع لأبي وأمي ومعلمي بهدوء، وأقدم لهم المساعدة إن احتاجوا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّحِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الاحْتِرَامُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "إذا قال لك صديقك في الساحة: \"السلام عليكم\"، بم تردّ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "العب مع الطفل لعبة المسرح الصغير: يلتقي شخصان، يبتسمان، يتصافحان باليد اليمنى ويتبادلان السلام بود.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أُلقي السلام: \"السلام عليكم\". أرد السلام: \"وعليكم السلام\". وأحترم الكبار وأستمع لهم بأدب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما هي تحية الإسلام الجميلة التي نلقيها عند لقاء زملائنا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نتصرف عندما يتحدث إلينا والدا أو المعلم في القسم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "دخل المعلم. نقول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أقول عندما يلقي عليّ زميلي السلام؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-greetings-opt-a"
+      },
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أصمت ولا أرد",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-greetings-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "نلقي التحية",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "بِابْتِسَامَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-greetings-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِدَفْعٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-greetings-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "المسن في الشارع",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "نُسَاعِدُهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-greetings-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَضْحَكُ عَلَيْهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-greetings-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "السلام عليكم تحية",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-greetings"
+      }
+    ]
+  },
+  {
+    "texte": "إِسْلَامِيَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-greetings-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "رَقْمٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-greetings-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الرد الصحيح والمهذب لكل موقف!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "حياك جارك وقال: \"السلام عليكم\"",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "إِلَى اللِّقَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "عند مغادرة القسم في نهاية اليوم نقول:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "إِلَى اللِّقَاءِ يَا مُعَلِّمِي / مَعَ السَّلاَمَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "صباح الخير",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكبار نحترمهم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَسْخَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "رد السلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "وَعَلَيْكُمُ السَّلَامُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "صَمْتٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "إذا سألك أحد الكبار في الشارع: \"من أنت وما اسم مدرستك؟\"، ماذا تجيبه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "هُوِيَّتِي: اسمي الكامل ولقبي وتاريخ ميلادي التي أحفظها جيداً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِطَاقَتِي المَدْرَسِيَّةُ: تحمل اسمي وصورتي واسم مدرستي وقسمي، وتُعرّف بي داخل المدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أُحَافِظُ عَلَى بِطَاقَتِي: أضعها في مكان آمن في محفظتي، ولا أمزقها أو ألعب بها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الهُوِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "البِطَاقَةُ المَدْرَسِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سألك حارس المدرسة عن اسم قسمك، ماذا تقول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "أُخْبِرُهُ بِاسْمِ قِسْمِي بِوُضُوحٍ وَثِقَةٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اطلب من الطفل تكرار اسمه الكامل ولقبه واسم مدرسته وقسمه بصوت واضح، كأنه يقدم نفسه لصديق جديد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أحفظ اسمي الكامل ومدرستي وقسمي، وأحافظ على بطاقتي المدرسية التي تعرّف بي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يجب أن أحفظ جيداً عن نفسي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أفعل ببطاقتي المدرسية للمحافظة عليها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "البطاقة المدرسية فيها",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا نحافظ على بطاقتنا المدرسية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "لِأَنَّهَا تُعَرِّفُ بِي وَبِمَدْرَسَتِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-identity-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "لِأَلْعَبَ بِهَا فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-identity-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اسمي أقوله",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "وَاضِحًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-identity-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "القسم رقم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَى البِطَاقَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-identity-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "سِرٌّ مَمْنُوعٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-identity-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الصورة على البطاقة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-identity"
+      }
+    ]
+  },
+  {
+    "texte": "صُورَتِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-identity-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "صُورَةُ حَيَوَانٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-identity-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما تحتويه بطاقتك المدرسية!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بطاقتي المدرسية تحمل...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "اسْمِي وَصُورَتِي وَاسْمَ مَدْرَسَتِي وَقِسْمِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لُعْبَتِي المُفَضَّلَةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "مدرستي اسمها على",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "البِطَاقَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "القَمَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أحفظ بطاقتي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "أُمَزِّقُهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "القسم مكتوب على",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "الكُرَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نسي صديقك مقلمته في البيت ولا يملك قلماً ليكتب به الدرس. كيف تساعده وتسعده؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُشَارَكَةُ: أن أقاسم أشيائي وأدواتي مع أصدقائي لتعم الفائدة والبهجة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّعَاوُنُ: نعمل معاً كفريق واحد لننجح جميعاً في الألعاب والواجبات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُسَاعَدَةُ: أمد يد العون لرفيقي إن سقط أو تعثر أو احتاج لأداة مدرسية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّعَاوُنُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِيثَارُ وَالمُشَارَكَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "زميلك نسي ممحاته في البيت:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "أعيره ممحاتي ليكتب درسه ثم يعيدها لي بلطف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "أعط الطفلين أُحْجِيَّةً (لُعْبَةَ تَرْكِيبٍ) ليركباها معاً، واجعلهما يشعران بفرحة الإنجاز المشترك.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أُشارك ألعابي وأدواتي، أتعاون مع رفاقي، وأساعد من يحتاج مساعدتي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "سقطت علبة ألوان زميلك على أرض القسم. ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو السلوك الذي يجعل التلاميذ ينهون تنظيف القسم بسرعة وفرح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "لعبة واحدة وصديقان",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل عندما نرى زميلنا في القسم بحاجة لمساعدة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "نُسَاعِدُهُ بِسُرُورٍ وَلُطْفٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-sharing-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نتجاهله ولا نساعده",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-sharing-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "التعاون يعني",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "نَعْمَلُ مَعًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-sharing-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَتَشَاجَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-sharing-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "صديقي حزين",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "أُوَاسِيهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-sharing-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أَتْرُكُهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-sharing-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "في الفريق",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-sharing"
+      }
+    ]
+  },
+  {
+    "texte": "كُلُّنَا نُسَاهِمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-sharing-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "وَاحِدٌ فَقَطْ يَلْعَبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-sharing-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر السلوك الذي يدل على المشاركة والتعاون!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عندك قلم تلوين إضافي وزميلك يحتاجه:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُعِيرُهُ لَهُ بِلُطْفٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أخبئه في المحفظة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "مساعدة زميل سقطت أقلامه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "نُسَاعِدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَضْحَكُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكراسة نقسم الألوان",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَمْنَعُ الكُلَّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "اللعبة نتبادلها",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِدَوْرٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِعِرَاكٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كل صباح في المدرسة، ماذا نرفع في الطابور ونحن واقفون بهدوء واعتزاز؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَمُ الجَزَائِرِ : لونان جميلان، الأخضر والأبيض، وفي وسطه هلال ونجمة حمراء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشِيدُ الوَطَنِيُّ : اسمه \"قَسَماً\"، نردده أو نستمع إليه بهدوء واحترام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجَزَائِرُ وَطَنِي الغَالِي الذي أُحِبُّهُ وَأَفْتَخِرُ بِالانْتِمَاءِ إِلَيْهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "العَلَمُ الوَطَنِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشِيدُ الوَطَنِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ما هما لونا علم الجزائر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "الأَخْضَرُ وَالأَبْيَضُ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم مع الطفل علم الجزائر بالألوان الصحيحة (أخضر وأبيض مع هلال ونجمة حمراء)، وشغّل معه النشيد الوطني ليستمع إليه واقفاً بهدوء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "علم الجزائر أخضر وأبيض بهلال ونجمة حمراء، ونشيدها الوطني \"قسماً\"، أحترمهما بفخر واعتزاز.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما هما لونا علم بلادي الجزائر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-flag"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم النشيد الوطني الجزائري؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-flag"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "أَلْوَانُ العَلَمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-flag"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نرى في وسط علم الجزائر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-flag"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "هِلاَلٌ وَنَجْمَةٌ حَمْرَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-flag-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "شَمْسٌ صَفْرَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-flag-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "علم بلادي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-flag"
+      }
+    ]
+  },
+  {
+    "texte": "الجَزَائِرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-flag-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بَلَدٌ آخَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-flag-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الهلال والنجمة على",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-flag"
+      }
+    ]
+  },
+  {
+    "texte": "العَلَمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-flag-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الكُرَةِ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-flag-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "قاسمي أحترم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-flag"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشِيدَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-flag-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الفَوْضَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-flag-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح تجاه رموز وطنك!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "يُرفع العلم الوطني في طابور الصباح",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَقِفُ بِهُدُوءٍ وَاحْتِرَامٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَحَدَّثُ مَعَ رَفِيقِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "النشيد الوطني نسمعه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "وَاقِفِينَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَضْحَكُ بِصَوْتٍ عَالٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الأخضر في العلم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَصْفُ العَلَمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "كُلُّ العَلَمِ أَحْمَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نحترم العلم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِرَكْضٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t2-flag-anthem",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تخيل لو تحدث جميع التلاميذ في وقت واحد بصوت عالٍ، هل يستطيع أحد أن يفهم الدرس؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "لا، الهدوء هو سر النجاح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "الهُدُوءُ وَالاسْتِمَاعُ: أنصت لمعلمي وأرفع إصبعي للاستئذان قبل الكلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "النِّظَامُ وَالتَّرْتِيبُ: أضع محفظتي في مكانها وأجمع أدواتي وأحافظ على نظافة طاولتي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "احْتِرَامُ الدَّوْرِ: أقف بانتظام في الطابور وأنتظر دوري دون تدافع أو مزاحمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "النِّظَامُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الدَّوْرُ وَالطَّابُورُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "تريد الإجابة عن سؤال المعلم:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "أرفع إصبعي بهدوء وأنتظر أن يأذن لي المعلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم مع الأطفال \"ميثاق القسم الجميل\": صور كرتونية تمثل رفع الأصبع، ترتيب المحفظة، ورمي الأوراق في السلة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أنصت عند الشرح، أرتب أدواتي، وأحترم دوري في الطابور لأكون تلميذاً مثالياً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل عندما نريد التحدث أو الإجابة عن سؤال المعلم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "أين نضع الأوراق وبقايا المبراة للحفاظ على نظافة حجرة درسنا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "المعلم يشرح. أنا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل عند الوقوف في الطابور الصباحي لتحية العلم الوطني؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "نَقِفُ بِانْتِظَامٍ وَهُدُوءٍ وَنُحَيِّي العَلَمَ بِفَخْرٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rules-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نتحرك ونلهو في الصف",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rules-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الجرس للخروج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "بِرَكْضٍ خَطِرٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-rules-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "أدوات زميل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "لَا نَأْخُذُهَا بِلَا إِذْنٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rules-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَأْخُذُهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rules-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "في الطابور",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rules"
+      }
+    ]
+  },
+  {
+    "texte": "نَقِفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rules-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَدْفَعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rules-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر السلوك الصحيح داخل المدرسة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عند الشرب من الحنفية وهناك صف من الأطفال:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَقِفُ فِي الطَّابُورِ وَأَنْتَظِرُ دَوْرِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أتدافع لأشرب أولاً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد انتهاء الحصة المدرسية:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "أُرَتِّبُ أَدَوَاتِي فِي المِحْفَظَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أترك أشيائي مبعثرة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "رفع اليد للكلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَقْطَعُ الكَلَامَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "القمامة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "فِي السَّلَّةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَى الأَرْضِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كل طفل في العالم له حقوق يجب أن يحصل عليها. ما هي الأشياء التي تحتاجها لتكبر سعيداً وبصحة جيدة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي التَّعْلِيمِ : الذهاب إلى المدرسة والتعلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي اللَّعِبِ وَالرَّاحَةِ : وقت للعب والاستمتاع بعد الدراسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ : من أسرته ومجتمعه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "وَعَلَيَّ أَيْضاً وَاجِبُ احْتِرَامِ حُقُوقِ أَصْدِقَائِي كَمَا أُحِبُّ أَنْ تُحْتَرَمَ حُقُوقِي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الحَقُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الوَاجِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو حقك الذي يمكّنك من الذهاب إلى المدرسة والتعلم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "الحَقُّ فِي التَّعْلِيمِ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اطلب من الطفل رسم 3 دوائر: مدرسة (حق التعليم)، لعبة (حق اللعب)، وبيت دافئ مع أسرته (حق الحماية).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "لي الحق في التعليم واللعب والحماية، وعليّ أيضاً احترام حقوق أصدقائي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو حقك الذي يمكّنك من الذهاب للمدرسة كل يوم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا يجب أن أقابل حقوق أصدقائي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "من حقوقي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex3-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو حق كل طفل يحميه من الخطر ويرعاه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rights-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "لاَ يُوجَدُ حَقٌّ لِلطِّفْلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics1ap-rights-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الاسم والهوية",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "حَقٌّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q2-civics1ap-rights-opt-a"
+      },
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "العنف",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "الراحة والنوم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rights"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْتَاجُهُمَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rights-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِلَا فَائِدَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q4-civics1ap-rights-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الحق الصحيح لكل طفل!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "من حق كل طفل في وقت فراغه...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّعِبُ وَالرَّاحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "العَمَلُ طُولَ اليَوْمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "اللعب بعد الدراسة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "مَمْنُوعٌ دَائِمًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الرعاية الصحية",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "حَقِّي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لَيْسَتْ لِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "التعلم في المدرسة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "عِقَابٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  }
+]

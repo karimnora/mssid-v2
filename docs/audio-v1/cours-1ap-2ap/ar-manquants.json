@@ -8512,48 +8512,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-07dfde23f7c75ed8.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-letters-group1",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-d361c1f58c4ed3ac.mp3",
-    "texte": "استمع وركّز: أَسَدٌ ، بَطَّةٌ ، تُفَّاحَةٌ ، ثَعْلَبٌ — ما الصوت الأول في كل كلمة؟",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-letters-group1",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "explanation",
-        "key": "discovery-0"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-5eee2db0fd5fb6ae.mp3",
-    "texte": "حرف الأَلِفِ (أ): صوته \"أَ\" مثل أَسَدٌ وَأَرْنَبٌ .",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-letters-group1",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "explanation",
-        "key": "rule-0"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-c2bc20f7b5a7630b.mp3",
     "texte": "حرف البَاءِ (ب): صوته \"بَ\" مثل بَطَّةٌ وَبَابَا (نقطة واحدة تحت الصحن).",
     "targets": [
@@ -9016,20 +8974,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-93bf92c52555d32e.mp3",
-    "texte": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-harakat",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-4ec1097a04294b09.mp3",
     "texte": "هَذِهِ الفَتْحَةُ فَوْقَ بَ؟",
     "targets": [
@@ -9179,6 +9123,13 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
       }
     ],
     "reviewRequired": true
@@ -9641,20 +9592,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-1"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-790692de9c668cd1.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-letters-group2",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -10152,20 +10089,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-ef1f67e5bcdff099.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-letters-group3",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -10682,20 +10605,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-272e50787a5156b7.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-letters-group4",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-6af9a7ced5995d7c.mp3",
     "texte": "استمع: عِنَبٌ ، غُرَابٌ ، فِيلٌ ، قِطَّةٌ — ما الصوت الأول في كل كلمة؟",
     "targets": [
@@ -11188,20 +11097,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-d2205b3ee20929f7.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t3-letters-group5",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -11713,20 +11608,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-69ef3b2ca1f402da.mp3",
-    "texte": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t3-tracing-name",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -12280,20 +12161,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-1"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-a3e18d9a77a7810f.mp3",
-    "texte": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-madd",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -12880,20 +12747,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-1d6cb36c44f8a450.mp3",
-    "texte": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-oral-daily",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-5a8deb38136abeb6.mp3",
     "texte": "في الصباح تدخل القسم. ماذا تقول للمعلم؟",
     "targets": [
@@ -13447,20 +13300,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-72f80026cb9130e0.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-ef9419fae9f4a955.mp3",
     "texte": "جَمَلٌ ، حَلِيبٌ ، خُبْزٌ — أي صوت أول؟",
     "targets": [
@@ -13930,20 +13769,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-85b0a822d4fc2109.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: زَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-letter-zay",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-c9d29f6666c5d763.mp3",
     "texte": "رَمَّانٌ بلا نقطة. زَرَافَةٌ بنقطة. ما الفرق؟",
     "targets": [
@@ -14317,20 +14142,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-00e82962fc905247.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-letters-sad-family",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -14826,20 +14637,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-03ec18d952fad7c8.mp3",
-    "texte": "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-hamza",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-06f1e0e8ad0a2cf9.mp3",
     "texte": "أَكَلَ — صوت في الحلق ينقطع. عَيْنٌ صوت آخر. هل هما سواء؟",
     "targets": [
@@ -15316,20 +15113,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-7c0e993dcd6fd1de.mp3",
-    "texte": "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-letter-positions",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-ddd395adb3cf1963.mp3",
     "texte": "بَابٌ ، شَبَكَةٌ ، كَلْبٌ — الباء في ثلاثة أماكن، هل ترسمها سواء؟",
     "targets": [
@@ -15766,20 +15549,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-53f8d3bdaf1b4bb9.mp3",
-    "texte": "التَّنْوِينُ: ً ٌ ٍ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t3-tanween",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -16298,20 +16067,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-1"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-e481122c1d67de02.mp3",
-    "texte": "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-school-axis",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -16891,20 +16646,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-943ff6288655b857.mp3",
-    "texte": "عَائِلَتِي: أَبِي، أُمِّي، أَخِي",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t1-family-axis",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-daaa51db3a785d1b.mp3",
     "texte": "انظر إلى صورة عائلتك: من فيها؟",
     "targets": [
@@ -17390,20 +17131,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-0"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-2759f4bd9e791d52.mp3",
-    "texte": "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-neighborhood-home",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -17929,20 +17656,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-1"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-03f7ec2e34922c00.mp3",
-    "texte": "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-health-sports",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -18557,20 +18270,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-730de36b9927ae77.mp3",
-    "texte": "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t2-nature-axis",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-541d7aee093248b8.mp3",
     "texte": "انظر من النافذة: هل ترى شجرة أو سماء زرقاء أو طائراً؟",
     "targets": [
@@ -19084,20 +18783,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3-opt-0"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-10141a589e5a7f96.mp3",
-    "texte": "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t3-play-entertainment",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -19644,20 +19329,6 @@
         "subject": "arabic",
         "category": "game",
         "key": "game-3"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-80de05731f3edeca.mp3",
-    "texte": "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ",
-    "targets": [
-      {
-        "lessonId": "arabic-1ap-t3-childhood-holidays",
-        "grade": "1AP",
-        "subject": "arabic",
-        "category": "entry",
-        "key": "title"
       }
     ],
     "reviewRequired": true
@@ -37170,20 +36841,6 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-ad8d7c576f2850bb.mp3",
-    "texte": "الفَتْحَةُ ـَ",
-    "targets": [
-      {
-        "lessonId": "arabic-2ap-t1-letters-short-vowels",
-        "grade": "2AP",
-        "subject": "arabic",
-        "category": "content",
-        "key": "vocab-0"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-45747f2b55382696.mp3",
     "texte": "ذكّر التلميذ: الضمة فوق الحرف وتشبه فاصلة صغيرة، بينما الفتحة خط مائل صغير.",
     "targets": [
@@ -41097,8 +40754,8 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-f3a88b80f3876c6c.mp3",
-    "texte": "من سلّم سامي على المعلمة؟",
+    "fichier": "course-ar-f56dd1bdd3bb7c41.mp3",
+    "texte": "من سلّم على المعلمة؟",
     "targets": [
       {
         "lessonId": "arabic-2ap-t1-reading-school",

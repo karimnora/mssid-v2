@@ -1,0 +1,5795 @@
+[
+  {
+    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ …",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة وكتابة أي عدد من 0 إلى 49 وتفكيكه إلى عشرات ووحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند سارة 3 حُزَم من 10 أقلام، وقلمان زائدان بمفردهما. كم قلماً عند سارة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ قراءة وكتابة الأعداد من 0 إلى 49، وتفكيكها إلى عشرات ووحدات باستعمال أدوات بسيطة كالحُزَم والعِصِيِّ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "كل عدد كبير يمكن تقسيمه إلى مجموعات من 10 (عشرات) وما يبقى بمفرده (وحدات). هذا يساعدنا على العد بسرعة دون تعداد كل شيء واحداً واحداً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "العَدَدُ يتكون من مَنْزِلَتَيْنِ: مَنْزِلَةُ العَشَرَاتِ (على اليسار) ومَنْزِلَةُ الوَحَدَاتِ (على اليمين).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "كل حُزْمَةٍ من 10 أشياء تساوي \"عَشَرَةً واحدةً\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نَكْتُبُ رقم العشرات على اليسار ورقم الوحدات على اليمين. وعند القراءة بالعربية ننطق الوحدات أولاً ثم العشرات (مثال: 27 = سَبْعَةٌ وَعِشْرُونَ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "العَدَدُ صِفْرٌ (0) يعني \"لا شيء\" ولا نضعه أبداً في مَنْزِلَةِ العَشَرَاتِ إن كان العدد أكبر من 9.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الوَحَدَةُ 1",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّفْكِيكُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "العشرات دائماً تُكتب أولاً على اليسار: 1 عشرة ثم 5 وحدات = 15.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "نكتب صفراً في خانة الوحدات لأنه لا يوجد أي وحدة زائدة: 40 = 4 عشرات + 0 وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "كل عدد من رقمين = (عدد العشرات × 10) + عدد الوحدات. العشرات على اليسار، الوحدات على اليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد الوحدات في العدد 27؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-numbers"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب العدد الذي يتكون من 4 عشرات و 5 وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-numbers"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 38 يتكون من:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-numbers"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ كل عدد بسرعة واختر كتابته الصحيحة بالحروف!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "تِسْعَةَ عَشَرَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلَاثُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلَاثَةَ عَشَرَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "استعمال كلمات التموقع المكاني بدقة، والقراءة على الشريط العددي وجدول ذي مدخلين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "القطة فوق الطاولة، والكرة تحت الطاولة. وأنت الآن: ماذا يوجد أمامك؟ وماذا يوجد خلفك؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ تحديد مكان شيء أو شخص بالنسبة لغيره باستعمال كلمات التموقع، ويستعمل الشريط العددي والجدول ذا المدخلين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "قبل أن نتعلم الحساب على الورقة، نتعلم أن نتموقع في الفضاء من حولنا: أين أنا؟ أين الأشياء الأخرى بالنسبة لي؟ هذا يساعدنا على القراءة والفهم لاحقاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَمَامَ ≠ خَلْفَ: الشيء الذي \"أمامي\" أراه مباشرة، والشيء \"خلفي\" لا أراه إلا إذا استدرت.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ ≠ تَحْتَ: \"فوق\" يعني في الأعلى، و\"تحت\" يعني في الأسفل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَمِينٌ ≠ يَسَارٌ: يدي اليمنى هي التي نكتب بها غالباً (لغير الأعسر)، والأخرى يسرى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّرِيطُ العَدَدِيُّ: خط مرسوم عليه الأعداد بالترتيب، كلما اتجهنا لليمين زاد العدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الجَدْوَلُ ذُو المَدْخَلَيْنِ: نقرأ المعلومة بتقاطع سطر (أفقي) مع عمود (عمودي).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّرِيطُ العَدَدِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجَدْوَلُ ذُو المَدْخَلَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر التلميذ بيده التي يكتب بها عادة لتثبيت الجهة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشريط العددي دائماً يُقرأ من اليسار إلى اليمين، والأعداد تكبر كلما تقدمنا لليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَمَامَ/خَلْفَ وفَوْقَ/تَحْتَ ويَمِينَ/يَسَارَ: ثلاثة أزواج من الكلمات تصف مكان الأشياء. الشريط العددي يزداد دائماً من اليسار إلى اليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "الطائر يطير في السماء، والسمكة تسبح في الماء. أين يوجد الطائر بالنسبة للسمكة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-position"
+      }
+    ]
+  },
+  {
+    "texte": "على الشريط العددي، أي عدد يأتي مباشرة بعد 9 وأنت تتجه نحو اليمين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-position"
+      }
+    ]
+  },
+  {
+    "texte": "على الشريط العددي، أين يقع العدد 15 بالنسبة للعدد 12؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-position"
+      }
+    ]
+  },
+  {
+    "texte": "اختر كلمة التموقع الصحيحة لكل جملة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الكرة داخل الصندوق وتحت الطاولة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "القطة تقف خلف الباب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "خَلْفَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَمِينَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "إجراء عملية جمع عمودية بين عددين دون احتفاظ، مع وضع صحيح للأرقام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند ياسين 23 كرة زجاجية، وأعطاه صديقه 15 كرة أخرى. كم كرة أصبحت عند ياسين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ وضع عددين فوق بعضهما بشكل صحيح (وحدات تحت وحدات، عشرات تحت عشرات) وجمعهما دون الحاجة إلى الاحتفاظ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الجمع العمودي طريقة منظمة لجمع عددين كبيرين بسهولة: نضع كل رقم في مكانه الصحيح (بيته) ونجمع كل عمود على حدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "نكتب العدد الأول ثم العدد الثاني تحته، بحيث تكون الوحدات تحت الوحدات، والعشرات تحت العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نبدأ الجمع دائماً من اليمين: نجمع الوحدات أولاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "ثم نجمع العشرات ونكتب الناتج في مكانه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "إذا كان مجموع الوحدات أقل من 10، نكتبه مباشرة دون أي احتفاظ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الجَمْعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "المَجْمُوعُ (النَّاتِجُ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "العَمُودُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "دائماً حاذِ الأرقام عمودياً حسب المنزلة: العمود الأيمن للوحدات، والعمود الأيسر للعشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "اجمع الوحدات وحدها أولاً، ثم العشرات وحدها، ولا تخلط بينهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجمع العمودي: أحاذي الوحدات مع الوحدات والعشرات مع العشرات، وأجمع كل عمود بدءاً من اليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "احسب عمودياً: 12 + 6",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-add1"
+      }
+    ]
+  },
+  {
+    "texte": "احسب عمودياً: 34 + 25",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-add1"
+      }
+    ]
+  },
+  {
+    "texte": "اشترت ليلى 24 تفاحة و 13 كمثرى. كم ثمرة عندها في المجموع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-add1"
+      }
+    ]
+  },
+  {
+    "texte": "احسب الجمع بسرعة قبل انتهاء الوقت!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "21 + 18 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "29",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "43 + 5 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "48",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "38",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "53",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة وكتابة الأعداد من 50 إلى 99 ومقارنتها وترتيبها باستعمال الرموز > و< و=.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند نور 62 ديناراً، وعند أخيها 68 ديناراً. من يملك مالاً أكثر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يواصل التلميذ اكتشاف الأعداد إلى غاية 99، ويتعلم مقارنة عددين وترتيب مجموعة أعداد من الأصغر إلى الأكبر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "بعد أن تعرفنا على الأعداد إلى 49، نكمل الطريق إلى 99. المقارنة تساعدنا على معرفة أي عدد أكبر وأي عدد أصغر، تماماً كما نقارن كمية الحلوى بين طفلين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "لمقارنة عددين من رقمين، نقارن أولاً عدد العشرات: من له عشرات أكثر فهو أكبر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "إذا تساوت العشرات، نقارن الوحدات: من له وحدات أكثر فهو أكبر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الرمز > يعني \"أكبر من\"، والرمز < يعني \"أصغر من\"، ويشير رأس الرمز الحاد دائماً إلى العدد الأصغر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 99 هو أكبر عدد من رقمين، ويليه مباشرة 100.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَكْبَرُ مِنْ >",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَصْغَرُ مِنْ <",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّرْتِيبُ التَّصَاعُدِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "دائماً نبدأ المقارنة بالعشرات (الرقم الأيسر) لأنه الأهم في تحديد حجم العدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "تذكر: فم التمساح ينفتح دوماً نحو العدد الأكبر، وضيقه نحو العدد الأصغر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "لمقارنة عددين: قارن العشرات أولاً، فإن تساويا قارن الوحدات. فم التمساح (> أو <) ينفتح نحو العدد الأكبر دائماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي عدد أكبر: 56 أم 65؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-numbers2"
+      }
+    ]
+  },
+  {
+    "texte": "رتب هذه الأعداد تنازلياً: 78 - 87 - 77",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-numbers2"
+      }
+    ]
+  },
+  {
+    "texte": "عند خالد 63 ديناراً وعند سعيد 68 ديناراً. من يملك مالاً أكثر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-numbers2"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الرمز الصحيح الذي يفتح فمه نحو العدد الأكبر!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "52 ... 59",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "90 ... 89",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة وكتابة أي عدد من 100 إلى 999، وتفكيكه إلى مئات وعشرات ووحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند المكتبة 100 كتاب في صندوق كبير واحد، و 20 كتاباً في صناديق صغيرة، و 5 كتب بمفردها. كم كتاباً في المجموع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ منزلة المئات الجديدة، ويتعلم قراءة وكتابة وتفكيك أعداد من 3 أرقام إلى مئات وعشرات ووحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "بعد أن ملأنا 9 عشرات كاملة (90) وأضفنا وحدة أخرى، نصل إلى 100! هذا يفتح لنا منزلة جديدة اسمها \"المئات\"، تماماً كما فتحت لنا العشرات طريقاً لتجاوز 9.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "العَدَدُ مِنْ 3 أَرْقَامٍ له ثلاث منازل: المئات (على اليسار)، العشرات (في الوسط)، الوحدات (على اليمين).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المِئَةُ = 10 عشرات كاملة = 100 وحدة. عندما تكتمل 10 حزم من 10، نحصل على \"مئة\" واحدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نَكْتُبُ المئات ثم العشرات ثم الوحدات من اليسار إلى اليمين. وعند القراءة بالعربية ننطق المئات أولاً، ثم الوحدات، ثم العشرات (مثال: 347 = ثَلَاثُ مِئَةٍ وَسَبْعَةٌ وَأَرْبَعُونَ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 999 هو أكبر عدد من 3 أرقام، ويليه مباشرة 1000.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المِئَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "مَنْزِلَةُ المِئَاتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "رتب المنازل دائماً من اليسار: المئات أولاً، ثم العشرات، ثم الوحدات في أقصى اليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 305 يعني 3 مئات و0 عشرات و5 وحدات؛ يجب كتابة الصفر في مكانه ليبقى العدد بثلاثة أرقام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "كل عدد من 3 أرقام = (عدد المئات × 100) + (عدد العشرات × 10) + عدد الوحدات. المئات يسار، الوحدات يمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد المئات في العدد 456؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-numbers3"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب العدد الذي يتكون من 6 مئات و 2 عشرات و 9 وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-numbers3"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 615 يتكون من:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-numbers3"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ كل عدد بسرعة واختر كتابته الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "203",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مِئَتَانِ وَثَلَاثَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلَاثُ مِئَةٍ وَاثْنَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "780",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "سَبْعُ مِئَةٍ وَثَمَانُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَمَانِي مِئَةٍ وَسَبْعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-numbers-100-999",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "إجراء عملية جمع عمودية بالاحتفاظ بين عددين من رقمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند رامي 27 كرة، اشترى 15 كرة أخرى. عندما نجمع 7 + 5 في الوحدات نحصل على 12، وهذا أكبر من 9! ماذا نفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ ما معنى \"الاحتفاظ\" عندما يتجاوز مجموع الوحدات العدد 9، وكيفية نقل الاحتفاظ إلى خانة العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "\"الاحتفاظ\" ليس أمراً صعباً: هو فقط تذكيرنا بأن كل 10 وحدات تُصبح عشرة واحدة كاملة، ننقلها بأمانة إلى عمود العشرات حتى لا نضيعها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "إذا كان مجموع الوحدات 10 أو أكثر، نكتب رقم الوحدات فقط، ونحتفظ بـ 1 وننقلها فوق خانة العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نضيف الـ 1 المحتفظ بها إلى مجموع العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الاحتفاظ يعني ببساطة: 10 وحدات = عشرة واحدة كاملة ننقلها لخانة العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الاحْتِفَاظُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "نكتب رقماً واحداً فقط في خانة الوحدات (2) ونحتفظ بالرقم الآخر (1) لخانة العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الاحتفاظ عدد حقيقي يجب أن يُضاف دائماً إلى مجموع العشرات، وليس مجرد ملاحظة نتجاهلها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "إذا تجاوز مجموع الوحدات 9: أكتب رقم الوحدات فقط، واحتفظ بـ1 (عشرة كاملة) وأضفها إلى مجموع العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "8 + 5 = 13. كم عشرة كاملة نحتفظ بها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-add2"
+      }
+    ]
+  },
+  {
+    "texte": "احسب عمودياً بالاحتفاظ: 46 + 27",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-add2"
+      }
+    ]
+  },
+  {
+    "texte": "عند فوزية 35 دفتراً، أهدتها معلمتها 28 دفتراً إضافياً. كم دفتراً أصبح عندها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-add2"
+      }
+    ]
+  },
+  {
+    "texte": "احسب ناتج كل عملية جمع بالاحتفاظ بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "19 + 14 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "33",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "23",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "43",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "58 + 26 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "84",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "74",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "94",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-addition-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "إجراء عملية طرح عمودية دون احتفاظ، وتحديد العملية المناسبة (جمع أو طرح) لحل وضعية بسيطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند أمين 39 ديناراً، اشترى قلماً بـ 15 ديناراً. كم بقي معه من المال؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ طرح عددين عمودياً دون احتفاظ، وحل مسائل بسيطة من الحياة اليومية تتطلب الجمع أو الطرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الطرح عكس الجمع: بدل أن نزيد كمية، ننقص منها. نستعمله عندما \"يبقى\" شيء بعد أخذ جزء منه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "في الطرح، العدد الكبير يوضع دائماً فوق (المطروح منه)، والعدد الصغير تحته (المطروح).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نبدأ الطرح من اليمين: نطرح الوحدات أولاً ثم العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "كلمات تدل على الطرح: \"بقي\"، \"أنفق\"، \"أعطى\"، \"الفرق بين\". كلمات تدل على الجمع: \"مجموع\"، \"أضاف\"، \"اشترى إضافة إلى\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّرْحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفَرْقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "وَضْعِيَّةُ مَسْأَلَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "في هَذِهِ المَرْحَلَةِ نَطْرَحُ فَقَطْ مِنْ عَدَدٍ كَبِيرٍ عَدَداً أَصْغَرَ مِنْهُ، فَيُوضَعُ الكَبِيرُ دَائِماً فِي الأَعْلَى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة \"بقي\" تعني أن شيئاً أُخذ، إذن نستعمل الطرح دائماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الطرح العمودي: العدد الكبير فوق، الصغير تحت، نطرح الوحدات ثم العشرات. كلمة \"بقي\" أو \"أخذ\" تدل على الطرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "احسب عمودياً: 27 - 4",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-sub1"
+      }
+    ]
+  },
+  {
+    "texte": "عند سمير 56 صورة، أعطى 23 صورة لأخيه. كم صورة بقيت عنده؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-sub1"
+      }
+    ]
+  },
+  {
+    "texte": "عند مريم 45 قلماً ملوناً، أعطت 12 قلماً لصديقتها. كم قلماً بقي عندها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-sub1"
+      }
+    ]
+  },
+  {
+    "texte": "احسب الفرق بسرعة قبل انتهاء الوقت!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "48 - 15 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "79 - 24 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "55",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "45",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على المربع والمستطيل والمثلث والدائرة في المحيط اليومي، ونقل رسم بسيط على شبكة مربعات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انظر حولك في القسم: ما شكل السبورة؟ ما شكل الساعة الحائطية؟ هل لهما نفس الشكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على الأشكال الهندسية الأساسية الأربعة، ويميز بينها حسب عدد أضلاعها وشكلها، وينقل رسماً بسيطاً على شبكة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الأشكال الهندسية موجودة في كل مكان حولنا: النافذة، الطاولة، عجلة الدراجة... تعلمها يساعدنا على وصف الأشياء ورسمها بدقة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المُرَبَّعُ: له 4 أضلاع متساوية الطول، و4 زوايا متساوية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُسْتَطِيلُ: له 4 أضلاع، لكن الطول يختلف عن العرض (ضلعان طويلان وضلعان قصيران).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُثَلَّثُ: له 3 أضلاع و3 زوايا فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الدَّائِرَةُ: شكل مستدير ليس له أضلاع ولا زوايا، وكل نقطة فيها تبعد نفس المسافة عن المركز.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الضِّلْعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّاوِيَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّبَكَةُ (الشَّطَرَنجِيَّةُ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "في المربع كل الأضلاع الأربعة متساوية، أما في المستطيل فالأضلاع المتقابلة فقط متساوية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الدائرة ليس لها أي زاوية ولا أي ضلع مستقيم، إنها مستديرة تماماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "مربع = 4 أضلاع متساوية. مستطيل = 4 أضلاع (طول ≠ عرض). مثلث = 3 أضلاع. دائرة = بدون أضلاع ولا زوايا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد أضلاع المربع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "عجلة السيارة، ما شكلها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "أي شكل ليس له أي زاوية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل شيء من محيطك بشكله الهندسي المناسب!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "شباك الغرفة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "قطعة بيتزا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "حساب ضعف عدد صغير ونصف عدد زوجي باستعمال أدوات بصرية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند نور 4 حلويات، وأعطتها أمها 4 حلويات أخرى مماثلة. كم أصبح عندها؟ (هذا هو \"ضِعْفُ\" 4).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ مفهومي \"ضِعف\" (جمع العدد مع نفسه) و\"نصف\" (تقسيم العدد إلى جزأين متساويين) بطريقة بصرية بسيطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الضعف يعني \"مرتين بالضبط\"، مثل توأمين متشابهين. النصف يعني \"تقسيم الكعكة إلى قطعتين متساويتين بالضبط\" حتى لا يشعر أحد بالظلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "ضِعْفُ عَدَدٍ = العَدَدُ + نَفْسُ العَدَدِ (مثال: ضعف 5 نحسبه هكذا: 5 + 5 = 10).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الضعف والنصف عمليتان متعاكستان: إذا كان ضعف 6 هو 12، فإن نصف 12 هو 6.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الضِّعْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النِّصْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الضعف يعني تكرار العدد نفسه مرتين كاملتين، وليس إضافة رقم واحد فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "فِي هَذِهِ المَرْحَلَةِ نَتَعَلَّمُ النِّصْفَ فَقَطْ لِلأَعْدَادِ الزَّوْجِيَّةِ (2، 4، 6، 8، 10...) الَّتِي تُقْسَمُ دُونَ بَاقٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "ضِعْفُ العدد = العدد + العدد (مثل 6+6=12). نِصْفُ العدد = تقسيمه لجزأين متساويين (مثل 12 نصفه 6).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو ضعف العدد 3؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-doublehalf"
+      }
+    ]
+  },
+  {
+    "texte": "عند ياسمين 16 حبة فراولة، أرادت اقتسامها بالتساوي مع أختها. كم حبة تأخذ كل واحدة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-doublehalf"
+      }
+    ]
+  },
+  {
+    "texte": "عند سامي 5 كرات، وعند أخيه ضعف هذا العدد. كم كرة عند أخيه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-doublehalf"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الجواب الصحيح للضعف أو النصف بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ضعف 9 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "11",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "16",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "نصف 14 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "مقارنة أطوال وكتل أشياء ملموسة، وترتيبها من الأقصر للأطول أو من الأخف للأثقل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قارن طولك بطول صديقك: من أطول؟ وقارن حقيبتك بحقيبته: من أثقل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ مقارنة طول شيئين (أطول من / أقصر من) وكتلة شيئين (أثقل من / أخف من) دون الحاجة إلى أدوات قياس دقيقة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "قبل استعمال المسطرة والميزان بدقة، نتعلم أولاً المقارنة البسيطة بالعين واليد: من أطول؟ من أثقل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "لمقارنة طولين، نضع الشيئين جنباً إلى جنب من نفس نقطة البداية، والذي يمتد أكثر هو الأطول.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "لمقارنة الكتلة (الثقل)، نحمل الشيئين بيدينا أو نستعمل ميزاناً بسيطاً: الذي يُنزل الكفة هو الأثقل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الأشياء الكبيرة ليست دائماً أثقل: كرة كبيرة من الإسفنج قد تكون أخف من حجر صغير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَطْوَلُ / أَقْصَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَثْقَلُ / أَخَفُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "المِيزَانُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "الحجم لا يحدد الوزن دائماً؛ يجب التجربة الفعلية بالميزان أو اليد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "يجب محاذاة بداية الشيئين معاً لمقارنة عادلة لأطوالهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أُقَارِنُ الطول بمحاذاة الأشياء من نفس البداية، وأُقَارِنُ الكتلة بحملها أو بالميزان — وليس بالحجم فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "شجرة وزهرة صغيرة. أيهما أطول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-measures"
+      }
+    ]
+  },
+  {
+    "texte": "فيل وقطة. أيهما أثقل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-measures"
+      }
+    ]
+  },
+  {
+    "texte": "لدينا 3 حبال بأطوال مختلفة. كيف نعرف الأطول بدقة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-measures"
+      }
+    ]
+  },
+  {
+    "texte": "اختر أيهما أثقل أو أطول في كل مقارنة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ريشة طائر مقابل حجر صغير",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرِّيشَةُ أَثْقَلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حبل طوله 2 متر مقابل حبل طوله 1 متر",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "حَبْلُ الـ 2 مِتْرٍ أَطْوَلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "استعمال المسطرة المدرجة لقياس طول أشياء بسيطة بالسنتيمتر، ورسم خط بطول محدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ضع مسطرتك بجانب قلمك الرصاص، بحيث تبدأ من العلامة 0. عند أي رقم ينتهي القلم؟ هذا هو طوله بالسنتيمتر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "بعد المقارنة البصرية، يتعلم التلميذ استعمال المسطرة المدرجة لقياس طول شيء بدقة بوحدة السنتيمتر (سم).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "بعد أن قارنّا الأطوال بالعين، أصبحنا الآن جاهزين لاستعمال أداة دقيقة: المسطرة المدرجة. بها نعرف طول أي شيء بالضبط بوحدة اسمها السنتيمتر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "السَّنْتِيمِتْرُ (سم): وحدة صغيرة نقيس بها الأشياء القريبة منا، ورمزها \"سم\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "لقياس شيء بدقة، أضع بداية الشيء تماماً عند العلامة 0 على المسطرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَقْرَأُ الرقم الذي تنتهي عنده نهاية الشيء — هذا هو طوله بالسنتيمتر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "لرسم خط بطول معين (مثلاً 5 سم)، أضع نقطة عند 0 ونقطة أخرى عند 5، ثم أصل بينهما بخط مستقيم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المِسْطَرَةُ المُدَرَّجَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "السَّنْتِيمِتْرُ (سم)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "يجب أن تكون بداية الشيء دائماً عند العلامة 0 بالضبط، وليس عند حافة المسطرة التي قد لا تبدأ من 0.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "انظر عمودياً فوق نهاية الشيء مباشرة لقراءة الرقم الصحيح على المسطرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أضع بداية الشيء عند 0 على المسطرة، وأقرأ الرقم عند نهايته — هذا طوله بالسنتيمتر (سم).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما رمز وحدة السنتيمتر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "بدأ خط عند العلامة 0 وانتهى عند العلامة 12. كم طوله بالسنتيمتر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "أين يجب أن نضع بداية الشيء عند القياس بالمسطرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل أداة بطولها التقريبي بالسنتيمتر!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "قَلَمُ الرَّصَاصِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَوَالَيْ 17 سم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَوَالَيْ 1 سم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حَوَالَيْ 4 سم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَوَالَيْ 40 سم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة الوقت بالساعات الكاملة على ساعة ذات عقارب وربطها بلحظات من يومه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انظر إلى ساعة الحائط في القسم: متى يشير العقربان إلى وقت خروجنا للاستراحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ قراءة الساعات الكاملة على ساعة ذات عقارب، والتمييز بين العقرب الصغير (الساعات) والعقرب الكبير (الدقائق).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الساعة صديقتنا التي تنظم يومنا: تخبرنا متى نستيقظ، ومتى نذهب للمدرسة، ومتى ننام. نبدأ بتعلم قراءتها في أبسط حالة: الساعات الكاملة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "للساعة عقربان: العقرب الصغير (القصير) يشير إلى عدد \"الساعة\"، والعقرب الكبير (الطويل) يشير إلى \"الدقائق\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "عندما يكون العقرب الكبير مشيراً بالضبط إلى الرقم 12، فهذا يعني أن الوقت \"ساعة كاملة\" (بدون دقائق زائدة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نقرأ الساعة الكاملة بقول: \"الساعة\" + الرقم الذي يشير إليه العقرب الصغير (مثال: العقرب الصغير على 7 والكبير على 12 = الساعة السابعة تماماً).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "العَقْرَبُ الصَّغِيرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "العَقْرَبُ الكَبِيرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ساعةٌ تَمَامًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "العقرب الصغير القصير هو الأهم لمعرفة \"الساعة\"، والعقرب الكبير الطويل يخبرنا بالدقائق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "نقرأ رقم الساعة دائماً من موضع العقرب الصغير (القصير)، وليس الكبير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الساعة الكاملة: العقرب الكبير على 12، والعقرب الصغير يشير إلى رقم الساعة. نقول مثلاً \"الساعة الثامنة تماماً\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي عقرب يشير إلى رقم الساعة: الصغير أم الكبير؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-clock"
+      }
+    ]
+  },
+  {
+    "texte": "العقرب الصغير على 9 والعقرب الكبير على 12. اكتب الساعة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-clock"
+      }
+    ]
+  },
+  {
+    "texte": "العقرب الصغير يشير إلى 12 والعقرب الكبير يشير إلى 12 أيضاً. كم الساعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-clock"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل ساعة بالنشاط المناسب من يوم التلميذ!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الساعة السابعة تماماً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الاسْتِيقَاظُ لِلْمَدْرَسَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّوْمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الساعة التاسعة تماماً ليلاً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّعِبُ فِي السَّاحَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة الوقت بصيغة \"الساعة والنصف\" على ساعة ذات عقارب وربطها بأنشطة يومه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انظر إلى العقرب الكبير: عندما يكون على الرقم 12 نقول \"تماماً\"، فماذا نقول عندما يكون بالضبط في المنتصف على الرقم 6؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الساعات الكاملة، يتعلم التلميذ قراءة \"الساعة والنصف\" عندما يشير العقرب الكبير إلى الرقم 6 (30 دقيقة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "بعد أن تعلمنا الساعات الكاملة، نتعلم الآن قراءة الوقت عندما يمر نصف ساعة فقط: هذا ما نسميه \"الساعة والنصف\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "نِصْفُ السَّاعَةِ = 30 دَقِيقَةً، لأن الساعة الكاملة تحتوي على 60 دقيقة، ونصفها 30.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "عندما يكون العقرب الكبير على الرقم 6 بالضبط، فهذا يعني \"والنصف\" (30 دقيقة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "في \"الساعة والنصف\"، يكون العقرب الصغير بين رقمين، وليس بالضبط على رقم واحد كما في الساعة الكاملة (مثال: بين 7 و8 يعني السابعة والنصف).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نقرأ: \"السَّاعَةُ\" + الرقم الذي تجاوزه العقرب الصغير + \"وَالنِّصْفُ\" (مثال: السابعة والنصف = 7:30).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الساعةُ وَالنِّصْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل أن العقرب الصغير يكون بين رقمين في هذه الحالة، ونقرأ الرقم الأصغر (الذي تجاوزه) + \"والنصف\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "العقرب الكبير على 12 = تماماً (0 دقيقة). العقرب الكبير على 6 = والنصف (30 دقيقة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الساعة والنصف = 30 دقيقة = العقرب الكبير على الرقم 6، والعقرب الصغير بين رقمين متتاليين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم دقيقة يساوي \"نصف ساعة\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-halfhour"
+      }
+    ]
+  },
+  {
+    "texte": "العقرب الكبير على 6، والعقرب الصغير بين 9 و10. اكتب الساعة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-halfhour"
+      }
+    ]
+  },
+  {
+    "texte": "متى نقول \"والنصف\" عند قراءة الساعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-halfhour"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل وقت بالنشاط المناسب من يوم التلميذ!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "السَّاعَةُ السَّابِعَةُ وَالنِّصْفُ صَبَاحاً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الذَّهَابُ إِلَى المَدْرَسَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "السَّاعَةُ الثَّامِنَةُ وَالنِّصْفُ مَسَاءً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّحْضِيرُ لِلنَّوْمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الذَّهَابُ لِلْمَدْرَسَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على فئات الدينار الجزائري وحل مسائل شراء بسيطة بالجمع أو الطرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ذهبت مع أمك للسوق ومعها ورقة 500 دج، واشترت خبزاً بـ 50 دج. كم بقي معها من المال؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على قطع وأوراق العملة الجزائرية (50، 100، 200، 500 دج)، ويحل مسائل بسيطة عن الشراء باستعمال الجمع والطرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "نستعمل الدينار الجزائري كل يوم في السوق والمدرسة. معرفة فئاته وكيفية الجمع والطرح بها تساعدنا على التسوق بذكاء ومعرفة ما ندفعه وما يعاد لنا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج): عملة بلادنا، ولها قطع نقدية وأوراق بفئات مختلفة: 50، 100، 200، 500 دج.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِمَعْرِفَةِ ثَمَنِ عدة أشياء معاً، نجمع أثمانها (مثال: قلم بـ 30 دج + كراس بـ 50 دج = 80 دج).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "لِمَعْرِفَةِ البَاقِي بعد الدفع، نطرح ثمن الشيء من المبلغ الذي دفعناه (مثال: دفعت 100 دج لشيء ثمنه 60 دج، الباقي = 100 - 60 = 40 دج).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "البَاقِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "أجمع دائماً عندما أريد معرفة مجموع أثمان أشياء، وأطرح عندما أريد معرفة الباقي بعد الدفع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "فئات الدينار: 50، 100، 200، 500 دج. لثمن أشياء متعددة: أجمع. للباقي بعد الدفع: أطرح المبلغ المدفوع ناقص الثمن.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "اشتريت قلماً بـ 40 دج وممحاة بـ 20 دج. كم دفعت في المجموع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-currency"
+      }
+    ]
+  },
+  {
+    "texte": "دفعت 200 دج ثمن كتاب يكلف 150 دج. كم استرجعت من الباقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-currency"
+      }
+    ]
+  },
+  {
+    "texte": "اشترى ياسين حقيبة بـ 350 دج، ودفع بورقة 500 دج. كم استرجع من الباقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-currency"
+      }
+    ]
+  },
+  {
+    "texte": "احسب الثمن الإجمالي أو الباقي بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عصير بـ 80 دج + خبز بـ 50 دج = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "130 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "30 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "110 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "دفعت 500 دج ثمن لعبة بـ 300 دج. الباقي = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "200 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "800 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "300 دج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "إجراء طرح عمودي بسيط بالاحتفاظ بين عددين من رقمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عند آدم 42 كرّاساً. أعطى 18 كرّاساً لأخيه. في الوحدات: 2 أصغر من 8. ماذا نفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلّم التلميذ طرح عددين من رقمين عندما تكون الوحدات في الأعلى أصغر من الوحدات في الأسفل: نستعير عشرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "أحياناً لا نقدر أن نطرح الوحدات لأنها أصغر. نستعير حزمة عشرات ونفكّها إلى 10 وحدات — نفس فكرة الحزم في الجمع بالاحتفاظ، لكن بالعكس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "نَبْدَأُ دَائِماً مِنَ اليَمِينِ: الوَحَدَاتُ ثُمَّ العَشَرَاتُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "إِذَا كَانَ الرَّقْمُ فَوْقُ أَصْغَرَ، نَسْتَعِيرُ 1 عَشَرَةً (= 10 وَحَدَاتٍ) مِنَ العَشَرَاتِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "مِثَالُ 42 − 18: الوَحَدَاتُ 12 − 8 = 4، ثُمَّ العَشَرَاتُ 3 − 1 = 2. النَّاتِجُ 24.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَضَعُ العَدَدَ الأَكْبَرَ فِي الأَعْلَى دَائِماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الاِسْتِعَارَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الاِحْتِفَاظُ فِي الطَّرْحِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "لا نعكس: نستعير ثم نطرح الرقم السفلي من العلوي الجديد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "كل استعارة تنقص رقم العشرات فوق بواحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "وحدات أصغر فوق؟ أستعير 10، أطرح، ثم أنقص العشرات بواحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "في 42 − 18، كم تصبح الوحدات بعد الاستعارة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-subcarry"
+      }
+    ]
+  },
+  {
+    "texte": "احسب: 63 − 29",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-subcarry"
+      }
+    ]
+  },
+  {
+    "texte": "متى نستعير عشرة في الطرح العمودي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-subcarry"
+      }
+    ]
+  },
+  {
+    "texte": "42 − 18 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math2ap-subcarry"
+      }
+    ]
+  },
+  {
+    "texte": "احسب بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "51 − 17 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "34",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "44",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "24",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "80 − 35 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "35",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "إحاطة عدد بأصغر وأكبر عشرة (أو مئة) محيطتين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 47 على الشريط: ما أقرب عشرة قبله؟ وما أقرب عشرة بعده؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يحيط التلميذ عدداً بعشرتين متتاليتين أو بمئتين، ويرتّب الأعداد على الشريط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الإحاطة تعني وضع العدد بين جارين دائريين: عشرات أو مئات. هذا يساعدنا على التقدير والمقارنة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الإِحَاطَةُ بِالعَشَرَاتِ: نبحث عن العشرة التي قبل العدد مباشرة والعشرة التي بعده مباشرة. 47 بين 40 و 50.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِحَاطَةُ بِالمِئَاتِ: 347 بين 300 و 400.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "السَّابِقُ = العدد − 1. التَّالِي = العدد + 1.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَى الشَّرِيطِ: كلما اتجهنا يميناً زاد العدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الإِحَاطَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "العَشَرَةُ المُغْلَقَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الأصغر يساراً دائماً: 40 < 47 < 50.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أحصر العدد بين عشرتين أو مئتين متتاليتين، الأصغر يساراً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل: 40 < 47 < …",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-frame"
+      }
+    ]
+  },
+  {
+    "texte": "أحِط 215 بالمئات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-frame"
+      }
+    ]
+  },
+  {
+    "texte": "ما الإحاطة الصحيحة لـ 36؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-frame"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الإحاطة الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "81",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "80 < 81 < 90",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "70 < 81 < 80",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "640",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "600 < 640 < 700",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "640 < 600 < 700",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تمييز الزاوية القائمة واستعمال المزواة للتحقق منها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انظر إلى ركن كراسك ثم إلى ركن بلاطة في الأرض: هل هما متشابهان؟ هذا الركن المستقيم يسمى «زاوية قائمة».",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرّف التلميذ على الزاوية القائمة في المربع والمستطيل، ويتحقق منها بالمزواة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "قبل رسم المستقيمات في السنة الثالثة ابتدائي، نتعلّم رؤية الركن القائم في الأشياء من حولنا والتحقق بالمزواة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّاوِيَةُ القَائِمَةُ: ركن مربع تماماً، مثل ركن الورقة أو البلاط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُرَبَّعُ وَالمُسْتَطِيلُ لَهُمَا 4 زَوَايَا قَائِمَة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المِزْوَاةُ: أداة على شكل مثلث قائم نضعها على الركن: إن انطبقت فالزاوية قائمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الدَّائِرَةُ لَيْسَ لَهَا زَاوِيَةٌ. المُثَلَّثُ قَدْ يَكُونُ فِيهِ زَاوِيَةٌ قَائِمَةٌ وَاحِدَةٌ أَوْ لَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّاوِيَةُ القَائِمَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المِزْوَاةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "نتحقق بالمزواة: كثير من الأركان أوسع أو أضيق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الزاوية القائمة = ركن المربع. المزواة تتحقق منها. المربع والمستطيل فيهما 4.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي شكل له 4 زوايا قائمة؟ المربع أم الدائرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-rightangle"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا نتحقق أن الركن قائم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-rightangle"
+      }
+    ]
+  },
+  {
+    "texte": "كم زاوية قائمة للمستطيل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-rightangle"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف الركن!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ركن الدفتر",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "زَاوِيَةٌ قَائِمَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "لَيْسَتْ قَائِمَةً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "فتحة البيتزا المثلثة الحادة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين المتر والسنتيمتر واستعمال كل واحد في الموقف المناسب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "مسطرتك طولها 20 سم. هل تكفي لقياس طول الباب؟ ماذا نستعمل إذن؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "بعد المسطرة بالسم، يتعرّف التلميذ على المتر: 1 م = 100 سم، ويختار الوحدة المناسبة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "المسطرة تقيس السم. شريط القياس أو المتر الخشبي يقيس الأطوال الكبيرة. الوحدتان تتعاونان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "السَّنْتِيمِتْرُ (سم): وحدة صغيرة للقلم، الممحاة، الكراس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المِتْرُ (م): وحدة أكبر لطول القسم، الباب، الطفل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "1 م = 100 سم. متران = 200 سم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نختار الوحدة: إن كان الشيء أقصر من المسطرة غالباً نستخدم السم، وإن كان أطول بكثير نستخدم المتر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المِتْرُ (م)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "8 م أوضح من 800 سم لطول القسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "القلم → سم. الباب والقسم → م. 1 م = 100 سم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم سنتيمتراً في متر واحد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-meter"
+      }
+    ]
+  },
+  {
+    "texte": "هل نقيس طول الملعب بالسم أم بالمتر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-meter"
+      }
+    ]
+  },
+  {
+    "texte": "3 م تساوي كم سم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-meter"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الوحدة المناسبة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "طول الممحاة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "سم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "م",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "طول السبورة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين الغرام والكيلوغرام وربط كل وحدة بأشياء مألوفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "كيس سكر وزنه 1 كغ (kg/كيلوغرام)، وعلبة بسكويت وزنها 200 غ (g/غرام). أيهما وحدة أكبر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "بعد مقارنة أثقل/أخف، يتعرّف التلميذ على وحدتي الكتلة: غرام للخفيف، كيلوغرام للثقيل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "اليد تقول «أثقل». الميزان يقول رقماً. نتعلّم قراءته بالغرام أو بالكيلوغرام حسب الشيء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الغِرَامُ (غ): وحدة صغيرة: رسالة، بيضة، قطعة شوكولا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الكِيلُوغِرَامُ (كغ): وحدة أكبر: كيس سكر، كيس دقيق، وكتلة الطفل تقال بالكيلوغرام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكيلوغرام أكبر بكثير من الغرام: كيس سكر 1 كغ يساوي كيسين من 500 غ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "المِيزَانُ يخبرنا بالكتلة، لا بالحجم: علبة كبيرة فارغة أخف من حجر صغير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الغِرَامُ (غ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الكِيلُوغِرَامُ (كغ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "السم للطول، الكغ والغرام للثقل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "خفيف وصغير → غرام. ثقيل (سكر، طفل) → كيلوغرام. 1 كغ = 500 غ + 500 غ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أيهما أثقل: كيس سكر كتلته 1 كغ أم علبة بسكويت كتلتها 200 غ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-kg"
+      }
+    ]
+  },
+  {
+    "texte": "نزن كيس البطاطا عادة بـ: غ أم كغ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-kg"
+      }
+    ]
+  },
+  {
+    "texte": "أي جملة صحيحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-kg"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الوحدة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "حبة دواء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "غ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كغ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "وزن الطفل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "ربط مجموعات متساوية بجمع مكرر، وقراءة صيغة بسيطة مثل 3 × 3 = 9.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "في كل صف 4 طاولات، وفي 3 صفوف. كم طاولة؟ نعد: 4 + 4 + 4 = 12.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يكتشف التلميذ أن الضرب هو جمع متكرر لنفس العدد (مجموعات متساوية) — تمهيداً لحفظ الجداول.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الضرب ليس حفظاً فقط في السنة الثانية ابتدائي: نعد مجموعات متساوية ونجمع. مثل صفوف الكراسي في القسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الضَّرْبُ في السَّنَةِ الثَّانِيَةِ ابْتِدَائِيّ = جَمْعُ نَفْسِ العَدَدِ عِدَّةَ مَرَّاتٍ (جَمْعٌ مُكَرَّرٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "مِثَال: 3 × 4 = 3 + 3 + 3 + 3 = 12 (أربع مجموعات من 3).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "مِثَال: 5 × 2 = 5 + 5 = 10 (مجموعتان من 5).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَتَعَلَّمُ فِي هَذِهِ السَّنَةِ جَدَاوِلَ الضَّرْبِ فِي 2 وَ3 وَ4 وَ5 وَ10، وَبَاقِي الجَدَاوِلِ تُدْرَسُ فِي السَّنَةِ الثَّالِثَةِ ابْتِدَائِيّ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "مَجْمُوعَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "جَمْعٌ مُكَرَّرٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "عَلامَةُ ×",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "في 3 × 4 نكرر العدد 3 أربع مرات، ولا نجمع 3 + 4.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "عد المجموعات أولاً، ثم اجمع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الضرب = جمع مكرر لنفس العدد. 3 × 4 = 3 + 3 + 3 + 3.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "3 × 2 = 3 + … = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math2ap-mult"
+      }
+    ]
+  },
+  {
+    "texte": "4 × 3 = 4 + 4 + 4 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math2ap-mult"
+      }
+    ]
+  },
+  {
+    "texte": "3 × 4 تعني:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math2ap-mult"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ناتج الجمع المكرر!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "2 × 5 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "5 × 2 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "15",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  }
+]

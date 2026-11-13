@@ -1,0 +1,1837 @@
+[
+  {
+    "texte": "آدَابُ الاسْتِمَاعِ وَالحِوَارِ وَاحْتِرَامُ المُعَلِّمِ وَالرِّفَاقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَعَرَّفُ عَلَى رُمُوزِ وَطَنِي الجَزَائِرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "نَظَافَةُ المُحِيطِ المَدْرَسِيِّ وَالحَيِّ وَحِمَايَةُ المُمْتَلَكَاتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الفَرْقُ بَيْنَ مُمْتَلَكَاتِي الخَاصَّةِ وَالمُمْتَلَكَاتِ العَامَّةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "السَّلَامَةُ المُرُورِيَّةُ: طَرِيقُ المَدْرَسَةِ وَإِشَارَةُ المُرُورِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حَقِّي فِي الرَّاحَةِ وَاللَّعِبِ وَالمُشَارَكَةِ فِي الأَنْشِطَةِ المَدْرَسِيَّةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "وَثَائِقِي: بِطَاقَةُ التَّعْرِيفِ وَدَفْتَرُ العَائِلَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "تطبيق آداب الاستماع والحوار البسيطة، واحترام المعلم والزملاء في محيط القسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث إذا تكلم كل تلاميذ القسم في نفس الوقت؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ قواعد الاستماع الجيد وأدب الحوار مع الآخرين، وأهمية احترام المعلم والرفاق داخل القسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "القسم بيت صغير نتعلم فيه معاً، ولكي يسود الاحترام والنظام، يجب أن نتعلم كيف نستمع لبعضنا البعض وكيف نتحاور بأدب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الاسْتِمَاعُ الجَيِّدُ: أنظر لمن يتكلم، وأنصت له دون مقاطعته حتى ينتهي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَدَبُ الحِوَارِ: أرفع يدي قبل الكلام، وأنتظر دوري، وأتحدث بصوت هادئ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "احْتِرَامُ المُعَلِّمِ: أستمع لتوجيهاته، وأنفذ ما يطلبه مني بأدب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "احْتِرَامُ الرِّفَاقِ: لا أسخر من أحد، وأتعاون معهم، وأشاركهم أدواتي عند الحاجة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الإِنْصَاتُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحِوَارُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ننتظر دائماً حتى ينتهي المتحدث من كلامه قبل أن نتكلم نحن.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "نرفع اليد بهدوء وننتظر دورنا، بدل الصراخ أو رفع الصوت.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أستمع دون مقاطعة، أرفع يدي قبل الكلام، وأحترم معلمي ورفاقي دائماً — هذا يجعل القسم مكاناً هادئاً ومريحاً للجميع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الكلام في القسم، ماذا يجب أن أفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-listening"
+      }
+    ]
+  },
+  {
+    "texte": "زميلك يتحدث الآن، ما التصرف الصحيح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-listening"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو التصرف الصحيح إذا أردت الكلام في القسم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-listening"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح في كل موقف من مواقف القسم!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "المعلم يشرح الدرس",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَسْتَمِعُ بِهُدُوءٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَحَدَّثُ مَعَ زَمِيلِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-listening-respect",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على العلم والعملة والنشيد الوطني الجزائري واحترامها كرموز للسيادة الوطنية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "كل صباح في طابور المدرسة، ماذا نرفع بفخر ونحن واقفون بهدوء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على العلم الوطني والدينار الجزائري والنشيد الوطني \"قسماً\" كرموز تمثل سيادة الجزائر واستقلالها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "علمنا ودينارنا ونشيدنا الوطني رموز غالية تذكّرنا بحب وطننا الجزائر وسيادته المستقلة، ونحترمها جميعاً بفخر واعتزاز.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَمُ الجَزَائِرِ : لونان أخضر وأبيض، وفي وسطه هلال ونجمة حمراء، نحييه بفخر واعتزاز.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج): العُمْلَةُ الوَطَنِيَّةُ الرَّسْمِيَّةُ التي نستعملها للبيع والشراء في كل أنحاء الجزائر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشِيدُ الوَطَنِيُّ \"قَسَماً\" : نشيد بلادنا الذي نردده بفخر في المناسبات الوطنية الكبرى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "هَذِهِ الرُّمُوزُ تُمَثِّلُ سِيَادَةَ الجَزَائِرِ وَاسْتِقْلَالَهَا، ونحترمها جميعاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "السِّيَادَةُ الوَطَنِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل دائماً: أخضر وأبيض، مع هلال ونجمة حمراء في الوسط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "علم الجزائر: أخضر وأبيض بهلال ونجمة حمراء. عملتها: الدينار الجزائري. نشيدها الوطني: \"قسماً\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم عملة بلادي الجزائر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-national-symbols",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "المحافظة على نظافة المحيط المدرسي والحي، واحترام الممتلكات الخاصة والعامة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث إذا رمى كل تلميذ نفاياته على الأرض بدل سلة المهملات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ أهمية المحافظة على نظافة القسم والمدرسة والحي، واحترام الممتلكات الخاصة والعامة وعدم إتلافها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "المدرسة والحي بيتنا الكبير، ونظافتهما مسؤوليتنا جميعاً. كما أن احترام أدوات الآخرين والأماكن العامة يجعل حياتنا الجماعية أجمل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْمِي النِّفَايَاتِ فِي سَلَّةِ المُهْمَلَاتِ وَلَيْسَ عَلَى الأَرْضِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُحَافِظُ عَلَى الحَدَائِقِ العَامَّةِ وَالأَلْعَابِ فِي حَيِّي وَلَا أُتْلِفُهَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُمْتَلَكَاتُ الخَاصَّةُ (مثل أدوات زميلي) وَالمُمْتَلَكَاتُ العَامَّةُ (مثل مقاعد المدرسة) يجب أن أحترمها كأنها ملكي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "المُمْتَلَكَاتُ العَامَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِتْلَافُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "كل فرد مسؤول عن عدم تلويث المكان أصلاً، بدل الاعتماد على تنظيف الآخرين له.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "يجب أن أحترم كل ممتلكات مدرستي وحيّي كما أحترم أغراضي الخاصة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أرمي النفايات في مكانها، أحافظ على نظافة مدرستي وحيّي، وأحترم الممتلكات الخاصة والعامة ولا أُتلفها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أين نضع النفايات بعد الأكل في المدرسة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-cleanliness"
+      }
+    ]
+  },
+  {
+    "texte": "زميلك يريد كسر مقعد المدرسة للعب. ماذا تنصحه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-cleanliness"
+      }
+    ]
+  },
+  {
+    "texte": "مقاعد المدرسة والألعاب في الحديقة العامة هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-cleanliness"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح للحفاظ على النظافة والممتلكات!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "رأيت ورقة على أرض القسم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَلْتَقِطُهَا وَأَضَعُهَا فِي سَلَّةِ المُهْمَلَاتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتْرُكُهَا هُنَاكَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-cleanliness-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين الممتلكات الخاصة والعامة، وتطبيق سلوك الأمانة والاحترام تجاه كل نوع منها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "محفظتك ملك لك وحدك، لكن مقاعد المدرسة يستعملها كل التلاميذ. هل هما نفس النوع من الممتلكات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميز التلميذ بين ممتلكاته الشخصية (أدواته الخاصة) والممتلكات العامة (مرافق المدرسة والشارع)، ويتعلم احترام النوعين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "بعض الأشياء تخصني وحدي، وبعضها الآخر يخص الجميع معاً. كلا النوعين يستحق نفس الاحترام والأمانة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المُمْتَلَكَاتُ الخَاصَّةُ: أشياء تخصني وحدي أو تخص شخصاً آخر بعينه، مثل محفظتي وأقلامي وألعابي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُمْتَلَكَاتُ العَامَّةُ: أشياء يستفيد منها كل الناس معاً، مثل مقاعد المدرسة، الحدائق العامة، وإنارة الشارع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَحْتَرِمُ النَّوْعَيْنِ بِنَفْسِ القَدْرِ: لَا آخُذُ مُمْتَلَكَاتِ غَيْرِي دُونَ إِذْنٍ، وَلَا أُتْلِفُ مَا يَسْتَفِيدُ مِنْهُ الجَمِيعُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "إِذَا وَجَدْتُ شَيْئاً لَيْسَ مِلْكِي فِي الشَّارِعِ أَوِ المَدْرَسَةِ، أَسْأَلُ عَنْ صَاحِبِهِ أَوْ أُسَلِّمُهُ لِلْمُعَلِّمِ بَدَلَ أَخْذِهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المُمْتَلَكَاتُ الخَاصَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَمَانَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الممتلكات العامة تخص الجميع معاً، فإتلافها يضر كل من يستفيد منها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "إذا وجدت شيئاً ليس ملكك، الأمانة تقتضي تسليمه لصاحبه أو للمعلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "ممتلكاتي الخاصة (محفظتي، أقلامي) تخصني وحدي. الممتلكات العامة (مقاعد المدرسة، الحديقة) تخص الجميع. أحترم النوعين بنفس القدر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "محفظتك المدرسية، هل هي ممتلكات خاصة أم عامة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-property2"
+      }
+    ]
+  },
+  {
+    "texte": "وجدت دفتراً في القسم ليس دفترك. ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-property2"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أفعل إذا وجدت شيئاً ليس ملكي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-property2"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف كل شيء: ممتلكات خاصة أم عامة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "أَلْعَابِي فِي البَيْتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُمْتَلَكَاتٌ خَاصَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "مُمْتَلَكَاتٌ عَامَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "مَقَاعِدُ الحَدِيقَةِ العَامَّةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t2-public-private-property",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "تطبيق قواعد السلامة المرورية البسيطة عند التنقل إلى المدرسة وعبور الطريق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ما لون إشارة المرور الذي يعني \"قف\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ قواعد السلامة الأساسية أثناء التنقل إلى المدرسة، ومعنى ألوان إشارة المرور الثلاثة وكيفية عبور الطريق بأمان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الطريق إلى المدرسة يحتاج انتباهاً وقواعد بسيطة نتبعها لنكون آمنين دائماً، وأهم هذه القواعد فهم ألوان إشارة المرور والعبور من المكان الصحيح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّوْنُ الأَحْمَرُ : يعني \"قِف\" — توقف تماماً ولا تتحرك.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّوْنُ الأَصْفَرُ : يعني \"اسْتَعِدَّ\" — انتبه فالإشارة ستتغير قريباً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّوْنُ الأَخْضَرُ : يعني \"امْشِ\" — يمكنك المرور بأمان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَعْبُرُ الطَّرِيقَ دَائِمًا مِنَ المَمَرِّ الرَّاجِلِ (الخُطُوطُ البَيْضَاءُ)، وَأَنْظُرُ يَمِيناً ثُمَّ يَسَاراً قَبْلَ العُبُورِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المَمَرُّ الرَّاجِلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "إِشَارَةُ المُرُورِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "العبور خارج الممر الراجل خطير جداً؛ يجب استعمال الممر المخصص دائماً حتى لو كان أبعد قليلاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "حتى مع الضوء الأخضر، يجب التأكد بالنظر يميناً ثم يساراً قبل العبور تماماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أحمر = قف. أصفر = استعد. أخضر = امشِ بحذر. أعبر دائماً من الممر الراجل بعد النظر يميناً ثم يساراً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما معنى اللون الأخضر في إشارة المرور؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-traffic"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يجب أن أفعل قبل عبور الطريق حتى في الممر الراجل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-traffic"
+      }
+    ]
+  },
+  {
+    "texte": "أين يجب أن أعبر الطريق دائماً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-traffic"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح حسب لون الإشارة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الإشارة حمراء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَوَقَّفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَعْبُرُ بِسُرْعَةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الإشارة صفراء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَسْتَعِدُّ وَأَنْتَبِهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَعْبُرُ فَوْراً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-road-safety",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "إدراك الحق في الراحة واللعب والمشاركة في الأنشطة المدرسية، مع احترام حق الآخرين في نفس الأمر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "بعد إنهاء واجباتك المدرسية، ألا تستحق قليلاً من الوقت للعب والراحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على حقه في الراحة واللعب بعد إنجاز واجباته، وحقه في المشاركة في الأنشطة المدرسية المختلفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الدراسة مهمة، لكن الراحة واللعب والمشاركة في الأنشطة حق لكل تلميذ أيضاً، فهي تساعدني على النمو بسعادة وتجدد نشاطي للتعلم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي الرَّاحَةِ بَعْدَ إِنْجَازِ وَاجِبَاتِهِ المَدْرَسِيَّةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي اللَّعِبِ فِي فُسْحَةِ المَدْرَسَةِ مَعَ رِفَاقِهِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي المُشَارَكَةِ فِي الأَنْشِطَةِ المَدْرَسِيَّةِ المُخْتَلِفَةِ: الرِّيَاضَةُ، الرَّسْمُ، الأَنَاشِيدُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "مَعَ هَذِهِ الحُقُوقِ، عَلَيَّ وَاجِبُ احْتِرَامِ وَقْتِ رَاحَةِ زُمَلَائِي وَلَعِبِهِمْ أَيْضاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الفُسْحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّشَاطُ المَدْرَسِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الراحة واللعب يجددان نشاط الطفل الذهني والجسدي، وهما حق أساسي وليسا مضيعة للوقت.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "لي الحق في الراحة بعد الواجبات، وفي اللعب في الفسحة، وفي المشاركة في الأنشطة المدرسية — وأحترم نفس الحق لرفاقي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "متى يحق لي اللعب والراحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-rights2"
+      }
+    ]
+  },
+  {
+    "texte": "اذكر نشاطين مدرسيين يحق لي المشاركة فيهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-rights2"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو حقي في فسحة المدرسة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-rights2"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الحق الصحيح لكل تلميذ!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بعد إنجاز واجباتي، من حقي...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّاحَةُ وَاللَّعِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "العَمَلُ المُتَوَاصِلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t3-right-to-play-rest",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تسمية وثيقتين رسميتين وفهم أنهما تخصّان الهوية ولا نلعب بهما.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "عندما يطلب الموظف في البلدية «دفتر العائلة»، ماذا يُخرج الأب أو الأم من الحقيبة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرّف التلميذ على وثائق الهوية الرسمية للأسرة: بطاقة التعريف الوطنية ودفتر العائلة، دون بيانات حقيقية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "لكل أسرة أوراق تثبت من نحن. الطفل يعرف أسماءها ويحترمها؛ الوالدان يحتفظان بها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "بِطَاقَةُ التَّعْرِيفِ الوَطَنِيَّةُ: بطاقة رسمية تحمل اسم الشخص وصورته، للراشدين غالباً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "دَفْتَرُ العَائِلَةِ: دفتر تسجَّل فيه الأسرة (الوالدان والأبناء).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "البِطَاقَةُ المَدْرَسِيَّةُ مُخْتَلِفَةٌ: تُعرِّف بي في المدرسة فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "لَا نَرْسُمُ عَلَى الوَثَائِقِ وَلَا نُعْطِيهَا لِغَرِيبٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِطَاقَةُ التَّعْرِيفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "دَفْتَرُ العَائِلَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "المدرسية للمدرسة فقط. التعريف وثيقة الدولة للراشد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "بطاقة تعريف + دفتر عائلة = وثائق رسمية. نحفظها، لا نلعب بها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم الدفتر الذي تُسجَّل فيه الأسرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex1-civics2ap-docs"
+      }
+    ]
+  },
+  {
+    "texte": "هل نعطي دفتر العائلة لصديق في الساحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "practice",
+        "key": "practice-ex2-civics2ap-docs"
+      }
+    ]
+  },
+  {
+    "texte": "بطاقة التعريف الوطنية هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q1-civics2ap-docs"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الوثيقة المناسبة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "تُعرِّف بي داخل المدرسة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "يُسجَّل فيها الإخوة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "civics-2ap-t1-personal-documents",
+        "grade": "2AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  }
+]

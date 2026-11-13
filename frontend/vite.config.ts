@@ -41,6 +41,8 @@ export default defineConfig(() => {
           // course content is bundled into JS, not fetched as separate JSON at runtime, so this
           // alone is what makes "review a lesson offline" work).
           globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}', 'sounds/preschool/{ar,fr,en}/*.mp3', 'sounds/box/*.{mp3,ogg}'],
+          // Thousands of course clips must not delay installation; cache only those listened to.
+          globIgnores: ['**/course-cedar-*.mp3'],
           // Without this, every previous deploy's precache stays in storage forever once a new SW
           // activates — pure waste, and one more place a stale asset could theoretically still be
           // served from if a runtime-caching rule ever matched it by accident.
@@ -52,6 +54,16 @@ export default defineConfig(() => {
           maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
           navigateFallback: '/index.html',
           runtimeCaching: [
+            {
+              urlPattern: ({ url, sameOrigin }: { url: URL; sameOrigin: boolean }) => sameOrigin && /^\/sounds\/preschool\/(ar|fr|en)\/course-cedar-[a-f0-9]+\.mp3$/.test(url.pathname),
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'mssid-course-recordings-v1',
+                cacheableResponse: { statuses: [200] },
+                rangeRequests: true,
+                expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 30, purgeOnQuotaError: true },
+              },
+            },
             {
               // Only the endpoints explicitly marked permitAll in SecurityConfig belong in a
               // URL-keyed cache. All account, admin, payment, AI and premium requests bypass the

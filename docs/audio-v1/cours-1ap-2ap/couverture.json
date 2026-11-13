@@ -2,18 +2,18 @@
   "summary": {
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
-    "uniqueTexts": 3354,
-    "recordedTexts": 47,
-    "missingTexts": 3307,
-    "reusedFiles": 46,
-    "integrityCheckedArabicFiles": 478,
+    "uniqueTexts": 3353,
+    "recordedTexts": 71,
+    "missingTexts": 3282,
+    "reusedFiles": 70,
+    "integrityCheckedArabicFiles": 508,
     "byGrade": [
       {
         "grade": "1AP",
         "lessons": 57,
         "requestedSegments": 2412,
-        "recordedSegments": 24,
-        "lessonsWithAnyRecording": 20
+        "recordedSegments": 48,
+        "lessonsWithAnyRecording": 35
       },
       {
         "grade": "2AP",
@@ -135,154 +135,154 @@
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ 🦁🦆🍎🦊",
       "requestedSegments": 44,
-      "recordedSegments": 0
+      "recordedSegments": 3
     },
     {
       "lessonId": "arabic-1ap-t1-harakat",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
       "requestedSegments": 49,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t1-letters-group2",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ 🍌🐝🍋🍎",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-letters-group3",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ 🐻🪰🐟☀️",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-letters-group4",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ 🍇🐦‍⬛🐘🐱",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t3-letters-group5",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ 📖🌙🌹✋",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t3-tracing-name",
       "grade": "1AP",
       "titleAr": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي ✍️🎨",
       "requestedSegments": 40,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-madd",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي 🎵",
       "requestedSegments": 49,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t1-oral-daily",
       "grade": "1AP",
       "titleAr": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ 🏠🏫",
       "requestedSegments": 41,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ 🐪🍐🥬",
       "requestedSegments": 42,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-letter-zay",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: زَ 🦒",
       "requestedSegments": 38,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-letters-sad-family",
       "grade": "1AP",
       "titleAr": "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ 🌵🥚🦆",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-hamza",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء 🥚",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t2-letter-positions",
       "grade": "1AP",
       "titleAr": "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ 📝",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t3-tanween",
       "grade": "1AP",
       "titleAr": "التَّنْوِينُ: ً ٌ ٍ 🎵",
       "requestedSegments": 42,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "arabic-1ap-t1-school-axis",
       "grade": "1AP",
       "titleAr": "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ 🏫📚",
       "requestedSegments": 48,
-      "recordedSegments": 3
+      "recordedSegments": 4
     },
     {
       "lessonId": "arabic-1ap-t1-family-axis",
       "grade": "1AP",
       "titleAr": "عَائِلَتِي: أَبِي، أُمِّي، أَخِي 👨‍👩‍👧‍👦",
       "requestedSegments": 47,
-      "recordedSegments": 3
+      "recordedSegments": 4
     },
     {
       "lessonId": "arabic-1ap-t2-neighborhood-home",
       "grade": "1AP",
       "titleAr": "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ 🏘️",
       "requestedSegments": 46,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "arabic-1ap-t2-health-sports",
       "grade": "1AP",
       "titleAr": "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ 💪",
       "requestedSegments": 44,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "arabic-1ap-t2-nature-axis",
       "grade": "1AP",
       "titleAr": "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ 🌳🌸",
       "requestedSegments": 45,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "arabic-1ap-t3-play-entertainment",
       "grade": "1AP",
       "titleAr": "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى ⚽🎨",
       "requestedSegments": 46,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "arabic-1ap-t3-childhood-holidays",
       "grade": "1AP",
       "titleAr": "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ 🎉",
       "requestedSegments": 45,
-      "recordedSegments": 1
+      "recordedSegments": 2
     },
     {
       "lessonId": "science-1ap-t1-five-senses-hygiene",
@@ -1034,6 +1034,276 @@
       ]
     },
     {
+      "text": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-letters-group1",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62743703041bc35a.mp3"
+      ]
+    },
+    {
+      "text": "استمع وركّز: أَسَدٌ ، بَطَّةٌ ، تُفَّاحَةٌ ، ثَعْلَبٌ — ما الصوت الأول في كل كلمة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-letters-group1",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bbf55c2449325213.mp3"
+      ]
+    },
+    {
+      "text": "حرف الأَلِفِ (أ): صوته \"أَ\" مثل أَسَدٌ وَأَرْنَبٌ .",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-letters-group1",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8cfc034c9eb3fcce.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-harakat",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6312b3c166b712b1.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-letters-group2",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac5b7eb08c235872.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-letters-group3",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1046ce479c021cb0.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-letters-group4",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-87dd7f05339f2b1a.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-letters-group5",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d367a3bb31617766.mp3"
+      ]
+    },
+    {
+      "text": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-tracing-name",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5281fcb438bb4e09.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-madd",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a84fa5cdac4a3f44.mp3"
+      ]
+    },
+    {
+      "text": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-oral-daily",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d3d7f21e0e243175.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-00f5ba97844b5123.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: زَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-letter-zay",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7899a0b1137b5765.mp3"
+      ]
+    },
+    {
+      "text": "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-letters-sad-family",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f403efcc3e24ea00.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-hamza",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-050f66874086fd4b.mp3"
+      ]
+    },
+    {
+      "text": "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-letter-positions",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-177c68ec11ea9624.mp3"
+      ]
+    },
+    {
+      "text": "التَّنْوِينُ: ً ٌ ٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d6b3c627038dcca.mp3"
+      ]
+    },
+    {
+      "text": "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-school-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b456bd30fd63ae62.mp3"
+      ]
+    },
+    {
       "text": "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.",
       "targets": [
         {
@@ -1076,6 +1346,21 @@
       ],
       "clips": [
         "/sounds/preschool/ar/reading-first-school-pen.mp3"
+      ]
+    },
+    {
+      "text": "عَائِلَتِي: أَبِي، أُمِّي، أَخِي",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-family-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-81d1f7fda5015abd.mp3"
       ]
     },
     {
@@ -1124,6 +1409,21 @@
       ]
     },
     {
+      "text": "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-neighborhood-home",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6340da5e59e96775.mp3"
+      ]
+    },
+    {
       "text": "سَمِّ الأَشْيَاءَ فِي الحَيِّ: بَيْتٌ، شَارِعٌ، جَارٌ.",
       "targets": [
         {
@@ -1136,6 +1436,21 @@
       ],
       "clips": [
         "/sounds/preschool/ar/language-next-ar-3.mp3"
+      ]
+    },
+    {
+      "text": "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-health-sports",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ff52e103d265034.mp3"
       ]
     },
     {
@@ -1154,6 +1469,21 @@
       ]
     },
     {
+      "text": "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-nature-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ed70adfa0c4ef5d.mp3"
+      ]
+    },
+    {
       "text": "سَمِّ أَشْيَاءَ الطَّبِيعَةِ: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ.",
       "targets": [
         {
@@ -1169,6 +1499,21 @@
       ]
     },
     {
+      "text": "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-play-entertainment",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e68a5ff0a132777c.mp3"
+      ]
+    },
+    {
       "text": "تَعَلَّمْ كَلِمَاتِ اللَّعِبِ وَالتَّسْلِيَةِ.",
       "targets": [
         {
@@ -1181,6 +1526,21 @@
       ],
       "clips": [
         "/sounds/preschool/ar/language-next-ar-6.mp3"
+      ]
+    },
+    {
+      "text": "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-childhood-holidays",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-059801204ecbfde3.mp3"
       ]
     },
     {

@@ -1,0 +1,8012 @@
+[
+  {
+    "texte": "أُقَارِنُ: أَطْوَلُ، أَثْقَلُ، أَكْبَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أُقَارِنُ بِالرَّمْزَيْنِ < وَ >",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أُحَاذِي النِّقَاطَ وَأَرْسُمُ بِالمِسْطَرَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "انظر في غرفتك: أين يوجد المصباح ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "وأين يوجد السجاد ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ: الشيء الموجود في الأعلى (مثل: القطة فوق الطاولة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَ: الشيء الموجود في الأسفل (مثل: الكرة تحت السرير).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَمَامَ: الشيء المقابل لوجهي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "وَرَاءَ: الشيء الموجود في ظهري.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "بَيْنَ: الشيء في الوسط، مثل الكرة بين الكرسي والطاولة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "أَعْلَى / أَسْفَل: السقف في الأعلى، والأرض في الأسفل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-5"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-spatial-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-spatial-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَمَامَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-spatial-opt-a"
+      },
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t1-spatial-position",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "وَرَاءَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-3"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-spatial-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-spatial-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "بَيْنَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-4"
+      },
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-spatial-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أَعْلَى / أَسْفَل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-5"
+      }
+    ]
+  },
+  {
+    "texte": "أين تجلس القطة؟ (فوق الكرسي)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "القطة فوق الكرسي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ضع دباً صغيراً فوق الطاولة ثم تحته واطلب من الطفل نطق الموضع بصوت واضح ومرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "فوق / تحت، أمام / وراء، وبين = في الوسط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أين يجلس العصفور؟ (فوق الغصن أم تحته؟)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "الكرة بين الكرسي والطاولة. أين هي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "ارْبِطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-spatial"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-rl"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-grandeurs"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-group2",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-group2"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group3",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-group3"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group4",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-group4"
+      },
+      {
+        "lessonId": "arabic-1ap-t3-letters-group5",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-group5"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-jha"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-sad-family",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-sad"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-school-axis",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-school"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-family-axis",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar1ap-family"
+      },
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-locomotion"
+      },
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-bodyparts"
+      },
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "أين توجد الشمس في النهار؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ فِي السَّمَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-spatial-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَ فِي الأَرْضِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-spatial-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "القطة على الكرسي. أين هي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "الكرة بين كرسيين. أين هي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "باب البيت أمامك. أين الباب؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-spatial"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الموضع الصحيح لكل شيء بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الحذاء بالنسبة للمكتب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَ المَكْتَبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ السَّقْفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكتاب بالنسبة للطاولة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "فَوْقَ الطَّاوِلَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَ الأَرْضِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "العصفور على الغصن",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "السجاد في الغرفة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-spatial-relations",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "بأي يد تأكل وتسلم على زملائك؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "إنها يدك اليمنى الجميلة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "اليَدُ اليُمْنَى : اليد التي نأكل بها ونسلّم بها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "اليَدُ اليُسْرَى : اليد التي في جهة القلب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "دَاخِلٌ : الشيء المحاط والموجود في الداخل (مثل: الأقلام داخل المقلمة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "خَارِجٌ : الشيء الموجود في الخارج.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "يَمِينٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-rl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "يَسَارٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-rl-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "دَاخِلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-rl-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-rl-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "خَارِجٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-3"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-rl-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-rl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أين توجد الأقلام؟ (داخل المقلمة)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "داخل المقلمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم مع الطفل إطاراً واطلب منه وضع الألعاب داخله وخارجه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "اليد اليمنى للأكل والمصافحة. داخل الصندوق عكس خارج الصندوق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "وضعت أمي التفاحات في السلة . أين توجد التفاحات؟ (داخل السلة أم خارجها؟)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "بِأَيِّ يَدٍ تُسَلِّمُ عَلَى صَدِيقِكَ عِنْدَ اللِّقَاءِ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "بأي يد نأكل الطعام باسم الله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "بِاليَدِ اليُمْنَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-rl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِاليَدِ اليُسْرَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-rl-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "التفاحة في السلة. أين هي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "الكلب في الحديقة لا في البيت. أين هو؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "هذه يد الأكل والمصافحة:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-rl"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الإجابة الصحيحة بالسرعة القصوى!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الأقلام الملونة في المحفظة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "دَاخِلَ المِحْفَظَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "خَارِجَ المَدْرَسَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكُرَةُ مَوْضُوعَةٌ عَلَى الأَرْضِ بِجَانِبِ الصُّنْدُوقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "خَارِجَ الصُّنْدُوقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "دَاخِلَ الصُّنْدُوقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "السمك في الماء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "دَاخِلَ الحَوْضِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "خَارِجَ البَحْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بأي يد نصافح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "اليُمْنَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اليُسْرَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-right-left-inside-outside",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ارفع يدك وعُدَّ أصابعك واحداً واحداً: 1، 2، 3، 4، 5!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "العَدَدُ 0 يعني: لا يوجد أي شيء، الصندوق فارغ تماماً .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "1 = شمس واحدة، أنف واحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "2 = عينان، أذنان، يدان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "3 = إشارات المرور الثلاث.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "4 = عجلات السيارة الأربع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "5 = أصابع اليد الواحدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-5"
+      }
+    ]
+  },
+  {
+    "texte": "العَدُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصِّفْرُ 0",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد التفاحات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "3 تفاحات",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "استخدم أصابع يد الطفل واطلب منه تمثيل الأرقام من 1 إلى 5.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أصابع اليد الواحدة 5. والصفر يعني لا يوجد شيء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم قطة في هذه المجموعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "كم أذناً للأرنب الجميل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "ارْبِطْ العَدَدَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "صندوق ليس فيه أي كرة، كم كرة فيه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "0 (صِفْر)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num5-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "5",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num5-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num5-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num5-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num5-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num10-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "كم نجمة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "3",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num5-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num5-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-shapes-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-add-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-add-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-sub-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-t90-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-group1",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group1-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group3",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group3-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letter-positions",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q2-ar1ap-pos-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "كم إصبعاً في يد واحدة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "4",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num5-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-shapes-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-add-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-add-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-pl-opt-b"
+      },
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-seasons-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "ما بعد 4؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num5"
+      }
+    ]
+  },
+  {
+    "texte": "عُدّ الأصابع واختر الرقم بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "(كل أصابع يد واحدة)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "(إصبعان مرفوعان)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "2",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-sub-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-pl-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-group1",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q2-ar1ap-group1-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-group1",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group1-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group4",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group4-opt-a"
+      },
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-seasons-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "1",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-group1",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q2-ar1ap-group1-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group3",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group3-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letters-group4",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-group4-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-letter-positions",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q2-ar1ap-pos-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "قبل 3 يأتي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-numbers-0-5",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "ما شكل عجلة الدراجة ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "وما شكل قطعة البيتزا ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "الدَّائِرَةُ : شكل مستدير كالشمس أو العجلة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُرَبَّعُ : له 4 أضلاع متساوية مثل النافذة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُثَلَّثُ : له 3 أضلاع مثل قطعة الجبن أو الخيمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "المُسْتَطِيلُ : يشبه الباب أو شاشة الهاتف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الدَّائِرَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُرَبَّعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُثَلَّثُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "المُسْتَطِيلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-3"
+      }
+    ]
+  },
+  {
+    "texte": "ما شكل هذه الكرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "دَائِرَةٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "اطلب من الطفل رسم دائرة في الهواء بسبابته.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "دائرة مستديرة، مربع بـ 4 أضلاع، ومثلث بـ 3 أضلاع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم هذا الشكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "كَمْ ضِلْعًا لِلْمُرَبَّعِ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "ارْبِطْ الشَّكْلَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "كم ضلعاً للمثلث؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "3 أَضْلاَع",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-shapes-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "4 أَضْلاَع",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-shapes-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "ما شكل الشمس؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "دَائِرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-shapes-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-shapes-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "مُرَبَّعٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-shapes-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كم ضلعاً للمربع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "شكل الباب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-shapes"
+      }
+    ]
+  },
+  {
+    "texte": "مُسْتَطِيلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-shapes-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل شيء بشكله المناسب!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عجلة السيارة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "شَاشَةُ الهَاتِفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "مُثَلَّثٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t2-shapes",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "قطعة البيتزا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "النافذة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-shapes-colors",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "يد كاملة (5) ثم إصبع، إصبعان، ثلاثة، أربعة: 6، 7، 8، 9!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "6 = يد (5) + 1.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "7 = يد (5) + 2.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "8 = يد (5) + 3.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "9 = يد (5) + 4.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "السَّابِقُ: العدد الذي يأتي قبل. اللَّاحِقُ: الذي يأتي بعد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "السَّابِقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّاحِقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ما قبل 7؟ ما بعد 7؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "قبل 7: 6. بعد 7: 8.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "صفّ بطاقات 6 7 8 9 واطلب إخفاء واحدة: ما الرقم الناقص؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "0 إلى 9 أرقام. قبل / بعد. العشرة = بداية العشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما العدد الذي يلي 8؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "يَدٌ كَامِلَةٌ (5) + إِصْبَعَانِ = كَمْ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "ما قبل 8؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "ما العدد الذي يأتي بعد 6 مباشرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "7",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num10-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num10-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "6 ثم ماذا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "9",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num10-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num10-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "كم: + بدون الإبهام الأخير؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "8",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num10-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "بطن الرقم 6 أين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num10"
+      }
+    ]
+  },
+  {
+    "texte": "في الأَسْفَلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num10-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "في الأَعْلَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num10-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر السابق أو اللاحق!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ما قبل 9؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "6",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-sub-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-tm-opt-b"
+      },
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "5 + 3 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد 6؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "يد + 4 أصابع = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-6-10",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "معك 3 بالونات وأعطتك أمك بالونين . أضفتُ، ضممتُ، تقدّمتُ: كم صار؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُضِيفُ: كان معي 4، أضفت 2 → 4 + 2.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَضُمُّ: 3 تفاحات حمراء مع تفاحتين خضراوين في سلة واحدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَقَدَّمُ: أقف على 5 في الخط العددي وأتقدّم خطوتين → 7.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "3 + 2 = 5 (ثلاثة زائد اثنان يساوي خمسة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أُضِيفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَضُمُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَقَدَّمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "4 + 1 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "استعمل حبات حلوى ملونة واجمع مجموعتين أمام الطفل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "الجمع = أضيف أو أضمّ أو أتقدّم. نبدأ بمجاميع أصغر من 10.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "احسب المجموع: 4 + 3 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "عِنْدَ سَامِي كِتَابَانِ ، وَأَهْدَاهُ صَدِيقُهُ 4 كُتُبٍ أُخْرَى . كَمْ كِتَابًا صَارَ عِنْدَهُ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "+ = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "مع ليلى 3 أقلام واشترت 3 أقلام أخرى. كم قلماً صار معها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "6 أَقْلاَم (3 + 3 = 6)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-add-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "3 أقلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-add-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "2 + 2 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "رمز الجمع هو:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "+",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-add-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-sub-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "−",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-add-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-sub-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أضمّ 3 تفاحات حمراء وتفاحة خضراء . كم تفاحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-add"
+      }
+    ]
+  },
+  {
+    "texte": "احسب المجموع وضع النتيجة في السلة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "5 + 2 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "3 + 4 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "1 + 4 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "أتقدم من 3 خطوتين. أين أصل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-addition-concept",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "ارفع يديك (10) ثم أضف إصبعاً من صديقك: 11. هذه عشرات ووحدات!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "10 = عَشَرَة (عشرة واحدة، صفر وحدات).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "11 = أَحَدَ عَشَرَ = 10 + 1. 12 = اِثْنَا عَشَرَ = 10 + 2.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "15 = خَمْسَةَ عَشَرَ. 20 = عِشْرُونَ (عشرتان).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الإِطَارُ: العدد بين جاره السابق واللاحق، أو بين عشرتين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "العَشَرَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الوِحْدَاتُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الإِطَارُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب 16 بالحروف وفكّكه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "سِتَّةَ عَشَرَ. 16 = 1 عشرة + 6 وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "حزمة 10 عيدان + عيدان مفردة. بطاقات: عشرة، أحد عشر، اثنا عشر...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "10–20: أرقام + حروف. عشرات ووحدات. إطار بين جارين أو عشرتين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب بالحروف: 12. ثم فكّك 12.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 17 بين أي عشرتين؟ وبين أي عددين متتاليين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "14 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 20 يساوي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "10 + 10",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num20-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "10 + 2",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-num20-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "13 بين أي عددين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "12 و 14",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num20-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "10 و 11",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-num20-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "15 = عشرات ووحدات:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "1 و 5",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num20-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "5 و 1",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-num20-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "بعد 19 يأتي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num20"
+      }
+    ]
+  },
+  {
+    "texte": "20",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num20-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-tm-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "18",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-num20-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-double-half",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اختر عربة القطار الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نكتب 10 بالحروف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "عَشَرَة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "عِشْرُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَحَدَ عَشَرَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "مَا العَدَدُ الَّذِي يَسْبِقُ 20 مُبَاشَرَةً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "19",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "21",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نكتب 11؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "20 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-numbers-11-20",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "كان في الصحن 5 تفاحات أكلت منها اثنتين. أنقصتُ، أخرجتُ، رجعتُ: كم بقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْقُصُ: آخذ كمية من مجموعة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُخْرِجُ: أزيل عناصر (بالونات تنفجر، حلوى تُؤكل).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْجِعُ: أقف على 7 وأتراجع خطوتين → 5.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "5 − 2 = 3 (خمسة ناقص اثنان يساوي ثلاثة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْقُصُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُخْرِجُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْجِعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "6 − 2 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "ارفع 7 أصابع واخفض 3. أو امشِ إلى الخلف على خط مرسوم على الأرض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "الطرح = أنقص أو أُخرج أو أرجع. الباقي أصغر من العدد الأول.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "احسب الباقي: 7 - 3 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "عَلِيٌّ عَلَى الخَطِّ عِنْدَ 8. رَجَعَ 3 خُطُوَاتٍ. أَيْنَ وَقَفَ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "أكلت 1. كم بقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "كان مع ليلى 6 أقلام، أعطت صديقتها قلمين. كم بقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "4 أَقْلاَم (6 − 2 = 4)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-sub-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "8 أقلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-sub-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "4 − 2 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "رمز الطرح هو:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "كانت 3، أخرجت 3. الكم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-sub"
+      }
+    ]
+  },
+  {
+    "texte": "0",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-sub-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-t90-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "احسب الباقي بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كانت 6 بالونات، فرقعت منها 2 . كم بقي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "كَانَتْ مَعَ نُورَ 9 حَلْوَى وَأَكَلَتْ 5 مِنْهَا. كَمْ بَقِيَ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "5 − 5 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "أرجع من 6 خطوة. أين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-subtraction-and-lengths",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "ثلاث حزم من 10 عيدان + 4 عيدان مفردة: 34، أربعة وثلاثون!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "20 = عِشْرُونَ. 30 = ثَلاَثُونَ. 40 = أَرْبَعُونَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "21 = وَاحِدٌ وَعِشْرُونَ. 35 = خَمْسَةٌ وَثَلاَثُونَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "رقم العشرات يساراً، رقم الوحدات يميناً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الإِطَارُ بَيْنَ عَشْرَتَيْنِ: 30 < 34 < 40. وَبَيْنَ عَدَدَيْنِ مُتَتَالِيَيْنِ: 33 < 34 < 35.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلاَثُونَ / أَرْبَعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِطَارُ بَيْنَ عَشْرَتَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب 42 بالحروف وفكّكه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "اثنان وأربعون. 4 عشرات + 2 وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "قضبان عشرات (2، 3، 4) + مكعبات وحدات. بطاقات الحروف: واحد وعشرون…",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "21–49: أرقام وحروف. عشرات ووحدات. إطار بين عشرتين أو جارين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "3 قضبان عشرات + 5 وحدات. ما العدد؟ اكتبه بالحروف أيضاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "أَطِّرِ العَدَدَ 41 بَيْنَ عَشْرَتَيْنِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "34 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 28 بين أي عشرتين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "20 وَ 30",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-t90-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "30 وَ 40",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-t90-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "21 بالحروف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "وَاحِدٌ وَعِشْرُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-t90-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "اِثْنَانِ وَعِشْرُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-t90-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "45 بين أي عشرتين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "40 و 50",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-t90-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "30 و 40",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-t90-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "كم عشرة في 30؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-t90"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الكتابة أو التفكيك الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نكتب 30 بالحروف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلاَثُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْبَعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "4 قُضْبَانِ عَشَرَاتٍ + 9 وَحَدَاتٍ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "49",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "40",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "39",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t1-addition-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بعد 29؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "30",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "28",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "40 بالحروف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "العدد 64: 6 قضبان عشرات و 4 مكعبات. يُقرأ: أربعة وستون!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "50 = خَمْسُونَ. 60 = سِتُّونَ. 70 = سَبْعُونَ. 80 = ثَمَانُونَ. 90 = تِسْعُونَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرقم يميناً = الوَحَدَات. الرقم يساراً = العَشَرَات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "73 = 3 وحدات + 7 عشرات = 3 + 70.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "99 = تِسْعَةٌ وَتِسْعُونَ: أكبر عدد برقمين في هذه السنة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "جَدْوَلُ المَرَاتِبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "تِسْعَةٌ وَتِسْعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "في العدد 58: ما رقم الوحدات؟ وما رقم العشرات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "الوحدات 8، العشرات 5.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "مختبر الرياضيات: قضبان من 5 إلى 9 عشرات + وحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "50–99: وحدات يميناً وعشرات يساراً. الرموز < > في الدرس التالي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "عدد فيه 7 وحدات و 6 عشرات. ما هو؟ اكتبه بالحروف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "فِي العَدَدِ 91، مَا رَقْمُ العَشَرَاتِ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "في 58، رقم العشرات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "في العدد 73، كم عدد العشرات؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "7 عَشَرَات (70)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-pl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "3 فقط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-pl-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "في 42 الوحدات هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "بعد 89؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "90",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-pl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "88",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-pl-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "50 + 6 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-pl"
+      }
+    ]
+  },
+  {
+    "texte": "56",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-pl-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "65",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-pl-opt-b"
+      },
+      {
+        "lessonId": "math-2ap-t2-subtraction-no-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التفكيك أو القراءة الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نكتب 80 بالحروف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَمَانُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "سَبْعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تِسْعُونَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t1-numbers-0-49",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "5 عَشَرَات + 2 وَحَدَات = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "52",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "25",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "50",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "99 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "9 عَشَرَات + 9",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "9 فقط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "70 كم عشرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-place-value-and-n99",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "عليٌّ معه 3 بِلِّيَات، ربح 2. هل نضيف أم ننقص؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "نضيف: 3 + 2 = 5.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجَمْع: ربح، اشترى، جاء، أضاف، تقدّم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّرْح: فقد، أعطى، أكل، رجع، نقص.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "حساب ذهني حتى 20: 8 + 7 = 15، 14 − 6 = 8.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نقرأ المسألة مرتين: ماذا حدث؟ ثم نختار العملية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المَسْأَلَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحِسَابُ الذِّهْنِيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "علي معه 3 بليات، ربح 2. كم صار معه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "جمع: 3 + 2 = 5.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم البليات أو التمر على ورقة ثم أضف أو امسح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أفهم القصة → أختار + أو − → أحسب ذهنياً حتى 20.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "سَامِي مَعَهُ 9 كُرَاتٍ، أَعْطَاهُ صَدِيقُهُ 6. كَمْ صَارَ مَعَهُ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "كَانَتْ مَعَ نُورَ 18 حَلْوَى، أَكَلَتْ 5. كَمْ بَقِيَ؟ أَجْمَعُ أَمْ أَطْرَحُ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "كان 8، أضفت 2. العملية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "كان في الحافلة 11 طفلاً، نزل 4. ماذا نفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "نَطْرَحُ: 11 − 4 = 7",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-tm-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نجمع: 11 + 4 = 15",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-tm-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "مع سامي 9، أُعْطِيَ 3 أُخْرَى. كم صار؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "12",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-tm-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "15 − 5 = ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "10",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-tm-opt-a"
+      },
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «بقي» تعني غالباً:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-tm"
+      }
+    ]
+  },
+  {
+    "texte": "طَرْحٌ −",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-tm-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "جَمْعٌ +",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-tm-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر العملية ثم النتيجة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "علي 3 بليات، ربح 2. العملية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "3 + 2",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "3 − 2",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "2 − 3",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "12 + 7 = ؟ (ذهني حتى 20)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "17",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "نزل 5 أطفال من 12. العملية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "12 − 5",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "12 + 5",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "7 + 6 = ؟ (ذهنياً إلى 20)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "13",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-addition-and-time-money",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "في السوق: عند أمينة 5 تَمْرَاتٍ وعند يوسف 3 تَمْرَاتٍ. من معه أكثر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَكْثَرَ مِنْ: العدد الأكبر. مثال: 8 أقلام أكثر من 5 أقلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَقَلَّ مِنْ: العدد الأصغر. مثال: 4 كراسات أقل من 7 كراسات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بِقَدْرِ: نفس العدد في المجموعتين. مثال: 6 كؤوس بقدر 6 صحون.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نقارن بعدّ أو بقراءة الرقم: من 0 إلى 20. الرموز < > تأتي في الفصل الثالث.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَكْثَرَ مِنْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-compare-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-compare-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-compare-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَقَلَّ مِنْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-compare-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-compare-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-compare-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بِقَدْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-compare-opt-c"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-compare-opt-c"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-compare-opt-c"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "12 كراسة في الصندوق و 8 في الرف. ماذا نقول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "12 أكثر من 8.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ضع صفين من حبات الحمص أو الأزرار: صف من 6 وصف من 4، واطلب من الطفل أن يقول «أكثر / أقل / بقدر».",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "نعدّ ثم نقول: أكثر من / أقل من / بقدر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "9 كرات و 6 كرات. 9 … 6",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "اشترت مريم 14 تمرة واشترى سامي 17 تمرة. تمر مريم … تمر سامي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "في المحفظة 8 أقلام وعلى الطاولة 8 أقلام. 8 … 8",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "12 و 12",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex4-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "5 تَمْرَاتٍ وَتَمْرَتَانِ. 5 … 2",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "متى نقول «بِقَدْرِ»؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "عندما يكون العددان متساويين",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-compare-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "عندما يكون أحد العددين أكبر دائماً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-compare-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "عندما لا نعرف العدّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-compare-opt-c"
+      }
+    ]
+  },
+  {
+    "texte": "في القسم 13 تلميذاً وفي الساحة 18. 13 … 18",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "18 و 11. 18 … 11",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-compare"
+      }
+    ]
+  },
+  {
+    "texte": "اختر العبارة الصحيحة لكل زوج!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "15 و 12",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "9 و 16",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "20 و 20",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "19 و 12",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t2-compare-quantities",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "المسطرة بجانب الممحاة: أيهما أطول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الكراسة والحقيبة: أيهما أثقل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "الطُّولُ: نضع الشيئين على نفس خط البداية ثم ننظر أين ينتهي كل واحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَطْوَلُ / أَقْصَرُ / لَهُمَا نَفْسُ الطُّولِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكُتْلَةُ: نرفع أو نزن باليد. أَثْقَلُ / أَخَفُّ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الحَجْمُ: كَبِيرٌ، مُتَوَسِّطٌ، صَغِيرٌ (علبة، كأس، حبة تَمْر).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَطْوَلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَثْقَلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-grandeurs-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كَبِيرٌ / مُتَوَسِّطٌ / صَغِيرٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "الثعبان والدودة. من الأطول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "الثعبان أطول. الدودة أقصر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "صفّ مسطرة وقلماً وممحاة على حافة الطاولة من نفس النقطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أطول ≠ أثقل. نحاذي للطول، نرفع للكتلة، نرتب ثلاثة أحجام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "المسطرة والممحاة على خط واحد. أيهما أقصر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "رتّب: فيل ، قطة ، نملة من الأكبر إلى الأصغر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "علبة كبيرة فارغة وحجر صغير. أيهما أثقل غالباً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "الحَجَرُ أَثْقَلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-grandeurs-opt-a"
+      },
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "العلبة دائماً أثقل لأنها كبيرة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-grandeurs-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "قلم ومسطرة لهما نفس الطول. ماذا نقول؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "لَهُمَا نَفْسُ الطُّولِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-grandeurs-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "القلم دائماً أطول",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-grandeurs-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الريشة والحجر. الريشة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "أَخَفُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-grandeurs-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نقارن الطول كيف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-grandeurs"
+      }
+    ]
+  },
+  {
+    "texte": "نُحَاذِي البِدَايَةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-grandeurs-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَرْفَعُ بِاليَدِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-grandeurs-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الكلمة الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الحجر والريشة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحبل الطويل والحبل القصير",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَقْصَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "النملة والفيل حجماً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "صَغِيرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "كَبِيرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "خيط قصير وخيط طويل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "التمساح جائع: يفتح فمه نحو أكبر كومة تَمْر. 42 تمرة و 58 تمرة: نحو أي جهة يفتح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفم المفتوح نحو الأكبر: 8 > 3 (ثمانية أكبر من ثلاثة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "3 < 8 تعني: 3 أصغر من 8. نفس المعنى مقلوباً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "حتى 99: نقارن العشرات أولاً. 58 > 42 لأن 5 عشرات أكبر من 4 عشرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "إذا تساوت العشرات، نقارن الوحدات: 63 > 61 لأن 3 أكبر من 1.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "إذا تساويا تماماً: 74 = 74 (لا نفتح الفم).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "> أَكْبَرُ مِنْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "< أَصْغَرُ مِنْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ضع الرمز: 47 … 71",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "47 < 71",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم تمساحاً بين عددين واجعل فمه نحو الكومة الأكبر. لعددين من رقمين، قارنا حزم العشرات أولاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "التمساح يأكل العدد الأكبر. نقارن حتى 99: العشرات أولاً، ثم الوحدات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "7 … 2 ضع > أو <",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "58 … 45 ضع > أو <",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "فم التمساح يأكل العدد…",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "أي كتابة صحيحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "62 < 87",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-symbols-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "62 > 87",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-symbols-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "41 > 18 صحيح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "نَعَمْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-symbols-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-jha-opt-a"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-hamza",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-hamza-opt-a"
+      },
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-foodhygiene-opt-b"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-parents-kindness",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t1-greetings-respect",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t1-identity-school-card",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t2-sharing-cooperation",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t3-classroom-rules",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rights-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "لَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-symbols-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-oral-daily",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-jha-opt-b"
+      },
+      {
+        "lessonId": "arabic-1ap-t2-hamza",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q3-ar1ap-hamza-opt-b"
+      },
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-foodhygiene-opt-a"
+      },
+      {
+        "lessonId": "islamic-1ap-t3-thanks-manners",
+        "grade": "1AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q4-isl1ap-manners-opt-a"
+      },
+      {
+        "lessonId": "civics-1ap-t3-child-rights",
+        "grade": "1AP",
+        "subject": "civics",
+        "category": "quiz",
+        "key": "quiz-q3-civics1ap-rights-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "رمز أصغر من:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "<",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-symbols-opt-a"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-symbols-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": ">",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-symbols-opt-b"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-symbols-opt-c"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "99 … 99",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-symbols"
+      }
+    ]
+  },
+  {
+    "texte": "=",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-symbols-opt-a"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "math-2ap-t2-numbers-50-99",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الرمز الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "74 … 74",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُتَسَاوِيَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-2ap-t3-measures-length-mass",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "74 > 74",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "74 < 74",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "91 … 19",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "91 > 19",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "91 < 19",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "7 … 9",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "50 … 12",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "نقطتان على الورقة • • كيف نصل بينهما بأجمل خط؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "نضع المسطرة عليهما!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "نضع حافة المسطرة على النقطتين معاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نمسك المسطرة بثبات ونمرّر القلم على الحافة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الخط المستقيم لا ينحني. الخط المنحني مثل موجة البحر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نُقْطَةٌ •",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "خَطٌّ مُسْتَقِيمٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "كيف نربط نقطتين بخط مستقيم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "نحاذي المسطرة على النقطتين ثم نرسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ضع نقطتين على ورقة مربعات واطلب الوصل بالمسطرة لا باليد الحرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "نقطتان + مسطرة = خط مستقيم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "لرسم خط مستقيم بين • و • ماذا نضع أولاً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex1-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "خط الموجة مستقيم أم منحنٍ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex2-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الرسم بالمسطرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "practice",
+        "key": "practice-ex3-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل قبل رسم الخط بين نقطتين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "نُحَاذِي المِسْطَرَةَ عَلَى النُّقْطَتَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-ruler-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نرسم بسرعة دون النظر إلى النقط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q1-math1ap-ruler-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "المسطرة تساعدنا على:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "خَطٍّ مُسْتَقِيمٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-ruler-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "عَدِّ التُّفَّاحِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q2-math1ap-ruler-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "صفر المسطرة يوضع عند؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "بِدَايَةِ الخَطِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-ruler-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "وَسَطِ الدَّفْتَرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q3-math1ap-ruler-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "نرسم بالمسطرة بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-ruler"
+      }
+    ]
+  },
+  {
+    "texte": "القَلَمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-ruler-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "المِمْحَاةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "quiz",
+        "key": "quiz-q4-math1ap-ruler-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الأداة الصحيحة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "وصل نقطتين بخط مستقيم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "المِسْطَرَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اليَدُ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "شكل الشمس",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "خَطٌّ مُنْحَنٍ (دَائِرَةٌ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "قِطْعَةٌ مُسْتَقِيمَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أداة الخط المستقيم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "المِمْحَاةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "math-2ap-t3-ruler-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "نضع المسطرة على",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "نُقْطَتَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الهَوَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t3-air",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  }
+]

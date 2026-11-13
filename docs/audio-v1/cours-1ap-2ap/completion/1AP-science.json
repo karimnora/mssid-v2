@@ -1,0 +1,3565 @@
+[
+  {
+    "texte": "حَوَاسِّي الخَمْسُ وَنَظَافَتِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَعَرَّفُ عَلَى أَعْضَاءِ جِسْمِي وَحَرَكَتِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَحَرَّكُ وَأَرْتَاحُ: مَشْيٌ، جَرْيٌ، قَفْزٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "كَيْفَ تَنْمُو النَّبْتَةُ الخَضْرَاءُ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "فُصُولُ السَّنَةِ الأَرْبَعَةُ وَحَالَةُ الطَّقْسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةُ الغِذَائِيَّةُ وَأَكْلِي الصِّحِّيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أغمض عينيك وشمّ رائحة وردة فواحة — بأي عضو تشمّها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "وبأي عضو تتذوق تفاحة لذيذة ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "بِعَيْنَيَّ أَرَى الأَلْوَانَ وَالأَشْكَالَ وَالجَمَالَ (حَاسَّةُ البَصَرِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِأُذُنَيَّ أَسْمَعُ أَصْوَاتَ الطُّيُورِ وَالأَنَاشِيدِ (حَاسَّةُ السَّمْعِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بِأَنْفِي أَشُمُّ الرَّوَائِحَ الزَّكِيَّةَ (حَاسَّةُ الشَّمِّ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "بِلِسَانِي أَتَذَوَّقُ الحُلْوَ وَالمَالِحَ (حَاسَّةُ الذَّوْقِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "بِجِلْدِي أُحِسُّ بِالنَّاعِمِ وَالخَشِنِ وَالحَارِّ وَالبَارِدِ (حَاسَّةُ اللَّمْسِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "الحَاسَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "بأي عضو نستمع لنداء المعلم أو الأذان؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "بِالأُذُنَيْنِ (حَاسَّةُ السَّمْعِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "العب مع الطفل لعبة \"المستكشف الذكي\": أغمض عينيه ودعه يخمن الأشياء بحاسة الشم أو اللمس فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "العين ترى، الأذن تسمع، الأنف يشم، اللسان يتذوق، واليد تلمس. النظافة تحمي حواسي وجسمي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "بأي عضو أرى الألوان الجميلة في لوحتي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "متى يجب أن نغسل أيدينا بالماء والصابون؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "ارْبِطْ الحَاسَّةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "بأي عضو أتذوق طعم العسل اللذيذ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "اللِّسَانُ (حَاسَّةُ الذَّوْقِ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-senses-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الأَنْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-senses-opt-b"
+      },
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأُذُنُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-senses-opt-c"
+      },
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "نغسل اليدين بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "مَاءٍ وَصَابُونٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-senses-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "تُرَابٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-senses-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الزهرة أشمها بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "الأَنْفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-senses-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الأُذُنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-senses-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "أغسل أسناني",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-senses"
+      }
+    ]
+  },
+  {
+    "texte": "صَبَاحًا وَمَسَاءً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-senses-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "مَرَّةً فِي السَّنَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-senses-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل عضو بالدور المناسب له!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّمُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "السَّمْعُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرُّؤْيَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "الذَّوْقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّمْسُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "اللِّسَانُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "البَصَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "اليد تحس بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّمْسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الذَّوْقِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "العصفور يطير في السماء، والسمكة تسبح في الماء. لماذا لا تسبح السمكة في السماء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الطُّيُورُ تَطِيرُ بِأَجْنِحَتِهَا فِي السَّمَاءِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَسْمَاكُ تَسْبَحُ فِي المَاءِ بِزَعَانِفِهَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "كَثِيرٌ مِنَ الحَيَوَانَاتِ كَالكَلْبِ وَالقِطِّ تَمْشِي عَلَى أَرْجُلِهَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الأَرْنَبُ يَقْفِزُ بِرِجْلَيْهِ الخَلْفِيَّتَيْنِ القَوِيَّتَيْنِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الأَفْعَى لَيْسَ لَهَا أَرْجُلٌ فَهِيَ تَزْحَفُ عَلَى بَطْنِهَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنَقُّلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّحْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "كيف تتنقل السمكة في الماء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "تَسْبَحُ بِزَعَانِفِهَا .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "العب مع الطفل تقليد حركة كل حيوان: طيران بالذراعين، سباحة، قفز كالأرنب، وزحف على الأرض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "الطيور تطير، الأسماك تسبح، أغلب الحيوانات تمشي، الأرنب يقفز، والأفعى تزحف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كيف يتنقل العصفور في السماء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا تزحف الأفعى على بطنها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا تسبح السمكة في الماء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "بِزَعَانِفِهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-locomotion-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بِأَجْنِحَتِهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-locomotion-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "بِرِجْلَيْهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-locomotion-opt-c"
+      }
+    ]
+  },
+  {
+    "texte": "العصفور يتنقل بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "الجَنَاحَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-locomotion-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الزَّعَانِفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-locomotion-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الأرنب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "يَقْفِزُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-locomotion-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "يَسْبَحُ كَالسَّمَكِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-locomotion-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "السمك في",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-locomotion"
+      }
+    ]
+  },
+  {
+    "texte": "المَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-locomotion-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "السَّمَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-locomotion-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر طريقة التنقل الصحيحة لكل حيوان!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "السَّمَكَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "السِّبَاحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّيَرَانُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "القَفْزُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَرْنَبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "الثعبان",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "يَزْحَفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "يَطِيرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      },
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      },
+      {
+        "lessonId": "science-2ap-t2-animal-movement",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الحصان",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "يَرْكُضُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t1-animal-locomotion",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ضع يدك على رأسك ، ثم على بطنك، ثم حرك ركبتيك . كيف يساعدنا جسمنا على اللعب والقفز؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "رَأْسِي فِي الأَعْلَى، وَفِيهِ عَيْنَايَ وَأَنْفِي وَأُذُنَايَ وَفَمِي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "جِذْعِي يَحْمِي بَطْنِي وَصَدْرِي وَظَهْرِي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَدَايَ أَسْتَعْمِلُهُمَا لِلْكِتَابَةِ وَالرَّسْمِ وَالأَكْلِ وَاللَّعِبِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "رِجْلاَيَ أَسْتَعْمِلُهُمَا لِلْمَشْيِ وَالجَرْيِ وَالقَفْزِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "العُضْوُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المَفْصِلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "بأي طرف من أطرافي أركض وألعب بالكرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "بِالرِّجْلَيْنِ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "العب لعبة سريعة: \"المس الكتف، المس الركبة، المس الأنف!\" لتثبيت أسماء الأعضاء بالحركة والمرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "رأسي في الأعلى، جذعي في الوسط، وأطرافي (يداي ورجلاي) للحركة والعمل. أحافظ على صحتي بالغذاء والنوم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "بأي عضو أمسك قلمي لأكتب وأرسم لوحاتي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو المشروب الصحي الذي يقوي عظامي وأسناني في الصباح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "أين يوجد الرأس بالنسبة لباقي أجزاء الجسم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "فِي الأَعْلَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-bodyparts-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "فِي الأَسْفَلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-bodyparts-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "في الجانب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-bodyparts-opt-c"
+      }
+    ]
+  },
+  {
+    "texte": "نمشي بـ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "الرِّجْلَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-bodyparts-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الأُذُنَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-bodyparts-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "القلب يحميه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "القَفَصُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-bodyparts-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "القَدَمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-bodyparts-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الرياضة للجسم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-bodyparts"
+      }
+    ]
+  },
+  {
+    "texte": "مُفِيدَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-bodyparts-opt-a"
+      },
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-foodhygiene-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "مُضِرَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-bodyparts-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر العضو المناسب لكل حركة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عضو نستعمله للجري وركل الكرة في الملعب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الرِّجْلاَنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "اليَدَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أين توجد عيناي وأنفي وفمي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "فِي الرَّأْسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "في البطن",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الرأس مكانه",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "الأَعْلَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَسْفَلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "اليَدِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-my-body-parts",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بعد لعب كرة في الساحة تشعر بقلبك سريعاً وتتعب. ماذا تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "تجلس وتشرب ماء وتستريح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "المَشْيُ حَرَكَةٌ هَادِئَةٌ: نَضَعُ قَدَماً تِلْوَ الأُخْرَى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجَرْيُ حَرَكَةٌ سَرِيعَةٌ: قَدَمَانِ تَتَبَادَلَانِ بِسُرْعَةٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "القَفْزُ نَرْتَفِعُ عَنِ الأَرْضِ ثُمَّ نَهْبِطُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "بَعْدَ الجُهْدِ نَشْعُرُ بِالتَّعَبِ: نَجْلِسُ، نَشْرَبُ مَاءً، نَرْتَاحُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "النَّوْمُ يُعِيدُ القُوَّةَ لِجِسْمِي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "الحَرَكَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجُهْدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّاحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل بعد الجري الطويل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "نَجْلِسُ وَنَشْرَبُ مَاءً وَنَرْتَاحُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "قف: امشِ في المكان، ثم اجري، ثم اقفز — لاحظ الفرق. بعدها اجلس وخذ نفساً عميقاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "أمشي، أجري، أقفز — ثم أرتاح وأشرب ماء وأنام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي حركة نستخدمها للذهاب بهدوء إلى القسم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "بعد لعب طويل في الساحة، ماذا يحتاج جسمي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "ارْبِطْ الحَرَكَةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "الجري أسرع من:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "المَشْيِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-movement-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "في الساحة بسرعة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-movement"
+      },
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "جَرْيٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-movement-opt-a"
+      },
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بعد التعب نشرب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "النوم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-movement"
+      }
+    ]
+  },
+  {
+    "texte": "يُعِيدُ القُوَّةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-movement-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "يَمْنَعُ النُّمُوَّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-movement-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "بعد التعب",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "رَاحَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "قَفْزٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد اللعب الطويل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَرْتَاحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَجْرِي أَكْثَرَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الجري",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَسْرَعُ مِنَ المَشْيِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَبْطَأُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-movement-effort",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "ضع بذرة صغيرة في التراب واسقها كل يوم. ماذا سيحدث لها بعد أيام؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَزْرَعُ البَذْرَةَ فِي التُّرَابِ وَنَسْقِيهَا بِالمَاءِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْبُتُ البَذْرَةُ وَيَظْهَرُ مِنْهَا جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَكْبُرُ النَّبْتَةُ شَيْئاً فَشَيْئاً وَتُخْرِجُ أَوْرَاقاً خَضْرَاءَ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَاجُ النَّبْتَةُ إِلَى الشَّمْسِ وَالمَاءِ وَالتُّرَابِ لِتَنْمُوَ وَتُصْبِحَ قَوِيَّةً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "البَذْرَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجِذْرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا تحتاج البذرة كي تنبت وتصبح نبتة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "تَحْتَاجُ إِلَى المَاءِ وَالتُّرَابِ وَالشَّمْسِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ازرع مع الطفل بذرة فول في كوب شفاف ومتابعة نموها يوماً بعد يوم — تجربة حقيقية تثبّت الدرس أكثر من أي شرح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "البذرة تحتاج ماءً وتراباً وشمساً لتنبت وتصبح نبتة خضراء كاملة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أين نزرع البذرة كي تنبت؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث للنبتة إذا نسينا سقيها لأيام كثيرة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "ارْتِبْ النُّمُوَّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "ما أول جزء يظهر من البذرة بعد أن تنبت؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-plant-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "زَهْرَةٌ كَامِلَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-plant-opt-b"
+      },
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-plant-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "أول ما يظهر غالباً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "جِذْرٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-plant-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "بدون ماء النبتة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "تَذْبُلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-plant-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "تَضْحَكُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-plant-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الأوراق لونها غالباً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-plant"
+      }
+    ]
+  },
+  {
+    "texte": "أَخْضَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-plant-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "أَزْرَقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-plant-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما تحتاجه النبتة لتنمو بشكل سليم!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كي تنبت البذرة وتكبر تحتاج إلى...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مَاءٌ وَشَمْسٌ وَتُرَابٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَجَرٌ وَثَلْجٌ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "النبتة تحتاج",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "مَاءً وَضَوْءًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ظَلَامًا جَافًّا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "البذرة تُزرع في",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "التُّرَابِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الثَّلْجِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الورقة الخضراء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "تَصْنَعُ الغِذَاءَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَمْشِي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t2-plant-growth",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "في أي فصل تتساقط الثلوج ونلبس معطفاً دافئاً ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "وفي أي فصل نذهب إلى الشاطئ الجميل ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-1"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّبِيعُ : الجو معتدل وجميل، وتتفتح الأزهار وتخضر الأشجار.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّيْفُ : الجو حار وممتع، نلبس ملابس خفيفة ونذهب للعطلة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الخَرِيفُ : الجو متقلب، وتصفر أوراق الأشجار وتتساقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشِّتَاءُ : الجو بارد وممطر، تتساقط الثلوج ونرتدي معاطف سميكة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الفَصْلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الطَّقْسُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "في أي فصل تتفتح الأزهار الملونة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "فِي فَصْلِ الرَّبِيعِ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "ارسم دائرة الفصول الأربعة مع الطفل ولوّنوا الربيع بالوردي والأخضر، الصيف بالأصفر، الخريف بالبرتقالي، والشتاء بالأزرق والأبيض.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "4 فصول في السنة: ربيع مزهر، صيف حار، خريف تتساقط أوراقه، وشتاء بارد ممطر. ألبس اللباس المناسب للطقس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "في أي فصل نذهب للسباحة في شاطئ البحر الجميل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "ما هو اللباس المناسب عند نزول الأمطار والثلوج في الشتاء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد فصول السنة في الطبيعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "4 فُصُولٍ (الرَّبِيعُ، الصَّيْفُ، الخَرِيفُ، وَالشِّتَاءُ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-seasons-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "فصلان فقط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-seasons-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "6 فصول",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-seasons-opt-c"
+      }
+    ]
+  },
+  {
+    "texte": "كم فصلاً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "في الصيف نلبس",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "خَفِيفًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-seasons-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "مِعْطَفًا ثَقِيلًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-seasons-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "المطر أكثر في",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-seasons"
+      }
+    ]
+  },
+  {
+    "texte": "الشِّتَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-seasons-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّيْفِ الحَارِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-seasons-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "اختر اللباس المناسب لكل فصل!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "فَصْلُ الشِّتَاءِ البَارِدِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مِعْطَفٌ صُوفِيٌّ دَافِئٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِبَاسُ السِّبَاحَةِ الخَفِيفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "فَصْلُ الصَّيْفِ الحَارِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "قُبَّعَةٌ قَشِّيَّةٌ وَمَلاَبِسُ قُطْنِيَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "معطف ثلجي سميك",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الخريف أوراق",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "تَسْقُطُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَزْهُو كُلُّهَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الربيع أزهار",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "تَتَفَتَّحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ثَلْجٌ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-seasons-weather",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "وجدت تفاحة مغطاة بالتراب. هل تأكلها مباشرة أم تغسلها أولاً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "discovery-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَطْعِمَةُ الصِّحِّيَّةُ : الفواكه والخضر والحليب واللحم والبيض، تقوي جسمي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَطْعِمَةُ الضَّارَّةُ إِذَا أَكْثَرْنَا مِنْهَا : الحلوى الكثيرة والمشروبات الغازية والوجبات المقلية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَغْسِلُ الفَوَاكِهَ وَالخُضَرَ بِالمَاءِ دَائِماً قَبْلَ أَكْلِهَا لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَغْسِلُ أَسْنَانِي بَعْدَ الأَكْلِ خَاصَّةً بَعْدَ الحَلْوَى .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الغِذَاءُ الصِّحِّيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الجُرْثُومَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل بالفاكهة قبل أكلها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-problem"
+      }
+    ]
+  },
+  {
+    "texte": "نَغْسِلُهَا جَيِّداً بِالمَاءِ .",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "example-solution"
+      }
+    ]
+  },
+  {
+    "texte": "رتب مع الطفل صورا لأطعمة مختلفة في مجموعتين: \"آكلها دائماً\" و\"آكلها قليلاً فقط\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "home-activity"
+      }
+    ]
+  },
+  {
+    "texte": "آكل الفواكه والخضر واللبن يومياً وأغسلها قبل الأكل، وأقلل من الحلوى والمشروبات الغازية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "explanation",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أفعل بالخضر والفواكه قبل أكلها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex1-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يحدث لأسناني إذا أكلت حلوى كثيرة كل يوم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex2-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "التفاحة قبل الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "practice",
+        "key": "practice-ex3-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا أغسل الفواكه والخضر قبل أكلها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-foodhygiene-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "لِتَصْبِحَ أَحْلَى مَذَاقاً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q1-sc1ap-foodhygiene-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الخضر",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "مَمْنُوعَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q2-sc1ap-foodhygiene-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الماء النظيف",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "نَشْرَبُهُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-foodhygiene-opt-a"
+      }
+    ]
+  },
+  {
+    "texte": "نَرْفُضُهُ دَائِمًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q3-sc1ap-foodhygiene-opt-b"
+      }
+    ]
+  },
+  {
+    "texte": "الأكل على الأرض الوسخة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "quiz",
+        "key": "quiz-q4-sc1ap-foodhygiene"
+      }
+    ]
+  },
+  {
+    "texte": "اختر ما يجب أن أضعه في سلة غذائي الصحي!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "أريد وجبة تقوي جسمي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "فَوَاكِهُ وَخُضَرٌ وَحَلِيبٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَلْوَى وَشُوكُولاَ فَقَطْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "طعام صحي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "حلويات فقط كل يوم",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الحمام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "نَدَانٌ نَظِيفَتَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَلْمَسُ القَمَامَةَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الأكل",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3"
+      }
+    ]
+  },
+  {
+    "texte": "نَغْسِلُ اليَدَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَلْعَبُ بِالتُّرَابِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "science-1ap-t3-food-hygiene",
+        "grade": "1AP",
+        "subject": "science",
+        "category": "game",
+        "key": "game-3-opt-1"
+      }
+    ]
+  }
+]

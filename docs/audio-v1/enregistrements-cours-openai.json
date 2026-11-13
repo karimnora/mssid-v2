@@ -451,6 +451,366 @@
         "uses": [
           "dialogue-5"
         ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ",
+        "fichier": "course-cedar-62743703041bc35a.mp3",
+        "duration": 2.4,
+        "sha256": "eb44a0e0327a4b58794ab01006acc5bd27a062e637cf437e15ee8ca70408fd68",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:19.419Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cef7dc0e64538aff15367a06397a7d98148ab4f221eb6e9b7397a66a54afc899",
+        "uses": [
+          "course:arabic-1ap-t1-letters-group1:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
+        "fichier": "course-cedar-6312b3c166b712b1.mp3",
+        "duration": 4.95,
+        "sha256": "13962ea927af94203f309e49b05f957e43808744e5fc8323a152fdf8b5c6c726",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:26.094Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f869e8080537e3d277e5995d327b60b0dff0297deaed7bf1ff2b1c6bef9748e3",
+        "uses": [
+          "course:arabic-1ap-t1-harakat:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ",
+        "fichier": "course-cedar-ac5b7eb08c235872.mp3",
+        "duration": 4.55,
+        "sha256": "99451a4622f759686803fcfe526e55920363732ddf55bd0b9bcfd6f45432619c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:31.641Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1bf6b5decd7acfa35d987df33f12200c5c81a6504cce3949ccef8e1626eaa619",
+        "uses": [
+          "course:arabic-1ap-t1-letters-group2:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ",
+        "fichier": "course-cedar-1046ce479c021cb0.mp3",
+        "duration": 4.9,
+        "sha256": "dfc63e2a0a2511fa9c6643ed211d1e08959906956e233431d845bc20efb2cb65",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:35.874Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6d4f58b31a9d9677713cad1ec040a3ab9e3dbfa282248d49d143fcc4483849ae",
+        "uses": [
+          "course:arabic-1ap-t2-letters-group3:title"
+        ]
+      },
+      {
+        "texte": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي",
+        "fichier": "course-cedar-5281fcb438bb4e09.mp3",
+        "duration": 3.85,
+        "sha256": "336b539c370ac0872e5f516bef2684af0974278e741091b824db90dfa102569c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:40.200Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a810372d5e328bebe409b9d4022a1d6f7c82859514f7779665271da3abbbe63e",
+        "uses": [
+          "course:arabic-1ap-t3-tracing-name:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ",
+        "fichier": "course-cedar-d367a3bb31617766.mp3",
+        "duration": 5.4,
+        "sha256": "22bcd514aa03ccf269844d6c8f2fad372d0386273d46ebf58880a1636a7714a6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:42.408Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0e509e0914e2596ef39ee62d3a771a715bac5651ce3f729c84022311719c8aa1",
+        "uses": [
+          "course:arabic-1ap-t3-letters-group5:title"
+        ]
+      },
+      {
+        "texte": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ",
+        "fichier": "course-cedar-d3d7f21e0e243175.mp3",
+        "duration": 4.85,
+        "sha256": "d16db525a69cf34cd971395108b75f217005d4843e807b82e1622b92de4b6718",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:45.601Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3e6ade94bf1e9331b64dbe92e7869aea902bd26ab5554b0d69cb6d5c864a8ba5",
+        "uses": [
+          "course:arabic-1ap-t1-oral-daily:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي",
+        "fichier": "course-cedar-a84fa5cdac4a3f44.mp3",
+        "duration": 5,
+        "sha256": "946a50d983d3a146aa81f5b20510e8533b8864275992deb1b7ee1c61d2ead3f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:47.652Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ee548c876f7cdfea1d7e7de5d1c8f3d667af3ff5cbbe3bc6b185b44c2d47b92",
+        "uses": [
+          "course:arabic-1ap-t2-madd:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ",
+        "fichier": "course-cedar-00f5ba97844b5123.mp3",
+        "duration": 4.55,
+        "sha256": "b8a8449dace31633d2eeb73b9cf0cbbd02819b99d4f259c1f0ab2ed2f4822edb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:50.511Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e9de78a79eec13b43b3095580b995ac40666bb0d2e1fadaafca55000852feacd",
+        "uses": [
+          "course:arabic-1ap-t1-letters-jim-ha-kha:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ",
+        "fichier": "course-cedar-87dd7f05339f2b1a.mp3",
+        "duration": 4.75,
+        "sha256": "fd1f1a100edf197327dc4b931ff3fbfa38cfecb21318f4aca5129acc9727c9c2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:53.180Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4fba7986c43e771ac0501827319582d6f338cabc842848cb50a3a2c0394003df",
+        "uses": [
+          "course:arabic-1ap-t2-letters-group4:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: زَ",
+        "fichier": "course-cedar-7899a0b1137b5765.mp3",
+        "duration": 2.45,
+        "sha256": "16e83726ee6e553d7bc349a6d804e1109cc941baed012702a01eff9eebdc9457",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:54.636Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5ff04d31e0250e14a25befdb68d9db44a8b17ef352840f1c51b254cae54cc2d5",
+        "uses": [
+          "course:arabic-1ap-t2-letter-zay:title"
+        ]
+      },
+      {
+        "texte": "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ",
+        "fichier": "course-cedar-f403efcc3e24ea00.mp3",
+        "duration": 4.85,
+        "sha256": "9c5d0d6708d275b70d6a6451f84b94565082d955db45204674ec010b72cd4168",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:06:58.812Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1043ddf8e477e09dfa4c2583ce75d9aaca507510474a75f4df655eb7ea487caf",
+        "uses": [
+          "course:arabic-1ap-t2-letters-sad-family:title"
+        ]
+      },
+      {
+        "texte": "التَّنْوِينُ: ً ٌ ٍ",
+        "fichier": "course-cedar-6d6b3c627038dcca.mp3",
+        "duration": 3.45,
+        "sha256": "226888264840e8c07d618dd9caec5fd7b91c88f0ef640dd64b92775705c2292e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:01.176Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a826a7c29ff49bf9f99096c543415d82d2d29cb29b5768addc8dbe909170c78c",
+        "uses": [
+          "course:arabic-1ap-t3-tanween:title"
+        ]
+      },
+      {
+        "texte": "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ",
+        "fichier": "course-cedar-b456bd30fd63ae62.mp3",
+        "duration": 4.85,
+        "sha256": "80e63a41d3de166146050dfb1a1292d75d4f9a3bacf8d719d94153945a2aa802",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:02.999Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7cc7d745482dea1431ca425d213dcf59676004532fc13305fda99cc2accf201a",
+        "uses": [
+          "course:arabic-1ap-t1-school-axis:title"
+        ]
+      },
+      {
+        "texte": "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ",
+        "fichier": "course-cedar-6340da5e59e96775.mp3",
+        "duration": 4.15,
+        "sha256": "cb1ef26b025087da1472fbaf36273eb8afb353427102cf347aee615d2ba6a6f5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:06.833Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "77fffcd7863b6081e67c3331b64951e97bfec0b16aef60888f3809d3ca02c047",
+        "uses": [
+          "course:arabic-1ap-t2-neighborhood-home:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء",
+        "fichier": "course-cedar-050f66874086fd4b.mp3",
+        "duration": 2.75,
+        "sha256": "eb9719cd987d89f2500379dda0c2bb9006d498569610c3b6a2af905d0c7cd863",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:09.468Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9630ddea853720ead7115671a6e6bc646a4062a71bfbc49e5d8364a64bfaea31",
+        "uses": [
+          "course:arabic-1ap-t2-hamza:title"
+        ]
+      },
+      {
+        "texte": "عَائِلَتِي: أَبِي، أُمِّي، أَخِي",
+        "fichier": "course-cedar-81d1f7fda5015abd.mp3",
+        "duration": 3.55,
+        "sha256": "9e2c1037fb9caa1c580c5ce5dec42dcf5c79eb3893a47f01b6a230cb4a54bbd2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:11.356Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f44c762a7ea8819d5a7194434db368775c09af8e02f0624acf556bae85ccffec",
+        "uses": [
+          "course:arabic-1ap-t1-family-axis:title"
+        ]
+      },
+      {
+        "texte": "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ",
+        "fichier": "course-cedar-177c68ec11ea9624.mp3",
+        "duration": 4.95,
+        "sha256": "810ea97910673e32ed8833700ec4a212847f6a96644de365fb44ef35d6a4919b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:13.334Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc5597dc5b25249a6cae06660dae7ef67f92d13603b9aa198a3664391a235e12",
+        "uses": [
+          "course:arabic-1ap-t2-letter-positions:title"
+        ]
+      },
+      {
+        "texte": "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ",
+        "fichier": "course-cedar-6ff52e103d265034.mp3",
+        "duration": 5.1,
+        "sha256": "ad3ada120e6899c03b6087331720713bea65805c75e7e70badb72afb0b36261d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:16.976Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1300d13d17a55db4c000970e74388814e2e6fa39b7df5dc8b2289dac5b8a6553",
+        "uses": [
+          "course:arabic-1ap-t2-health-sports:title"
+        ]
+      },
+      {
+        "texte": "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ",
+        "fichier": "course-cedar-0ed70adfa0c4ef5d.mp3",
+        "duration": 4.95,
+        "sha256": "12d58509abafc1e87bbcb41edb1f1e911f947d0b72fc421d3d02ea4bb571a9fe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:18.211Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e48517bb623f019756f89c533740d1f3acb3b2fb55618f18113dd84e8146458e",
+        "uses": [
+          "course:arabic-1ap-t2-nature-axis:title"
+        ]
+      },
+      {
+        "texte": "استمع وركّز: أَسَدٌ ، بَطَّةٌ ، تُفَّاحَةٌ ، ثَعْلَبٌ — ما الصوت الأول في كل كلمة؟",
+        "fichier": "course-cedar-bbf55c2449325213.mp3",
+        "duration": 9.5,
+        "sha256": "494a7502fc49b8a162cc49939b046c94ba6d2c3313f4bb2234a38ada32aa08f8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:21.163Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4d60bcdbe4fcb679d15d6f8470e1d6e47adc1fbb075a00e6f98200d5d881453f",
+        "uses": [
+          "course:arabic-1ap-t1-letters-group1:discovery-0"
+        ]
+      },
+      {
+        "texte": "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى",
+        "fichier": "course-cedar-e68a5ff0a132777c.mp3",
+        "duration": 5.05,
+        "sha256": "4dd8f01099c96f4fd4a7a76ec2ee8cddef2fa7ec27d56d322d360e0ba0e5cbe6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:22.836Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35d85cd3eb6c9d9ca3aa08f6f9b72ac5fb82f553f822e8799ddec91c4326bb2b",
+        "uses": [
+          "course:arabic-1ap-t3-play-entertainment:title"
+        ]
+      },
+      {
+        "texte": "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ",
+        "fichier": "course-cedar-059801204ecbfde3.mp3",
+        "duration": 5.3,
+        "sha256": "15b33edd65e10cbf4ab148a2f1175bf23f2620829fd646ad84363644d9ff72b9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:24.851Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3411d5cd2d5ee1fc1f3898119a949955f08122359c06a2e0df8e764e31e30538",
+        "uses": [
+          "course:arabic-1ap-t3-childhood-holidays:title"
+        ]
+      },
+      {
+        "texte": "حرف الأَلِفِ (أ): صوته \"أَ\" مثل أَسَدٌ وَأَرْنَبٌ .",
+        "fichier": "course-cedar-8cfc034c9eb3fcce.mp3",
+        "duration": 6.6,
+        "sha256": "0df88df6f097a900faa6f8648eded7476ecca204d4d8d271eafb6e39d518a906",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:07:28.308Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9734a43f6c6c7e66b28e7202b729975a8e7168bf515fef40698709ace6df2f14",
+        "uses": [
+          "course:arabic-1ap-t1-letters-group1:rule-0"
+        ]
       }
     ]
   },

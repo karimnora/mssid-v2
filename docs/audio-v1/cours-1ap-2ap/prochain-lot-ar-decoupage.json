@@ -42,13 +42,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-07dfde23f7c75ed8.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ",
+    "fichier": "course-ar-3aa4d196db0dedbf.mp3",
+    "texte": "حَوَاسِّي الخَمْسُ وَنَظَافَتِي",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t1-letters-group1",
+        "lessonId": "science-1ap-t1-five-senses-hygiene",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -56,13 +56,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-93bf92c52555d32e.mp3",
-    "texte": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
+    "fichier": "course-ar-0716ceb685fda805.mp3",
+    "texte": "أَتَعَرَّفُ عَلَى أَعْضَاءِ جِسْمِي وَحَرَكَتِي",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t1-harakat",
+        "lessonId": "science-1ap-t2-my-body-parts",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -70,13 +70,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-790692de9c668cd1.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ",
+    "fichier": "course-ar-589caac1ca2d708a.mp3",
+    "texte": "أَتَحَرَّكُ وَأَرْتَاحُ: مَشْيٌ، جَرْيٌ، قَفْزٌ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t1-letters-group2",
+        "lessonId": "science-1ap-t2-movement-effort",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -84,13 +84,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-ef1f67e5bcdff099.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ",
+    "fichier": "course-ar-a820f318aa8bb2ac.mp3",
+    "texte": "كَيْفَ تَنْمُو النَّبْتَةُ الخَضْرَاءُ؟",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t2-letters-group3",
+        "lessonId": "science-1ap-t2-plant-growth",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -98,13 +98,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-272e50787a5156b7.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ",
+    "fichier": "course-ar-5e7de297484cbeb9.mp3",
+    "texte": "فُصُولُ السَّنَةِ الأَرْبَعَةُ وَحَالَةُ الطَّقْسِ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t2-letters-group4",
+        "lessonId": "science-1ap-t3-seasons-weather",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -112,13 +112,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-d2205b3ee20929f7.mp3",
-    "texte": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ",
+    "fichier": "course-ar-5a0d5146c631fa71.mp3",
+    "texte": "النَّظَافَةُ الغِذَائِيَّةُ وَأَكْلِي الصِّحِّيُّ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t3-letters-group5",
+        "lessonId": "science-1ap-t3-food-hygiene",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -126,13 +126,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-69ef3b2ca1f402da.mp3",
-    "texte": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي",
+    "fichier": "course-ar-b864548f9d10b20f.mp3",
+    "texte": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t3-tracing-name",
+        "lessonId": "islamic-1ap-t1-fatiha-basmala",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "islamic",
         "category": "entry",
         "key": "title"
       }
@@ -140,13 +140,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-a3e18d9a77a7810f.mp3",
-    "texte": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي",
+    "fichier": "course-ar-7d9e1fbcc888e2b9.mp3",
+    "texte": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t2-madd",
+        "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "islamic",
         "category": "entry",
         "key": "title"
       }
@@ -154,13 +154,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-1d6cb36c44f8a450.mp3",
-    "texte": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ",
+    "fichier": "course-ar-297e0c63e76f4933.mp3",
+    "texte": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ",
     "targets": [
       {
-        "lessonId": "arabic-1ap-t1-oral-daily",
+        "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
         "grade": "1AP",
-        "subject": "arabic",
+        "subject": "islamic",
         "category": "entry",
         "key": "title"
       }

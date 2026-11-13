@@ -1,13 +1,16 @@
 /** Offline production only. Dry-run by default; no browser import and no secret in output. */
 import { constants, copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFile, execFileSync } from 'node:child_process';
+import { promisify } from 'node:util';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { findRecordedSpeechSequence } from '../src/utils/recordedSpeech';
 import { recordedSpeechKey } from '../src/utils/recordedSpeechKey';
+import { runAudioQueue } from './audio-production-queue';
 import { discoverV2Root, importV2Recording, loadRecordingLibrary } from './v2-recording-library';
 
+const execute = promisify(execFile);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
 const option = (name: string) => { const index = args.indexOf(name); return index >= 0 ? args[index + 1] : undefined; };
@@ -37,6 +40,8 @@ function wavStats(audio: Buffer) {
 }
 async function main() {
   const limit = Number(option('--limit') ?? 3);
+  const concurrency = Number(option('--concurrency') ?? 1);
+  if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 4) throw new Error('Concurrency must be an integer from 1 to 4');
   if (!Number.isInteger(limit) || limit < 1 || limit > 24) throw new Error('Limit must be an integer from 1 to 24');
   const plan = resolve(root, option('--plan') ?? 'docs/audio-v1/cours-1ap-2ap/openai-lot-01-demande.json');
   const jobs: Job[] = JSON.parse(readFileSync(plan, 'utf8'));
@@ -72,7 +77,7 @@ async function main() {
   const ffmpeg = execFileSync('python', ['-c', 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())'], { encoding: 'utf8' }).trim();
   const archive = resolve(root, 'output/course-audio-originals');
   mkdirSync(archive, { recursive: true });
-  for (const job of selected) {
+  await runAudioQueue(selected, concurrency, async job => {
     const language = job.language ?? 'ar';
     const destination = resolve(root, 'frontend/public/sounds/preschool', language);
     const languageArchive = resolve(archive, language);
@@ -98,8 +103,8 @@ async function main() {
     writeFileSync(wavPath, audio, { flag: 'wx' });
     const stats = wavStats(audio);
     const compressed = resolve(languageArchive, `${stem}.mp3`);
-    execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-n', '-i', wavPath, '-codec:a', 'libmp3lame', '-b:a', '80k', '-ar', '24000', '-ac', '1', compressed], { stdio: 'pipe' });
-    execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-i', compressed, '-f', 'null', '-'], { stdio: 'pipe' });
+    await execute(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-n', '-i', wavPath, '-codec:a', 'libmp3lame', '-b:a', '80k', '-ar', '24000', '-ac', '1', compressed]);
+    await execute(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-i', compressed, '-f', 'null', '-']);
     copyFileSync(compressed, target, constants.COPYFILE_EXCL);
     meta[language]!.clips.push({ texte: job.texte, fichier: `${stem}.mp3`, duration: stats.duration, sha256: digest(readFileSync(target)), voice, model,
       generatedAt: new Date().toISOString(), synthetic: true, reviewStatus: 'listening-required', sourceWavSha256: digest(audio),
@@ -107,6 +112,6 @@ async function main() {
     });
     writeFileSync(`${metadataPath}.tmp`, JSON.stringify(meta, null, 2) + '\n'); renameSync(`${metadataPath}.tmp`, metadataPath);
     console.log(JSON.stringify({ saved: `${stem}.mp3`, seconds: Number(stats.duration.toFixed(2)), rms: Number(stats.rms.toFixed(4)), totalSaved: meta[language]!.clips.length }));
-  }
+  });
 }
 main().catch(error => { console.error(error instanceof Error ? error.message.replace(/sk-[a-zA-Z0-9_-]+/g, '[REDACTED]') : 'Audio generation failed'); process.exitCode = 1; });
