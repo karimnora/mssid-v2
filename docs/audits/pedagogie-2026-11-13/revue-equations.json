@@ -1,0 +1,474 @@
+{
+  "scope": "Manual contextual review of all 36 extracted candidates, not a proof of every mathematical answer",
+  "candidates": [
+    {
+      "id": "math-1ap-t2-numbers-11-20",
+      "path": "examplesAr[0].solution",
+      "detail": {
+        "expression": "16 = 1",
+        "values": [
+          16,
+          1
+        ],
+        "context": "سِتَّةَ عَشَرَ. 16 = 1 عشرة + 6 وحدات."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-1ap-t3-place-value-and-n99",
+      "path": "rulesAr[2]",
+      "detail": {
+        "expression": "73 = 3",
+        "values": [
+          73,
+          3
+        ],
+        "context": "73 = 3 وحدات + 7 عشرات = 3 + 70."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-2ap-t1-numbers-0-49",
+      "path": "examplesAr[0].solution",
+      "detail": {
+        "expression": "42 = 4",
+        "values": [
+          42,
+          4
+        ],
+        "context": "42 = 4 عشرات + 2 وحدات = 40 + 2"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-2ap-t1-numbers-0-49",
+      "path": "detailedCourse.commonMistakes[1].correctionAr",
+      "detail": {
+        "expression": "40 = 4",
+        "values": [
+          40,
+          4
+        ],
+        "context": "نكتب صفراً في خانة الوحدات لأنه لا يوجد أي وحدة زائدة: 40 = 4 عشرات + 0 وحدات."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-2ap-t2-numbers-100-999",
+      "path": "examplesAr[0].solution",
+      "detail": {
+        "expression": "528 = 5",
+        "values": [
+          528,
+          5
+        ],
+        "context": "528 = 5 مئات + 2 عشرات + 8 وحدات = 500 + 20 + 8"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-2ap-t3-double-half",
+      "path": "rulesAr[1]",
+      "detail": {
+        "expression": "8 = 4",
+        "values": [
+          8,
+          4
+        ],
+        "context": "نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8)."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-3ap-t2-thousands-numbers",
+      "path": "examplesAr[0].operationsAr",
+      "detail": {
+        "expression": "6280 = 6",
+        "values": [
+          6280,
+          6
+        ],
+        "context": "6000 < 6280 < 7000\n\n6280 = 6 آلاف + 280"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-4ap-perimeter-squares-rectangles",
+      "path": "progressiveExercises[0].detailedCorrectionAr",
+      "detail": {
+        "expression": "4 = 24",
+        "values": [
+          4,
+          24
+        ],
+        "context": "محيط المربع = الضلع × 4 = 24 cm."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-4ap-proportionally-time-data",
+      "path": "detailedCourse.takeawayAr",
+      "detail": {
+        "expression": "2 = 100",
+        "values": [
+          2,
+          100
+        ],
+        "context": "إذا 2 = 100 فـ 1 = 50 و 5 = 250: نجد قيمة الوحدة ثم نضرب في العدد المطلوب."
+      },
+      "manualReview": "notation-to-clarify"
+    },
+    {
+      "id": "math-4ap-proportionally-time-data",
+      "path": "detailedCourse.takeawayAr",
+      "detail": {
+        "expression": "1 = 50",
+        "values": [
+          1,
+          50
+        ],
+        "context": "إذا 2 = 100 فـ 1 = 50 و 5 = 250: نجد قيمة الوحدة ثم نضرب في العدد المطلوب."
+      },
+      "manualReview": "notation-to-clarify"
+    },
+    {
+      "id": "math-4ap-proportionally-time-data",
+      "path": "detailedCourse.takeawayAr",
+      "detail": {
+        "expression": "5 = 250",
+        "values": [
+          5,
+          250
+        ],
+        "context": "إذا 2 = 100 فـ 1 = 50 و 5 = 250: نجد قيمة الوحدة ثم نضرب في العدد المطلوب."
+      },
+      "manualReview": "notation-to-clarify"
+    },
+    {
+      "id": "english-4ap-unit2-telling-time",
+      "path": "progressiveExercises[5].detailedCorrectionAr",
+      "detail": {
+        "expression": "8 = 7",
+        "values": [
+          8,
+          7
+        ],
+        "context": "إلا ربع 8 = 7:45."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-division",
+      "path": "progressiveWorkedExamples[2].problem",
+      "detail": {
+        "expression": "53 ÷ 7 = 7",
+        "values": [
+          7.5714285714,
+          7
+        ],
+        "context": "تحقق من صحة القسمة التالية: 53 ÷ 7 = 7 والباقي 4."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-perimeters-areas",
+      "path": "progressiveWorkedExamples[2].stepsAr[0]",
+      "detail": {
+        "expression": "4 = 25 × 4 = 100",
+        "values": [
+          4,
+          100,
+          100
+        ],
+        "context": "المحيط = الضلع × 4 = 25 × 4 = 100 m."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-perimeters-areas",
+      "path": "progressiveExercises[9].detailedCorrectionAr",
+      "detail": {
+        "expression": "10000 = 4.5",
+        "values": [
+          10000,
+          4.5
+        ],
+        "context": "45 000 m² ÷ 10 000 = 4.5 ha (لأن 1 ha = 10 000 m²)."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "progressiveExercises[6].solutionAr",
+      "detail": {
+        "expression": "900=90",
+        "values": [
+          900,
+          90
+        ],
+        "context": "10%من900=90 | 50%من400=200 | 25%من600=150"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "progressiveExercises[6].solutionAr",
+      "detail": {
+        "expression": "400=200",
+        "values": [
+          400,
+          200
+        ],
+        "context": "10%من900=90 | 50%من400=200 | 25%من600=150"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "progressiveExercises[6].solutionAr",
+      "detail": {
+        "expression": "600=150",
+        "values": [
+          600,
+          150
+        ],
+        "context": "10%من900=90 | 50%من400=200 | 25%من600=150"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "evaluationExercises[3].solutionAr",
+      "detail": {
+        "expression": "500=100",
+        "values": [
+          500,
+          100
+        ],
+        "context": "20%من500=100 | 10%من300=30 | 75%من400=300"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "evaluationExercises[3].solutionAr",
+      "detail": {
+        "expression": "300=30",
+        "values": [
+          300,
+          30
+        ],
+        "context": "20%من500=100 | 10%من300=30 | 75%من400=300"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "math-5ap-percentage-scale",
+      "path": "evaluationExercises[3].solutionAr",
+      "detail": {
+        "expression": "400=300",
+        "values": [
+          400,
+          300
+        ],
+        "context": "20%من500=100 | 10%من300=30 | 75%من400=300"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-2018-trim1-math",
+      "path": "exercises[2].operationsAr",
+      "detail": {
+        "expression": "100 = 700",
+        "values": [
+          100,
+          700
+        ],
+        "context": "   26\n− 19\n----\n    7  (m)\n\n7 m × 100 = 700 cm"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-2ap-math-t1-2026",
+      "path": "exercises[0].solutionAr",
+      "detail": {
+        "expression": "47 = 4",
+        "values": [
+          47,
+          4
+        ],
+        "context": "47 = 4 عشرات و 7 وحدات (40 + 7)."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-3ap-math-t1-2026",
+      "path": "exercises[1].solutionAr",
+      "detail": {
+        "expression": "60 = 6",
+        "values": [
+          60,
+          6
+        ],
+        "context": "8 × 6 = 48 و 8 × 60 = 480 (نضيف صفراً لأن 60 = 6 عشرات)."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-4ap-math-t3-2026",
+      "path": "exercises[1].solutionAr",
+      "detail": {
+        "expression": "00 = 1",
+        "values": [
+          0,
+          1
+        ],
+        "context": "من 08h15 إلى 10h00 = 1h45min."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-4ap-math-t3-2026",
+      "path": "exercises[1].operationsAr",
+      "detail": {
+        "expression": "15 = 1",
+        "values": [
+          15,
+          1
+        ],
+        "context": "10:00 − 08:15 = 1:45"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-5ap-math-acquis-2026",
+      "path": "exercises[2].operationsAr",
+      "detail": {
+        "expression": "100 = 0.38",
+        "values": [
+          100,
+          0.38
+        ],
+        "context": "1) المحيط:\n    12\n   + 7\n   ----\n    19\n\n    19\n   × 2\n   ----\n    38\n\n   المساحة:\n    12\n   × 7\n   ----\n    84\n\n2) 38 cm ÷ 100 = 0.38 m\n   84 cm² × 100 = 8400 mm²"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-5ap-math-acquis-2026",
+      "path": "exercises[2].operationsAr",
+      "detail": {
+        "expression": "100 = 8400",
+        "values": [
+          100,
+          8400
+        ],
+        "context": "1) المحيط:\n    12\n   + 7\n   ----\n    19\n\n    19\n   × 2\n   ----\n    38\n\n   المساحة:\n    12\n   × 7\n   ----\n    84\n\n2) 38 cm ÷ 100 = 0.38 m\n   84 cm² × 100 = 8400 mm²"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-5ap-math-acquis-2026",
+      "path": "exercises[3].operationsAr",
+      "detail": {
+        "expression": "1000 = 3500",
+        "values": [
+          1000,
+          3500
+        ],
+        "context": "1)   4000\n   ×   15\n   ------\n   60000\n\n   60000 ÷ 100 = 600\n\n2)  4000\n   −  600\n   ------\n    3400\n\n3) 3.5 kg × 1000 = 3500 g\n   2.4 L × 100 = 240 cL"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-5ap-math-acquis-2026",
+      "path": "exercises[3].operationsAr",
+      "detail": {
+        "expression": "100 = 240",
+        "values": [
+          100,
+          240
+        ],
+        "context": "1)   4000\n   ×   15\n   ------\n   60000\n\n   60000 ÷ 100 = 600\n\n2)  4000\n   −  600\n   ------\n    3400\n\n3) 3.5 kg × 1000 = 3500 g\n   2.4 L × 100 = 240 cL"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-4ap-math-t3-b-2026",
+      "path": "exercises[1].operationsAr",
+      "detail": {
+        "expression": "10 = 1",
+        "values": [
+          10,
+          1
+        ],
+        "context": "09:40 − 08:10 = 1:30"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-4ap-math-t3-c-2026",
+      "path": "exercises[2].operationsAr",
+      "detail": {
+        "expression": "20 = 0",
+        "values": [
+          20,
+          0
+        ],
+        "context": "17:05 − 16:20 = 0:45"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "exam-5ap-math-t3-b-2026",
+      "path": "exercises[3].operationsAr",
+      "detail": {
+        "expression": "20 = 1",
+        "values": [
+          20,
+          1
+        ],
+        "context": "16:05 − 14:20 = 1:45"
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-2ap-math-t2b-2026",
+      "path": "exercises[0].solutionAr",
+      "detail": {
+        "expression": "256 = 2",
+        "values": [
+          256,
+          2
+        ],
+        "context": "256 = 2 مئات + 5 عشرات + 6 وحدات."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-5ap-math-t2b-2026",
+      "path": "exercises[0].solutionAr",
+      "detail": {
+        "expression": "3 = 60",
+        "values": [
+          3,
+          60
+        ],
+        "context": "مثلث متقايس الأضلاع، وقياس كل زاوية فيه 60° (لأن 180° ÷ 3 = 60°)."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    },
+    {
+      "id": "homework-5ap-math-t2b-2026",
+      "path": "problemExercise.solutionAr",
+      "detail": {
+        "expression": "25 = 45",
+        "values": [
+          25,
+          45
+        ],
+        "context": "من 07h40 إلى 08h25 = 45min. مدة الرحلة 45 دقيقة."
+      },
+      "manualReview": "context-explains-extraction: not a confirmed calculation error"
+    }
+  ]
+}
