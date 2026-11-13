@@ -59,7 +59,7 @@ for (const scenario of cases) {
 
     for (const screen of [
       { name: 'home', url: '/?g=5AP', ready: '[data-home-layout]' },
-      { name: 'courses', url: '/courses?g=5AP', ready: 'main h2' },
+      { name: 'courses', url: '/courses?g=5AP', ready: 'main h1' },
       { name: 'exams', url: '/exams?g=5AP', ready: '[data-exam-subject]' },
       { name: 'challenges', url: '/challenges?g=5AP', ready: '[data-challenge-id]' },
       { name: 'preschool', url: '/eveil', ready: '[data-preschool-mute]' },
@@ -76,7 +76,7 @@ for (const scenario of cases) {
         if (screen.name === 'home') {
           const companion = page.locator('[data-companion-card]');
           await companion.scrollIntoViewIfNeeded();
-          const companionAudit = await new AxeBuilder({ page }).include('[data-companion-info]')
+          const companionAudit = await new AxeBuilder({ page }).include('[data-companion-card]')
             .withTags(['wcag2a', 'wcag2aa']).analyze();
           expect(companionAudit.violations.map(item => ({ id: item.id, targets: item.nodes.map(node => node.target) }))).toEqual([]);
         }

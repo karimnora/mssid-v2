@@ -51,7 +51,8 @@ for (const voices of ['empty', 'french-only', 'arabic'] as const) {
     if (voices === 'arabic') await expect(lesson.locator('[data-tap-speak]').first()).toBeVisible();
     else {
       await expect(lesson.locator('[data-tap-speak]')).toHaveCount(0);
-      await expect(lesson.getByRole('status')).toBeVisible();
+      // The place-value table also has a live status: target the voice notice itself.
+      await expect(lesson.getByRole('status').filter({ hasText: '🔇' })).toBeVisible();
     }
     const a11y = await new AxeBuilder({ page }).include('.lesson-mobile-step-picker').include('.lesson-objectives').analyze();
     expect(a11y.violations).toEqual([]);
