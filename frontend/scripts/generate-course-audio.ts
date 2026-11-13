@@ -13,8 +13,8 @@ const args = process.argv.slice(2);
 const option = (name: string) => { const index = args.indexOf(name); return index >= 0 ? args[index + 1] : undefined; };
 const model = 'gpt-4o-mini-tts';
 const voice = 'cedar'; // Didou V2: keep the voice explicitly requested by Karim.
-const instructions = 'Read exactly the provided text in Modern Standard Arabic (fusha), accurate Arabic vowels and consonants, no dialect. You are Didou, a warm, patient educational guide for primary school children. Sound natural and expressive, with cheerful energy, warm encouragement, gentle pauses and a clear pace suitable for young children. No exaggerated cartoon voice, singing, music, extra words or sound effects.';
-type Job = { texte: string; targets: { lessonId: string; grade: string; key: string }[] };
+const instructions = (language: string) => `Read exactly the provided text in ${language === 'ar' ? 'Modern Standard Arabic (fusha), accurate Arabic vowels and consonants, no dialect' : language === 'fr' ? 'clear natural French' : 'clear natural English'}. You are Didou, a warm, patient educational guide for primary school children. Sound natural and expressive, with cheerful energy, warm encouragement, gentle pauses and a clear pace suitable for young children. No exaggerated cartoon voice, singing, music, extra words or sound effects.`;
+type Job = { texte: string; language?: 'ar' | 'fr' | 'en'; uses?: string[]; targets?: { lessonId: string; grade: string; key: string }[] };
 type Clip = { texte: string; fichier: string; duration: number; sha256: string; voice: string; model: string; generatedAt: string; synthetic: true; reviewStatus: string; sourceWavSha256: string; uses: string[] };
 const digest = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex');
 function wavStats(audio: Buffer) {
@@ -38,23 +38,24 @@ function wavStats(audio: Buffer) {
 async function main() {
   const limit = Number(option('--limit') ?? 3);
   if (!Number.isInteger(limit) || limit < 1 || limit > 24) throw new Error('Limit must be an integer from 1 to 24');
-  const plan = resolve(root, 'docs/audio-v1/cours-1ap-2ap/openai-lot-01-demande.json');
+  const plan = resolve(root, option('--plan') ?? 'docs/audio-v1/cours-1ap-2ap/openai-lot-01-demande.json');
   const jobs: Job[] = JSON.parse(readFileSync(plan, 'utf8'));
   const metadataPath = resolve(root, 'docs/audio-v1/enregistrements-cours-openai.json');
-  const meta: { ar: { clips: Clip[] } } = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, 'utf8')) : { ar: { clips: [] } };
+  const meta: Partial<Record<'ar' | 'fr' | 'en', { clips: Clip[] }>> = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, 'utf8')) : { ar: { clips: [] } };
   // Fail closed if V2 cannot be inspected: never bill for a possibly existing clip.
   const v2 = loadRecordingLibrary(discoverV2Root(root));
   const reusableV2: ReturnType<typeof v2.find>[] = [];
   const pending = jobs.filter(job => {
+    if (job.language && !['ar', 'fr', 'en'].includes(job.language)) throw new Error('Unsupported language');
     if (!job.texte || job.texte.length > 2000) throw new Error('Unexpected input size');
-    if (findRecordedSpeechSequence(job.texte, 'ar-SA')) return false;
-    const clip = meta.ar.clips.find(clip => recordedSpeechKey(clip.texte) === recordedSpeechKey(job.texte));
+    if (findRecordedSpeechSequence(job.texte, job.language ?? 'ar')) return false;
+    const clip = meta[job.language ?? 'ar']?.clips.find(clip => recordedSpeechKey(clip.texte) === recordedSpeechKey(job.texte));
     if (!clip) {
-      const existing = v2.find(job.texte, 'ar-SA', voice);
+      const existing = v2.find(job.texte, job.language ?? 'ar', voice);
       if (existing) { reusableV2.push(existing); return false; }
       return true;
     }
-    const path = resolve(root, 'frontend/public/sounds/preschool/ar', clip.fichier);
+    const path = resolve(root, 'frontend/public/sounds/preschool', job.language ?? 'ar', clip.fichier);
     if (!existsSync(path) || digest(readFileSync(path)) !== clip.sha256) throw new Error('Previously produced file failed integrity check; refusing overwrite');
     return false;
   });
@@ -70,18 +71,22 @@ async function main() {
   if (!apiKey) throw new Error('OPENAI_API_KEY is not configured');
   const ffmpeg = execFileSync('python', ['-c', 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())'], { encoding: 'utf8' }).trim();
   const archive = resolve(root, 'output/course-audio-originals');
-  const destination = resolve(root, 'frontend/public/sounds/preschool/ar');
-  mkdirSync(archive, { recursive: true }); mkdirSync(destination, { recursive: true });
+  mkdirSync(archive, { recursive: true });
   for (const job of selected) {
+    const language = job.language ?? 'ar';
+    const destination = resolve(root, 'frontend/public/sounds/preschool', language);
+    const languageArchive = resolve(archive, language);
+    mkdirSync(destination, { recursive: true }); mkdirSync(languageArchive, { recursive: true });
+    meta[language] ??= { clips: [] };
     const stem = `course-cedar-${digest(`${voice}:${job.texte}`).slice(0, 16)}`;
     const target = resolve(destination, `${stem}.mp3`);
-    const wavPath = resolve(archive, `${stem}.wav`);
+    const wavPath = resolve(languageArchive, `${stem}.wav`);
     if (existsSync(target) || existsSync(wavPath)) throw new Error('Existing output detected; refusing overwrite or duplicate billing');
     let response: Response;
     try {
       response = await fetch('https://api.openai.com/v1/audio/speech', { method: 'POST', signal: AbortSignal.timeout(120_000),
         headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model, voice, input: job.texte, response_format: 'wav', instructions }),
+        body: JSON.stringify({ model, voice, input: job.texte, response_format: 'wav', instructions: instructions(language) }),
       });
     } catch { throw new Error('OpenAI network request failed; no automatic retry to avoid duplicate charges'); }
     if (!response.ok) {
@@ -92,16 +97,16 @@ async function main() {
     const audio = Buffer.from(await response.arrayBuffer());
     writeFileSync(wavPath, audio, { flag: 'wx' });
     const stats = wavStats(audio);
-    const compressed = resolve(archive, `${stem}.mp3`);
+    const compressed = resolve(languageArchive, `${stem}.mp3`);
     execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-n', '-i', wavPath, '-codec:a', 'libmp3lame', '-b:a', '80k', '-ar', '24000', '-ac', '1', compressed], { stdio: 'pipe' });
     execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-i', compressed, '-f', 'null', '-'], { stdio: 'pipe' });
     copyFileSync(compressed, target, constants.COPYFILE_EXCL);
-    meta.ar.clips.push({ texte: job.texte, fichier: `${stem}.mp3`, duration: stats.duration, sha256: digest(readFileSync(target)), voice, model,
+    meta[language]!.clips.push({ texte: job.texte, fichier: `${stem}.mp3`, duration: stats.duration, sha256: digest(readFileSync(target)), voice, model,
       generatedAt: new Date().toISOString(), synthetic: true, reviewStatus: 'listening-required', sourceWavSha256: digest(audio),
-      uses: job.targets.map(target => `course:${target.lessonId}:${target.key}`),
+      uses: job.uses ?? job.targets?.map(target => `course:${target.lessonId}:${target.key}`) ?? [],
     });
     writeFileSync(`${metadataPath}.tmp`, JSON.stringify(meta, null, 2) + '\n'); renameSync(`${metadataPath}.tmp`, metadataPath);
-    console.log(JSON.stringify({ saved: `${stem}.mp3`, seconds: Number(stats.duration.toFixed(2)), rms: Number(stats.rms.toFixed(4)), totalSaved: meta.ar.clips.length }));
+    console.log(JSON.stringify({ saved: `${stem}.mp3`, seconds: Number(stats.duration.toFixed(2)), rms: Number(stats.rms.toFixed(4)), totalSaved: meta[language]!.clips.length }));
   }
 }
 main().catch(error => { console.error(error instanceof Error ? error.message.replace(/sk-[a-zA-Z0-9_-]+/g, '[REDACTED]') : 'Audio generation failed'); process.exitCode = 1; });

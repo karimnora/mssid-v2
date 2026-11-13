@@ -21,8 +21,9 @@ import { getDidouEnergy, getDidouEnergyAfterTreat, getDidouFriendshipLevel, getD
 import { DidouOutfitItem, DidouOutfitId, DidouPetSpecies, DidouAvatarConfig } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
 import { AuthService } from '../services/authService';
-import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { speakText, stopSpeech, useVoiceAvailable, stripNonSpokenSymbols } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
+import { findRecordedSpeechSequence } from '../utils/recordedSpeech';
 import { DidouPortrait } from './DidouPortrait';
 
 interface DidouDressingRoomModalProps {
@@ -262,7 +263,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
     stopSpeech();
     setPlayingDialogueIndex(index);
     const langCode = isFrench ? 'fr-FR' : 'ar-SA';
-    void speakText(text, langCode, 0.95).then(() => {
+    void speakText(text, langCode, 0.95, 1, { recordedOnly: voiceAvailable !== true }).then(() => {
       setPlayingDialogueIndex(null);
     });
   };
@@ -383,10 +384,11 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
             {activeTab === 'wisdom' && <>
               <h3>{isFrench ? 'Un petit mot de Didou' : 'كلمة من ديدو'}</h3>
               <p className="didou-description">{isFrench ? 'Des encouragements à lire ou à écouter.' : 'كلمات تشجيع تقرؤها أو تسمعها.'}</p>
-              {voiceAvailable === false && <p className="didou-small">{isFrench ? 'La voix n’est pas disponible sur cet appareil. Tu peux lire tous les messages.' : 'الصوت غير متاح على هذا الجهاز. يمكنك قراءة كل الرسائل.'}</p>}
+              {voiceAvailable === false && !(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).some(quote => findRecordedSpeechSequence(stripNonSpokenSymbols(quote), isFrench ? 'fr-FR' : 'ar-SA')) && <p className="didou-small">{isFrench ? 'La voix n’est pas disponible sur cet appareil. Tu peux lire tous les messages.' : 'الصوت غير متاح على هذا الجهاز. يمكنك قراءة كل الرسائل.'}</p>}
+              <p className="didou-small">{isFrench ? 'Voix de synthèse de Didou.' : 'صوت ديدو مُولَّد بالذكاء الاصطناعي.'}</p>
               <div className="didou-dialogues">{(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).map((quote, index) => <article key={index} data-speaking={playingDialogueIndex === index || undefined}>
                 <p>{quote}</p>
-                {voiceReadingEnabled && voiceAvailable === true && <button type="button" className="didou-secondary-button" onClick={() => {
+                {voiceReadingEnabled && (voiceAvailable === true || findRecordedSpeechSequence(stripNonSpokenSymbols(quote), isFrench ? 'fr-FR' : 'ar-SA')) && <button type="button" className="didou-secondary-button" onClick={() => {
                   if (playingDialogueIndex === index) { stopSpeech(); setPlayingDialogueIndex(null); } else handlePlayDialogue(quote, index);
                 }}><Volume2 className="w-4 h-4" />{playingDialogueIndex === index ? (isFrench ? 'Arrêter' : 'أوقف') : (isFrench ? 'Écouter' : 'أستمع')}</button>}
               </article>)}</div>

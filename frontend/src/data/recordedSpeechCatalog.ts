@@ -505,6 +505,30 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-9681b2dda75f60a5.mp3",
       "durationMs": 4250
     },
+    "أهلاً يا بطل! أنا ديدو صديقك المفضل، هل نراجع الرياضيات أو العلوم اليوم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-92da6cb39d77285c.mp3",
+      "durationMs": 7600
+    },
+    "أنت تتقدم بشكل رائع! كل درس تقرؤه يجعلك أقوى وأذكى!": {
+      "src": "/sounds/preschool/ar/course-cedar-2bfa2f04c275ec0a.mp3",
+      "durationMs": 7050
+    },
+    "العقل السليم في الجسم السليم! تذكر شرب الماء والجلوس بوضعية مريحة": {
+      "src": "/sounds/preschool/ar/course-cedar-83c64217358aab26.mp3",
+      "durationMs": 8000
+    },
+    "العلم نور والجهل ظلام، خطوة بخطوة سنحصل على علامة 10/10 في الامتحان!": {
+      "src": "/sounds/preschool/ar/course-cedar-a402f64a3323c791.mp3",
+      "durationMs": 7450
+    },
+    "ما رأيك في تذوق حبة تمر من بسكرة؟ تعطيني طاقة لأشجعك أكثر!": {
+      "src": "/sounds/preschool/ar/course-cedar-e32cc6b5810c7234.mp3",
+      "durationMs": 6950
+    },
+    "أنا فخور بك جداً يا صديقي، شكراً لأنك تجتهد كل يوم!": {
+      "src": "/sounds/preschool/ar/course-cedar-e6089203b5536657.mp3",
+      "durationMs": 7000
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325
@@ -2315,6 +2339,30 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/colors-memory-gems-prompt.mp3",
       "durationMs": 3246
     },
+    "Salut champion ! Prêt pour une nouvelle aventure d’apprentissage aujourd’hui ?": {
+      "src": "/sounds/preschool/fr/course-cedar-2d4fea7dfe6423f3.mp3",
+      "durationMs": 4550
+    },
+    "Chaque exercice réussi te rapproche de ton grand diplôme de fin d’année !": {
+      "src": "/sounds/preschool/fr/course-cedar-99d3e8df8f04b182.mp3",
+      "durationMs": 5000
+    },
+    "Prends une petite pause, bois un verre d’eau et étire-toi !": {
+      "src": "/sounds/preschool/fr/course-cedar-6ff7fa28c4bc6a27.mp3",
+      "durationMs": 4500
+    },
+    "Bravo pour ta persévérance ! Les grands savants ont tous commencé comme toi !": {
+      "src": "/sounds/preschool/fr/course-cedar-69117e79b6446f10.mp3",
+      "durationMs": 5350
+    },
+    "Tu peux me donner une datte ou un verre de lait pour recharger mon énergie ?": {
+      "src": "/sounds/preschool/fr/course-cedar-61acb05361627814.mp3",
+      "durationMs": 5400
+    },
+    "Je suis tellement fier d’être ton compagnon d’étude ! Continuons ensemble !": {
+      "src": "/sounds/preschool/fr/course-cedar-664866acd7dce753.mp3",
+      "durationMs": 5000
+    },
     "L’école": {
       "src": "/sounds/preschool/fr/language-next-fr-1.mp3",
       "durationMs": 900
@@ -4100,6 +4148,54 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Flip the cards and find the matching color pairs!": {
       "src": "/sounds/preschool/en/colors-memory-gems-prompt.mp3",
       "durationMs": 3129
+    },
+    "8 years old": {
+      "src": "/sounds/preschool/en/course-cedar-c60eaf271c92abe0.mp3",
+      "durationMs": 2450
+    },
+    "10 years old": {
+      "src": "/sounds/preschool/en/course-cedar-82938429d6db9901.mp3",
+      "durationMs": 1350
+    },
+    "5 years old": {
+      "src": "/sounds/preschool/en/course-cedar-6a27716325e8fb68.mp3",
+      "durationMs": 1650
+    },
+    "Milk and dates": {
+      "src": "/sounds/preschool/en/course-cedar-1d54331c440db7bc.mp3",
+      "durationMs": 2050
+    },
+    "Pizza and cola": {
+      "src": "/sounds/preschool/en/course-cedar-c00c97d1b42b3d07.mp3",
+      "durationMs": 1850
+    },
+    "Fish and rice": {
+      "src": "/sounds/preschool/en/course-cedar-12e4c8d2b1e49023.mp3",
+      "durationMs": 1850
+    },
+    "Excuse me, how can we get to the Martyrs’ Memorial from here?": {
+      "src": "/sounds/preschool/en/course-cedar-25330cde7a1b0a9f.mp3",
+      "durationMs": 3900
+    },
+    "Go straight ahead, then turn left at the big park. It is next to the museum.": {
+      "src": "/sounds/preschool/en/course-cedar-2a5adb080e4ec38f.mp3",
+      "durationMs": 5150
+    },
+    "And how do we get to the Casbah of Algiers?": {
+      "src": "/sounds/preschool/en/course-cedar-77bc9ca1d3b20a28.mp3",
+      "durationMs": 3150
+    },
+    "Turn right after the port, then walk straight until you see the old white houses.": {
+      "src": "/sounds/preschool/en/course-cedar-9ed7f8be937712d2.mp3",
+      "durationMs": 5250
+    },
+    "Turn right after the port": {
+      "src": "/sounds/preschool/en/course-cedar-fae5e044d040d902.mp3",
+      "durationMs": 2200
+    },
+    "Turn left at the school": {
+      "src": "/sounds/preschool/en/course-cedar-e987ed370204170e.mp3",
+      "durationMs": 2550
     },
     "Hello! My name is Amine. What is your name?": {
       "src": "/sounds/preschool/en/language-next-en-1.mp3",

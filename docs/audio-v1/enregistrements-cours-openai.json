@@ -361,6 +361,374 @@
         "uses": [
           "course:math-2ap-t3-ruler-cm:title"
         ]
+      },
+      {
+        "texte": "أهلاً يا بطل! أنا ديدو صديقك المفضل، هل نراجع الرياضيات أو العلوم اليوم؟",
+        "fichier": "course-cedar-92da6cb39d77285c.mp3",
+        "duration": 7.6,
+        "sha256": "e06556b3c56ac2639eb3b34a7b1eae9e1406f04123974453cdb8d1d809e901a0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:17.677Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d586343ade15419c7c86a3f3b3596fb08bd73eed30c8191110439999ff4efd0b",
+        "uses": [
+          "dialogue-0"
+        ]
+      },
+      {
+        "texte": "أنت تتقدم بشكل رائع! كل درس تقرؤه يجعلك أقوى وأذكى!",
+        "fichier": "course-cedar-2bfa2f04c275ec0a.mp3",
+        "duration": 7.05,
+        "sha256": "714e374566a5c7ad4c66c54c2b986ff2b0e376fd49b151278d02238c6b2bdc18",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:19.576Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1964d18c2091e31ee6501661d7af0346f6acfc70d48f5bb828849b44ad6bc576",
+        "uses": [
+          "dialogue-1"
+        ]
+      },
+      {
+        "texte": "العقل السليم في الجسم السليم! تذكر شرب الماء والجلوس بوضعية مريحة",
+        "fichier": "course-cedar-83c64217358aab26.mp3",
+        "duration": 8,
+        "sha256": "655bfda2df02bffe85b09874d5c97803a62296576879f0c7b64125641c729271",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:21.399Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ab8931d5dbb045a898b0287a7635df88ca6de8a2a55f5bc8ad3d375fcbeb9b6f",
+        "uses": [
+          "dialogue-2"
+        ]
+      },
+      {
+        "texte": "العلم نور والجهل ظلام، خطوة بخطوة سنحصل على علامة 10/10 في الامتحان!",
+        "fichier": "course-cedar-a402f64a3323c791.mp3",
+        "duration": 7.45,
+        "sha256": "22835838f92a03fc6d343b8ea7866e835d495955d9d6f88e6ad861ad916fa324",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:23.712Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3f6e526bead543a8a0907adf7e99325dafeb5bd5fa8674442edbbb28201f4953",
+        "uses": [
+          "dialogue-3"
+        ]
+      },
+      {
+        "texte": "ما رأيك في تذوق حبة تمر من بسكرة؟ تعطيني طاقة لأشجعك أكثر!",
+        "fichier": "course-cedar-e32cc6b5810c7234.mp3",
+        "duration": 6.95,
+        "sha256": "5080e76835c31490636cc34a4429c3c42396f0a2402dddb30402f5090982272b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:25.828Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4f3277487b877179e4f0552d1400a1c0c0ab46a9109678ef0cbfd30176b14986",
+        "uses": [
+          "dialogue-4"
+        ]
+      },
+      {
+        "texte": "أنا فخور بك جداً يا صديقي، شكراً لأنك تجتهد كل يوم!",
+        "fichier": "course-cedar-e6089203b5536657.mp3",
+        "duration": 7,
+        "sha256": "eaf4ca409a5687e1d0ab746e33b1fd0cdcafbbfbfb2c9a0c1fa62958cc28f1c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:27.232Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "010787cac0bc97305fffb51eadf50f3c6e6d11dfd4c679019dc74cf39f43afec",
+        "uses": [
+          "dialogue-5"
+        ]
+      }
+    ]
+  },
+  "fr": {
+    "clips": [
+      {
+        "texte": "Salut champion ! Prêt pour une nouvelle aventure d’apprentissage aujourd’hui ?",
+        "fichier": "course-cedar-2d4fea7dfe6423f3.mp3",
+        "duration": 4.55,
+        "sha256": "f96a8cadac7be30db9913b06087dab12d90a226c3b42b02ecd3f0631bff4fe6d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:28.782Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f70f13e6f178570fa8a7a380bd30e7ea26dfdbc3e30433cec52dd07e48d818b7",
+        "uses": [
+          "dialogue-0"
+        ]
+      },
+      {
+        "texte": "Chaque exercice réussi te rapproche de ton grand diplôme de fin d’année !",
+        "fichier": "course-cedar-99d3e8df8f04b182.mp3",
+        "duration": 5,
+        "sha256": "484254c6a4b76bbf4e1827092708de744575b85cb48da64af4ec2e782a9d582a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:30.191Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fd0be4f92d9d3239f8f34df8ac4284256639fb40bfac8cf0444a719f55439a59",
+        "uses": [
+          "dialogue-1"
+        ]
+      },
+      {
+        "texte": "Prends une petite pause, bois un verre d’eau et étire-toi !",
+        "fichier": "course-cedar-6ff7fa28c4bc6a27.mp3",
+        "duration": 4.5,
+        "sha256": "caca97315d0200b15e74126d693bf34c6059a52e937fb51d9aace9f5f84cbb27",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:31.449Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cf1f0eebffb811805f69955f4918e281318831aa5ba12c5cefa87abb7bf25ab8",
+        "uses": [
+          "dialogue-2"
+        ]
+      },
+      {
+        "texte": "Bravo pour ta persévérance ! Les grands savants ont tous commencé comme toi !",
+        "fichier": "course-cedar-69117e79b6446f10.mp3",
+        "duration": 5.35,
+        "sha256": "862e8c5ecde381956b0e2e85ab41d648339df02ef1b9c325598887c8ab7c6987",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:33.030Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f9467cc645d8d6e0788b18345aeb57b1b66f0002db4259ff4656628f9259c3e9",
+        "uses": [
+          "dialogue-3"
+        ]
+      },
+      {
+        "texte": "Tu peux me donner une datte ou un verre de lait pour recharger mon énergie ?",
+        "fichier": "course-cedar-61acb05361627814.mp3",
+        "duration": 5.4,
+        "sha256": "fa388de49bcc150a0161bc4d0776ae3bc39006f89922c850fa9fecc33ea244e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:34.654Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4af50776b3f48ae3387070b5fcc3c84adbb12da86e48bd026d5f00dd177527ab",
+        "uses": [
+          "dialogue-4"
+        ]
+      },
+      {
+        "texte": "Je suis tellement fier d’être ton compagnon d’étude ! Continuons ensemble !",
+        "fichier": "course-cedar-664866acd7dce753.mp3",
+        "duration": 5,
+        "sha256": "2e037bea991fff5e7d1266ebe71ffa7875eb07e0e0ced7ace1243d6101a44c3a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:36.260Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "66dd5fc3a18b62296a9dc968370a697e89e83b37005a271aade8641ea4c8888e",
+        "uses": [
+          "dialogue-5"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "clips": [
+      {
+        "texte": "8 years old",
+        "fichier": "course-cedar-c60eaf271c92abe0.mp3",
+        "duration": 2.45,
+        "sha256": "bb890a616502a7176b1d63cc0cc3fe65dd1d24504387e08316009308e2e750ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:37.676Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "203dc10e0520303ce103f79257f578e355a9b68cc5bd3abcb73ce26bdfd24625",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:62"
+        ]
+      },
+      {
+        "texte": "10 years old",
+        "fichier": "course-cedar-82938429d6db9901.mp3",
+        "duration": 1.35,
+        "sha256": "72bb5bccf6bb2b7924da7865c8ac97d13f796223785e44e5f06924e58c7e8577",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:38.717Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c93ab28bb5b07a9c1abd5c3ec1445f76db378b6741157c39cd15a1135a0fae13",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:63"
+        ]
+      },
+      {
+        "texte": "5 years old",
+        "fichier": "course-cedar-6a27716325e8fb68.mp3",
+        "duration": 1.65,
+        "sha256": "3bd389df32e4faa7c3f056806baaaa6855ee4e8ef098fc3d24aa72e4b8e8fb88",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:39.612Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "83d4c061e5b24a8cd538d2d05d526e0bb003204557356c38b2f612c67603763e",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:64"
+        ]
+      },
+      {
+        "texte": "Milk and dates",
+        "fichier": "course-cedar-1d54331c440db7bc.mp3",
+        "duration": 2.05,
+        "sha256": "7b91732c0280704e11b089bb8c1ad2828e9afac8c3c537ddf9544966f3d30e44",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:40.658Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6d1dac72169b721cceeab60bdacc17fea0a790a78c4a1180411303324d7fa774",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:87"
+        ]
+      },
+      {
+        "texte": "Pizza and cola",
+        "fichier": "course-cedar-c00c97d1b42b3d07.mp3",
+        "duration": 1.85,
+        "sha256": "54f33f9868039069d095d90919905fa8e75b798468998ed57b8380d64c15f783",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:42.004Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "62e0465223e3602a00a65a6b50bd0eb697ff00a017c0f7df7a0f29cd4005bb0c",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:88"
+        ]
+      },
+      {
+        "texte": "Fish and rice",
+        "fichier": "course-cedar-12e4c8d2b1e49023.mp3",
+        "duration": 1.85,
+        "sha256": "c64534a1414c860fa1ddc6bb90b8e35817a22a6119caa61d48a9da3f46503c01",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:43.293Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "606ffb6d0cc90ed62aea65d84c58935f5395c4231c07790002f4ae51d4566243",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:89"
+        ]
+      },
+      {
+        "texte": "Excuse me, how can we get to the Martyrs’ Memorial from here?",
+        "fichier": "course-cedar-25330cde7a1b0a9f.mp3",
+        "duration": 3.9,
+        "sha256": "6269711f411d54cb85ba3150b220558fc77194b538931fb96b479f69be6bdcab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:44.913Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5f40534da5233e175a29f30b740dd5311130598fc2312dc40178ac4b18385000",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:102"
+        ]
+      },
+      {
+        "texte": "Go straight ahead, then turn left at the big park. It is next to the museum.",
+        "fichier": "course-cedar-2a5adb080e4ec38f.mp3",
+        "duration": 5.15,
+        "sha256": "1cd51a10eaca8684774c488506680373b5f7aa9a0a4ff186b65d0f146bbaec5b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:46.576Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "03cfd66d483068544b4d967b154175616929d70d2020a20d258b0fe3525f77e3",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:103"
+        ]
+      },
+      {
+        "texte": "And how do we get to the Casbah of Algiers?",
+        "fichier": "course-cedar-77bc9ca1d3b20a28.mp3",
+        "duration": 3.15,
+        "sha256": "d18fe45823ab730bbaded124ae136c225cc01649987e725ad14195cac1a376a9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:48.367Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "352d3d91096f340f0a0b9b5e1215833530aff319ede7d08d0184703cf82b3fdf",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:104"
+        ]
+      },
+      {
+        "texte": "Turn right after the port, then walk straight until you see the old white houses.",
+        "fichier": "course-cedar-9ed7f8be937712d2.mp3",
+        "duration": 5.25,
+        "sha256": "f74366beaadc8d1a26d5fe970ccf91b293c6555997c7fb47c5425c4d1d443dfa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:50.335Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "90921ef71c8a2a44a54f84423114381b0615350ea85bba52d84d55b538d6a969",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:105"
+        ]
+      },
+      {
+        "texte": "Turn right after the port",
+        "fichier": "course-cedar-fae5e044d040d902.mp3",
+        "duration": 2.2,
+        "sha256": "0e3ce5f017adcafa1300c6edfdcda59f4a8884d2619eb9ffe1ecdaedb4f754de",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:52.127Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9c478681de8dd86308e2451f9b14329f0e2ed71ce022b8cd2ab482482eafa07e",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:112"
+        ]
+      },
+      {
+        "texte": "Turn left at the school",
+        "fichier": "course-cedar-e987ed370204170e.mp3",
+        "duration": 2.55,
+        "sha256": "fad6a22f320aca57a3725bfbad814910552d4cf35e69f53f2d7c75fe594f35db",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T10:03:53.966Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "efafe6916f01b5cc8cef99bc6c6855f09db9f2f3e9c8fb173767c679f758c33f",
+        "uses": [
+          "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:113"
+        ]
       }
     ]
   }

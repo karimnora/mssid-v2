@@ -11,7 +11,7 @@ import { setFeatureFlagOverride, resetFeatureFlagOverride } from '../featureFlag
 const voice = vi.hoisted(() => ({ available: true }));
 vi.mock('../context/AuthContext', () => ({ useAuth: () => ({ authUser: null }) }));
 vi.mock('../services/authService', () => ({ AuthService: { syncGoldCoinsAndAvatar: vi.fn() } }));
-vi.mock('../utils/speech', () => ({ speakText: vi.fn().mockResolvedValue(undefined), stopSpeech: vi.fn(), useVoiceAvailable: () => voice.available }));
+vi.mock('../utils/speech', async importOriginal => ({ ...(await importOriginal<typeof import('../utils/speech')>()), speakText: vi.fn().mockResolvedValue(undefined), stopSpeech: vi.fn(), useVoiceAvailable: () => voice.available }));
 const base = { goldCoins: 150, xp: 300, level: 4, avatarConfig: { species: 'fennec', activeOutfit: 'default', unlockedOutfits: ['default'], energy: 70 } };
 function setup(coins = 150) {
   setStoredLocale('fr');
@@ -60,18 +60,20 @@ describe('Didou studio interactions', () => {
     expect(document.querySelector('[data-treat="deglet_nour"] button')).toBeDisabled();
     expect(updated).not.toHaveBeenCalled();
   });
-  it('keeps messages readable when the device has no voice', () => {
+  it('plays recorded messages when the device has no voice', async () => {
     voice.available = false;
     setup();
     fireEvent.click(screen.getByRole('tab', { name: 'Parler' }));
-    expect(screen.getByText(/Tu peux lire tous les messages/)).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Écouter' })).not.toBeInTheDocument();
+    expect(screen.queryByText(/Tu peux lire tous les messages/)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'Écouter' })).toHaveLength(6);
+    await act(async () => fireEvent.click(screen.getAllByRole('button', { name: 'Écouter' })[0]));
+    expect(speakText).toHaveBeenCalledWith(expect.any(String), 'fr-FR', 0.95, 1, { recordedOnly: true });
   });
   it('uses the interface language for the selected message', async () => {
     setup();
     fireEvent.click(screen.getByRole('tab', { name: 'Parler' }));
     await act(async () => fireEvent.click(screen.getAllByRole('button', { name: 'Écouter' })[0]));
-    expect(speakText).toHaveBeenCalledWith(expect.any(String), 'fr-FR', 0.95);
+    expect(speakText).toHaveBeenCalledWith(expect.any(String), 'fr-FR', 0.95, 1, { recordedOnly: false });
   });
   it('marks the real current growth stage and supports tab keyboard navigation', () => {
     setup();
