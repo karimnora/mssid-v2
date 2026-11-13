@@ -146,6 +146,7 @@ export const SCIENCE_3AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'الجذور ثم الساق ثم الأوراق.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'plant', rootsLabelAr: 'الجذور تمتص', stemLabelAr: 'الساق تنقل', leavesLabelAr: 'الأوراق تستعمل' }, captionAr: 'السهم الأزرق يبين طريق الماء: من الجذور إلى الأوراق.' },
       titleAr: 'تجربة الماء الملون',
       textAr: 'لأرى طريق الماء:\nأولا: أضع ساق زهرة بيضاء في ماء ملون بالأزرق.\nثانيا: أنتظر يوما كاملا.\nثالثا: ألاحظ: تلونت الأوراق البيضاء بالأزرق. إذن صعد الماء عبر الساق.',
       tableLabels: ['الجزء', 'دوره'],
@@ -273,6 +274,7 @@ export const SCIENCE_3AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'المصباح يضيء إذا كانت الدارة مغلقة.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'circuit', closed: true, batteryLabelAr: 'البطارية', bulbLabelAr: 'المصباح', switchLabelAr: 'القاطعة مغلقة' }, captionAr: 'دارة مغلقة: الطريق متصل من البطارية إلى البطارية، فيضيء المصباح.' },
       titleAr: 'أتبع طريق الكهرباء',
       textAr: 'لأعرف هل يضيء المصباح:\nأولا: أنطلق من البطارية.\nثانيا: أتبع الأسلاك عنصرا عنصرا.\nثالثا: إذا عدت إلى البطارية دون انقطاع، فالدارة مغلقة والمصباح يضيء.',
       tableLabels: ['حالة الدارة', 'المصباح'],

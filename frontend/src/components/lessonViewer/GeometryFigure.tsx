@@ -129,6 +129,103 @@ function Figure({ spec }: { spec: GeometryFigureSpec }) {
           {spec.labelsAr.map((label, index) => <Label key={index} x={[55, 160, 266][index]} y={142} size={12}>{label}</Label>)}
         </>
       );
+    case 'clocks':
+      return (
+        <>
+          {spec.clocks.map((clock, index) => {
+            const cx = (320 / spec.clocks.length) * (index + 0.5);
+            const cy = 76;
+            const hourAngle = (((clock.hour % 12) + clock.minute / 60) * 30 * Math.PI) / 180;
+            const minuteAngle = (clock.minute * 6 * Math.PI) / 180;
+            return (
+              <g key={index}>
+                <circle cx={cx} cy={cy} r={60} {...shape} fill="#ffffff" />
+                {Array.from({ length: 12 }, (_, n) => {
+                  const a = (n * 30 * Math.PI) / 180;
+                  return n % 3 === 0
+                    ? <text key={n} x={cx + 46 * Math.sin(a)} y={cy - 46 * Math.cos(a) + 5} textAnchor="middle" fontSize={14} fontWeight={800} fill="currentColor">{n === 0 ? 12 : n}</text>
+                    : <path key={n} d={`M ${cx + 50 * Math.sin(a)} ${cy - 50 * Math.cos(a)} L ${cx + 56 * Math.sin(a)} ${cy - 56 * Math.cos(a)}`} stroke={STROKE} strokeWidth={2} />;
+                })}
+                <path d={`M ${cx} ${cy} L ${cx + 38 * Math.sin(minuteAngle)} ${cy - 38 * Math.cos(minuteAngle)}`} {...line} />
+                <path d={`M ${cx} ${cy} L ${cx + 24 * Math.sin(hourAngle)} ${cy - 24 * Math.cos(hourAngle)}`} stroke={ACCENT} strokeWidth={5} strokeLinecap="round" />
+                <circle cx={cx} cy={cy} r={4} fill={STROKE} />
+                <Label x={cx} y={164} size={13}>{clock.labelAr}</Label>
+              </g>
+            );
+          })}
+        </>
+      );
+    case 'bar_chart': {
+      const max = Math.max(...spec.bars.map(bar => bar.value));
+      const slot = 260 / spec.bars.length;
+      const barWidth = Math.min(46, slot * 0.6);
+      return (
+        <>
+          <path d="M 34 18 L 34 140 L 304 140" {...line} strokeWidth={2} />
+          {spec.bars.map((bar, index) => {
+            const height = (bar.value / max) * 100;
+            const x = 44 + slot * index + (slot - barWidth) / 2;
+            return (
+              <g key={index}>
+                <rect x={x} y={140 - height} width={barWidth} height={height} {...shape} fill={bar.value === max ? '#6ee7b7' : FILL} />
+                <text x={x + barWidth / 2} y={140 - height - 6} textAnchor="middle" fontSize={14} fontWeight={800} fill="currentColor">{bar.value}</text>
+                <Label x={x + barWidth / 2} y={160} size={12}>{bar.labelAr}</Label>
+              </g>
+            );
+          })}
+        </>
+      );
+    }
+    case 'flow': {
+      const count = spec.stepsAr.length;
+      const gap = 9;
+      const boxHeight = Math.min(34, (172 - gap * (count - 1)) / count);
+      const top = (180 - (count * boxHeight + (count - 1) * gap)) / 2;
+      const yOf = (index: number) => top + index * (boxHeight + gap);
+      return (
+        <>
+          {spec.stepsAr.map((label, index) => (
+            <g key={index}>
+              <rect x={70} y={yOf(index)} width={190} height={boxHeight} rx={10} {...shape} />
+              <Label x={165} y={yOf(index) + boxHeight / 2 + 5} size={13}>{label}</Label>
+              {index < count - 1 && <path d={`M 165 ${yOf(index) + boxHeight + 1} l 0 ${gap - 3} m -5 -5 l 5 5 l 5 -5`} stroke={ACCENT} strokeWidth={2.5} fill="none" strokeLinecap="round" />}
+            </g>
+          ))}
+          {spec.cyclic && (
+            <path d={`M 70 ${yOf(count - 1) + boxHeight / 2} L 40 ${yOf(count - 1) + boxHeight / 2} L 40 ${yOf(0) + boxHeight / 2} L 64 ${yOf(0) + boxHeight / 2} m -6 -5 l 6 5 l -6 5`} stroke={ACCENT} strokeWidth={2.5} fill="none" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="6 5" />
+          )}
+        </>
+      );
+    }
+    case 'plant':
+      return (
+        <>
+          <rect x={20} y={118} width={170} height={56} fill="#fde68a" opacity={0.55} rx={8} />
+          <path d="M 105 118 L 105 46" {...line} strokeWidth={5} />
+          <ellipse cx={80} cy={78} rx={24} ry={11} {...shape} transform="rotate(-25 80 78)" />
+          <ellipse cx={132} cy={62} rx={24} ry={11} {...shape} transform="rotate(25 132 62)" />
+          <circle cx={105} cy={34} r={14} fill="#fca5a5" stroke={STROKE} strokeWidth={3} />
+          <path d="M 105 118 L 78 158 M 105 118 L 105 164 M 105 118 L 134 156 M 92 138 L 70 142 M 120 138 L 144 140" {...line} strokeWidth={2.5} />
+          <path d="M 160 160 L 160 52 m -6 8 l 6 -8 l 6 8" stroke="#2563eb" strokeWidth={3} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <Label x={200} y={150} anchor="start" size={13}>{spec.rootsLabelAr}</Label>
+          <Label x={200} y={100} anchor="start" size={13}>{spec.stemLabelAr}</Label>
+          <Label x={200} y={62} anchor="start" size={13}>{spec.leavesLabelAr}</Label>
+        </>
+      );
+    case 'circuit':
+      return (
+        <>
+          <path d="M 60 82 L 60 36 L 144 36 M 176 36 L 260 36 L 260 144 L 182 144 M 138 144 L 60 144 L 60 98" {...line} />
+          <path d="M 44 82 L 76 82" stroke={STROKE} strokeWidth={5} strokeLinecap="round" /><path d="M 51 98 L 69 98" stroke={STROKE} strokeWidth={5} strokeLinecap="round" />
+          <circle cx={160} cy={36} r={16} fill={spec.closed ? '#fde047' : '#ffffff'} stroke={STROKE} strokeWidth={3} />
+          <path d="M 149 25 L 171 47 M 171 25 L 149 47" stroke={STROKE} strokeWidth={2} />
+          <circle cx={138} cy={144} r={5} fill={ACCENT} /><circle cx={182} cy={144} r={5} fill={ACCENT} />
+          <path d={spec.closed ? 'M 138 144 L 182 144' : 'M 138 144 L 176 122'} stroke={ACCENT} strokeWidth={4} strokeLinecap="round" />
+          <Label x={84} y={95} anchor="start" size={13}>{spec.batteryLabelAr}</Label>
+          <Label x={160} y={72} size={13}>{spec.bulbLabelAr}</Label>
+          <Label x={160} y={126 - (spec.closed ? 0 : 14)} size={13} accent>{spec.switchLabelAr}</Label>
+        </>
+      );
     case 'circle':
       return (
         <>

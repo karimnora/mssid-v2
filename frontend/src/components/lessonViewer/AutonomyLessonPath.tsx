@@ -7,6 +7,7 @@ import { GeometryFigure } from './GeometryFigure';
 import { TapSpeakButton } from './TapSpeakButton';
 import { isolateMathRuns, latinTextDir, stripArabicGlosses } from '../../utils/textFormatter';
 import didouGuide from '../../assets/v2-reused/didou-point.webp';
+import didouCheer from '../../assets/v2-reused/didou-cheer.webp';
 
 interface Props {
   lesson: CourseLesson;
@@ -160,8 +161,26 @@ function ConceptVisual({ visual, renderText }: { visual: LearningPathVisual; ren
   );
 }
 
+/** A lesson may chain two missions: the second one is offered on the end screen of the first. */
+export function AutonomyLessonPath(props: Props) {
+  const missions: LearningPath[] = [];
+  for (let current: LearningPath | undefined = props.path; current; current = current.next) missions.push(current);
+  const [missionIndex, setMissionIndex] = useState(0);
+  const active = missions[Math.min(missionIndex, missions.length - 1)];
+  const next = missions[missionIndex + 1];
+  return (
+    <MissionSteps
+      key={missionIndex}
+      {...props}
+      path={active}
+      nextTitle={next?.titleAr}
+      onStartNext={next ? () => { props.onStopSpeech?.(); setMissionIndex(missionIndex + 1); } : undefined}
+    />
+  );
+}
+
 /** Reading a model never awards XP. Exercise state is shared with the ordinary practice panel. */
-export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, onGoToPractice, speakingKey = null, onSpeak, onStopSpeech }: Props) {
+function MissionSteps({ lesson, path, practice, renderArabicText, onGoToPractice, speakingKey = null, onSpeak, onStopSpeech, nextTitle, onStartNext }: Props & { nextTitle?: string; onStartNext?: () => void }) {
   const [stepIndex, setStepIndex] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const previousStepRef = useRef(0);
@@ -178,6 +197,11 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
     : undefined;
   const canContinue = !isExerciseStep || !!(exercise && practice.practiceCorrect[exercise.id]);
   const isLast = stepIndex === path.steps.length - 1;
+  // Stars shown on the end screen: what the exercises of this mission are worth together.
+  const missionExerciseIds = path.steps.flatMap(pathStep => ('exerciseId' in pathStep ? [pathStep.exerciseId] : []));
+  const missionXp = [...lesson.progressiveExercises ?? [], ...lesson.evaluationExercises ?? []]
+    .filter(ex => missionExerciseIds.includes(ex.id))
+    .reduce((total, ex) => total + (ex.xpReward ?? 0), 0);
   const displayText = (text: string) => isolateMathRuns(renderArabicText(text));
   // A French or English voice reads its own language only: Arabic glosses stay on screen but are not spoken.
   const spoken = (text: string) => (path.lang ? stripArabicGlosses(text) : text);
@@ -261,9 +285,20 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
         <p className="text-sm text-[var(--app-text-muted)]">أجيب ثم أتحقق. إذا أخطأت، يساعدني ديدو وأحاول مرة أخرى. يمكنني الرجوع إلى المثال.</p>
       )}
       {isLast && canContinue && (
-        <div role="status" data-path-complete className="flex items-center gap-3 rounded-3xl border border-emerald-300 bg-emerald-50 p-4 text-emerald-950">
-          <span className="text-3xl" aria-hidden="true">🌟</span>
-          <p className="text-base font-extrabold leading-relaxed">أحسنت! أنهيت هذه المهمة وحدك. أواصل التدريب على بقية أفكار الدرس.</p>
+        <div role="status" data-path-complete className="space-y-4 rounded-3xl border-2 border-emerald-300 bg-gradient-to-b from-emerald-50 to-amber-50 p-5 text-center text-emerald-950 shadow-[0_5px_0_#6ee7b7]">
+          <img src={didouCheer} alt="" width={96} height={96} loading="lazy" decoding="async" className="mx-auto h-24 w-24 object-contain" />
+          <p className="text-3xl tracking-widest" aria-hidden="true">⭐⭐⭐</p>
+          <p className="text-xl font-black leading-relaxed">أحسنت! أنهيت هذه المهمة وحدك.</p>
+          <p className="text-base font-bold leading-relaxed">
+            حللت {missionExerciseIds.length} تمارين{missionXp > 0 && <> وربحت <span dir="ltr" data-mission-xp className="font-black text-amber-700">+{missionXp} XP</span></>}.
+          </p>
+          {nextTitle && onStartNext ? (
+            <button type="button" data-start-next-mission onClick={onStartNext} className="min-h-[60px] w-full rounded-2xl bg-amber-400 px-4 text-base font-black text-amber-950 shadow-[0_4px_0_#d97706] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
+              🚀 <span dir={latinTextDir(nextTitle)}>{renderArabicText(nextTitle)}</span>
+            </button>
+          ) : (
+            <p className="text-sm font-bold text-emerald-900">أواصل التدريب على بقية أفكار الدرس.</p>
+          )}
         </div>
       )}
       <div className="flex gap-3">

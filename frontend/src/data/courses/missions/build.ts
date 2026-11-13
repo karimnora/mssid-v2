@@ -31,10 +31,12 @@ export interface MissionSpec {
   lessonId: string;
   /** French and English lessons: step titles and instructions are in that language so its voice can read them. */
   lang?: MissionLang;
+  /** 'm2' for a second mission of the same lesson: keeps its exercise ids distinct from the first one. */
+  idPrefix?: string;
   titleAr: string;
   recallAr: string;
   observe: { titleAr: string; textAr: string; visual?: LearningPathVisual };
-  model: { titleAr: string; textAr: string; operationsAr?: string; solutionAr?: string; irabRows?: { wordAr: string; analysisAr: string }[]; tableLabels?: [word: string, analysis: string] };
+  model: { titleAr: string; textAr: string; visual?: LearningPathVisual; operationsAr?: string; solutionAr?: string; irabRows?: { wordAr: string; analysisAr: string }[]; tableLabels?: [word: string, analysis: string] };
   guided: MissionExercise;
   solo: MissionExercise[];
   transfer: MissionExercise;
@@ -110,9 +112,10 @@ export interface BuiltMission {
 
 export function buildMission(spec: MissionSpec): BuiltMission {
   const D = defaultsFor(spec.lang);
-  const guided = toExercise(`${spec.lessonId}-m-guided`, 'guided', spec.guided, spec.lang);
-  const solos = spec.solo.map((ex, index) => toExercise(`${spec.lessonId}-m-solo${index + 1}`, 'independent', ex, spec.lang));
-  const transfer = toExercise(`${spec.lessonId}-m-transfer`, 'transfer', spec.transfer, spec.lang);
+  const prefix = spec.idPrefix ?? 'm';
+  const guided = toExercise(`${spec.lessonId}-${prefix}-guided`, 'guided', spec.guided, spec.lang);
+  const solos = spec.solo.map((ex, index) => toExercise(`${spec.lessonId}-${prefix}-solo${index + 1}`, 'independent', ex, spec.lang));
+  const transfer = toExercise(`${spec.lessonId}-${prefix}-transfer`, 'transfer', spec.transfer, spec.lang);
   const visual = spec.observe.visual && { ...spec.observe.visual, captionAr: groupDigits(spec.observe.visual.captionAr) };
   const steps: LearningPathStep[] = [
     { kind: 'observe', titleAr: spec.observe.titleAr, textAr: groupDigits(spec.observe.textAr), visual },
@@ -121,6 +124,7 @@ export function buildMission(spec: MissionSpec): BuiltMission {
       workedExample: spec.model.operationsAr && spec.model.solutionAr
         ? { operationsAr: groupDigits(spec.model.operationsAr), solution: groupDigits(spec.model.solutionAr) }
         : undefined,
+      visual: spec.model.visual && { ...spec.model.visual, captionAr: groupDigits(spec.model.visual.captionAr) },
       irabTable: spec.model.irabRows,
       irabTableLabels: spec.model.tableLabels,
     },
@@ -150,6 +154,26 @@ export function applyMission(lesson: CourseLesson, mission: BuiltMission): Cours
     progressiveExercises: [
       ...mission.practiceExercises,
       ...lesson.progressiveExercises ?? [],
+      ...(hasEvaluation ? [] : [mission.transferExercise]),
+    ],
+    evaluationExercises: hasEvaluation ? [...lesson.evaluationExercises ?? [], mission.transferExercise] : lesson.evaluationExercises,
+  };
+}
+
+/** Chains a second mission after the first one: its exercises follow the first mission's in the practice list. */
+export function applyNextMission(lesson: CourseLesson, mission: BuiltMission): CourseLesson {
+  if (!lesson.learningPath) return lesson;
+  const firstIds = new Set(lesson.learningPath.steps.flatMap(step => ('exerciseId' in step ? [step.exerciseId] : [])));
+  const progressive = lesson.progressiveExercises ?? [];
+  const insertAt = progressive.reduce((last, ex, index) => (firstIds.has(ex.id) ? index + 1 : last), 0);
+  const hasEvaluation = (lesson.evaluationExercises?.length ?? 0) > 0;
+  return {
+    ...lesson,
+    learningPath: { ...lesson.learningPath, next: mission.learningPath },
+    progressiveExercises: [
+      ...progressive.slice(0, insertAt),
+      ...mission.practiceExercises,
+      ...progressive.slice(insertAt),
       ...(hasEvaluation ? [] : [mission.transferExercise]),
     ],
     evaluationExercises: hasEvaluation ? [...lesson.evaluationExercises ?? [], mission.transferExercise] : lesson.evaluationExercises,

@@ -1,5 +1,5 @@
 import type { CourseLesson, LearningPath, ProgressiveExercise } from '../../types';
-import { applyMission, MISSIONS_BY_LESSON } from './missions';
+import { applyMission, applyNextMission, MISSIONS_BY_LESSON, SECOND_MISSIONS_BY_LESSON } from './missions';
 
 const placeValueExercises: ProgressiveExercise[] = [
   {
@@ -161,5 +161,7 @@ export function applyAutonomyPilot(lesson: CourseLesson): CourseLesson {
     };
   }
   const mission = MISSIONS_BY_LESSON.get(lesson.id);
-  return mission ? applyMission(lesson, mission) : lesson;
+  const withMission = mission ? applyMission(lesson, mission) : lesson;
+  const second = SECOND_MISSIONS_BY_LESSON.get(lesson.id);
+  return second ? applyNextMission(withMission, second) : withMission;
 }

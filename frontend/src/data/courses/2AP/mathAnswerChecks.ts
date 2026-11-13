@@ -48,8 +48,8 @@ const CHECKS: Record<string, number | string[]> = {
   'ex2-math2ap-mult': 12,
 };
 
-function withCheck(ex: ProgressiveExercise): ProgressiveExercise {
-  const check = CHECKS[ex.id];
+function withCheck(ex: ProgressiveExercise, checks: Record<string, number | string[]>): ProgressiveExercise {
+  const check = checks[ex.id];
   if (check === undefined || ex.type) return ex;
   if (typeof check === 'number') return { ...ex, type: 'calculation', calculationAnswer: check };
   return {
@@ -62,5 +62,7 @@ function withCheck(ex: ProgressiveExercise): ProgressiveExercise {
   };
 }
 
-export const withCheckedMathAnswers = (lessons: CourseLesson[]): CourseLesson[] =>
-  lessons.map(lesson => ({ ...lesson, progressiveExercises: lesson.progressiveExercises?.map(withCheck) }));
+export const withCheckedAnswers = (lessons: CourseLesson[], checks: Record<string, number | string[]>): CourseLesson[] =>
+  lessons.map(lesson => ({ ...lesson, progressiveExercises: lesson.progressiveExercises?.map(ex => withCheck(ex, checks)) }));
+
+export const withCheckedMathAnswers = (lessons: CourseLesson[]): CourseLesson[] => withCheckedAnswers(lessons, CHECKS);

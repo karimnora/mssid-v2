@@ -6,6 +6,7 @@ import { COURSES_4AP } from './courses/4AP';
 import { COURSES_5AP } from './courses/5AP';
 import { applyHomeworkLinkedBoost } from './courses/homeworkLinkedBoost';
 import { applyAutonomyPilot } from './courses/autonomyPilots';
+import { withoutAnswerGivingHints } from './courses/hintHygiene';
 
 // 3AP/4AP/5AP content used to live directly in flat files (courses3AP.ts, and a single
 // ~27 500-line array for 4AP/5AP). All three are now split by grade+subject under
@@ -23,4 +24,4 @@ export const COURSES_DATA: CourseLesson[] = applyHomeworkLinkedBoost([
     ...lesson,
     contentSource: lesson.contentSource ?? 'needs_verification',
   })),
-]).map(applyAutonomyPilot);
+]).map(applyAutonomyPilot).map(withoutAnswerGivingHints);

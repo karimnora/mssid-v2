@@ -390,6 +390,7 @@ export const MATH_3AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'العقربان',
       textAr: 'عندما يكون العقرب الكبير على 12، الساعة تامة.\nمثال: الصغير على 4 والكبير على 12: الساعة الرابعة تماماً.\nعندما يكون الكبير على 6، مرّ نصف ساعة.',
+      visual: { type: 'geometry', figure: { figure: 'clocks', clocks: [{ hour: 4, minute: 0, labelAr: 'الرابعة تماماً' }, { hour: 7, minute: 30, labelAr: 'السابعة والنصف' }] }, captionAr: 'العقرب الكبير على 12: ساعة تامة. العقرب الكبير على 6: والنصف.' },
     },
     model: {
       titleAr: 'أقرأ «والنصف»',

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { COURSES_DATA } from '../../coursesData';
-import { MISSIONS_BY_LESSON } from './index';
+import { MISSIONS_BY_LESSON, SECOND_MISSIONS_BY_LESSON } from './index';
 
 const mathLessons = COURSES_DATA.filter(lesson => lesson.subject === 'math' && ['3AP', '4AP', '5AP'].includes(lesson.grade));
 const exercisesOf = (lesson: (typeof COURSES_DATA)[number]) => [...lesson.progressiveExercises ?? [], ...lesson.evaluationExercises ?? []];
@@ -167,5 +167,48 @@ describe('guided science missions 3AP–5AP', () => {
       // A hint asks a question; it never hands over the answer word for word.
       for (const hint of ex.progressiveHints ?? []) expect(hint.contentAr.includes(correct[0].textAr), `${ex.id}: ${hint.contentAr}`).toBe(false);
     }
+  });
+});
+
+describe('second missions', () => {
+  const chained = COURSES_DATA.filter(lesson => lesson.learningPath?.next);
+
+  it('chains every declared second mission after a first one', () => {
+    expect(chained.map(lesson => lesson.id).sort()).toEqual([...SECOND_MISSIONS_BY_LESSON.keys()].sort());
+  });
+
+  it.each(chained.map(lesson => [lesson.id, lesson] as const))('%s second mission is complete and separate from the first', (_id, lesson) => {
+    const first = lesson.learningPath!;
+    const second = first.next!;
+    expect(second.titleAr).not.toBe(first.titleAr);
+    expect(second.lang).toBe(first.lang);
+    const kinds = second.steps.map(step => step.kind);
+    expect(kinds.slice(0, 3)).toEqual(['observe', 'model', 'guided']);
+    expect(kinds.at(-1)).toBe('transfer');
+    const firstIds = first.steps.flatMap(step => ('exerciseId' in step ? [step.exerciseId] : []));
+    const exercises = exercisesOf(lesson);
+    for (const step of second.steps) {
+      if (!('exerciseId' in step)) continue;
+      expect(firstIds).not.toContain(step.exerciseId);
+      const matches = exercises.filter(ex => ex.id === step.exerciseId);
+      expect(matches, step.exerciseId).toHaveLength(1);
+      const ex = matches[0];
+      expect(ex.progressiveHints?.length ?? 0, ex.id).toBeGreaterThanOrEqual(2);
+      if (ex.type === 'calculation') {
+        expect(Number.isInteger(ex.calculationAnswer), ex.id).toBe(true);
+        expect(ex.misconceptionsAr?.some(item => item.answer === ex.calculationAnswer) ?? false, ex.id).toBe(false);
+        for (const line of ex.operationsAr?.split('\n') ?? []) {
+          const sides = sidesOf(line);
+          if (sides) expect(new Set(sides.map(value => Math.round(value * 1000))).size, `${ex.id}: ${line}`).toBe(1);
+        }
+      } else {
+        expect(ex.options?.filter(option => option.isCorrect), ex.id).toHaveLength(1);
+      }
+    }
+    // The practice list keeps the order: first mission, then second mission, then the old exercises.
+    const order = (lesson.progressiveExercises ?? []).map(ex => ex.id);
+    const lastFirst = Math.max(...firstIds.map(id => order.indexOf(id)).filter(index => index >= 0));
+    const secondPractice = second.steps.flatMap(step => ('exerciseId' in step ? [order.indexOf(step.exerciseId)] : [])).filter(index => index >= 0);
+    expect(Math.min(...secondPractice)).toBeGreaterThan(lastFirst);
   });
 });

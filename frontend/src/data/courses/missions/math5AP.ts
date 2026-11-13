@@ -400,6 +400,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'من الجدول إلى المبيان',
       textAr: 'درجات الحرارة: السبت 18، الأحد 20، الاثنين 25، الثلاثاء 22.\nأرسم عموداً لكل يوم. أعلى عمود هو يوم الاثنين.\nالمبيان يجعلني أرى الأكبر والأصغر بسرعة.',
+      visual: { type: 'geometry', figure: { figure: 'bar_chart', bars: [{ labelAr: 'السبت', value: 18 }, { labelAr: 'الأحد', value: 20 }, { labelAr: 'الاثنين', value: 25 }, { labelAr: 'الثلاثاء', value: 22 }] }, captionAr: 'أعلى عمود هو يوم الاثنين: 25 درجة.' },
     },
     model: {
       titleAr: 'أبحث عن الأعلى والأدنى',

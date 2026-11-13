@@ -60,6 +60,7 @@ export const SCIENCE_5AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'من القلب في الشرايين، وإلى القلب في الأوردة.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'flow', stepsAr: ['القلب', 'الشرايين', 'الأعضاء', 'الأوردة'], cyclic: true }, captionAr: 'الدم يدور دون توقف: يخرج من القلب في الشرايين ويعود إليه في الأوردة.' },
       titleAr: 'أسأل: الدم ذاهب أم عائد؟',
       textAr: 'لأسمي الوعاء الدموي:\nأولا: أحدد اتجاه الدم.\nثانيا: من القلب إلى الأعضاء: شريان.\nثالثا: من الأعضاء إلى القلب: وريد.',
       tableLabels: ['الوعاء', 'اتجاه الدم'],
@@ -230,6 +231,7 @@ export const SCIENCE_5AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'ناقل: يمر التيار. عازل: لا يمر التيار.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'circuit', closed: false, batteryLabelAr: 'البطارية', bulbLabelAr: 'المصباح', switchLabelAr: 'فراغ للاختبار' }, captionAr: 'نضع المادة في الفراغ: إذا أضاء المصباح فهي ناقلة.' },
       titleAr: 'المصباح هو الشاهد',
       textAr: 'لأختبر مادة:\nأولا: أضعها في فراغ الدارة.\nثانيا: ألاحظ المصباح.\nثالثا: إذا أضاء فالمادة ناقلة، وإذا لم يضئ فهي عازلة.',
       tableLabels: ['النوع', 'أمثلة'],
@@ -569,6 +571,7 @@ export const SCIENCE_5AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'ماء صاف ليس دائما ماء صالحا للشرب.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'flow', stepsAr: ['ماء عكر', 'الترشيح', 'التعقيم', 'ماء صالح للشرب'] }, captionAr: 'الترشيح أولاً ثم التعقيم.' },
       titleAr: 'أسأل: ماذا أريد أن أزيل؟',
       textAr: 'أميز بين عمليتين: الترشيح يزيل بعض الشوائب، والتعقيم يعالج الجراثيم. قد تبقى ملوثات كيميائية؛ لذلك لا أحكم بصلاحية ماء مجهول للشرب بنفسي.',
       tableLabels: ['ما نزيله', 'العملية'],
@@ -611,6 +614,7 @@ export const SCIENCE_5AP_MISSIONS: MissionSpec[] = [
       ], captionAr: 'أفرز أولا، ثم إعادة التدوير أو التسميد.' },
     },
     model: {
+      visual: { type: 'geometry', figure: { figure: 'flow', stepsAr: ['النفايات', 'الفرز حسب النوع', 'إعادة التدوير أو التسميد'] }, captionAr: 'الفرز هو الخطوة الأولى دائماً.' },
       titleAr: 'أفرز ثم أختار المصير',
       textAr: 'لأعالج نفاية:\nأولا: أحدد نوعها.\nثانيا: ورق أو بلاستيك: إعادة التدوير.\nثالثا: بقايا عضوية: التسميد.',
       tableLabels: ['النفاية', 'مصيرها'],

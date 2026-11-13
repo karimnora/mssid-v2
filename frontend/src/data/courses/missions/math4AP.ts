@@ -328,6 +328,7 @@ export const MATH_4AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أقرأ جدولاً',
       textAr: 'سأل معلم تلاميذه عن الفاكهة المفضلة:\nالتفاح: 8 تلاميذ.\nالبرتقال: 12 تلميذاً.\nالموز: 5 تلاميذ.\nفي مخطط الأعمدة، أعلى عمود هو عمود البرتقال.',
+      visual: { type: 'geometry', figure: { figure: 'bar_chart', bars: [{ labelAr: 'التفاح', value: 8 }, { labelAr: 'البرتقال', value: 12 }, { labelAr: 'الموز', value: 5 }] }, captionAr: 'أعلى عمود هو عمود البرتقال: 12 تلميذاً.' },
     },
     model: {
       titleAr: 'أستخرج ثم أحسب',

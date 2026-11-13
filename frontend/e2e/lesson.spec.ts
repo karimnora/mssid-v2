@@ -31,6 +31,6 @@ test('a student can navigate to a lesson and complete its quiz', async ({ page }
     await page.getByRole('button', { name: correctOption.textAr }).click();
   }
 
-  await expect(page.getByText('نتيجة الاختبار:')).toBeVisible();
+  await expect(page.getByText('أحسنت! أجبت عن كل الأسئلة.')).toBeVisible();
   await expect(page.getByText('100%')).toBeVisible();
 });

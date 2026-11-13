@@ -105,4 +105,33 @@ describe('child authored learning path', () => {
     fireEvent.click(screen.getByRole('button', { name: /تحقق من الإجابة/ }));
     expect(screen.getByRole('button', { name: 'أتابع' })).toBeEnabled();
   });
+
+  it('rewards the end of a mission and offers the second mission of the lesson', () => {
+    const { onPractice } = mountPath('math-4ap-perimeter-squares-rectangles');
+    const lesson = COURSES_DATA.find(l => l.id === 'math-4ap-perimeter-squares-rectangles')!;
+    const pool = [...lesson.progressiveExercises ?? [], ...lesson.evaluationExercises ?? []];
+    const solve = (path: NonNullable<typeof lesson.learningPath>) => {
+      for (const step of path.steps) {
+        if ('exerciseId' in step) {
+          const answer = pool.find(ex => ex.id === step.exerciseId)!.calculationAnswer!;
+          fireEvent.change(screen.getByRole('spinbutton'), { target: { value: String(answer) } });
+          fireEvent.click(screen.getByRole('button', { name: /تحقق من الإجابة/ }));
+        }
+        if (step !== path.steps.at(-1)) fireEvent.click(screen.getByRole('button', { name: 'أتابع' }));
+      }
+    };
+    solve(lesson.learningPath!);
+    const done = document.querySelector('[data-path-complete]')!;
+    expect(done.textContent).toContain('أحسنت');
+    expect(document.querySelector('[data-mission-xp]')?.textContent).toMatch(/^\+\d+ XP$/);
+    // The first mission ends on an invitation to the second one, on another notion of the lesson.
+    fireEvent.click(document.querySelector('[data-start-next-mission]')!);
+    expect(screen.getByRole('heading', { level: 2 }).textContent).toContain('المهمة الثانية');
+    expect(document.querySelector('[data-geometry-figure="rectangle"]')).toBeTruthy();
+    solve(lesson.learningPath!.next!);
+    expect(document.querySelector('[data-start-next-mission]')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'أنتقل إلى التدريبات' }));
+    expect(onPractice).toHaveBeenCalledTimes(1);
+  });
 });
+

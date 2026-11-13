@@ -337,7 +337,14 @@ export type GeometryFigureSpec =
   /** Dimensions are whole units; `grid` draws the unit squares, `split` the shared sides of glued shapes. */
   | { figure: 'rectangle'; width: number; height: number; unit?: string; grid?: boolean; split?: number }
   | { figure: 'triangles'; labelsAr: [string, string, string] }
-  | { figure: 'circle'; centerLabelAr: string; radiusLabelAr: string; diameterLabelAr: string };
+  | { figure: 'circle'; centerLabelAr: string; radiusLabelAr: string; diameterLabelAr: string }
+  /** One or two clock faces; minutes are 0 (o'clock) or 30 (half past). */
+  | { figure: 'clocks'; clocks: { hour: number; minute: 0 | 30; labelAr: string }[] }
+  | { figure: 'bar_chart'; bars: { labelAr: string; value: number }[] }
+  /** Ordered stages (digestive tract, water cycle…), drawn top to bottom; `cyclic` adds the way back. */
+  | { figure: 'flow'; stepsAr: string[]; cyclic?: boolean }
+  | { figure: 'plant'; rootsLabelAr: string; stemLabelAr: string; leavesLabelAr: string }
+  | { figure: 'circuit'; closed: boolean; batteryLabelAr: string; bulbLabelAr: string; switchLabelAr: string };
 
 export type LearningPathVisual =
   | { type: 'place_value'; columnsAr: string[]; digits: number[]; captionAr: string }
@@ -378,6 +385,8 @@ export interface LearningPath {
   titleAr: string;
   prerequisiteAr: string;
   steps: LearningPathStep[];
+  /** A second mission on another notion of the same lesson, offered when this one is finished. */
+  next?: LearningPath;
 }
 
 // Démarche scientifique expérimentale (sciences 5AP+): question → observation → hypothèse →

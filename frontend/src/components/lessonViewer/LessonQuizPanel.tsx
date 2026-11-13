@@ -7,7 +7,8 @@ import { ConfettiBurst } from './ConfettiBurst';
 import { tabTransition } from './shared';
 import { TapSpeakButton } from './TapSpeakButton';
 import { getQuizFeedback, quizFeedbackSpeakText } from './quizFeedback';
-import { formatEducationalText } from '../../utils/textFormatter';
+import { formatEducationalText, latinTextDir } from '../../utils/textFormatter';
+import didouCheer from '../../assets/v2-reused/didou-cheer.webp';
 
 interface LessonQuizPanelProps {
   lesson: CourseLesson;
@@ -67,11 +68,11 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
         <div>
           <h3 className="font-extrabold text-base sm:text-lg text-[var(--app-text)] flex items-center gap-2">
             <Trophy className="w-5 h-5 text-[var(--brand-amber)]" />
-            <span>{playful ? 'هَيَّا نَلْعَبُ!' : 'الاختبار التفاعلي المتقدم'}</span>
+            <span>{playful ? 'هَيَّا نَلْعَبُ!' : 'أختبر نفسي'}</span>
           </h3>
           {!playful && (
-          <p className="text-xs text-[var(--app-text-muted)]">
-            كل سؤال يُصحَّح فور اختيار إجابته — خيار الإجابات مخلّط عشوائياً لضمان الفهم الحقيقي
+          <p className="text-sm text-[var(--app-text-muted)]">
+            أختار جواباً لكل سؤال. إذا أخطأت، أقرأ الشرح وأحاول من جديد.
           </p>
           )}
         </div>
@@ -94,43 +95,34 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
             className={
               playful
                 ? 'bg-emerald-50 border border-emerald-100 rounded-3xl p-4 sm:p-5 space-y-4 shadow-sm'
-                : 'text-white rounded-2xl p-5 border border-indigo-800/80 space-y-4 shadow-md'
+                : 'bg-emerald-50 text-emerald-950 rounded-3xl p-5 border-2 border-emerald-300 space-y-4 shadow-[0_5px_0_#6ee7b7]'
             }
             // Plain hex linear-gradient via inline style, not Tailwind's gradient utilities — Tailwind
             // v4's oklch()-based palette/gradients silently fail to paint on some older Android
             // WebViews.
-            style={playful ? undefined : { backgroundImage: 'linear-gradient(to right, #0f172a, #1e1b4b, #0f172a)' }}
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-3 min-w-0">
                 <div className={playful
                   ? 'p-3 bg-amber-100 text-amber-600 rounded-2xl shrink-0'
-                  : 'p-3 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30'
+                  : 'p-3 bg-amber-100 text-amber-600 rounded-2xl shrink-0'
                 }>
                   <Award className="w-7 h-7" />
                 </div>
                 <div className="min-w-0">
-                  <h4 className={`font-extrabold text-base flex items-center gap-2 flex-wrap ${playful ? 'text-[#1E293B]' : 'text-white'}`}>
-                    <span>{playful ? 'أَحْسَنْتَ!' : 'نتيجة الاختبار:'}</span>
-                    <span dir="ltr" className={`font-mono font-black text-xl ${playful ? 'text-emerald-700' : 'text-amber-300'}`}>{scorePercentage}%</span>
+                  <h4 className={`font-extrabold text-base flex items-center gap-2 flex-wrap ${playful ? 'text-[#1E293B]' : 'text-emerald-950'}`}>
+                    <span>{playful ? 'أَحْسَنْتَ!' : 'أحسنت! أجبت عن كل الأسئلة.'}</span>
+                    {playful && <span dir="ltr" className="font-mono font-black text-xl text-emerald-700">{scorePercentage}%</span>}
                   </h4>
                   {!playful && (
-                  <p className="text-xs text-slate-300">
-                    {scorePercentage === 100
-                      ? '🏆 إجابات ممتازة ومثالية! لقد أتقنت درس اليوم بنجاح كامل.'
-                      : scorePercentage >= 70
-                      ? '🌟 أداء رائع ومتميز! استمر على هذا المستوى القوي.'
-                      : scorePercentage >= 50
-                      ? '👍 نتيجة جيدة! يمكنك مراجعة الإجابات أدناه للوصول إلى 100%.'
-                      : '💡 تحتاج إلى مراجعة بسيطة للدرس وإعادة الاختبار لترسيخ المفاهيم.'}
-                  </p>
+                  <p className="text-sm font-bold text-emerald-900">أضيفت النجوم إلى رصيدك.</p>
                   )}
                 </div>
               </div>
 
               {!playful && (
               <Button variant="accent" size="sm" icon={<RotateCcw className="w-4 h-4" />} onClick={onReset}>
-                إعادة الاختبار وخلط الخيارات 🔄
+                أعيد الاختبار 🔄
               </Button>
               )}
             </div>
@@ -162,18 +154,13 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
             )}
 
             {!playful && (
-            <div className="grid grid-cols-3 gap-3 pt-2 border-t border-indigo-900/80 text-center text-xs">
-              <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                <span className="text-slate-400 block text-[10px] font-bold">إجابات صحيحة</span>
-                <span className="text-emerald-400 font-black text-sm">{correctCount}</span>
-              </div>
-              <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                <span className="text-slate-400 block text-[10px] font-bold">إجابات خاطئة</span>
-                <span className="text-rose-400 font-black text-sm">{totalQuestions - correctCount}</span>
-              </div>
-              <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                <span className="text-slate-400 block text-[10px] font-bold">النقاط المكتسبة</span>
-                <span dir="ltr" className="text-amber-300 font-black text-sm">+{correctCount * 15} XP</span>
+            <div className="flex items-center justify-center gap-4 border-t border-emerald-200 pt-4 text-emerald-950">
+              <img src={didouCheer} alt="" width={72} height={72} loading="lazy" decoding="async" className="h-[72px] w-[72px] object-contain" />
+              <div className="text-center">
+                <p className="text-2xl tracking-widest" aria-hidden="true">⭐⭐⭐</p>
+                <p className="text-base font-black">
+                  <span dir="ltr">{correctCount}/{totalQuestions}</span> · <span dir="ltr" data-quiz-xp className="text-amber-700">+{correctCount * 15} XP</span>
+                </p>
               </div>
             </div>
             )}
@@ -220,7 +207,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     {qIdx + 1}
                   </span>
                   )}
-                  <span className={`min-w-0 break-words ${playful ? 'text-lg font-black leading-snug' : ''}`}>{q.questionAr}</span>
+                  <span dir={latinTextDir(q.questionAr)} className={`min-w-0 flex-1 break-words ${playful ? 'text-lg font-black leading-snug' : ''}`}>{q.questionAr}</span>
                 </div>
 
                 {hasAttempted && (
@@ -245,7 +232,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       ) : (
                         <>
                           <XCircle className="w-3.5 h-3.5" />
-                          <span>إجابة خاطئة</span>
+                          <span>أحاول من جديد</span>
                         </>
                       )}
                     </motion.span>
@@ -301,7 +288,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                         >
                           {optionLetters[optIdx] || optIdx + 1}
                         </span>
-                        <span className="min-w-0 break-words">{renderArabicText(opt.textAr)}</span>
+                        <span dir={latinTextDir(opt.textAr)} className="min-w-0 break-words">{renderArabicText(opt.textAr)}</span>
                       </div>
 
                       {isAnswered && opt.isCorrect && (
@@ -323,7 +310,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={tabTransition}
-                    className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-2 font-sans leading-relaxed overflow-hidden"
+                    className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-sm text-[var(--app-text)] space-y-2 font-sans leading-relaxed overflow-hidden"
                     data-quiz-feedback={feedback.isCorrect ? 'correct' : 'wrong'}
                   >
                     <span className="font-extrabold text-[var(--brand-blue-dark)] flex items-center gap-1.5">
@@ -342,7 +329,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       )}
                       <span>{playful ? 'لِمَاذَا؟' : feedback.primaryLabelAr}</span>
                     </span>
-                    <p className="text-[var(--app-text)] font-medium">
+                    <p dir={latinTextDir(feedback.primaryAr)} className="text-[var(--app-text)] font-medium">
                       {formatEducationalText(renderArabicText(feedback.primaryAr))}
                     </p>
                     {/* Deliberately gated on isAnswered (correct), not just feedback.correctAr being
@@ -379,10 +366,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
         </div>
       ) : playful ? null : (
         <div className="flex items-center gap-2 text-[var(--brand-emerald-dark)] font-bold text-xs bg-[var(--brand-emerald)]/10 p-3.5 rounded-xl border border-[var(--brand-emerald)]/30 w-full justify-between flex-wrap">
-          <span>تهانينا! تم احتساب النقاط وإضافتها إلى رصيدك الدراسي.</span>
-          <Button variant="outline" size="sm" onClick={onReset}>
-            إعادة الاختبار بخلط جديد 🎲
-          </Button>
+          <span>أنهيت الاختبار. يمكنني الآن الانتقال إلى الدرس التالي.</span>
         </div>
       )}
     </Card>
