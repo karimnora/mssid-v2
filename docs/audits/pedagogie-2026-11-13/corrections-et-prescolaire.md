@@ -20,7 +20,7 @@ Les récompenses de révision et les outils de correction d’examen selon la cl
 
 - 23 modules, **206 activités**, dont 20 dans les deux parcours de nombres, contre 14 auparavant.
 - Six préparations guidées pour les quantités de 3 à 8. Des places visuelles soutiennent le comptage, puis l’activité d’origine propose le même objectif sans ces repères.
-- Ajout par toucher ou clavier en complément du glisser-déposer ; plafond de quantité conservé et retour au plateau possible.
+- Ajout par toucher ou clavier en complément du glisser-déposer ; plafond de quantité uniquement dans les étapes guidées et retour au plateau possible. Sans aide, le panier accepte les objets en trop et « J’ai fini » vérifie la quantité exacte. Le compteur ne révèle plus la quantité attendue.
 - Histoires : modèle consultable, légendes agrandies, conservation des étapes justes après une erreur, étape de récit oral conservée.
 - Une idée à pratiquer en famille accessible dans chaque parcours, dans les trois langues. Conseils spécifiques pour les histoires, le corps, les émotions et le calendrier.
 - Didou illustré avec les images existantes de la V2, selon son humeur ; mouvement d’attente limité.
@@ -30,7 +30,7 @@ Les récompenses de révision et les outils de correction d’examen selon la cl
 
 Aucun fichier audio supprimé, remplacé ou généré. Aucun appel payant. Les six étapes guidées héritent des textes, fichiers et durées enregistrés de leur activité source, sans modifier les paroles. Les tests comparent ces données et contrôlent les fichiers du catalogue existant.
 
-Les identifiants des anciennes activités sont conservés. Les pourcentages des parcours de nombres prennent désormais en compte les nouvelles étapes ; un ancien parcours terminé peut donc afficher des activités supplémentaires à découvrir.
+Les identifiants des anciennes activités sont conservés. La revue de Claude a corrigé la régression de progression : réussir une activité ordinaire implique désormais la réussite de sa préparation guidée. Cela s’applique au chargement des anciennes sauvegardes et immédiatement après une réussite dans la session courante. Une aide réussie ne valide jamais l’exercice ordinaire.
 
 ## Validation
 
@@ -58,3 +58,10 @@ Une nouvelle séance quotidienne et une nouvelle planification des erreurs n’o
 | Concision | 4/5 | Bilan séparé de l’audit historique ; détails techniques réservés à ce document. |
 
 Moyenne : 4/5. Priorités suivantes : test réel sur téléphone, observation des étapes guidées avec un enfant, puis nouveaux récits avec des narrations adaptées. Cette appréciation doit être confrontée aux retours de Karim et des familles.
+
+
+## Revue de Claude intégrée
+
+Les deux corrections sont conservées : progression acquise reconnue et véritable comptage sans aide. Complément de Codex : appliquer aussi les étapes guidées implicites immédiatement lors d’une réussite, et tester leur sauvegarde dans le parcours de l’application. Le délai explicite du premier chargement navigateur et les sélecteurs des tests de cours/mobile sont relus et validés avant commit. Aucun audio ni texte enregistré n’est modifié.
+
+Validation de la revue : 917 tests préscolaires réussis dans 46 fichiers ; les 3 tests de navigation/intégration, dont le nouveau cas de réussite immédiate, passent également en exécution ciblée. Typage complet réussi. Les 13 scénarios navigateur distincts passent après reprise isolée des trois cas de maths : le premier passage concurrent avait dépassé les 60 secondes sur le premier cas, avec réponse et explication présentes dans la capture. Aucun changement du code produit pour contourner cet échec de durée.

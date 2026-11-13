@@ -33,6 +33,7 @@ import {
   suggestNextActivity,
   summarizeBilan,
   todayPlayIds,
+  withImpliedGuidedSteps,
 } from './preschoolProgress';
 
 interface PreschoolAppProps {
@@ -70,7 +71,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
 
   const [loadedOwnerId, setLoadedOwnerId] = useState(ownerId);
   const [language, setLanguage] = useState<PreschoolLanguage | null>(() => loadStoredLanguage());
-  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId));
+  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId, PRESCHOOL_MODULES));
   const [playEvents, setPlayEvents] = useState(() => loadEvents(ownerId));
   const [childName, setChildName] = useState(() => loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
   const [showParentBilan, setShowParentBilan] = useState(false);
@@ -115,7 +116,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   useEffect(() => {
     if (authUser?.id) adoptGuestProgressIfEmpty(authUser.id);
     skipSaveRef.current = true;
-    setCompletedActivityIds(loadProgress(ownerId));
+    setCompletedActivityIds(loadProgress(ownerId, PRESCHOOL_MODULES));
     setPlayEvents(loadEvents(ownerId));
     setLoadedOwnerId(ownerId);
     setChildName(loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
@@ -239,7 +240,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
 
             setCompletedActivityIds((prev) => {
               if (prev.includes(activeActivity.id)) return prev;
-              const next = [...prev, activeActivity.id];
+              const next = withImpliedGuidedSteps([...prev, activeActivity.id], PRESCHOOL_MODULES);
               const ids = activeModule.activities.map((a) => a.id);
               const justCompleted = ids.every((id) => next.includes(id))
                 && !ids.every((id) => prev.includes(id));

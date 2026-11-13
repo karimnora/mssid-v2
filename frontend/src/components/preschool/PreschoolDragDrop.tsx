@@ -48,6 +48,10 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
   const target = activity.visualAssets.dropZoneCount || dragItems.length;
   const hasExtras = dragItems.length > target;
+  // Guided step: the target is shown and the basket stops at it. Without help, the child counts on
+  // their own: the basket accepts more than asked and "I'm done" checks the exact number.
+  const guided = !!activity.showQuantityGuide;
+  const basketFull = (prev: ItemState[]) => guided && hasExtras && prev.filter((it) => it.dropped).length >= target;
 
   const isOverDropZone = (clientX: number, clientY: number): boolean => {
     const zone = dropZoneRef.current;
@@ -85,12 +89,9 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
     const dropped = isOverDropZone(e.clientX, e.clientY);
     setItems((prev) => {
-      if (dropped && hasExtras) {
-        const already = prev.filter((it) => it.dropped).length;
-        if (already >= target) {
-          playGentleNudge();
-          return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
-        }
+      if (dropped && basketFull(prev)) {
+        playGentleNudge();
+        return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
       }
       return prev.map((it) => (
         it.id === id
@@ -102,7 +103,13 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
   const addToBasket = (id: string) => {
     if (completedRef.current) return;
-    setItems(prev => prev.filter(item => item.dropped).length >= target ? prev : prev.map(item => item.id === id ? { ...item, dropped: true, offset: { x: 0, y: 0 } } : item));
+    setItems(prev => {
+      if (basketFull(prev)) {
+        playGentleNudge();
+        return prev;
+      }
+      return prev.map(item => item.id === id ? { ...item, dropped: true, offset: { x: 0, y: 0 } } : item);
+    });
   };
 
   const returnToTray = (id: string) => {
@@ -154,7 +161,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
           ))}
         </div>
         <span className="absolute -bottom-3 bg-emerald-500 text-white text-sm font-black px-3 py-1 rounded-full shadow">
-          {droppedCount} / {target}
+          {guided ? `${droppedCount} / ${target}` : droppedCount}
         </span>
       </div>
 

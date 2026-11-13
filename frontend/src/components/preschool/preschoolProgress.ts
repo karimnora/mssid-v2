@@ -162,10 +162,24 @@ export function saveActiveChildId(childId: PreschoolChildId) {
   }
 }
 
-export function loadProgress(childId: string): string[] {
+export function loadProgress(childId: string, modules: PreschoolModule[] = []): string[] {
   migrateLegacyIfNeeded(childId);
   const ids = readJson<string[]>(progressKey(childId), []);
-  return Array.isArray(ids) ? ids.filter((id) => typeof id === 'string') : [];
+  return withImpliedGuidedSteps(Array.isArray(ids) ? ids.filter((id) => typeof id === 'string') : [], modules);
+}
+
+/**
+ * A guided counting step ("num-3-guided") prepares the ordinary task ("num-3"). A child who already
+ * succeeded at the ordinary task has no use for the preparation: counting it as done keeps a finished
+ * module finished and stops the next-activity suggestion from sending the child backwards.
+ */
+export function withImpliedGuidedSteps(ids: string[], modules: PreschoolModule[]): string[] {
+  const done = new Set(ids);
+  const implied = modules
+    .flatMap((mod) => mod.activities)
+    .filter((act) => act.id.endsWith('-guided') && !done.has(act.id) && done.has(act.id.slice(0, -'-guided'.length)))
+    .map((act) => act.id);
+  return implied.length ? [...ids, ...implied] : ids;
 }
 
 export function saveProgress(childId: string, ids: string[]) {

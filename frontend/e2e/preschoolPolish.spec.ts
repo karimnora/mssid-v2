@@ -10,7 +10,8 @@ for (const width of [320, 390, 1280]) {
     });
     await page.route('**/api/**', route => route.fulfill({ status: 401, json: {} }));
     await page.goto('/eveil');
-    await expect(page.getByRole('img', { name: 'Didou', exact: true })).toBeVisible();
+    // The first visit compiles the preschool bundle on the dev server: allow more than the default 5 s.
+    await expect(page.getByRole('img', { name: 'Didou', exact: true })).toBeVisible({ timeout: 30_000 });
     const hero = page.getByRole('img', { name: 'Didou', exact: true }).locator('img');
     await expect.poll(() => hero.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
     await page.screenshot({ path: test.info().outputPath(`home-${width}.png`), fullPage: true });

@@ -53,7 +53,7 @@ describe('PreschoolDragDrop give-among extras', () => {
     expect(onComplete).not.toHaveBeenCalled();
 
     dropApple(0);
-    expect(screen.getByText('3 / 3')).toBeInTheDocument();
+    expect(screen.getByText('3', { selector: 'span' })).toBeInTheDocument();
     act(() => { vi.advanceTimersByTime(1000); });
     expect(onComplete).not.toHaveBeenCalled();
 
@@ -74,7 +74,7 @@ describe('PreschoolDragDrop give-among extras', () => {
     dropApple(0);
     dropApple(0);
     dropApple(0);
-    expect(screen.getByText('3 / 3')).toBeInTheDocument();
+    expect(screen.getByText('3', { selector: 'span' })).toBeInTheDocument();
     act(() => { vi.advanceTimersByTime(1200); });
     expect(onComplete).not.toHaveBeenCalled();
     expect(screen.getByRole('button', { name: doneName })).toBeInTheDocument();
@@ -120,4 +120,20 @@ describe('PreschoolDragDrop give-among extras', () => {
     expect(screen.getAllByLabelText('🍎 basket')).toHaveLength(3);
   });
 
+  it('without help, hides the target and lets the child put too many before checking', () => {
+    const onComplete = vi.fn();
+    const activity = NUMBERS_MODULE_0_TO_5.activities.find(a => a.id === 'num-3')!;
+    const { container } = render(<PreschoolDragDrop activity={activity} language="fr" onComplete={onComplete} />);
+    expect(container.querySelector('[data-quantity-guide]')).toBeNull();
+    for (let i = 0; i < 4; i++) fireEvent.click(screen.getAllByLabelText('🍎')[0]);
+    // Four apples are accepted and the counter does not reveal the expected number.
+    expect(screen.getAllByLabelText('🍎 basket')).toHaveLength(4);
+    expect(screen.queryByText(/ \/ 3$/)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: doneName }));
+    expect(screen.getByText('Pas encore ! Compte encore')).toBeInTheDocument();
+    fireEvent.click(screen.getAllByLabelText('🍎 basket')[0]);
+    fireEvent.click(screen.getByRole('button', { name: doneName }));
+    act(() => { vi.advanceTimersByTime(1000); });
+    expect(onComplete).toHaveBeenCalledTimes(1);
+  });
 });
