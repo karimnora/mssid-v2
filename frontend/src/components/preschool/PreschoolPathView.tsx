@@ -1,3 +1,4 @@
+import { preschoolHomeIdea } from '../../data/preschool/homeIdeas';
 import React from 'react';
 import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage } from '../../data/preschool/types';
@@ -70,6 +71,13 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
           </div>
         </div>
 
+        <details className="rounded-3xl bg-white/90 border border-sky-200 p-4 text-slate-800 shadow-sm">
+          <summary className="cursor-pointer min-h-10 font-bold flex items-center">
+            {t('🌱 لِلْعَائِلَة: فِكْرَةٌ فِي الْبَيْت', '🌱 En famille : une idée à la maison', '🌱 Family time: an idea for home')}
+          </summary>
+          <p className="pt-2 text-sm leading-relaxed">{preschoolHomeIdea(module, language)}</p>
+        </details>
+
         {/* Mascot + status */}
         <div className="flex flex-col items-center gap-2">
           <PreschoolMascot mood={allDone ? 'celebrate' : 'idle'} size="md" />
@@ -136,6 +144,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
                 <p className={`text-[11px] font-black text-center max-w-[120px] leading-tight
                                ${isCompleted ? 'text-emerald-700' : 'text-orange-800'}`}>
                   {actTitle}
+                  {activity.showQuantityGuide && <span className="block text-xs text-sky-800">{t('مَعَ مُسَاعَدَة', 'Avec aide', 'With help')}</span>}
                 </p>
               </motion.div>
             );

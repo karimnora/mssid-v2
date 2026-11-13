@@ -411,8 +411,8 @@ describe('Preschool (Mode Éveil) data integrity', () => {
 
     const n05 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-0-5');
     const n610 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-6-10');
-    expect(n05?.activities.map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
-    expect(n610?.activities.map((a) => a.id)).toEqual([
+    expect(n05?.activities.filter(a => !a.showQuantityGuide).map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
+    expect(n610?.activities.filter(a => !a.showQuantityGuide).map((a) => a.id)).toEqual([
       'num-6', 'num-7', 'num-8-count', 'num-8', 'num-9-count', 'num-9', 'num-10-count', 'num-10',
     ]);
   });

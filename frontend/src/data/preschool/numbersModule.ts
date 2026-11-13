@@ -285,30 +285,37 @@ function renumberSteps(acts: PreschoolActivity[]): PreschoolActivity[] {
   }));
 }
 
+function withCountingGuides(activities: PreschoolActivity[]): PreschoolActivity[] {
+  return activities.flatMap(activity => {
+    if (activity.interactionType !== 'drag_drop' || Number(activity.targetValue) > 8) return [activity];
+    return [{ ...activity, id: `${activity.id}-guided`, showQuantityGuide: true }, activity];
+  }).map((activity, index) => ({ ...activity, stepNumber: index + 1 }));
+}
+
 export const NUMBERS_MODULE_0_TO_5: PreschoolModule = {
   ...NUMBERS_CATALOG,
   id: 'preschool-numbers-0-5',
   icon: '✋',
-  totalSteps: 6,
+  totalSteps: 9,
   titleI18n: {
     ar: 'مِنْ صِفْرٍ إِلَى خَمْسَة',
     fr: 'De 0 à 5',
     en: 'From 0 to 5',
   },
-  activities: renumberSteps(NUMBERS_CATALOG.activities.slice(0, 6)),
+  activities: withCountingGuides(renumberSteps(NUMBERS_CATALOG.activities.slice(0, 6))),
 };
 
 export const NUMBERS_MODULE_6_TO_10: PreschoolModule = {
   ...NUMBERS_CATALOG,
   id: 'preschool-numbers-6-10',
   icon: '🔟',
-  totalSteps: 8,
+  totalSteps: 11,
   titleI18n: {
     ar: 'مِنْ سِتَّةٍ إِلَى عَشَرَة',
     fr: 'De 6 à 10',
     en: 'From 6 to 10',
   },
-  activities: renumberSteps(NUMBERS_CATALOG.activities.slice(6)),
+  activities: withCountingGuides(renumberSteps(NUMBERS_CATALOG.activities.slice(6))),
 };
 
 /** First path — tests still import this name for activity[0]. */

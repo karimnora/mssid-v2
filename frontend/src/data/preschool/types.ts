@@ -247,6 +247,8 @@ export interface PreschoolVisualAssets {
 }
 
 export interface PreschoolActivity {
+  /** A preparatory counting task: one visual place for each requested object. */
+  showQuantityGuide?: boolean;
   id: string;
   domain: PreschoolDomain;
   /** e.g. 3, or 'أ' for a letter module (not used yet, reserved for future domains). */

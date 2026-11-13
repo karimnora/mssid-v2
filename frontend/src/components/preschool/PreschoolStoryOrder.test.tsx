@@ -73,4 +73,18 @@ describe('PreschoolStoryOrder', () => {
     expect(document.querySelector('[data-preschool-story="record"]')).toBeNull();
     expect(screen.getByRole('button', { name: "C'est dit !" })).toBeInTheDocument();
   });
+  it('offers a model and keeps successful steps after an incorrect choice', () => {
+    const activity = STORIES_MODULE.activities[0];
+    const { container } = render(<PreschoolStoryOrder activity={activity} language="fr" onComplete={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: '👀 Voir l’histoire' }));
+    expect(container.querySelector('[data-story-model]')).toBeTruthy();
+    fireEvent.click(screen.getByLabelText('Faim'));
+    fireEvent.click(screen.getByLabelText('Content'));
+    act(() => { vi.advanceTimersByTime(500); });
+    fireEvent.click(screen.getByLabelText('Couscous'));
+    fireEvent.click(screen.getByLabelText('Content'));
+    act(() => { vi.advanceTimersByTime(800); });
+    expect(container.querySelector('[data-preschool-story="retell"]')).toBeTruthy();
+  });
+
 });

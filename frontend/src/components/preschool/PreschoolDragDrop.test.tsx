@@ -108,4 +108,16 @@ describe('PreschoolDragDrop give-among extras', () => {
     render(<PreschoolDragDrop activity={activity} language="ar" onComplete={vi.fn()} />);
     expect(screen.getByRole('button', { name: 'أَنْهَيْتُ' })).toBeInTheDocument();
   });
+  it('allows tapping or keyboard activation without dragging', () => {
+    const activity = NUMBERS_MODULE_0_TO_5.activities.find(a => a.id === 'num-3-guided')!;
+    const { container } = render(<PreschoolDragDrop activity={activity} language="fr" onComplete={vi.fn()} />);
+    expect(container.querySelectorAll('[data-quantity-guide] > span')).toHaveLength(3);
+    fireEvent.click(screen.getAllByLabelText('🍎')[0]);
+    fireEvent.keyDown(screen.getAllByLabelText('🍎')[0], { key: 'Enter' });
+    fireEvent.keyDown(screen.getAllByLabelText('🍎')[0], { key: ' ' });
+    expect(screen.getByText('3 / 3')).toBeInTheDocument();
+    fireEvent.click(screen.getAllByLabelText('🍎')[0]);
+    expect(screen.getAllByLabelText('🍎 basket')).toHaveLength(3);
+  });
+
 });

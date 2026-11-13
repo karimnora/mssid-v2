@@ -32,6 +32,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
   const [picked, setPicked] = useState<string[]>([]);
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
+  const [showModel, setShowModel] = useState(false);
   const [retell, setRetell] = useState(false);
   const doneRef = useRef(false);
   const echo = useVoiceEcho();
@@ -46,6 +47,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
     setWrongId(null);
     setSolved(false);
     setRetell(false);
+    setShowModel(false);
     doneRef.current = false;
     echo.reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,14 +62,14 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
   }, [retell, language]);
 
   const handleTap = (frame: PreschoolStoryFrame) => {
-    if (solved || picked.includes(frame.id)) return;
+    if (solved || wrongId || picked.includes(frame.id)) return;
     const nextIndex = picked.length + 1;
     if (frame.order !== nextIndex) {
       playGentleNudge();
       setWrongId(frame.id);
       setTimeout(() => {
         setWrongId(null);
-        setPicked([]);
+        // Keep the successful steps: an error does not erase the story already built.
       }, 450);
       return;
     }
@@ -100,7 +102,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
               className="min-h-24 rounded-3xl bg-white border-4 border-emerald-200 flex flex-col items-center justify-center gap-1 px-1 py-2"
             >
               <PreschoolAsset asset={frame.asset} size={44} textClassName="text-3xl leading-none" />
-              <span className="text-[10px] font-black text-[#1E293B] text-center">
+              <span className="text-sm font-black text-[#1E293B] text-center">
                 {frame.caption?.[language]}
               </span>
             </div>
@@ -164,6 +166,16 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+      <button type="button" aria-expanded={showModel} onClick={() => setShowModel(value => !value)} className="min-h-12 rounded-2xl px-4 border border-sky-200 bg-sky-50 text-sky-950 font-bold">
+        {t('👀 أَرَى القِصَّة', '👀 Voir l’histoire', '👀 See the story')}
+      </button>
+      {showModel && <div className="grid grid-cols-3 gap-2 w-full rounded-3xl bg-sky-50 p-3" data-story-model>
+        {ordered.map(frame => <div key={frame.id} className="flex flex-col items-center gap-2 text-center">
+          <span className="text-sm font-bold text-sky-900">{frame.order}</span>
+          <PreschoolAsset asset={frame.asset} size={44} />
+          <span className="text-sm font-bold text-slate-800">{frame.caption?.[language]}</span>
+        </div>)}
+      </div>}
       <div className="flex items-center gap-2 text-lg font-black text-orange-800">
         {[1, 2, 3].map((n) => (
           <span
@@ -201,7 +213,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
             >
               <PreschoolAsset asset={frame.asset} size={52} textClassName="text-4xl leading-none" />
               {caption && (
-                <span className="text-[10px] font-black text-[#1E293B] leading-tight text-center">
+                <span className="text-sm font-black text-[#1E293B] leading-tight text-center">
                   {caption}
                 </span>
               )}
