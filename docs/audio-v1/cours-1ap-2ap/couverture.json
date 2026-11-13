@@ -1,0 +1,1206 @@
+{
+  "summary": {
+    "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
+    "lessons": 118,
+    "uniqueTexts": 3354,
+    "recordedTexts": 23,
+    "missingTexts": 3331,
+    "reusedFiles": 22,
+    "integrityCheckedArabicFiles": 454,
+    "byGrade": [
+      {
+        "grade": "1AP",
+        "lessons": 57,
+        "requestedSegments": 2412,
+        "recordedSegments": 11,
+        "lessonsWithAnyRecording": 7
+      },
+      {
+        "grade": "2AP",
+        "lessons": 61,
+        "requestedSegments": 1519,
+        "recordedSegments": 12,
+        "lessonsWithAnyRecording": 2
+      }
+    ]
+  },
+  "byLesson": [
+    {
+      "lessonId": "math-1ap-t1-spatial-relations",
+      "grade": "1AP",
+      "titleAr": "الفَضَاءُ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ 🐱⚽",
+      "requestedSegments": 47,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t1-right-left-inside-outside",
+      "grade": "1AP",
+      "titleAr": "الاتِّجَاهَاتُ: يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ ✋📦",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t1-numbers-0-5",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى الأَعْدَادِ: 0 - 1 - 2 - 3 - 4 - 5 🖐️",
+      "requestedSegments": 44,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t1-shapes-colors",
+      "grade": "1AP",
+      "titleAr": "الأَشْكَالُ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ 🔴🟦🔺",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t2-numbers-6-10",
+      "grade": "1AP",
+      "titleAr": "الأَعْدَادُ 6، 7، 8، 9 وَمَا قَبْلُ وَمَا بَعْدُ 🖐️",
+      "requestedSegments": 44,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t2-addition-concept",
+      "grade": "1AP",
+      "titleAr": "الجَمْعُ: أُضِيفُ، أَجْمَعُ، أَتَقَدَّمُ ➕🎈",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t2-numbers-11-20",
+      "grade": "1AP",
+      "titleAr": "مِنْ 10 إِلَى 20: عَشَرَاتٌ وَوَحَدَاتٌ وَكِتَابَةٌ 🧩",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t2-subtraction-and-lengths",
+      "grade": "1AP",
+      "titleAr": "الطَّرْحُ: أَنْقُصُ، أُخْرِجُ، أَرْجِعُ ➖🎈",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+      "grade": "1AP",
+      "titleAr": "مِنْ 21 إِلَى 49: عَشَرَاتٌ وَحُرُوفٌ وَإِطَارٌ 🔢",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t3-place-value-and-n99",
+      "grade": "1AP",
+      "titleAr": "مِنْ 50 إِلَى 99: العَشَرَاتُ وَالوِحْدَاتُ 📊",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t3-addition-and-time-money",
+      "grade": "1AP",
+      "titleAr": "أَحُلُّ مَسْأَلَةً: أَفْهَمُ وَأَخْتَارُ (+) أَوْ (−) 🧩",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t2-compare-quantities",
+      "grade": "1AP",
+      "titleAr": "أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ ⚖️",
+      "requestedSegments": 49,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t1-grandeurs",
+      "grade": "1AP",
+      "titleAr": "أُقَارِنُ: أَطْوَلُ، أَثْقَلُ، أَكْبَرُ 📏⚖️",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t3-compare-symbols",
+      "grade": "1AP",
+      "titleAr": "أُقَارِنُ بِالرَّمْزَيْنِ < وَ > 🐊",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-1ap-t3-ruler-align",
+      "grade": "1AP",
+      "titleAr": "أُحَاذِي النِّقَاطَ وَأَرْسُمُ بِالمِسْطَرَةِ 📏",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-letters-group1",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ 🦁🦆🍎🦊",
+      "requestedSegments": 44,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-harakat",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
+      "requestedSegments": 49,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-letters-group2",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ 🍌🐝🍋🍎",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-letters-group3",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ 🐻🪰🐟☀️",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-letters-group4",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ 🍇🐦‍⬛🐘🐱",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t3-letters-group5",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ 📖🌙🌹✋",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t3-tracing-name",
+      "grade": "1AP",
+      "titleAr": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي ✍️🎨",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-madd",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي 🎵",
+      "requestedSegments": 49,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-oral-daily",
+      "grade": "1AP",
+      "titleAr": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ 🏠🏫",
+      "requestedSegments": 41,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-letters-jim-ha-kha",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: جَ - حَ - خَ 🐪🍐🥬",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-letter-zay",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: زَ 🦒",
+      "requestedSegments": 38,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-letters-sad-family",
+      "grade": "1AP",
+      "titleAr": "أَصْوَاتُ الحُرُوفِ: صَ - ضَ - طَ - ظَ 🌵🥚🦆",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-hamza",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى الهَمْزَةِ ء 🥚",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t2-letter-positions",
+      "grade": "1AP",
+      "titleAr": "الحَرْفُ: أَوَّلٌ، وَسَطٌ، آخِرٌ 📝",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t3-tanween",
+      "grade": "1AP",
+      "titleAr": "التَّنْوِينُ: ً ٌ ٍ 🎵",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-1ap-t1-school-axis",
+      "grade": "1AP",
+      "titleAr": "مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ 🏫📚",
+      "requestedSegments": 48,
+      "recordedSegments": 3
+    },
+    {
+      "lessonId": "arabic-1ap-t1-family-axis",
+      "grade": "1AP",
+      "titleAr": "عَائِلَتِي: أَبِي، أُمِّي، أَخِي 👨‍👩‍👧‍👦",
+      "requestedSegments": 47,
+      "recordedSegments": 3
+    },
+    {
+      "lessonId": "arabic-1ap-t2-neighborhood-home",
+      "grade": "1AP",
+      "titleAr": "حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ 🏘️",
+      "requestedSegments": 46,
+      "recordedSegments": 1
+    },
+    {
+      "lessonId": "arabic-1ap-t2-health-sports",
+      "grade": "1AP",
+      "titleAr": "صِحَّتِي وَرِيَاضَتِي: نَامْ، تَغَذَّى، تَحَرَّكْ 💪",
+      "requestedSegments": 44,
+      "recordedSegments": 1
+    },
+    {
+      "lessonId": "arabic-1ap-t2-nature-axis",
+      "grade": "1AP",
+      "titleAr": "الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ 🌳🌸",
+      "requestedSegments": 45,
+      "recordedSegments": 1
+    },
+    {
+      "lessonId": "arabic-1ap-t3-play-entertainment",
+      "grade": "1AP",
+      "titleAr": "أَلْعَبُ وَأَسْتَمْتِعُ: كُرَةٌ، رَسْمٌ، مُوسِيقَى ⚽🎨",
+      "requestedSegments": 46,
+      "recordedSegments": 1
+    },
+    {
+      "lessonId": "arabic-1ap-t3-childhood-holidays",
+      "grade": "1AP",
+      "titleAr": "طُفُولَتِي وَأَعْيَادِي: عِيدٌ، هَدِيَّةٌ، فَرَحٌ 🎉",
+      "requestedSegments": 45,
+      "recordedSegments": 1
+    },
+    {
+      "lessonId": "science-1ap-t1-five-senses-hygiene",
+      "grade": "1AP",
+      "titleAr": "حَوَاسِّي الخَمْسُ وَنَظَافَتِي 👀👂👃👅✋",
+      "requestedSegments": 46,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t1-animal-locomotion",
+      "grade": "1AP",
+      "titleAr": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟ 🐦🐟🐇🐍",
+      "requestedSegments": 44,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t2-my-body-parts",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى أَعْضَاءِ جِسْمِي وَحَرَكَتِي 🧍🏃",
+      "requestedSegments": 41,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t2-movement-effort",
+      "grade": "1AP",
+      "titleAr": "أَتَحَرَّكُ وَأَرْتَاحُ: مَشْيٌ، جَرْيٌ، قَفْزٌ 🏃💤",
+      "requestedSegments": 43,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t2-plant-growth",
+      "grade": "1AP",
+      "titleAr": "كَيْفَ تَنْمُو النَّبْتَةُ الخَضْرَاءُ؟ 🌱🌿🌸",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t3-seasons-weather",
+      "grade": "1AP",
+      "titleAr": "فُصُولُ السَّنَةِ الأَرْبَعَةُ وَحَالَةُ الطَّقْسِ ☀️🌧️❄️🍂",
+      "requestedSegments": 42,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-1ap-t3-food-hygiene",
+      "grade": "1AP",
+      "titleAr": "النَّظَافَةُ الغِذَائِيَّةُ وَأَكْلِي الصِّحِّيُّ 🍎🥦🧼",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t1-fatiha-basmala",
+      "grade": "1AP",
+      "titleAr": "سُورَةُ الفَاتِحَةِ، البَسْمَلَةُ وَالحَمْدَلَةُ 🤲",
+      "requestedSegments": 38,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t1-surah-falaq-kawthar",
+      "grade": "1AP",
+      "titleAr": "أَحْفَظُ سُورَتَيِ الفَلَقِ وَالكَوْثَرِ 🌅",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t2-short-surahs-ikhlas-nas",
+      "grade": "1AP",
+      "titleAr": "أَحْفَظُ سُورَتَيِ الإِخْلَاصِ وَالنَّاسِ 📖",
+      "requestedSegments": 38,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t2-shahada-pillars",
+      "grade": "1AP",
+      "titleAr": "أَحْفَظُ الشَّهَادَتَيْنِ 🤲",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t3-thanks-manners",
+      "grade": "1AP",
+      "titleAr": "الأَدَبُ: شُكْرٌ، صِدْقٌ، طَهَارَةٌ 🙏🧼",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t3-parents-kindness",
+      "grade": "1AP",
+      "titleAr": "أَبَرُّ وَالِدَيَّ وَأُطِيعُهُمَا 👨‍👩‍👧",
+      "requestedSegments": 38,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-1ap-t3-surah-masad-nasr",
+      "grade": "1AP",
+      "titleAr": "أَحْفَظُ سُورَتَيِ المَسَدِ وَالنَّصْرِ 📖",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t1-greetings-respect",
+      "grade": "1AP",
+      "titleAr": "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ 👋🇩🇿",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t1-identity-school-card",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ 🪪",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t2-sharing-cooperation",
+      "grade": "1AP",
+      "titleAr": "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي 🤝❤️",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t2-flag-anthem",
+      "grade": "1AP",
+      "titleAr": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ 🇩🇿",
+      "requestedSegments": 39,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t3-classroom-rules",
+      "grade": "1AP",
+      "titleAr": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ 🏫📏",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-1ap-t3-child-rights",
+      "grade": "1AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ 👶⚖️",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t1-numbers-0-49",
+      "grade": "2AP",
+      "titleAr": "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ 🔢",
+      "requestedSegments": 25,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t1-spatial-position",
+      "grade": "2AP",
+      "titleAr": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ 🧭",
+      "requestedSegments": 28,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t1-addition-no-carry",
+      "grade": "2AP",
+      "titleAr": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ ➕",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-numbers-50-99",
+      "grade": "2AP",
+      "titleAr": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ 🔟",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-numbers-100-999",
+      "grade": "2AP",
+      "titleAr": "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ 💯",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-addition-with-carry",
+      "grade": "2AP",
+      "titleAr": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ ➕",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-subtraction-no-carry",
+      "grade": "2AP",
+      "titleAr": "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ ➖",
+      "requestedSegments": 26,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-shapes",
+      "grade": "2AP",
+      "titleAr": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ 📐",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-double-half",
+      "grade": "2AP",
+      "titleAr": "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ ⚖️",
+      "requestedSegments": 25,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-measures-length-mass",
+      "grade": "2AP",
+      "titleAr": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ) 📏",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-ruler-cm",
+      "grade": "2AP",
+      "titleAr": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم) 📐",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-clock-reading",
+      "grade": "2AP",
+      "titleAr": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ ⏰",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-clock-half-hour",
+      "grade": "2AP",
+      "titleAr": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً) ⏱️",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-currency-dzd",
+      "grade": "2AP",
+      "titleAr": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ 🪙",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-subtraction-with-carry",
+      "grade": "2AP",
+      "titleAr": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ ➖",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t2-number-framing",
+      "grade": "2AP",
+      "titleAr": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ … 📏",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-right-angle",
+      "grade": "2AP",
+      "titleAr": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ 📐",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-meter-cm",
+      "grade": "2AP",
+      "titleAr": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ 📏",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-gram-kg",
+      "grade": "2AP",
+      "titleAr": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ ⚖️",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "math-2ap-t3-multiplication-concept",
+      "grade": "2AP",
+      "titleAr": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3 ✖️",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t1-letters-short-vowels",
+      "grade": "2AP",
+      "titleAr": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ 📝",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t1-madd-tanween",
+      "grade": "2AP",
+      "titleAr": "حُرُوفُ المَدِّ وَالتَّنْوِينُ 🗣️",
+      "requestedSegments": 21,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t1-shadda",
+      "grade": "2AP",
+      "titleAr": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ ⚡",
+      "requestedSegments": 19,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+      "grade": "2AP",
+      "titleAr": "أَسْمَاءُ الإِشَارَةِ: هَذَا، هَذِهِ، هَؤُلَاءِ (فِي مَحِيطِ العَائِلَةِ وَالمَدْرَسَةِ) 👉",
+      "requestedSegments": 26,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t2-personal-pronouns",
+      "grade": "2AP",
+      "titleAr": "الضَّمَائِرُ البَسِيطَةُ: أَنَا، نَحْنُ، أَنْتَ، أَنْتِ، أَنْتُمَا، أَنْتُمْ، هُوَ، هِيَ 👤",
+      "requestedSegments": 40,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t2-time-place-words",
+      "grade": "2AP",
+      "titleAr": "كَلِمَاتُ الزَّمَانِ وَالمَكَانِ: أَمَامَ، خَلْفَ، الآنَ، أَمْسِ، غَدًا ⏳",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+      "grade": "2AP",
+      "titleAr": "اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ القَمَرِيَّةُ ☀️",
+      "requestedSegments": 28,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t2-tanween-three-types",
+      "grade": "2AP",
+      "titleAr": "التَّنْوِينُ بِأَنْوَاعِهِ الثَّلَاثَةِ: ـً ـٍ ـٌ 🔔",
+      "requestedSegments": 26,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+      "grade": "2AP",
+      "titleAr": "التَّاءُ المَرْبُوطَةُ (ة) وَالتَّاءُ المَفْتُوحَةُ (ت) 🏷️",
+      "requestedSegments": 30,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+      "grade": "2AP",
+      "titleAr": "قِرَاءَةُ نَصٍّ قَصِيرٍ: البِيئَةُ وَالتَّغْذِيَةُ وَاللَّعِبُ 🌿",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+      "grade": "2AP",
+      "titleAr": "أَدَوَاتُ الاسْتِفْهَامِ (مَنْ، كَمْ، أَيْنَ، هَلْ) وَحُرُوفُ العَطْفِ (وَ، فَـ، ثُمَّ) ❓",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t1-reading-school",
+      "grade": "2AP",
+      "titleAr": "أَقْرَأُ نَصّاً: المَدْرَسَةُ وَالعَائِلَةُ 🏫",
+      "requestedSegments": 28,
+      "recordedSegments": 6
+    },
+    {
+      "lessonId": "arabic-2ap-t2-reading-neighborhood",
+      "grade": "2AP",
+      "titleAr": "أَقْرَأُ نَصّاً: الحَيُّ وَالصِّحَّةُ 🌳",
+      "requestedSegments": 35,
+      "recordedSegments": 6
+    },
+    {
+      "lessonId": "arabic-2ap-t3-copy-dictation",
+      "grade": "2AP",
+      "titleAr": "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً ✍️",
+      "requestedSegments": 27,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t3-ism-fil-harf",
+      "grade": "2AP",
+      "titleAr": "أُمَيِّزُ: الاِسْمَ، الفِعْلَ، الحَرْفَ 🏷️",
+      "requestedSegments": 32,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "arabic-2ap-t3-gender-number",
+      "grade": "2AP",
+      "titleAr": "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ 👫",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t1-growth-nutrition",
+      "grade": "2AP",
+      "titleAr": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ 🥗",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t1-hygiene-body-care",
+      "grade": "2AP",
+      "titleAr": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ 🧼",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t1-breathing-heart-effort",
+      "grade": "2AP",
+      "titleAr": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ 🫀",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t2-plants-around-us",
+      "grade": "2AP",
+      "titleAr": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ 🌱",
+      "requestedSegments": 29,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t2-domestic-wild-animals",
+      "grade": "2AP",
+      "titleAr": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا 🦁",
+      "requestedSegments": 31,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t3-solids-liquids-sound",
+      "grade": "2AP",
+      "titleAr": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ 🔊",
+      "requestedSegments": 30,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t3-water-states",
+      "grade": "2AP",
+      "titleAr": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ 🧊",
+      "requestedSegments": 33,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t2-animal-movement",
+      "grade": "2AP",
+      "titleAr": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟ 🐾",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "science-2ap-t3-air",
+      "grade": "2AP",
+      "titleAr": "الهَوَاءُ مِنْ حَوْلِنَا 💨",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t1-short-surahs-1",
+      "grade": "2AP",
+      "titleAr": "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ 📖",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+      "grade": "2AP",
+      "titleAr": "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ 🕌",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t1-wudu-steps",
+      "grade": "2AP",
+      "titleAr": "أَتَعَلَّمُ خُطُوَاتِ الوُضُوءِ بِالتَّرْتِيبِ 💧",
+      "requestedSegments": 21,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t2-short-surahs-2",
+      "grade": "2AP",
+      "titleAr": "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ 📖",
+      "requestedSegments": 22,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+      "grade": "2AP",
+      "titleAr": "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ 🤲",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+      "grade": "2AP",
+      "titleAr": "الصَّلَوَاتُ الخَمْسُ المَفْرُوضَةُ وَعَدَدُ رَكَعَاتِ كُلِّ صَلَاةٍ 🕋",
+      "requestedSegments": 26,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+      "grade": "2AP",
+      "titleAr": "احْتِرَامُ الوَالِدَيْنِ، الصِّدْقُ، وَالتَّسَامُحُ وَالتَّحِيَّةُ فِي الإِسْلَامِ ❤️",
+      "requestedSegments": 22,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t3-surah-maun-asr",
+      "grade": "2AP",
+      "titleAr": "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ 📖",
+      "requestedSegments": 22,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "islamic-2ap-t3-surah-takathur",
+      "grade": "2AP",
+      "titleAr": "حِفْظُ سُورَةِ التَّكَاثُرِ 📖",
+      "requestedSegments": 19,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t1-listening-respect",
+      "grade": "2AP",
+      "titleAr": "آدَابُ الاسْتِمَاعِ وَالحِوَارِ وَاحْتِرَامُ المُعَلِّمِ وَالرِّفَاقِ 🤝",
+      "requestedSegments": 21,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t1-national-symbols",
+      "grade": "2AP",
+      "titleAr": "أَتَعَرَّفُ عَلَى رُمُوزِ وَطَنِي الجَزَائِرِ 🇩🇿",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t2-cleanliness-property",
+      "grade": "2AP",
+      "titleAr": "نَظَافَةُ المُحِيطِ المَدْرَسِيِّ وَالحَيِّ وَحِمَايَةُ المُمْتَلَكَاتِ 🧹",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t2-public-private-property",
+      "grade": "2AP",
+      "titleAr": "الفَرْقُ بَيْنَ مُمْتَلَكَاتِي الخَاصَّةِ وَالمُمْتَلَكَاتِ العَامَّةِ 🏫",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t3-road-safety",
+      "grade": "2AP",
+      "titleAr": "السَّلَامَةُ المُرُورِيَّةُ: طَرِيقُ المَدْرَسَةِ وَإِشَارَةُ المُرُورِ 🚦",
+      "requestedSegments": 24,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t3-right-to-play-rest",
+      "grade": "2AP",
+      "titleAr": "حَقِّي فِي الرَّاحَةِ وَاللَّعِبِ وَالمُشَارَكَةِ فِي الأَنْشِطَةِ المَدْرَسِيَّةِ ⚽",
+      "requestedSegments": 20,
+      "recordedSegments": 0
+    },
+    {
+      "lessonId": "civics-2ap-t1-personal-documents",
+      "grade": "2AP",
+      "titleAr": "وَثَائِقِي: بِطَاقَةُ التَّعْرِيفِ وَدَفْتَرُ العَائِلَةِ 🪪",
+      "requestedSegments": 23,
+      "recordedSegments": 0
+    }
+  ],
+  "recorded": [
+    {
+      "text": "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-school-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-1.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا كِتَابٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-school-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-first-school-book"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-first-school-book.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا قَلَمٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-school-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-first-school-pen"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-first-school-pen.mp3"
+      ]
+    },
+    {
+      "text": "سَمِّ أَفْرَادَ عَائِلَتِي: أَبِي، أُمِّي، أَخِي.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-family-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-2.mp3"
+      ]
+    },
+    {
+      "text": "هَذِهِ أُمٌّ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-family-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-first-family-mom"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-first-family-mom.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا أَبٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t1-family-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-first-family-dad"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-first-family-dad.mp3"
+      ]
+    },
+    {
+      "text": "سَمِّ الأَشْيَاءَ فِي الحَيِّ: بَيْتٌ، شَارِعٌ، جَارٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-neighborhood-home",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-3.mp3"
+      ]
+    },
+    {
+      "text": "تَعَلَّمْ كَلِمَاتِ الصِّحَّةِ وَالرِّيَاضَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-health-sports",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-4.mp3"
+      ]
+    },
+    {
+      "text": "سَمِّ أَشْيَاءَ الطَّبِيعَةِ: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t2-nature-axis",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-5.mp3"
+      ]
+    },
+    {
+      "text": "تَعَلَّمْ كَلِمَاتِ اللَّعِبِ وَالتَّسْلِيَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-play-entertainment",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-6.mp3"
+      ]
+    },
+    {
+      "text": "تَعَلَّمْ كَلِمَاتِ العِيدِ وَالطُّفُولَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-childhood-holidays",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "instruction"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/language-next-ar-7.mp3"
+      ]
+    },
+    {
+      "text": "ذَهَبَ سَامِي إِلَى المَدْرَسَةِ صَبَاحاً.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-school-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-1.mp3"
+      ]
+    },
+    {
+      "text": "حَمَلَ مِحْفَظَتَهُ الزَّرْقَاءَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-school-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-2.mp3"
+      ]
+    },
+    {
+      "text": "سَلَّمَ عَلَى المُعَلِّمَةِ وَجَلَسَ فِي القِسْمِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-school-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-3.mp3"
+      ]
+    },
+    {
+      "text": "قَرَأَ دَرْسَ الحُرُوفِ ثُمَّ لَعِبَ فِي السَّاحَةِ مَعَ رِفَاقِهِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-school-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-4.mp3"
+      ]
+    },
+    {
+      "text": "عَادَ إِلَى البَيْتِ فَرِحاً وَحَكَى لأُمِّهِ يَوْمَهُ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-school-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-5.mp3"
+      ]
+    },
+    {
+      "text": "ذَهَبَ سَامِي إِلَى المَدْرَسَةِ صَبَاحاً. حَمَلَ مِحْفَظَتَهُ الزَّرْقَاءَ. سَلَّمَ عَلَى المُعَلِّمَةِ وَجَلَسَ فِي القِسْمِ. قَرَأَ دَرْسَ الحُرُوفِ ثُمَّ لَعِبَ فِي السَّاحَةِ مَعَ رِفَاقِهِ. عَادَ إِلَى البَيْتِ فَرِحاً وَحَكَى لأُمِّهِ يَوْمَهُ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-school-1.mp3",
+        "/sounds/preschool/ar/reading-school-2.mp3",
+        "/sounds/preschool/ar/reading-school-3.mp3",
+        "/sounds/preschool/ar/reading-school-4.mp3",
+        "/sounds/preschool/ar/reading-school-5.mp3"
+      ]
+    },
+    {
+      "text": "فِي حَيِّنَا حَدِيقَةٌ صَغِيرَةٌ وَنَظِيفَةٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-1.mp3"
+      ]
+    },
+    {
+      "text": "يَلْعَبُ الأَطْفَالُ بِالكُرَةِ تَحْتَ الأَشْجَارِ الكَبِيرَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-2.mp3"
+      ]
+    },
+    {
+      "text": "تَجْلِسُ لَيْلَى مَعَ جَدَّتِهَا عَلَى مَقْعَدٍ خَشَبِيٍّ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-3.mp3"
+      ]
+    },
+    {
+      "text": "يَجْرِي أَخُوهَا عُمَرُ فِي المَمَرِّ بِسُرْعَةٍ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-4.mp3"
+      ]
+    },
+    {
+      "text": "يَشْرَبُونَ المَاءَ البَارِدَ بَعْدَ اللَّعِبِ الطَّوِيلِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-5.mp3"
+      ]
+    },
+    {
+      "text": "يَقُولُ الأَبُ: نُحَافِظُ عَلَى النَّظَافَةِ وَلا نَرْمِي الأَوْرَاقَ. تَغْرُبُ الشَّمْسُ وَيَعُودُ الجَمِيعُ إِلَى البَيْتِ قَبْلَ المَغْرِبِ مَسْرُورِينَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "reading",
+          "key": "scene-hood-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/reading-hood-6.mp3"
+      ]
+    }
+  ]
+}

@@ -4,6 +4,8 @@
 
 Complément du même jour : [nouvel accueil illustré](2026-11-13-accueil-illustre.md), avec village V2, action principale mieux visible, matières remontées avant le compagnon sur téléphone et état de chargement du catalogue. Vérifications : 35 tests ciblés, huit parcours navigateur et TypeScript ; recette téléphone de Karim attendue.
 
+Complément audio : [lecteur arabe fiabilisé](2026-11-13-fiabilisation-lecture-arabe.md), texte vocalisé indépendant de l'affichage et réutilisation des phrases enregistrées. L'[audit des 118 cours de 1AP–2AP](../audio-v1/cours-1ap-2ap/README.md) révèle une couverture enregistrée très partielle : neuf cours avec au moins un passage couvert, sans garantie de couverture complète de ces cours. Un premier lot de 24 textes et les manquants sont préparés ; leur génération et validation à l'écoute restent à faire. Commit lecteur : `c5a6615`, sans push.
+
 ## Ce qui est en place
 
 | Domaine | Amélioration disponible | Limite actuelle |
