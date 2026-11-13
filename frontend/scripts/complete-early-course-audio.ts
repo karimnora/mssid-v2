@@ -19,7 +19,7 @@ async function main() {
   for (const section of manifest.sections) {
     const plan = `${directory}/${section.file}`;
     while (true) {
-      const output = await script('generate-course-audio.ts', ['--plan', plan, '--limit', '24', '--concurrency', '4', '--generate']);
+      const output = await script('generate-course-audio.ts', ['--plan', plan, '--limit', '24', '--concurrency', '4', '--complete-plan', '--generate']);
       appendFileSync(resolve(root, 'output/course-audio-completion/production.log'), output);
       const summary = JSON.parse(output.split(/\r?\n/).find(line => line.startsWith('{'))!);
       console.log(JSON.stringify({ section: section.section, pendingBeforeBatch: summary.pending, produced: summary.selected, remaining: summary.pending - summary.selected }));
