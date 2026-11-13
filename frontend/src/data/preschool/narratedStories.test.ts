@@ -31,4 +31,14 @@ describe('preschool narrated story catalogue', () => {
     }
     for (const activity of STORIES_MODULE.activities.filter(a => a.narratedStory)) expect(activity.i18n[language].promptAudioSrc).toBeTruthy();
   });
+  it('never answers a question with an object that has nothing to do with the story', () => {
+    // A ball or a bed among the choices lets the child answer without listening to the story.
+    const unrelated = new Set(['⚽', '🛏️']);
+    for (const activity of NARRATED_STORIES) {
+      for (const q of activity.narratedStory!.questions) {
+        expect(q.choices.filter(c => unrelated.has(c.asset)).map(c => `${q.id}: ${c.label.fr}`)).toEqual([]);
+      }
+    }
+  });
 });
+

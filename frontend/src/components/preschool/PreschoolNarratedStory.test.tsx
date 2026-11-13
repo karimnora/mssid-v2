@@ -17,12 +17,12 @@ describe('narrated preschool stories', () => {
     fireEvent.click(screen.getByRole('button', { name: 'On joue avec l’histoire ▶' }));
     act(() => vi.advanceTimersByTime(250));
     expect(speech.speak).toHaveBeenCalledWith(activity.narratedStory!.questions[0].prompt.fr);
-    fireEvent.click(screen.getByRole('button', { name: 'Un livre' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Des olives' }));
     expect(complete).not.toHaveBeenCalled();
     expect(screen.queryByRole('button', { name: 'Je continue ▶' })).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Des pommes' }));
     fireEvent.click(screen.getByRole('button', { name: 'Je continue ▶' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Un panier' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Dans un panier' }));
     fireEvent.click(screen.getByRole('button', { name: 'Je continue ▶' }));
     expect(document.querySelector('[data-narrated-story="retell"]')).toBeTruthy();
     expect(complete).not.toHaveBeenCalled();
