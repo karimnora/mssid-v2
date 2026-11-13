@@ -126,13 +126,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-9ab074103082ad7f.mp3",
-    "texte": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ",
+    "fichier": "course-ar-1d09d26b9901955e.mp3",
+    "texte": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ",
     "targets": [
       {
-        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "lessonId": "science-2ap-t1-growth-nutrition",
         "grade": "2AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -140,13 +140,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-295e3022b16659f0.mp3",
-    "texte": "حُرُوفُ المَدِّ وَالتَّنْوِينُ",
+    "fichier": "course-ar-82779a6db14e2a19.mp3",
+    "texte": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ",
     "targets": [
       {
-        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "lessonId": "science-2ap-t1-hygiene-body-care",
         "grade": "2AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }
@@ -154,13 +154,13 @@
     "reviewRequired": true
   },
   {
-    "fichier": "course-ar-3bc74323368c8ab9.mp3",
-    "texte": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ",
+    "fichier": "course-ar-e932fa6147f6d081.mp3",
+    "texte": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ",
     "targets": [
       {
-        "lessonId": "arabic-2ap-t1-shadda",
+        "lessonId": "science-2ap-t1-breathing-heart-effort",
         "grade": "2AP",
-        "subject": "arabic",
+        "subject": "science",
         "category": "entry",
         "key": "title"
       }

@@ -3,10 +3,10 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 1979,
-    "missingTexts": 1374,
-    "reusedFiles": 1978,
-    "integrityCheckedArabicFiles": 2416,
+    "recordedTexts": 2362,
+    "missingTexts": 991,
+    "reusedFiles": 2361,
+    "integrityCheckedArabicFiles": 2799,
     "byGrade": [
       {
         "grade": "1AP",
@@ -19,8 +19,8 @@
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 88,
-        "lessonsWithAnyRecording": 32
+        "recordedSegments": 502,
+        "lessonsWithAnyRecording": 38
       }
     ]
   },
@@ -569,112 +569,112 @@
       "grade": "2AP",
       "titleAr": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ 📝",
       "requestedSegments": 27,
-      "recordedSegments": 3
+      "recordedSegments": 27
     },
     {
       "lessonId": "arabic-2ap-t1-madd-tanween",
       "grade": "2AP",
       "titleAr": "حُرُوفُ المَدِّ وَالتَّنْوِينُ 🗣️",
       "requestedSegments": 21,
-      "recordedSegments": 0
+      "recordedSegments": 21
     },
     {
       "lessonId": "arabic-2ap-t1-shadda",
       "grade": "2AP",
       "titleAr": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ ⚡",
       "requestedSegments": 19,
-      "recordedSegments": 1
+      "recordedSegments": 19
     },
     {
       "lessonId": "arabic-2ap-t1-family-school-demonstratives",
       "grade": "2AP",
       "titleAr": "أَسْمَاءُ الإِشَارَةِ: هَذَا، هَذِهِ، هَؤُلَاءِ (فِي مَحِيطِ العَائِلَةِ وَالمَدْرَسَةِ) 👉",
       "requestedSegments": 26,
-      "recordedSegments": 0
+      "recordedSegments": 26
     },
     {
       "lessonId": "arabic-2ap-t2-personal-pronouns",
       "grade": "2AP",
       "titleAr": "الضَّمَائِرُ البَسِيطَةُ: أَنَا، نَحْنُ، أَنْتَ، أَنْتِ، أَنْتُمَا، أَنْتُمْ، هُوَ، هِيَ 👤",
       "requestedSegments": 40,
-      "recordedSegments": 0
+      "recordedSegments": 40
     },
     {
       "lessonId": "arabic-2ap-t2-time-place-words",
       "grade": "2AP",
       "titleAr": "كَلِمَاتُ الزَّمَانِ وَالمَكَانِ: أَمَامَ، خَلْفَ، الآنَ، أَمْسِ، غَدًا ⏳",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 23
     },
     {
       "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
       "grade": "2AP",
       "titleAr": "اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ القَمَرِيَّةُ ☀️",
       "requestedSegments": 28,
-      "recordedSegments": 1
+      "recordedSegments": 28
     },
     {
       "lessonId": "arabic-2ap-t2-tanween-three-types",
       "grade": "2AP",
       "titleAr": "التَّنْوِينُ بِأَنْوَاعِهِ الثَّلَاثَةِ: ـً ـٍ ـٌ 🔔",
       "requestedSegments": 26,
-      "recordedSegments": 1
+      "recordedSegments": 26
     },
     {
       "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
       "grade": "2AP",
       "titleAr": "التَّاءُ المَرْبُوطَةُ (ة) وَالتَّاءُ المَفْتُوحَةُ (ت) 🏷️",
       "requestedSegments": 30,
-      "recordedSegments": 0
+      "recordedSegments": 30
     },
     {
       "lessonId": "arabic-2ap-t3-nature-nutrition-play",
       "grade": "2AP",
       "titleAr": "قِرَاءَةُ نَصٍّ قَصِيرٍ: البِيئَةُ وَالتَّغْذِيَةُ وَاللَّعِبُ 🌿",
       "requestedSegments": 27,
-      "recordedSegments": 2
+      "recordedSegments": 27
     },
     {
       "lessonId": "arabic-2ap-t3-question-words-conjunctions",
       "grade": "2AP",
       "titleAr": "أَدَوَاتُ الاسْتِفْهَامِ (مَنْ، كَمْ، أَيْنَ، هَلْ) وَحُرُوفُ العَطْفِ (وَ، فَـ، ثُمَّ) ❓",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 27
     },
     {
       "lessonId": "arabic-2ap-t1-reading-school",
       "grade": "2AP",
       "titleAr": "أَقْرَأُ نَصّاً: المَدْرَسَةُ وَالعَائِلَةُ 🏫",
       "requestedSegments": 28,
-      "recordedSegments": 7
+      "recordedSegments": 28
     },
     {
       "lessonId": "arabic-2ap-t2-reading-neighborhood",
       "grade": "2AP",
       "titleAr": "أَقْرَأُ نَصّاً: الحَيُّ وَالصِّحَّةُ 🌳",
       "requestedSegments": 35,
-      "recordedSegments": 7
+      "recordedSegments": 35
     },
     {
       "lessonId": "arabic-2ap-t3-copy-dictation",
       "grade": "2AP",
       "titleAr": "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً ✍️",
       "requestedSegments": 27,
-      "recordedSegments": 1
+      "recordedSegments": 27
     },
     {
       "lessonId": "arabic-2ap-t3-ism-fil-harf",
       "grade": "2AP",
       "titleAr": "أُمَيِّزُ: الاِسْمَ، الفِعْلَ، الحَرْفَ 🏷️",
       "requestedSegments": 32,
-      "recordedSegments": 1
+      "recordedSegments": 32
     },
     {
       "lessonId": "arabic-2ap-t3-gender-number",
       "grade": "2AP",
       "titleAr": "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ 👫",
       "requestedSegments": 24,
-      "recordedSegments": 1
+      "recordedSegments": 23
     },
     {
       "lessonId": "science-2ap-t1-growth-nutrition",
@@ -33838,6 +33838,4170 @@
       ]
     },
     {
+      "text": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c1a98877b87a8263.mp3"
+      ]
+    },
+    {
+      "text": "قراءة أي حرف هجائي مع حركاته الثلاث القصيرة، وتركيب كلمات بسيطة بطلاقة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c3385c40a1044a59.mp3"
+      ]
+    },
+    {
+      "text": "انظر إلى هذه الحروف: بَ - بُ - بِ. هل يتغير شكل الحرف \"ب\"؟ ماذا يتغير إذن؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3327e9ec1ba4198d.mp3"
+      ]
+    },
+    {
+      "text": "يراجع التلميذ الحروف الهجائية الـ28 مع الحركات القصيرة الثلاث (الفتحة، الضمة، الكسرة) لقراءة كلمات وجمل بسيطة بطلاقة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-000f811ca81df7b0.mp3"
+      ]
+    },
+    {
+      "text": "الحروف وحدها صامتة، لكن عندما نضع فوقها أو تحتها حركة صغيرة، تنطق بصوت واضح. الحركات الثلاث هي مفتاح القراءة السليمة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b49f563e04f68933.mp3"
+      ]
+    },
+    {
+      "text": "الفَتْحَةُ (ــَ): علامة صغيرة مائلة فوق الحرف، صوتها \"أَ\" مثل: كَتَبَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac66725ba88f1653.mp3"
+      ]
+    },
+    {
+      "text": "الضَّمَّةُ (ــُ): علامة صغيرة مثل الواو فوق الحرف، صوتها \"أُ\" مثل: كُتُبٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-278aa1560e21f562.mp3"
+      ]
+    },
+    {
+      "text": "الكَسْرَةُ (ــِ): علامة صغيرة تحت الحرف، صوتها \"إِ\" مثل: كِتَابٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e269959c77e0595a.mp3"
+      ]
+    },
+    {
+      "text": "كل حرف بمفرده لا معنى له، وعندما نضيف له حركة يصبح جاهزاً للنطق.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-97fbdfa393df0c23.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر التلميذ: الضمة فوق الحرف وتشبه فاصلة صغيرة، بينما الفتحة خط مائل صغير.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bfcc1b90cdd000d5.mp3"
+      ]
+    },
+    {
+      "text": "كل حرف متحرك يجب أن يُنطق بصوته الكامل مع حركته، لا كحرف ساكن منفرد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d5229098c917ba12.mp3"
+      ]
+    },
+    {
+      "text": "ثلاث حركات قصيرة: الفتحة (ــَ = أَ)، الضمة (ــُ = أُ)، الكسرة (ــِ = إِ). كل حرف + حركة = صوت واضح يمكن قراءته.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75f6181953e97468.mp3"
+      ]
+    },
+    {
+      "text": "ما اسم الحركة الموجودة فوق حرف الباء في كلمة \"بَابٌ\" (أول حرف)؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-vowels"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5dd00d5b916288d.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ الكلمة التالية بصوت مسموع: \"سُكَّرٌ\" — ما الحركة الأولى؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-vowels"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e44249226d6afde.mp3"
+      ]
+    },
+    {
+      "text": "أي حركة تُكتب تحت الحرف؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-vowels"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2c8d4cacf101910f.mp3"
+      ]
+    },
+    {
+      "text": "اختر الحركة الصحيحة لكل حرف بسرعة!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3efd61be542410c5.mp3"
+      ]
+    },
+    {
+      "text": "كَ (صوت أَ)",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2f7433511c861508.mp3"
+      ]
+    },
+    {
+      "text": "الفَتْحَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2e0e883a67b740a.mp3"
+      ]
+    },
+    {
+      "text": "الضَّمَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7fe60f2de17a5c9a.mp3"
+      ]
+    },
+    {
+      "text": "الكَسْرَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f07349aee060bb40.mp3"
+      ]
+    },
+    {
+      "text": "مِ (صوت إِ)",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-letters-short-vowels",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95ba320a38d9ca61.mp3"
+      ]
+    },
+    {
+      "text": "حُرُوفُ المَدِّ وَالتَّنْوِينُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fc421affbdddc627.mp3"
+      ]
+    },
+    {
+      "text": "قراءة كلمات فيها مد بالألف أو الواو أو الياء، وكلمات منونة بالفتح أو الضم أو الكسر.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8afc6d8e46862c96.mp3"
+      ]
+    },
+    {
+      "text": "قارن بين: \"كَتَبَ\" و\"كَاتِبٌ\". أيّ كلمة صوتها أطول؟ لماذا؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4c63853d9849fad3.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على حروف المد الثلاثة (الألف، الواو، الياء) التي تطيل الصوت، وعلى التنوين الذي يضيف صوت النون في آخر الكلمة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d2fc3053a798be39.mp3"
+      ]
+    },
+    {
+      "text": "أحياناً نحتاج لإطالة الصوت قليلاً عند القراءة، وهذا ما تفعله حروف المد. وأحياناً نضيف صوت \"ن\" خفيف في آخر الكلمة، وهذا هو التنوين.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-baafa4c36ba4910c.mp3"
+      ]
+    },
+    {
+      "text": "المَدُّ بالألِف: عندما يأتي بعد حرف مفتوح حرف \"ا\" ساكن، يُمَدُّ الصوت (مثال: بَابٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2f38f0d96f28c86e.mp3"
+      ]
+    },
+    {
+      "text": "المَدُّ بالواو: عندما يأتي بعد حرف مضموم حرف \"و\" ساكن، يُمَدُّ الصوت (مثال: نُورٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9f1d7359e5cecd62.mp3"
+      ]
+    },
+    {
+      "text": "المَدُّ بالياء: عندما يأتي بعد حرف مكسور حرف \"ي\" ساكن، يُمَدُّ الصوت (مثال: كَبِيرٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8fcbcd1ff0da821f.mp3"
+      ]
+    },
+    {
+      "text": "التَّنْوِينُ: حركتان متتاليتان في آخر الكلمة (ـً ـٍ ـٌ) نضيف معهما صوت \"ن\" خفيف عند النطق (مثال: كِتَابًا، قَلَمٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4aedf57e4fcfe12b.mp3"
+      ]
+    },
+    {
+      "text": "حَرْفُ المَدِّ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ce3243159ecf70e0.mp3"
+      ]
+    },
+    {
+      "text": "التَّنْوِينُ نْ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1d55778e4213d931.mp3"
+      ]
+    },
+    {
+      "text": "حرف المد يُطيل الصوت ضِعف الحركة العادية تقريباً، درّب الطفل على المد الصوتي بوضوح.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b0d2a0569391e8ef.mp3"
+      ]
+    },
+    {
+      "text": "التنوين يُنطق دائماً وكأن هناك حرف نون ساكنة في آخر الكلمة، حتى لو لم تُكتب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5123fc9c707eb5a3.mp3"
+      ]
+    },
+    {
+      "text": "حروف المد الثلاثة: ا (بعد فتحة)، و (بعد ضمة)، ي (بعد كسرة) — تُطيل الصوت. التنوين (ـًـٍـٌ) يُضيف صوت \"ن\" خفيف آخر الكلمة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6001bb1449e0a7d.mp3"
+      ]
+    },
+    {
+      "text": "أي حرف مد نجده في كلمة \"دَارٌ\"؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-madd"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4d4c950eece8904.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ الكلمة \"كِتَابًا\" — ما نوع الحركة في آخرها؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-madd"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1dae1eed435642ac.mp3"
+      ]
+    },
+    {
+      "text": "أي كلمة من هذه الكلمات فيها حرف مد؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-madd"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-02144d75ce66db3a.mp3"
+      ]
+    },
+    {
+      "text": "رتب الحروف لتكوين كلمة فيها حرف مد!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8caf9dd9f14339c1.mp3"
+      ]
+    },
+    {
+      "text": "ن - و - ر",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0d64a7cca3acb7e1.mp3"
+      ]
+    },
+    {
+      "text": "نُورٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ace62d9e318d6ee9.mp3"
+      ]
+    },
+    {
+      "text": "رُونٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-madd-tanween",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-65a471b4088ba9e7.mp3"
+      ]
+    },
+    {
+      "text": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-38a7fade61953f8d.mp3"
+      ]
+    },
+    {
+      "text": "قراءة كلمة فيها حرف مشدد بنطق صحيح يميز التضعيف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40c8559a167f46b5.mp3"
+      ]
+    },
+    {
+      "text": "قارن بين \"عَلَمٌ\" و\"عَلَّمَ\". هل يتغير طول صوت اللام بينهما؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dfa6cd4d0b2b821d.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على علامة الشدة التي تدل على تكرار الحرف مرتين، ويقرأ كلمات بسيطة فيها حرف مشدد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-140083859ca9e31d.mp3"
+      ]
+    },
+    {
+      "text": "أحياناً نحتاج لتكرار صوت الحرف مرتين بسرعة في كلمة واحدة، فبدل كتابة الحرف مرتين، نكتبه مرة واحدة ونضع فوقه علامة صغيرة اسمها الشدة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9aa95576a4a8f4e6.mp3"
+      ]
+    },
+    {
+      "text": "الشَّدَّةُ (ّ): علامة صغيرة فوق الحرف تشبه رأس الواو، تدل على تكرار الحرف مرتين.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b930b24a9a6c2271.mp3"
+      ]
+    },
+    {
+      "text": "الحرف المشدد يُنطق مرتين متتاليتين: الأولى ساكنة والثانية بحركتها (مثال: مُعَلِّمٌ تُنطق \"مُعَلْلِمٌ\").",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-100cada8feb13e25.mp3"
+      ]
+    },
+    {
+      "text": "قد تجتمع الشدة مع حركة أخرى فوق الحرف أو تحته (مثال: الشَّمْسُ فيها شين مشددة مفتوحة).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-200fe59771aef2d9.mp3"
+      ]
+    },
+    {
+      "text": "الشَّدَّةُ ّ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2f715f1b8ad00e8.mp3"
+      ]
+    },
+    {
+      "text": "التَّضْعِيفُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8a51b134f1b4f690.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل أن الشدة تعني نطق الحرف مرتين، وليس مرة واحدة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b26b59fbf3c6db60.mp3"
+      ]
+    },
+    {
+      "text": "الشدة (ّ) فوق الحرف تعني نطقه مرتين: مرة ساكنة ومرة متحركة، مثل مُعَلِّمٌ وأُمِّي.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-770736eea8c34600.mp3"
+      ]
+    },
+    {
+      "text": "ما اسم العلامة الموجودة فوق اللام في كلمة \"مُعَلِّمٌ\"؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-shadda"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-23a256b8dcf65d8b.mp3"
+      ]
+    },
+    {
+      "text": "كم مرة نسمع صوت الشين في كلمة \"الشَّمْسُ\"؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-shadda"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-91e09c03f87581bd.mp3"
+      ]
+    },
+    {
+      "text": "كيف يُنطق الحرف المشدد؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-shadda"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e947a37a74fc8ca9.mp3"
+      ]
+    },
+    {
+      "text": "اختر الكلمة التي فيها حرف مشدد!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9e5d3ac5c065ff4e.mp3"
+      ]
+    },
+    {
+      "text": "أَيُّ كَلِمَةٍ فِيهَا شَدَّةٌ؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-37d1f747e74ff097.mp3"
+      ]
+    },
+    {
+      "text": "أُمِّي",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-shadda",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75b4f5f46d247b25.mp3"
+      ]
+    },
+    {
+      "text": "أَسْمَاءُ الإِشَارَةِ: هَذَا، هَذِهِ، هَؤُلَاءِ (فِي مَحِيطِ العَائِلَةِ وَالمَدْرَسَةِ)",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0185d4dfeca2bcd4.mp3"
+      ]
+    },
+    {
+      "text": "استعمال اسم الإشارة المناسب (هذا/هذه/هؤلاء) حسب نوع وعدد المُشار إليه.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3cf966303d999692.mp3"
+      ]
+    },
+    {
+      "text": "أشر إلى معلمك وقل: \"... مُعَلِّمِي\". ثم أشر إلى معلمتك وقل: \"... مُعَلِّمَتِي\". هل الكلمة نفسها في الحالتين؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d2cc4255cc51ffe.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ استعمال أسماء الإشارة (هذا، هذه، هؤلاء) للإشارة إلى أفراد أسرته وأدوات مدرسته، مع إغناء رصيده اللغوي بمفردات عن العائلة والمدرسة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-11d47d94b3ff5498.mp3"
+      ]
+    },
+    {
+      "text": "عندما نريد أن نُعرّف بشخص أو شيء قريب منا، نستعمل \"أسماء الإشارة\" — وهي تتغير حسب كون المُشار إليه مذكراً أو مؤنثاً أو جماعة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-93c5a91084c7760a.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا: نستعملها للإشارة إلى شخص أو شيء مُذَكَّرٍ مُفْرَدٍ قريب (مثال: هَذَا أَبِي).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9674324bf15760cb.mp3"
+      ]
+    },
+    {
+      "text": "هَذِهِ: نستعملها للإشارة إلى شخص أو شيء مُؤَنَّثٍ مُفْرَدٍ قريب (مثال: هَذِهِ أُمِّي).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b7e959a12a715aa2.mp3"
+      ]
+    },
+    {
+      "text": "هَؤُلَاءِ: نستعملها للإشارة إلى مجموعة من الأشخاص (مثال: هَؤُلَاءِ إِخْوَتِي).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-02fadd3732cfeefb.mp3"
+      ]
+    },
+    {
+      "text": "مفردات العائلة: أَبٌ، أُمٌّ، أَخٌ، أُخْتٌ، جَدٌّ، جَدَّةٌ. مفردات المدرسة: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ، مِحْفَظَةٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6936dd7a68506ac.mp3"
+      ]
+    },
+    {
+      "text": "اسْمُ الإِشَارَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d6db740508a0c1ac.mp3"
+      ]
+    },
+    {
+      "text": "مُذَكَّرٌ / مُؤَنَّثٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ec3433ca8de0fbe6.mp3"
+      ]
+    },
+    {
+      "text": "الصواب: \"هذه أمي\" لأن \"أم\" اسم مؤنث.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8e740ead71c83e5f.mp3"
+      ]
+    },
+    {
+      "text": "مع الجماعة (أكثر من اثنين) نستعمل \"هؤلاء\" وليس \"هذا\" أو \"هذه\".",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6c69da1fe91bdabe.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا = مذكر مفرد. هَذِهِ = مؤنث مفرد. هَؤُلَاءِ = جماعة (مذكراً كانت أو مؤنثاً).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-11239f04a813831d.mp3"
+      ]
+    },
+    {
+      "text": "أشر إلى أخيك وقل: \"... أَخِي\".",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-demonstratives"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b75a2d57c90829cd.mp3"
+      ]
+    },
+    {
+      "text": "أشر إلى تلاميذ قسمك وقل: \"... تَلَامِيذُ قِسْمِي\".",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-demonstratives"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d55c01073617d0ab.mp3"
+      ]
+    },
+    {
+      "text": "أي اسم إشارة نستعمله للإشارة إلى مجموعة إخوتك الثلاثة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-demonstratives"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36121a23b7e0602e.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل صورة باسم الإشارة الصحيح!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-941d9f2f91c8595c.mp3"
+      ]
+    },
+    {
+      "text": "صورة جدتي",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d0fc3be2131e84f.mp3"
+      ]
+    },
+    {
+      "text": "هَذِهِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-094d7fe6d9eba734.mp3"
+      ]
+    },
+    {
+      "text": "هَذَا",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0cc8ec2c23553474.mp3"
+      ]
+    },
+    {
+      "text": "هَؤُلَاءِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-88a4b64f743568cf.mp3"
+      ]
+    },
+    {
+      "text": "صورة معلمي",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-290e83a779556f92.mp3"
+      ]
+    },
+    {
+      "text": "الضَّمَائِرُ البَسِيطَةُ: أَنَا، نَحْنُ، أَنْتَ، أَنْتِ، أَنْتُمَا، أَنْتُمْ، هُوَ، هِيَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-34d7874abc693982.mp3"
+      ]
+    },
+    {
+      "text": "استعمال الضمير المناسب (أنا، نحن، أنتَ، أنتِ، أنتما، أنتم، هو، هي) حسب المتكلم أو المخاطَب أو الغائب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-73d888f233277875.mp3"
+      ]
+    },
+    {
+      "text": "إذا تكلمت عن نفسك، أي كلمة تستعمل؟ وإذا خاطبت صديقين معاً؟ وإذا خاطبت فريق كرة القدم كله؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-182b3002bb4993b3.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ استعمال الضمائر البسيطة للتحدث عن نفسه أو مخاطبة غيره (واحداً أو اثنين أو مجموعة) أو الحديث عن شخص غائب، في سياق الحي والرياضة والصحة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e010750174f59e8a.mp3"
+      ]
+    },
+    {
+      "text": "الضمائر كلمات صغيرة تُغنينا عن تكرار الاسم في كل مرة. بدل أن أقول \"أحمد يلعب\" كل مرة، أقول \"هو يلعب\" إن كان أحمد معروفاً من الحديث. وعندما نخاطب أكثر من شخص، نستعمل ضميراً مختلفاً حسب العدد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-82da22410dafa2ce.mp3"
+      ]
+    },
+    {
+      "text": "أَنَا: أستعملها عندما أتكلم عن نفسي (المتكلم المفرد).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ef1629d0d28db7b4.mp3"
+      ]
+    },
+    {
+      "text": "نَحْنُ: أستعملها عندما أتكلم عن نفسي مع آخرين (المتكلمون).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2cc58f75cf2db78d.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتَ / أَنْتِ: نستعملها لمخاطبة شخص واحد أمامنا، أَنْتَ للذكر وأَنْتِ للأنثى.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-06da1166c8842abf.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتُمَا: نستعملها لمخاطبة اثنين معاً (ولدين، بنتين، أو ولد وبنت).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-46b2f006e858fe36.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتُمْ: نستعملها لمخاطبة مجموعة (أكثر من اثنين).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6f87c23f9b017700.mp3"
+      ]
+    },
+    {
+      "text": "هُوَ / هِيَ: نستعملها للحديث عن شخص غائب، هُوَ للذكر وهِيَ للأنثى.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de5dc3ec7fd95b31.mp3"
+      ]
+    },
+    {
+      "text": "المُتَكَلِّمُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a590b6d5db78a4f9.mp3"
+      ]
+    },
+    {
+      "text": "المُخَاطَبُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-be1df9cdd138a8d6.mp3"
+      ]
+    },
+    {
+      "text": "الغَائِبُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-116917cf5bcd2b3a.mp3"
+      ]
+    },
+    {
+      "text": "مع البنت نستعمل \"أَنْتِ\" (بكسر التاء)، ومع الولد \"أَنْتَ\" (بفتح التاء).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aa0d678669ee6c9e.mp3"
+      ]
+    },
+    {
+      "text": "لمخاطبة اثنين نقول \"أَنْتُمَا\"، ولمخاطبة مجموعة نقول \"أَنْتُمْ\" — لا نستعمل \"أَنْتَ\" إلا لشخص واحد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-076256ad4f922f68.mp3"
+      ]
+    },
+    {
+      "text": "نستعمل \"هو\" للمذكر و\"هي\" للمؤنث حتى مع الحيوانات والأشياء (مثال: القطة... هي، الكلب... هو).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3220a4b38ad02030.mp3"
+      ]
+    },
+    {
+      "text": "أَنَا/نَحْنُ = المتكلم. أَنْتَ/أَنْتِ = مخاطب واحد. أَنْتُمَا = مخاطبان اثنان. أَنْتُمْ = مخاطبون مجموعة. هُوَ/هِيَ = الغائب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb0741927830f3d1.mp3"
+      ]
+    },
+    {
+      "text": "أنت تتحدث مع صديقتك سارة مباشرة. أي ضمير تستعمل لمخاطبتها؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-pronouns"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-20f4c20f63393c83.mp3"
+      ]
+    },
+    {
+      "text": "أنت وأصدقاؤك تلعبون معاً في الحي. أي ضمير تستعملونه للحديث عن أنفسكم؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-pronouns"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7367d038e3eaaa4f.mp3"
+      ]
+    },
+    {
+      "text": "تخاطب أخاك وأختك معاً وتقول لهما: \"... تَلْعَبَانِ بِجَمَالٍ\". أي ضمير تستعمل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-pronouns"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f5d36082390355ba.mp3"
+      ]
+    },
+    {
+      "text": "أي ضمير نستعمله للحديث عن أخت غائبة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-pronouns"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-48f91bbf6acde20e.mp3"
+      ]
+    },
+    {
+      "text": "تخاطب صديقيك أحمد وياسين معاً. أي ضمير تستعمل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q2-ar2ap-pronouns"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1badfe9c977b41c3.mp3"
+      ]
+    },
+    {
+      "text": "أي ضمير للمتكلم المفرد؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-prn-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f3cd886215b4cebb.mp3"
+      ]
+    },
+    {
+      "text": "للمخاطبة الأنثى نستعمل:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-prn-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dee67b518f3d56f3.mp3"
+      ]
+    },
+    {
+      "text": "للحديث عن قطة غائبة نستعمل:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-prn-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de8dced3e124294d.mp3"
+      ]
+    },
+    {
+      "text": "ضمير الجماعة المتكلمة:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-prn-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cc35f8eeef506bd8.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل وضعية بالضمير المناسب!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-39146fb162404828.mp3"
+      ]
+    },
+    {
+      "text": "تتحدث عن أخيك وهو غير موجود",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-460e2911899af33e.mp3"
+      ]
+    },
+    {
+      "text": "هُوَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d19ae7baee7d91aa.mp3"
+      ]
+    },
+    {
+      "text": "هِيَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb8eeacb8e4ecd5f.mp3"
+      ]
+    },
+    {
+      "text": "أَنَا",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75e7d5b7de14c17c.mp3"
+      ]
+    },
+    {
+      "text": "تتحدث عن نفسك وحدك",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f8170f94e68cd34b.mp3"
+      ]
+    },
+    {
+      "text": "نَحْنُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2cd1e0ec26a19ba3.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb51c510bcce03c3.mp3"
+      ]
+    },
+    {
+      "text": "تخاطب كل تلاميذ القسم معاً",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d9c026815ee8b92.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتُمْ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-14704485c9b13cb1.mp3"
+      ]
+    },
+    {
+      "text": "أَنْتُمَا",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-personal-pronouns",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f554c86b7571b423.mp3"
+      ]
+    },
+    {
+      "text": "كَلِمَاتُ الزَّمَانِ وَالمَكَانِ: أَمَامَ، خَلْفَ، الآنَ، أَمْسِ، غَدًا",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95d0a0388209c251.mp3"
+      ]
+    },
+    {
+      "text": "استعمال كلمات الزمان والمكان البسيطة في جمل مفيدة عن نشاطاته اليومية.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-05408798095246a0.mp3"
+      ]
+    },
+    {
+      "text": "ماذا فعلت أمس؟ وماذا تفعل الآن؟ وماذا ستفعل غداً؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea8ea89b5a9137f1.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ كلمات تدل على الزمان (الآن، أمس، غداً) وكلمات تدل على المكان (أمام، خلف)، ويوظفها في جمل بسيطة عن يومه ومحيطه.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-43719b3e72c60998.mp3"
+      ]
+    },
+    {
+      "text": "لكي نفهم متى حدث شيء، نستعمل كلمات الزمان. ولكي نفهم أين يوجد شيء، نستعمل كلمات المكان. هذه الكلمات تنظم كلامنا وتجعله واضحاً.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1a67be2f0375b1cb.mp3"
+      ]
+    },
+    {
+      "text": "أَمْسِ: يدل على يوم مضى قبل اليوم الحالي (زمن ماضٍ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ddefd94234a582e5.mp3"
+      ]
+    },
+    {
+      "text": "الآنَ: يدل على اللحظة الحالية التي نعيشها (زمن حاضر).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e2d819839ff4ddc.mp3"
+      ]
+    },
+    {
+      "text": "غَدًا: يدل على اليوم الذي يأتي بعد اليوم الحالي (زمن مستقبل).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-43edd80a179c481e.mp3"
+      ]
+    },
+    {
+      "text": "أَمَامَ: يدل على مكان قريب نراه بوضوح. خَلْفَ: يدل على مكان لا نراه إلا بالاستدارة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-00d501a6f024dc3d.mp3"
+      ]
+    },
+    {
+      "text": "أَمْسِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ae8255e4ba491d33.mp3"
+      ]
+    },
+    {
+      "text": "الآنَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f834af47d9d38cf.mp3"
+      ]
+    },
+    {
+      "text": "غَدًا",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33fc25277af48bd5.mp3"
+      ]
+    },
+    {
+      "text": "أمس = ما مضى (وراءنا)، غداً = ما سيأتي (أمامنا) — تخيل خط الزمن يسير من اليسار لليمين.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-625123fca00fb35c.mp3"
+      ]
+    },
+    {
+      "text": "مع \"أمس\" نستعمل فعلاً ماضياً (لَعِبْتُ)، ومع \"غداً\" نستعمل فعلاً مستقبلياً (سَأَلْعَبُ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-098c7a6043f715ca.mp3"
+      ]
+    },
+    {
+      "text": "أَمْسِ = الماضي، الآنَ = الحاضر، غَدًا = المستقبل. أَمَامَ وخَلْفَ تصفان مكان الأشياء بالنسبة إلينا.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-09664df8603a9ce3.mp3"
+      ]
+    },
+    {
+      "text": "اليوم الذي يأتي بعد اليوم الحالي يسمى؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-time"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2239cb4fc7f80dac.mp3"
+      ]
+    },
+    {
+      "text": "كوّن جملة عن نشاط رياضي فعلته أمس.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-time"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75ba63958786cda1.mp3"
+      ]
+    },
+    {
+      "text": "أي كلمة تدل على يوم مضى؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-time"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-60cfcadddae65b63.mp3"
+      ]
+    },
+    {
+      "text": "رتب الكلمات على خط الزمن الصحيح!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-15ee264a2fcbba07.mp3"
+      ]
+    },
+    {
+      "text": "هذه اللحظة بالضبط",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-time-place-words",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3c54e9ef0354215a.mp3"
+      ]
+    },
+    {
+      "text": "اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ القَمَرِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6886acbcd28388e.mp3"
+      ]
+    },
+    {
+      "text": "قراءة كلمات معرّفة بـ\"ال\" بنطق صحيح، مع التمييز بين اللام الشمسية والقمرية.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c6d58807e6b7fe76.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ: \"الشَّمْسُ\" و\"القَمَرُ\". هل تسمع صوت اللام في الكلمتين بنفس الطريقة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5b49abdc74f02e41.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ التمييز بين اللام الشمسية التي لا تُنطق واللام القمرية التي تُنطق بوضوح عند قراءة كلمات معرّفة بـ\"ال\".",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6e4cf1197779134.mp3"
+      ]
+    },
+    {
+      "text": "عندما نضيف \"ال\" التعريف إلى بداية كلمة، تتصرف اللام أحياناً بشكل خاص: فهي إما تختفي في النطق (شمسية) أو تبقى واضحة (قمرية).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-64b1446c48c8c5d3.mp3"
+      ]
+    },
+    {
+      "text": "اللَّامُ الشَّمْسِيَّةُ: تُكتب في الكلمة لكن لا تُنطق، والحرف الذي يليها يُنطق مشدداً (مثال: الشَّمْسُ ← تُقرأ \"أَشَّمْسُ\").",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dd3f2372a7febb12.mp3"
+      ]
+    },
+    {
+      "text": "اللَّامُ القَمَرِيَّةُ: تُنطق بوضوح كما هي، والحرف الذي يليها يبقى عادياً دون شدة (مثال: القَمَرُ ← تُقرأ \"أَلْقَمَرُ\").",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b0c3c62944af0dd2.mp3"
+      ]
+    },
+    {
+      "text": "للتمييز بسهولة: انظر إلى الحرف بعد \"ال\" — إن كان عليه شدة فاللام شمسية، وإن لم يكن عليه شدة فاللام قمرية.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63ed256dd0072283.mp3"
+      ]
+    },
+    {
+      "text": "اللَّامُ الشَّمْسِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b925389f832573c.mp3"
+      ]
+    },
+    {
+      "text": "اللَّامُ القَمَرِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-869b705cdc3d22e7.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل: إذا رأى شدة على الحرف بعد \"ال\"، فاللام لا تُنطق أبداً.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9ab78a239312906a.mp3"
+      ]
+    },
+    {
+      "text": "اللام الشمسية: تُكتب ولا تُنطق (الشَّمْسُ). اللام القمرية: تُنطق بوضوح (القَمَرُ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-47f6b872bcf8a5ac.mp3"
+      ]
+    },
+    {
+      "text": "في كلمة \"النَّجْمُ\"، هل نسمع صوت اللام؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-lam"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cce8ab5aaab33dd8.mp3"
+      ]
+    },
+    {
+      "text": "في كلمة \"القَلَمُ\"، هل نسمع صوت اللام؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-lam"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2c4089c737606618.mp3"
+      ]
+    },
+    {
+      "text": "صنّف: الدار — السماء. واشرح النطق.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-lam"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ad23b3d50f264b82.mp3"
+      ]
+    },
+    {
+      "text": "متى تكون اللام شمسية؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-lam"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-be65a9a9f6a8a40c.mp3"
+      ]
+    },
+    {
+      "text": "لام «القمر»:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-lam-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1111708f2e6962f1.mp3"
+      ]
+    },
+    {
+      "text": "لام «الشمس»:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-lam-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-99be55c2eb25b13e.mp3"
+      ]
+    },
+    {
+      "text": "في «النور» اللام:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-lam-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-be8998c1b9ae5c1c.mp3"
+      ]
+    },
+    {
+      "text": "في «الكتاب» اللام:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-lam-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-385f2a8c433331b9.mp3"
+      ]
+    },
+    {
+      "text": "علامة اللام الشمسية بعد أل:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-lam-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9cfd83dc32260dc2.mp3"
+      ]
+    },
+    {
+      "text": "صنّف كل كلمة حسب نوع اللام فيها!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f3e33202b11fd8b2.mp3"
+      ]
+    },
+    {
+      "text": "لَامٌ شَمْسِيَّةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2429d2e60682b603.mp3"
+      ]
+    },
+    {
+      "text": "لَامٌ قَمَرِيَّةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f68b4d2d76d38ec.mp3"
+      ]
+    },
+    {
+      "text": "القِطَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ec0d07cabe3263a.mp3"
+      ]
+    },
+    {
+      "text": "التَّنْوِينُ بِأَنْوَاعِهِ الثَّلَاثَةِ: ـً ـٍ ـٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21cafbd412073276.mp3"
+      ]
+    },
+    {
+      "text": "التمييز بين أنواع التنوين الثلاثة وقراءة كل نوع بصوته الصحيح.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-da3ab55b0fb87b46.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ: كِتَابًا، كِتَابٌ، كِتَابٍ. هل تسمع الصوت نفسه في آخر كل كلمة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de22e40648a16572.mp3"
+      ]
+    },
+    {
+      "text": "يميز التلميذ بين تنوين الفتح وتنوين الضم وتنوين الكسر، ويقرأ كلمات منونة بكل نوع بنطق صحيح.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f0939e36a498c0e2.mp3"
+      ]
+    },
+    {
+      "text": "التنوين حركتان متتاليتان في آخر الكلمة، وله ثلاثة أنواع حسب شكل الحركة المكررة: فتح، ضم، وكسر — لكل واحد شكل ومكان وصوت مختلف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cc263ff48ab397a6.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الفَتْحِ (ـً): حركتان فوق الحرف الأخير، صوته \"أَنْ\"، ويُكتب غالباً بألف زائدة (مثال: كِتَابًا).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed692ec02dcfd36a.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الضَّمِّ (ـٌ): حركتان تشبهان واوين صغيرتين فوق الحرف الأخير، صوته \"أُنْ\" (مثال: كِتَابٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-67ba972455082bab.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الكَسْرِ (ـٍ): حركتان تحت الحرف الأخير، صوته \"إِنْ\" (مثال: كِتَابٍ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aa0fa46fb08c9522.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الفَتْحِ ـً",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b1ae65c5a349ceb4.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الضَّمِّ ـٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9af581dd47dfe39e.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الكَسْرِ ـٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f2a7afea1bfff94.mp3"
+      ]
+    },
+    {
+      "text": "كل أنواع التنوين تُنطق وكأن في آخرها نون ساكنة، حتى لو لم تُكتب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d700db107cea48c8.mp3"
+      ]
+    },
+    {
+      "text": "تنوين الضم فوق الحرف (يشبه واوين)، وتنوين الكسر تحت الحرف (يشبه كسرتين).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-816ee513630690b8.mp3"
+      ]
+    },
+    {
+      "text": "تنوين الفتح ـً (أَنْ) فوق الحرف مع ألف غالباً. تنوين الضم ـٌ (أُنْ) فوق الحرف. تنوين الكسر ـٍ (إِنْ) تحت الحرف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-478babb35d0035cb.mp3"
+      ]
+    },
+    {
+      "text": "أين تُكتب علامة تنوين الكسر؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-tanween3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-111d112dbf4c5717.mp3"
+      ]
+    },
+    {
+      "text": "ما نوع التنوين في كلمة \"قَمَرًا\"؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-tanween3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-82c4ba6790f37730.mp3"
+      ]
+    },
+    {
+      "text": "ما صوت تنوين الفتح؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-tanween3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a32036b5ab38752f.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل كلمة بنوع التنوين فيها!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2780a5372920c45.mp3"
+      ]
+    },
+    {
+      "text": "وَلَدٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92ee1645c04fcbef.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الضَّمِّ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d6b6cb9115cef867.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الفَتْحِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7c6baa442b95cbb.mp3"
+      ]
+    },
+    {
+      "text": "تَنْوِينُ الكَسْرِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-tanween-three-types",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4af76b9726dbfd0e.mp3"
+      ]
+    },
+    {
+      "text": "التَّاءُ المَرْبُوطَةُ (ة) وَالتَّاءُ المَفْتُوحَةُ (ت)",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a0b76d5f10841ec8.mp3"
+      ]
+    },
+    {
+      "text": "التمييز إملائياً بين التاء المربوطة والمفتوحة في كلمات بسيطة، وكتابتهما بشكل صحيح.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-46fabdd74bb0a696.mp3"
+      ]
+    },
+    {
+      "text": "قارن بين كلمتي \"مَدْرَسَةٌ\" و\"بَيْتٌ\". هل شكل التاء في آخر كل كلمة متشابه؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed350d4a1383d88a.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ التمييز بين التاء المربوطة (ة) التي تُنطق هاءً عند الوقف، والتاء المفتوحة (ت) التي تبقى تاءً دائماً.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4b6a2c24644d10c4.mp3"
+      ]
+    },
+    {
+      "text": "في اللغة العربية شكلان للتاء في آخر الكلمة: واحدة مستديرة عليها نقطتان (ة) وأخرى ممدودة عادية (ت). كل واحدة لها نطق مختلف عند الوقوف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d92dfe92283fa61.mp3"
+      ]
+    },
+    {
+      "text": "التَّاءُ المَرْبُوطَةُ (ة): تأتي غالباً في آخر الأسماء المؤنثة، وتُنطق هاءً ساكنة عند الوقوف عليها (مثال: مَدْرَسَةٌ ← تُنطق مَدْرَسَهْ عند الوقف).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d8a6d9846d6b5e85.mp3"
+      ]
+    },
+    {
+      "text": "التَّاءُ المَفْتُوحَةُ (ت): تبقى تاءً في النطق دائماً، سواء وصلنا الكلام أو وقفنا (مثال: بَيْتٌ، بِنْتٌ، أُخْتٌ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80db7b48b139d140.mp3"
+      ]
+    },
+    {
+      "text": "الفرق الأهم: التاء المربوطة تتحول لهاء عند الوقف، بينما المفتوحة لا تتغير أبداً.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bfad71440931bfd2.mp3"
+      ]
+    },
+    {
+      "text": "التَّاءُ المَرْبُوطَةُ ة",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-23f89c41585b8279.mp3"
+      ]
+    },
+    {
+      "text": "التَّاءُ المَفْتُوحَةُ ت",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b4afe067d74f2152.mp3"
+      ]
+    },
+    {
+      "text": "الوَقْفُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e0d848e258bdf25.mp3"
+      ]
+    },
+    {
+      "text": "رغم أن النطق عند الوقف يشبه الهاء، تُكتب الكلمة دائماً بالتاء المربوطة (ة) وليس بالهاء.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fdc23f596d106c14.mp3"
+      ]
+    },
+    {
+      "text": "هذه الكلمات جذرها الأصلي ينتهي بتاء مفتوحة ثابتة، فلا تتحول أبداً إلى (ة).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf5204ab14c0f82d.mp3"
+      ]
+    },
+    {
+      "text": "التاء المربوطة (ة) تُنطق هاءً عند الوقف، وغالباً في أسماء المؤنث. التاء المفتوحة (ت) تبقى تاءً دائماً في كل الحالات.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1b71f7758e6bb704.mp3"
+      ]
+    },
+    {
+      "text": "كلمة \"زَهْرَةٌ\" تنتهي بأي نوع من التاء؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-taa"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1be7011005bd0555.mp3"
+      ]
+    },
+    {
+      "text": "اكتب كلمة \"بنت\" — هل تاؤها مربوطة أم مفتوحة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-taa"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-64aba731b879c250.mp3"
+      ]
+    },
+    {
+      "text": "اكتب كلمتين: واحدة بتاء مربوطة وواحدة بمفتوحة من القسم.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-taa"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1b73b1987cd224e2.mp3"
+      ]
+    },
+    {
+      "text": "التاء المربوطة تُنطق عند الوقف مثل:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-taa"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f067aa4926874d8f.mp3"
+      ]
+    },
+    {
+      "text": "كلمة «بنت» تنتهي بـ:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-taa-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-84c8d2eee84b20e7.mp3"
+      ]
+    },
+    {
+      "text": "كلمة «مدرسة» تنتهي بـ:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-taa-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-08b78e2667b23701.mp3"
+      ]
+    },
+    {
+      "text": "عند الوقف على «حديقة» نسمع تقريباً:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-taa-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4e1546eca4fefdec.mp3"
+      ]
+    },
+    {
+      "text": "«بيت» فيها:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-taa-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-99babb190f30396e.mp3"
+      ]
+    },
+    {
+      "text": "أكمل بالمربوطة: شجر...",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-taa-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-930e41e150ec0fc1.mp3"
+      ]
+    },
+    {
+      "text": "صنّف كل كلمة حسب نوع تائها!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-02a7c201aea2166b.mp3"
+      ]
+    },
+    {
+      "text": "حَقِيبَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4ef3f0577be5d05.mp3"
+      ]
+    },
+    {
+      "text": "تَاءٌ مَرْبُوطَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2eea747d4428edcf.mp3"
+      ]
+    },
+    {
+      "text": "تَاءٌ مَفْتُوحَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-485491322bb85d49.mp3"
+      ]
+    },
+    {
+      "text": "صَوْتٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cbfb5ff3557872c9.mp3"
+      ]
+    },
+    {
+      "text": "قِرَاءَةُ نَصٍّ قَصِيرٍ: البِيئَةُ وَالتَّغْذِيَةُ وَاللَّعِبُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e1cc95ba6ae70961.mp3"
+      ]
+    },
+    {
+      "text": "قراءة نص قصير بطلاقة وفهم معناه العام، مع اكتساب مفردات جديدة عن الطبيعة والتغذية واللعب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-baeab0f59aae0cbd.mp3"
+      ]
+    },
+    {
+      "text": "ما هي الأشياء التي تراها في الطبيعة عندما تخرج للحديقة؟ وما طعامك المفضل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-26d3063893a522bf.mp3"
+      ]
+    },
+    {
+      "text": "يقرأ التلميذ نصاً قصيراً وبسيطاً عن الطبيعة والتغذية الصحية واللعب، ويغني رصيده اللغوي بمفردات جديدة من هذه المحاور.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bcb5103e15cc9a87.mp3"
+      ]
+    },
+    {
+      "text": "القراءة نافذة نكتشف من خلالها العالم من حولنا. عندما نقرأ عن الطبيعة والتغذية واللعب، نتعلم كلمات جديدة ونفهم كيف نعتني بأنفسنا وبمحيطنا.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e241c3ce5df9be4.mp3"
+      ]
+    },
+    {
+      "text": "عند قراءة نص، ننظر أولاً إلى العنوان لنتوقع موضوعه.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7c7d57880bae04cb.mp3"
+      ]
+    },
+    {
+      "text": "نقرأ ببطء وبصوت واضح، ونتوقف عند علامات الترقيم (النقطة، الفاصلة).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8cb22f0a1fa30e76.mp3"
+      ]
+    },
+    {
+      "text": "بعد القراءة، نحاول تلخيص الفكرة العامة للنص بجملة واحدة بسيطة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-753392b36ec3d231.mp3"
+      ]
+    },
+    {
+      "text": "مفردات مهمة: الشَّجَرَةُ، الحَدِيقَةُ، الخُضَرُ، الفَوَاكِهُ، الكُرَةُ، الأُرْجُوحَةُ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-70e4403d290e3ec0.mp3"
+      ]
+    },
+    {
+      "text": "الحَدِيقَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ad316504a605df8b.mp3"
+      ]
+    },
+    {
+      "text": "الفَوَاكِهُ الطَّازَجَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d2fca5a80f862488.mp3"
+      ]
+    },
+    {
+      "text": "الأُرْجُوحَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bd86cc0a9604c8c2.mp3"
+      ]
+    },
+    {
+      "text": "شجع الطفل على التوقف بعد كل جملة والتفكير: \"ماذا فهمت؟\" قبل الانتقال للجملة التالية.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-85b4fd599cda485e.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل بالتوقف قليلاً عند الفاصلة، وتوقفاً أطول عند النقطة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-291bd77fa7e439ab.mp3"
+      ]
+    },
+    {
+      "text": "القراءة الجيدة: أنظر للعنوان، أقرأ ببطء ووضوح، أتوقف عند علامات الترقيم، ثم ألخص الفكرة العامة بجملة واحدة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9d4fc980a09f58ea.mp3"
+      ]
+    },
+    {
+      "text": "في النص المقروء، أين يلعب الأطفال؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-reading"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-101084807969e3f7.mp3"
+      ]
+    },
+    {
+      "text": "اذكر غذاءً صحياً مذكوراً في النص.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-reading"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-49b0740d681174b6.mp3"
+      ]
+    },
+    {
+      "text": "حسب النص، بماذا يلعب الأطفال في الحديقة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-reading"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9f7987cc5e81db2f.mp3"
+      ]
+    },
+    {
+      "text": "اختر الكلمة المناسبة لكل صورة من الطبيعة أو التغذية أو اللعب!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8af5cdbc4d301148.mp3"
+      ]
+    },
+    {
+      "text": "صورة شجرة خضراء",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1ff48ea6063ca6d.mp3"
+      ]
+    },
+    {
+      "text": "صورة تفاحة حمراء",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d16dfa2d55c0d2d2.mp3"
+      ]
+    },
+    {
+      "text": "فَاكِهَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2ae619e37f4962e9.mp3"
+      ]
+    },
+    {
+      "text": "أُرْجُوحَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-41230766f30c19b3.mp3"
+      ]
+    },
+    {
+      "text": "زَهْرَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb7b5128122a531d.mp3"
+      ]
+    },
+    {
+      "text": "أَدَوَاتُ الاسْتِفْهَامِ (مَنْ، كَمْ، أَيْنَ، هَلْ) وَحُرُوفُ العَطْفِ (وَ، فَـ، ثُمَّ)",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7c2b34e9e9ed7f67.mp3"
+      ]
+    },
+    {
+      "text": "طرح أسئلة بسيطة باستعمال أدوات الاستفهام المناسبة، وربط كلمتين أو جملتين بحرف العطف الصحيح.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac384ed5d446aa02.mp3"
+      ]
+    },
+    {
+      "text": "تريد أن تعرف اسم صديقك الجديد. أي كلمة سؤال تستعمل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e79c6416aea5619c.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ استعمال أدوات الاستفهام الأساسية لطرح الأسئلة، وحروف العطف لربط الكلمات والجمل.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5221e94b7ce77070.mp3"
+      ]
+    },
+    {
+      "text": "لكي نطرح أسئلة واضحة، نستعمل كلمات خاصة تسمى أدوات الاستفهام. ولكي نربط أفكارنا في جملة واحدة، نستعمل حروف صغيرة تسمى حروف العطف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-613e96cc63d39914.mp3"
+      ]
+    },
+    {
+      "text": "مَنْ؟: نسأل بها عن شخص (مثال: مَنْ هَذَا؟ ← هَذَا أَخِي).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d342d43f82a6411f.mp3"
+      ]
+    },
+    {
+      "text": "أَيْنَ؟: نسأل بها عن مكان (مثال: أَيْنَ الكِتَابُ؟ ← الكِتَابُ عَلَى الطَّاوِلَةِ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4dd4e6027cc3eea7.mp3"
+      ]
+    },
+    {
+      "text": "كَمْ؟: نسأل بها عن عدد (مثال: كَمْ عُمْرُكَ؟ ← عُمْرِي 8 سَنَوَاتٍ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3ae987d0046c288a.mp3"
+      ]
+    },
+    {
+      "text": "هَلْ؟: نسأل بها سؤالاً نجيب عنه بنعم أو لا (مثال: هَلْ أَنْتَ جَائِعٌ؟ ← نَعَمْ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4bae64436e786c43.mp3"
+      ]
+    },
+    {
+      "text": "حُرُوفُ العَطْفِ: \"وَ\" تربط دون ترتيب زمني (تُفَّاحَةٌ وَمَوْزَةٌ)، \"فَـ\" تربط بترتيب سريع (دَخَلَ فَجَلَسَ)، \"ثُمَّ\" تربط بترتيب مع تأخير (أَكَلَ ثُمَّ نَامَ).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0701b05513867055.mp3"
+      ]
+    },
+    {
+      "text": "أَدَاةُ الاسْتِفْهَامِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-03d0f307e2e71572.mp3"
+      ]
+    },
+    {
+      "text": "حَرْفُ العَطْفِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4301374705c82517.mp3"
+      ]
+    },
+    {
+      "text": "كَمْ للعدد فقط، مَنْ للأشخاص فقط.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-764dee9578ffdf88.mp3"
+      ]
+    },
+    {
+      "text": "\"فَـ\" تعني بعده مباشرة وبسرعة، بينما \"ثُمَّ\" تعني بعد فترة من الوقت.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0846af43ea9da85f.mp3"
+      ]
+    },
+    {
+      "text": "مَنْ (شخص)، أَيْنَ (مكان)، كَمْ (عدد)، هَلْ (نعم/لا). وَ يربط، فَـ ترتب بسرعة، ثُمَّ ترتب بتأخير.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c8776bac0d7de3dd.mp3"
+      ]
+    },
+    {
+      "text": "أي أداة استفهام تستعملها لتسأل عن مكان محفظتك؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-question"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b1dc82221ce34cc2.mp3"
+      ]
+    },
+    {
+      "text": "اربط بين \"غَسَلْتُ يَدَيَّ\" و\"أَكَلْتُ\" بحرف عطف يدل على ترتيب سريع.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-question"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-821375955bab67c0.mp3"
+      ]
+    },
+    {
+      "text": "أي أداة استفهام نستعملها للسؤال بنعم أو لا؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-question"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9e48c9d349adea93.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل سؤال بالأداة المناسبة!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-043ada153e0ab215.mp3"
+      ]
+    },
+    {
+      "text": "كَمْ عُمْرُكَ؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-099f90fb5541c14e.mp3"
+      ]
+    },
+    {
+      "text": "سُؤَالٌ عَنْ عَدَدٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69fea871b2e356f3.mp3"
+      ]
+    },
+    {
+      "text": "سُؤَالٌ عَنْ شَخْصٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9ca711c18e67d859.mp3"
+      ]
+    },
+    {
+      "text": "سُؤَالٌ عَنْ مَكَانٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92edd924db7ed9a1.mp3"
+      ]
+    },
+    {
+      "text": "أَيْنَ تَسْكُنُ؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5264112e61ee5c1b.mp3"
+      ]
+    },
+    {
+      "text": "أَقْرَأُ نَصّاً: المَدْرَسَةُ وَالعَائِلَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-953ad6d800d1c521.mp3"
+      ]
+    },
+    {
       "text": "ذَهَبَ سَامِي إِلَى المَدْرَسَةِ صَبَاحاً.",
       "targets": [
         {
@@ -33913,6 +38077,21 @@
       ]
     },
     {
+      "text": "قراءة نص قصير بطلاقة وفهم فكرته العامة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9380f722421a09f1.mp3"
+      ]
+    },
+    {
       "text": "ذَهَبَ سَامِي إِلَى المَدْرَسَةِ صَبَاحاً. حَمَلَ مِحْفَظَتَهُ الزَّرْقَاءَ. سَلَّمَ عَلَى المُعَلِّمَةِ وَجَلَسَ فِي القِسْمِ. قَرَأَ دَرْسَ الحُرُوفِ ثُمَّ لَعِبَ فِي السَّاحَةِ مَعَ رِفَاقِهِ. عَادَ إِلَى البَيْتِ فَرِحاً وَحَكَى لأُمِّهِ يَوْمَهُ.",
       "targets": [
         {
@@ -33929,6 +38108,313 @@
         "/sounds/preschool/ar/reading-school-3.mp3",
         "/sounds/preschool/ar/reading-school-4.mp3",
         "/sounds/preschool/ar/reading-school-5.mp3"
+      ]
+    },
+    {
+      "text": "يقرأ التلميذ نصاً مشكولاً من نحو أربعين كلمة عن يوم مدرسي، ويجيب عن أسئلة الفهم.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e985e969de4acd09.mp3"
+      ]
+    },
+    {
+      "text": "النص القصير حكاية صغيرة. نقرأ ببطء، ثم نجيب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d18741501053cab3.mp3"
+      ]
+    },
+    {
+      "text": "نَقْرَأُ مِنَ اليَمِينِ إِلَى اليَسَارِ، وَنَتَوَقَّفُ عِنْدَ النُّقْطَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1a5b9bc346ea180a.mp3"
+      ]
+    },
+    {
+      "text": "الحَرَكَاتُ تُسَاعِدُنَا عَلَى النُّطْقِ الصَّحِيحِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6bfb5364b7df39c2.mp3"
+      ]
+    },
+    {
+      "text": "بَعْدَ القِرَاءَةِ نَسْأَلُ: مَنِ الشَّخْصُ؟ أَيْنَ ذَهَبَ؟ مَاذَا فَعَلَ؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-10e2d7dccddba1ad.mp3"
+      ]
+    },
+    {
+      "text": "الفِكْرَةُ العَامَّةُ هُنَا: يَوْمُ سَامِي فِي المَدْرَسَةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2bf39a2f16ae1401.mp3"
+      ]
+    },
+    {
+      "text": "المِحْفَظَةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de8d2c75c36bac2b.mp3"
+      ]
+    },
+    {
+      "text": "كل حركة تُنطق: ذَهَبَ ليست ذْهب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3983ac779e59365e.mp3"
+      ]
+    },
+    {
+      "text": "أقرأ النص المشكول، أفهم من/أين/ماذا، ألخص بجملة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7397be8ec7b6617.mp3"
+      ]
+    },
+    {
+      "text": "من سلّم على المعلمة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-read1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6009350d3220755f.mp3"
+      ]
+    },
+    {
+      "text": "أين لعب سامي مع رفاقه؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-read1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9976141fc686d3b2.mp3"
+      ]
+    },
+    {
+      "text": "ما الفكرة العامة للنص؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-read1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eadf48bb859f9ff7.mp3"
+      ]
+    },
+    {
+      "text": "اختر حسب النص!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        },
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6aa06c74035268ee.mp3"
+      ]
+    },
+    {
+      "text": "لون المحفظة",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3ac4c4a3b90e78dc.mp3"
+      ]
+    },
+    {
+      "text": "زَرْقَاءُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a2e87fafde506449.mp3"
+      ]
+    },
+    {
+      "text": "حَمْرَاءُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fa0551d6416aff03.mp3"
+      ]
+    },
+    {
+      "text": "لمن حكى سامي يومه؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-356fc1c23053056e.mp3"
+      ]
+    },
+    {
+      "text": "لأُمِّهِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69c2788d961f0fb3.mp3"
+      ]
+    },
+    {
+      "text": "لِلْجَارِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t1-reading-school",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-452dd184be8d8155.mp3"
+      ]
+    },
+    {
+      "text": "أَقْرَأُ نَصّاً: الحَيُّ وَالصِّحَّةُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-287506ab55e1a7fb.mp3"
       ]
     },
     {
@@ -34019,6 +38505,1482 @@
       ],
       "clips": [
         "/sounds/preschool/ar/reading-hood-6.mp3"
+      ]
+    },
+    {
+      "text": "قراءة نص 30–50 كلمة عن الحي والصحة وفهمه.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2e47ebdf6587c87.mp3"
+      ]
+    },
+    {
+      "text": "فِي حَيِّنَا حَدِيقَةٌ صَغِيرَةٌ وَنَظِيفَةٌ. يَلْعَبُ الأَطْفَالُ بِالكُرَةِ تَحْتَ الأَشْجَارِ الكَبِيرَةِ. تَجْلِسُ لَيْلَى مَعَ جَدَّتِهَا عَلَى مَقْعَدٍ خَشَبِيٍّ. يَجْرِي أَخُوهَا عُمَرُ فِي المَمَرِّ بِسُرْعَةٍ. يَشْرَبُونَ المَاءَ البَارِدَ بَعْدَ اللَّعِبِ الطَّوِيلِ. يَقُولُ الأَبُ: نُحَافِظُ عَلَى النَّظَافَةِ وَلا نَرْمِي الأَوْرَاقَ. تَغْرُبُ الشَّمْسُ وَيَعُودُ الجَمِيعُ إِلَى البَيْتِ قَبْلَ المَغْرِبِ مَسْرُورِينَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1baae8f3003218ae.mp3"
+      ]
+    },
+    {
+      "text": "يقرأ التلميذ نصاً مشكولاً من نحو خمس وأربعين كلمة عن الحديقة واللعب والجري وشرب الماء والنظافة في الحي.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ab7502ba4cacad2.mp3"
+      ]
+    },
+    {
+      "text": "الحي حديقة، لعب، ماء، نظافة. النص يعلّمنا كلمات المكان والصحة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-358424dacff42037.mp3"
+      ]
+    },
+    {
+      "text": "النَّصُّ يَدُورُ فِي الحَدِيقَةِ فِي الحَيِّ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-941734b86e95c184.mp3"
+      ]
+    },
+    {
+      "text": "عُمَرُ يَجْرِي بَعْدَ اللَّعِبِ: حَرَكَةٌ سَرِيعَةٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e95d06082817600b.mp3"
+      ]
+    },
+    {
+      "text": "بَعْدَ اللَّعِبِ الطَّوِيلِ نَشْرَبُ المَاءَ البَارِدَ: هَذَا مِنَ الصِّحَّةِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b2e5dffedaaebf2.mp3"
+      ]
+    },
+    {
+      "text": "نُحَافِظُ عَلَى نَظَافَةِ الحَدِيقَةِ وَلا نَرْمِي الأَوْرَاقَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-edb85328756b175c.mp3"
+      ]
+    },
+    {
+      "text": "نَعُودُ قَبْلَ المَغْرِبِ: كَلِمَةُ زَمَانٍ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-957c61fe047fedbb.mp3"
+      ]
+    },
+    {
+      "text": "الحَيُّ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d46919d8e6da44c.mp3"
+      ]
+    },
+    {
+      "text": "المَمَرُّ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ffd4175ed0611097.mp3"
+      ]
+    },
+    {
+      "text": "المَغْرِبُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5cf68ff768b295b3.mp3"
+      ]
+    },
+    {
+      "text": "الحديقة هنا في الحي، ليست ساحة المدرسة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a386e328f0d05634.mp3"
+      ]
+    },
+    {
+      "text": "أقرأ عن الحي: ألعب، أجري، أشرب ماءً بارداً، أحافظ على النظافة، أعود قبل المغرب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9086b27edf134dfa.mp3"
+      ]
+    },
+    {
+      "text": "مع من تجلس ليلى؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-read2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3ab837def5a4c4b0.mp3"
+      ]
+    },
+    {
+      "text": "من يجري في الممر بسرعة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-read2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80800bb08dd8d632.mp3"
+      ]
+    },
+    {
+      "text": "لماذا يشربون الماء البارد بعد اللعب الطويل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-read2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-561b3f9d34ed9c40.mp3"
+      ]
+    },
+    {
+      "text": "نصيحة الأب في النص هي:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-read2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-213efaba1b1cc203.mp3"
+      ]
+    },
+    {
+      "text": "بماذا يلعب الأطفال؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ddbedff99fbddb5.mp3"
+      ]
+    },
+    {
+      "text": "بِالكُرَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-978ef6d388e9edcb.mp3"
+      ]
+    },
+    {
+      "text": "بِالدَّرَّاجَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c487b8e2d7aaf5c3.mp3"
+      ]
+    },
+    {
+      "text": "من يجري في الممر؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-394fc07c4fb33215.mp3"
+      ]
+    },
+    {
+      "text": "عُمَرُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-22a530803d30ade1.mp3"
+      ]
+    },
+    {
+      "text": "متى يعود الجميع؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-820513c865b98cdc.mp3"
+      ]
+    },
+    {
+      "text": "قَبْلَ المَغْرِبِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d4bc33c915167a4.mp3"
+      ]
+    },
+    {
+      "text": "فِي اللَّيْلِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t2-reading-neighborhood",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2708c39e70f91dd.mp3"
+      ]
+    },
+    {
+      "text": "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-32eafa2f7dbd6548.mp3"
+      ]
+    },
+    {
+      "text": "نسخ جملة قصيرة دون إسقاط حرف، وإكمال إملاء بكلمة صحيحة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a44733aecf85964.mp3"
+      ]
+    },
+    {
+      "text": "انسخ: «الكِتَابُ عَلَى الطَّاوِلَةِ.» ثم أغلق عينيك: ما الكلمة التي كانت بعد «على»؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40aec020409e120f.mp3"
+      ]
+    },
+    {
+      "text": "ينسخ التلميذ جملة مشكولة ثم يملأ كلمة ناقصة كما في الإملاء المدرسي.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b15bc3cf7b198417.mp3"
+      ]
+    },
+    {
+      "text": "الكتابة الصحيحة تبدأ بالنسخ الهادئ ثم بالإملاء كلمة كلمة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f5e3f1fb7029a1b2.mp3"
+      ]
+    },
+    {
+      "text": "النَّسْخُ: أكتب الجملة حرفاً حرفاً من اليمين، دون تغيير.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e991ab627114f98d.mp3"
+      ]
+    },
+    {
+      "text": "بَعْدَ النَّسْخِ أُقَارِنُ بِالنَّمُوذَجِ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-74dd1b891fdf71ae.mp3"
+      ]
+    },
+    {
+      "text": "الإِمْلَاءُ: أسمع أو أتذكر الكلمة وأكتبها. في التطبيق نكمل الفراغ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ce96cc55664b23a0.mp3"
+      ]
+    },
+    {
+      "text": "نُحَافِظُ عَلَى التَّاءِ المَرْبُوطَةِ وَالشَّدَّةِ إِنْ وُجِدَتَا.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9a11bdeecb51999a.mp3"
+      ]
+    },
+    {
+      "text": "النَّسْخُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2db644bf12a5fa30.mp3"
+      ]
+    },
+    {
+      "text": "الإِمْلَاءُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ee3c8c9c76d740cb.mp3"
+      ]
+    },
+    {
+      "text": "نعدّ الحروف قبل أن نقول انتهيت.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80ee8baa027f116c.mp3"
+      ]
+    },
+    {
+      "text": "أنسخ ثم أراجع. في الإملاء أكتب الكلمة الناقصة بحركاتها.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b3f333396a1f06b.mp3"
+      ]
+    },
+    {
+      "text": "انسخ ذهنياً ثم اكتب آخر كلمة: «البَيْتُ نَظِيفٌ.»",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-dict"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b4bcdf33e3e6e932.mp3"
+      ]
+    },
+    {
+      "text": "أكمل الإملاء: ذَهَبَ الوَلَدُ إِلَى ………",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-dict"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bcf9b74494a167ff.mp3"
+      ]
+    },
+    {
+      "text": "أكمل من نص الحي: نُحَافِظُ عَلَى ………",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-dict"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bdd7c3f0573dd33e.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل بعد نسخ الجملة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-dict"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f6a7fb45b5ffee53.mp3"
+      ]
+    },
+    {
+      "text": "أكمل الجملة!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4005f033bdf41a1.mp3"
+      ]
+    },
+    {
+      "text": "فَتَحَ … البَابَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0bae68db222d23d3.mp3"
+      ]
+    },
+    {
+      "text": "الوَلَدُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aa48a7c4fe3948fb.mp3"
+      ]
+    },
+    {
+      "text": "جَرَى",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a079a4e8436fd379.mp3"
+      ]
+    },
+    {
+      "text": "الكِتَابُ … الطَّاوِلَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ba56067e1e95585.mp3"
+      ]
+    },
+    {
+      "text": "عَلَى",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5ab92d6a3ce206f3.mp3"
+      ]
+    },
+    {
+      "text": "ذَهَبَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8b58a98a3a184677.mp3"
+      ]
+    },
+    {
+      "text": "نُحَافِظُ عَلَى ………",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8c3a4f2e1041be09.mp3"
+      ]
+    },
+    {
+      "text": "النَّظَافَةِ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-copy-dictation",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-764ab917253aeec7.mp3"
+      ]
+    },
+    {
+      "text": "أُمَيِّزُ: الاِسْمَ، الفِعْلَ، الحَرْفَ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d9f1ed6f51aa02ad.mp3"
+      ]
+    },
+    {
+      "text": "تصنيف كلمة في جملة قصيرة: اسم أو فعل أو حرف.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7575006c6fa4aded.mp3"
+      ]
+    },
+    {
+      "text": "في جملة «لَعِبَ الوَلَدُ فِي السَّاحَةِ»: أي كلمة تدل على العمل؟ وأيها اسم شخص؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ec706fe37c4d823.mp3"
+      ]
+    },
+    {
+      "text": "يميّز التلميذ ثلاثة أنواع من الكلمات في جملة بسيطة: اسم، فعل، حرف — دون إعراب.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-110e405db2f6d9b8.mp3"
+      ]
+    },
+    {
+      "text": "الجملة كعقد: خرزات مختلفة. نتعرّف على ثلاثة أنواع فقط.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-55d4218fc72eddf4.mp3"
+      ]
+    },
+    {
+      "text": "الاِسْمُ نُسَمِّي بِهِ شَيْئاً نَعْرِفُهُ: وَلَدٌ، بِنْتٌ، شَمْسٌ، مَدْرَسَةٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-624ed1fd8b678eb0.mp3"
+      ]
+    },
+    {
+      "text": "الفِعْلُ نَعْمَلُهُ: ذَهَبَ، قَرَأَ، جَرَى.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f0ff24d9ca26bbc7.mp3"
+      ]
+    },
+    {
+      "text": "الحَرْفُ لَا يَسْتَقِلُّ وَحْدَهُ: فِي، إِلَى، مِنْ، عَلَى، وَ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ba897fa2e49ec3b3.mp3"
+      ]
+    },
+    {
+      "text": "فِي هَذِهِ المَرْحَلَةِ: فَقَطْ نُمَيِّزُ بَيْنَ الكَلِمَاتِ وَنُصَنِّفُهَا دُونَ إِعْرَابٍ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c7fb1b03c22ae639.mp3"
+      ]
+    },
+    {
+      "text": "الاِسْمُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-54eecba1f603bec5.mp3"
+      ]
+    },
+    {
+      "text": "الفِعْلُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0fac6a54a3943fbc.mp3"
+      ]
+    },
+    {
+      "text": "«في» حرف. الاسم هو «الساحة».",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-628c31cb83a94b65.mp3"
+      ]
+    },
+    {
+      "text": "اسم = نسمّي. فعل = نعمل. حرف = نربط (في، من، على، و).",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-169137ae1b49abda.mp3"
+      ]
+    },
+    {
+      "text": "كلمة «قَلَمٌ»: اسم أم فعل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-ism"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b925883806f20de9.mp3"
+      ]
+    },
+    {
+      "text": "في «جَرَى القِطُّ»: ما الفعل؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-ism"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80de71c15a7ea343.mp3"
+      ]
+    },
+    {
+      "text": "في «أكلت البنت التفاحة»: سمّ فعلاً واسماً وحرفاً إن وُجد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex3-ar2ap-ifh"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e71b2b3815518997.mp3"
+      ]
+    },
+    {
+      "text": "كلمة «أَكَلَ» هي:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-ism"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-25aecb083bb03b3c.mp3"
+      ]
+    },
+    {
+      "text": "«كتب» اسم أم فعل أم حرف؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-ifh-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6dd15ba3d786cca9.mp3"
+      ]
+    },
+    {
+      "text": "«قلم»:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-ifh-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c735143d359d0736.mp3"
+      ]
+    },
+    {
+      "text": "«في»:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-ifh-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-88d79e757b1bd03a.mp3"
+      ]
+    },
+    {
+      "text": "«يلعب»:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-ifh-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e08618aaa00e1587.mp3"
+      ]
+    },
+    {
+      "text": "في «جلس الولد»: ما الاسم؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-qb-ar2ap-ifh-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62806c1914964e9d.mp3"
+      ]
+    },
+    {
+      "text": "اسم، فعل، أو حرف؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63ec381c850ef54b.mp3"
+      ]
+    },
+    {
+      "text": "بِنْتٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2d963ef3f8bec1e.mp3"
+      ]
+    },
+    {
+      "text": "اِسْمٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d5f4b9bc4540a42.mp3"
+      ]
+    },
+    {
+      "text": "فِعْلٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d820e4d2b109da8f.mp3"
+      ]
+    },
+    {
+      "text": "حَرْفٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-185e5fa1040b1ddc.mp3"
+      ]
+    },
+    {
+      "text": "مِنْ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-ism-fil-harf",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f1a330341fb3b8a2.mp3"
+      ]
+    },
+    {
+      "text": "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8c102d5e46b8ae35.mp3"
+      ]
+    },
+    {
+      "text": "تصنيف اسم مألوف حسب الجنس والعدد.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a05963ecae72ff5a.mp3"
+      ]
+    },
+    {
+      "text": "نقول «هذا ولد» و«هذه بنت». لماذا تغيّرت كلمة الإشارة؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3c8e5a2557c5bb93.mp3"
+      ]
+    },
+    {
+      "text": "يميّز التلميذ المذكر من المؤنث والمفرد من الجمع في كلمات مألوفة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-da88fcf0d46e1d81.mp3"
+      ]
+    },
+    {
+      "text": "الجنس: ولد/بنت. العدد: واحد/كثير. كلمتا هذا وهذه تساعدنا.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-caaeb5fe8a493cd3.mp3"
+      ]
+    },
+    {
+      "text": "المُذَكَّرُ نُشِيرُ إِلَيْهِ بِـ «هَذَا». المُؤَنَّثُ بِـ «هَذِهِ».",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-10c4adf676f6c624.mp3"
+      ]
+    },
+    {
+      "text": "كَثِيرٌ مِنَ المُؤَنَّثِ يَنْتَهِي بِتَاءٍ مَرْبُوطَةٍ: مَدْرَسَةٌ، سَيَّارَةٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-abd9aa3bbe9f97fc.mp3"
+      ]
+    },
+    {
+      "text": "المُفْرَدُ وَاحِدٌ: قَلَمٌ. الجَمْعُ كَثِيرٌ: أَقْلَامٌ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-552101c51aa79913.mp3"
+      ]
+    },
+    {
+      "text": "لَا نَحْفَظُ كُلَّ الجُمُوعِ: نَتَعَرَّفُ عَلَى أَمْثِلَةِ القِسْمِ فَقَطْ.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb7a7365555e2adf.mp3"
+      ]
+    },
+    {
+      "text": "المُذَكَّرُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-840b75210c19e092.mp3"
+      ]
+    },
+    {
+      "text": "المُؤَنَّثُ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f4408836ae78826.mp3"
+      ]
+    },
+    {
+      "text": "المدرسة مؤنث: هذه مدرسة.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c79ee023a5b3321.mp3"
+      ]
+    },
+    {
+      "text": "هذا للمذكر، هذه للمؤنث. مفرد = واحد، جمع = كثير.",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d6de2cbfd5ab3a87.mp3"
+      ]
+    },
+    {
+      "text": "أكمل: …… بِنْتٌ جَمِيلَةٌ",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex1-ar2ap-gender"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-df3bf8fa8f16822c.mp3"
+      ]
+    },
+    {
+      "text": "كلمة «أَوْلَادٌ»: مفرد أم جمع؟",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "practice",
+          "key": "practice-ex2-ar2ap-gender"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b516e644d4a9565d.mp3"
+      ]
+    },
+    {
+      "text": "«أقلام» تدل على:",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q1-ar2ap-gender"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21f99769359a93e4.mp3"
+      ]
+    },
+    {
+      "text": "اختر الإشارة!",
+      "targets": [
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5077cc6ed322ab70.mp3"
       ]
     }
   ]

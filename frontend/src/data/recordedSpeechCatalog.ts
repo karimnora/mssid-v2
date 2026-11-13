@@ -8257,6 +8257,1538 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-5f5048a2cf0418d6.mp3",
       "durationMs": 2450
     },
+    "حُرُوفُ المَدِّ وَالتَّنْوِينُ": {
+      "src": "/sounds/preschool/ar/course-cedar-fc421affbdddc627.mp3",
+      "durationMs": 3100
+    },
+    "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-38a7fade61953f8d.mp3",
+      "durationMs": 4100
+    },
+    "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c1a98877b87a8263.mp3",
+      "durationMs": 4800
+    },
+    "أَسْمَاءُ الإِشَارَةِ: هَذَا، هَذِهِ، هَؤُلَاءِ (فِي مَحِيطِ العَائِلَةِ وَالمَدْرَسَةِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-0185d4dfeca2bcd4.mp3",
+      "durationMs": 9900
+    },
+    "اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ القَمَرِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b6886acbcd28388e.mp3",
+      "durationMs": 3700
+    },
+    "كَلِمَاتُ الزَّمَانِ وَالمَكَانِ: أَمَامَ، خَلْفَ، الآنَ، أَمْسِ، غَدًا": {
+      "src": "/sounds/preschool/ar/course-cedar-95d0a0388209c251.mp3",
+      "durationMs": 7600
+    },
+    "الضَّمَائِرُ البَسِيطَةُ: أَنَا، نَحْنُ، أَنْتَ، أَنْتِ، أَنْتُمَا، أَنْتُمْ، هُوَ، هِيَ": {
+      "src": "/sounds/preschool/ar/course-cedar-34d7874abc693982.mp3",
+      "durationMs": 9650
+    },
+    "التَّنْوِينُ بِأَنْوَاعِهِ الثَّلَاثَةِ: ً ٍ ٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-21cafbd412073276.mp3",
+      "durationMs": 6350
+    },
+    "التَّاءُ المَرْبُوطَةُ (ة) وَالتَّاءُ المَفْتُوحَةُ (ت)": {
+      "src": "/sounds/preschool/ar/course-cedar-a0b76d5f10841ec8.mp3",
+      "durationMs": 4500
+    },
+    "قِرَاءَةُ نَصٍّ قَصِيرٍ: البِيئَةُ وَالتَّغْذِيَةُ وَاللَّعِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e1cc95ba6ae70961.mp3",
+      "durationMs": 4650
+    },
+    "أَقْرَأُ نَصّاً: المَدْرَسَةُ وَالعَائِلَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-953ad6d800d1c521.mp3",
+      "durationMs": 4550
+    },
+    "أَدَوَاتُ الاسْتِفْهَامِ (مَنْ، كَمْ، أَيْنَ، هَلْ) وَحُرُوفُ العَطْفِ (وَ، فَ، ثُمَّ)": {
+      "src": "/sounds/preschool/ar/course-cedar-7c2b34e9e9ed7f67.mp3",
+      "durationMs": 8050
+    },
+    "أَقْرَأُ نَصّاً: الحَيُّ وَالصِّحَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-287506ab55e1a7fb.mp3",
+      "durationMs": 4600
+    },
+    "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً": {
+      "src": "/sounds/preschool/ar/course-cedar-32eafa2f7dbd6548.mp3",
+      "durationMs": 3500
+    },
+    "أُمَيِّزُ: الاِسْمَ، الفِعْلَ، الحَرْفَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d9f1ed6f51aa02ad.mp3",
+      "durationMs": 4300
+    },
+    "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8c102d5e46b8ae35.mp3",
+      "durationMs": 5350
+    },
+    "قراءة أي حرف هجائي مع حركاته الثلاث القصيرة، وتركيب كلمات بسيطة بطلاقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-c3385c40a1044a59.mp3",
+      "durationMs": 7250
+    },
+    "انظر إلى هذه الحروف: بَ - بُ - بِ. هل يتغير شكل الحرف \"ب\"؟ ماذا يتغير إذن؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3327e9ec1ba4198d.mp3",
+      "durationMs": 8050
+    },
+    "الفَتْحَةُ (َ): علامة صغيرة مائلة فوق الحرف، صوتها \"أَ\" مثل: كَتَبَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ac66725ba88f1653.mp3",
+      "durationMs": 7500
+    },
+    "يراجع التلميذ الحروف الهجائية ال28 مع الحركات القصيرة الثلاث (الفتحة، الضمة، الكسرة) لقراءة كلمات وجمل بسيطة بطلاقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-000f811ca81df7b0.mp3",
+      "durationMs": 13750
+    },
+    "الحروف وحدها صامتة، لكن عندما نضع فوقها أو تحتها حركة صغيرة، تنطق بصوت واضح. الحركات الثلاث هي مفتاح القراءة السليمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-b49f563e04f68933.mp3",
+      "durationMs": 15600
+    },
+    "الضَّمَّةُ (ُ): علامة صغيرة مثل الواو فوق الحرف، صوتها \"أُ\" مثل: كُتُبٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-278aa1560e21f562.mp3",
+      "durationMs": 8000
+    },
+    "الكَسْرَةُ (ِ): علامة صغيرة تحت الحرف، صوتها \"إِ\" مثل: كِتَابٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e269959c77e0595a.mp3",
+      "durationMs": 6800
+    },
+    "كل حرف بمفرده لا معنى له، وعندما نضيف له حركة يصبح جاهزاً للنطق.": {
+      "src": "/sounds/preschool/ar/course-cedar-97fbdfa393df0c23.mp3",
+      "durationMs": 7450
+    },
+    "ما اسم الحركة الموجودة فوق حرف الباء في كلمة \"بَابٌ\" (أول حرف)؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b5dd00d5b916288d.mp3",
+      "durationMs": 7900
+    },
+    "ذكّر التلميذ: الضمة فوق الحرف وتشبه فاصلة صغيرة، بينما الفتحة خط مائل صغير.": {
+      "src": "/sounds/preschool/ar/course-cedar-bfcc1b90cdd000d5.mp3",
+      "durationMs": 8800
+    },
+    "كل حرف متحرك يجب أن يُنطق بصوته الكامل مع حركته، لا كحرف ساكن منفرد.": {
+      "src": "/sounds/preschool/ar/course-cedar-d5229098c917ba12.mp3",
+      "durationMs": 8300
+    },
+    "ثلاث حركات قصيرة: الفتحة (َ = أَ)، الضمة (ُ = أُ)، الكسرة (ِ = إِ). كل حرف + حركة = صوت واضح يمكن قراءته.": {
+      "src": "/sounds/preschool/ar/course-cedar-75f6181953e97468.mp3",
+      "durationMs": 13550
+    },
+    "أي حركة تُكتب تحت الحرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2c8d4cacf101910f.mp3",
+      "durationMs": 3050
+    },
+    "اقرأ الكلمة التالية بصوت مسموع: \"سُكَّرٌ\" — ما الحركة الأولى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5e44249226d6afde.mp3",
+      "durationMs": 6150
+    },
+    "اختر الحركة الصحيحة لكل حرف بسرعة!": {
+      "src": "/sounds/preschool/ar/course-cedar-3efd61be542410c5.mp3",
+      "durationMs": 4000
+    },
+    "كَ (صوت أَ)": {
+      "src": "/sounds/preschool/ar/course-cedar-2f7433511c861508.mp3",
+      "durationMs": 2150
+    },
+    "الفَتْحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2e0e883a67b740a.mp3",
+      "durationMs": 1150
+    },
+    "الضَّمَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7fe60f2de17a5c9a.mp3",
+      "durationMs": 2700
+    },
+    "الكَسْرَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f07349aee060bb40.mp3",
+      "durationMs": 1900
+    },
+    "مِ (صوت إِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-95ba320a38d9ca61.mp3",
+      "durationMs": 1200
+    },
+    "قراءة كلمات فيها مد بالألف أو الواو أو الياء، وكلمات منونة بالفتح أو الضم أو الكسر.": {
+      "src": "/sounds/preschool/ar/course-cedar-8afc6d8e46862c96.mp3",
+      "durationMs": 10750
+    },
+    "قارن بين: \"كَتَبَ\" و\"كَاتِبٌ\". أيّ كلمة صوتها أطول؟ لماذا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4c63853d9849fad3.mp3",
+      "durationMs": 7200
+    },
+    "يتعرف التلميذ على حروف المد الثلاثة (الألف، الواو، الياء) التي تطيل الصوت، وعلى التنوين الذي يضيف صوت النون في آخر الكلمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-d2fc3053a798be39.mp3",
+      "durationMs": 12550
+    },
+    "أحياناً نحتاج لإطالة الصوت قليلاً عند القراءة، وهذا ما تفعله حروف المد. وأحياناً نضيف صوت \"ن\" خفيف في آخر الكلمة، وهذا هو التنوين.": {
+      "src": "/sounds/preschool/ar/course-cedar-baafa4c36ba4910c.mp3",
+      "durationMs": 13850
+    },
+    "المَدُّ بالألِف: عندما يأتي بعد حرف مفتوح حرف \"ا\" ساكن، يُمَدُّ الصوت (مثال: بَابٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-2f38f0d96f28c86e.mp3",
+      "durationMs": 8650
+    },
+    "المَدُّ بالواو: عندما يأتي بعد حرف مضموم حرف \"و\" ساكن، يُمَدُّ الصوت (مثال: نُورٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-9f1d7359e5cecd62.mp3",
+      "durationMs": 9700
+    },
+    "حَرْفُ المَدِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-ce3243159ecf70e0.mp3",
+      "durationMs": 1550
+    },
+    "المَدُّ بالياء: عندما يأتي بعد حرف مكسور حرف \"ي\" ساكن، يُمَدُّ الصوت (مثال: كَبِيرٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-8fcbcd1ff0da821f.mp3",
+      "durationMs": 9250
+    },
+    "التَّنْوِينُ نْ": {
+      "src": "/sounds/preschool/ar/course-cedar-1d55778e4213d931.mp3",
+      "durationMs": 2550
+    },
+    "التَّنْوِينُ: حركتان متتاليتان في آخر الكلمة (ً ٍ ٌ) نضيف معهما صوت \"ن\" خفيف عند النطق (مثال: كِتَابًا، قَلَمٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-4aedf57e4fcfe12b.mp3",
+      "durationMs": 11200
+    },
+    "حرف المد يُطيل الصوت ضِعف الحركة العادية تقريباً، درّب الطفل على المد الصوتي بوضوح.": {
+      "src": "/sounds/preschool/ar/course-cedar-b0d2a0569391e8ef.mp3",
+      "durationMs": 9700
+    },
+    "التنوين يُنطق دائماً وكأن هناك حرف نون ساكنة في آخر الكلمة، حتى لو لم تُكتب.": {
+      "src": "/sounds/preschool/ar/course-cedar-5123fc9c707eb5a3.mp3",
+      "durationMs": 8300
+    },
+    "أي حرف مد نجده في كلمة \"دَارٌ\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a4d4c950eece8904.mp3",
+      "durationMs": 4600
+    },
+    "أي كلمة من هذه الكلمات فيها حرف مد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-02144d75ce66db3a.mp3",
+      "durationMs": 4400
+    },
+    "اقرأ الكلمة \"كِتَابًا\" — ما نوع الحركة في آخرها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1dae1eed435642ac.mp3",
+      "durationMs": 5800
+    },
+    "ن - و - ر": {
+      "src": "/sounds/preschool/ar/course-cedar-0d64a7cca3acb7e1.mp3",
+      "durationMs": 2450
+    },
+    "نُورٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ace62d9e318d6ee9.mp3",
+      "durationMs": 1700
+    },
+    "رتب الحروف لتكوين كلمة فيها حرف مد!": {
+      "src": "/sounds/preschool/ar/course-cedar-8caf9dd9f14339c1.mp3",
+      "durationMs": 4550
+    },
+    "حروف المد الثلاثة: ا (بعد فتحة)، و (بعد ضمة)، ي (بعد كسرة) — تُطيل الصوت. التنوين (ًٌٍ) يُضيف صوت \"ن\" خفيف آخر الكلمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e6001bb1449e0a7d.mp3",
+      "durationMs": 12800
+    },
+    "رُونٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-65a471b4088ba9e7.mp3",
+      "durationMs": 900
+    },
+    "قراءة كلمة فيها حرف مشدد بنطق صحيح يميز التضعيف.": {
+      "src": "/sounds/preschool/ar/course-cedar-40c8559a167f46b5.mp3",
+      "durationMs": 7250
+    },
+    "قارن بين \"عَلَمٌ\" و\"عَلَّمَ\". هل يتغير طول صوت اللام بينهما؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dfa6cd4d0b2b821d.mp3",
+      "durationMs": 7200
+    },
+    "يتعرف التلميذ على علامة الشدة التي تدل على تكرار الحرف مرتين، ويقرأ كلمات بسيطة فيها حرف مشدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-140083859ca9e31d.mp3",
+      "durationMs": 11500
+    },
+    "الشَّدَّةُ (ّ): علامة صغيرة فوق الحرف تشبه رأس الواو، تدل على تكرار الحرف مرتين.": {
+      "src": "/sounds/preschool/ar/course-cedar-b930b24a9a6c2271.mp3",
+      "durationMs": 7950
+    },
+    "الشَّدَّةُ ّ": {
+      "src": "/sounds/preschool/ar/course-cedar-b2f715f1b8ad00e8.mp3",
+      "durationMs": 1600
+    },
+    "قد تجتمع الشدة مع حركة أخرى فوق الحرف أو تحته (مثال: الشَّمْسُ فيها شين مشددة مفتوحة).": {
+      "src": "/sounds/preschool/ar/course-cedar-200fe59771aef2d9.mp3",
+      "durationMs": 10350
+    },
+    "أحياناً نحتاج لتكرار صوت الحرف مرتين بسرعة في كلمة واحدة، فبدل كتابة الحرف مرتين، نكتبه مرة واحدة ونضع فوقه علامة صغيرة اسمها الشدة.": {
+      "src": "/sounds/preschool/ar/course-cedar-9aa95576a4a8f4e6.mp3",
+      "durationMs": 13700
+    },
+    "الحرف المشدد يُنطق مرتين متتاليتين: الأولى ساكنة والثانية بحركتها (مثال: مُعَلِّمٌ تُنطق \"مُعَلْلِمٌ\").": {
+      "src": "/sounds/preschool/ar/course-cedar-100cada8feb13e25.mp3",
+      "durationMs": 11450
+    },
+    "التَّضْعِيفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-8a51b134f1b4f690.mp3",
+      "durationMs": 1800
+    },
+    "ذكّر الطفل أن الشدة تعني نطق الحرف مرتين، وليس مرة واحدة.": {
+      "src": "/sounds/preschool/ar/course-cedar-b26b59fbf3c6db60.mp3",
+      "durationMs": 6550
+    },
+    "ما اسم العلامة الموجودة فوق اللام في كلمة \"مُعَلِّمٌ\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-23a256b8dcf65d8b.mp3",
+      "durationMs": 5750
+    },
+    "كم مرة نسمع صوت الشين في كلمة \"الشَّمْسُ\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-91e09c03f87581bd.mp3",
+      "durationMs": 4850
+    },
+    "الشدة (ّ) فوق الحرف تعني نطقه مرتين: مرة ساكنة ومرة متحركة، مثل مُعَلِّمٌ وأُمِّي.": {
+      "src": "/sounds/preschool/ar/course-cedar-770736eea8c34600.mp3",
+      "durationMs": 10950
+    },
+    "كيف يُنطق الحرف المشدد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e947a37a74fc8ca9.mp3",
+      "durationMs": 3100
+    },
+    "اختر الكلمة التي فيها حرف مشدد!": {
+      "src": "/sounds/preschool/ar/course-cedar-9e5d3ac5c065ff4e.mp3",
+      "durationMs": 4650
+    },
+    "أَيُّ كَلِمَةٍ فِيهَا شَدَّةٌ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-37d1f747e74ff097.mp3",
+      "durationMs": 2800
+    },
+    "أُمِّي": {
+      "src": "/sounds/preschool/ar/course-cedar-75b4f5f46d247b25.mp3",
+      "durationMs": 1300
+    },
+    "استعمال اسم الإشارة المناسب (هذا/هذه/هؤلاء) حسب نوع وعدد المُشار إليه.": {
+      "src": "/sounds/preschool/ar/course-cedar-3cf966303d999692.mp3",
+      "durationMs": 8900
+    },
+    "يتعلم التلميذ استعمال أسماء الإشارة (هذا، هذه، هؤلاء) للإشارة إلى أفراد أسرته وأدوات مدرسته، مع إغناء رصيده اللغوي بمفردات عن العائلة والمدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-11d47d94b3ff5498.mp3",
+      "durationMs": 15550
+    },
+    "أشر إلى معلمك وقل: \"... مُعَلِّمِي\". ثم أشر إلى معلمتك وقل: \"... مُعَلِّمَتِي\". هل الكلمة نفسها في الحالتين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4d2cc4255cc51ffe.mp3",
+      "durationMs": 11900
+    },
+    "عندما نريد أن نُعرّف بشخص أو شيء قريب منا، نستعمل \"أسماء الإشارة\" — وهي تتغير حسب كون المُشار إليه مذكراً أو مؤنثاً أو جماعة.": {
+      "src": "/sounds/preschool/ar/course-cedar-93c5a91084c7760a.mp3",
+      "durationMs": 12250
+    },
+    "هَذَا: نستعملها للإشارة إلى شخص أو شيء مُذَكَّرٍ مُفْرَدٍ قريب (مثال: هَذَا أَبِي).": {
+      "src": "/sounds/preschool/ar/course-cedar-9674324bf15760cb.mp3",
+      "durationMs": 8950
+    },
+    "هَؤُلَاءِ: نستعملها للإشارة إلى مجموعة من الأشخاص (مثال: هَؤُلَاءِ إِخْوَتِي).": {
+      "src": "/sounds/preschool/ar/course-cedar-02fadd3732cfeefb.mp3",
+      "durationMs": 8300
+    },
+    "هَذِهِ: نستعملها للإشارة إلى شخص أو شيء مُؤَنَّثٍ مُفْرَدٍ قريب (مثال: هَذِهِ أُمِّي).": {
+      "src": "/sounds/preschool/ar/course-cedar-b7e959a12a715aa2.mp3",
+      "durationMs": 9850
+    },
+    "اسْمُ الإِشَارَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d6db740508a0c1ac.mp3",
+      "durationMs": 2000
+    },
+    "مُذَكَّرٌ / مُؤَنَّثٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ec3433ca8de0fbe6.mp3",
+      "durationMs": 2500
+    },
+    "مفردات العائلة: أَبٌ، أُمٌّ، أَخٌ، أُخْتٌ، جَدٌّ، جَدَّةٌ. مفردات المدرسة: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ، مِحْفَظَةٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e6936dd7a68506ac.mp3",
+      "durationMs": 14200
+    },
+    "مع الجماعة (أكثر من اثنين) نستعمل \"هؤلاء\" وليس \"هذا\" أو \"هذه\".": {
+      "src": "/sounds/preschool/ar/course-cedar-6c69da1fe91bdabe.mp3",
+      "durationMs": 7650
+    },
+    "أشر إلى أخيك وقل: \"... أَخِي\".": {
+      "src": "/sounds/preschool/ar/course-cedar-b75a2d57c90829cd.mp3",
+      "durationMs": 3050
+    },
+    "الصواب: \"هذه أمي\" لأن \"أم\" اسم مؤنث.": {
+      "src": "/sounds/preschool/ar/course-cedar-8e740ead71c83e5f.mp3",
+      "durationMs": 4700
+    },
+    "هَذَا = مذكر مفرد. هَذِهِ = مؤنث مفرد. هَؤُلَاءِ = جماعة (مذكراً كانت أو مؤنثاً).": {
+      "src": "/sounds/preschool/ar/course-cedar-11239f04a813831d.mp3",
+      "durationMs": 13300
+    },
+    "أشر إلى تلاميذ قسمك وقل: \"... تَلَامِيذُ قِسْمِي\".": {
+      "src": "/sounds/preschool/ar/course-cedar-d55c01073617d0ab.mp3",
+      "durationMs": 5200
+    },
+    "أي اسم إشارة نستعمله للإشارة إلى مجموعة إخوتك الثلاثة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-36121a23b7e0602e.mp3",
+      "durationMs": 6850
+    },
+    "اربط كل صورة باسم الإشارة الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-941d9f2f91c8595c.mp3",
+      "durationMs": 3750
+    },
+    "هَذِهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-094d7fe6d9eba734.mp3",
+      "durationMs": 1850
+    },
+    "صورة جدتي": {
+      "src": "/sounds/preschool/ar/course-cedar-7d0fc3be2131e84f.mp3",
+      "durationMs": 1600
+    },
+    "هَذَا": {
+      "src": "/sounds/preschool/ar/course-cedar-0cc8ec2c23553474.mp3",
+      "durationMs": 1400
+    },
+    "هَؤُلَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-88a4b64f743568cf.mp3",
+      "durationMs": 1600
+    },
+    "صورة معلمي": {
+      "src": "/sounds/preschool/ar/course-cedar-290e83a779556f92.mp3",
+      "durationMs": 1900
+    },
+    "استعمال الضمير المناسب (أنا، نحن، أنتَ، أنتِ، أنتما، أنتم، هو، هي) حسب المتكلم أو المخاطَب أو الغائب.": {
+      "src": "/sounds/preschool/ar/course-cedar-73d888f233277875.mp3",
+      "durationMs": 11800
+    },
+    "أَنَا: أستعملها عندما أتكلم عن نفسي (المتكلم المفرد).": {
+      "src": "/sounds/preschool/ar/course-cedar-ef1629d0d28db7b4.mp3",
+      "durationMs": 5600
+    },
+    "إذا تكلمت عن نفسك، أي كلمة تستعمل؟ وإذا خاطبت صديقين معاً؟ وإذا خاطبت فريق كرة القدم كله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-182b3002bb4993b3.mp3",
+      "durationMs": 10550
+    },
+    "يتعلم التلميذ استعمال الضمائر البسيطة للتحدث عن نفسه أو مخاطبة غيره (واحداً أو اثنين أو مجموعة) أو الحديث عن شخص غائب، في سياق الحي والرياضة والصحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e010750174f59e8a.mp3",
+      "durationMs": 15950
+    },
+    "نَحْنُ: أستعملها عندما أتكلم عن نفسي مع آخرين (المتكلمون).": {
+      "src": "/sounds/preschool/ar/course-cedar-2cc58f75cf2db78d.mp3",
+      "durationMs": 5650
+    },
+    "الضمائر كلمات صغيرة تُغنينا عن تكرار الاسم في كل مرة. بدل أن أقول \"أحمد يلعب\" كل مرة، أقول \"هو يلعب\" إن كان أحمد معروفاً من الحديث. وعندما نخاطب أكثر من شخص، نستعمل ضميراً مختلفاً حسب العدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-82da22410dafa2ce.mp3",
+      "durationMs": 21650
+    },
+    "أَنْتَ / أَنْتِ: نستعملها لمخاطبة شخص واحد أمامنا، أَنْتَ للذكر وأَنْتِ للأنثى.": {
+      "src": "/sounds/preschool/ar/course-cedar-06da1166c8842abf.mp3",
+      "durationMs": 9150
+    },
+    "أَنْتُمَا: نستعملها لمخاطبة اثنين معاً (ولدين، بنتين، أو ولد وبنت).": {
+      "src": "/sounds/preschool/ar/course-cedar-46b2f006e858fe36.mp3",
+      "durationMs": 8100
+    },
+    "المُتَكَلِّمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a590b6d5db78a4f9.mp3",
+      "durationMs": 2150
+    },
+    "أَنْتُمْ: نستعملها لمخاطبة مجموعة (أكثر من اثنين).": {
+      "src": "/sounds/preschool/ar/course-cedar-6f87c23f9b017700.mp3",
+      "durationMs": 5550
+    },
+    "المُخَاطَبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-be1df9cdd138a8d6.mp3",
+      "durationMs": 2500
+    },
+    "هُوَ / هِيَ: نستعملها للحديث عن شخص غائب، هُوَ للذكر وهِيَ للأنثى.": {
+      "src": "/sounds/preschool/ar/course-cedar-de5dc3ec7fd95b31.mp3",
+      "durationMs": 7450
+    },
+    "الغَائِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-116917cf5bcd2b3a.mp3",
+      "durationMs": 1750
+    },
+    "مع البنت نستعمل \"أَنْتِ\" (بكسر التاء)، ومع الولد \"أَنْتَ\" (بفتح التاء).": {
+      "src": "/sounds/preschool/ar/course-cedar-aa0d678669ee6c9e.mp3",
+      "durationMs": 6350
+    },
+    "لمخاطبة اثنين نقول \"أَنْتُمَا\"، ولمخاطبة مجموعة نقول \"أَنْتُمْ\" — لا نستعمل \"أَنْتَ\" إلا لشخص واحد.": {
+      "src": "/sounds/preschool/ar/course-cedar-076256ad4f922f68.mp3",
+      "durationMs": 11650
+    },
+    "أنت تتحدث مع صديقتك سارة مباشرة. أي ضمير تستعمل لمخاطبتها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-20f4c20f63393c83.mp3",
+      "durationMs": 8300
+    },
+    "أَنَا/نَحْنُ = المتكلم. أَنْتَ/أَنْتِ = مخاطب واحد. أَنْتُمَا = مخاطبان اثنان. أَنْتُمْ = مخاطبون مجموعة. هُوَ/هِيَ = الغائب.": {
+      "src": "/sounds/preschool/ar/course-cedar-bb0741927830f3d1.mp3",
+      "durationMs": 12650
+    },
+    "نستعمل \"هو\" للمذكر و\"هي\" للمؤنث حتى مع الحيوانات والأشياء (مثال: القطة... هي، الكلب... هو).": {
+      "src": "/sounds/preschool/ar/course-cedar-3220a4b38ad02030.mp3",
+      "durationMs": 11950
+    },
+    "تخاطب أخاك وأختك معاً وتقول لهما: \"... تَلْعَبَانِ بِجَمَالٍ\". أي ضمير تستعمل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f5d36082390355ba.mp3",
+      "durationMs": 8300
+    },
+    "أنت وأصدقاؤك تلعبون معاً في الحي. أي ضمير تستعملونه للحديث عن أنفسكم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7367d038e3eaaa4f.mp3",
+      "durationMs": 7900
+    },
+    "للمخاطبة الأنثى نستعمل:": {
+      "src": "/sounds/preschool/ar/course-cedar-dee67b518f3d56f3.mp3",
+      "durationMs": 4500
+    },
+    "أي ضمير للمتكلم المفرد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f3cd886215b4cebb.mp3",
+      "durationMs": 3600
+    },
+    "تخاطب صديقيك أحمد وياسين معاً. أي ضمير تستعمل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1badfe9c977b41c3.mp3",
+      "durationMs": 5550
+    },
+    "أي ضمير نستعمله للحديث عن أخت غائبة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-48f91bbf6acde20e.mp3",
+      "durationMs": 4850
+    },
+    "للحديث عن قطة غائبة نستعمل:": {
+      "src": "/sounds/preschool/ar/course-cedar-de8dced3e124294d.mp3",
+      "durationMs": 3450
+    },
+    "هُوَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d19ae7baee7d91aa.mp3",
+      "durationMs": 1350
+    },
+    "ضمير الجماعة المتكلمة:": {
+      "src": "/sounds/preschool/ar/course-cedar-cc35f8eeef506bd8.mp3",
+      "durationMs": 4450
+    },
+    "اربط كل وضعية بالضمير المناسب!": {
+      "src": "/sounds/preschool/ar/course-cedar-39146fb162404828.mp3",
+      "durationMs": 3550
+    },
+    "تتحدث عن أخيك وهو غير موجود": {
+      "src": "/sounds/preschool/ar/course-cedar-460e2911899af33e.mp3",
+      "durationMs": 4550
+    },
+    "هِيَ": {
+      "src": "/sounds/preschool/ar/course-cedar-bb8eeacb8e4ecd5f.mp3",
+      "durationMs": 800
+    },
+    "أَنْتَ": {
+      "src": "/sounds/preschool/ar/course-cedar-eb51c510bcce03c3.mp3",
+      "durationMs": 900
+    },
+    "أَنَا": {
+      "src": "/sounds/preschool/ar/course-cedar-75e7d5b7de14c17c.mp3",
+      "durationMs": 1200
+    },
+    "نَحْنُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2cd1e0ec26a19ba3.mp3",
+      "durationMs": 950
+    },
+    "تتحدث عن نفسك وحدك": {
+      "src": "/sounds/preschool/ar/course-cedar-f8170f94e68cd34b.mp3",
+      "durationMs": 3900
+    },
+    "أَنْتُمْ": {
+      "src": "/sounds/preschool/ar/course-cedar-14704485c9b13cb1.mp3",
+      "durationMs": 1600
+    },
+    "أَنْتُمَا": {
+      "src": "/sounds/preschool/ar/course-cedar-f554c86b7571b423.mp3",
+      "durationMs": 1550
+    },
+    "تخاطب كل تلاميذ القسم معاً": {
+      "src": "/sounds/preschool/ar/course-cedar-7d9c026815ee8b92.mp3",
+      "durationMs": 3750
+    },
+    "استعمال كلمات الزمان والمكان البسيطة في جمل مفيدة عن نشاطاته اليومية.": {
+      "src": "/sounds/preschool/ar/course-cedar-05408798095246a0.mp3",
+      "durationMs": 6850
+    },
+    "ماذا فعلت أمس؟ وماذا تفعل الآن؟ وماذا ستفعل غداً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ea8ea89b5a9137f1.mp3",
+      "durationMs": 5600
+    },
+    "أَمْسِ: يدل على يوم مضى قبل اليوم الحالي (زمن ماضٍ).": {
+      "src": "/sounds/preschool/ar/course-cedar-ddefd94234a582e5.mp3",
+      "durationMs": 5600
+    },
+    "الآنَ: يدل على اللحظة الحالية التي نعيشها (زمن حاضر).": {
+      "src": "/sounds/preschool/ar/course-cedar-6e2d819839ff4ddc.mp3",
+      "durationMs": 7100
+    },
+    "يتعلم التلميذ كلمات تدل على الزمان (الآن، أمس، غداً) وكلمات تدل على المكان (أمام، خلف)، ويوظفها في جمل بسيطة عن يومه ومحيطه.": {
+      "src": "/sounds/preschool/ar/course-cedar-43719b3e72c60998.mp3",
+      "durationMs": 16850
+    },
+    "غَدًا: يدل على اليوم الذي يأتي بعد اليوم الحالي (زمن مستقبل).": {
+      "src": "/sounds/preschool/ar/course-cedar-43edd80a179c481e.mp3",
+      "durationMs": 5050
+    },
+    "لكي نفهم متى حدث شيء، نستعمل كلمات الزمان. ولكي نفهم أين يوجد شيء، نستعمل كلمات المكان. هذه الكلمات تنظم كلامنا وتجعله واضحاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-1a67be2f0375b1cb.mp3",
+      "durationMs": 15600
+    },
+    "أَمْسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ae8255e4ba491d33.mp3",
+      "durationMs": 1050
+    },
+    "غَدًا": {
+      "src": "/sounds/preschool/ar/course-cedar-33fc25277af48bd5.mp3",
+      "durationMs": 2750
+    },
+    "الآنَ": {
+      "src": "/sounds/preschool/ar/course-cedar-5f834af47d9d38cf.mp3",
+      "durationMs": 1350
+    },
+    "أَمَامَ: يدل على مكان قريب نراه بوضوح. خَلْفَ: يدل على مكان لا نراه إلا بالاستدارة.": {
+      "src": "/sounds/preschool/ar/course-cedar-00d501a6f024dc3d.mp3",
+      "durationMs": 9700
+    },
+    "أمس = ما مضى (وراءنا)، غداً = ما سيأتي (أمامنا) — تخيل خط الزمن يسير من اليسار لليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-625123fca00fb35c.mp3",
+      "durationMs": 10300
+    },
+    "كوّن جملة عن نشاط رياضي فعلته أمس.": {
+      "src": "/sounds/preschool/ar/course-cedar-75ba63958786cda1.mp3",
+      "durationMs": 4550
+    },
+    "اليوم الذي يأتي بعد اليوم الحالي يسمى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2239cb4fc7f80dac.mp3",
+      "durationMs": 4500
+    },
+    "مع \"أمس\" نستعمل فعلاً ماضياً (لَعِبْتُ)، ومع \"غداً\" نستعمل فعلاً مستقبلياً (سَأَلْعَبُ).": {
+      "src": "/sounds/preschool/ar/course-cedar-098c7a6043f715ca.mp3",
+      "durationMs": 9350
+    },
+    "أَمْسِ = الماضي، الآنَ = الحاضر، غَدًا = المستقبل. أَمَامَ وخَلْفَ تصفان مكان الأشياء بالنسبة إلينا.": {
+      "src": "/sounds/preschool/ar/course-cedar-09664df8603a9ce3.mp3",
+      "durationMs": 11100
+    },
+    "أي كلمة تدل على يوم مضى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-60cfcadddae65b63.mp3",
+      "durationMs": 3400
+    },
+    "رتب الكلمات على خط الزمن الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-15ee264a2fcbba07.mp3",
+      "durationMs": 3950
+    },
+    "هذه اللحظة بالضبط": {
+      "src": "/sounds/preschool/ar/course-cedar-3c54e9ef0354215a.mp3",
+      "durationMs": 2600
+    },
+    "قراءة كلمات معرّفة ب\"ال\" بنطق صحيح، مع التمييز بين اللام الشمسية والقمرية.": {
+      "src": "/sounds/preschool/ar/course-cedar-c6d58807e6b7fe76.mp3",
+      "durationMs": 9700
+    },
+    "اقرأ: \"الشَّمْسُ\" و\"القَمَرُ\". هل تسمع صوت اللام في الكلمتين بنفس الطريقة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5b49abdc74f02e41.mp3",
+      "durationMs": 7900
+    },
+    "يتعلم التلميذ التمييز بين اللام الشمسية التي لا تُنطق واللام القمرية التي تُنطق بوضوح عند قراءة كلمات معرّفة ب\"ال\".": {
+      "src": "/sounds/preschool/ar/course-cedar-e6e4cf1197779134.mp3",
+      "durationMs": 11550
+    },
+    "عندما نضيف \"ال\" التعريف إلى بداية كلمة، تتصرف اللام أحياناً بشكل خاص: فهي إما تختفي في النطق (شمسية) أو تبقى واضحة (قمرية).": {
+      "src": "/sounds/preschool/ar/course-cedar-64b1446c48c8c5d3.mp3",
+      "durationMs": 13300
+    },
+    "اللَّامُ القَمَرِيَّةُ: تُنطق بوضوح كما هي، والحرف الذي يليها يبقى عادياً دون شدة (مثال: القَمَرُ ← تُقرأ \"أَلْقَمَرُ\").": {
+      "src": "/sounds/preschool/ar/course-cedar-b0c3c62944af0dd2.mp3",
+      "durationMs": 12750
+    },
+    "اللَّامُ الشَّمْسِيَّةُ: تُكتب في الكلمة لكن لا تُنطق، والحرف الذي يليها يُنطق مشدداً (مثال: الشَّمْسُ ← تُقرأ \"أَشَّمْسُ\").": {
+      "src": "/sounds/preschool/ar/course-cedar-dd3f2372a7febb12.mp3",
+      "durationMs": 11500
+    },
+    "اللَّامُ الشَّمْسِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3b925389f832573c.mp3",
+      "durationMs": 1750
+    },
+    "للتمييز بسهولة: انظر إلى الحرف بعد \"ال\" — إن كان عليه شدة فاللام شمسية، وإن لم يكن عليه شدة فاللام قمرية.": {
+      "src": "/sounds/preschool/ar/course-cedar-63ed256dd0072283.mp3",
+      "durationMs": 11450
+    },
+    "اللَّامُ القَمَرِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-869b705cdc3d22e7.mp3",
+      "durationMs": 3150
+    },
+    "ذكّر الطفل: إذا رأى شدة على الحرف بعد \"ال\"، فاللام لا تُنطق أبداً.": {
+      "src": "/sounds/preschool/ar/course-cedar-9ab78a239312906a.mp3",
+      "durationMs": 7000
+    },
+    "اللام الشمسية: تُكتب ولا تُنطق (الشَّمْسُ). اللام القمرية: تُنطق بوضوح (القَمَرُ).": {
+      "src": "/sounds/preschool/ar/course-cedar-47f6b872bcf8a5ac.mp3",
+      "durationMs": 8250
+    },
+    "في كلمة \"القَلَمُ\"، هل نسمع صوت اللام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2c4089c737606618.mp3",
+      "durationMs": 4600
+    },
+    "في كلمة \"النَّجْمُ\"، هل نسمع صوت اللام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cce8ab5aaab33dd8.mp3",
+      "durationMs": 4750
+    },
+    "لام «القمر»:": {
+      "src": "/sounds/preschool/ar/course-cedar-1111708f2e6962f1.mp3",
+      "durationMs": 1650
+    },
+    "صنّف: الدار — السماء. واشرح النطق.": {
+      "src": "/sounds/preschool/ar/course-cedar-ad23b3d50f264b82.mp3",
+      "durationMs": 4300
+    },
+    "متى تكون اللام شمسية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-be65a9a9f6a8a40c.mp3",
+      "durationMs": 2350
+    },
+    "لام «الشمس»:": {
+      "src": "/sounds/preschool/ar/course-cedar-99be55c2eb25b13e.mp3",
+      "durationMs": 1800
+    },
+    "في «النور» اللام:": {
+      "src": "/sounds/preschool/ar/course-cedar-be8998c1b9ae5c1c.mp3",
+      "durationMs": 2700
+    },
+    "صنّف كل كلمة حسب نوع اللام فيها!": {
+      "src": "/sounds/preschool/ar/course-cedar-f3e33202b11fd8b2.mp3",
+      "durationMs": 4700
+    },
+    "في «الكتاب» اللام:": {
+      "src": "/sounds/preschool/ar/course-cedar-385f2a8c433331b9.mp3",
+      "durationMs": 2750
+    },
+    "علامة اللام الشمسية بعد أل:": {
+      "src": "/sounds/preschool/ar/course-cedar-9cfd83dc32260dc2.mp3",
+      "durationMs": 3550
+    },
+    "لَامٌ شَمْسِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2429d2e60682b603.mp3",
+      "durationMs": 2100
+    },
+    "القِطَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7ec0d07cabe3263a.mp3",
+      "durationMs": 1550
+    },
+    "لَامٌ قَمَرِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-7f68b4d2d76d38ec.mp3",
+      "durationMs": 2500
+    },
+    "التمييز بين أنواع التنوين الثلاثة وقراءة كل نوع بصوته الصحيح.": {
+      "src": "/sounds/preschool/ar/course-cedar-da3ab55b0fb87b46.mp3",
+      "durationMs": 7150
+    },
+    "اقرأ: كِتَابًا، كِتَابٌ، كِتَابٍ. هل تسمع الصوت نفسه في آخر كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-de22e40648a16572.mp3",
+      "durationMs": 8950
+    },
+    "يميز التلميذ بين تنوين الفتح وتنوين الضم وتنوين الكسر، ويقرأ كلمات منونة بكل نوع بنطق صحيح.": {
+      "src": "/sounds/preschool/ar/course-cedar-f0939e36a498c0e2.mp3",
+      "durationMs": 9700
+    },
+    "التنوين حركتان متتاليتان في آخر الكلمة، وله ثلاثة أنواع حسب شكل الحركة المكررة: فتح، ضم، وكسر — لكل واحد شكل ومكان وصوت مختلف.": {
+      "src": "/sounds/preschool/ar/course-cedar-cc263ff48ab397a6.mp3",
+      "durationMs": 16600
+    },
+    "تَنْوِينُ الفَتْحِ (ً): حركتان فوق الحرف الأخير، صوته \"أَنْ\"، ويُكتب غالباً بألف زائدة (مثال: كِتَابًا).": {
+      "src": "/sounds/preschool/ar/course-cedar-ed692ec02dcfd36a.mp3",
+      "durationMs": 9400
+    },
+    "تَنْوِينُ الفَتْحِ ً": {
+      "src": "/sounds/preschool/ar/course-cedar-b1ae65c5a349ceb4.mp3",
+      "durationMs": 2900
+    },
+    "تَنْوِينُ الضَّمِّ (ٌ): حركتان تشبهان واوين صغيرتين فوق الحرف الأخير، صوته \"أُنْ\" (مثال: كِتَابٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-67ba972455082bab.mp3",
+      "durationMs": 9000
+    },
+    "تَنْوِينُ الكَسْرِ (ٍ): حركتان تحت الحرف الأخير، صوته \"إِنْ\" (مثال: كِتَابٍ).": {
+      "src": "/sounds/preschool/ar/course-cedar-aa0fa46fb08c9522.mp3",
+      "durationMs": 7600
+    },
+    "تَنْوِينُ الضَّمِّ ٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-9af581dd47dfe39e.mp3",
+      "durationMs": 2450
+    },
+    "تَنْوِينُ الكَسْرِ ٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-5f2a7afea1bfff94.mp3",
+      "durationMs": 2350
+    },
+    "كل أنواع التنوين تُنطق وكأن في آخرها نون ساكنة، حتى لو لم تُكتب.": {
+      "src": "/sounds/preschool/ar/course-cedar-d700db107cea48c8.mp3",
+      "durationMs": 7800
+    },
+    "أين تُكتب علامة تنوين الكسر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-111d112dbf4c5717.mp3",
+      "durationMs": 4100
+    },
+    "تنوين الضم فوق الحرف (يشبه واوين)، وتنوين الكسر تحت الحرف (يشبه كسرتين).": {
+      "src": "/sounds/preschool/ar/course-cedar-816ee513630690b8.mp3",
+      "durationMs": 8500
+    },
+    "ما نوع التنوين في كلمة \"قَمَرًا\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-82c4ba6790f37730.mp3",
+      "durationMs": 4300
+    },
+    "ما صوت تنوين الفتح؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a32036b5ab38752f.mp3",
+      "durationMs": 2700
+    },
+    "تنوين الفتح ً (أَنْ) فوق الحرف مع ألف غالباً. تنوين الضم ٌ (أُنْ) فوق الحرف. تنوين الكسر ٍ (إِنْ) تحت الحرف.": {
+      "src": "/sounds/preschool/ar/course-cedar-478babb35d0035cb.mp3",
+      "durationMs": 12550
+    },
+    "اربط كل كلمة بنوع التنوين فيها!": {
+      "src": "/sounds/preschool/ar/course-cedar-b2780a5372920c45.mp3",
+      "durationMs": 4450
+    },
+    "وَلَدٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-92ee1645c04fcbef.mp3",
+      "durationMs": 1600
+    },
+    "تَنْوِينُ الفَتْحِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e7c6baa442b95cbb.mp3",
+      "durationMs": 1700
+    },
+    "تَنْوِينُ الكَسْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4af76b9726dbfd0e.mp3",
+      "durationMs": 2000
+    },
+    "تَنْوِينُ الضَّمِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-d6b6cb9115cef867.mp3",
+      "durationMs": 1950
+    },
+    "التمييز إملائياً بين التاء المربوطة والمفتوحة في كلمات بسيطة، وكتابتهما بشكل صحيح.": {
+      "src": "/sounds/preschool/ar/course-cedar-46fabdd74bb0a696.mp3",
+      "durationMs": 8700
+    },
+    "يتعلم التلميذ التمييز بين التاء المربوطة (ة) التي تُنطق هاءً عند الوقف، والتاء المفتوحة (ت) التي تبقى تاءً دائماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-4b6a2c24644d10c4.mp3",
+      "durationMs": 10500
+    },
+    "قارن بين كلمتي \"مَدْرَسَةٌ\" و\"بَيْتٌ\". هل شكل التاء في آخر كل كلمة متشابه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ed350d4a1383d88a.mp3",
+      "durationMs": 8900
+    },
+    "في اللغة العربية شكلان للتاء في آخر الكلمة: واحدة مستديرة عليها نقطتان (ة) وأخرى ممدودة عادية (ت). كل واحدة لها نطق مختلف عند الوقوف.": {
+      "src": "/sounds/preschool/ar/course-cedar-7d92dfe92283fa61.mp3",
+      "durationMs": 13550
+    },
+    "التَّاءُ المَرْبُوطَةُ (ة): تأتي غالباً في آخر الأسماء المؤنثة، وتُنطق هاءً ساكنة عند الوقوف عليها (مثال: مَدْرَسَةٌ ← تُنطق مَدْرَسَهْ عند الوقف).": {
+      "src": "/sounds/preschool/ar/course-cedar-d8a6d9846d6b5e85.mp3",
+      "durationMs": 15700
+    },
+    "التَّاءُ المَرْبُوطَةُ ة": {
+      "src": "/sounds/preschool/ar/course-cedar-23f89c41585b8279.mp3",
+      "durationMs": 2150
+    },
+    "التَّاءُ المَفْتُوحَةُ ت": {
+      "src": "/sounds/preschool/ar/course-cedar-b4afe067d74f2152.mp3",
+      "durationMs": 3150
+    },
+    "الفرق الأهم: التاء المربوطة تتحول لهاء عند الوقف، بينما المفتوحة لا تتغير أبداً.": {
+      "src": "/sounds/preschool/ar/course-cedar-bfad71440931bfd2.mp3",
+      "durationMs": 8650
+    },
+    "التَّاءُ المَفْتُوحَةُ (ت): تبقى تاءً في النطق دائماً، سواء وصلنا الكلام أو وقفنا (مثال: بَيْتٌ، بِنْتٌ، أُخْتٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-80db7b48b139d140.mp3",
+      "durationMs": 12050
+    },
+    "الوَقْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0e0d848e258bdf25.mp3",
+      "durationMs": 1450
+    },
+    "رغم أن النطق عند الوقف يشبه الهاء، تُكتب الكلمة دائماً بالتاء المربوطة (ة) وليس بالهاء.": {
+      "src": "/sounds/preschool/ar/course-cedar-fdc23f596d106c14.mp3",
+      "durationMs": 8450
+    },
+    "هذه الكلمات جذرها الأصلي ينتهي بتاء مفتوحة ثابتة، فلا تتحول أبداً إلى (ة).": {
+      "src": "/sounds/preschool/ar/course-cedar-bf5204ab14c0f82d.mp3",
+      "durationMs": 9250
+    },
+    "التاء المربوطة (ة) تُنطق هاءً عند الوقف، وغالباً في أسماء المؤنث. التاء المفتوحة (ت) تبقى تاءً دائماً في كل الحالات.": {
+      "src": "/sounds/preschool/ar/course-cedar-1b71f7758e6bb704.mp3",
+      "durationMs": 11550
+    },
+    "كلمة \"زَهْرَةٌ\" تنتهي بأي نوع من التاء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1be7011005bd0555.mp3",
+      "durationMs": 4800
+    },
+    "اكتب كلمة \"بنت\" — هل تاؤها مربوطة أم مفتوحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-64aba731b879c250.mp3",
+      "durationMs": 6250
+    },
+    "كلمة «بنت» تنتهي ب:": {
+      "src": "/sounds/preschool/ar/course-cedar-84c8d2eee84b20e7.mp3",
+      "durationMs": 2950
+    },
+    "اكتب كلمتين: واحدة بتاء مربوطة وواحدة بمفتوحة من القسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-1b73b1987cd224e2.mp3",
+      "durationMs": 7650
+    },
+    "التاء المربوطة تُنطق عند الوقف مثل:": {
+      "src": "/sounds/preschool/ar/course-cedar-f067aa4926874d8f.mp3",
+      "durationMs": 4400
+    },
+    "كلمة «مدرسة» تنتهي ب:": {
+      "src": "/sounds/preschool/ar/course-cedar-08b78e2667b23701.mp3",
+      "durationMs": 2700
+    },
+    "عند الوقف على «حديقة» نسمع تقريباً:": {
+      "src": "/sounds/preschool/ar/course-cedar-4e1546eca4fefdec.mp3",
+      "durationMs": 4150
+    },
+    "«بيت» فيها:": {
+      "src": "/sounds/preschool/ar/course-cedar-99babb190f30396e.mp3",
+      "durationMs": 1550
+    },
+    "حَقِيبَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-e4ef3f0577be5d05.mp3",
+      "durationMs": 1350
+    },
+    "أكمل بالمربوطة: شجر...": {
+      "src": "/sounds/preschool/ar/course-cedar-930e41e150ec0fc1.mp3",
+      "durationMs": 3350
+    },
+    "صنّف كل كلمة حسب نوع تائها!": {
+      "src": "/sounds/preschool/ar/course-cedar-02a7c201aea2166b.mp3",
+      "durationMs": 3700
+    },
+    "تَاءٌ مَرْبُوطَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2eea747d4428edcf.mp3",
+      "durationMs": 2050
+    },
+    "تَاءٌ مَفْتُوحَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-485491322bb85d49.mp3",
+      "durationMs": 2600
+    },
+    "صَوْتٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-cbfb5ff3557872c9.mp3",
+      "durationMs": 1300
+    },
+    "قراءة نص قصير بطلاقة وفهم معناه العام، مع اكتساب مفردات جديدة عن الطبيعة والتغذية واللعب.": {
+      "src": "/sounds/preschool/ar/course-cedar-baeab0f59aae0cbd.mp3",
+      "durationMs": 10650
+    },
+    "ما هي الأشياء التي تراها في الطبيعة عندما تخرج للحديقة؟ وما طعامك المفضل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-26d3063893a522bf.mp3",
+      "durationMs": 7400
+    },
+    "عند قراءة نص، ننظر أولاً إلى العنوان لنتوقع موضوعه.": {
+      "src": "/sounds/preschool/ar/course-cedar-7c7d57880bae04cb.mp3",
+      "durationMs": 5800
+    },
+    "القراءة نافذة نكتشف من خلالها العالم من حولنا. عندما نقرأ عن الطبيعة والتغذية واللعب، نتعلم كلمات جديدة ونفهم كيف نعتني بأنفسنا وبمحيطنا.": {
+      "src": "/sounds/preschool/ar/course-cedar-0e241c3ce5df9be4.mp3",
+      "durationMs": 15750
+    },
+    "يقرأ التلميذ نصاً قصيراً وبسيطاً عن الطبيعة والتغذية الصحية واللعب، ويغني رصيده اللغوي بمفردات جديدة من هذه المحاور.": {
+      "src": "/sounds/preschool/ar/course-cedar-bcb5103e15cc9a87.mp3",
+      "durationMs": 13750
+    },
+    "نقرأ ببطء وبصوت واضح، ونتوقف عند علامات الترقيم (النقطة، الفاصلة).": {
+      "src": "/sounds/preschool/ar/course-cedar-8cb22f0a1fa30e76.mp3",
+      "durationMs": 9900
+    },
+    "الحَدِيقَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ad316504a605df8b.mp3",
+      "durationMs": 1450
+    },
+    "بعد القراءة، نحاول تلخيص الفكرة العامة للنص بجملة واحدة بسيطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-753392b36ec3d231.mp3",
+      "durationMs": 5550
+    },
+    "الفَوَاكِهُ الطَّازَجَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d2fca5a80f862488.mp3",
+      "durationMs": 2700
+    },
+    "الأُرْجُوحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-bd86cc0a9604c8c2.mp3",
+      "durationMs": 1700
+    },
+    "مفردات مهمة: الشَّجَرَةُ، الحَدِيقَةُ، الخُضَرُ، الفَوَاكِهُ، الكُرَةُ، الأُرْجُوحَةُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-70e4403d290e3ec0.mp3",
+      "durationMs": 9750
+    },
+    "شجع الطفل على التوقف بعد كل جملة والتفكير: \"ماذا فهمت؟\" قبل الانتقال للجملة التالية.": {
+      "src": "/sounds/preschool/ar/course-cedar-85b4fd599cda485e.mp3",
+      "durationMs": 9000
+    },
+    "في النص المقروء، أين يلعب الأطفال؟": {
+      "src": "/sounds/preschool/ar/course-cedar-101084807969e3f7.mp3",
+      "durationMs": 4450
+    },
+    "ذكّر الطفل بالتوقف قليلاً عند الفاصلة، وتوقفاً أطول عند النقطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-291bd77fa7e439ab.mp3",
+      "durationMs": 7000
+    },
+    "القراءة الجيدة: أنظر للعنوان، أقرأ ببطء ووضوح، أتوقف عند علامات الترقيم، ثم ألخص الفكرة العامة بجملة واحدة.": {
+      "src": "/sounds/preschool/ar/course-cedar-9d4fc980a09f58ea.mp3",
+      "durationMs": 12750
+    },
+    "اذكر غذاءً صحياً مذكوراً في النص.": {
+      "src": "/sounds/preschool/ar/course-cedar-49b0740d681174b6.mp3",
+      "durationMs": 3450
+    },
+    "حسب النص، بماذا يلعب الأطفال في الحديقة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9f7987cc5e81db2f.mp3",
+      "durationMs": 4050
+    },
+    "فَاكِهَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2ae619e37f4962e9.mp3",
+      "durationMs": 1750
+    },
+    "صورة تفاحة حمراء": {
+      "src": "/sounds/preschool/ar/course-cedar-d16dfa2d55c0d2d2.mp3",
+      "durationMs": 3700
+    },
+    "صورة شجرة خضراء": {
+      "src": "/sounds/preschool/ar/course-cedar-d1ff48ea6063ca6d.mp3",
+      "durationMs": 2550
+    },
+    "اختر الكلمة المناسبة لكل صورة من الطبيعة أو التغذية أو اللعب!": {
+      "src": "/sounds/preschool/ar/course-cedar-8af5cdbc4d301148.mp3",
+      "durationMs": 7250
+    },
+    "أُرْجُوحَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-41230766f30c19b3.mp3",
+      "durationMs": 1500
+    },
+    "زَهْرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-bb7b5128122a531d.mp3",
+      "durationMs": 1550
+    },
+    "تريد أن تعرف اسم صديقك الجديد. أي كلمة سؤال تستعمل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e79c6416aea5619c.mp3",
+      "durationMs": 6600
+    },
+    "طرح أسئلة بسيطة باستعمال أدوات الاستفهام المناسبة، وربط كلمتين أو جملتين بحرف العطف الصحيح.": {
+      "src": "/sounds/preschool/ar/course-cedar-ac384ed5d446aa02.mp3",
+      "durationMs": 9750
+    },
+    "يتعلم التلميذ استعمال أدوات الاستفهام الأساسية لطرح الأسئلة، وحروف العطف لربط الكلمات والجمل.": {
+      "src": "/sounds/preschool/ar/course-cedar-5221e94b7ce77070.mp3",
+      "durationMs": 9500
+    },
+    "مَنْ؟: نسأل بها عن شخص (مثال: مَنْ هَذَا؟ ← هَذَا أَخِي).": {
+      "src": "/sounds/preschool/ar/course-cedar-d342d43f82a6411f.mp3",
+      "durationMs": 7250
+    },
+    "لكي نطرح أسئلة واضحة، نستعمل كلمات خاصة تسمى أدوات الاستفهام. ولكي نربط أفكارنا في جملة واحدة، نستعمل حروف صغيرة تسمى حروف العطف.": {
+      "src": "/sounds/preschool/ar/course-cedar-613e96cc63d39914.mp3",
+      "durationMs": 15700
+    },
+    "أَيْنَ؟: نسأل بها عن مكان (مثال: أَيْنَ الكِتَابُ؟ ← الكِتَابُ عَلَى الطَّاوِلَةِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-4dd4e6027cc3eea7.mp3",
+      "durationMs": 7750
+    },
+    "كَمْ؟: نسأل بها عن عدد (مثال: كَمْ عُمْرُكَ؟ ← عُمْرِي 8 سَنَوَاتٍ).": {
+      "src": "/sounds/preschool/ar/course-cedar-3ae987d0046c288a.mp3",
+      "durationMs": 9150
+    },
+    "أَدَاةُ الاسْتِفْهَامِ": {
+      "src": "/sounds/preschool/ar/course-cedar-03d0f307e2e71572.mp3",
+      "durationMs": 2400
+    },
+    "حَرْفُ العَطْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4301374705c82517.mp3",
+      "durationMs": 1950
+    },
+    "هَلْ؟: نسأل بها سؤالاً نجيب عنه بنعم أو لا (مثال: هَلْ أَنْتَ جَائِعٌ؟ ← نَعَمْ).": {
+      "src": "/sounds/preschool/ar/course-cedar-4bae64436e786c43.mp3",
+      "durationMs": 8100
+    },
+    "كَمْ للعدد فقط، مَنْ للأشخاص فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-764dee9578ffdf88.mp3",
+      "durationMs": 3900
+    },
+    "حُرُوفُ العَطْفِ: \"وَ\" تربط دون ترتيب زمني (تُفَّاحَةٌ وَمَوْزَةٌ)، \"فَ\" تربط بترتيب سريع (دَخَلَ فَجَلَسَ)، \"ثُمَّ\" تربط بترتيب مع تأخير (أَكَلَ ثُمَّ نَامَ).": {
+      "src": "/sounds/preschool/ar/course-cedar-0701b05513867055.mp3",
+      "durationMs": 17550
+    },
+    "\"فَ\" تعني بعده مباشرة وبسرعة، بينما \"ثُمَّ\" تعني بعد فترة من الوقت.": {
+      "src": "/sounds/preschool/ar/course-cedar-0846af43ea9da85f.mp3",
+      "durationMs": 9750
+    },
+    "أي أداة استفهام تستعملها لتسأل عن مكان محفظتك؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b1dc82221ce34cc2.mp3",
+      "durationMs": 6600
+    },
+    "مَنْ (شخص)، أَيْنَ (مكان)، كَمْ (عدد)، هَلْ (نعم/لا). وَ يربط، فَ ترتب بسرعة، ثُمَّ ترتب بتأخير.": {
+      "src": "/sounds/preschool/ar/course-cedar-c8776bac0d7de3dd.mp3",
+      "durationMs": 9650
+    },
+    "اربط بين \"غَسَلْتُ يَدَيَّ\" و\"أَكَلْتُ\" بحرف عطف يدل على ترتيب سريع.": {
+      "src": "/sounds/preschool/ar/course-cedar-821375955bab67c0.mp3",
+      "durationMs": 7200
+    },
+    "أي أداة استفهام نستعملها للسؤال بنعم أو لا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9e48c9d349adea93.mp3",
+      "durationMs": 5900
+    },
+    "اربط كل سؤال بالأداة المناسبة!": {
+      "src": "/sounds/preschool/ar/course-cedar-043ada153e0ab215.mp3",
+      "durationMs": 3450
+    },
+    "كَمْ عُمْرُكَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-099f90fb5541c14e.mp3",
+      "durationMs": 1800
+    },
+    "سُؤَالٌ عَنْ شَخْصٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-9ca711c18e67d859.mp3",
+      "durationMs": 2600
+    },
+    "سُؤَالٌ عَنْ مَكَانٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-92edd924db7ed9a1.mp3",
+      "durationMs": 2150
+    },
+    "سُؤَالٌ عَنْ عَدَدٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-69fea871b2e356f3.mp3",
+      "durationMs": 2600
+    },
+    "أَيْنَ تَسْكُنُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5264112e61ee5c1b.mp3",
+      "durationMs": 2250
+    },
+    "قراءة نص قصير بطلاقة وفهم فكرته العامة.": {
+      "src": "/sounds/preschool/ar/course-cedar-9380f722421a09f1.mp3",
+      "durationMs": 5400
+    },
+    "النص القصير حكاية صغيرة. نقرأ ببطء، ثم نجيب.": {
+      "src": "/sounds/preschool/ar/course-cedar-d18741501053cab3.mp3",
+      "durationMs": 5650
+    },
+    "يقرأ التلميذ نصاً مشكولاً من نحو أربعين كلمة عن يوم مدرسي، ويجيب عن أسئلة الفهم.": {
+      "src": "/sounds/preschool/ar/course-cedar-e985e969de4acd09.mp3",
+      "durationMs": 9600
+    },
+    "نَقْرَأُ مِنَ اليَمِينِ إِلَى اليَسَارِ، وَنَتَوَقَّفُ عِنْدَ النُّقْطَةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-1a5b9bc346ea180a.mp3",
+      "durationMs": 6950
+    },
+    "الفِكْرَةُ العَامَّةُ هُنَا: يَوْمُ سَامِي فِي المَدْرَسَةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-2bf39a2f16ae1401.mp3",
+      "durationMs": 5050
+    },
+    "الحَرَكَاتُ تُسَاعِدُنَا عَلَى النُّطْقِ الصَّحِيحِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6bfb5364b7df39c2.mp3",
+      "durationMs": 4700
+    },
+    "بَعْدَ القِرَاءَةِ نَسْأَلُ: مَنِ الشَّخْصُ؟ أَيْنَ ذَهَبَ؟ مَاذَا فَعَلَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-10e2d7dccddba1ad.mp3",
+      "durationMs": 6500
+    },
+    "المِحْفَظَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-de8d2c75c36bac2b.mp3",
+      "durationMs": 1900
+    },
+    "كل حركة تُنطق: ذَهَبَ ليست ذْهب.": {
+      "src": "/sounds/preschool/ar/course-cedar-3983ac779e59365e.mp3",
+      "durationMs": 4450
+    },
+    "من سلّم على المعلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6009350d3220755f.mp3",
+      "durationMs": 3200
+    },
+    "أقرأ النص المشكول، أفهم من/أين/ماذا، ألخص بجملة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e7397be8ec7b6617.mp3",
+      "durationMs": 6050
+    },
+    "أين لعب سامي مع رفاقه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9976141fc686d3b2.mp3",
+      "durationMs": 2500
+    },
+    "ما الفكرة العامة للنص؟": {
+      "src": "/sounds/preschool/ar/course-cedar-eadf48bb859f9ff7.mp3",
+      "durationMs": 3050
+    },
+    "اختر حسب النص!": {
+      "src": "/sounds/preschool/ar/course-cedar-6aa06c74035268ee.mp3",
+      "durationMs": 1900
+    },
+    "لون المحفظة": {
+      "src": "/sounds/preschool/ar/course-cedar-3ac4c4a3b90e78dc.mp3",
+      "durationMs": 1650
+    },
+    "زَرْقَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a2e87fafde506449.mp3",
+      "durationMs": 1750
+    },
+    "حَمْرَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-fa0551d6416aff03.mp3",
+      "durationMs": 2150
+    },
+    "لأُمِّهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-69c2788d961f0fb3.mp3",
+      "durationMs": 1100
+    },
+    "لمن حكى سامي يومه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-356fc1c23053056e.mp3",
+      "durationMs": 2700
+    },
+    "لِلْجَارِ": {
+      "src": "/sounds/preschool/ar/course-cedar-452dd184be8d8155.mp3",
+      "durationMs": 1500
+    },
+    "قراءة نص 30–50 كلمة عن الحي والصحة وفهمه.": {
+      "src": "/sounds/preschool/ar/course-cedar-b2e47ebdf6587c87.mp3",
+      "durationMs": 6600
+    },
+    "يقرأ التلميذ نصاً مشكولاً من نحو خمس وأربعين كلمة عن الحديقة واللعب والجري وشرب الماء والنظافة في الحي.": {
+      "src": "/sounds/preschool/ar/course-cedar-7ab7502ba4cacad2.mp3",
+      "durationMs": 10950
+    },
+    "النَّصُّ يَدُورُ فِي الحَدِيقَةِ فِي الحَيِّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-941734b86e95c184.mp3",
+      "durationMs": 3200
+    },
+    "الحي حديقة، لعب، ماء، نظافة. النص يعلّمنا كلمات المكان والصحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-358424dacff42037.mp3",
+      "durationMs": 7250
+    },
+    "عُمَرُ يَجْرِي بَعْدَ اللَّعِبِ: حَرَكَةٌ سَرِيعَةٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e95d06082817600b.mp3",
+      "durationMs": 4950
+    },
+    "نُحَافِظُ عَلَى نَظَافَةِ الحَدِيقَةِ وَلا نَرْمِي الأَوْرَاقَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-edb85328756b175c.mp3",
+      "durationMs": 4400
+    },
+    "بَعْدَ اللَّعِبِ الطَّوِيلِ نَشْرَبُ المَاءَ البَارِدَ: هَذَا مِنَ الصِّحَّةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-9b2e5dffedaaebf2.mp3",
+      "durationMs": 6750
+    },
+    "نَعُودُ قَبْلَ المَغْرِبِ: كَلِمَةُ زَمَانٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-957c61fe047fedbb.mp3",
+      "durationMs": 4250
+    },
+    "الحَيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-8d46919d8e6da44c.mp3",
+      "durationMs": 1300
+    },
+    "فِي حَيِّنَا حَدِيقَةٌ صَغِيرَةٌ وَنَظِيفَةٌ. يَلْعَبُ الأَطْفَالُ بِالكُرَةِ تَحْتَ الأَشْجَارِ الكَبِيرَةِ. تَجْلِسُ لَيْلَى مَعَ جَدَّتِهَا عَلَى مَقْعَدٍ خَشَبِيٍّ. يَجْرِي أَخُوهَا عُمَرُ فِي المَمَرِّ بِسُرْعَةٍ. يَشْرَبُونَ المَاءَ البَارِدَ بَعْدَ اللَّعِبِ الطَّوِيلِ. يَقُولُ الأَبُ: نُحَافِظُ عَلَى النَّظَافَةِ وَلا نَرْمِي الأَوْرَاقَ. تَغْرُبُ الشَّمْسُ وَيَعُودُ الجَمِيعُ إِلَى البَيْتِ قَبْلَ المَغْرِبِ مَسْرُورِينَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-1baae8f3003218ae.mp3",
+      "durationMs": 26950
+    },
+    "المَمَرُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-ffd4175ed0611097.mp3",
+      "durationMs": 1400
+    },
+    "المَغْرِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5cf68ff768b295b3.mp3",
+      "durationMs": 1350
+    },
+    "الحديقة هنا في الحي، ليست ساحة المدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-a386e328f0d05634.mp3",
+      "durationMs": 4650
+    },
+    "مع من تجلس ليلى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3ab837def5a4c4b0.mp3",
+      "durationMs": 2550
+    },
+    "من يجري في الممر بسرعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-80800bb08dd8d632.mp3",
+      "durationMs": 2850
+    },
+    "أقرأ عن الحي: ألعب، أجري، أشرب ماءً بارداً، أحافظ على النظافة، أعود قبل المغرب.": {
+      "src": "/sounds/preschool/ar/course-cedar-9086b27edf134dfa.mp3",
+      "durationMs": 10400
+    },
+    "لماذا يشربون الماء البارد بعد اللعب الطويل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-561b3f9d34ed9c40.mp3",
+      "durationMs": 5000
+    },
+    "نصيحة الأب في النص هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-213efaba1b1cc203.mp3",
+      "durationMs": 2400
+    },
+    "بماذا يلعب الأطفال؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0ddbedff99fbddb5.mp3",
+      "durationMs": 2250
+    },
+    "بِالكُرَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-978ef6d388e9edcb.mp3",
+      "durationMs": 1600
+    },
+    "بِالدَّرَّاجَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c487b8e2d7aaf5c3.mp3",
+      "durationMs": 2100
+    },
+    "من يجري في الممر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-394fc07c4fb33215.mp3",
+      "durationMs": 2400
+    },
+    "عُمَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-22a530803d30ade1.mp3",
+      "durationMs": 1550
+    },
+    "فِي اللَّيْلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2708c39e70f91dd.mp3",
+      "durationMs": 1850
+    },
+    "متى يعود الجميع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-820513c865b98cdc.mp3",
+      "durationMs": 2200
+    },
+    "قَبْلَ المَغْرِبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3d4bc33c915167a4.mp3",
+      "durationMs": 2300
+    },
+    "نسخ جملة قصيرة دون إسقاط حرف، وإكمال إملاء بكلمة صحيحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-0a44733aecf85964.mp3",
+      "durationMs": 6450
+    },
+    "الكتابة الصحيحة تبدأ بالنسخ الهادئ ثم بالإملاء كلمة كلمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-f5e3f1fb7029a1b2.mp3",
+      "durationMs": 7250
+    },
+    "انسخ: «الكِتَابُ عَلَى الطَّاوِلَةِ.» ثم أغلق عينيك: ما الكلمة التي كانت بعد «على»؟": {
+      "src": "/sounds/preschool/ar/course-cedar-40aec020409e120f.mp3",
+      "durationMs": 8600
+    },
+    "ينسخ التلميذ جملة مشكولة ثم يملأ كلمة ناقصة كما في الإملاء المدرسي.": {
+      "src": "/sounds/preschool/ar/course-cedar-b15bc3cf7b198417.mp3",
+      "durationMs": 8050
+    },
+    "النَّسْخُ: أكتب الجملة حرفاً حرفاً من اليمين، دون تغيير.": {
+      "src": "/sounds/preschool/ar/course-cedar-e991ab627114f98d.mp3",
+      "durationMs": 6250
+    },
+    "النَّسْخُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2db644bf12a5fa30.mp3",
+      "durationMs": 1450
+    },
+    "بَعْدَ النَّسْخِ أُقَارِنُ بِالنَّمُوذَجِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-74dd1b891fdf71ae.mp3",
+      "durationMs": 4250
+    },
+    "نُحَافِظُ عَلَى التَّاءِ المَرْبُوطَةِ وَالشَّدَّةِ إِنْ وُجِدَتَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-9a11bdeecb51999a.mp3",
+      "durationMs": 5650
+    },
+    "الإِمْلَاءُ: أسمع أو أتذكر الكلمة وأكتبها. في التطبيق نكمل الفراغ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ce96cc55664b23a0.mp3",
+      "durationMs": 7700
+    },
+    "الإِمْلَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ee3c8c9c76d740cb.mp3",
+      "durationMs": 1900
+    },
+    "نعدّ الحروف قبل أن نقول انتهيت.": {
+      "src": "/sounds/preschool/ar/course-cedar-80ee8baa027f116c.mp3",
+      "durationMs": 4200
+    },
+    "أنسخ ثم أراجع. في الإملاء أكتب الكلمة الناقصة بحركاتها.": {
+      "src": "/sounds/preschool/ar/course-cedar-9b3f333396a1f06b.mp3",
+      "durationMs": 6800
+    },
+    "انسخ ذهنياً ثم اكتب آخر كلمة: «البَيْتُ نَظِيفٌ.»": {
+      "src": "/sounds/preschool/ar/course-cedar-b4bcdf33e3e6e932.mp3",
+      "durationMs": 6150
+    },
+    "ماذا نفعل بعد نسخ الجملة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f6a7fb45b5ffee53.mp3",
+      "durationMs": 2950
+    },
+    "أكمل من نص الحي: نُحَافِظُ عَلَى ………": {
+      "src": "/sounds/preschool/ar/course-cedar-bdd7c3f0573dd33e.mp3",
+      "durationMs": 6200
+    },
+    "أكمل الإملاء: ذَهَبَ الوَلَدُ إِلَى ………": {
+      "src": "/sounds/preschool/ar/course-cedar-bcf9b74494a167ff.mp3",
+      "durationMs": 4250
+    },
+    "أكمل الجملة!": {
+      "src": "/sounds/preschool/ar/course-cedar-e4005f033bdf41a1.mp3",
+      "durationMs": 1650
+    },
+    "فَتَحَ … البَابَ": {
+      "src": "/sounds/preschool/ar/course-cedar-0bae68db222d23d3.mp3",
+      "durationMs": 2650
+    },
+    "الوَلَدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-aa48a7c4fe3948fb.mp3",
+      "durationMs": 2150
+    },
+    "جَرَى": {
+      "src": "/sounds/preschool/ar/course-cedar-a079a4e8436fd379.mp3",
+      "durationMs": 1800
+    },
+    "الكِتَابُ … الطَّاوِلَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6ba56067e1e95585.mp3",
+      "durationMs": 2600
+    },
+    "ذَهَبَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8b58a98a3a184677.mp3",
+      "durationMs": 950
+    },
+    "عَلَى": {
+      "src": "/sounds/preschool/ar/course-cedar-5ab92d6a3ce206f3.mp3",
+      "durationMs": 850
+    },
+    "النَّظَافَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-764ab917253aeec7.mp3",
+      "durationMs": 1500
+    },
+    "نُحَافِظُ عَلَى ………": {
+      "src": "/sounds/preschool/ar/course-cedar-8c3a4f2e1041be09.mp3",
+      "durationMs": 4000
+    },
+    "تصنيف كلمة في جملة قصيرة: اسم أو فعل أو حرف.": {
+      "src": "/sounds/preschool/ar/course-cedar-7575006c6fa4aded.mp3",
+      "durationMs": 6750
+    },
+    "يميّز التلميذ ثلاثة أنواع من الكلمات في جملة بسيطة: اسم، فعل، حرف — دون إعراب.": {
+      "src": "/sounds/preschool/ar/course-cedar-110e405db2f6d9b8.mp3",
+      "durationMs": 7550
+    },
+    "الجملة كعقد: خرزات مختلفة. نتعرّف على ثلاثة أنواع فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-55d4218fc72eddf4.mp3",
+      "durationMs": 7250
+    },
+    "الاِسْمُ نُسَمِّي بِهِ شَيْئاً نَعْرِفُهُ: وَلَدٌ، بِنْتٌ، شَمْسٌ، مَدْرَسَةٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-624ed1fd8b678eb0.mp3",
+      "durationMs": 7550
+    },
+    "في جملة «لَعِبَ الوَلَدُ فِي السَّاحَةِ»: أي كلمة تدل على العمل؟ وأيها اسم شخص؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7ec706fe37c4d823.mp3",
+      "durationMs": 8200
+    },
+    "الفِعْلُ نَعْمَلُهُ: ذَهَبَ، قَرَأَ، جَرَى.": {
+      "src": "/sounds/preschool/ar/course-cedar-f0ff24d9ca26bbc7.mp3",
+      "durationMs": 4050
+    },
+    "الحَرْفُ لَا يَسْتَقِلُّ وَحْدَهُ: فِي، إِلَى، مِنْ، عَلَى، وَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ba897fa2e49ec3b3.mp3",
+      "durationMs": 6600
+    },
+    "الاِسْمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-54eecba1f603bec5.mp3",
+      "durationMs": 1500
+    },
+    "الفِعْلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0fac6a54a3943fbc.mp3",
+      "durationMs": 1450
+    },
+    "«في» حرف. الاسم هو «الساحة».": {
+      "src": "/sounds/preschool/ar/course-cedar-628c31cb83a94b65.mp3",
+      "durationMs": 4250
+    },
+    "فِي هَذِهِ المَرْحَلَةِ: فَقَطْ نُمَيِّزُ بَيْنَ الكَلِمَاتِ وَنُصَنِّفُهَا دُونَ إِعْرَابٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-c7fb1b03c22ae639.mp3",
+      "durationMs": 8050
+    },
+    "اسم = نسمّي. فعل = نعمل. حرف = نربط (في، من، على، و).": {
+      "src": "/sounds/preschool/ar/course-cedar-169137ae1b49abda.mp3",
+      "durationMs": 7400
+    },
+    "كلمة «قَلَمٌ»: اسم أم فعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b925883806f20de9.mp3",
+      "durationMs": 3850
+    },
+    "في «جَرَى القِطُّ»: ما الفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-80de71c15a7ea343.mp3",
+      "durationMs": 2950
+    },
+    "في «أكلت البنت التفاحة»: سمّ فعلاً واسماً وحرفاً إن وُجد.": {
+      "src": "/sounds/preschool/ar/course-cedar-e71b2b3815518997.mp3",
+      "durationMs": 6000
+    },
+    "«قلم»:": {
+      "src": "/sounds/preschool/ar/course-cedar-c735143d359d0736.mp3",
+      "durationMs": 1550
+    },
+    "كلمة «أَكَلَ» هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-25aecb083bb03b3c.mp3",
+      "durationMs": 2900
+    },
+    "«كتب» اسم أم فعل أم حرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6dd15ba3d786cca9.mp3",
+      "durationMs": 3300
+    },
+    "«في»:": {
+      "src": "/sounds/preschool/ar/course-cedar-88d79e757b1bd03a.mp3",
+      "durationMs": 1800
+    },
+    "«يلعب»:": {
+      "src": "/sounds/preschool/ar/course-cedar-e08618aaa00e1587.mp3",
+      "durationMs": 1250
+    },
+    "بِنْتٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2d963ef3f8bec1e.mp3",
+      "durationMs": 1150
+    },
+    "اِسْمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-3d5f4b9bc4540a42.mp3",
+      "durationMs": 1200
+    },
+    "اسم، فعل، أو حرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-63ec381c850ef54b.mp3",
+      "durationMs": 2800
+    },
+    "في «جلس الولد»: ما الاسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-62806c1914964e9d.mp3",
+      "durationMs": 3650
+    },
+    "حَرْفٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-185e5fa1040b1ddc.mp3",
+      "durationMs": 1400
+    },
+    "فِعْلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-d820e4d2b109da8f.mp3",
+      "durationMs": 1200
+    },
+    "مِنْ": {
+      "src": "/sounds/preschool/ar/course-cedar-f1a330341fb3b8a2.mp3",
+      "durationMs": 1000
+    },
+    "تصنيف اسم مألوف حسب الجنس والعدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-a05963ecae72ff5a.mp3",
+      "durationMs": 3600
+    },
+    "نقول «هذا ولد» و«هذه بنت». لماذا تغيّرت كلمة الإشارة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3c8e5a2557c5bb93.mp3",
+      "durationMs": 6450
+    },
+    "الجنس: ولد/بنت. العدد: واحد/كثير. كلمتا هذا وهذه تساعدنا.": {
+      "src": "/sounds/preschool/ar/course-cedar-caaeb5fe8a493cd3.mp3",
+      "durationMs": 8200
+    },
+    "المُذَكَّرُ نُشِيرُ إِلَيْهِ بِ «هَذَا». المُؤَنَّثُ بِ «هَذِهِ».": {
+      "src": "/sounds/preschool/ar/course-cedar-10c4adf676f6c624.mp3",
+      "durationMs": 6150
+    },
+    "يميّز التلميذ المذكر من المؤنث والمفرد من الجمع في كلمات مألوفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-da88fcf0d46e1d81.mp3",
+      "durationMs": 7300
+    },
+    "كَثِيرٌ مِنَ المُؤَنَّثِ يَنْتَهِي بِتَاءٍ مَرْبُوطَةٍ: مَدْرَسَةٌ، سَيَّارَةٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-abd9aa3bbe9f97fc.mp3",
+      "durationMs": 6350
+    },
+    "المُذَكَّرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-840b75210c19e092.mp3",
+      "durationMs": 1650
+    },
+    "لَا نَحْفَظُ كُلَّ الجُمُوعِ: نَتَعَرَّفُ عَلَى أَمْثِلَةِ القِسْمِ فَقَطْ.": {
+      "src": "/sounds/preschool/ar/course-cedar-bb7a7365555e2adf.mp3",
+      "durationMs": 6550
+    },
+    "المُفْرَدُ وَاحِدٌ: قَلَمٌ. الجَمْعُ كَثِيرٌ: أَقْلَامٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-552101c51aa79913.mp3",
+      "durationMs": 5650
+    },
+    "المُؤَنَّثُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7f4408836ae78826.mp3",
+      "durationMs": 1700
+    },
+    "المدرسة مؤنث: هذه مدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-5c79ee023a5b3321.mp3",
+      "durationMs": 4500
+    },
+    "أكمل: …… بِنْتٌ جَمِيلَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-df3bf8fa8f16822c.mp3",
+      "durationMs": 2700
+    },
+    "كلمة «أَوْلَادٌ»: مفرد أم جمع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b516e644d4a9565d.mp3",
+      "durationMs": 4050
+    },
+    "«أقلام» تدل على:": {
+      "src": "/sounds/preschool/ar/course-cedar-21f99769359a93e4.mp3",
+      "durationMs": 2250
+    },
+    "هذا للمذكر، هذه للمؤنث. مفرد = واحد، جمع = كثير.": {
+      "src": "/sounds/preschool/ar/course-cedar-d6de2cbfd5ab3a87.mp3",
+      "durationMs": 7800
+    },
+    "اختر الإشارة!": {
+      "src": "/sounds/preschool/ar/course-cedar-5077cc6ed322ab70.mp3",
+      "durationMs": 2050
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325
