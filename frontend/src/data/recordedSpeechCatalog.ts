@@ -10345,6 +10345,734 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-d52a834d59f519d1.mp3",
       "durationMs": 2450
     },
+    "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6d1e45e8b8280d77.mp3",
+      "durationMs": 4200
+    },
+    "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-80e4a973de12b45d.mp3",
+      "durationMs": 4150
+    },
+    "أَتَعَلَّمُ خُطُوَاتِ الوُضُوءِ بِالتَّرْتِيبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-f35607e14f399c5b.mp3",
+      "durationMs": 5000
+    },
+    "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-55ac582b84346c59.mp3",
+      "durationMs": 3950
+    },
+    "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ": {
+      "src": "/sounds/preschool/ar/course-cedar-453ad7cabe9a2f52.mp3",
+      "durationMs": 4000
+    },
+    "الصَّلَوَاتُ الخَمْسُ المَفْرُوضَةُ وَعَدَدُ رَكَعَاتِ كُلِّ صَلَاةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-e59fd550e96683c9.mp3",
+      "durationMs": 4700
+    },
+    "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3b5fa3dc726a38a2.mp3",
+      "durationMs": 4600
+    },
+    "احْتِرَامُ الوَالِدَيْنِ، الصِّدْقُ، وَالتَّسَامُحُ وَالتَّحِيَّةُ فِي الإِسْلَامِ": {
+      "src": "/sounds/preschool/ar/course-cedar-aa885db5573cdbfb.mp3",
+      "durationMs": 6900
+    },
+    "حِفْظُ سُورَةِ التَّكَاثُرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-fbeac49ed8277895.mp3",
+      "durationMs": 2700
+    },
+    "هل سمعت قصة أصحاب الفيل الذين أرادوا هدم الكعبة؟ من حمى البيت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8f71b8f300909ddc.mp3",
+      "durationMs": 6750
+    },
+    "حفظ وترتيل سورتي الفيل والقارعة، وفهم فكرتهما العامة ببساطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-2a6b9ea29ab36670.mp3",
+      "durationMs": 6550
+    },
+    "يحفظ التلميذ سورتي الفيل والقارعة مع فهم بسيط مناسب لسنه، دون إعادة سور السنة الأولى.": {
+      "src": "/sounds/preschool/ar/course-cedar-15f0d783e0cf2e51.mp3",
+      "durationMs": 10450
+    },
+    "في السنة الثانية نحفظ سوراً جديدة. الفيل قصة حماية الكعبة. القارعة سورة نردّدها آية آية بفهم هادئ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ec319bf821d0961e.mp3",
+      "durationMs": 13150
+    },
+    "سُورَةُ الفِيلِ: تُذَكِّرُنَا أَنَّ اللَّهَ حَمَى الكَعْبَةَ مِنْ جَيْشِ الفِيلِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6f9b161e943328cc.mp3",
+      "durationMs": 6900
+    },
+    "سُورَةُ القَارِعَةِ: تُذَكِّرُنَا بِيَوْمٍ يَحْسِبُ اللَّهُ فِيهِ أَعْمَالَ النَّاسِ بِعَدْلٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6776f377c1765ad5.mp3",
+      "durationMs": 8750
+    },
+    "هَاتَانِ سُورَتَانِ جَدِيدَتَانِ نَحْفَظُهُمَا بَعْدَ سُوَرِ السَّنَةِ الأُولَى (الفَاتِحَةِ وَالإِخْلَاصِ…).": {
+      "src": "/sounds/preschool/ar/course-cedar-21080540d4d31e01.mp3",
+      "durationMs": 9650
+    },
+    "القَارِعَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-59140b11dd79cdbb.mp3",
+      "durationMs": 1700
+    },
+    "أَصْحَابُ الفِيلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9879334d15e96953.mp3",
+      "durationMs": 2050
+    },
+    "قَبْلَ القِرَاءَةِ: «أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ» ثُمَّ البَسْمَلَةُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ad3fe4a4ce9e1b9c.mp3",
+      "durationMs": 6750
+    },
+    "سور السنة الأولى للمراجعة السريعة في البيت، ودرس اليوم: الفيل والقارعة.": {
+      "src": "/sounds/preschool/ar/course-cedar-67ff4852baa7db97.mp3",
+      "durationMs": 7450
+    },
+    "من حمى الكعبة في سورة الفيل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3333b12f4a635d1f.mp3",
+      "durationMs": 3100
+    },
+    "سورة الفيل: الله حمى بيته. سورة القارعة: نحفظها آية آية ونعمل الخير.": {
+      "src": "/sounds/preschool/ar/course-cedar-dd5ae95acbecb904.mp3",
+      "durationMs": 9100
+    },
+    "ما السورة الثانية التي نحفظها في هذا الدرس مع الفيل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2c8d94688edea3e4.mp3",
+      "durationMs": 5450
+    },
+    "ماذا نَقُولُ قَبْلَ تِلَاوَةِ السُّورَةِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-83580c28ad0e4e8d.mp3",
+      "durationMs": 4600
+    },
+    "سُورَةُ الفِيلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6e122f2996bb031f.mp3",
+      "durationMs": 1650
+    },
+    "سُورَةُ القَارِعَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5c512d2d73e9c489.mp3",
+      "durationMs": 2000
+    },
+    "الحَمْدُ للهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-29e21e8d539676d8.mp3",
+      "durationMs": 2900
+    },
+    "حِمَايَةُ الكَعْبَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-7d0be53901e7f6c7.mp3",
+      "durationMs": 1900
+    },
+    "الوُضُوءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7b122d0ca9b6ab7a.mp3",
+      "durationMs": 1800
+    },
+    "يَوْمُ الحِسَابِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a238b6d1d102a81f.mp3",
+      "durationMs": 2200
+    },
+    "كم مرة يصلي المسلم في اليوم الواحد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fa29a2c96eed942e.mp3",
+      "durationMs": 3750
+    },
+    "يتعرف التلميذ على أول ركنين من أركان الإسلام الخمسة: الشهادتان (نطق كلمة التوحيد) والصلاة (عبادة يومية).": {
+      "src": "/sounds/preschool/ar/course-cedar-9ae8cf5f27dbdab3.mp3",
+      "durationMs": 11850
+    },
+    "التعرف على معنى الشهادتين وأهمية الصلاة كركنين أساسيين من أركان الإسلام.": {
+      "src": "/sounds/preschool/ar/course-cedar-1fc6730cd6a9fafe.mp3",
+      "durationMs": 8050
+    },
+    "أركان الإسلام خمسة أعمدة أساسية يقوم عليها دين المسلم، أول ركنين منها هما الشهادتان (الإيمان بالله ورسوله) والصلاة (عبادة يومية متكررة).": {
+      "src": "/sounds/preschool/ar/course-cedar-37697ecf387ccce6.mp3",
+      "durationMs": 13450
+    },
+    "الشَّهَادَتَانِ: أن نقول ونؤمن بأن \"لا إله إلا الله، محمد رسول الله\" — وهما أول وأهم ركن من أركان الإسلام.": {
+      "src": "/sounds/preschool/ar/course-cedar-82ed6decc9c1d5d2.mp3",
+      "durationMs": 11600
+    },
+    "الشَّهَادَتَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3c0c4b80cf379e65.mp3",
+      "durationMs": 2100
+    },
+    "الصلاة تُؤدى 5 مرات في اليوم في أوقات محددة.": {
+      "src": "/sounds/preschool/ar/course-cedar-877a8238ccc7901a.mp3",
+      "durationMs": 5150
+    },
+    "قبل الصلاة، يجب أن نتوضأ (نغسل أعضاء معينة) لنكون في طهارة.": {
+      "src": "/sounds/preschool/ar/course-cedar-c69ffe7e58e67359.mp3",
+      "durationMs": 6500
+    },
+    "الصَّلَاةُ: عبادة يومية نؤديها 5 مرات (الفجر، الظهر، العصر، المغرب، العشاء)، نتوجه فيها إلى الله بالدعاء والشكر.": {
+      "src": "/sounds/preschool/ar/course-cedar-27fef555417a38f7.mp3",
+      "durationMs": 15000
+    },
+    "الشهادتان معاً يُشكّلان الركن الأول من أركان الإسلام الخمسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-1a12877907746870.mp3",
+      "durationMs": 6400
+    },
+    "كم عدد الصلوات في اليوم الواحد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cdd5b2585fe405e3.mp3",
+      "durationMs": 3900
+    },
+    "ماذا نفعل قبل الصلاة لنكون طاهرين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7e83f4fcec6be28b.mp3",
+      "durationMs": 4100
+    },
+    "الشهادتان: الإيمان بأن لا إله إلا الله ومحمداً رسول الله. الصلاة: عبادة يومية 5 مرات، تُسبقها الطهارة بالوضوء.": {
+      "src": "/sounds/preschool/ar/course-cedar-326caa1aa6b533b5.mp3",
+      "durationMs": 12500
+    },
+    "اختر الجواب الصحيح عن أول ركنين من أركان الإسلام!": {
+      "src": "/sounds/preschool/ar/course-cedar-c4db72ed1fd23f63.mp3",
+      "durationMs": 5450
+    },
+    "أول ركن من أركان الإسلام": {
+      "src": "/sounds/preschool/ar/course-cedar-9b481f37a0545953.mp3",
+      "durationMs": 3650
+    },
+    "الصِّيَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-abe54b96003e1c39.mp3",
+      "durationMs": 1750
+    },
+    "أداء خطوات الوضوء بالترتيب الصحيح استعداداً للصلاة.": {
+      "src": "/sounds/preschool/ar/course-cedar-af7637dd4821f83f.mp3",
+      "durationMs": 5400
+    },
+    "قبل الصلاة، ماذا يفعل المسلم أولاً بالماء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-93134d70abfecf86.mp3",
+      "durationMs": 4100
+    },
+    "أَتَمَضْمَضُ (أُدخل الماء لفمي) وَأَسْتَنْشِقُ (أُدخله لأنفي) ثم أُخرجه.": {
+      "src": "/sounds/preschool/ar/course-cedar-8c79a1dec3ec027e.mp3",
+      "durationMs": 8500
+    },
+    "أَبْدَأُ بِالنِّيَّةِ وَقَوْلِ \"بِسْمِ اللهِ\"، ثم أغسل يديّ إلى الرسغين 3 مرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-41f86b2b17c84437.mp3",
+      "durationMs": 9200
+    },
+    "يتعلم التلميذ خطوات الوضوء العملية بالترتيب الصحيح، من النية والبسملة إلى غسل القدمين، استعداداً لأداء الصلاة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ea99d97640859b81.mp3",
+      "durationMs": 13050
+    },
+    "الوضوء هو أول خطوة نحو الصلاة، به نُطهّر أعضاءنا بالماء بترتيب معين علّمنا إياه ديننا، لنقف بين يدي الله في طهارة.": {
+      "src": "/sounds/preschool/ar/course-cedar-79fe68cc1274f779.mp3",
+      "durationMs": 12650
+    },
+    "أَغْسِلُ وَجْهِي كَامِلاً، ثم ذراعيّ إلى المرفقين، ثم أمسح رأسي بيدي المبللتين، ثم أغسل قدميّ إلى الكعبين.": {
+      "src": "/sounds/preschool/ar/course-cedar-2d646a12634ecad7.mp3",
+      "durationMs": 12050
+    },
+    "أُرَتِّبُ هذه الخطوات دون تخطي أي عضو، فالترتيب مهم في الوضوء.": {
+      "src": "/sounds/preschool/ar/course-cedar-e7244d140c2904e2.mp3",
+      "durationMs": 7150
+    },
+    "النِّيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-498b2ee7d9c0320c.mp3",
+      "durationMs": 2000
+    },
+    "المَضْمَضَةُ وَالاسْتِنْشَاقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-cbba98e52a58c40f.mp3",
+      "durationMs": 2950
+    },
+    "النية والبسملة خطوة أولى مهمة قبل أي غسل.": {
+      "src": "/sounds/preschool/ar/course-cedar-c138419f128828b5.mp3",
+      "durationMs": 5550
+    },
+    "ذكّر الطفل بالترتيب الثابت: اليدان، الفم والأنف، الوجه، الذراعان، الرأس، القدمان.": {
+      "src": "/sounds/preschool/ar/course-cedar-87671af40f83abfa.mp3",
+      "durationMs": 9650
+    },
+    "ماذا أقول قبل أن أبدأ الوضوء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0e329e236ab5664d.mp3",
+      "durationMs": 3550
+    },
+    "الوضوء بالترتيب: نية وبسملة، غسل اليدين، مضمضة واستنشاق، غسل الوجه، غسل الذراعين، مسح الرأس، غسل القدمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-18581cd2496fc657.mp3",
+      "durationMs": 11400
+    },
+    "ما آخر عضو نغسله في الوضوء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b5b520e6f6c5133a.mp3",
+      "durationMs": 3300
+    },
+    "لماذا نتوضأ قبل الصلاة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d1ea2aafbdf8ff5f.mp3",
+      "durationMs": 2600
+    },
+    "اختر الخطوة الصحيحة في ترتيبها!": {
+      "src": "/sounds/preschool/ar/course-cedar-707b41fb1ae0e892.mp3",
+      "durationMs": 3550
+    },
+    "بعد غسل اليدين، ماذا أفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0a197fd574dbab7e.mp3",
+      "durationMs": 2850
+    },
+    "مَسْحُ الرَّأْسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e8912810d5a15e98.mp3",
+      "durationMs": 1750
+    },
+    "حفظ وترتيل سورتي قريش والهمزة، وفهم فكرتهما العامة ببساطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ad178b28aa53e49c.mp3",
+      "durationMs": 7000
+    },
+    "هل تشكر الله على النعم التي أعطاك إياها؟ اذكر نعمة واحدة تشكر الله عليها.": {
+      "src": "/sounds/preschool/ar/course-cedar-24e3411b5f649d25.mp3",
+      "durationMs": 8750
+    },
+    "يحفظ التلميذ سورتي قريش والهمزة: الشكر على الأمان والغذاء، وترك السخرية من الناس.": {
+      "src": "/sounds/preschool/ar/course-cedar-02bbe77d24d2a91b.mp3",
+      "durationMs": 8150
+    },
+    "قريش تعلّمنا الشكر على الطعام والأمان. الهمزة تعلّمنا ألا نسخر من أحد.": {
+      "src": "/sounds/preschool/ar/course-cedar-86f03b99e6a0f1e1.mp3",
+      "durationMs": 8400
+    },
+    "سُورَةُ الهُمَزَةِ: تَنْهَانَا عَنِ السُّخْرِيَةِ مِنَ النَّاسِ وَالاِغْتِيَابِ، وَعَنِ التَّعَلُّقِ بِالمَالِ وَحْدَهُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-14f6e3b5d3f73fcb.mp3",
+      "durationMs": 7950
+    },
+    "سُورَةُ قُرَيْشٍ: تُذَكِّرُنَا بِنِعْمَةِ الأَمَانِ وَالغِذَاءِ، فَنَعْبُدُ رَبَّ البَيْتِ وَنَشْكُرُهُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-acc0f7f0c5783933.mp3",
+      "durationMs": 8400
+    },
+    "سُورَتَا النَّصْرِ وَالكَوْثَرِ مَرَّتَا مَعَنَا فِي السَّنَةِ الأُولَى: نُرَاجِعُهُمَا فِي البَيْتِ، وَدَرْسُ اليَوْمِ قُرَيْشٌ وَالهُمَزَةُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e4452d723dbfe13d.mp3",
+      "durationMs": 14700
+    },
+    "الشُّكْرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-17181f245db72baa.mp3",
+      "durationMs": 1700
+    },
+    "الهُمَزَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-be3abc6a9e8a3a0d.mp3",
+      "durationMs": 1400
+    },
+    "درس السنة الثانية هنا: قريش والهمزة.": {
+      "src": "/sounds/preschool/ar/course-cedar-eecf819c27c4dcf1.mp3",
+      "durationMs": 4050
+    },
+    "قريش: نشكر الله على الطعام والأمان. الهمزة: لا نسخر ولا نغتاب.": {
+      "src": "/sounds/preschool/ar/course-cedar-8dba66e5abdba2c9.mp3",
+      "durationMs": 7500
+    },
+    "ماذا يجب أن نفعل عندما نحصل على نعمة من الله؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7bb9eabe0e542a52.mp3",
+      "durationMs": 4400
+    },
+    "اربط كل سورة بالنعمة التي تُذكّرنا بها!": {
+      "src": "/sounds/preschool/ar/course-cedar-c8a1a96f60a9b338.mp3",
+      "durationMs": 3950
+    },
+    "أي سورة تُذكّرنا بنعمة الأمان والغذاء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dc1e185a74a85853.mp3",
+      "durationMs": 4750
+    },
+    "سورة الهمزة تنهانا عن:": {
+      "src": "/sounds/preschool/ar/course-cedar-1537d2ff7943dcae.mp3",
+      "durationMs": 3000
+    },
+    "سُورَةُ قُرَيْشٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-390117f5433f2020.mp3",
+      "durationMs": 2050
+    },
+    "تَرْكُ السُّخْرِيَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-57e31832327841ac.mp3",
+      "durationMs": 1550
+    },
+    "سُورَةُ الهُمَزَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-61af8e22ef2e1d0e.mp3",
+      "durationMs": 2550
+    },
+    "الأَمَانُ وَالغِذَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0e855ffc255ad8c9.mp3",
+      "durationMs": 2750
+    },
+    "جَمْعُ المَالِ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2e3f77b66c36580.mp3",
+      "durationMs": 2200
+    },
+    "ماذا نقول قبل أن نبدأ الأكل؟ وماذا نقول بعد أن ننتهي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6ad886972cc5c9cc.mp3",
+      "durationMs": 5700
+    },
+    "تطبيق آداب الأكل والشرب البسيطة، وإدراك مكانة النظافة في الإسلام.": {
+      "src": "/sounds/preschool/ar/course-cedar-b2c320e1f4ab8d73.mp3",
+      "durationMs": 7300
+    },
+    "يتعلم التلميذ آداب الأكل والشرب في الإسلام (التسمية، الأكل باليمين، عدم الإسراف) وأهمية النظافة كجزء من الإيمان.": {
+      "src": "/sounds/preschool/ar/course-cedar-6aeef4956acff502.mp3",
+      "durationMs": 11800
+    },
+    "ديننا الحنيف علّمنا آداباً جميلة حتى في أبسط الأمور مثل الأكل والشرب، وحثّنا على النظافة لأنها جزء من إيماننا.": {
+      "src": "/sounds/preschool/ar/course-cedar-15cea40ba0a42ce2.mp3",
+      "durationMs": 11750
+    },
+    "آكُلُ وَأَشْرَبُ بِيَدِي اليُمْنَى، وَلَا أُسْرِفُ فِي الطَّعَامِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-4bd30e0429cba240.mp3",
+      "durationMs": 5400
+    },
+    "أَقُولُ \"بِسْمِ اللهِ\" قَبْلَ الأَكْلِ وَالشُّرْبِ، وَ\"الحَمْدُ لِلَّهِ\" بَعْدَهُمَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-a743c34441a034ba.mp3",
+      "durationMs": 8250
+    },
+    "التَّسْمِيَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9e3474ff630c74e7.mp3",
+      "durationMs": 1450
+    },
+    "النَّظَافَةُ خُلُقٌ إِسْلَامِيٌّ مُهِمٌّ، فَالنَّبِيُّ ﷺ عَلَّمَنَا أَنَّ \"النَّظَافَةَ مِنَ الإِيمَانِ\".": {
+      "src": "/sounds/preschool/ar/course-cedar-311e34f1924c3c08.mp3",
+      "durationMs": 10350
+    },
+    "الإِسْرَافُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c0d177e16c65feb4.mp3",
+      "durationMs": 1850
+    },
+    "ذكّر الطفل بلطف حتى تصبح عادة يومية طبيعية.": {
+      "src": "/sounds/preschool/ar/course-cedar-35155e27e0c30b58.mp3",
+      "durationMs": 6300
+    },
+    "النظافة في الإسلام جزء من الإيمان، وليست مجرد عادة اجتماعية.": {
+      "src": "/sounds/preschool/ar/course-cedar-0dd1dc84a4367576.mp3",
+      "durationMs": 6550
+    },
+    "ماذا نقول بعد الانتهاء من الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-76db0ee2dfc8f2d5.mp3",
+      "durationMs": 3200
+    },
+    "ماذا علّمنا النبي ﷺ عن النظافة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-33a2c578514cba6f.mp3",
+      "durationMs": 4900
+    },
+    "بأي يد يُفضَّل أن نأكل ونشرب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f76c5035cd85fc2b.mp3",
+      "durationMs": 4850
+    },
+    "قبل الأكل: \"بسم الله\". بعد الأكل: \"الحمد لله\". آكل بيميني ولا أُسرف. النظافة من الإيمان.": {
+      "src": "/sounds/preschool/ar/course-cedar-6ba1123888bf445f.mp3",
+      "durationMs": 12050
+    },
+    "قبل بدء الأكل نقول:": {
+      "src": "/sounds/preschool/ar/course-cedar-6af0e8914a1fb45f.mp3",
+      "durationMs": 2600
+    },
+    "اختر التصرف الصحيح حسب آداب ديننا!": {
+      "src": "/sounds/preschool/ar/course-cedar-41ebe608256a7ef5.mp3",
+      "durationMs": 4700
+    },
+    "حفظ أسماء الصلوات الخمس وعدد ركعات كل واحدة منها.": {
+      "src": "/sounds/preschool/ar/course-cedar-2e4af16645bbcb10.mp3",
+      "durationMs": 6800
+    },
+    "صلاة الفجر قصيرة، فيها ركعتان فقط. فكم ركعة تظن أن في صلاة الظهر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-53ca37cdf273eb39.mp3",
+      "durationMs": 8050
+    },
+    "صَلَاةُ الفَجْرِ: رَكْعَتَانِ، تُؤدى في الصباح الباكر قبل شروق الشمس.": {
+      "src": "/sounds/preschool/ar/course-cedar-d675b5d18a04ad7d.mp3",
+      "durationMs": 6850
+    },
+    "كل صلاة من صلواتنا الخمس لها وقتها الخاص وعدد ركعاتها الخاص، حفظتها معي منذ صغري تجعلني أؤديها بثقة وطمأنينة.": {
+      "src": "/sounds/preschool/ar/course-cedar-03a9baac2fa5de33.mp3",
+      "durationMs": 11950
+    },
+    "صَلَاةُ الظُّهْرِ وَالعَصْرِ وَالعِشَاءِ: أَرْبَعُ رَكَعَاتٍ لِكُلِّ وَاحِدَةٍ مِنْهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-ea80a845d4598811.mp3",
+      "durationMs": 7000
+    },
+    "يتعرف التلميذ على الصلوات الخمس المفروضة بأسمائها وأوقاتها، وعلى عدد ركعات كل صلاة منها.": {
+      "src": "/sounds/preschool/ar/course-cedar-f76568769b5e6c1d.mp3",
+      "durationMs": 9500
+    },
+    "صَلَاةُ المَغْرِبِ: ثَلَاثُ رَكَعَاتٍ، تُؤدى بعد غروب الشمس مباشرة.": {
+      "src": "/sounds/preschool/ar/course-cedar-75e6cfe8d85c6d7f.mp3",
+      "durationMs": 7450
+    },
+    "الرَّكْعَةُ: وحدة من وحدات الصلاة، فيها قيام وقراءة وركوع وسجود.": {
+      "src": "/sounds/preschool/ar/course-cedar-6e9df2cfaa22a35a.mp3",
+      "durationMs": 7950
+    },
+    "الرَّكْعَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-93036fbcb04ce4f8.mp3",
+      "durationMs": 1050
+    },
+    "الفَرْضُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d90e0ecc730fe2c2.mp3",
+      "durationMs": 1350
+    },
+    "المغرب هي الصلاة الوحيدة التي فيها 3 ركعات فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-64bb85f8e5a4e08f.mp3",
+      "durationMs": 6000
+    },
+    "ذكّر الطفل أن ثلاث صلوات فقط لها نفس العدد: الظهر والعصر والعشاء، كل واحدة 4 ركعات.": {
+      "src": "/sounds/preschool/ar/course-cedar-0e0f724511ae1b56.mp3",
+      "durationMs": 10300
+    },
+    "الفجر: 2 ركعة. الظهر: 4. العصر: 4. المغرب: 3. العشاء: 4. المجموع الكلي: 17 ركعة في اليوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-aefd505ccfdef6be.mp3",
+      "durationMs": 14100
+    },
+    "كم عدد ركعات صلاة الفجر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-358737fb90a22eed.mp3",
+      "durationMs": 2950
+    },
+    "اذكر 3 صلوات لها نفس عدد الركعات (4 ركعات).": {
+      "src": "/sounds/preschool/ar/course-cedar-5c2b7ee41b41c8fc.mp3",
+      "durationMs": 6150
+    },
+    "كم عدد ركعات صلاة الظهر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c4fbfa168f50a9e8.mp3",
+      "durationMs": 3700
+    },
+    "اربط كل صلاة بعدد ركعاتها الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-920c436b7f273ced.mp3",
+      "durationMs": 4350
+    },
+    "صَلَاةُ المَغْرِبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a557d182859b564a.mp3",
+      "durationMs": 2250
+    },
+    "4 رَكَعَاتٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-96bf9196b88d86a7.mp3",
+      "durationMs": 2000
+    },
+    "3 رَكَعَاتٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-06e1830445ee5ab8.mp3",
+      "durationMs": 2350
+    },
+    "صَلَاةُ الفَجْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d02f67a622dd2ff5.mp3",
+      "durationMs": 2450
+    },
+    "2 رَكْعَتَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-894a2da903ba55c3.mp3",
+      "durationMs": 2350
+    },
+    "ماذا نقول عندما نلتقي بصديق مسلم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1e382e2997f282d2.mp3",
+      "durationMs": 4100
+    },
+    "تطبيق قيم بر الوالدين والصدق والتسامح، والتعرف على أدب إلقاء السلام.": {
+      "src": "/sounds/preschool/ar/course-cedar-83faa54e62ebb519.mp3",
+      "durationMs": 7550
+    },
+    "يتعلم التلميذ أهمية بر الوالدين واحترامهما، وقيمة الصدق، وآداب التسامح والتحية بين المسلمين (إلقاء السلام).": {
+      "src": "/sounds/preschool/ar/course-cedar-b8b87d9f9c1016aa.mp3",
+      "durationMs": 11250
+    },
+    "الأخلاق الجميلة جزء أساسي من ديننا: نحترم والدينا، نصدق دائماً، نسامح من أخطأ، ونُلقي السلام بابتسامة على كل من نلتقيه.": {
+      "src": "/sounds/preschool/ar/course-cedar-41f9d53f1494e174.mp3",
+      "durationMs": 13200
+    },
+    "الصِّدْقُ: قول الحقيقة دائماً، حتى لو كانت صعبة، لأن الكذب خُلق سيء.": {
+      "src": "/sounds/preschool/ar/course-cedar-5c6841cfcf87f43c.mp3",
+      "durationMs": 8250
+    },
+    "بِرُّ الوَالِدَيْنِ: طاعتهما واحترامهما ومساعدتهما، فهذا من أحب الأعمال إلى الله.": {
+      "src": "/sounds/preschool/ar/course-cedar-27ce663b44614f6a.mp3",
+      "durationMs": 9700
+    },
+    "بِرُّ الوَالِدَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2aa8dbab7ad3ae5c.mp3",
+      "durationMs": 2150
+    },
+    "التَّحِيَّةُ الإِسْلَامِيَّةُ: نُلقي السلام بقول \"السَّلَامُ عَلَيْكُمْ\" ونرد بقول \"وَعَلَيْكُمُ السَّلَامُ\".": {
+      "src": "/sounds/preschool/ar/course-cedar-9aa44c6bb1afe1cc.mp3",
+      "durationMs": 11100
+    },
+    "التَّسَامُحُ: أن نُسامح من أخطأ في حقنا ونتقبل اعتذاره بصدر رحب.": {
+      "src": "/sounds/preschool/ar/course-cedar-a6c24082a58dee76.mp3",
+      "durationMs": 8550
+    },
+    "التَّسَامُحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f30a1b03fb022c81.mp3",
+      "durationMs": 1950
+    },
+    "الجَارُ وَالبِيئَةُ: نُحْسِنُ إِلَى الجَارِ، نَتَعَاوَنُ، وَلَا نُفْسِدُ الحَدِيقَةَ وَالشَّارِعَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-c787315a231073f6.mp3",
+      "durationMs": 8600
+    },
+    "يُستحب الرد على السلام بوضوح وابتسامة، لأنه حق للمسلم على أخيه.": {
+      "src": "/sounds/preschool/ar/course-cedar-7d2ceb1b004906af.mp3",
+      "durationMs": 7250
+    },
+    "ديننا يحثّنا على الصدق دائماً، حتى في الأمور الصغيرة، لأن الصدق يقود إلى الخير.": {
+      "src": "/sounds/preschool/ar/course-cedar-74ed45983c6db389.mp3",
+      "durationMs": 9050
+    },
+    "ماذا نرد عندما يقول لنا شخص \"السلام عليكم\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a4f4cc725c77bced.mp3",
+      "durationMs": 5350
+    },
+    "ماذا يجب أن أفعل عندما أُخطئ في شيء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e183ce6deb93591e.mp3",
+      "durationMs": 4100
+    },
+    "أخطأ صديقك في حقك واعتذر لك. ماذا يجب أن تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a35a1d45a7996a09.mp3",
+      "durationMs": 5500
+    },
+    "اختر التصرف الأخلاقي الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-0ba71b7a23bb826b.mp3",
+      "durationMs": 4000
+    },
+    "أحترم والديّ وأطيعهما، ألتزم بالصدق دائماً، أُلقي السلام بابتسامة، وأتسامح مع من أخطأ في حقي.": {
+      "src": "/sounds/preschool/ar/course-cedar-bceba8e74b5f1692.mp3",
+      "durationMs": 11700
+    },
+    "طلبت منك أمك المساعدة في ترتيب الغرفة": {
+      "src": "/sounds/preschool/ar/course-cedar-c14eccb887d73901.mp3",
+      "durationMs": 5000
+    },
+    "أُطِيعُهَا بِسُرُورٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-55ae5b03f2ee1d6d.mp3",
+      "durationMs": 2900
+    },
+    "أَرْفُضُ": {
+      "src": "/sounds/preschool/ar/course-cedar-56ef60185bf87b01.mp3",
+      "durationMs": 2000
+    },
+    "إذا رأيت طفلاً يتيماً أو فقيراً يحتاج مساعدة، ماذا يجب أن تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9d7828e16293260b.mp3",
+      "durationMs": 6400
+    },
+    "حفظ وترتيل سورتي الماعون والعصر، وفهم فكرتهما العامة ببساطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-1097e75970daae75.mp3",
+      "durationMs": 7300
+    },
+    "يحفظ التلميذ سورتي الماعون والعصر مع فهم بسيط لمعناهما: مساعدة المحتاجين واستغلال الوقت في الخير.": {
+      "src": "/sounds/preschool/ar/course-cedar-d988961398dc680b.mp3",
+      "durationMs": 9700
+    },
+    "سورتان قصيرتان جميلتان: الماعون تعلّمنا الرحمة بالمحتاجين، والعصر تذكّرنا بأن الوقت ثمين ويجب أن نملأه بالخير.": {
+      "src": "/sounds/preschool/ar/course-cedar-844c0dff6623a7a4.mp3",
+      "durationMs": 13250
+    },
+    "سُورَةُ المَاعُونِ: تُذَكِّرُنَا بِمُسَاعَدَةِ اليَتِيمِ وَالفَقِيرِ، وَعَدَمِ إِهْمَالِ الصَّلَاةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-49c5e137b031c1d3.mp3",
+      "durationMs": 8450
+    },
+    "سُورَةُ العَصْرِ: تُذَكِّرُنَا بِأَهَمِّيَّةِ اسْتِغْلَالِ الوَقْتِ فِي العَمَلِ الصَّالِحِ وَالصِّدْقِ وَالصَّبْرِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-a3c24ccef3dff0b9.mp3",
+      "durationMs": 7350
+    },
+    "كِلْتَا السُّورَتَيْنِ قَصِيرَتَانِ جِدّاً وَتُعَلِّمَانِنَا خُلُقاً جَمِيلاً نُطَبِّقُهُ فِي حَيَاتِنَا اليَوْمِيَّةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-372b94d17cf56b8a.mp3",
+      "durationMs": 8750
+    },
+    "اليَتِيمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0aa249bcc52714a3.mp3",
+      "durationMs": 1300
+    },
+    "اسْتِغْلَالُ الوَقْتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c596d49f2f54a630.mp3",
+      "durationMs": 1700
+    },
+    "حتى الطفل الصغير يمكنه المساعدة بطريقته: بابتسامة، بمشاركة لعبة، أو بكلمة طيبة.": {
+      "src": "/sounds/preschool/ar/course-cedar-3e11ac8b0d20c089.mp3",
+      "durationMs": 9650
+    },
+    "بماذا يُقسم الله في سورة العصر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ba3bd8eb2a770ba4.mp3",
+      "durationMs": 3950
+    },
+    "أي سورة تحثّنا على مساعدة اليتيم والفقير؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8a3b2582423510ab.mp3",
+      "durationMs": 5700
+    },
+    "سورة الماعون: أساعد الفقير واليتيم ولا أهمل صلاتي. سورة العصر: أستغل وقتي في الخير والصدق والصبر.": {
+      "src": "/sounds/preschool/ar/course-cedar-917ee844b7616eff.mp3",
+      "durationMs": 10400
+    },
+    "سُورَةُ المَاعُونِ": {
+      "src": "/sounds/preschool/ar/course-cedar-bcca7213c3943eb0.mp3",
+      "durationMs": 2350
+    },
+    "ماذا تُعلّمنا سورة العصر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4282218a7d278e4e.mp3",
+      "durationMs": 3500
+    },
+    "مُسَاعَدَةُ الفَقِيرِ وَاليَتِيمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-80396e2dcc6c4cf0.mp3",
+      "durationMs": 2900
+    },
+    "سُورَةُ العَصْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-069d14dbba9a50a3.mp3",
+      "durationMs": 1700
+    },
+    "اسْتِغْلَالُ الوَقْتِ فِي الخَيْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-69a316504351e603.mp3",
+      "durationMs": 2450
+    },
+    "مُسَاعَدَةُ الفَقِيرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5e293f380af21e38.mp3",
+      "durationMs": 1850
+    },
+    "حفظ سورة التكاثر وترديدها آية آية مع معنى مبسّط.": {
+      "src": "/sounds/preschool/ar/course-cedar-cf995c39077976d3.mp3",
+      "durationMs": 8000
+    },
+    "هل نحتاج دائماً ألعاباً أكثر لنكون سعداء؟ بماذا نشكر الله بدل التفاخر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-33ed4031a6298c32.mp3",
+      "durationMs": 8900
+    },
+    "التكاثر يعني التفاخر بالكثرة. السورة تذكّرنا بالشكر.": {
+      "src": "/sounds/preschool/ar/course-cedar-26d97236e51308d4.mp3",
+      "durationMs": 6600
+    },
+    "يحفظ التلميذ سورة التكاثر ويفهم ببساطة أن كثرة الأشياء يجب ألا تُنسينا شكر الله.": {
+      "src": "/sounds/preschool/ar/course-cedar-d64e9fdfb5fe282c.mp3",
+      "durationMs": 10900
+    },
+    "التَّكَاثُرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-438da27edf4349a5.mp3",
+      "durationMs": 1650
+    },
+    "سُورَةُ التَّكَاثُرِ تُذَكِّرُنَا أَلَّا نَنْشَغِلَ بِكَثْرَةِ الأَشْيَاءِ عَنِ الخَيْرِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-925f15a00f63e12a.mp3",
+      "durationMs": 5650
+    },
+    "نَحْفَظُ السُّورَةَ آيَةً آيَةً كَمَا فِي المُصْحَفِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-549032df78211a87.mp3",
+      "durationMs": 4900
+    },
+    "نَشْكُرُ اللَّهَ عَلَى مَا نَمْلِكُ: الصِّحَّةِ، العَائِلَةِ، الطَّعَامِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-f6abc8f019ea03dd.mp3",
+      "durationMs": 6650
+    },
+    "النَّعِيمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a73a7e40cfafb159.mp3",
+      "durationMs": 1600
+    },
+    "ماذا تعني كلمة التكاثر هنا ببساطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3265a0ceb6376bb8.mp3",
+      "durationMs": 4400
+    },
+    "ماذا نفعل بدل التفاخر بالألعاب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3713369b666caade.mp3",
+      "durationMs": 3250
+    },
+    "بعد الحفظ: اذكر نعمة واحدة تشكر الله عليها.": {
+      "src": "/sounds/preschool/ar/course-cedar-7ab81f0c96e4435a.mp3",
+      "durationMs": 5550
+    },
+    "أحفظ التكاثر وأشكر الله بدل التفاخر بما أملك.": {
+      "src": "/sounds/preschool/ar/course-cedar-3435f051d6bbcb5b.mp3",
+      "durationMs": 5350
+    },
+    "سورة التكاثر تذكّرنا ب:": {
+      "src": "/sounds/preschool/ar/course-cedar-2e7d983d7d619ab7.mp3",
+      "durationMs": 3050
+    },
+    "اختر التصرف الجميل!": {
+      "src": "/sounds/preschool/ar/course-cedar-20187d6fd30f52a9.mp3",
+      "durationMs": 2550
+    },
+    "أُشَارِكُهُ وَأَشْكُرُ اللَّهَ": {
+      "src": "/sounds/preschool/ar/course-cedar-dacc8ec0e2f8206c.mp3",
+      "durationMs": 2800
+    },
+    "عندك ألعاب كثيرة وصديقك لا": {
+      "src": "/sounds/preschool/ar/course-cedar-515388ed16787aab.mp3",
+      "durationMs": 3450
+    },
+    "أَتَفَاخَرُ عَلَيْهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5c581a9d4ab80f63.mp3",
+      "durationMs": 3100
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

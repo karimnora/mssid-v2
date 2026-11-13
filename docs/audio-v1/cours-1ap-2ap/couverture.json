@@ -3,10 +3,10 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 2501,
-    "missingTexts": 852,
-    "reusedFiles": 2500,
-    "integrityCheckedArabicFiles": 2938,
+    "recordedTexts": 2683,
+    "missingTexts": 670,
+    "reusedFiles": 2682,
+    "integrityCheckedArabicFiles": 3120,
     "byGrade": [
       {
         "grade": "1AP",
@@ -19,8 +19,8 @@
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 645,
-        "lessonsWithAnyRecording": 43
+        "recordedSegments": 834,
+        "lessonsWithAnyRecording": 47
       }
     ]
   },
@@ -744,63 +744,63 @@
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ 📖",
       "requestedSegments": 23,
-      "recordedSegments": 1
+      "recordedSegments": 23
     },
     {
       "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
       "grade": "2AP",
       "titleAr": "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ 🕌",
       "requestedSegments": 20,
-      "recordedSegments": 1
+      "recordedSegments": 20
     },
     {
       "lessonId": "islamic-2ap-t1-wudu-steps",
       "grade": "2AP",
       "titleAr": "أَتَعَلَّمُ خُطُوَاتِ الوُضُوءِ بِالتَّرْتِيبِ 💧",
       "requestedSegments": 21,
-      "recordedSegments": 0
+      "recordedSegments": 21
     },
     {
       "lessonId": "islamic-2ap-t2-short-surahs-2",
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ 📖",
       "requestedSegments": 22,
-      "recordedSegments": 1
+      "recordedSegments": 22
     },
     {
       "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
       "grade": "2AP",
       "titleAr": "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ 🤲",
       "requestedSegments": 20,
-      "recordedSegments": 2
+      "recordedSegments": 20
     },
     {
       "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
       "grade": "2AP",
       "titleAr": "الصَّلَوَاتُ الخَمْسُ المَفْرُوضَةُ وَعَدَدُ رَكَعَاتِ كُلِّ صَلَاةٍ 🕋",
       "requestedSegments": 26,
-      "recordedSegments": 0
+      "recordedSegments": 26
     },
     {
       "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
       "grade": "2AP",
       "titleAr": "احْتِرَامُ الوَالِدَيْنِ، الصِّدْقُ، وَالتَّسَامُحُ وَالتَّحِيَّةُ فِي الإِسْلَامِ ❤️",
       "requestedSegments": 22,
-      "recordedSegments": 0
+      "recordedSegments": 22
     },
     {
       "lessonId": "islamic-2ap-t3-surah-maun-asr",
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ 📖",
       "requestedSegments": 22,
-      "recordedSegments": 1
+      "recordedSegments": 22
     },
     {
       "lessonId": "islamic-2ap-t3-surah-takathur",
       "grade": "2AP",
       "titleAr": "حِفْظُ سُورَةِ التَّكَاثُرِ 📖",
       "requestedSegments": 19,
-      "recordedSegments": 0
+      "recordedSegments": 19
     },
     {
       "lessonId": "civics-2ap-t1-listening-respect",
@@ -39981,6 +39981,2785 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-5077cc6ed322ab70.mp3"
+      ]
+    },
+    {
+      "text": "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80e4a973de12b45d.mp3"
+      ]
+    },
+    {
+      "text": "حفظ وترتيل سورتي الفيل والقارعة، وفهم فكرتهما العامة ببساطة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a6b9ea29ab36670.mp3"
+      ]
+    },
+    {
+      "text": "هل سمعت قصة أصحاب الفيل الذين أرادوا هدم الكعبة؟ من حمى البيت؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8f71b8f300909ddc.mp3"
+      ]
+    },
+    {
+      "text": "يحفظ التلميذ سورتي الفيل والقارعة مع فهم بسيط مناسب لسنه، دون إعادة سور السنة الأولى.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-15f0d783e0cf2e51.mp3"
+      ]
+    },
+    {
+      "text": "في السنة الثانية نحفظ سوراً جديدة. الفيل قصة حماية الكعبة. القارعة سورة نردّدها آية آية بفهم هادئ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ec319bf821d0961e.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفِيلِ: تُذَكِّرُنَا أَنَّ اللَّهَ حَمَى الكَعْبَةَ مِنْ جَيْشِ الفِيلِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6f9b161e943328cc.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ القَارِعَةِ: تُذَكِّرُنَا بِيَوْمٍ يَحْسِبُ اللَّهُ فِيهِ أَعْمَالَ النَّاسِ بِعَدْلٍ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6776f377c1765ad5.mp3"
+      ]
+    },
+    {
+      "text": "هَاتَانِ سُورَتَانِ جَدِيدَتَانِ نَحْفَظُهُمَا بَعْدَ سُوَرِ السَّنَةِ الأُولَى (الفَاتِحَةِ وَالإِخْلَاصِ…).",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21080540d4d31e01.mp3"
+      ]
+    },
+    {
+      "text": "قَبْلَ القِرَاءَةِ: «أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ» ثُمَّ البَسْمَلَةُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ad3fe4a4ce9e1b9c.mp3"
+      ]
+    },
+    {
+      "text": "أَصْحَابُ الفِيلِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9879334d15e96953.mp3"
+      ]
+    },
+    {
+      "text": "القَارِعَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-59140b11dd79cdbb.mp3"
+      ]
+    },
+    {
+      "text": "سور السنة الأولى للمراجعة السريعة في البيت، ودرس اليوم: الفيل والقارعة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-67ff4852baa7db97.mp3"
+      ]
+    },
+    {
+      "text": "سورة الفيل: الله حمى بيته. سورة القارعة: نحفظها آية آية ونعمل الخير.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dd5ae95acbecb904.mp3"
+      ]
+    },
+    {
+      "text": "من حمى الكعبة في سورة الفيل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-surahs1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3333b12f4a635d1f.mp3"
+      ]
+    },
+    {
+      "text": "ما السورة الثانية التي نحفظها في هذا الدرس مع الفيل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-surahs1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2c8d94688edea3e4.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نَقُولُ قَبْلَ تِلَاوَةِ السُّورَةِ؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-surahs1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-83580c28ad0e4e8d.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الفِيلِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e122f2996bb031f.mp3"
+      ]
+    },
+    {
+      "text": "حِمَايَةُ الكَعْبَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d0be53901e7f6c7.mp3"
+      ]
+    },
+    {
+      "text": "الحَمْدُ للهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-29e21e8d539676d8.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ القَارِعَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c512d2d73e9c489.mp3"
+      ]
+    },
+    {
+      "text": "يَوْمُ الحِسَابِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a238b6d1d102a81f.mp3"
+      ]
+    },
+    {
+      "text": "الوُضُوءُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-short-surahs-1",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        },
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7b122d0ca9b6ab7a.mp3"
+      ]
+    },
+    {
+      "text": "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d1e45e8b8280d77.mp3"
+      ]
+    },
+    {
+      "text": "التعرف على معنى الشهادتين وأهمية الصلاة كركنين أساسيين من أركان الإسلام.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1fc6730cd6a9fafe.mp3"
+      ]
+    },
+    {
+      "text": "كم مرة يصلي المسلم في اليوم الواحد؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fa29a2c96eed942e.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على أول ركنين من أركان الإسلام الخمسة: الشهادتان (نطق كلمة التوحيد) والصلاة (عبادة يومية).",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9ae8cf5f27dbdab3.mp3"
+      ]
+    },
+    {
+      "text": "أركان الإسلام خمسة أعمدة أساسية يقوم عليها دين المسلم، أول ركنين منها هما الشهادتان (الإيمان بالله ورسوله) والصلاة (عبادة يومية متكررة).",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-37697ecf387ccce6.mp3"
+      ]
+    },
+    {
+      "text": "الشَّهَادَتَانِ: أن نقول ونؤمن بأن \"لا إله إلا الله، محمد رسول الله\" — وهما أول وأهم ركن من أركان الإسلام.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-82ed6decc9c1d5d2.mp3"
+      ]
+    },
+    {
+      "text": "الصَّلَاةُ: عبادة يومية نؤديها 5 مرات (الفجر، الظهر، العصر، المغرب، العشاء)، نتوجه فيها إلى الله بالدعاء والشكر.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-27fef555417a38f7.mp3"
+      ]
+    },
+    {
+      "text": "قبل الصلاة، يجب أن نتوضأ (نغسل أعضاء معينة) لنكون في طهارة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c69ffe7e58e67359.mp3"
+      ]
+    },
+    {
+      "text": "الشَّهَادَتَانِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3c0c4b80cf379e65.mp3"
+      ]
+    },
+    {
+      "text": "الصلاة تُؤدى 5 مرات في اليوم في أوقات محددة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-877a8238ccc7901a.mp3"
+      ]
+    },
+    {
+      "text": "الشهادتان معاً يُشكّلان الركن الأول من أركان الإسلام الخمسة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1a12877907746870.mp3"
+      ]
+    },
+    {
+      "text": "الشهادتان: الإيمان بأن لا إله إلا الله ومحمداً رسول الله. الصلاة: عبادة يومية 5 مرات، تُسبقها الطهارة بالوضوء.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-326caa1aa6b533b5.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد الصلوات في اليوم الواحد؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cdd5b2585fe405e3.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل قبل الصلاة لنكون طاهرين؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-pillars"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7e83f4fcec6be28b.mp3"
+      ]
+    },
+    {
+      "text": "اختر الجواب الصحيح عن أول ركنين من أركان الإسلام!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c4db72ed1fd23f63.mp3"
+      ]
+    },
+    {
+      "text": "أول ركن من أركان الإسلام",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b481f37a0545953.mp3"
+      ]
+    },
+    {
+      "text": "الصِّيَامُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-abe54b96003e1c39.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَلَّمُ خُطُوَاتِ الوُضُوءِ بِالتَّرْتِيبِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f35607e14f399c5b.mp3"
+      ]
+    },
+    {
+      "text": "أداء خطوات الوضوء بالترتيب الصحيح استعداداً للصلاة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-af7637dd4821f83f.mp3"
+      ]
+    },
+    {
+      "text": "قبل الصلاة، ماذا يفعل المسلم أولاً بالماء؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-93134d70abfecf86.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ خطوات الوضوء العملية بالترتيب الصحيح، من النية والبسملة إلى غسل القدمين، استعداداً لأداء الصلاة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea99d97640859b81.mp3"
+      ]
+    },
+    {
+      "text": "الوضوء هو أول خطوة نحو الصلاة، به نُطهّر أعضاءنا بالماء بترتيب معين علّمنا إياه ديننا، لنقف بين يدي الله في طهارة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-79fe68cc1274f779.mp3"
+      ]
+    },
+    {
+      "text": "أَبْدَأُ بِالنِّيَّةِ وَقَوْلِ \"بِسْمِ اللهِ\"، ثم أغسل يديّ إلى الرسغين 3 مرات.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-41f86b2b17c84437.mp3"
+      ]
+    },
+    {
+      "text": "أَتَمَضْمَضُ (أُدخل الماء لفمي) وَأَسْتَنْشِقُ (أُدخله لأنفي) ثم أُخرجه.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8c79a1dec3ec027e.mp3"
+      ]
+    },
+    {
+      "text": "أَغْسِلُ وَجْهِي كَامِلاً، ثم ذراعيّ إلى المرفقين، ثم أمسح رأسي بيدي المبللتين، ثم أغسل قدميّ إلى الكعبين.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2d646a12634ecad7.mp3"
+      ]
+    },
+    {
+      "text": "أُرَتِّبُ هذه الخطوات دون تخطي أي عضو، فالترتيب مهم في الوضوء.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7244d140c2904e2.mp3"
+      ]
+    },
+    {
+      "text": "النِّيَّةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-498b2ee7d9c0320c.mp3"
+      ]
+    },
+    {
+      "text": "المَضْمَضَةُ وَالاسْتِنْشَاقُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cbba98e52a58c40f.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل بالترتيب الثابت: اليدان، الفم والأنف، الوجه، الذراعان، الرأس، القدمان.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-87671af40f83abfa.mp3"
+      ]
+    },
+    {
+      "text": "النية والبسملة خطوة أولى مهمة قبل أي غسل.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c138419f128828b5.mp3"
+      ]
+    },
+    {
+      "text": "الوضوء بالترتيب: نية وبسملة، غسل اليدين، مضمضة واستنشاق، غسل الوجه، غسل الذراعين، مسح الرأس، غسل القدمين.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-18581cd2496fc657.mp3"
+      ]
+    },
+    {
+      "text": "ماذا أقول قبل أن أبدأ الوضوء؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-wudu"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e329e236ab5664d.mp3"
+      ]
+    },
+    {
+      "text": "ما آخر عضو نغسله في الوضوء؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-wudu"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5b520e6f6c5133a.mp3"
+      ]
+    },
+    {
+      "text": "لماذا نتوضأ قبل الصلاة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-wudu"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1ea2aafbdf8ff5f.mp3"
+      ]
+    },
+    {
+      "text": "اختر الخطوة الصحيحة في ترتيبها!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-707b41fb1ae0e892.mp3"
+      ]
+    },
+    {
+      "text": "بعد غسل اليدين، ماذا أفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a197fd574dbab7e.mp3"
+      ]
+    },
+    {
+      "text": "مَسْحُ الرَّأْسِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t1-wudu-steps",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e8912810d5a15e98.mp3"
+      ]
+    },
+    {
+      "text": "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-55ac582b84346c59.mp3"
+      ]
+    },
+    {
+      "text": "حفظ وترتيل سورتي قريش والهمزة، وفهم فكرتهما العامة ببساطة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ad178b28aa53e49c.mp3"
+      ]
+    },
+    {
+      "text": "هل تشكر الله على النعم التي أعطاك إياها؟ اذكر نعمة واحدة تشكر الله عليها.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-24e3411b5f649d25.mp3"
+      ]
+    },
+    {
+      "text": "يحفظ التلميذ سورتي قريش والهمزة: الشكر على الأمان والغذاء، وترك السخرية من الناس.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-02bbe77d24d2a91b.mp3"
+      ]
+    },
+    {
+      "text": "قريش تعلّمنا الشكر على الطعام والأمان. الهمزة تعلّمنا ألا نسخر من أحد.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-86f03b99e6a0f1e1.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ قُرَيْشٍ: تُذَكِّرُنَا بِنِعْمَةِ الأَمَانِ وَالغِذَاءِ، فَنَعْبُدُ رَبَّ البَيْتِ وَنَشْكُرُهُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-acc0f7f0c5783933.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الهُمَزَةِ: تَنْهَانَا عَنِ السُّخْرِيَةِ مِنَ النَّاسِ وَالاِغْتِيَابِ، وَعَنِ التَّعَلُّقِ بِالمَالِ وَحْدَهُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-14f6e3b5d3f73fcb.mp3"
+      ]
+    },
+    {
+      "text": "سُورَتَا النَّصْرِ وَالكَوْثَرِ مَرَّتَا مَعَنَا فِي السَّنَةِ الأُولَى: نُرَاجِعُهُمَا فِي البَيْتِ، وَدَرْسُ اليَوْمِ قُرَيْشٌ وَالهُمَزَةُ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4452d723dbfe13d.mp3"
+      ]
+    },
+    {
+      "text": "الشُّكْرُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-17181f245db72baa.mp3"
+      ]
+    },
+    {
+      "text": "الهُمَزَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-be3abc6a9e8a3a0d.mp3"
+      ]
+    },
+    {
+      "text": "درس السنة الثانية هنا: قريش والهمزة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eecf819c27c4dcf1.mp3"
+      ]
+    },
+    {
+      "text": "قريش: نشكر الله على الطعام والأمان. الهمزة: لا نسخر ولا نغتاب.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8dba66e5abdba2c9.mp3"
+      ]
+    },
+    {
+      "text": "أي سورة تُذكّرنا بنعمة الأمان والغذاء؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-surahs2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dc1e185a74a85853.mp3"
+      ]
+    },
+    {
+      "text": "سورة الهمزة تنهانا عن:",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-surahs2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1537d2ff7943dcae.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يجب أن نفعل عندما نحصل على نعمة من الله؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-surahs2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7bb9eabe0e542a52.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل سورة بالنعمة التي تُذكّرنا بها!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c8a1a96f60a9b338.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ قُرَيْشٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-390117f5433f2020.mp3"
+      ]
+    },
+    {
+      "text": "الأَمَانُ وَالغِذَاءُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e855ffc255ad8c9.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ الهُمَزَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-61af8e22ef2e1d0e.mp3"
+      ]
+    },
+    {
+      "text": "تَرْكُ السُّخْرِيَةِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-57e31832327841ac.mp3"
+      ]
+    },
+    {
+      "text": "جَمْعُ المَالِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-short-surahs-2",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2e3f77b66c36580.mp3"
+      ]
+    },
+    {
+      "text": "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-453ad7cabe9a2f52.mp3"
+      ]
+    },
+    {
+      "text": "تطبيق آداب الأكل والشرب البسيطة، وإدراك مكانة النظافة في الإسلام.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2c320e1f4ab8d73.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول قبل أن نبدأ الأكل؟ وماذا نقول بعد أن ننتهي؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ad886972cc5c9cc.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ آداب الأكل والشرب في الإسلام (التسمية، الأكل باليمين، عدم الإسراف) وأهمية النظافة كجزء من الإيمان.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6aeef4956acff502.mp3"
+      ]
+    },
+    {
+      "text": "ديننا الحنيف علّمنا آداباً جميلة حتى في أبسط الأمور مثل الأكل والشرب، وحثّنا على النظافة لأنها جزء من إيماننا.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-15cea40ba0a42ce2.mp3"
+      ]
+    },
+    {
+      "text": "أَقُولُ \"بِسْمِ اللهِ\" قَبْلَ الأَكْلِ وَالشُّرْبِ، وَ\"الحَمْدُ لِلَّهِ\" بَعْدَهُمَا.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a743c34441a034ba.mp3"
+      ]
+    },
+    {
+      "text": "آكُلُ وَأَشْرَبُ بِيَدِي اليُمْنَى، وَلَا أُسْرِفُ فِي الطَّعَامِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4bd30e0429cba240.mp3"
+      ]
+    },
+    {
+      "text": "النَّظَافَةُ خُلُقٌ إِسْلَامِيٌّ مُهِمٌّ، فَالنَّبِيُّ ﷺ عَلَّمَنَا أَنَّ \"النَّظَافَةَ مِنَ الإِيمَانِ\".",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-311e34f1924c3c08.mp3"
+      ]
+    },
+    {
+      "text": "التَّسْمِيَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9e3474ff630c74e7.mp3"
+      ]
+    },
+    {
+      "text": "الإِسْرَافُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c0d177e16c65feb4.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل بلطف حتى تصبح عادة يومية طبيعية.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-35155e27e0c30b58.mp3"
+      ]
+    },
+    {
+      "text": "النظافة في الإسلام جزء من الإيمان، وليست مجرد عادة اجتماعية.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0dd1dc84a4367576.mp3"
+      ]
+    },
+    {
+      "text": "قبل الأكل: \"بسم الله\". بعد الأكل: \"الحمد لله\". آكل بيميني ولا أُسرف. النظافة من الإيمان.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ba1123888bf445f.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول بعد الانتهاء من الأكل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-76db0ee2dfc8f2d5.mp3"
+      ]
+    },
+    {
+      "text": "ماذا علّمنا النبي ﷺ عن النظافة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33a2c578514cba6f.mp3"
+      ]
+    },
+    {
+      "text": "بأي يد يُفضَّل أن نأكل ونشرب؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-manners"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f76c5035cd85fc2b.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف الصحيح حسب آداب ديننا!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-41ebe608256a7ef5.mp3"
+      ]
+    },
+    {
+      "text": "قبل بدء الأكل نقول:",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6af0e8914a1fb45f.mp3"
+      ]
+    },
+    {
+      "text": "الصَّلَوَاتُ الخَمْسُ المَفْرُوضَةُ وَعَدَدُ رَكَعَاتِ كُلِّ صَلَاةٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e59fd550e96683c9.mp3"
+      ]
+    },
+    {
+      "text": "حفظ أسماء الصلوات الخمس وعدد ركعات كل واحدة منها.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2e4af16645bbcb10.mp3"
+      ]
+    },
+    {
+      "text": "صلاة الفجر قصيرة، فيها ركعتان فقط. فكم ركعة تظن أن في صلاة الظهر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53ca37cdf273eb39.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على الصلوات الخمس المفروضة بأسمائها وأوقاتها، وعلى عدد ركعات كل صلاة منها.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f76568769b5e6c1d.mp3"
+      ]
+    },
+    {
+      "text": "كل صلاة من صلواتنا الخمس لها وقتها الخاص وعدد ركعاتها الخاص، حفظتها معي منذ صغري تجعلني أؤديها بثقة وطمأنينة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-03a9baac2fa5de33.mp3"
+      ]
+    },
+    {
+      "text": "صَلَاةُ الفَجْرِ: رَكْعَتَانِ، تُؤدى في الصباح الباكر قبل شروق الشمس.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d675b5d18a04ad7d.mp3"
+      ]
+    },
+    {
+      "text": "صَلَاةُ الظُّهْرِ وَالعَصْرِ وَالعِشَاءِ: أَرْبَعُ رَكَعَاتٍ لِكُلِّ وَاحِدَةٍ مِنْهَا.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea80a845d4598811.mp3"
+      ]
+    },
+    {
+      "text": "صَلَاةُ المَغْرِبِ: ثَلَاثُ رَكَعَاتٍ، تُؤدى بعد غروب الشمس مباشرة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75e6cfe8d85c6d7f.mp3"
+      ]
+    },
+    {
+      "text": "الرَّكْعَةُ: وحدة من وحدات الصلاة، فيها قيام وقراءة وركوع وسجود.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e9df2cfaa22a35a.mp3"
+      ]
+    },
+    {
+      "text": "الرَّكْعَةُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-93036fbcb04ce4f8.mp3"
+      ]
+    },
+    {
+      "text": "الفَرْضُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d90e0ecc730fe2c2.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل أن ثلاث صلوات فقط لها نفس العدد: الظهر والعصر والعشاء، كل واحدة 4 ركعات.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e0f724511ae1b56.mp3"
+      ]
+    },
+    {
+      "text": "المغرب هي الصلاة الوحيدة التي فيها 3 ركعات فقط.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-64bb85f8e5a4e08f.mp3"
+      ]
+    },
+    {
+      "text": "الفجر: 2 ركعة. الظهر: 4. العصر: 4. المغرب: 3. العشاء: 4. المجموع الكلي: 17 ركعة في اليوم.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aefd505ccfdef6be.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد ركعات صلاة الفجر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-rakaat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-358737fb90a22eed.mp3"
+      ]
+    },
+    {
+      "text": "اذكر 3 صلوات لها نفس عدد الركعات (4 ركعات).",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-rakaat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c2b7ee41b41c8fc.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد ركعات صلاة الظهر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-rakaat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c4fbfa168f50a9e8.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل صلاة بعدد ركعاتها الصحيح!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-920c436b7f273ced.mp3"
+      ]
+    },
+    {
+      "text": "صَلَاةُ المَغْرِبِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a557d182859b564a.mp3"
+      ]
+    },
+    {
+      "text": "3 رَكَعَاتٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-06e1830445ee5ab8.mp3"
+      ]
+    },
+    {
+      "text": "2 رَكْعَتَانِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-894a2da903ba55c3.mp3"
+      ]
+    },
+    {
+      "text": "4 رَكَعَاتٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-96bf9196b88d86a7.mp3"
+      ]
+    },
+    {
+      "text": "صَلَاةُ الفَجْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d02f67a622dd2ff5.mp3"
+      ]
+    },
+    {
+      "text": "احْتِرَامُ الوَالِدَيْنِ، الصِّدْقُ، وَالتَّسَامُحُ وَالتَّحِيَّةُ فِي الإِسْلَامِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aa885db5573cdbfb.mp3"
+      ]
+    },
+    {
+      "text": "تطبيق قيم بر الوالدين والصدق والتسامح، والتعرف على أدب إلقاء السلام.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-83faa54e62ebb519.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نقول عندما نلتقي بصديق مسلم؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e382e2997f282d2.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ أهمية بر الوالدين واحترامهما، وقيمة الصدق، وآداب التسامح والتحية بين المسلمين (إلقاء السلام).",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b8b87d9f9c1016aa.mp3"
+      ]
+    },
+    {
+      "text": "الأخلاق الجميلة جزء أساسي من ديننا: نحترم والدينا، نصدق دائماً، نسامح من أخطأ، ونُلقي السلام بابتسامة على كل من نلتقيه.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-41f9d53f1494e174.mp3"
+      ]
+    },
+    {
+      "text": "بِرُّ الوَالِدَيْنِ: طاعتهما واحترامهما ومساعدتهما، فهذا من أحب الأعمال إلى الله.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-27ce663b44614f6a.mp3"
+      ]
+    },
+    {
+      "text": "الصِّدْقُ: قول الحقيقة دائماً، حتى لو كانت صعبة، لأن الكذب خُلق سيء.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c6841cfcf87f43c.mp3"
+      ]
+    },
+    {
+      "text": "التَّحِيَّةُ الإِسْلَامِيَّةُ: نُلقي السلام بقول \"السَّلَامُ عَلَيْكُمْ\" ونرد بقول \"وَعَلَيْكُمُ السَّلَامُ\".",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9aa44c6bb1afe1cc.mp3"
+      ]
+    },
+    {
+      "text": "التَّسَامُحُ: أن نُسامح من أخطأ في حقنا ونتقبل اعتذاره بصدر رحب.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6c24082a58dee76.mp3"
+      ]
+    },
+    {
+      "text": "الجَارُ وَالبِيئَةُ: نُحْسِنُ إِلَى الجَارِ، نَتَعَاوَنُ، وَلَا نُفْسِدُ الحَدِيقَةَ وَالشَّارِعَ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c787315a231073f6.mp3"
+      ]
+    },
+    {
+      "text": "بِرُّ الوَالِدَيْنِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2aa8dbab7ad3ae5c.mp3"
+      ]
+    },
+    {
+      "text": "التَّسَامُحُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f30a1b03fb022c81.mp3"
+      ]
+    },
+    {
+      "text": "يُستحب الرد على السلام بوضوح وابتسامة، لأنه حق للمسلم على أخيه.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d2ceb1b004906af.mp3"
+      ]
+    },
+    {
+      "text": "ديننا يحثّنا على الصدق دائماً، حتى في الأمور الصغيرة، لأن الصدق يقود إلى الخير.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-74ed45983c6db389.mp3"
+      ]
+    },
+    {
+      "text": "أحترم والديّ وأطيعهما، ألتزم بالصدق دائماً، أُلقي السلام بابتسامة، وأتسامح مع من أخطأ في حقي.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bceba8e74b5f1692.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نرد عندما يقول لنا شخص \"السلام عليكم\"؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-ethics"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4f4cc725c77bced.mp3"
+      ]
+    },
+    {
+      "text": "أخطأ صديقك في حقك واعتذر لك. ماذا يجب أن تفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-ethics"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a35a1d45a7996a09.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يجب أن أفعل عندما أُخطئ في شيء؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-ethics"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e183ce6deb93591e.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف الأخلاقي الصحيح!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ba71b7a23bb826b.mp3"
+      ]
+    },
+    {
+      "text": "طلبت منك أمك المساعدة في ترتيب الغرفة",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c14eccb887d73901.mp3"
+      ]
+    },
+    {
+      "text": "أُطِيعُهَا بِسُرُورٍ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-55ae5b03f2ee1d6d.mp3"
+      ]
+    },
+    {
+      "text": "أَرْفُضُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-56ef60185bf87b01.mp3"
+      ]
+    },
+    {
+      "text": "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b5fa3dc726a38a2.mp3"
+      ]
+    },
+    {
+      "text": "حفظ وترتيل سورتي الماعون والعصر، وفهم فكرتهما العامة ببساطة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1097e75970daae75.mp3"
+      ]
+    },
+    {
+      "text": "إذا رأيت طفلاً يتيماً أو فقيراً يحتاج مساعدة، ماذا يجب أن تفعل؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9d7828e16293260b.mp3"
+      ]
+    },
+    {
+      "text": "يحفظ التلميذ سورتي الماعون والعصر مع فهم بسيط لمعناهما: مساعدة المحتاجين واستغلال الوقت في الخير.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d988961398dc680b.mp3"
+      ]
+    },
+    {
+      "text": "سورتان قصيرتان جميلتان: الماعون تعلّمنا الرحمة بالمحتاجين، والعصر تذكّرنا بأن الوقت ثمين ويجب أن نملأه بالخير.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-844c0dff6623a7a4.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ المَاعُونِ: تُذَكِّرُنَا بِمُسَاعَدَةِ اليَتِيمِ وَالفَقِيرِ، وَعَدَمِ إِهْمَالِ الصَّلَاةِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-49c5e137b031c1d3.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ العَصْرِ: تُذَكِّرُنَا بِأَهَمِّيَّةِ اسْتِغْلَالِ الوَقْتِ فِي العَمَلِ الصَّالِحِ وَالصِّدْقِ وَالصَّبْرِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a3c24ccef3dff0b9.mp3"
+      ]
+    },
+    {
+      "text": "كِلْتَا السُّورَتَيْنِ قَصِيرَتَانِ جِدّاً وَتُعَلِّمَانِنَا خُلُقاً جَمِيلاً نُطَبِّقُهُ فِي حَيَاتِنَا اليَوْمِيَّةِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-372b94d17cf56b8a.mp3"
+      ]
+    },
+    {
+      "text": "اليَتِيمُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0aa249bcc52714a3.mp3"
+      ]
+    },
+    {
+      "text": "اسْتِغْلَالُ الوَقْتِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c596d49f2f54a630.mp3"
+      ]
+    },
+    {
+      "text": "حتى الطفل الصغير يمكنه المساعدة بطريقته: بابتسامة، بمشاركة لعبة، أو بكلمة طيبة.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3e11ac8b0d20c089.mp3"
+      ]
+    },
+    {
+      "text": "سورة الماعون: أساعد الفقير واليتيم ولا أهمل صلاتي. سورة العصر: أستغل وقتي في الخير والصدق والصبر.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-917ee844b7616eff.mp3"
+      ]
+    },
+    {
+      "text": "أي سورة تحثّنا على مساعدة اليتيم والفقير؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-maunasr"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8a3b2582423510ab.mp3"
+      ]
+    },
+    {
+      "text": "بماذا يُقسم الله في سورة العصر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-maunasr"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ba3bd8eb2a770ba4.mp3"
+      ]
+    },
+    {
+      "text": "ماذا تُعلّمنا سورة العصر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-maunasr"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4282218a7d278e4e.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ المَاعُونِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bcca7213c3943eb0.mp3"
+      ]
+    },
+    {
+      "text": "مُسَاعَدَةُ الفَقِيرِ وَاليَتِيمِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-80396e2dcc6c4cf0.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ العَصْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-069d14dbba9a50a3.mp3"
+      ]
+    },
+    {
+      "text": "اسْتِغْلَالُ الوَقْتِ فِي الخَيْرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69a316504351e603.mp3"
+      ]
+    },
+    {
+      "text": "مُسَاعَدَةُ الفَقِيرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-maun-asr",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e293f380af21e38.mp3"
+      ]
+    },
+    {
+      "text": "حِفْظُ سُورَةِ التَّكَاثُرِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fbeac49ed8277895.mp3"
+      ]
+    },
+    {
+      "text": "حفظ سورة التكاثر وترديدها آية آية مع معنى مبسّط.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cf995c39077976d3.mp3"
+      ]
+    },
+    {
+      "text": "هل نحتاج دائماً ألعاباً أكثر لنكون سعداء؟ بماذا نشكر الله بدل التفاخر؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33ed4031a6298c32.mp3"
+      ]
+    },
+    {
+      "text": "يحفظ التلميذ سورة التكاثر ويفهم ببساطة أن كثرة الأشياء يجب ألا تُنسينا شكر الله.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d64e9fdfb5fe282c.mp3"
+      ]
+    },
+    {
+      "text": "التكاثر يعني التفاخر بالكثرة. السورة تذكّرنا بالشكر.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-26d97236e51308d4.mp3"
+      ]
+    },
+    {
+      "text": "سُورَةُ التَّكَاثُرِ تُذَكِّرُنَا أَلَّا نَنْشَغِلَ بِكَثْرَةِ الأَشْيَاءِ عَنِ الخَيْرِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-925f15a00f63e12a.mp3"
+      ]
+    },
+    {
+      "text": "نَشْكُرُ اللَّهَ عَلَى مَا نَمْلِكُ: الصِّحَّةِ، العَائِلَةِ، الطَّعَامِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f6abc8f019ea03dd.mp3"
+      ]
+    },
+    {
+      "text": "نَحْفَظُ السُّورَةَ آيَةً آيَةً كَمَا فِي المُصْحَفِ.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-549032df78211a87.mp3"
+      ]
+    },
+    {
+      "text": "التَّكَاثُرُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-438da27edf4349a5.mp3"
+      ]
+    },
+    {
+      "text": "النَّعِيمُ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a73a7e40cfafb159.mp3"
+      ]
+    },
+    {
+      "text": "بعد الحفظ: اذكر نعمة واحدة تشكر الله عليها.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ab81f0c96e4435a.mp3"
+      ]
+    },
+    {
+      "text": "أحفظ التكاثر وأشكر الله بدل التفاخر بما أملك.",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3435f051d6bbcb5b.mp3"
+      ]
+    },
+    {
+      "text": "ماذا تعني كلمة التكاثر هنا ببساطة؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex1-isl2ap-takathur"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3265a0ceb6376bb8.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل بدل التفاخر بالألعاب؟",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "practice",
+          "key": "practice-ex2-isl2ap-takathur"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3713369b666caade.mp3"
+      ]
+    },
+    {
+      "text": "سورة التكاثر تذكّرنا بـ:",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "quiz",
+          "key": "quiz-q1-isl2ap-takathur"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2e7d983d7d619ab7.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف الجميل!",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-20187d6fd30f52a9.mp3"
+      ]
+    },
+    {
+      "text": "عندك ألعاب كثيرة وصديقك لا",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-515388ed16787aab.mp3"
+      ]
+    },
+    {
+      "text": "أُشَارِكُهُ وَأَشْكُرُ اللَّهَ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dacc8ec0e2f8206c.mp3"
+      ]
+    },
+    {
+      "text": "أَتَفَاخَرُ عَلَيْهِ",
+      "targets": [
+        {
+          "lessonId": "islamic-2ap-t3-surah-takathur",
+          "grade": "2AP",
+          "subject": "islamic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c581a9d4ab80f63.mp3"
       ]
     },
     {
