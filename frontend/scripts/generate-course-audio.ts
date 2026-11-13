@@ -6,6 +6,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { findRecordedSpeechSequence } from '../src/utils/recordedSpeech';
 import { recordedSpeechKey } from '../src/utils/recordedSpeechKey';
+import { discoverV2Root, importV2Recording, loadRecordingLibrary } from './v2-recording-library';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
@@ -41,18 +42,27 @@ async function main() {
   const jobs: Job[] = JSON.parse(readFileSync(plan, 'utf8'));
   const metadataPath = resolve(root, 'docs/audio-v1/enregistrements-cours-openai.json');
   const meta: { ar: { clips: Clip[] } } = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, 'utf8')) : { ar: { clips: [] } };
+  // Fail closed if V2 cannot be inspected: never bill for a possibly existing clip.
+  const v2 = loadRecordingLibrary(discoverV2Root(root));
+  const reusableV2: ReturnType<typeof v2.find>[] = [];
   const pending = jobs.filter(job => {
     if (!job.texte || job.texte.length > 2000) throw new Error('Unexpected input size');
     if (findRecordedSpeechSequence(job.texte, 'ar-SA')) return false;
     const clip = meta.ar.clips.find(clip => recordedSpeechKey(clip.texte) === recordedSpeechKey(job.texte));
-    if (!clip) return true;
+    if (!clip) {
+      const existing = v2.find(job.texte, 'ar-SA', voice);
+      if (existing) { reusableV2.push(existing); return false; }
+      return true;
+    }
     const path = resolve(root, 'frontend/public/sounds/preschool/ar', clip.fichier);
     if (!existsSync(path) || digest(readFileSync(path)) !== clip.sha256) throw new Error('Previously produced file failed integrity check; refusing overwrite');
     return false;
   });
   const selected = pending.slice(0, limit);
-  console.log(JSON.stringify({ model, voice, total: jobs.length, reused: jobs.length - pending.length, pending: pending.length, selected: selected.length, characters: selected.reduce((sum, job) => sum + job.texte.length, 0), generate: args.includes('--generate') }));
-  if (!args.includes('--generate') || !selected.length) return;
+  console.log(JSON.stringify({ model, voice, v2Checked: true, v2Reusable: reusableV2.length, total: jobs.length, reused: jobs.length - pending.length, pending: pending.length, selected: selected.length, characters: selected.reduce((sum, job) => sum + job.texte.length, 0), generate: args.includes('--generate') }));
+  if (!args.includes('--generate')) return;
+  for (const recording of reusableV2) if (recording) importV2Recording(root, recording);
+  if (!selected.length) return;
   // Local secret already provided by the user. Never load it into Vite/client code.
   const envFile = resolve(root, 'frontend/.env.local');
   if (existsSync(envFile)) process.loadEnvFile(envFile);

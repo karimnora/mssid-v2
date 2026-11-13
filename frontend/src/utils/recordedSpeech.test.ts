@@ -10,6 +10,10 @@ function fakeAudio() {
 afterEach(() => { stopRecordedSpeech(); vi.unstubAllGlobals(); });
 
 describe('reusing existing recordings safely', () => {
+  it('ignores decorative Arabic stretching without erasing vowels', () => {
+    expect(recordedSpeechKey('كِتَـاب')).toBe(recordedSpeechKey('كِتَاب'));
+    expect(recordedSpeechKey('عَـلَم')).not.toBe(recordedSpeechKey('عِلْم'));
+  });
   it('reuses complete Arabic sentences without matching a different vowel ending or a partial passage', () => {
     const clips = findRecordedSpeechSequence('هَذَا كِتَابٌ. هَذَا قَلَمٌ.', 'ar-SA');
     expect(clips?.map(clip => clip.src)).toEqual([

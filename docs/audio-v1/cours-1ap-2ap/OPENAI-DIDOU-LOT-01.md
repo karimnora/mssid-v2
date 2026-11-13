@@ -24,6 +24,8 @@ npm run audio:generate:courses -- --generate --limit 24
 
 La première commande est un inventaire sans appel payant. La seconde est bornée au plan figé et au maximum à 24 extraits. Le résultat après production est `reused: 24, pending: 0` : un nouveau passage ne refacture pas ce lot. Les fichiers existants et leurs empreintes sont vérifiés, aucune écriture ne les écrase. Les erreurs réseau ne sont pas retentées automatiquement. La clé est chargée uniquement dans ce processus local depuis le fichier privé déjà fourni, qui reste ignoré par Git.
 
+Contrôle ajouté à la demande de Karim : le générateur inspecte obligatoirement la bibliothèque V2 avant tout nouvel appel payant. Il reprend un enregistrement dans la même langue et la même voix si le texte correspond ; les fichiers sont vérifiés par empreinte. Si la V2 est inaccessible ou si le fichier correspondant est corrompu, il s'arrête plutôt que de payer une génération de remplacement. Le worktree `v2` est découvert par Git ; `MSSID_V2_ROOT` permet de préciser son emplacement. Les voyelles et accents restent significatifs ; seul l'allongement visuel arabe (tatweel) est ignoré, en plus des espaces.
+
 La [documentation officielle OpenAI](https://developers.openai.com/api/docs/guides/text-to-speech) décrit l'API et les consignes de voix. Elle annonce le retrait de cette API historique au 6 janvier 2027 ; les MP3 produits restent indépendants de l'API et continuent à fonctionner. Adapter le générateur pour de futures productions après ce retrait. Les voix sont signalées comme générées par IA dans les cours des premiers niveaux.
 
 ## Contrôles et validation restante
