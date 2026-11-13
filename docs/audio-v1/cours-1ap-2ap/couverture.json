@@ -3,24 +3,24 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 760,
-    "missingTexts": 2593,
-    "reusedFiles": 759,
-    "integrityCheckedArabicFiles": 1197,
+    "recordedTexts": 982,
+    "missingTexts": 2371,
+    "reusedFiles": 981,
+    "integrityCheckedArabicFiles": 1419,
     "byGrade": [
       {
         "grade": "1AP",
         "lessons": 57,
         "requestedSegments": 2412,
-        "recordedSegments": 959,
-        "lessonsWithAnyRecording": 42
+        "recordedSegments": 1185,
+        "lessonsWithAnyRecording": 47
       },
       {
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 38,
-        "lessonsWithAnyRecording": 23
+        "recordedSegments": 47,
+        "lessonsWithAnyRecording": 25
       }
     ]
   },
@@ -387,42 +387,42 @@
       "grade": "1AP",
       "titleAr": "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ 👋🇩🇿",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 38
     },
     {
       "lessonId": "civics-1ap-t1-identity-school-card",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ 🪪",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 37
     },
     {
       "lessonId": "civics-1ap-t2-sharing-cooperation",
       "grade": "1AP",
       "titleAr": "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي 🤝❤️",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 38
     },
     {
       "lessonId": "civics-1ap-t2-flag-anthem",
       "grade": "1AP",
       "titleAr": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ 🇩🇿",
       "requestedSegments": 39,
-      "recordedSegments": 0
+      "recordedSegments": 38
     },
     {
       "lessonId": "civics-1ap-t3-classroom-rules",
       "grade": "1AP",
       "titleAr": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ 🏫📏",
       "requestedSegments": 40,
-      "recordedSegments": 0
+      "recordedSegments": 38
     },
     {
       "lessonId": "civics-1ap-t3-child-rights",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ 👶⚖️",
       "requestedSegments": 40,
-      "recordedSegments": 1
+      "recordedSegments": 38
     },
     {
       "lessonId": "math-2ap-t1-numbers-0-49",
@@ -814,7 +814,7 @@
       "grade": "2AP",
       "titleAr": "أَتَعَرَّفُ عَلَى رُمُوزِ وَطَنِي الجَزَائِرِ 🇩🇿",
       "requestedSegments": 20,
-      "recordedSegments": 0
+      "recordedSegments": 7
     },
     {
       "lessonId": "civics-2ap-t2-cleanliness-property",
@@ -849,7 +849,7 @@
       "grade": "2AP",
       "titleAr": "وَثَائِقِي: بِطَاقَةُ التَّعْرِيفِ وَدَفْتَرُ العَائِلَةِ 🪪",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 2
     }
   ],
   "recorded": [
@@ -13565,6 +13565,3427 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-3f501a59488dedef.mp3"
+      ]
+    },
+    {
+      "text": "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d41ed914fc0dfc23.mp3"
+      ]
+    },
+    {
+      "text": "دخل معلمك الفاضل إلى القسم صباحاً مبتسماً. ماذا تقول له بصوت واضح ومؤدب؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f61b771b37ff617c.mp3"
+      ]
+    },
+    {
+      "text": "التَّحِيَّةُ: أقول \"السَّلاَمُ عَلَيْكُمْ\" عند دخول القسم أو لقاء الجيران والأصدقاء.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf2dcc782b67aca1.mp3"
+      ]
+    },
+    {
+      "text": "الرَّدُّ: أقول \"وَعَلَيْكُمُ السَّلاَمُ\" عندما يحييني أحد بابتسامة طيبة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bedb845f5dc0f388.mp3"
+      ]
+    },
+    {
+      "text": "احْتِرَامُ الكَبِيرِ: أستمع لأبي وأمي ومعلمي بهدوء، وأقدم لهم المساعدة إن احتاجوا.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a707c5181d7ec1b.mp3"
+      ]
+    },
+    {
+      "text": "التَّحِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-068b73d845f4df95.mp3"
+      ]
+    },
+    {
+      "text": "الاحْتِرَامُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-84366cb4326a0be7.mp3"
+      ]
+    },
+    {
+      "text": "إذا قال لك صديقك في الساحة: \"السلام عليكم\"، بم تردّ؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ced204a4562c4cf9.mp3"
+      ]
+    },
+    {
+      "text": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-20748450989ac364.mp3"
+      ]
+    },
+    {
+      "text": "العب مع الطفل لعبة المسرح الصغير: يلتقي شخصان، يبتسمان، يتصافحان باليد اليمنى ويتبادلان السلام بود.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-230993de58091f14.mp3"
+      ]
+    },
+    {
+      "text": "أُلقي السلام: \"السلام عليكم\". أرد السلام: \"وعليكم السلام\". وأحترم الكبار وأستمع لهم بأدب.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ef1692f7e1cbf0dd.mp3"
+      ]
+    },
+    {
+      "text": "ما هي تحية الإسلام الجميلة التي نلقيها عند لقاء زملائنا؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-696f060fc06aa5cc.mp3"
+      ]
+    },
+    {
+      "text": "كيف نتصرف عندما يتحدث إلينا والدا أو المعلم في القسم؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2f1bc2835239dc93.mp3"
+      ]
+    },
+    {
+      "text": "دخل المعلم. نقول؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2eb8a709529883ec.mp3"
+      ]
+    },
+    {
+      "text": "ماذا أقول عندما يلقي عليّ زميلي السلام؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-221be424f0935b0e.mp3"
+      ]
+    },
+    {
+      "text": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-greetings-opt-a"
+        },
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9aac2d01cdd815bd.mp3"
+      ]
+    },
+    {
+      "text": "أصمت ولا أرد",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-greetings-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-19f36073b3c0de41.mp3"
+      ]
+    },
+    {
+      "text": "نلقي التحية",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a422c2bcb5f4012e.mp3"
+      ]
+    },
+    {
+      "text": "بِابْتِسَامَةٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-greetings-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-44230321b8c098f7.mp3"
+      ]
+    },
+    {
+      "text": "بِدَفْعٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-greetings-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d9c4d886814cbaf.mp3"
+      ]
+    },
+    {
+      "text": "المسن في الشارع",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-42dbd93e7ce42f1c.mp3"
+      ]
+    },
+    {
+      "text": "نُسَاعِدُهُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-greetings-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0cad89f3d4ba582e.mp3"
+      ]
+    },
+    {
+      "text": "نَضْحَكُ عَلَيْهِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-greetings-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-235a407b3d382b35.mp3"
+      ]
+    },
+    {
+      "text": "السلام عليكم تحية",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-greetings"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a5b6e7d70af29d5a.mp3"
+      ]
+    },
+    {
+      "text": "إِسْلَامِيَّةٌ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-greetings-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5f9594d4dafcc5a.mp3"
+      ]
+    },
+    {
+      "text": "رَقْمٌ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-greetings-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-88912229ea0a3beb.mp3"
+      ]
+    },
+    {
+      "text": "اختر الرد الصحيح والمهذب لكل موقف!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c72b4fa2a370f72.mp3"
+      ]
+    },
+    {
+      "text": "حياك جارك وقال: \"السلام عليكم\"",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2eb72ccd33f079e.mp3"
+      ]
+    },
+    {
+      "text": "إِلَى اللِّقَاءِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3a5eff3d27bdb177.mp3"
+      ]
+    },
+    {
+      "text": "عند مغادرة القسم في نهاية اليوم نقول:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cdaa835a1c993b21.mp3"
+      ]
+    },
+    {
+      "text": "إِلَى اللِّقَاءِ يَا مُعَلِّمِي / مَعَ السَّلاَمَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e556d69f51696105.mp3"
+      ]
+    },
+    {
+      "text": "صباح الخير",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e9c9f53b0e3524e0.mp3"
+      ]
+    },
+    {
+      "text": "الكبار نحترمهم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-744ff148b075f1a8.mp3"
+      ]
+    },
+    {
+      "text": "نَسْخَرُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a05517fb7f50751c.mp3"
+      ]
+    },
+    {
+      "text": "رد السلام",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-710e636bc8a4dd3f.mp3"
+      ]
+    },
+    {
+      "text": "وَعَلَيْكُمُ السَّلَامُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-941764095796b5a0.mp3"
+      ]
+    },
+    {
+      "text": "صَمْتٌ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-greetings-respect",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6f091227e936d4e.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53fa221acc93d3b7.mp3"
+      ]
+    },
+    {
+      "text": "إذا سألك أحد الكبار في الشارع: \"من أنت وما اسم مدرستك؟\"، ماذا تجيبه؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-790cb71f7b6e5e58.mp3"
+      ]
+    },
+    {
+      "text": "هُوِيَّتِي: اسمي الكامل ولقبي وتاريخ ميلادي التي أحفظها جيداً.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-50e27bfa22d91a3a.mp3"
+      ]
+    },
+    {
+      "text": "بِطَاقَتِي المَدْرَسِيَّةُ: تحمل اسمي وصورتي واسم مدرستي وقسمي، وتُعرّف بي داخل المدرسة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e0fd7357a3a3795.mp3"
+      ]
+    },
+    {
+      "text": "أُحَافِظُ عَلَى بِطَاقَتِي: أضعها في مكان آمن في محفظتي، ولا أمزقها أو ألعب بها.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69ccc88fab1031c3.mp3"
+      ]
+    },
+    {
+      "text": "الهُوِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62a781752c5a08e8.mp3"
+      ]
+    },
+    {
+      "text": "البِطَاقَةُ المَدْرَسِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "civics-2ap-t1-personal-documents",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "civics-2ap-t1-personal-documents",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-179444a7e29ec8e3.mp3"
+      ]
+    },
+    {
+      "text": "سألك حارس المدرسة عن اسم قسمك، ماذا تقول؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d188240835affca3.mp3"
+      ]
+    },
+    {
+      "text": "أُخْبِرُهُ بِاسْمِ قِسْمِي بِوُضُوحٍ وَثِقَةٍ.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-477b5b7a8a38feae.mp3"
+      ]
+    },
+    {
+      "text": "اطلب من الطفل تكرار اسمه الكامل ولقبه واسم مدرسته وقسمه بصوت واضح، كأنه يقدم نفسه لصديق جديد.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-64f5f0c3a3bfc921.mp3"
+      ]
+    },
+    {
+      "text": "أحفظ اسمي الكامل ومدرستي وقسمي، وأحافظ على بطاقتي المدرسية التي تعرّف بي.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-46688a19527bfef4.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يجب أن أحفظ جيداً عن نفسي؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1896753f667d40a8.mp3"
+      ]
+    },
+    {
+      "text": "ماذا أفعل ببطاقتي المدرسية للمحافظة عليها؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7cc96652e399bdbf.mp3"
+      ]
+    },
+    {
+      "text": "البطاقة المدرسية فيها",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-df1bcd8fed3cef6f.mp3"
+      ]
+    },
+    {
+      "text": "لماذا نحافظ على بطاقتنا المدرسية؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f99e622838c740aa.mp3"
+      ]
+    },
+    {
+      "text": "لِأَنَّهَا تُعَرِّفُ بِي وَبِمَدْرَسَتِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-identity-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e22fe53dd442b509.mp3"
+      ]
+    },
+    {
+      "text": "لِأَلْعَبَ بِهَا فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-identity-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2ccd6b686a5695c.mp3"
+      ]
+    },
+    {
+      "text": "اسمي أقوله",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16aa96ea54e51ff8.mp3"
+      ]
+    },
+    {
+      "text": "وَاضِحًا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-identity-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a182f3d4e70ef6c2.mp3"
+      ]
+    },
+    {
+      "text": "القسم رقم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a6261911657fc93.mp3"
+      ]
+    },
+    {
+      "text": "عَلَى البِطَاقَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-identity-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-855f58b825ec1f85.mp3"
+      ]
+    },
+    {
+      "text": "سِرٌّ مَمْنُوعٌ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-identity-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-074d395bfdc247f1.mp3"
+      ]
+    },
+    {
+      "text": "الصورة على البطاقة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-identity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f201471a4764ffb2.mp3"
+      ]
+    },
+    {
+      "text": "صُورَتِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-identity-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-61f73df9f0b4618a.mp3"
+      ]
+    },
+    {
+      "text": "صُورَةُ حَيَوَانٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-identity-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-97ceb3e3ded55c46.mp3"
+      ]
+    },
+    {
+      "text": "اختر ما تحتويه بطاقتك المدرسية!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-67a7e174f7ce57bc.mp3"
+      ]
+    },
+    {
+      "text": "بطاقتي المدرسية تحمل...",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1626f2a835c9faa8.mp3"
+      ]
+    },
+    {
+      "text": "اسْمِي وَصُورَتِي وَاسْمَ مَدْرَسَتِي وَقِسْمِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69594e69e1785135.mp3"
+      ]
+    },
+    {
+      "text": "لُعْبَتِي المُفَضَّلَةَ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2de7e23ecb706d68.mp3"
+      ]
+    },
+    {
+      "text": "مدرستي اسمها على",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f48afbe78510e9c3.mp3"
+      ]
+    },
+    {
+      "text": "البِطَاقَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9164a377a03dca3c.mp3"
+      ]
+    },
+    {
+      "text": "القَمَرِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e5b4402a5d7d59a6.mp3"
+      ]
+    },
+    {
+      "text": "أحفظ بطاقتي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e80e34db003aa9c4.mp3"
+      ]
+    },
+    {
+      "text": "أُمَزِّقُهَا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3a3efe33a31c61b7.mp3"
+      ]
+    },
+    {
+      "text": "القسم مكتوب على",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea28b7cfd4d1103f.mp3"
+      ]
+    },
+    {
+      "text": "الكُرَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t1-identity-school-card",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6819360fa39b9ebc.mp3"
+      ]
+    },
+    {
+      "text": "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a4bceb38aae3b0d0.mp3"
+      ]
+    },
+    {
+      "text": "نسي صديقك مقلمته في البيت ولا يملك قلماً ليكتب به الدرس. كيف تساعده وتسعده؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-58714f3c0bdeb7ca.mp3"
+      ]
+    },
+    {
+      "text": "المُشَارَكَةُ: أن أقاسم أشيائي وأدواتي مع أصدقائي لتعم الفائدة والبهجة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b217ed61d239588a.mp3"
+      ]
+    },
+    {
+      "text": "التَّعَاوُنُ: نعمل معاً كفريق واحد لننجح جميعاً في الألعاب والواجبات.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f4711c9d91127dff.mp3"
+      ]
+    },
+    {
+      "text": "المُسَاعَدَةُ: أمد يد العون لرفيقي إن سقط أو تعثر أو احتاج لأداة مدرسية.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-953db1287a32a5be.mp3"
+      ]
+    },
+    {
+      "text": "التَّعَاوُنُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1a0dd494c3e402e.mp3"
+      ]
+    },
+    {
+      "text": "الإِيثَارُ وَالمُشَارَكَةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33374e003d6f0331.mp3"
+      ]
+    },
+    {
+      "text": "زميلك نسي ممحاته في البيت:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-687b07eb6e014141.mp3"
+      ]
+    },
+    {
+      "text": "أعيره ممحاتي ليكتب درسه ثم يعيدها لي بلطف.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d85c9af62705583.mp3"
+      ]
+    },
+    {
+      "text": "أعط الطفلين أُحْجِيَّةً (لُعْبَةَ تَرْكِيبٍ) ليركباها معاً، واجعلهما يشعران بفرحة الإنجاز المشترك.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cbec1403b8cee550.mp3"
+      ]
+    },
+    {
+      "text": "أُشارك ألعابي وأدواتي، أتعاون مع رفاقي، وأساعد من يحتاج مساعدتي.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5859910678ea182.mp3"
+      ]
+    },
+    {
+      "text": "سقطت علبة ألوان زميلك على أرض القسم. ماذا تفعل؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-202a9528f084d3e9.mp3"
+      ]
+    },
+    {
+      "text": "ما هو السلوك الذي يجعل التلاميذ ينهون تنظيف القسم بسرعة وفرح؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16454bcb499b1a8b.mp3"
+      ]
+    },
+    {
+      "text": "لعبة واحدة وصديقان",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8877ef5402a508b7.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل عندما نرى زميلنا في القسم بحاجة لمساعدة؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6bd99bbc4f4460f6.mp3"
+      ]
+    },
+    {
+      "text": "نُسَاعِدُهُ بِسُرُورٍ وَلُطْفٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-sharing-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6b9107aa31434d7.mp3"
+      ]
+    },
+    {
+      "text": "نتجاهله ولا نساعده",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-sharing-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6fb0c27c00f068b5.mp3"
+      ]
+    },
+    {
+      "text": "التعاون يعني",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-774d0f3f689c6748.mp3"
+      ]
+    },
+    {
+      "text": "نَعْمَلُ مَعًا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-sharing-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b32257f4ec13074a.mp3"
+      ]
+    },
+    {
+      "text": "نَتَشَاجَرُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-sharing-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d2b418ce97e30ad.mp3"
+      ]
+    },
+    {
+      "text": "صديقي حزين",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e32d73640ef3741.mp3"
+      ]
+    },
+    {
+      "text": "أُوَاسِيهِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-sharing-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-47cacfc3ad706452.mp3"
+      ]
+    },
+    {
+      "text": "أَتْرُكُهُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-sharing-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9cd1fbb587aa266e.mp3"
+      ]
+    },
+    {
+      "text": "في الفريق",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-sharing"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c45a2317fbbb2813.mp3"
+      ]
+    },
+    {
+      "text": "كُلُّنَا نُسَاهِمُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-sharing-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d9cf19856d989d50.mp3"
+      ]
+    },
+    {
+      "text": "وَاحِدٌ فَقَطْ يَلْعَبُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-sharing-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebb1fe6b47f9f089.mp3"
+      ]
+    },
+    {
+      "text": "اختر السلوك الذي يدل على المشاركة والتعاون!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6140649bb3c2af7.mp3"
+      ]
+    },
+    {
+      "text": "عندك قلم تلوين إضافي وزميلك يحتاجه:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a40648b3d0a203e2.mp3"
+      ]
+    },
+    {
+      "text": "أُعِيرُهُ لَهُ بِلُطْفٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de2b0539a4aca571.mp3"
+      ]
+    },
+    {
+      "text": "أخبئه في المحفظة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2778957b3ad823b.mp3"
+      ]
+    },
+    {
+      "text": "مساعدة زميل سقطت أقلامه",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fcfb56a5efb4c593.mp3"
+      ]
+    },
+    {
+      "text": "نُسَاعِدُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0be7675ae971778a.mp3"
+      ]
+    },
+    {
+      "text": "نَضْحَكُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0096a9cf70e06959.mp3"
+      ]
+    },
+    {
+      "text": "الكراسة نقسم الألوان",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d98ca3c39eb467a4.mp3"
+      ]
+    },
+    {
+      "text": "نَمْنَعُ الكُلَّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-19f235bd4b7537ce.mp3"
+      ]
+    },
+    {
+      "text": "اللعبة نتبادلها",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e9b96426f742c42b.mp3"
+      ]
+    },
+    {
+      "text": "بِدَوْرٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b221327dfc97f8a9.mp3"
+      ]
+    },
+    {
+      "text": "بِعِرَاكٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-sharing-cooperation",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f83acd34e829691d.mp3"
+      ]
+    },
+    {
+      "text": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-00b46b5706448f16.mp3"
+      ]
+    },
+    {
+      "text": "كل صباح في المدرسة، ماذا نرفع في الطابور ونحن واقفون بهدوء واعتزاز؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-291ad5fa9fb8e4c5.mp3"
+      ]
+    },
+    {
+      "text": "عَلَمُ الجَزَائِرِ : لونان جميلان، الأخضر والأبيض، وفي وسطه هلال ونجمة حمراء.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dc86548d4475849b.mp3"
+      ]
+    },
+    {
+      "text": "النَّشِيدُ الوَطَنِيُّ : اسمه \"قَسَماً\"، نردده أو نستمع إليه بهدوء واحترام.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-47aff33fc4c4c158.mp3"
+      ]
+    },
+    {
+      "text": "الجَزَائِرُ وَطَنِي الغَالِي الذي أُحِبُّهُ وَأَفْتَخِرُ بِالانْتِمَاءِ إِلَيْهِ.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-79b940d25008e3e5.mp3"
+      ]
+    },
+    {
+      "text": "العَلَمُ الوَطَنِيُّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4d36477e08f9bf6.mp3"
+      ]
+    },
+    {
+      "text": "النَّشِيدُ الوَطَنِيُّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-90e77aac7715363e.mp3"
+      ]
+    },
+    {
+      "text": "ما هما لونا علم الجزائر؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d58e0b7108f7f15c.mp3"
+      ]
+    },
+    {
+      "text": "الأَخْضَرُ وَالأَبْيَضُ .",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0485370559409dc5.mp3"
+      ]
+    },
+    {
+      "text": "ارسم مع الطفل علم الجزائر بالألوان الصحيحة (أخضر وأبيض مع هلال ونجمة حمراء)، وشغّل معه النشيد الوطني ليستمع إليه واقفاً بهدوء.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a7c537b2bdc1e598.mp3"
+      ]
+    },
+    {
+      "text": "علم الجزائر أخضر وأبيض بهلال ونجمة حمراء، ونشيدها الوطني \"قسماً\"، أحترمهما بفخر واعتزاز.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6fcf4ebd4c6f493.mp3"
+      ]
+    },
+    {
+      "text": "ما هما لونا علم بلادي الجزائر؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-flag"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a5271d8a3aaa4d4a.mp3"
+      ]
+    },
+    {
+      "text": "ما اسم النشيد الوطني الجزائري؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-flag"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics2ap-symbols"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dfecd2e8666617a0.mp3"
+      ]
+    },
+    {
+      "text": "أَلْوَانُ العَلَمِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-flag"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a003612874adca03.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نرى في وسط علم الجزائر؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-flag"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics2ap-symbols"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-98b56047f58e9207.mp3"
+      ]
+    },
+    {
+      "text": "هِلاَلٌ وَنَجْمَةٌ حَمْرَاءُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-flag-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aca159009688261a.mp3"
+      ]
+    },
+    {
+      "text": "شَمْسٌ صَفْرَاءُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-flag-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1f44c6208e445869.mp3"
+      ]
+    },
+    {
+      "text": "علم بلادي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-flag"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7c993775a4a41bb3.mp3"
+      ]
+    },
+    {
+      "text": "الجَزَائِرُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-flag-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-340a8f8cedeaf6d8.mp3"
+      ]
+    },
+    {
+      "text": "بَلَدٌ آخَرُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-flag-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9f45b087420e1183.mp3"
+      ]
+    },
+    {
+      "text": "الهلال والنجمة على",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-flag"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5cea4fe37e170f0b.mp3"
+      ]
+    },
+    {
+      "text": "العَلَمِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-flag-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1dfaed681bb05727.mp3"
+      ]
+    },
+    {
+      "text": "الكُرَةِ فَقَطْ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-flag-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92b41ef6eb0ea08c.mp3"
+      ]
+    },
+    {
+      "text": "قاسمي أحترم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-flag"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb4368ab5435bb1a.mp3"
+      ]
+    },
+    {
+      "text": "النَّشِيدَ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-flag-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d82cb7da7135f899.mp3"
+      ]
+    },
+    {
+      "text": "الفَوْضَى",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-flag-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-894a8512468bde97.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف الصحيح تجاه رموز وطنك!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-52ef39fbe123aa97.mp3"
+      ]
+    },
+    {
+      "text": "يُرفع العلم الوطني في طابور الصباح",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ad154603d9521f68.mp3"
+      ]
+    },
+    {
+      "text": "أَقِفُ بِهُدُوءٍ وَاحْتِرَامٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d33231464e4ea3da.mp3"
+      ]
+    },
+    {
+      "text": "أَتَحَدَّثُ مَعَ رَفِيقِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "civics-2ap-t1-national-symbols",
+          "grade": "2AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a48194f79bfe7cd3.mp3"
+      ]
+    },
+    {
+      "text": "النشيد الوطني نسمعه",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db61d71f52588cc9.mp3"
+      ]
+    },
+    {
+      "text": "وَاقِفِينَ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bc5885b6f6829b5b.mp3"
+      ]
+    },
+    {
+      "text": "نَضْحَكُ بِصَوْتٍ عَالٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3416848b00a367bc.mp3"
+      ]
+    },
+    {
+      "text": "الأخضر في العلم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f64c5fd72c61dfa8.mp3"
+      ]
+    },
+    {
+      "text": "نَصْفُ العَلَمِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ae75af0b3876d877.mp3"
+      ]
+    },
+    {
+      "text": "كُلُّ العَلَمِ أَحْمَرُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53351512b4dfbb15.mp3"
+      ]
+    },
+    {
+      "text": "نحترم العلم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db918f2df8d27094.mp3"
+      ]
+    },
+    {
+      "text": "بِرَكْضٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t2-flag-anthem",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c2624f112eb7671d.mp3"
+      ]
+    },
+    {
+      "text": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b4e92bf91e99f98.mp3"
+      ]
+    },
+    {
+      "text": "تخيل لو تحدث جميع التلاميذ في وقت واحد بصوت عالٍ، هل يستطيع أحد أن يفهم الدرس؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c44e836c2cae60e9.mp3"
+      ]
+    },
+    {
+      "text": "لا، الهدوء هو سر النجاح!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-913bdcb15a47627a.mp3"
+      ]
+    },
+    {
+      "text": "الهُدُوءُ وَالاسْتِمَاعُ: أنصت لمعلمي وأرفع إصبعي للاستئذان قبل الكلام.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d9010cfcbf8a6533.mp3"
+      ]
+    },
+    {
+      "text": "النِّظَامُ وَالتَّرْتِيبُ: أضع محفظتي في مكانها وأجمع أدواتي وأحافظ على نظافة طاولتي.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c7c3362adea7ccb6.mp3"
+      ]
+    },
+    {
+      "text": "احْتِرَامُ الدَّوْرِ: أقف بانتظام في الطابور وأنتظر دوري دون تدافع أو مزاحمة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7db19cbcf205351a.mp3"
+      ]
+    },
+    {
+      "text": "النِّظَامُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b8b3b10b53eff1c4.mp3"
+      ]
+    },
+    {
+      "text": "الدَّوْرُ وَالطَّابُورُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b98d66aec131360.mp3"
+      ]
+    },
+    {
+      "text": "تريد الإجابة عن سؤال المعلم:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ee68e713fdb0d1f8.mp3"
+      ]
+    },
+    {
+      "text": "أرفع إصبعي بهدوء وأنتظر أن يأذن لي المعلم.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7eb3f4d735d51341.mp3"
+      ]
+    },
+    {
+      "text": "ارسم مع الأطفال \"ميثاق القسم الجميل\": صور كرتونية تمثل رفع الأصبع، ترتيب المحفظة، ورمي الأوراق في السلة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-75a745b8ea4539b2.mp3"
+      ]
+    },
+    {
+      "text": "أنصت عند الشرح، أرتب أدواتي، وأحترم دوري في الطابور لأكون تلميذاً مثالياً.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-578232261235f490.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل عندما نريد التحدث أو الإجابة عن سؤال المعلم؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d6331e2bd6ed695.mp3"
+      ]
+    },
+    {
+      "text": "أين نضع الأوراق وبقايا المبراة للحفاظ على نظافة حجرة درسنا؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b587169089ba6960.mp3"
+      ]
+    },
+    {
+      "text": "المعلم يشرح. أنا؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e991bc1626a33b2.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نفعل عند الوقوف في الطابور الصباحي لتحية العلم الوطني؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2f5f73f349265e6b.mp3"
+      ]
+    },
+    {
+      "text": "نَقِفُ بِانْتِظَامٍ وَهُدُوءٍ وَنُحَيِّي العَلَمَ بِفَخْرٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rules-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ec7a8896b42a24f8.mp3"
+      ]
+    },
+    {
+      "text": "نتحرك ونلهو في الصف",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rules-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d3c1018e47be458e.mp3"
+      ]
+    },
+    {
+      "text": "الجرس للخروج",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3cb4b1ed90b36236.mp3"
+      ]
+    },
+    {
+      "text": "بِرَكْضٍ خَطِرٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-rules-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fd13572ce9b3b68d.mp3"
+      ]
+    },
+    {
+      "text": "أدوات زميل",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f782446cab43ee51.mp3"
+      ]
+    },
+    {
+      "text": "لَا نَأْخُذُهَا بِلَا إِذْنٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-rules-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-567c99c396e4a138.mp3"
+      ]
+    },
+    {
+      "text": "نَأْخُذُهَا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-rules-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bdbfaee1278eb654.mp3"
+      ]
+    },
+    {
+      "text": "في الطابور",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rules"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1628fa08e0eed52f.mp3"
+      ]
+    },
+    {
+      "text": "نَقِفُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rules-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4eb010596b74f031.mp3"
+      ]
+    },
+    {
+      "text": "نَدْفَعُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rules-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5265274ea9557681.mp3"
+      ]
+    },
+    {
+      "text": "اختر السلوك الصحيح داخل المدرسة!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3fbc87b725a76673.mp3"
+      ]
+    },
+    {
+      "text": "عند الشرب من الحنفية وهناك صف من الأطفال:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-baf72ea744f1e13d.mp3"
+      ]
+    },
+    {
+      "text": "أَقِفُ فِي الطَّابُورِ وَأَنْتَظِرُ دَوْرِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21c2db18ff1951cc.mp3"
+      ]
+    },
+    {
+      "text": "أتدافع لأشرب أولاً",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b0714c7547a5e32c.mp3"
+      ]
+    },
+    {
+      "text": "بعد انتهاء الحصة المدرسية:",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c00657db5106a67.mp3"
+      ]
+    },
+    {
+      "text": "أُرَتِّبُ أَدَوَاتِي فِي المِحْفَظَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e00d3803e172985e.mp3"
+      ]
+    },
+    {
+      "text": "أترك أشيائي مبعثرة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8cb412b8f57840a4.mp3"
+      ]
+    },
+    {
+      "text": "رفع اليد للكلام",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2576912357332e4c.mp3"
+      ]
+    },
+    {
+      "text": "نَقْطَعُ الكَلَامَ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ab19eed5d9d6ab6.mp3"
+      ]
+    },
+    {
+      "text": "القمامة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9ede3dd4b45aa0ff.mp3"
+      ]
+    },
+    {
+      "text": "فِي السَّلَّةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d895727bf8b6bd0f.mp3"
+      ]
+    },
+    {
+      "text": "عَلَى الأَرْضِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-classroom-rules",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d24988da4a98b50.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fb60ee45abb711b7.mp3"
+      ]
+    },
+    {
+      "text": "كل طفل في العالم له حقوق يجب أن يحصل عليها. ما هي الأشياء التي تحتاجها لتكبر سعيداً وبصحة جيدة؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "discovery-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9865193568952cc9.mp3"
+      ]
+    },
+    {
+      "text": "لِكُلِّ طِفْلٍ الحَقُّ فِي التَّعْلِيمِ : الذهاب إلى المدرسة والتعلم.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-42c5771927618cef.mp3"
+      ]
+    },
+    {
+      "text": "لِكُلِّ طِفْلٍ الحَقُّ فِي اللَّعِبِ وَالرَّاحَةِ : وقت للعب والاستمتاع بعد الدراسة.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5aeb907747663c28.mp3"
+      ]
+    },
+    {
+      "text": "لِكُلِّ طِفْلٍ الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ : من أسرته ومجتمعه.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1da423e51a50c892.mp3"
+      ]
+    },
+    {
+      "text": "وَعَلَيَّ أَيْضاً وَاجِبُ احْتِرَامِ حُقُوقِ أَصْدِقَائِي كَمَا أُحِبُّ أَنْ تُحْتَرَمَ حُقُوقِي.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0b572d1814f4a22d.mp3"
+      ]
+    },
+    {
+      "text": "الحَقُّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2aa83b2e24cb1d83.mp3"
+      ]
+    },
+    {
+      "text": "الوَاجِبُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8f35815e02ddb44a.mp3"
+      ]
+    },
+    {
+      "text": "ما هو حقك الذي يمكّنك من الذهاب إلى المدرسة والتعلم؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-problem"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4267dcbf21e3a1a0.mp3"
+      ]
+    },
+    {
+      "text": "الحَقُّ فِي التَّعْلِيمِ .",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "example-solution"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dfafb0ce07329f85.mp3"
+      ]
+    },
+    {
+      "text": "اطلب من الطفل رسم 3 دوائر: مدرسة (حق التعليم)، لعبة (حق اللعب)، وبيت دافئ مع أسرته (حق الحماية).",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "home-activity"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d30b1a8569d68cf.mp3"
+      ]
+    },
+    {
+      "text": "لي الحق في التعليم واللعب والحماية، وعليّ أيضاً احترام حقوق أصدقائي.",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "explanation",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-78d4d94bb95c1190.mp3"
+      ]
+    },
+    {
+      "text": "ما هو حقك الذي يمكّنك من الذهاب للمدرسة كل يوم؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex1-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9e692e2e594b7e9f.mp3"
+      ]
+    },
+    {
+      "text": "بماذا يجب أن أقابل حقوق أصدقائي؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex2-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-606e0bca9310c464.mp3"
+      ]
+    },
+    {
+      "text": "من حقوقي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "practice",
+          "key": "practice-ex3-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eeea6e2adb65c27a.mp3"
+      ]
+    },
+    {
+      "text": "ما هو حق كل طفل يحميه من الخطر ويرعاه؟",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9d3b55f54e571021.mp3"
+      ]
+    },
+    {
+      "text": "الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rights-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea10924cf83081ee.mp3"
+      ]
+    },
+    {
+      "text": "لاَ يُوجَدُ حَقٌّ لِلطِّفْلِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q1-civics1ap-rights-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9615b827ebe47fd2.mp3"
+      ]
+    },
+    {
+      "text": "الاسم والهوية",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bc2e9eab4d6fe2e4.mp3"
+      ]
+    },
+    {
+      "text": "حَقٌّ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q2-civics1ap-rights-opt-a"
+        },
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ec55f651be7f583.mp3"
+      ]
+    },
+    {
+      "text": "العنف",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q3-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e757e1487c2c10b4.mp3"
+      ]
+    },
+    {
+      "text": "الراحة والنوم",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rights"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9d0fee2cdb7385b5.mp3"
+      ]
+    },
+    {
+      "text": "أَحْتَاجُهُمَا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rights-opt-a"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b00611c8c1d6693c.mp3"
+      ]
+    },
+    {
+      "text": "بِلَا فَائِدَةٍ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "quiz",
+          "key": "quiz-q4-civics1ap-rights-opt-b"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-733f6aab97d8a619.mp3"
+      ]
+    },
+    {
+      "text": "اختر الحق الصحيح لكل طفل!",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-49be507071cd1b67.mp3"
+      ]
+    },
+    {
+      "text": "من حق كل طفل في وقت فراغه...",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a8e54bdbc3598b42.mp3"
+      ]
+    },
+    {
+      "text": "اللَّعِبُ وَالرَّاحَةُ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63ad8827c93514c6.mp3"
+      ]
+    },
+    {
+      "text": "العَمَلُ طُولَ اليَوْمِ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-60051520c4061d81.mp3"
+      ]
+    },
+    {
+      "text": "اللعب بعد الدراسة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a74a4137bd95fe2f.mp3"
+      ]
+    },
+    {
+      "text": "مَمْنُوعٌ دَائِمًا",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8559100b6bc74d96.mp3"
+      ]
+    },
+    {
+      "text": "الرعاية الصحية",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fbbec7434970ed73.mp3"
+      ]
+    },
+    {
+      "text": "حَقِّي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-649a2b3abe511ddb.mp3"
+      ]
+    },
+    {
+      "text": "لَيْسَتْ لِي",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-2-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4aa1989e9ddbe8d.mp3"
+      ]
+    },
+    {
+      "text": "التعلم في المدرسة",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6926cc68bfc5387.mp3"
+      ]
+    },
+    {
+      "text": "عِقَابٌ",
+      "targets": [
+        {
+          "lessonId": "civics-1ap-t3-child-rights",
+          "grade": "1AP",
+          "subject": "civics",
+          "category": "game",
+          "key": "game-3-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0fbe326672bcac42.mp3"
       ]
     },
     {

@@ -3381,6 +3381,894 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-7e6053a49aca29b9.mp3",
       "durationMs": 2000
     },
+    "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي": {
+      "src": "/sounds/preschool/ar/course-cedar-a4bceb38aae3b0d0.mp3",
+      "durationMs": 4250
+    },
+    "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d41ed914fc0dfc23.mp3",
+      "durationMs": 3850
+    },
+    "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-00b46b5706448f16.mp3",
+      "durationMs": 4000
+    },
+    "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-53fa221acc93d3b7.mp3",
+      "durationMs": 5250
+    },
+    "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3b4e92bf91e99f98.mp3",
+      "durationMs": 3050
+    },
+    "التَّحِيَّةُ: أقول \"السَّلاَمُ عَلَيْكُمْ\" عند دخول القسم أو لقاء الجيران والأصدقاء.": {
+      "src": "/sounds/preschool/ar/course-cedar-bf2dcc782b67aca1.mp3",
+      "durationMs": 7650
+    },
+    "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-fb60ee45abb711b7.mp3",
+      "durationMs": 4050
+    },
+    "دخل معلمك الفاضل إلى القسم صباحاً مبتسماً. ماذا تقول له بصوت واضح ومؤدب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f61b771b37ff617c.mp3",
+      "durationMs": 8750
+    },
+    "الرَّدُّ: أقول \"وَعَلَيْكُمُ السَّلاَمُ\" عندما يحييني أحد بابتسامة طيبة.": {
+      "src": "/sounds/preschool/ar/course-cedar-bedb845f5dc0f388.mp3",
+      "durationMs": 6750
+    },
+    "التَّحِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-068b73d845f4df95.mp3",
+      "durationMs": 2150
+    },
+    "احْتِرَامُ الكَبِيرِ: أستمع لأبي وأمي ومعلمي بهدوء، وأقدم لهم المساعدة إن احتاجوا.": {
+      "src": "/sounds/preschool/ar/course-cedar-2a707c5181d7ec1b.mp3",
+      "durationMs": 8750
+    },
+    "الاحْتِرَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-84366cb4326a0be7.mp3",
+      "durationMs": 1800
+    },
+    "إذا قال لك صديقك في الساحة: \"السلام عليكم\"، بم تردّ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ced204a4562c4cf9.mp3",
+      "durationMs": 5050
+    },
+    "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-20748450989ac364.mp3",
+      "durationMs": 2650
+    },
+    "العب مع الطفل لعبة المسرح الصغير: يلتقي شخصان، يبتسمان، يتصافحان باليد اليمنى ويتبادلان السلام بود.": {
+      "src": "/sounds/preschool/ar/course-cedar-230993de58091f14.mp3",
+      "durationMs": 11400
+    },
+    "أُلقي السلام: \"السلام عليكم\". أرد السلام: \"وعليكم السلام\". وأحترم الكبار وأستمع لهم بأدب.": {
+      "src": "/sounds/preschool/ar/course-cedar-ef1692f7e1cbf0dd.mp3",
+      "durationMs": 10850
+    },
+    "ما هي تحية الإسلام الجميلة التي نلقيها عند لقاء زملائنا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-696f060fc06aa5cc.mp3",
+      "durationMs": 6350
+    },
+    "كيف نتصرف عندما يتحدث إلينا والدا أو المعلم في القسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2f1bc2835239dc93.mp3",
+      "durationMs": 6650
+    },
+    "دخل المعلم. نقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2eb8a709529883ec.mp3",
+      "durationMs": 3050
+    },
+    "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9aac2d01cdd815bd.mp3",
+      "durationMs": 3350
+    },
+    "ماذا أقول عندما يلقي عليّ زميلي السلام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-221be424f0935b0e.mp3",
+      "durationMs": 4150
+    },
+    "أصمت ولا أرد": {
+      "src": "/sounds/preschool/ar/course-cedar-19f36073b3c0de41.mp3",
+      "durationMs": 2650
+    },
+    "نلقي التحية": {
+      "src": "/sounds/preschool/ar/course-cedar-a422c2bcb5f4012e.mp3",
+      "durationMs": 2700
+    },
+    "بِابْتِسَامَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-44230321b8c098f7.mp3",
+      "durationMs": 2350
+    },
+    "نَضْحَكُ عَلَيْهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-235a407b3d382b35.mp3",
+      "durationMs": 2100
+    },
+    "المسن في الشارع": {
+      "src": "/sounds/preschool/ar/course-cedar-42dbd93e7ce42f1c.mp3",
+      "durationMs": 2400
+    },
+    "بِدَفْعٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-4d9c4d886814cbaf.mp3",
+      "durationMs": 1650
+    },
+    "نُسَاعِدُهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0cad89f3d4ba582e.mp3",
+      "durationMs": 2000
+    },
+    "السلام عليكم تحية": {
+      "src": "/sounds/preschool/ar/course-cedar-a5b6e7d70af29d5a.mp3",
+      "durationMs": 2500
+    },
+    "إِسْلَامِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-b5f9594d4dafcc5a.mp3",
+      "durationMs": 1550
+    },
+    "رَقْمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-88912229ea0a3beb.mp3",
+      "durationMs": 1200
+    },
+    "اختر الرد الصحيح والمهذب لكل موقف!": {
+      "src": "/sounds/preschool/ar/course-cedar-5c72b4fa2a370f72.mp3",
+      "durationMs": 4300
+    },
+    "إِلَى اللِّقَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3a5eff3d27bdb177.mp3",
+      "durationMs": 1800
+    },
+    "حياك جارك وقال: \"السلام عليكم\"": {
+      "src": "/sounds/preschool/ar/course-cedar-b2eb72ccd33f079e.mp3",
+      "durationMs": 4550
+    },
+    "عند مغادرة القسم في نهاية اليوم نقول:": {
+      "src": "/sounds/preschool/ar/course-cedar-cdaa835a1c993b21.mp3",
+      "durationMs": 4450
+    },
+    "إِلَى اللِّقَاءِ يَا مُعَلِّمِي / مَعَ السَّلاَمَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e556d69f51696105.mp3",
+      "durationMs": 5850
+    },
+    "صباح الخير": {
+      "src": "/sounds/preschool/ar/course-cedar-e9c9f53b0e3524e0.mp3",
+      "durationMs": 2000
+    },
+    "الكبار نحترمهم": {
+      "src": "/sounds/preschool/ar/course-cedar-744ff148b075f1a8.mp3",
+      "durationMs": 2400
+    },
+    "نَسْخَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a05517fb7f50751c.mp3",
+      "durationMs": 2050
+    },
+    "رد السلام": {
+      "src": "/sounds/preschool/ar/course-cedar-710e636bc8a4dd3f.mp3",
+      "durationMs": 1500
+    },
+    "وَعَلَيْكُمُ السَّلَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-941764095796b5a0.mp3",
+      "durationMs": 1900
+    },
+    "صَمْتٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a6f091227e936d4e.mp3",
+      "durationMs": 1750
+    },
+    "إذا سألك أحد الكبار في الشارع: \"من أنت وما اسم مدرستك؟\"، ماذا تجيبه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-790cb71f7b6e5e58.mp3",
+      "durationMs": 7200
+    },
+    "هُوِيَّتِي: اسمي الكامل ولقبي وتاريخ ميلادي التي أحفظها جيداً.": {
+      "src": "/sounds/preschool/ar/course-cedar-50e27bfa22d91a3a.mp3",
+      "durationMs": 7250
+    },
+    "أُحَافِظُ عَلَى بِطَاقَتِي: أضعها في مكان آمن في محفظتي، ولا أمزقها أو ألعب بها.": {
+      "src": "/sounds/preschool/ar/course-cedar-69ccc88fab1031c3.mp3",
+      "durationMs": 8050
+    },
+    "الهُوِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-62a781752c5a08e8.mp3",
+      "durationMs": 1850
+    },
+    "بِطَاقَتِي المَدْرَسِيَّةُ: تحمل اسمي وصورتي واسم مدرستي وقسمي، وتُعرّف بي داخل المدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-5e0fd7357a3a3795.mp3",
+      "durationMs": 10750
+    },
+    "البِطَاقَةُ المَدْرَسِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-179444a7e29ec8e3.mp3",
+      "durationMs": 2550
+    },
+    "سألك حارس المدرسة عن اسم قسمك، ماذا تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d188240835affca3.mp3",
+      "durationMs": 4800
+    },
+    "أُخْبِرُهُ بِاسْمِ قِسْمِي بِوُضُوحٍ وَثِقَةٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-477b5b7a8a38feae.mp3",
+      "durationMs": 4300
+    },
+    "أحفظ اسمي الكامل ومدرستي وقسمي، وأحافظ على بطاقتي المدرسية التي تعرّف بي.": {
+      "src": "/sounds/preschool/ar/course-cedar-46688a19527bfef4.mp3",
+      "durationMs": 8500
+    },
+    "اطلب من الطفل تكرار اسمه الكامل ولقبه واسم مدرسته وقسمه بصوت واضح، كأنه يقدم نفسه لصديق جديد.": {
+      "src": "/sounds/preschool/ar/course-cedar-64f5f0c3a3bfc921.mp3",
+      "durationMs": 12200
+    },
+    "ماذا يجب أن أحفظ جيداً عن نفسي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1896753f667d40a8.mp3",
+      "durationMs": 4250
+    },
+    "ماذا أفعل ببطاقتي المدرسية للمحافظة عليها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7cc96652e399bdbf.mp3",
+      "durationMs": 5700
+    },
+    "البطاقة المدرسية فيها": {
+      "src": "/sounds/preschool/ar/course-cedar-df1bcd8fed3cef6f.mp3",
+      "durationMs": 3450
+    },
+    "لماذا نحافظ على بطاقتنا المدرسية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f99e622838c740aa.mp3",
+      "durationMs": 4050
+    },
+    "لِأَنَّهَا تُعَرِّفُ بِي وَبِمَدْرَسَتِي": {
+      "src": "/sounds/preschool/ar/course-cedar-e22fe53dd442b509.mp3",
+      "durationMs": 3500
+    },
+    "اسمي أقوله": {
+      "src": "/sounds/preschool/ar/course-cedar-16aa96ea54e51ff8.mp3",
+      "durationMs": 2050
+    },
+    "لِأَلْعَبَ بِهَا فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2ccd6b686a5695c.mp3",
+      "durationMs": 2900
+    },
+    "وَاضِحًا": {
+      "src": "/sounds/preschool/ar/course-cedar-a182f3d4e70ef6c2.mp3",
+      "durationMs": 1200
+    },
+    "عَلَى البِطَاقَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-855f58b825ec1f85.mp3",
+      "durationMs": 2450
+    },
+    "سِرٌّ مَمْنُوعٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-074d395bfdc247f1.mp3",
+      "durationMs": 2900
+    },
+    "القسم رقم": {
+      "src": "/sounds/preschool/ar/course-cedar-2a6261911657fc93.mp3",
+      "durationMs": 2300
+    },
+    "الصورة على البطاقة": {
+      "src": "/sounds/preschool/ar/course-cedar-f201471a4764ffb2.mp3",
+      "durationMs": 2550
+    },
+    "صُورَتِي": {
+      "src": "/sounds/preschool/ar/course-cedar-61f73df9f0b4618a.mp3",
+      "durationMs": 2050
+    },
+    "صُورَةُ حَيَوَانٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-97ceb3e3ded55c46.mp3",
+      "durationMs": 2600
+    },
+    "اختر ما تحتويه بطاقتك المدرسية!": {
+      "src": "/sounds/preschool/ar/course-cedar-67a7e174f7ce57bc.mp3",
+      "durationMs": 3200
+    },
+    "بطاقتي المدرسية تحمل...": {
+      "src": "/sounds/preschool/ar/course-cedar-1626f2a835c9faa8.mp3",
+      "durationMs": 4350
+    },
+    "لُعْبَتِي المُفَضَّلَةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-2de7e23ecb706d68.mp3",
+      "durationMs": 2200
+    },
+    "اسْمِي وَصُورَتِي وَاسْمَ مَدْرَسَتِي وَقِسْمِي": {
+      "src": "/sounds/preschool/ar/course-cedar-69594e69e1785135.mp3",
+      "durationMs": 4800
+    },
+    "مدرستي اسمها على": {
+      "src": "/sounds/preschool/ar/course-cedar-f48afbe78510e9c3.mp3",
+      "durationMs": 3200
+    },
+    "البِطَاقَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9164a377a03dca3c.mp3",
+      "durationMs": 2800
+    },
+    "القَمَرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e5b4402a5d7d59a6.mp3",
+      "durationMs": 1600
+    },
+    "أُمَزِّقُهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-3a3efe33a31c61b7.mp3",
+      "durationMs": 1700
+    },
+    "القسم مكتوب على": {
+      "src": "/sounds/preschool/ar/course-cedar-ea28b7cfd4d1103f.mp3",
+      "durationMs": 2600
+    },
+    "أحفظ بطاقتي": {
+      "src": "/sounds/preschool/ar/course-cedar-e80e34db003aa9c4.mp3",
+      "durationMs": 2350
+    },
+    "الكُرَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6819360fa39b9ebc.mp3",
+      "durationMs": 1450
+    },
+    "نسي صديقك مقلمته في البيت ولا يملك قلماً ليكتب به الدرس. كيف تساعده وتسعده؟": {
+      "src": "/sounds/preschool/ar/course-cedar-58714f3c0bdeb7ca.mp3",
+      "durationMs": 8900
+    },
+    "المُشَارَكَةُ: أن أقاسم أشيائي وأدواتي مع أصدقائي لتعم الفائدة والبهجة.": {
+      "src": "/sounds/preschool/ar/course-cedar-b217ed61d239588a.mp3",
+      "durationMs": 9050
+    },
+    "المُسَاعَدَةُ: أمد يد العون لرفيقي إن سقط أو تعثر أو احتاج لأداة مدرسية.": {
+      "src": "/sounds/preschool/ar/course-cedar-953db1287a32a5be.mp3",
+      "durationMs": 8950
+    },
+    "التَّعَاوُنُ: نعمل معاً كفريق واحد لننجح جميعاً في الألعاب والواجبات.": {
+      "src": "/sounds/preschool/ar/course-cedar-f4711c9d91127dff.mp3",
+      "durationMs": 8250
+    },
+    "التَّعَاوُنُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d1a0dd494c3e402e.mp3",
+      "durationMs": 1800
+    },
+    "زميلك نسي ممحاته في البيت:": {
+      "src": "/sounds/preschool/ar/course-cedar-687b07eb6e014141.mp3",
+      "durationMs": 3750
+    },
+    "الإِيثَارُ وَالمُشَارَكَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-33374e003d6f0331.mp3",
+      "durationMs": 3100
+    },
+    "أعيره ممحاتي ليكتب درسه ثم يعيدها لي بلطف.": {
+      "src": "/sounds/preschool/ar/course-cedar-8d85c9af62705583.mp3",
+      "durationMs": 5600
+    },
+    "أُشارك ألعابي وأدواتي، أتعاون مع رفاقي، وأساعد من يحتاج مساعدتي.": {
+      "src": "/sounds/preschool/ar/course-cedar-b5859910678ea182.mp3",
+      "durationMs": 8600
+    },
+    "سقطت علبة ألوان زميلك على أرض القسم. ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-202a9528f084d3e9.mp3",
+      "durationMs": 6850
+    },
+    "ما هو السلوك الذي يجعل التلاميذ ينهون تنظيف القسم بسرعة وفرح؟": {
+      "src": "/sounds/preschool/ar/course-cedar-16454bcb499b1a8b.mp3",
+      "durationMs": 6650
+    },
+    "أعط الطفلين أُحْجِيَّةً (لُعْبَةَ تَرْكِيبٍ) ليركباها معاً، واجعلهما يشعران بفرحة الإنجاز المشترك.": {
+      "src": "/sounds/preschool/ar/course-cedar-cbec1403b8cee550.mp3",
+      "durationMs": 10100
+    },
+    "لعبة واحدة وصديقان": {
+      "src": "/sounds/preschool/ar/course-cedar-8877ef5402a508b7.mp3",
+      "durationMs": 4250
+    },
+    "ماذا نفعل عندما نرى زميلنا في القسم بحاجة لمساعدة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6bd99bbc4f4460f6.mp3",
+      "durationMs": 5800
+    },
+    "نُسَاعِدُهُ بِسُرُورٍ وَلُطْفٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-a6b9107aa31434d7.mp3",
+      "durationMs": 4500
+    },
+    "نتجاهله ولا نساعده": {
+      "src": "/sounds/preschool/ar/course-cedar-6fb0c27c00f068b5.mp3",
+      "durationMs": 3600
+    },
+    "التعاون يعني": {
+      "src": "/sounds/preschool/ar/course-cedar-774d0f3f689c6748.mp3",
+      "durationMs": 1750
+    },
+    "نَعْمَلُ مَعًا": {
+      "src": "/sounds/preschool/ar/course-cedar-b32257f4ec13074a.mp3",
+      "durationMs": 1850
+    },
+    "نَتَشَاجَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3d2b418ce97e30ad.mp3",
+      "durationMs": 2100
+    },
+    "صديقي حزين": {
+      "src": "/sounds/preschool/ar/course-cedar-5e32d73640ef3741.mp3",
+      "durationMs": 2350
+    },
+    "أَتْرُكُهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9cd1fbb587aa266e.mp3",
+      "durationMs": 2050
+    },
+    "في الفريق": {
+      "src": "/sounds/preschool/ar/course-cedar-c45a2317fbbb2813.mp3",
+      "durationMs": 1050
+    },
+    "أُوَاسِيهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-47cacfc3ad706452.mp3",
+      "durationMs": 3450
+    },
+    "كُلُّنَا نُسَاهِمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d9cf19856d989d50.mp3",
+      "durationMs": 2300
+    },
+    "وَاحِدٌ فَقَطْ يَلْعَبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ebb1fe6b47f9f089.mp3",
+      "durationMs": 3300
+    },
+    "عندك قلم تلوين إضافي وزميلك يحتاجه:": {
+      "src": "/sounds/preschool/ar/course-cedar-a40648b3d0a203e2.mp3",
+      "durationMs": 5400
+    },
+    "اختر السلوك الذي يدل على المشاركة والتعاون!": {
+      "src": "/sounds/preschool/ar/course-cedar-b6140649bb3c2af7.mp3",
+      "durationMs": 4850
+    },
+    "أُعِيرُهُ لَهُ بِلُطْفٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-de2b0539a4aca571.mp3",
+      "durationMs": 3200
+    },
+    "أخبئه في المحفظة": {
+      "src": "/sounds/preschool/ar/course-cedar-e2778957b3ad823b.mp3",
+      "durationMs": 2150
+    },
+    "مساعدة زميل سقطت أقلامه": {
+      "src": "/sounds/preschool/ar/course-cedar-fcfb56a5efb4c593.mp3",
+      "durationMs": 3800
+    },
+    "نُسَاعِدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0be7675ae971778a.mp3",
+      "durationMs": 2150
+    },
+    "نَضْحَكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0096a9cf70e06959.mp3",
+      "durationMs": 1150
+    },
+    "الكراسة نقسم الألوان": {
+      "src": "/sounds/preschool/ar/course-cedar-d98ca3c39eb467a4.mp3",
+      "durationMs": 3200
+    },
+    "نَمْنَعُ الكُلَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-19f235bd4b7537ce.mp3",
+      "durationMs": 2200
+    },
+    "اللعبة نتبادلها": {
+      "src": "/sounds/preschool/ar/course-cedar-e9b96426f742c42b.mp3",
+      "durationMs": 2450
+    },
+    "بِدَوْرٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-b221327dfc97f8a9.mp3",
+      "durationMs": 1700
+    },
+    "بِعِرَاكٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-f83acd34e829691d.mp3",
+      "durationMs": 1950
+    },
+    "كل صباح في المدرسة، ماذا نرفع في الطابور ونحن واقفون بهدوء واعتزاز؟": {
+      "src": "/sounds/preschool/ar/course-cedar-291ad5fa9fb8e4c5.mp3",
+      "durationMs": 7000
+    },
+    "الجَزَائِرُ وَطَنِي الغَالِي الذي أُحِبُّهُ وَأَفْتَخِرُ بِالانْتِمَاءِ إِلَيْهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-79b940d25008e3e5.mp3",
+      "durationMs": 7800
+    },
+    "العَلَمُ الوَطَنِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-e4d36477e08f9bf6.mp3",
+      "durationMs": 2500
+    },
+    "عَلَمُ الجَزَائِرِ : لونان جميلان، الأخضر والأبيض، وفي وسطه هلال ونجمة حمراء.": {
+      "src": "/sounds/preschool/ar/course-cedar-dc86548d4475849b.mp3",
+      "durationMs": 9500
+    },
+    "النَّشِيدُ الوَطَنِيُّ : اسمه \"قَسَماً\"، نردده أو نستمع إليه بهدوء واحترام.": {
+      "src": "/sounds/preschool/ar/course-cedar-47aff33fc4c4c158.mp3",
+      "durationMs": 8350
+    },
+    "النَّشِيدُ الوَطَنِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-90e77aac7715363e.mp3",
+      "durationMs": 3550
+    },
+    "الأَخْضَرُ وَالأَبْيَضُ .": {
+      "src": "/sounds/preschool/ar/course-cedar-0485370559409dc5.mp3",
+      "durationMs": 3700
+    },
+    "ما هما لونا علم الجزائر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d58e0b7108f7f15c.mp3",
+      "durationMs": 3450
+    },
+    "علم الجزائر أخضر وأبيض بهلال ونجمة حمراء، ونشيدها الوطني \"قسماً\"، أحترمهما بفخر واعتزاز.": {
+      "src": "/sounds/preschool/ar/course-cedar-e6fcf4ebd4c6f493.mp3",
+      "durationMs": 12000
+    },
+    "ارسم مع الطفل علم الجزائر بالألوان الصحيحة (أخضر وأبيض مع هلال ونجمة حمراء)، وشغّل معه النشيد الوطني ليستمع إليه واقفاً بهدوء.": {
+      "src": "/sounds/preschool/ar/course-cedar-a7c537b2bdc1e598.mp3",
+      "durationMs": 14350
+    },
+    "ما هما لونا علم بلادي الجزائر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a5271d8a3aaa4d4a.mp3",
+      "durationMs": 3750
+    },
+    "ما اسم النشيد الوطني الجزائري؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dfecd2e8666617a0.mp3",
+      "durationMs": 3500
+    },
+    "أَلْوَانُ العَلَمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a003612874adca03.mp3",
+      "durationMs": 1850
+    },
+    "ماذا نرى في وسط علم الجزائر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-98b56047f58e9207.mp3",
+      "durationMs": 3600
+    },
+    "هِلاَلٌ وَنَجْمَةٌ حَمْرَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-aca159009688261a.mp3",
+      "durationMs": 5050
+    },
+    "شَمْسٌ صَفْرَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1f44c6208e445869.mp3",
+      "durationMs": 2300
+    },
+    "علم بلادي": {
+      "src": "/sounds/preschool/ar/course-cedar-7c993775a4a41bb3.mp3",
+      "durationMs": 1850
+    },
+    "الجَزَائِرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-340a8f8cedeaf6d8.mp3",
+      "durationMs": 1600
+    },
+    "بَلَدٌ آخَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9f45b087420e1183.mp3",
+      "durationMs": 3000
+    },
+    "الهلال والنجمة على": {
+      "src": "/sounds/preschool/ar/course-cedar-5cea4fe37e170f0b.mp3",
+      "durationMs": 3000
+    },
+    "العَلَمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1dfaed681bb05727.mp3",
+      "durationMs": 2350
+    },
+    "الكُرَةِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-92b41ef6eb0ea08c.mp3",
+      "durationMs": 2800
+    },
+    "النَّشِيدَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d82cb7da7135f899.mp3",
+      "durationMs": 1550
+    },
+    "قاسمي أحترم": {
+      "src": "/sounds/preschool/ar/course-cedar-eb4368ab5435bb1a.mp3",
+      "durationMs": 2150
+    },
+    "الفَوْضَى": {
+      "src": "/sounds/preschool/ar/course-cedar-894a8512468bde97.mp3",
+      "durationMs": 1450
+    },
+    "يُرفع العلم الوطني في طابور الصباح": {
+      "src": "/sounds/preschool/ar/course-cedar-ad154603d9521f68.mp3",
+      "durationMs": 4800
+    },
+    "اختر التصرف الصحيح تجاه رموز وطنك!": {
+      "src": "/sounds/preschool/ar/course-cedar-52ef39fbe123aa97.mp3",
+      "durationMs": 4700
+    },
+    "أَقِفُ بِهُدُوءٍ وَاحْتِرَامٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-d33231464e4ea3da.mp3",
+      "durationMs": 4100
+    },
+    "أَتَحَدَّثُ مَعَ رَفِيقِي": {
+      "src": "/sounds/preschool/ar/course-cedar-a48194f79bfe7cd3.mp3",
+      "durationMs": 2450
+    },
+    "النشيد الوطني نسمعه": {
+      "src": "/sounds/preschool/ar/course-cedar-db61d71f52588cc9.mp3",
+      "durationMs": 4050
+    },
+    "وَاقِفِينَ": {
+      "src": "/sounds/preschool/ar/course-cedar-bc5885b6f6829b5b.mp3",
+      "durationMs": 1500
+    },
+    "نَصْفُ العَلَمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ae75af0b3876d877.mp3",
+      "durationMs": 2200
+    },
+    "الأخضر في العلم": {
+      "src": "/sounds/preschool/ar/course-cedar-f64c5fd72c61dfa8.mp3",
+      "durationMs": 3250
+    },
+    "نَضْحَكُ بِصَوْتٍ عَالٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-3416848b00a367bc.mp3",
+      "durationMs": 2950
+    },
+    "كُلُّ العَلَمِ أَحْمَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-53351512b4dfbb15.mp3",
+      "durationMs": 1900
+    },
+    "بِرَكْضٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-c2624f112eb7671d.mp3",
+      "durationMs": 1600
+    },
+    "نحترم العلم": {
+      "src": "/sounds/preschool/ar/course-cedar-db918f2df8d27094.mp3",
+      "durationMs": 2350
+    },
+    "لا، الهدوء هو سر النجاح!": {
+      "src": "/sounds/preschool/ar/course-cedar-913bdcb15a47627a.mp3",
+      "durationMs": 3450
+    },
+    "تخيل لو تحدث جميع التلاميذ في وقت واحد بصوت عالٍ، هل يستطيع أحد أن يفهم الدرس؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c44e836c2cae60e9.mp3",
+      "durationMs": 9450
+    },
+    "النِّظَامُ وَالتَّرْتِيبُ: أضع محفظتي في مكانها وأجمع أدواتي وأحافظ على نظافة طاولتي.": {
+      "src": "/sounds/preschool/ar/course-cedar-c7c3362adea7ccb6.mp3",
+      "durationMs": 8900
+    },
+    "الهُدُوءُ وَالاسْتِمَاعُ: أنصت لمعلمي وأرفع إصبعي للاستئذان قبل الكلام.": {
+      "src": "/sounds/preschool/ar/course-cedar-d9010cfcbf8a6533.mp3",
+      "durationMs": 8050
+    },
+    "النِّظَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b8b3b10b53eff1c4.mp3",
+      "durationMs": 1700
+    },
+    "احْتِرَامُ الدَّوْرِ: أقف بانتظام في الطابور وأنتظر دوري دون تدافع أو مزاحمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-7db19cbcf205351a.mp3",
+      "durationMs": 8650
+    },
+    "تريد الإجابة عن سؤال المعلم:": {
+      "src": "/sounds/preschool/ar/course-cedar-ee68e713fdb0d1f8.mp3",
+      "durationMs": 2650
+    },
+    "الدَّوْرُ وَالطَّابُورُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3b98d66aec131360.mp3",
+      "durationMs": 2450
+    },
+    "أرفع إصبعي بهدوء وأنتظر أن يأذن لي المعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-7eb3f4d735d51341.mp3",
+      "durationMs": 5150
+    },
+    "ماذا نفعل عندما نريد التحدث أو الإجابة عن سؤال المعلم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4d6331e2bd6ed695.mp3",
+      "durationMs": 5550
+    },
+    "أنصت عند الشرح، أرتب أدواتي، وأحترم دوري في الطابور لأكون تلميذاً مثالياً.": {
+      "src": "/sounds/preschool/ar/course-cedar-578232261235f490.mp3",
+      "durationMs": 7800
+    },
+    "ارسم مع الأطفال \"ميثاق القسم الجميل\": صور كرتونية تمثل رفع الأصبع، ترتيب المحفظة، ورمي الأوراق في السلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-75a745b8ea4539b2.mp3",
+      "durationMs": 10450
+    },
+    "أين نضع الأوراق وبقايا المبراة للحفاظ على نظافة حجرة درسنا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b587169089ba6960.mp3",
+      "durationMs": 6450
+    },
+    "المعلم يشرح. أنا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6e991bc1626a33b2.mp3",
+      "durationMs": 3800
+    },
+    "ماذا نفعل عند الوقوف في الطابور الصباحي لتحية العلم الوطني؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2f5f73f349265e6b.mp3",
+      "durationMs": 5750
+    },
+    "نتحرك ونلهو في الصف": {
+      "src": "/sounds/preschool/ar/course-cedar-d3c1018e47be458e.mp3",
+      "durationMs": 3850
+    },
+    "نَقِفُ بِانْتِظَامٍ وَهُدُوءٍ وَنُحَيِّي العَلَمَ بِفَخْرٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-ec7a8896b42a24f8.mp3",
+      "durationMs": 5100
+    },
+    "أدوات زميل": {
+      "src": "/sounds/preschool/ar/course-cedar-f782446cab43ee51.mp3",
+      "durationMs": 1850
+    },
+    "بِرَكْضٍ خَطِرٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-fd13572ce9b3b68d.mp3",
+      "durationMs": 2800
+    },
+    "لَا نَأْخُذُهَا بِلَا إِذْنٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-567c99c396e4a138.mp3",
+      "durationMs": 2800
+    },
+    "الجرس للخروج": {
+      "src": "/sounds/preschool/ar/course-cedar-3cb4b1ed90b36236.mp3",
+      "durationMs": 2900
+    },
+    "نَأْخُذُهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-bdbfaee1278eb654.mp3",
+      "durationMs": 3150
+    },
+    "في الطابور": {
+      "src": "/sounds/preschool/ar/course-cedar-1628fa08e0eed52f.mp3",
+      "durationMs": 1800
+    },
+    "نَدْفَعُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5265274ea9557681.mp3",
+      "durationMs": 1200
+    },
+    "نَقِفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4eb010596b74f031.mp3",
+      "durationMs": 2650
+    },
+    "اختر السلوك الصحيح داخل المدرسة!": {
+      "src": "/sounds/preschool/ar/course-cedar-3fbc87b725a76673.mp3",
+      "durationMs": 3650
+    },
+    "عند الشرب من الحنفية وهناك صف من الأطفال:": {
+      "src": "/sounds/preschool/ar/course-cedar-baf72ea744f1e13d.mp3",
+      "durationMs": 4700
+    },
+    "أَقِفُ فِي الطَّابُورِ وَأَنْتَظِرُ دَوْرِي": {
+      "src": "/sounds/preschool/ar/course-cedar-21c2db18ff1951cc.mp3",
+      "durationMs": 3450
+    },
+    "أتدافع لأشرب أولاً": {
+      "src": "/sounds/preschool/ar/course-cedar-b0714c7547a5e32c.mp3",
+      "durationMs": 3300
+    },
+    "أترك أشيائي مبعثرة": {
+      "src": "/sounds/preschool/ar/course-cedar-8cb412b8f57840a4.mp3",
+      "durationMs": 3050
+    },
+    "بعد انتهاء الحصة المدرسية:": {
+      "src": "/sounds/preschool/ar/course-cedar-5c00657db5106a67.mp3",
+      "durationMs": 2700
+    },
+    "أُرَتِّبُ أَدَوَاتِي فِي المِحْفَظَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e00d3803e172985e.mp3",
+      "durationMs": 3350
+    },
+    "رفع اليد للكلام": {
+      "src": "/sounds/preschool/ar/course-cedar-2576912357332e4c.mp3",
+      "durationMs": 2900
+    },
+    "فِي السَّلَّةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d895727bf8b6bd0f.mp3",
+      "durationMs": 1550
+    },
+    "القمامة": {
+      "src": "/sounds/preschool/ar/course-cedar-9ede3dd4b45aa0ff.mp3",
+      "durationMs": 1300
+    },
+    "عَلَى الأَرْضِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4d24988da4a98b50.mp3",
+      "durationMs": 1550
+    },
+    "نَقْطَعُ الكَلَامَ": {
+      "src": "/sounds/preschool/ar/course-cedar-4ab19eed5d9d6ab6.mp3",
+      "durationMs": 2250
+    },
+    "لِكُلِّ طِفْلٍ الحَقُّ فِي التَّعْلِيمِ : الذهاب إلى المدرسة والتعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-42c5771927618cef.mp3",
+      "durationMs": 6300
+    },
+    "لِكُلِّ طِفْلٍ الحَقُّ فِي اللَّعِبِ وَالرَّاحَةِ : وقت للعب والاستمتاع بعد الدراسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-5aeb907747663c28.mp3",
+      "durationMs": 7500
+    },
+    "لِكُلِّ طِفْلٍ الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ : من أسرته ومجتمعه.": {
+      "src": "/sounds/preschool/ar/course-cedar-1da423e51a50c892.mp3",
+      "durationMs": 6100
+    },
+    "كل طفل في العالم له حقوق يجب أن يحصل عليها. ما هي الأشياء التي تحتاجها لتكبر سعيداً وبصحة جيدة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9865193568952cc9.mp3",
+      "durationMs": 11250
+    },
+    "الحَقُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-2aa83b2e24cb1d83.mp3",
+      "durationMs": 1400
+    },
+    "الوَاجِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-8f35815e02ddb44a.mp3",
+      "durationMs": 1400
+    },
+    "ما هو حقك الذي يمكّنك من الذهاب إلى المدرسة والتعلم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4267dcbf21e3a1a0.mp3",
+      "durationMs": 6300
+    },
+    "وَعَلَيَّ أَيْضاً وَاجِبُ احْتِرَامِ حُقُوقِ أَصْدِقَائِي كَمَا أُحِبُّ أَنْ تُحْتَرَمَ حُقُوقِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-0b572d1814f4a22d.mp3",
+      "durationMs": 8100
+    },
+    "الحَقُّ فِي التَّعْلِيمِ .": {
+      "src": "/sounds/preschool/ar/course-cedar-dfafb0ce07329f85.mp3",
+      "durationMs": 2850
+    },
+    "اطلب من الطفل رسم 3 دوائر: مدرسة (حق التعليم)، لعبة (حق اللعب)، وبيت دافئ مع أسرته (حق الحماية).": {
+      "src": "/sounds/preschool/ar/course-cedar-8d30b1a8569d68cf.mp3",
+      "durationMs": 11800
+    },
+    "لي الحق في التعليم واللعب والحماية، وعليّ أيضاً احترام حقوق أصدقائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-78d4d94bb95c1190.mp3",
+      "durationMs": 7900
+    },
+    "ما هو حقك الذي يمكّنك من الذهاب للمدرسة كل يوم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9e692e2e594b7e9f.mp3",
+      "durationMs": 5950
+    },
+    "بماذا يجب أن أقابل حقوق أصدقائي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-606e0bca9310c464.mp3",
+      "durationMs": 4850
+    },
+    "من حقوقي": {
+      "src": "/sounds/preschool/ar/course-cedar-eeea6e2adb65c27a.mp3",
+      "durationMs": 2250
+    },
+    "ما هو حق كل طفل يحميه من الخطر ويرعاه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9d3b55f54e571021.mp3",
+      "durationMs": 5300
+    },
+    "لاَ يُوجَدُ حَقٌّ لِلطِّفْلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9615b827ebe47fd2.mp3",
+      "durationMs": 2800
+    },
+    "الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ea10924cf83081ee.mp3",
+      "durationMs": 3050
+    },
+    "الاسم والهوية": {
+      "src": "/sounds/preschool/ar/course-cedar-bc2e9eab4d6fe2e4.mp3",
+      "durationMs": 2400
+    },
+    "حَقٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-6ec55f651be7f583.mp3",
+      "durationMs": 1400
+    },
+    "العنف": {
+      "src": "/sounds/preschool/ar/course-cedar-e757e1487c2c10b4.mp3",
+      "durationMs": 1350
+    },
+    "الراحة والنوم": {
+      "src": "/sounds/preschool/ar/course-cedar-9d0fee2cdb7385b5.mp3",
+      "durationMs": 2350
+    },
+    "أَحْتَاجُهُمَا": {
+      "src": "/sounds/preschool/ar/course-cedar-b00611c8c1d6693c.mp3",
+      "durationMs": 1850
+    },
+    "بِلَا فَائِدَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-733f6aab97d8a619.mp3",
+      "durationMs": 2200
+    },
+    "اختر الحق الصحيح لكل طفل!": {
+      "src": "/sounds/preschool/ar/course-cedar-49be507071cd1b67.mp3",
+      "durationMs": 3050
+    },
+    "من حق كل طفل في وقت فراغه...": {
+      "src": "/sounds/preschool/ar/course-cedar-a8e54bdbc3598b42.mp3",
+      "durationMs": 2900
+    },
+    "اللَّعِبُ وَالرَّاحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-63ad8827c93514c6.mp3",
+      "durationMs": 3050
+    },
+    "العَمَلُ طُولَ اليَوْمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-60051520c4061d81.mp3",
+      "durationMs": 2100
+    },
+    "اللعب بعد الدراسة": {
+      "src": "/sounds/preschool/ar/course-cedar-a74a4137bd95fe2f.mp3",
+      "durationMs": 2950
+    },
+    "حَقِّي": {
+      "src": "/sounds/preschool/ar/course-cedar-649a2b3abe511ddb.mp3",
+      "durationMs": 850
+    },
+    "لَيْسَتْ لِي": {
+      "src": "/sounds/preschool/ar/course-cedar-e4aa1989e9ddbe8d.mp3",
+      "durationMs": 1200
+    },
+    "مَمْنُوعٌ دَائِمًا": {
+      "src": "/sounds/preschool/ar/course-cedar-8559100b6bc74d96.mp3",
+      "durationMs": 2300
+    },
+    "الرعاية الصحية": {
+      "src": "/sounds/preschool/ar/course-cedar-fbbec7434970ed73.mp3",
+      "durationMs": 1850
+    },
+    "عِقَابٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-0fbe326672bcac42.mp3",
+      "durationMs": 1800
+    },
+    "التعلم في المدرسة": {
+      "src": "/sounds/preschool/ar/course-cedar-b6926cc68bfc5387.mp3",
+      "durationMs": 2250
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

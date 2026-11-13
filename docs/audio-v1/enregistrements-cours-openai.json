@@ -11386,6 +11386,3349 @@
           "course:arabic-1ap-t3-childhood-holidays:game-3-opt-1",
           "course:islamic-1ap-t1-fatiha-basmala:game-2-opt-1"
         ]
+      },
+      {
+        "texte": "أُشَارِكُ وَأَتَعَاوَنُ مَعَ رِفَاقِي",
+        "fichier": "course-cedar-a4bceb38aae3b0d0.mp3",
+        "duration": 4.25,
+        "sha256": "6293f8de9cc5d43b4b7453f2e3eaa58f633b9b3d5157115db6a1b4b32c79468e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:41.594Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1f145143dbfacee9430f1237ce838a7fbd8d14b24bb686bf9d25528706905906",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:title"
+        ]
+      },
+      {
+        "texte": "أُلْقِي التَّحِيَّةَ وَأَحْتَرِمُ الكِبَارَ",
+        "fichier": "course-cedar-d41ed914fc0dfc23.mp3",
+        "duration": 3.85,
+        "sha256": "ec27e4e71cca37f1ce32906ae66ac7d351dd64d271e3ecc1dfeeba3ba51b8f97",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:42.387Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "82e0fa727608d607858a18edc800ef0b0f15d142c035d82f985144c2a3fbf667",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:title"
+        ]
+      },
+      {
+        "texte": "أُحِبُّ عَلَمَ بِلاَدِي وَنَشِيدَهَا الوَطَنِيَّ",
+        "fichier": "course-cedar-00b46b5706448f16.mp3",
+        "duration": 4,
+        "sha256": "62c6aef04e4091188b871c89dd9f5d104b83a9f65953c59cb1d0a5c21c5560ef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:42.442Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "18f5e73ae078eca4e4361add63b7609a2d501ea68ea40d05d09f822f3bd28c45",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى هُوِيَّتِي وَبِطَاقَتِي المَدْرَسِيَّةِ",
+        "fichier": "course-cedar-53fa221acc93d3b7.mp3",
+        "duration": 5.25,
+        "sha256": "90cdcce2de403e5cc3e0fb04f9272c251468b4bcbf2b578ac398ed1817bfdd3f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:43.069Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2df70cb8e89325e7b8d25f8d265004f6f57b532bb332f6d8bd65ddf6417c8c3",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:title"
+        ]
+      },
+      {
+        "texte": "قَوَاعِدُ قِسْمِي وَمَدْرَسَتِي البَسِيطَةُ",
+        "fichier": "course-cedar-3b4e92bf91e99f98.mp3",
+        "duration": 3.05,
+        "sha256": "8013c7c50adb24ea059f42374d3ed5edaf6e2ba2eb9d549595af1a2bc53fe392",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:45.031Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "434b62b3d999f1d27fdc9f20f4c5680496e9114c9a42510074793d751a87dd2c",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:title"
+        ]
+      },
+      {
+        "texte": "التَّحِيَّةُ: أقول \"السَّلاَمُ عَلَيْكُمْ\" عند دخول القسم أو لقاء الجيران والأصدقاء.",
+        "fichier": "course-cedar-bf2dcc782b67aca1.mp3",
+        "duration": 7.65,
+        "sha256": "c0285d578543daed769182414fc7c10666d38aaef601253dd2597a8ce5815f40",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:46.082Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c146cb1eb6f50cc3f0ebafaa252c2b6a718e861a1b4952fe1076de9cdc0d52f2",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:rule-0"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى حُقُوقِي كَطِفْلٍ",
+        "fichier": "course-cedar-fb60ee45abb711b7.mp3",
+        "duration": 4.05,
+        "sha256": "c9475638e4739bcb7d89bdc5e72dde87f6e58011b3deef22c2d21109abad32e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:46.128Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a239930d4e10c38bacd0803ced11ea8a6d7354d8fd5fbdef815ef2d40464ea36",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:title"
+        ]
+      },
+      {
+        "texte": "دخل معلمك الفاضل إلى القسم صباحاً مبتسماً. ماذا تقول له بصوت واضح ومؤدب؟",
+        "fichier": "course-cedar-f61b771b37ff617c.mp3",
+        "duration": 8.75,
+        "sha256": "4496b01c615db27b1cee756b8426aa3ecf6c76cadc3ad6436845129f92884737",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:46.307Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3994ccd04310b620aa22fbfd2b35ce66a66cdaf5a997429187d4af6916ce0be6",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:discovery-0"
+        ]
+      },
+      {
+        "texte": "الرَّدُّ: أقول \"وَعَلَيْكُمُ السَّلاَمُ\" عندما يحييني أحد بابتسامة طيبة.",
+        "fichier": "course-cedar-bedb845f5dc0f388.mp3",
+        "duration": 6.75,
+        "sha256": "b6abe55420bc3820dd689c25fab8103b5343146950f112413829c322e03cbd9f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:48.499Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "89628afce5258b6106584336c79d8949d12bc8f309344db531d4355bc01a4fdb",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:rule-1"
+        ]
+      },
+      {
+        "texte": "التَّحِيَّةُ",
+        "fichier": "course-cedar-068b73d845f4df95.mp3",
+        "duration": 2.15,
+        "sha256": "83961f4e2b462faa984496777cbad59a84ebdcea0b5899d9357f93cdb0cdac1e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:48.742Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5b2ef6a2182dcf144f3e2f6962f224cd184b63cf94282892584b1780ad2718fa",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:vocab-0"
+        ]
+      },
+      {
+        "texte": "احْتِرَامُ الكَبِيرِ: أستمع لأبي وأمي ومعلمي بهدوء، وأقدم لهم المساعدة إن احتاجوا.",
+        "fichier": "course-cedar-2a707c5181d7ec1b.mp3",
+        "duration": 8.75,
+        "sha256": "5edafe63d12d5d8601011d62851113722d173330e77ccd968393554c8963c69f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:49.109Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37dfaa0a11e8a7fb0d5c4c95cc2851e23e2f6cc8b98065faad5474c56797ea9a",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:rule-2"
+        ]
+      },
+      {
+        "texte": "الاحْتِرَامُ",
+        "fichier": "course-cedar-84366cb4326a0be7.mp3",
+        "duration": 1.8,
+        "sha256": "d7161db35c79ae013f68ce5444325f23fa87d9ab33e527828811491213b3fef8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:49.325Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "29cc449e76bf3f913ad57b27cd19cdd9e9e721cb54fd75c96fce11b6e99a117e",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:vocab-1"
+        ]
+      },
+      {
+        "texte": "إذا قال لك صديقك في الساحة: \"السلام عليكم\"، بم تردّ؟",
+        "fichier": "course-cedar-ced204a4562c4cf9.mp3",
+        "duration": 5.05,
+        "sha256": "390f67fd19dbbdc0d1a2035ea974b3d9d735340ea43edbdc8805b5a5366981d5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:50.622Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c2e884ddf7e876988d2709514b61275614bcd0288dc0abd6765b5669e7a4073d",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:example-problem"
+        ]
+      },
+      {
+        "texte": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ.",
+        "fichier": "course-cedar-20748450989ac364.mp3",
+        "duration": 2.65,
+        "sha256": "b4228a19c22b1dc078440e30070d3ad45d96cfbcd739bac7251b9273c367caf8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:50.733Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b2f9831d59127b0f93412d19e75d1c297be19eba36d5c214a9cfb945bd1a1d99",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:example-solution"
+        ]
+      },
+      {
+        "texte": "العب مع الطفل لعبة المسرح الصغير: يلتقي شخصان، يبتسمان، يتصافحان باليد اليمنى ويتبادلان السلام بود.",
+        "fichier": "course-cedar-230993de58091f14.mp3",
+        "duration": 11.4,
+        "sha256": "431a6d439bc3cb627a109f3926d3dc632371c263e36766ce4b1477006c6226c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:52.700Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f3b10ffb269d024c32f8b5a6aca22a2610472519fe1d3a39765bd32b4874352e",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:home-activity"
+        ]
+      },
+      {
+        "texte": "أُلقي السلام: \"السلام عليكم\". أرد السلام: \"وعليكم السلام\". وأحترم الكبار وأستمع لهم بأدب.",
+        "fichier": "course-cedar-ef1692f7e1cbf0dd.mp3",
+        "duration": 10.85,
+        "sha256": "9cff9745ddc34162032ccb4f683d14bcea545eee1b5d9e6b45b30059e22d3807",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:53.150Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2a5812ec67ceee01add9dcdd3dc380fcc8452fe281e18fafdab43127a6be9a44",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:takeaway"
+        ]
+      },
+      {
+        "texte": "ما هي تحية الإسلام الجميلة التي نلقيها عند لقاء زملائنا؟",
+        "fichier": "course-cedar-696f060fc06aa5cc.mp3",
+        "duration": 6.35,
+        "sha256": "a93211317db080788d3c7c0b9036e70138e077907d49e9debd12995069b1559f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:53.543Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bbbf62218490beebec480d1fc93d8c1ad71094a0e222c2b80b2c6d520ba12db9",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:practice-ex1-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "كيف نتصرف عندما يتحدث إلينا والدا أو المعلم في القسم؟",
+        "fichier": "course-cedar-2f1bc2835239dc93.mp3",
+        "duration": 6.65,
+        "sha256": "979f3df791c3dada4a86456ec4261fffcd0b2f3a35aa3946ddc5174e3dd13eb5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:54.035Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2fcd413498b7962cadffde581db606d4500fb6abc5f0040ddb85f83984694e8b",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:practice-ex2-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "دخل المعلم. نقول؟",
+        "fichier": "course-cedar-2eb8a709529883ec.mp3",
+        "duration": 3.05,
+        "sha256": "d06bed10ae01a84511f39e4d9062f6807bf2ea456f156e3e5d73ed292c853dbb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:55.192Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e903e9af973c228d2c6ef05a8c43485a9af8ff36de802a063fcdd09474cc8925",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:practice-ex3-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "وَعَلَيْكُمُ السَّلاَمُ وَرَحْمَةُ اللهِ",
+        "fichier": "course-cedar-9aac2d01cdd815bd.mp3",
+        "duration": 3.35,
+        "sha256": "fb55957fd2126498bcd8299b5744434018e07924037117d7f9c1d83d22d832e2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:55.979Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5691bdf8fb02dc331ff839848d7c84a496a9ef47e8cca40e8302cff8e829e373",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q1-civics1ap-greetings-opt-a",
+          "course:civics-1ap-t1-greetings-respect:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "ماذا أقول عندما يلقي عليّ زميلي السلام؟",
+        "fichier": "course-cedar-221be424f0935b0e.mp3",
+        "duration": 4.15,
+        "sha256": "bb82813c97e33640d57b5e957a5dc7b02aa1063a6179050a0a50e1b26310e8a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:56.261Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ae24eacefdaafafb8b1021a7a4fff8c361387fc895af02479ae693409a236e9f",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q1-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "أصمت ولا أرد",
+        "fichier": "course-cedar-19f36073b3c0de41.mp3",
+        "duration": 2.65,
+        "sha256": "94e758d86ef0b6ada5f03c5ac4daabc2d433d43cae10ed2c9e062bf83b0a46e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:56.516Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "34b99fb29b7640ec405c47b2ccb7350c226770184b71057355f3afef1efebc34",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q1-civics1ap-greetings-opt-b"
+        ]
+      },
+      {
+        "texte": "نلقي التحية",
+        "fichier": "course-cedar-a422c2bcb5f4012e.mp3",
+        "duration": 2.7,
+        "sha256": "5647abf7fcece6fb248b939511ad3e8f896e3bc86411c112220e20c76e4a96eb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:57.504Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1a02d9923b7595fd55418f5df804260756631bb4cd89fe1753d15c9db213241b",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q2-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "بِابْتِسَامَةٍ",
+        "fichier": "course-cedar-44230321b8c098f7.mp3",
+        "duration": 2.35,
+        "sha256": "6e0d33f6a28599b8f43c448bbc8f31e804bf6eb8f60055f237eff7f6c86961bf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:45:58.027Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "90d9317c4513b9b9a59b366a4afad97f8be6dc58fcebe0e230bfeba3df708369",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q2-civics1ap-greetings-opt-a"
+        ]
+      },
+      {
+        "texte": "نَضْحَكُ عَلَيْهِ",
+        "fichier": "course-cedar-235a407b3d382b35.mp3",
+        "duration": 2.1,
+        "sha256": "6dc719a6848dad5f4a406c5797c3a7bb8dd0d2cefa0f46c9d39e3d6471b66168",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:00.631Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b1859e79b10df4d36ad2d89a2dd63be1453144e45b48b28787bd78516b3ee9ab",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q3-civics1ap-greetings-opt-b"
+        ]
+      },
+      {
+        "texte": "المسن في الشارع",
+        "fichier": "course-cedar-42dbd93e7ce42f1c.mp3",
+        "duration": 2.4,
+        "sha256": "4ef1ccb95bade9a1cc991d6406b7971d09f66cac005082bd61bfaeff1d377b12",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:00.714Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bff8a5835ae67e5b5321825f54468a23712d87f9addd92f213d835d942895f23",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q3-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "بِدَفْعٍ",
+        "fichier": "course-cedar-4d9c4d886814cbaf.mp3",
+        "duration": 1.65,
+        "sha256": "450d65ce8d7100fbda2f0f7d01b8e88479854299648d3fb57e02cc1839c93831",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:00.928Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d595d788c0576da97506363529111b371d0a7daeb00af1961317151e9508c3a2",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q2-civics1ap-greetings-opt-b"
+        ]
+      },
+      {
+        "texte": "نُسَاعِدُهُ",
+        "fichier": "course-cedar-0cad89f3d4ba582e.mp3",
+        "duration": 2,
+        "sha256": "a6ff11426dd8eb42ed803cfaaf23427ac73aefecff74621017dafac5deecd9a2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:01.233Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8b953b95a807070370f33dccf4c10a22ddcd997c32d7168a0be76d789022ce7b",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q3-civics1ap-greetings-opt-a"
+        ]
+      },
+      {
+        "texte": "السلام عليكم تحية",
+        "fichier": "course-cedar-a5b6e7d70af29d5a.mp3",
+        "duration": 2.5,
+        "sha256": "ee8f7d09e21525b5af238403ab8a8f5f075cf917b96bdf4e2a9bf8f4d80f4970",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:03.198Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d45054919288808eee29c1f9c4c7b24bbd3db3583297f1ec0340efa92f783edc",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q4-civics1ap-greetings"
+        ]
+      },
+      {
+        "texte": "إِسْلَامِيَّةٌ",
+        "fichier": "course-cedar-b5f9594d4dafcc5a.mp3",
+        "duration": 1.55,
+        "sha256": "6902e5cf7155ec17da50c3ab11b9651f998a7c984f6ae933f648b7d7e64f777f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:03.340Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c174b1622f7932e244744cfd2caf2653bed2adc3a8c6a6efcb26c6228cfd2e3f",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q4-civics1ap-greetings-opt-a"
+        ]
+      },
+      {
+        "texte": "رَقْمٌ",
+        "fichier": "course-cedar-88912229ea0a3beb.mp3",
+        "duration": 1.2,
+        "sha256": "2c760aaa7c3651f0606453f0ae8b17365cad010cab9e7e3780beda3f71f2b91c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:03.425Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "95778cd26455e03c548847ce027a68a372d0e7ce654451214fe235d1b8108861",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:quiz-q4-civics1ap-greetings-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر الرد الصحيح والمهذب لكل موقف!",
+        "fichier": "course-cedar-5c72b4fa2a370f72.mp3",
+        "duration": 4.3,
+        "sha256": "15b629a69530969a2e723256eb3ff116e48786aceec2eebf4f4282b2c8e8deed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:03.615Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "039e8e5ff5b12d9b3e93f061e13156491d827515b8771e9f4e41a23df9b54c18",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-instructions"
+        ]
+      },
+      {
+        "texte": "إِلَى اللِّقَاءِ",
+        "fichier": "course-cedar-3a5eff3d27bdb177.mp3",
+        "duration": 1.8,
+        "sha256": "a7eb86a30807f47782ffea17e9f3bf2500d7e7861c8263401ac1e9ffff23f935",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:06.250Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37879e9ff166797d2cb9232dab0530986dc841f0f31976938523fabd478b3b92",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "حياك جارك وقال: \"السلام عليكم\"",
+        "fichier": "course-cedar-b2eb72ccd33f079e.mp3",
+        "duration": 4.55,
+        "sha256": "d898b2c44b1db9ed2772c4bbb234f5e017ad2f9f892cf212afa3a4859a2e900d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:06.538Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "55a247ae703238cab055fa570ef26528f4403723467ef533efc485940f16ff11",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-0"
+        ]
+      },
+      {
+        "texte": "عند مغادرة القسم في نهاية اليوم نقول:",
+        "fichier": "course-cedar-cdaa835a1c993b21.mp3",
+        "duration": 4.45,
+        "sha256": "27a91f796f31704062e7db415265def26a13c06a72a883cf31f87631c64bf2dc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:06.698Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "075fb4bdf80e9186ee6b8b27431b9a84b3576b3fa9a8314b91646dd3224c3c85",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-1"
+        ]
+      },
+      {
+        "texte": "إِلَى اللِّقَاءِ يَا مُعَلِّمِي / مَعَ السَّلاَمَةِ",
+        "fichier": "course-cedar-e556d69f51696105.mp3",
+        "duration": 5.85,
+        "sha256": "fb2ab889a3c93ab147bcfdb502b66c026006fcb687c8609e0704cf71e94494a2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:06.868Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5af8608e3416334f02ce6860c5092edc5f769a47871e0f28faf684328221a901",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "صباح الخير",
+        "fichier": "course-cedar-e9c9f53b0e3524e0.mp3",
+        "duration": 2,
+        "sha256": "7e5fda3911e146f2a6b43acf730e1470fb02af70a0f17ac27aa4d6c7aef09c50",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:07.828Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "532c97dabb507dea7d92710ffdab302fc571a485d9cf668da35ac0eb00c7fae9",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "الكبار نحترمهم",
+        "fichier": "course-cedar-744ff148b075f1a8.mp3",
+        "duration": 2.4,
+        "sha256": "acfe7c306e44e05049ce7c245cb2aeffcfea2d7b7a3b7056212183c80489dfe2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:08.248Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2e6ccb003dd0a6a5aac579e9abdb77538ed2efc3bfd280f46630f98947120184",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-2"
+        ]
+      },
+      {
+        "texte": "نَسْخَرُ",
+        "fichier": "course-cedar-a05517fb7f50751c.mp3",
+        "duration": 2.05,
+        "sha256": "60c7d59a729ceb5edcaa813e3a91f651ba10434a7b807b4158ef11778a2a2ef0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:08.277Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b881768caa8dfdd31040a062b070ecb46abfeb090679fcab816e22914cc8415c",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "رد السلام",
+        "fichier": "course-cedar-710e636bc8a4dd3f.mp3",
+        "duration": 1.5,
+        "sha256": "1a6b2fe9264e53231a2a1bc297a4476c8d0f223adfd4329bebfa3b2d53fcbadd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:08.727Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "88382a42202d6e406a23bedbdab4681566fa705429077a8499f049d742d319b3",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-3"
+        ]
+      },
+      {
+        "texte": "وَعَلَيْكُمُ السَّلَامُ",
+        "fichier": "course-cedar-941764095796b5a0.mp3",
+        "duration": 1.9,
+        "sha256": "86dced87fe77dde08f2c9c5915a8f6138f8b87862d1f06f2052f1bb96937831a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:09.367Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c02b73f514ed4e355fe37fc25725444c32f4249584181fcf8ab4ebf063a867a",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "صَمْتٌ",
+        "fichier": "course-cedar-a6f091227e936d4e.mp3",
+        "duration": 1.75,
+        "sha256": "4ef4466df95f711415260598532f5dd3212edd739c6fea4a0f018492cd70624a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:09.482Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "07c3c793d0ad5b8815945e96fca5abca6eb118b2849f4e6959fa7f70bf9df55e",
+        "uses": [
+          "course:civics-1ap-t1-greetings-respect:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "إذا سألك أحد الكبار في الشارع: \"من أنت وما اسم مدرستك؟\"، ماذا تجيبه؟",
+        "fichier": "course-cedar-790cb71f7b6e5e58.mp3",
+        "duration": 7.2,
+        "sha256": "97f95c943c33242fcc19e8664a4fc206c455d8dbfc63ec9b62f4227db3d34105",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:10.393Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6c3fca25eb5b137917e239276bafe549eae448e3702a1da8cf52c10963bd60e7",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:discovery-0"
+        ]
+      },
+      {
+        "texte": "هُوِيَّتِي: اسمي الكامل ولقبي وتاريخ ميلادي التي أحفظها جيداً.",
+        "fichier": "course-cedar-50e27bfa22d91a3a.mp3",
+        "duration": 7.25,
+        "sha256": "6521d700ea30953e1086c9b39925162623b810ab34badb86115f54d7694f29c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:11.037Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "751964056d751937153fb531758c07e610265c29370371a96c5d7ff9fed93fc5",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:rule-0"
+        ]
+      },
+      {
+        "texte": "أُحَافِظُ عَلَى بِطَاقَتِي: أضعها في مكان آمن في محفظتي، ولا أمزقها أو ألعب بها.",
+        "fichier": "course-cedar-69ccc88fab1031c3.mp3",
+        "duration": 8.05,
+        "sha256": "0ba028e6e20c174153a9616c9402fa73d690888c020492374cafb4b44b23b903",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:11.606Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4b4260435367cb0b4fa1bbb5b331cd02c916a6eaa2d4e03e6ad19ccb6229919b",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:rule-2"
+        ]
+      },
+      {
+        "texte": "الهُوِيَّةُ",
+        "fichier": "course-cedar-62a781752c5a08e8.mp3",
+        "duration": 1.85,
+        "sha256": "66cfab1a3261b0dcb12f1605c8e48df8128928d1c362b588f0dd6fb6bc654060",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:12.132Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "635529ed3b52c0853012e3969debb7e18168d54e8286dba5004de597589597e0",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:vocab-0"
+        ]
+      },
+      {
+        "texte": "بِطَاقَتِي المَدْرَسِيَّةُ: تحمل اسمي وصورتي واسم مدرستي وقسمي، وتُعرّف بي داخل المدرسة.",
+        "fichier": "course-cedar-5e0fd7357a3a3795.mp3",
+        "duration": 10.75,
+        "sha256": "12140b4d08bf8f00d3d14a4611f60b7de3b970fde841952160b9796b7ee8dcd5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:12.254Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "33f58a36d200fe0b3f39c4b514d3978d1f46769166ed1266fa3c5986fa19743f",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:rule-1"
+        ]
+      },
+      {
+        "texte": "البِطَاقَةُ المَدْرَسِيَّةُ",
+        "fichier": "course-cedar-179444a7e29ec8e3.mp3",
+        "duration": 2.55,
+        "sha256": "7f18f759179742a1e05a67d5d96730a694e112e51b47f479eb8e3c1192135c73",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:12.982Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "501299e7a76f703e85f6d16377bc3e8d7d09e35abf286b95889d9d2a691e510c",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:vocab-1",
+          "course:civics-2ap-t1-personal-documents:game-0-opt-0",
+          "course:civics-2ap-t1-personal-documents:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "سألك حارس المدرسة عن اسم قسمك، ماذا تقول؟",
+        "fichier": "course-cedar-d188240835affca3.mp3",
+        "duration": 4.8,
+        "sha256": "286c97c40f774819c938836f8862b2dde3da3f436c6691417e2372f247d65635",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:14.803Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "91d7a05360252f04a0582f0b8ed4d37a0e3bf191148eddea7b3d293a52e323ff",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:example-problem"
+        ]
+      },
+      {
+        "texte": "أُخْبِرُهُ بِاسْمِ قِسْمِي بِوُضُوحٍ وَثِقَةٍ.",
+        "fichier": "course-cedar-477b5b7a8a38feae.mp3",
+        "duration": 4.3,
+        "sha256": "f67d5cd9a7e4c119509a1efbc0d47e47208c0e21f562d84b0684129513661eb5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:15.034Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ff13e018986c5eb08ed173e12030bd78a414e810393ee4170a6f4fff874bd5ec",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:example-solution"
+        ]
+      },
+      {
+        "texte": "أحفظ اسمي الكامل ومدرستي وقسمي، وأحافظ على بطاقتي المدرسية التي تعرّف بي.",
+        "fichier": "course-cedar-46688a19527bfef4.mp3",
+        "duration": 8.5,
+        "sha256": "3bcdb8e470712ac641a51f268145e93c7261fad28cac132bbcf92fab35acf162",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:15.387Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "43c3b7c69a87cdbbf50e5438d449f4546215b57ae430c428e58b7932397c9e39",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:takeaway"
+        ]
+      },
+      {
+        "texte": "اطلب من الطفل تكرار اسمه الكامل ولقبه واسم مدرسته وقسمه بصوت واضح، كأنه يقدم نفسه لصديق جديد.",
+        "fichier": "course-cedar-64f5f0c3a3bfc921.mp3",
+        "duration": 12.2,
+        "sha256": "2d66c2eab0bd8a9616958db2f3c1bb514aaa59105b4e16dcc8b16fe5de98f1c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:16.608Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9bf3925c8c6e6e00c70fb94abd1d41d89dd36dca50a28566c9ec57a7243404b6",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:home-activity"
+        ]
+      },
+      {
+        "texte": "ماذا يجب أن أحفظ جيداً عن نفسي؟",
+        "fichier": "course-cedar-1896753f667d40a8.mp3",
+        "duration": 4.25,
+        "sha256": "4e6f5b0154da246b0781bdefdbb0b93ee0f7313adcfe9bb40e970ecd5d8305d1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:16.917Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b0345a0b72dee55b1c266bad029b3532ad20bf083bef8686e78232cfb82f1306",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:practice-ex1-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "ماذا أفعل ببطاقتي المدرسية للمحافظة عليها؟",
+        "fichier": "course-cedar-7cc96652e399bdbf.mp3",
+        "duration": 5.7,
+        "sha256": "e5a89e176362f13abb8e9fff02ca8f0571c342e1761ee60ad2a480fee9ae9ff0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:16.938Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "48ac7a0dd2a7905f123e0dde939b5e50a7ff47d4c4fca2296a42831cdb92d84e",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:practice-ex2-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "البطاقة المدرسية فيها",
+        "fichier": "course-cedar-df1bcd8fed3cef6f.mp3",
+        "duration": 3.45,
+        "sha256": "32ce3ca7b0d215c372ed37146e4918900f689c0f52043a603085f16741ea6f17",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:17.133Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "508039e9a108a02e91882c78179ba236a36e07a9fce37b3be85121540c257e2b",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:practice-ex3-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "لماذا نحافظ على بطاقتنا المدرسية؟",
+        "fichier": "course-cedar-f99e622838c740aa.mp3",
+        "duration": 4.05,
+        "sha256": "10515af4790e85188a3a8f4ada9e1e8e5c070594febfd7a0c3a6ac25745e435b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:18.349Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e0be40ae8a7501202d2351502f6c7c78530483b4345978d9b01716b875d79895",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q1-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "لِأَنَّهَا تُعَرِّفُ بِي وَبِمَدْرَسَتِي",
+        "fichier": "course-cedar-e22fe53dd442b509.mp3",
+        "duration": 3.5,
+        "sha256": "525a47b237bd7fdfba4ea9a84546e9e343ac0c078c75485e9a923fd8f59e35e0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:19.279Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3c1551dd5e7369d85df4d048feb2b68605bb5134ad996038330ede4d25fadc3f",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q1-civics1ap-identity-opt-a"
+        ]
+      },
+      {
+        "texte": "اسمي أقوله",
+        "fichier": "course-cedar-16aa96ea54e51ff8.mp3",
+        "duration": 2.05,
+        "sha256": "0b3fb5dd83b39ee5e8c4e7cad55458f15dba4d0c1d7550980aa7fd3f21751df2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:19.360Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "612df0447add5e82d78e8b1736854e8a9c0f1a9a7079f4d704e6fdc962e9dd26",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q2-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "لِأَلْعَبَ بِهَا فَقَطْ",
+        "fichier": "course-cedar-f2ccd6b686a5695c.mp3",
+        "duration": 2.9,
+        "sha256": "88fb4cb1e46c05db9f93c31e141134cf6773db566c7ca7e70b701b92e9ac4445",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:19.640Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7186ec1f75c75e556660b885555291f3c544480ffab2e39eef17d7079a004b30",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q1-civics1ap-identity-opt-b"
+        ]
+      },
+      {
+        "texte": "وَاضِحًا",
+        "fichier": "course-cedar-a182f3d4e70ef6c2.mp3",
+        "duration": 1.2,
+        "sha256": "d021993119268eec6373c81fce38246129de94bbc7740b169bd45105912fabba",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:20.502Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9168ab16784941b0c79f91a98124049d92f62aba7bb8069ff97387136527e732",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q2-civics1ap-identity-opt-a"
+        ]
+      },
+      {
+        "texte": "عَلَى البِطَاقَةِ",
+        "fichier": "course-cedar-855f58b825ec1f85.mp3",
+        "duration": 2.45,
+        "sha256": "c435bc330006c9305f7fc785a35ea4e5e9982f1c6375d168f018de09786e1586",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:22.884Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c99ef112b1b1e1bf6bc4678a8be5bdeab64fd86e0ad5640df3271055ff0b4d52",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q3-civics1ap-identity-opt-a"
+        ]
+      },
+      {
+        "texte": "سِرٌّ مَمْنُوعٌ",
+        "fichier": "course-cedar-074d395bfdc247f1.mp3",
+        "duration": 2.9,
+        "sha256": "6949767ab9bff108713f835fe50a5888c0220b40be04bfd7877548684ebbc429",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:23.544Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "52e621fe359e9798cf5937dbfdc57403d9eaa88f9ab2e9f0d57455b9c1620ec5",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q3-civics1ap-identity-opt-b"
+        ]
+      },
+      {
+        "texte": "القسم رقم",
+        "fichier": "course-cedar-2a6261911657fc93.mp3",
+        "duration": 2.3,
+        "sha256": "09893909cdef2c908d5aa4bb289054f90c4525a838a4bdf30faff70104775cdf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:23.623Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "572b7ec734fa8fe5c28cdc1c21ec51bcb54c1c1edf95b6beb7061dbd7a5bca7b",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q3-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "الصورة على البطاقة",
+        "fichier": "course-cedar-f201471a4764ffb2.mp3",
+        "duration": 2.55,
+        "sha256": "f89de6746285d94c54b53e51f7ca5b20429fd04f042eb1ef93262d603f7412e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:24.475Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4f5acde6ec31c141bffd452e7188b8be343abad638de159b3c5cd4c5648e9749",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q4-civics1ap-identity"
+        ]
+      },
+      {
+        "texte": "صُورَتِي",
+        "fichier": "course-cedar-61f73df9f0b4618a.mp3",
+        "duration": 2.05,
+        "sha256": "b5d38a361989d1ebf20eaf14358f17a59c372600073275fbc587a557695a32c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:25.055Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ef77ef67003e78d397a16e47278df44e792815eb459ad8bfa435d940218b571",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q4-civics1ap-identity-opt-a"
+        ]
+      },
+      {
+        "texte": "صُورَةُ حَيَوَانٍ",
+        "fichier": "course-cedar-97ceb3e3ded55c46.mp3",
+        "duration": 2.6,
+        "sha256": "4ba1e71cdd97aaa2651580326de1ab24ff343e625f8a54264a2f2927201df366",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:25.288Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ffd6ac88ee827cc95ea1e80ef28b6905b4b65eacdea91fcd33b45c9e4d0f3743",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:quiz-q4-civics1ap-identity-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر ما تحتويه بطاقتك المدرسية!",
+        "fichier": "course-cedar-67a7e174f7ce57bc.mp3",
+        "duration": 3.2,
+        "sha256": "af297225bada2701fa55374bc4bfef2c1559beb2445d79a476d940091997fbe2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:26.965Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0c80c6432b2468ba0a269eda640d4f75a14e37a5841cc70c8d395e1114e2b8bd",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-instructions"
+        ]
+      },
+      {
+        "texte": "بطاقتي المدرسية تحمل...",
+        "fichier": "course-cedar-1626f2a835c9faa8.mp3",
+        "duration": 4.35,
+        "sha256": "a61dacb08c6ce0ee4347f5e0157cbd90c49c9da1f9fa8c4218fd957b3eb142bf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:27.701Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8d16962400d6e348a97fa7fab3fe382bbf797d8dc0fe4b57e3529da0a0469258",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-0"
+        ]
+      },
+      {
+        "texte": "لُعْبَتِي المُفَضَّلَةَ",
+        "fichier": "course-cedar-2de7e23ecb706d68.mp3",
+        "duration": 2.2,
+        "sha256": "fbe09c39ebc8d8a486f541303d566b94b3b53e1e085291ccd25dfc01267b7fd5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:28.619Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3f488f97197baaa936401499c15ec156e46444c5c82ee0224e691357a89e81bd",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "اسْمِي وَصُورَتِي وَاسْمَ مَدْرَسَتِي وَقِسْمِي",
+        "fichier": "course-cedar-69594e69e1785135.mp3",
+        "duration": 4.8,
+        "sha256": "eec7069e3fe41d84d563ebe40db4d178234d7769a3948a1f908f3365ae0cd363",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:28.682Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "41c7864b36175976fbf53cf07c9849aedf2a0891aca292f231e3305e733964a0",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "مدرستي اسمها على",
+        "fichier": "course-cedar-f48afbe78510e9c3.mp3",
+        "duration": 3.2,
+        "sha256": "f5946997feb83818ac9df4bdb4c901ec496e293c313234acc926e103ce9623fe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:29.256Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7d96acf1809f7902128804f8864ddbe9ffb7645a0c17e23f04c4eb10fb96beb6",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-1"
+        ]
+      },
+      {
+        "texte": "البِطَاقَةِ",
+        "fichier": "course-cedar-9164a377a03dca3c.mp3",
+        "duration": 2.8,
+        "sha256": "287d94e51f43f83e5288fe27adf55cf6fc73b932e3457a899fd0bbb8d0be94e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:29.655Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fdbe32cc0fedf37e885b117e247262d0cc074001d6298537c27e64e4cbe797ab",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-1-opt-0",
+          "course:civics-1ap-t1-identity-school-card:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "القَمَرِ",
+        "fichier": "course-cedar-e5b4402a5d7d59a6.mp3",
+        "duration": 1.6,
+        "sha256": "14adf040d22d1eb6fd07b33e5aa6a1b7635d467d03316661720e025f801179b4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:30.739Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ed9dd3e3b1f46c0390337e84239052474d2a41e476505e4b7422e16dc30d8997",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "أُمَزِّقُهَا",
+        "fichier": "course-cedar-3a3efe33a31c61b7.mp3",
+        "duration": 1.7,
+        "sha256": "d501e254df5ed4cc48b0e575753066f92b3f7f5f624717a79f039f7f719758e3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:32.051Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "960d0bcdf05e6b41fbd8dd62e5687a69792222a7b8dbededdeacf65ffa5b3036",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "القسم مكتوب على",
+        "fichier": "course-cedar-ea28b7cfd4d1103f.mp3",
+        "duration": 2.6,
+        "sha256": "9c1cd509166c88574a0194f192aeeb19242179cff661069f10220c85971b0186",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:32.113Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "df4866ae03013900d1cdd56a4ef2fd5db659a44bd735ea6c06ba7dc66a034dfe",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-3"
+        ]
+      },
+      {
+        "texte": "أحفظ بطاقتي",
+        "fichier": "course-cedar-e80e34db003aa9c4.mp3",
+        "duration": 2.35,
+        "sha256": "c56f218124e2602ea0102a5110b3afce51c65fc9b3f5be7cf19f1130aa4920a1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:32.368Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "496bdb7840895544897189b3ce32f65d9e9c6000e4b708f0c5a7018e3f6508b2",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-2"
+        ]
+      },
+      {
+        "texte": "الكُرَةِ",
+        "fichier": "course-cedar-6819360fa39b9ebc.mp3",
+        "duration": 1.45,
+        "sha256": "c552829586dc00bce6f0bdb6d6629b1bc11c9024517f433562045d3c27888af9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:32.635Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0280f0e32a78128dc83e6a46330a97b815fbea8e0b36ea2d8cd36e8e838a39c6",
+        "uses": [
+          "course:civics-1ap-t1-identity-school-card:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "نسي صديقك مقلمته في البيت ولا يملك قلماً ليكتب به الدرس. كيف تساعده وتسعده؟",
+        "fichier": "course-cedar-58714f3c0bdeb7ca.mp3",
+        "duration": 8.9,
+        "sha256": "3a62be23b3fb81757fb6154ef035bb76abf015c5c40ef3b1b50f9f846cfa90fe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:36.071Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8efdba783426c12a4c531218a46c100a9c60acef81a3480a4e948de28da7ad49",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:discovery-0"
+        ]
+      },
+      {
+        "texte": "المُشَارَكَةُ: أن أقاسم أشيائي وأدواتي مع أصدقائي لتعم الفائدة والبهجة.",
+        "fichier": "course-cedar-b217ed61d239588a.mp3",
+        "duration": 9.05,
+        "sha256": "50b70c523697eef96a98a1aba01219a53a23d67bc0188a2e3a3611333e144638",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:36.106Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "93bea5eb09c9080780a56bd9eb0b894346de9e3929545540f4d4a10fef8aac50",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:rule-0"
+        ]
+      },
+      {
+        "texte": "المُسَاعَدَةُ: أمد يد العون لرفيقي إن سقط أو تعثر أو احتاج لأداة مدرسية.",
+        "fichier": "course-cedar-953db1287a32a5be.mp3",
+        "duration": 8.95,
+        "sha256": "3a58d4278f76f3ee232500601beb227810dc9cacf06f5fb65965610e33a6ffbb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:36.135Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a39f078b134b0974601a422266fddeb7fd9d376aab8a9490eff813e0100d90a6",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:rule-2"
+        ]
+      },
+      {
+        "texte": "التَّعَاوُنُ: نعمل معاً كفريق واحد لننجح جميعاً في الألعاب والواجبات.",
+        "fichier": "course-cedar-f4711c9d91127dff.mp3",
+        "duration": 8.25,
+        "sha256": "a250bc9e8297e02076596ed19d556e880ee90debc9be9affee56624fcc90f622",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:36.181Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1514c4caf0cd37eda2a8bf55c66e191f653ceac5a37071db5d7a46f4707904de",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:rule-1"
+        ]
+      },
+      {
+        "texte": "التَّعَاوُنُ",
+        "fichier": "course-cedar-d1a0dd494c3e402e.mp3",
+        "duration": 1.8,
+        "sha256": "ec904bc603c2bed34ba55a713f5c921131a9972178f31a7a6fc620b966eb160f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:37.289Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "00eee52772606c7439fe1da5c462cc0c909b6394b0a500586a29a25cfc0bfb62",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:vocab-0"
+        ]
+      },
+      {
+        "texte": "زميلك نسي ممحاته في البيت:",
+        "fichier": "course-cedar-687b07eb6e014141.mp3",
+        "duration": 3.75,
+        "sha256": "acf5be8f0eb2f54e8ee09f809a5d0fecb5e61c429b45f6bf1601884d1d45a64b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:37.359Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d4aa42363dd89bf29d172b3496cd2b1e2d44c8e1413a05dc25bdc7ccaf484973",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:example-problem"
+        ]
+      },
+      {
+        "texte": "الإِيثَارُ وَالمُشَارَكَةُ",
+        "fichier": "course-cedar-33374e003d6f0331.mp3",
+        "duration": 3.1,
+        "sha256": "0896952495524c4723f32fe7a5fdb545c1f31fba3f3d0a72455588da0e630caf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:37.867Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2d11ea5e576fb8f29f1a5f6414a0d25c7bfb322b49315e2bca330ec19b2826ba",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:vocab-1"
+        ]
+      },
+      {
+        "texte": "أعيره ممحاتي ليكتب درسه ثم يعيدها لي بلطف.",
+        "fichier": "course-cedar-8d85c9af62705583.mp3",
+        "duration": 5.6,
+        "sha256": "52c06ebe0b65339ffb260ebcc280381ca125af6c69425eb55bcd70aa8d83353b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:37.937Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0acae9910acb042ac689c07ee4dca48e8c5c5a7c2cd8ebe383650c51ea3bd2c3",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:example-solution"
+        ]
+      },
+      {
+        "texte": "أُشارك ألعابي وأدواتي، أتعاون مع رفاقي، وأساعد من يحتاج مساعدتي.",
+        "fichier": "course-cedar-b5859910678ea182.mp3",
+        "duration": 8.6,
+        "sha256": "e0eb9ab9cd860fd854a7d1b709d02bff6c2459ed5fcae1bb4127a66336f3a335",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:39.987Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d9f4844acc86b54b8aa39c549162bd81de36436ff694f30c463ddc244c31dcc",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:takeaway"
+        ]
+      },
+      {
+        "texte": "سقطت علبة ألوان زميلك على أرض القسم. ماذا تفعل؟",
+        "fichier": "course-cedar-202a9528f084d3e9.mp3",
+        "duration": 6.85,
+        "sha256": "0870c9613d0196a7dd19e289774d4957c517ed64f50e8ab7b4aaed9cf30fd804",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:40.433Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cb47bfc693196f821dcd9f26c5109bad8b2c38b0080db1efb8a32d508b11a45c",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:practice-ex1-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "ما هو السلوك الذي يجعل التلاميذ ينهون تنظيف القسم بسرعة وفرح؟",
+        "fichier": "course-cedar-16454bcb499b1a8b.mp3",
+        "duration": 6.65,
+        "sha256": "01d2ed09a213110559c88c69d11fa42890b416a882d08f628f20237ba16064ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:40.551Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4143bc6a360e66fa27119e95959d8d34ae56da73187ad2369e04fce1f406eebb",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:practice-ex2-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "أعط الطفلين أُحْجِيَّةً (لُعْبَةَ تَرْكِيبٍ) ليركباها معاً، واجعلهما يشعران بفرحة الإنجاز المشترك.",
+        "fichier": "course-cedar-cbec1403b8cee550.mp3",
+        "duration": 10.1,
+        "sha256": "b8c37349942faebef32f284ccdd82af5177e21c33444c89842f232e4cd77a473",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:40.894Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "22ae47f2eb0ba2356936771c704922ad3e3697ed9d9c8e444ae419b1f2dddefe",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:home-activity"
+        ]
+      },
+      {
+        "texte": "لعبة واحدة وصديقان",
+        "fichier": "course-cedar-8877ef5402a508b7.mp3",
+        "duration": 4.25,
+        "sha256": "a50607f3d1b7fc0705ba92b280a78fb61c67f10518201fbea3d8d68536b84a8a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:41.996Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "84fd48d16ad788795dfcf79912f64e579f779ef5b3705538ec9c18631aa49ad9",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:practice-ex3-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "ماذا نفعل عندما نرى زميلنا في القسم بحاجة لمساعدة؟",
+        "fichier": "course-cedar-6bd99bbc4f4460f6.mp3",
+        "duration": 5.8,
+        "sha256": "83d53f823110e72df254edf3fc0b11bf642ffe200ad011e4b41e132341581d38",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:42.429Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cc4687e0d35ab6ab148aa6ccae4e85fc354eacc319305a0709a658d02a28d865",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q1-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "نُسَاعِدُهُ بِسُرُورٍ وَلُطْفٍ",
+        "fichier": "course-cedar-a6b9107aa31434d7.mp3",
+        "duration": 4.5,
+        "sha256": "599a06264d6fe2dc7d6029e26d17854e1de86aa82338b8544fc587f0b234659b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:42.459Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3388bd055501180d7d62f8aca9105ab1f64b6ae01d416df887f7277e71471219",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q1-civics1ap-sharing-opt-a"
+        ]
+      },
+      {
+        "texte": "نتجاهله ولا نساعده",
+        "fichier": "course-cedar-6fb0c27c00f068b5.mp3",
+        "duration": 3.6,
+        "sha256": "9d420f051f479332aeb1bdb92ab7d7fb7fc5220dc70cfa22f784cf1518f36e3b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:42.563Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35fbe5240b36cf4c44a0c67f5fa48a737e241345dcd32c1038e1023cda16bfac",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q1-civics1ap-sharing-opt-b"
+        ]
+      },
+      {
+        "texte": "التعاون يعني",
+        "fichier": "course-cedar-774d0f3f689c6748.mp3",
+        "duration": 1.75,
+        "sha256": "8abeb4436890afa99575fa319f8f19253f6ebc584a04a47745af73f9af9df91e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:43.112Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "03f372e7e2057a5938096ace4611ac4cc379e42308eb2c4242c5138860e8a6ee",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q2-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "نَعْمَلُ مَعًا",
+        "fichier": "course-cedar-b32257f4ec13074a.mp3",
+        "duration": 1.85,
+        "sha256": "ab10d42375a98ea8edd019b62bf2d99d7bddd1eb95a6a663ac61cc441cb6de56",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:43.610Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d41faafb3b8824d318efb500c73f44a33dcd3e9b33d490b467d5e47706a95f74",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q2-civics1ap-sharing-opt-a"
+        ]
+      },
+      {
+        "texte": "نَتَشَاجَرُ",
+        "fichier": "course-cedar-3d2b418ce97e30ad.mp3",
+        "duration": 2.1,
+        "sha256": "0031eb35aff16f536d8382ea1d7f93745549a5db83a62ce42fdc35f4801514ea",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:43.714Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b98a2aee1da24f6531779309239235f91c74a33888245f25e377bb3b0097c404",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q2-civics1ap-sharing-opt-b"
+        ]
+      },
+      {
+        "texte": "صديقي حزين",
+        "fichier": "course-cedar-5e32d73640ef3741.mp3",
+        "duration": 2.35,
+        "sha256": "958a74a9f6d8a9b8441d4c1e2c52f8f36c24dafd159b778c15a3fcab8cbfd484",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:44.831Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2ac5018d4c615a970f84f2dba17386d78c619113e06620ef82c08cd0e105d36",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q3-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "أَتْرُكُهُ",
+        "fichier": "course-cedar-9cd1fbb587aa266e.mp3",
+        "duration": 2.05,
+        "sha256": "20f9a23ff53dcbbad284eb2a277f0acc689c4d3c04a4d379b4f45fe8aff391c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:44.897Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "603d9a6fe063bf9b75ae5c7522d2e4a6521e007312ac8892b2e8b89cb9eb987d",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q3-civics1ap-sharing-opt-b"
+        ]
+      },
+      {
+        "texte": "في الفريق",
+        "fichier": "course-cedar-c45a2317fbbb2813.mp3",
+        "duration": 1.05,
+        "sha256": "f5cfa46ee6dafd80f85ac8e89d87421e9310728254fe4ce0f94799e4af44d2a2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:44.955Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e4aec6a766ad64e5f05a040f4f55439f55321ba5f3f2fe963bea409b3f68b331",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q4-civics1ap-sharing"
+        ]
+      },
+      {
+        "texte": "أُوَاسِيهِ",
+        "fichier": "course-cedar-47cacfc3ad706452.mp3",
+        "duration": 3.45,
+        "sha256": "aa46409d1adbc70d0e712d4afe3fcb0303b0764d1c2572ccd6b374cc58abc356",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:44.981Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ab73e4788da9c5d0454e05994e29111c23e17040938b907cbc377eaa77ae7d54",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q3-civics1ap-sharing-opt-a"
+        ]
+      },
+      {
+        "texte": "كُلُّنَا نُسَاهِمُ",
+        "fichier": "course-cedar-d9cf19856d989d50.mp3",
+        "duration": 2.3,
+        "sha256": "98fdd8367b01f62aa241ea30a929dd4d336cedbc3e873dfe5d1bfd7b5c270770",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:46.124Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fab7c02f973a26dec0e4281eda1a2d5285662fd9082cb39731187156fbaa205f",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q4-civics1ap-sharing-opt-a"
+        ]
+      },
+      {
+        "texte": "وَاحِدٌ فَقَطْ يَلْعَبُ",
+        "fichier": "course-cedar-ebb1fe6b47f9f089.mp3",
+        "duration": 3.3,
+        "sha256": "a1f7887a8f9915e4d6bbda68976faf792d67e3d894e0a8286762e484838284c9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:46.237Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0cd8fa359952c53cb9a25e81905c1aa1bf57bdec4ea45d20be89ab4bde1539f0",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:quiz-q4-civics1ap-sharing-opt-b"
+        ]
+      },
+      {
+        "texte": "عندك قلم تلوين إضافي وزميلك يحتاجه:",
+        "fichier": "course-cedar-a40648b3d0a203e2.mp3",
+        "duration": 5.4,
+        "sha256": "4f2e8441da638cc9668a0025536b453ee25e974f01456ebfd9f9bd2e9226bb23",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:46.651Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "86cae285607941bf55d9da3e4cb1f844d0f63bb43a78071614e0d335c91e8b0b",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-0"
+        ]
+      },
+      {
+        "texte": "اختر السلوك الذي يدل على المشاركة والتعاون!",
+        "fichier": "course-cedar-b6140649bb3c2af7.mp3",
+        "duration": 4.85,
+        "sha256": "55a971363f980708a613540789016d41129be968753dad6c2c60ee142cc968ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:47.071Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ab334c9e8650f2da15d4aecede205da568f5567a3c2479a68ee711850621c07c",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-instructions"
+        ]
+      },
+      {
+        "texte": "أُعِيرُهُ لَهُ بِلُطْفٍ",
+        "fichier": "course-cedar-de2b0539a4aca571.mp3",
+        "duration": 3.2,
+        "sha256": "317fc4b4863dde3afac59cdee792197b3e05b5ada3d662599d1943a1eeb0c19e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:47.467Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35e9dfc544432e7bb233a0b0c2e6960cfcd1e9b7b565fc8515ecc5dc1f38971f",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "أخبئه في المحفظة",
+        "fichier": "course-cedar-e2778957b3ad823b.mp3",
+        "duration": 2.15,
+        "sha256": "14f54096a1de0f1a5b84aa7b85a449e9c08d98f623fed91ef7982d9fd8d8c5f1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:47.522Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5e7779314245f1dde18d1fa01d8fb02013699efa9aa10c4637a96ce341b67ac7",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "مساعدة زميل سقطت أقلامه",
+        "fichier": "course-cedar-fcfb56a5efb4c593.mp3",
+        "duration": 3.8,
+        "sha256": "fac6a19b5c1e970f34cf34c97b5e7cd65af05864aefd81c9224f8d53fc1fc913",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:47.957Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9bc4dd246b68e454302a81de984bbe147d1b9a08470b690fedaffad42a11f138",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-1"
+        ]
+      },
+      {
+        "texte": "نُسَاعِدُ",
+        "fichier": "course-cedar-0be7675ae971778a.mp3",
+        "duration": 2.15,
+        "sha256": "be10ab2a35869f8ea0a38d498d7edb3dc8b32ab2ce5e9fda4bf33a384b21f6e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:48.272Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5006cccac663e1cd02e7dfb838c940f300322df37cd54e9393dbbf939c6b9e8e",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "نَضْحَكُ",
+        "fichier": "course-cedar-0096a9cf70e06959.mp3",
+        "duration": 1.15,
+        "sha256": "8bc424a4cd9c6e72bde0d111c8f00fd499e1880a275cbe18879a4f16e4cea34d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:48.514Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a763e8ad6dcee24263cf96dfb46dee862a702662ac57ee1a7106f6b6f40584dd",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "الكراسة نقسم الألوان",
+        "fichier": "course-cedar-d98ca3c39eb467a4.mp3",
+        "duration": 3.2,
+        "sha256": "94ca8511b5888bf7f1ab02d27d555a41efc528a34a2b79cdd8bfb6fb40830ed3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:48.868Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1f9e398fee02f02b354d24e1c9ebf39c00fde11337b39ef0f6b2c2aca95b6f7e",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-2"
+        ]
+      },
+      {
+        "texte": "نَمْنَعُ الكُلَّ",
+        "fichier": "course-cedar-19f235bd4b7537ce.mp3",
+        "duration": 2.2,
+        "sha256": "a021620c8637256645e92b83495edb8b1af01bc3e9da66ba4d4352c7f682e0ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:49.453Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5a258310910211fed361b313b5c8baaf2ef4e2603cc1df950d36df7ba4d22a28",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "اللعبة نتبادلها",
+        "fichier": "course-cedar-e9b96426f742c42b.mp3",
+        "duration": 2.45,
+        "sha256": "7ecae2eb3e3600e27f9d5abe885e8383e63ef93fce65e8961a0839f8a7292099",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:49.903Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "110e3a60efd340823f5171e674294ffbf3ec65fd6c9904ae1c4a93a53e6b586b",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-3"
+        ]
+      },
+      {
+        "texte": "بِدَوْرٍ",
+        "fichier": "course-cedar-b221327dfc97f8a9.mp3",
+        "duration": 1.7,
+        "sha256": "01caf09b5cf78a8b56496d10dcb49ba0558234b74ca224c5c5712afd90a3c95e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:50.069Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9982118b49fe592a62c44b003fe659b84d5c64870a31da809f20937579957aec",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "بِعِرَاكٍ",
+        "fichier": "course-cedar-f83acd34e829691d.mp3",
+        "duration": 1.95,
+        "sha256": "333e0d95ec181e2ad2a12da5cdb3744291e147984afcaced72cf80fbf4014640",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:50.509Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3d33bfd58cd4969ff3f7a55dfb7682536f465d6ad5fa165631ebdb638df79e11",
+        "uses": [
+          "course:civics-1ap-t2-sharing-cooperation:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "كل صباح في المدرسة، ماذا نرفع في الطابور ونحن واقفون بهدوء واعتزاز؟",
+        "fichier": "course-cedar-291ad5fa9fb8e4c5.mp3",
+        "duration": 7,
+        "sha256": "45ee51173f09206fe2d3b85e6508f463b0c77be3548ec7b2309143785240386b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:51.147Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d918f466e9b60fab11d2ddc262a543c420e17cb8fe50bbad8d5c4e75bcf23c35",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:discovery-0"
+        ]
+      },
+      {
+        "texte": "الجَزَائِرُ وَطَنِي الغَالِي الذي أُحِبُّهُ وَأَفْتَخِرُ بِالانْتِمَاءِ إِلَيْهِ.",
+        "fichier": "course-cedar-79b940d25008e3e5.mp3",
+        "duration": 7.8,
+        "sha256": "b7fc72d8be3d848ec8f053e89b5319c40581d516830a5034de8028d1a41a3bec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:52.487Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0b5cbeef0c6027dd5d58fb94791c91de1503a9287b3bbe7660793f38c31cf061",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:rule-2"
+        ]
+      },
+      {
+        "texte": "العَلَمُ الوَطَنِيُّ",
+        "fichier": "course-cedar-e4d36477e08f9bf6.mp3",
+        "duration": 2.5,
+        "sha256": "200cd50322f627c6fad0b27aea48e05ea903fd23be5d5fb8a08145a58e4e7816",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:52.520Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "06ff9c14c377d1cf505b1f03126bca1f7c9f1384a18209ac342da4a597c9df78",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:vocab-0",
+          "course:civics-2ap-t1-national-symbols:vocab-0"
+        ]
+      },
+      {
+        "texte": "عَلَمُ الجَزَائِرِ : لونان جميلان، الأخضر والأبيض، وفي وسطه هلال ونجمة حمراء.",
+        "fichier": "course-cedar-dc86548d4475849b.mp3",
+        "duration": 9.5,
+        "sha256": "7f7384b25b7cfa1cd673f5bc7623488898b8810877f1d4f0ef5514775ab9bf37",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:52.539Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0330aa402dc5a95011ab63ffdaa658a24cda7ac4cfe377d110e9e908ea1490a3",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:rule-0"
+        ]
+      },
+      {
+        "texte": "النَّشِيدُ الوَطَنِيُّ : اسمه \"قَسَماً\"، نردده أو نستمع إليه بهدوء واحترام.",
+        "fichier": "course-cedar-47aff33fc4c4c158.mp3",
+        "duration": 8.35,
+        "sha256": "d9fd02d09cd69a25b78994d583c39d40f726675cc1a880af27ce4b6bcabda000",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:52.562Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "de20882b9c8cfdcd83c281905e8d8a142bf5af6cbd82238631d19052e489f866",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:rule-1"
+        ]
+      },
+      {
+        "texte": "النَّشِيدُ الوَطَنِيُّ",
+        "fichier": "course-cedar-90e77aac7715363e.mp3",
+        "duration": 3.55,
+        "sha256": "e7cdd4927bc23c6e4c08b10f5fe34f9cb1924b2828521a2ad52149e6653a1362",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:53.602Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "994ed9bb4e297a61522fabde526388785f4b2e3fd31f7fcbea960c7c20d11f93",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:vocab-1"
+        ]
+      },
+      {
+        "texte": "الأَخْضَرُ وَالأَبْيَضُ .",
+        "fichier": "course-cedar-0485370559409dc5.mp3",
+        "duration": 3.7,
+        "sha256": "134c908365132fb252c13019346c33bbfb2f362c34165e76feaf387f9ce05db5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:55.519Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "619f18c66e65042541d290fd3d5c0ff0131d1362dbf827aaaa8822106165821e",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:example-solution"
+        ]
+      },
+      {
+        "texte": "ما هما لونا علم الجزائر؟",
+        "fichier": "course-cedar-d58e0b7108f7f15c.mp3",
+        "duration": 3.45,
+        "sha256": "135e50908375c2402d1640893a0108e2ed432b6bba7bff631951c2d6a0d1526a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:55.715Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c1d60bc4520b96ba8217c3be3489c6bd4039d6be6083d3d6b980035a28b53234",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:example-problem"
+        ]
+      },
+      {
+        "texte": "علم الجزائر أخضر وأبيض بهلال ونجمة حمراء، ونشيدها الوطني \"قسماً\"، أحترمهما بفخر واعتزاز.",
+        "fichier": "course-cedar-e6fcf4ebd4c6f493.mp3",
+        "duration": 12,
+        "sha256": "fcb7d2466e7260394473628ce8bba7fe805f6b6299929633770ac23af0ce8ee8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:56.274Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a4635458085daf1b904be77adea743e5a8d3c93bc905df57ad502e3e984da7ca",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:takeaway"
+        ]
+      },
+      {
+        "texte": "ارسم مع الطفل علم الجزائر بالألوان الصحيحة (أخضر وأبيض مع هلال ونجمة حمراء)، وشغّل معه النشيد الوطني ليستمع إليه واقفاً بهدوء.",
+        "fichier": "course-cedar-a7c537b2bdc1e598.mp3",
+        "duration": 14.35,
+        "sha256": "8c6f807067b69670a2ee010eab45af8bd5ce769f57fd9c9fe8305e6895589c5b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:56.507Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cc476ae2b7fc3325ac223cd30f1d68ffd2a070a9916e3b7fed969b1a069a1cf7",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:home-activity"
+        ]
+      },
+      {
+        "texte": "ما هما لونا علم بلادي الجزائر؟",
+        "fichier": "course-cedar-a5271d8a3aaa4d4a.mp3",
+        "duration": 3.75,
+        "sha256": "efbf5b9d545932d44144f07364d6cdeeac7d6c4057594de6786036e8800e7927",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:56.769Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d63515dfd9d4ced0a03646bfdc0cbbb11eff0abe956915b14886b03b09dbfad6",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:practice-ex1-civics1ap-flag"
+        ]
+      },
+      {
+        "texte": "ما اسم النشيد الوطني الجزائري؟",
+        "fichier": "course-cedar-dfecd2e8666617a0.mp3",
+        "duration": 3.5,
+        "sha256": "a5b8e4a1e8d64923f5ebdab9fec9d377fb39ac49e9b573a26e509ae4f4019229",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:56.879Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4cc6e667b41fa61e3622777d4e5fb41b1409853dc788527c3a49c37859ba3cf8",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:practice-ex2-civics1ap-flag",
+          "course:civics-2ap-t1-national-symbols:quiz-q1-civics2ap-symbols"
+        ]
+      },
+      {
+        "texte": "أَلْوَانُ العَلَمِ",
+        "fichier": "course-cedar-a003612874adca03.mp3",
+        "duration": 1.85,
+        "sha256": "7bad76ee167badc3259ec878119052295e81e1514351247d7590f34f190c734c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:57.517Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "04646c3f0872d993e1029283cdbff332be34cf4e18e19e8153944d48b7ad0335",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:practice-ex3-civics1ap-flag"
+        ]
+      },
+      {
+        "texte": "ماذا نرى في وسط علم الجزائر؟",
+        "fichier": "course-cedar-98b56047f58e9207.mp3",
+        "duration": 3.6,
+        "sha256": "1d6dd16d25284258440caa0541e2faeb7856c9639715235f292e7806539bcce5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:58.250Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aad616790961abcd595794caec6eecb48527ef5a2b9b3782f03ab3fd5293bd43",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q1-civics1ap-flag",
+          "course:civics-2ap-t1-national-symbols:practice-ex1-civics2ap-symbols"
+        ]
+      },
+      {
+        "texte": "هِلاَلٌ وَنَجْمَةٌ حَمْرَاءُ",
+        "fichier": "course-cedar-aca159009688261a.mp3",
+        "duration": 5.05,
+        "sha256": "db8bc24fe8c417568eb6b5ec4c2c0048a6756c6fea8b1b41a4570f49e3ced6a3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:58.327Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3b1076781655e071f700400a7daf20ecf17e77ad58266984df4a99e19a1bd24d",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q1-civics1ap-flag-opt-a"
+        ]
+      },
+      {
+        "texte": "شَمْسٌ صَفْرَاءُ",
+        "fichier": "course-cedar-1f44c6208e445869.mp3",
+        "duration": 2.3,
+        "sha256": "98ea4ae27010e222cc517d0c535310d6d521925cc94b3e774741a40f5589af6e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:58.464Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c423d9d99f2ffd697e5f0038c009b23b4d8edd714e422700c633860f619447f3",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q1-civics1ap-flag-opt-b"
+        ]
+      },
+      {
+        "texte": "علم بلادي",
+        "fichier": "course-cedar-7c993775a4a41bb3.mp3",
+        "duration": 1.85,
+        "sha256": "5a148e46b5ecfcc23a693f88ba2399eeaba020feab8bc8cff456e788f53c8875",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:58.684Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ecce63ba4a57f97248fc3fdeb6821556548a8d9387c416ccf55d0a92d57f5633",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q2-civics1ap-flag"
+        ]
+      },
+      {
+        "texte": "الجَزَائِرُ",
+        "fichier": "course-cedar-340a8f8cedeaf6d8.mp3",
+        "duration": 1.6,
+        "sha256": "64761fd81152e84d95e18308c959822f6ad2b7881d19f41bfba67a40885735fd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:59.476Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "629bedc18179d51b66cc9d58ca26d01f396c9e43ad89d081ea605089e12cb550",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q2-civics1ap-flag-opt-a"
+        ]
+      },
+      {
+        "texte": "بَلَدٌ آخَرُ",
+        "fichier": "course-cedar-9f45b087420e1183.mp3",
+        "duration": 3,
+        "sha256": "8a5b9eda6484b1538ff79a276855e56541cff94094c9d8bb3cd41b8ab2f68c64",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:59.738Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2613045f93bc83ec9505d5beaa217646a46059b89e6ee733301c3d9038fba29a",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q2-civics1ap-flag-opt-b"
+        ]
+      },
+      {
+        "texte": "الهلال والنجمة على",
+        "fichier": "course-cedar-5cea4fe37e170f0b.mp3",
+        "duration": 3,
+        "sha256": "ce49ca576277f3052e02ffcbf6787d98d267e789fc6cc0d31df3d8a5886739d7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:59.799Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "29697443822ea64a06419a19829764991dcb43f69b9abef9fff90593136a015e",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q3-civics1ap-flag"
+        ]
+      },
+      {
+        "texte": "العَلَمِ",
+        "fichier": "course-cedar-1dfaed681bb05727.mp3",
+        "duration": 2.35,
+        "sha256": "52fbb5c0c3ab5ed5f4afff929de49242e4136e9620b232f7db8a8eb859200d74",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:46:59.949Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d0e12856f4f5d2b13c3d9098d581dcb30d4e1086b4dcb52eb5e0fd9daa1a0d75",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q3-civics1ap-flag-opt-a"
+        ]
+      },
+      {
+        "texte": "الكُرَةِ فَقَطْ",
+        "fichier": "course-cedar-92b41ef6eb0ea08c.mp3",
+        "duration": 2.8,
+        "sha256": "c4c3eb69d0259df00669ca95094e5f7c52bc0296fe117a80dce4f9b8bcfa432f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:00.695Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "144d86e259690947a8c0a95f149577056d437eb1fa5f714f1c0b53486aed849b",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q3-civics1ap-flag-opt-b"
+        ]
+      },
+      {
+        "texte": "النَّشِيدَ",
+        "fichier": "course-cedar-d82cb7da7135f899.mp3",
+        "duration": 1.55,
+        "sha256": "01c603bdd89f9edb559d28e53208cd540e3e2cbe917e41a282096d7994a9c7ac",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:00.756Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "19a3f0f3358d255d97078a6c57e4a675c4c13c3d18d5a9b45da3ed6ee1ec4163",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q4-civics1ap-flag-opt-a"
+        ]
+      },
+      {
+        "texte": "قاسمي أحترم",
+        "fichier": "course-cedar-eb4368ab5435bb1a.mp3",
+        "duration": 2.15,
+        "sha256": "47ff9ba2b567d3c345a1826d984e15f2d7a7884f4a3c3a3f195441146f344e71",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:00.857Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e70d99268b06a2209b96bcba9f00504dce11aa7f8806c5d559dab5cdacc189ff",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q4-civics1ap-flag"
+        ]
+      },
+      {
+        "texte": "الفَوْضَى",
+        "fichier": "course-cedar-894a8512468bde97.mp3",
+        "duration": 1.45,
+        "sha256": "bc77149d1cca680607510a70600c056ba1f95332c26a54bb3a41bcc5bbc83672",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:01.053Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3867eca81644ca1792c6fe2dee2ec9f538cf679f52454b367aa3ceeb735b151b",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:quiz-q4-civics1ap-flag-opt-b"
+        ]
+      },
+      {
+        "texte": "يُرفع العلم الوطني في طابور الصباح",
+        "fichier": "course-cedar-ad154603d9521f68.mp3",
+        "duration": 4.8,
+        "sha256": "b21acc6002557063ce25fc3f2da363a657945005feb3ec01643747d2e31436c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:02.139Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ea816364af6e936c933d714e1539765c6091f547aa14c4bb41cc68086975fa5",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-0",
+          "course:civics-2ap-t1-national-symbols:game-0"
+        ]
+      },
+      {
+        "texte": "اختر التصرف الصحيح تجاه رموز وطنك!",
+        "fichier": "course-cedar-52ef39fbe123aa97.mp3",
+        "duration": 4.7,
+        "sha256": "ac3a5f93aae15c789c710617b5a85603d4bad216d5955203e4756bc4d0068e1d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:02.157Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2ee720724d4dd866eaeff4486228db7c5ba73ee6d7a0d21d1a7cedc7d717b045",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-instructions",
+          "course:civics-2ap-t1-national-symbols:game-instructions"
+        ]
+      },
+      {
+        "texte": "أَقِفُ بِهُدُوءٍ وَاحْتِرَامٍ",
+        "fichier": "course-cedar-d33231464e4ea3da.mp3",
+        "duration": 4.1,
+        "sha256": "9bfee7d080f87b9d9daed942c9d665410f176135b053ec745100940f42f8b136",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:02.190Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1cb77867cc7296528f166f7e8e9100d53d438f110d40f5b2d1d0fd93db4e28a0",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-0-opt-0",
+          "course:civics-2ap-t1-national-symbols:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "أَتَحَدَّثُ مَعَ رَفِيقِي",
+        "fichier": "course-cedar-a48194f79bfe7cd3.mp3",
+        "duration": 2.45,
+        "sha256": "9e655343848c74ffe77017f3b283f2eee3ac909b6fc5794146348ab116b3aea5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:02.511Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3d4004211495500627697311cefff8f759e99195730e0518f237544351a534d1",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-0-opt-1",
+          "course:civics-2ap-t1-national-symbols:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "النشيد الوطني نسمعه",
+        "fichier": "course-cedar-db61d71f52588cc9.mp3",
+        "duration": 4.05,
+        "sha256": "f29075430d25cef0c7a120af582970a9a537a2b311a7d6d6035006902bfa3d3d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:03.301Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3dc85bd5fccf20834acf7b4b06344fa3ef16e556a62cb234514dc05db82c0623",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-1"
+        ]
+      },
+      {
+        "texte": "وَاقِفِينَ",
+        "fichier": "course-cedar-bc5885b6f6829b5b.mp3",
+        "duration": 1.5,
+        "sha256": "e2eb3aaa69df17297ddc142dee01f8dfd02ac39d1c607ff562fb5de846fa44f9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:04.390Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "622908ef7df62da8f30a0255e7284a3032d53a670bd32562a7b6c8c97a307a4b",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "نَصْفُ العَلَمِ",
+        "fichier": "course-cedar-ae75af0b3876d877.mp3",
+        "duration": 2.2,
+        "sha256": "52f57fb4f165e384b7cc1dcdcf4c0326df4d947cdc86f99d1defbb2b73826e96",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:04.582Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "51ec3f00217c94049a7876bc603d2c67d213b9dbf7e9a44e9a56c5d409bcfb5f",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "الأخضر في العلم",
+        "fichier": "course-cedar-f64c5fd72c61dfa8.mp3",
+        "duration": 3.25,
+        "sha256": "1088d7869e615a85c9837d573eb98cedec3864c629a64d9fce4329b0fb433999",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:04.701Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1cd569475a64b0a74ea9cb6096270e173268f118b4e0b014255ea788208efb1",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-2"
+        ]
+      },
+      {
+        "texte": "نَضْحَكُ بِصَوْتٍ عَالٍ",
+        "fichier": "course-cedar-3416848b00a367bc.mp3",
+        "duration": 2.95,
+        "sha256": "7d6e56e34bb927a3a05c58eff2293b932cc90556deaa42de245e126a00050459",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:04.766Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "95cf6b4b574c4bf4067764a185ad1135d7f71bded95f64177f7af65b5e0ebb5b",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "كُلُّ العَلَمِ أَحْمَرُ",
+        "fichier": "course-cedar-53351512b4dfbb15.mp3",
+        "duration": 1.9,
+        "sha256": "f1030d7cecd4ccae150c13f1d0d87003c8309e0630597d6640f0ed29b445eeb8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:05.585Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7f8974756a7596b4c0d87290139eb10b94664578b1a1525ba0ec6ffc6d61ffd0",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "بِرَكْضٍ",
+        "fichier": "course-cedar-c2624f112eb7671d.mp3",
+        "duration": 1.6,
+        "sha256": "9655cceadb92d8ec3ee38336407564bbfdf36e5d7fc0846953be3e5872993be5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:05.653Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "916a36ee713e9b85978a5910c57db5b9d1a1e629ecf39ec7b0493ee48d6f4b0a",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "نحترم العلم",
+        "fichier": "course-cedar-db918f2df8d27094.mp3",
+        "duration": 2.35,
+        "sha256": "b5a656067c65002c86bd8b213bf6a0e4378aa69a77c90661f0fba4a8581379f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:05.709Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "79fd2127b6f4fcca5912cb3889333215efe1b5872b54dc3f9983618b527db583",
+        "uses": [
+          "course:civics-1ap-t2-flag-anthem:game-3"
+        ]
+      },
+      {
+        "texte": "لا، الهدوء هو سر النجاح!",
+        "fichier": "course-cedar-913bdcb15a47627a.mp3",
+        "duration": 3.45,
+        "sha256": "6ae122cccf0a6059a57078fac83347077871d740e773d85dafc17f3a8be6fb0e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:06.741Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ef9e42d0835f9e697b4f3b36a88c31f10c8cfae851d135f62dbaaab6be96a1bc",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:discovery-1"
+        ]
+      },
+      {
+        "texte": "تخيل لو تحدث جميع التلاميذ في وقت واحد بصوت عالٍ، هل يستطيع أحد أن يفهم الدرس؟",
+        "fichier": "course-cedar-c44e836c2cae60e9.mp3",
+        "duration": 9.45,
+        "sha256": "6ec1fddef81755a2fb2f636e77b44d9e9f3956df39526a3d55e4ae7eb2bb1081",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:06.895Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f3105d22d361707e6c1930d491af4879d1ad7b9be9a68d084ae2d023b17aecf1",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:discovery-0"
+        ]
+      },
+      {
+        "texte": "النِّظَامُ وَالتَّرْتِيبُ: أضع محفظتي في مكانها وأجمع أدواتي وأحافظ على نظافة طاولتي.",
+        "fichier": "course-cedar-c7c3362adea7ccb6.mp3",
+        "duration": 8.9,
+        "sha256": "039c38b7c39030a022c9212e31557a10bc3826c184d69a39b014a8c3318eb5a6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:07.544Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "34167d8e5fd83453b55d921d1b8c9df9284241f9a747199fbf68797c662170c8",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:rule-1"
+        ]
+      },
+      {
+        "texte": "الهُدُوءُ وَالاسْتِمَاعُ: أنصت لمعلمي وأرفع إصبعي للاستئذان قبل الكلام.",
+        "fichier": "course-cedar-d9010cfcbf8a6533.mp3",
+        "duration": 8.05,
+        "sha256": "b1078b685bc01f579ec37763e88a48979a16a3c1985ea30255315d1c4b8a921b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:07.585Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1eae57de97ac72d634b32cb66a0bbac47f649ce24bab99e9f7e6712c3fd4ea13",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:rule-0"
+        ]
+      },
+      {
+        "texte": "النِّظَامُ",
+        "fichier": "course-cedar-b8b3b10b53eff1c4.mp3",
+        "duration": 1.7,
+        "sha256": "f4aee75e3900807494b2d9b36fb62c55c4e3451c88bc554849e1e999da539fd9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:07.874Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8783cbcca5127cfcc35aba4585cc9f80708875f0279339641ddec79de0e4ae8c",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:vocab-0"
+        ]
+      },
+      {
+        "texte": "احْتِرَامُ الدَّوْرِ: أقف بانتظام في الطابور وأنتظر دوري دون تدافع أو مزاحمة.",
+        "fichier": "course-cedar-7db19cbcf205351a.mp3",
+        "duration": 8.65,
+        "sha256": "47b0529b2f04603ee8820da01f271743d73b061c910b8b4765dce915f2bc81e0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:08.776Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1ad514c326fc70f39e8070a5c7d354e9d09c267062a01284819e4e2d6fff6bf0",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:rule-2"
+        ]
+      },
+      {
+        "texte": "تريد الإجابة عن سؤال المعلم:",
+        "fichier": "course-cedar-ee68e713fdb0d1f8.mp3",
+        "duration": 2.65,
+        "sha256": "a20753b59057b132249010c4476cb5f19fc77390c8c906d22d95f8d77562258e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:08.795Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9d78c194d65a532fadb111fa5eee7951e2affe65ca3a0df7a5086770f5324e37",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:example-problem"
+        ]
+      },
+      {
+        "texte": "الدَّوْرُ وَالطَّابُورُ",
+        "fichier": "course-cedar-3b98d66aec131360.mp3",
+        "duration": 2.45,
+        "sha256": "ce384ea3890026c29aab19ac8710034f04f868476c09b5e223afaa2f1c8ba469",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:08.861Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2da15edb42155cff20c066604f39ebc6d3bab794abfdc4a63e7e417813410657",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:vocab-1"
+        ]
+      },
+      {
+        "texte": "أرفع إصبعي بهدوء وأنتظر أن يأذن لي المعلم.",
+        "fichier": "course-cedar-7eb3f4d735d51341.mp3",
+        "duration": 5.15,
+        "sha256": "68c44c9e721042867a9eb3d77dcb3471f8340269c6077b95503c244b2eb09981",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:09.570Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a5478eada829bba1b797d6d2665bcaf758ee4d92844c4add8baff5e2678a8c31",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:example-solution"
+        ]
+      },
+      {
+        "texte": "ماذا نفعل عندما نريد التحدث أو الإجابة عن سؤال المعلم؟",
+        "fichier": "course-cedar-4d6331e2bd6ed695.mp3",
+        "duration": 5.55,
+        "sha256": "61e350dfe73d1f37cbbae9077474fde5c00fcf8caf921c8814e2ad749fda1a05",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:10.473Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c23e7c07504722adeca393b2918cb636f4b9cc0c1fb81e9e292858919ff0cc3e",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:practice-ex1-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "أنصت عند الشرح، أرتب أدواتي، وأحترم دوري في الطابور لأكون تلميذاً مثالياً.",
+        "fichier": "course-cedar-578232261235f490.mp3",
+        "duration": 7.8,
+        "sha256": "fa1bb1d8c4bd49126fa8122b97b9c77af9562a0169da721ae9ccf6036974ff76",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:10.530Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0f05ff8f693c55c630c7599c0bc4a7ef26830776b3a6a0b08641af8ef63bed51",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:takeaway"
+        ]
+      },
+      {
+        "texte": "ارسم مع الأطفال \"ميثاق القسم الجميل\": صور كرتونية تمثل رفع الأصبع، ترتيب المحفظة، ورمي الأوراق في السلة.",
+        "fichier": "course-cedar-75a745b8ea4539b2.mp3",
+        "duration": 10.45,
+        "sha256": "75cd08934b7b9fd1fd8baf2d0909b0d8bbfe8bf43b9e63010405fedcf856ef1f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:11.262Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c4a0f81a8de89f49cf9a02d5673b9959583eaf7611487e3c23bd64eb5f59465c",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:home-activity"
+        ]
+      },
+      {
+        "texte": "أين نضع الأوراق وبقايا المبراة للحفاظ على نظافة حجرة درسنا؟",
+        "fichier": "course-cedar-b587169089ba6960.mp3",
+        "duration": 6.45,
+        "sha256": "b300f6f8f22e0449b87e53f9ad9848366a3652eafc2224cb8bb54ea1d38f90b2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:11.305Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f1cb04709f774b61577cbf8929f4e06ab1c7807e9b0a5ae95ca64fd2c5561724",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:practice-ex2-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "المعلم يشرح. أنا؟",
+        "fichier": "course-cedar-6e991bc1626a33b2.mp3",
+        "duration": 3.8,
+        "sha256": "9a0adb1045f66205bfcff15c6909e565b83d338b081080191c63c516973f2df0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:11.720Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "84045e4e1c8c6ab8983d936c11963225533d94eb1f65e69b334ac197d3f68d7d",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:practice-ex3-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "ماذا نفعل عند الوقوف في الطابور الصباحي لتحية العلم الوطني؟",
+        "fichier": "course-cedar-2f5f73f349265e6b.mp3",
+        "duration": 5.75,
+        "sha256": "0af5b34097654226d809ef1db910aa3a0e6da1e5eb553efe64259feaef7498b7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:12.263Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fe3ae1bb423ebdb7057053111b2448bac1239a24d934b4a60d500d84497206cd",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q1-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "نتحرك ونلهو في الصف",
+        "fichier": "course-cedar-d3c1018e47be458e.mp3",
+        "duration": 3.85,
+        "sha256": "5beb9a924b9254a3959977b0df1ce00ddb68942d8cdbbcbf165a9431739e3e51",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:12.881Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "88ffb93e108a086fca9a9ef9053a62b27b9f37f7cf3f863421d2fbd1c92a92e6",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q1-civics1ap-rules-opt-b"
+        ]
+      },
+      {
+        "texte": "نَقِفُ بِانْتِظَامٍ وَهُدُوءٍ وَنُحَيِّي العَلَمَ بِفَخْرٍ",
+        "fichier": "course-cedar-ec7a8896b42a24f8.mp3",
+        "duration": 5.1,
+        "sha256": "7461f18ce36270beed1f02ef2d88c85dfdf262bc1f3331e3132a5dd2610bb183",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:13.028Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f35358dff408f12e6d6924d0782d63086970d47960b95a09b1ebd7919f63612e",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q1-civics1ap-rules-opt-a"
+        ]
+      },
+      {
+        "texte": "أدوات زميل",
+        "fichier": "course-cedar-f782446cab43ee51.mp3",
+        "duration": 1.85,
+        "sha256": "6ed8503f629181117d0cea91c3fa9fe8616a6cdac2ee1a15daef68fcea49a590",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:14.141Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b651e501a222c1122e0e30996e5e771aa795b95b2d9a720e812119f2abbf0b3",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q3-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "بِرَكْضٍ خَطِرٍ",
+        "fichier": "course-cedar-fd13572ce9b3b68d.mp3",
+        "duration": 2.8,
+        "sha256": "9caa8a77fbe7c9b0127ce0fd4ac961842d3906b2961d2223f468ace30e66f321",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:14.616Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e44edf39d362082389acdb99f6051d42641b8f72e5f16cb74540aa09a073e4e0",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q2-civics1ap-rules-opt-b"
+        ]
+      },
+      {
+        "texte": "لَا نَأْخُذُهَا بِلَا إِذْنٍ",
+        "fichier": "course-cedar-567c99c396e4a138.mp3",
+        "duration": 2.8,
+        "sha256": "5e9fb9fdc3e209fdcfd49032089421f508303962159022226ff1e513315f02e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:14.690Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dd8303397c4876ac184d2e286e448dbe2c83d2067005e9dc4b7e21a72b67b4b4",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q3-civics1ap-rules-opt-a"
+        ]
+      },
+      {
+        "texte": "الجرس للخروج",
+        "fichier": "course-cedar-3cb4b1ed90b36236.mp3",
+        "duration": 2.9,
+        "sha256": "0966c0fbf1b930a9ecc8e585d6fe56875c881e1cdcf3241d63f5c300278e9827",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:14.832Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4864250cb57836c6c3c290b68ae5500af40cb2dce5219214973cdb6d2313bf77",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q2-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "نَأْخُذُهَا",
+        "fichier": "course-cedar-bdbfaee1278eb654.mp3",
+        "duration": 3.15,
+        "sha256": "ce15c46976554fb37e6b3ea11eb42a3bf5eba4a510594fa238fb353c6857183e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:15.833Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9baeb7069c3b4d45ff740881a15dce594bb3b38ca22b71acbe622ff976867b8b",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q3-civics1ap-rules-opt-b"
+        ]
+      },
+      {
+        "texte": "في الطابور",
+        "fichier": "course-cedar-1628fa08e0eed52f.mp3",
+        "duration": 1.8,
+        "sha256": "14b36e33616452d27d51477262f14b7a9cb5940f9f098fced3a08b26a2a35f59",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:15.944Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e2a7b2e7d21f2ebd36262f44cebcba736a9f83726a0caac30b366a71c1878b7",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q4-civics1ap-rules"
+        ]
+      },
+      {
+        "texte": "نَدْفَعُ",
+        "fichier": "course-cedar-5265274ea9557681.mp3",
+        "duration": 1.2,
+        "sha256": "839a981ce52505d7c1f008f0645f7e89dd429ccfe057b9e9f7536d773ca8e844",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:16.108Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "907276dab7f72e75eda8af5ab1bbc54d1f00944864b6aba42074f73bdd8730dc",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q4-civics1ap-rules-opt-b"
+        ]
+      },
+      {
+        "texte": "نَقِفُ",
+        "fichier": "course-cedar-4eb010596b74f031.mp3",
+        "duration": 2.65,
+        "sha256": "b1b1d5f7e7764d3cad856ae5622a0f27d01a16c26b2375cd4bdaa78906535755",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:16.214Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0c926bcb7ecdc0774575af8f156dcb460a2e82cb7393ff83c128e1778c512d23",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:quiz-q4-civics1ap-rules-opt-a"
+        ]
+      },
+      {
+        "texte": "اختر السلوك الصحيح داخل المدرسة!",
+        "fichier": "course-cedar-3fbc87b725a76673.mp3",
+        "duration": 3.65,
+        "sha256": "9d61b3806200a76ac1c32be3188f168354969eae3a1d3edf9c7ca27e65bc5646",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:17.400Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c065a542645bb03b7d0515c00ed8c1b7524a00ad4db33d2c6dec14cbc5935471",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-instructions"
+        ]
+      },
+      {
+        "texte": "عند الشرب من الحنفية وهناك صف من الأطفال:",
+        "fichier": "course-cedar-baf72ea744f1e13d.mp3",
+        "duration": 4.7,
+        "sha256": "be7ef45f4058bdef1196983448f0ff601d15b5b52946ed6a3f19ed7cef882193",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:17.434Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "63e5f4bb001f98fb7acf24a2ae5a936f7b1816cf9e142386ab3bf90a6f564cf1",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-0"
+        ]
+      },
+      {
+        "texte": "أَقِفُ فِي الطَّابُورِ وَأَنْتَظِرُ دَوْرِي",
+        "fichier": "course-cedar-21c2db18ff1951cc.mp3",
+        "duration": 3.45,
+        "sha256": "197c755f87e306eae3904d9711f13b51cfa44ed7abd5b3bbfd6781ac64a59bd9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:17.513Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3544d9c447fbb4a3034cfbd7d1aacfde5edd99e82f868f156957d5e4c3f75767",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "أتدافع لأشرب أولاً",
+        "fichier": "course-cedar-b0714c7547a5e32c.mp3",
+        "duration": 3.3,
+        "sha256": "0ae7811c33114e457022d05cfdbf0cbdf6554ae4fa0d6c916d0a89adbf3616cc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:17.679Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "af3980d54f3eea47dc832c579ee35fef0c3b29d6a156e476465a43a96c4acfe8",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "أترك أشيائي مبعثرة",
+        "fichier": "course-cedar-8cb412b8f57840a4.mp3",
+        "duration": 3.05,
+        "sha256": "5fc79f1fbd9d41918c70f82d1691529a0798dcdb8a71266b22841a251557416b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:18.772Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e90e26085d1aefb4eb224b425886ff3e0bdc6a6d6766662474a88395ba788ada",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "بعد انتهاء الحصة المدرسية:",
+        "fichier": "course-cedar-5c00657db5106a67.mp3",
+        "duration": 2.7,
+        "sha256": "0cc268f2c06601424827f41ba7d16263bea871aff60cfd8a172cdf5028b55438",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:18.937Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e1fc73d3680ab5c15f7dd9143ea0f9cc9c8b3731d04f81aac8a29de574cb964",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-1"
+        ]
+      },
+      {
+        "texte": "أُرَتِّبُ أَدَوَاتِي فِي المِحْفَظَةِ",
+        "fichier": "course-cedar-e00d3803e172985e.mp3",
+        "duration": 3.35,
+        "sha256": "84a5f1a399981eed3fcf37eabc70bcaabaf2cca8d0d6cd15d410a2869447eab3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:18.997Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b48416505a6a9e7bfee87d7b8694412a1d8b039939a1dd369657ac57712fa67d",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "رفع اليد للكلام",
+        "fichier": "course-cedar-2576912357332e4c.mp3",
+        "duration": 2.9,
+        "sha256": "b47e2375bb152fd55752e414b316ed2b6ffdc6fed2f0b5c813ec8ae812b97945",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:19.049Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8205c8887c86405fa96521a52abb007e2660ca2b4a04ff127a610379cab02515",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-2"
+        ]
+      },
+      {
+        "texte": "فِي السَّلَّةِ",
+        "fichier": "course-cedar-d895727bf8b6bd0f.mp3",
+        "duration": 1.55,
+        "sha256": "3808e4ee1473f5672f4507186ea770ad2ac03f4e8ae86202e705c5d9e4e36d2f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:20.233Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3e1fe10fef8c8ddbcf8c9f136d2e7513b185dcb187eb18944be05f763176d87f",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "القمامة",
+        "fichier": "course-cedar-9ede3dd4b45aa0ff.mp3",
+        "duration": 1.3,
+        "sha256": "e2afb633a2f7542920295409383c2318876772349e1ebd71c1b2f6ad7518ebf0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:20.291Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e70f040a3d5685358de4d37c91a36561c74504e0ddc77ddfe2111fa73048814",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-3"
+        ]
+      },
+      {
+        "texte": "عَلَى الأَرْضِ",
+        "fichier": "course-cedar-4d24988da4a98b50.mp3",
+        "duration": 1.55,
+        "sha256": "fcfcc898e49c95fbd366702e6f03dfcdccf14bed72a599c81f86148caeee7a54",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:20.321Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2eec54115d288724a5f3298c6cf5c7ec71e7bc18fd0c2fdf9c4055940f4cdc1c",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "نَقْطَعُ الكَلَامَ",
+        "fichier": "course-cedar-4ab19eed5d9d6ab6.mp3",
+        "duration": 2.25,
+        "sha256": "496887298169ccf57760a5d004a63df7a39270ab1722971e00e4ff691aead604",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:20.353Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7faea39461415496d63d8e1324f14cc4177d76d941f395fd683dd550de24dcce",
+        "uses": [
+          "course:civics-1ap-t3-classroom-rules:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي التَّعْلِيمِ : الذهاب إلى المدرسة والتعلم.",
+        "fichier": "course-cedar-42c5771927618cef.mp3",
+        "duration": 6.3,
+        "sha256": "c421a0c5119610856f3eea6069cb726f49e8b1e21d1ed04f497b4f1d65738ec6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:22.078Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "54a31ce12ff46dbb21d89608036a4cf82cf3395470b77bf371457008c268ce88",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:rule-0"
+        ]
+      },
+      {
+        "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي اللَّعِبِ وَالرَّاحَةِ : وقت للعب والاستمتاع بعد الدراسة.",
+        "fichier": "course-cedar-5aeb907747663c28.mp3",
+        "duration": 7.5,
+        "sha256": "9cf983910bb5f41d5a37c141538972021f486223eecacc91232c31c88142c098",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:22.224Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c3473c482a851d0e17fea4f0a52a393c4e059bed98812d4e29f67524459b9b96",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:rule-1"
+        ]
+      },
+      {
+        "texte": "لِكُلِّ طِفْلٍ الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ : من أسرته ومجتمعه.",
+        "fichier": "course-cedar-1da423e51a50c892.mp3",
+        "duration": 6.1,
+        "sha256": "e0f29eeb537a7b1bfd10a88b4442e8e5d1cf253cc65ec187de051f74e80eb057",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:22.283Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4b830ffac6b4a1133f8bbde111cdaccf493e89ba5c8eecf87063d84801656072",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:rule-2"
+        ]
+      },
+      {
+        "texte": "كل طفل في العالم له حقوق يجب أن يحصل عليها. ما هي الأشياء التي تحتاجها لتكبر سعيداً وبصحة جيدة؟",
+        "fichier": "course-cedar-9865193568952cc9.mp3",
+        "duration": 11.25,
+        "sha256": "29d146a2001880096349fdc5c2ddffde05f1a7c06349887949d213d93e30c0ed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:22.431Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "adfce82b4dc3a6b3eb495cf36b114f155e32bd540bec0241ce17fe246cf518fb",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:discovery-0"
+        ]
+      },
+      {
+        "texte": "الحَقُّ",
+        "fichier": "course-cedar-2aa83b2e24cb1d83.mp3",
+        "duration": 1.4,
+        "sha256": "806dec463f9b7f254a3b4e7ee63a8c093db85bdc4cf9df932fdf765b55366c91",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:23.305Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e54adda44514822b3ff94c063af467d1dd46ca6cf4f6e04b797e966935cb2fe7",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:vocab-0"
+        ]
+      },
+      {
+        "texte": "الوَاجِبُ",
+        "fichier": "course-cedar-8f35815e02ddb44a.mp3",
+        "duration": 1.4,
+        "sha256": "0716bdd8fb816d66f2758854c85f9fe9f0a550423407258375eca8c741ccc6df",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:23.479Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "79622737ee039b1f4280f7d035d63c98ad0d3250255fd85f621f819e31d98702",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:vocab-1"
+        ]
+      },
+      {
+        "texte": "ما هو حقك الذي يمكّنك من الذهاب إلى المدرسة والتعلم؟",
+        "fichier": "course-cedar-4267dcbf21e3a1a0.mp3",
+        "duration": 6.3,
+        "sha256": "78eca5a2b988c006e9330a3f34a321b20c89a81071204566aeea62c73bb39956",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:24.139Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "caa2ddaeb0eea174853dcae1401c5645a146423c52538e5196bdd44147275e5c",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:example-problem"
+        ]
+      },
+      {
+        "texte": "وَعَلَيَّ أَيْضاً وَاجِبُ احْتِرَامِ حُقُوقِ أَصْدِقَائِي كَمَا أُحِبُّ أَنْ تُحْتَرَمَ حُقُوقِي.",
+        "fichier": "course-cedar-0b572d1814f4a22d.mp3",
+        "duration": 8.1,
+        "sha256": "d02b399d28c393f7f8dba15345403c6e690e6bfbde18719bda85767ca6ce51d0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:24.670Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4879457d7bac56185b6586f881a5dff127bc4e53c919ce493968359385431b79",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:rule-3"
+        ]
+      },
+      {
+        "texte": "الحَقُّ فِي التَّعْلِيمِ .",
+        "fichier": "course-cedar-dfafb0ce07329f85.mp3",
+        "duration": 2.85,
+        "sha256": "58d761750ace93f0cb22cc56fd8d0368ba7706cca73f925a161f0d5529ccbf96",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:24.958Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "75905af3396206e0ed5ace600ca80dba482572e9228d4763ba38ec4bfdf89106",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:example-solution"
+        ]
+      },
+      {
+        "texte": "اطلب من الطفل رسم 3 دوائر: مدرسة (حق التعليم)، لعبة (حق اللعب)، وبيت دافئ مع أسرته (حق الحماية).",
+        "fichier": "course-cedar-8d30b1a8569d68cf.mp3",
+        "duration": 11.8,
+        "sha256": "a0b23ca2e6c6e73c04db1f8217c8f7415134f4b631ec544076bc279871f8ed0c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:26.365Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "47dcf68353da753d5b6ff247aeb250369aced641495fa30bcc4d11c8891bc65e",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:home-activity"
+        ]
+      },
+      {
+        "texte": "لي الحق في التعليم واللعب والحماية، وعليّ أيضاً احترام حقوق أصدقائي.",
+        "fichier": "course-cedar-78d4d94bb95c1190.mp3",
+        "duration": 7.9,
+        "sha256": "f171fc01d92c01b41a2dc2a676b482026df377687492069a4ae5d0c6d3f5f794",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:26.923Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7669954c10529cd8ca8a32872d22920f9fe68e54b42199ea5ab6feefd5d467cc",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:takeaway"
+        ]
+      },
+      {
+        "texte": "ما هو حقك الذي يمكّنك من الذهاب للمدرسة كل يوم؟",
+        "fichier": "course-cedar-9e692e2e594b7e9f.mp3",
+        "duration": 5.95,
+        "sha256": "b86dee626384cd0175b2d75a83e20cf138b408a2a315797bbc2305107b705037",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:27.014Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "af5ec27b85ca9e9f7d072a612ca6dc5e55bb99adb856a2955742ca9f6e7c2922",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:practice-ex1-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "بماذا يجب أن أقابل حقوق أصدقائي؟",
+        "fichier": "course-cedar-606e0bca9310c464.mp3",
+        "duration": 4.85,
+        "sha256": "b68b772e3801c29a0d573606641c5453ac767cbbf9c2fe3f8aa8045ee115d6c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:27.064Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "78cbf53e4ab40c56c16ed6c767188d2025826a0f53e6ae9b958a7d30a7a4d914",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:practice-ex2-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "من حقوقي",
+        "fichier": "course-cedar-eeea6e2adb65c27a.mp3",
+        "duration": 2.25,
+        "sha256": "8e17ab3810e36f594de5312e4f19c7cfe049314fd44944081c92a8b57e6ccb69",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:27.683Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "406070b2b59619befdf175914c63c86ebd0d261b001bd8fffd1659aff1dca9f9",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:practice-ex3-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "ما هو حق كل طفل يحميه من الخطر ويرعاه؟",
+        "fichier": "course-cedar-9d3b55f54e571021.mp3",
+        "duration": 5.3,
+        "sha256": "e48208d10f68d36df6be38709ccc7f36e0d1a943a1db40a2b8885af56522735b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:28.452Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b82ab19a14ffc6f68b6771721cd8c57bd74e86a700173bb6e42161353863826",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q1-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "لاَ يُوجَدُ حَقٌّ لِلطِّفْلِ",
+        "fichier": "course-cedar-9615b827ebe47fd2.mp3",
+        "duration": 2.8,
+        "sha256": "d13b2cfa20b1aba6707ccb4e9d4a1c03a86435b9df535b2369dbbf86d45c328c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:28.472Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f1615ddae0365b7e6791b18285b328f2fe3f12100d67181d30766104626a2fa0",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q1-civics1ap-rights-opt-b"
+        ]
+      },
+      {
+        "texte": "الحَقُّ فِي الحِمَايَةِ وَالرِّعَايَةِ",
+        "fichier": "course-cedar-ea10924cf83081ee.mp3",
+        "duration": 3.05,
+        "sha256": "53368b4e9ee2688c1b52bcca254af9156fc0366e9e5bc07efe749481bf941263",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:28.537Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0314cae73513ff8a991a66bd75b921352b39282d619fddebe3cd0f6da8ca99ff",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q1-civics1ap-rights-opt-a"
+        ]
+      },
+      {
+        "texte": "الاسم والهوية",
+        "fichier": "course-cedar-bc2e9eab4d6fe2e4.mp3",
+        "duration": 2.4,
+        "sha256": "5f6dd11bc17155974ac023ccee5ce6add5b25f84539be548521733b7d67e5ff3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:28.941Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "482ff1a4e6438a4639ea5cf23c0065b92f97af301234ed3d679586f8bd6cb10e",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q2-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "حَقٌّ",
+        "fichier": "course-cedar-6ec55f651be7f583.mp3",
+        "duration": 1.4,
+        "sha256": "5cccc8c1bd3564885358643d90c8925d7d1098dc7f3e286e638f0419e0040840",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:29.387Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ed9012aba608e51e99207ad5f94a7b7f3e4e2e7ddbf43d9e5cb0f8bf230bed0a",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q2-civics1ap-rights-opt-a",
+          "course:civics-1ap-t3-child-rights:game-1-opt-0",
+          "course:civics-1ap-t3-child-rights:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "العنف",
+        "fichier": "course-cedar-e757e1487c2c10b4.mp3",
+        "duration": 1.35,
+        "sha256": "2746bc155f32435973778192385395c64682aeee00db719f2bf031bb769e7407",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:29.539Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4ba291a4f6f83dcdb3eb9c79163c152c193bf6655b9b72439a8a07670d314bf8",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q3-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "الراحة والنوم",
+        "fichier": "course-cedar-9d0fee2cdb7385b5.mp3",
+        "duration": 2.35,
+        "sha256": "da779b40aa998b73840ee55b4f45bf3378ea9750df382e4298403e8ed3e62e4f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:29.804Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3836d7b999c5ede1ea0ddcc5467801b1c9b999595707665ed22fe6daf4db5f02",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q4-civics1ap-rights"
+        ]
+      },
+      {
+        "texte": "أَحْتَاجُهُمَا",
+        "fichier": "course-cedar-b00611c8c1d6693c.mp3",
+        "duration": 1.85,
+        "sha256": "289e14df514ba4c4cabf0ec0d99cf9e6b851d73754bb09150c182817251365ad",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:30.148Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ad848ceccf8ddd941e06e8d3392cbbe941fc234305aa7f447c94a2af204d86f0",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q4-civics1ap-rights-opt-a"
+        ]
+      },
+      {
+        "texte": "بِلَا فَائِدَةٍ",
+        "fichier": "course-cedar-733f6aab97d8a619.mp3",
+        "duration": 2.2,
+        "sha256": "90cbed52f5fcdf715672470b650d39dbb2d74f80ef09409c2f1dd1d9c5e6d9fc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:30.576Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8d70b363c7b257de359b310616c6076a039de6049a2a6f82e2226e23b777858a",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:quiz-q4-civics1ap-rights-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر الحق الصحيح لكل طفل!",
+        "fichier": "course-cedar-49be507071cd1b67.mp3",
+        "duration": 3.05,
+        "sha256": "c2eb59380989b266edfa0234d51f278960b4706fdbf646caf97b61f9e6bae659",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:30.927Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e5d8220324e8c05b4258c60a42f77d24cefc10f76e1fc98512ea9a3b768df592",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-instructions"
+        ]
+      },
+      {
+        "texte": "من حق كل طفل في وقت فراغه...",
+        "fichier": "course-cedar-a8e54bdbc3598b42.mp3",
+        "duration": 2.9,
+        "sha256": "bf4be0fb4537613b8d02a4a9c6e3491c6936c6be3d12a79b58ab71b3b76a6a51",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:31.066Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3bdd1fcc9c4e3c339ced5861fb892c73bcc0f1d2d62cb1f2199979e855068024",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-0"
+        ]
+      },
+      {
+        "texte": "اللَّعِبُ وَالرَّاحَةُ",
+        "fichier": "course-cedar-63ad8827c93514c6.mp3",
+        "duration": 3.05,
+        "sha256": "e780f6caeb09bc8e3fe06df18ed0d1b07f2ed1a12dcd71c0fa442a737f4306ca",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:31.955Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d335bf82d3ed3a003f117ab5c04b947057d64d5ec0acad5c2be44426bb66d064",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "العَمَلُ طُولَ اليَوْمِ",
+        "fichier": "course-cedar-60051520c4061d81.mp3",
+        "duration": 2.1,
+        "sha256": "0b7bb9bb164f340706fc49c134383a370edd11f8a09a36166ecb68366f7028c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:32.120Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "de30f78d2b075fdac90cc9fc955618e5114371e3b37e1b82f9cda9267f14ea62",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "اللعب بعد الدراسة",
+        "fichier": "course-cedar-a74a4137bd95fe2f.mp3",
+        "duration": 2.95,
+        "sha256": "36901649bf443baaa1139b0e75ffeeb1fb0ff51117a708d0a1694816fee47214",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:32.169Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "19dc6191d11551e2313880dfed513745448d2e7dd22fbad03f1cf75d64b45312",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-1"
+        ]
+      },
+      {
+        "texte": "حَقِّي",
+        "fichier": "course-cedar-649a2b3abe511ddb.mp3",
+        "duration": 0.85,
+        "sha256": "702abb27ce8c3793a48cf701c1741e60dfec2dec2d4af3bd568f07a9c4d92941",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:33.125Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2e5fda6b952010c4be5ad4a4c5ff565e1ccc09867859ea1756143b274b21f3cb",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "لَيْسَتْ لِي",
+        "fichier": "course-cedar-e4aa1989e9ddbe8d.mp3",
+        "duration": 1.2,
+        "sha256": "dee46f5058d6a0da6d6bb4060b5633e1f6e7495c8764e43e4ac182585492a9d6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:33.368Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f5715266bf27832b77c380838141791cb58f361f5c118f15020144cb6198f5a3",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "مَمْنُوعٌ دَائِمًا",
+        "fichier": "course-cedar-8559100b6bc74d96.mp3",
+        "duration": 2.3,
+        "sha256": "4f83bb71552f080ae277423a8cfed69d4795729b0b8b39d198ff061a5b6eba11",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:33.395Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c8c3f9d40c537b7464d5c75e31d3bf8203a84902504e5a3ffd3210d47e06e50b",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "الرعاية الصحية",
+        "fichier": "course-cedar-fbbec7434970ed73.mp3",
+        "duration": 1.85,
+        "sha256": "3ea6b361b437bfa6d4acd6c83264878cc90cd367c68b28b82e71d391c4c0461b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:33.430Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "38d347ab9dc10d95dd17a0f3565239f49c47ca82a27fa8c0645f499124cb3789",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-2"
+        ]
+      },
+      {
+        "texte": "عِقَابٌ",
+        "fichier": "course-cedar-0fbe326672bcac42.mp3",
+        "duration": 1.8,
+        "sha256": "748e30b2c315c8bf9ed0e08370dbf92d4c6173c4a5552a3d8fc67bb6c434101e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:34.273Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "202324b4635f623dbcc8bfcd2a609a94695125eefba46e9b7590595ff3d7a6d4",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "التعلم في المدرسة",
+        "fichier": "course-cedar-b6926cc68bfc5387.mp3",
+        "duration": 2.25,
+        "sha256": "6de44590bb99368543c6bf133440a75dfb2d5c2a2da49200d9e8ced02c6b4bb6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:47:34.316Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3fe4c587e5e94cfad5b194360cc359770e4b60eaa2d0a45e7a4159047da65157",
+        "uses": [
+          "course:civics-1ap-t3-child-rights:game-3"
+        ]
       }
     ]
   },
