@@ -1,0 +1,338 @@
+[
+  {
+    "fichier": "course-ar-f8346951908a52de.mp3",
+    "texte": "أُقَارِنُ: أَطْوَلُ، أَثْقَلُ، أَكْبَرُ",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t1-grandeurs",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-edd91233f9f30652.mp3",
+    "texte": "أُقَارِنُ بِالرَّمْزَيْنِ < وَ >",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-compare-symbols",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-46ec60cdee5b60d6.mp3",
+    "texte": "أُحَاذِي النِّقَاطَ وَأَرْسُمُ بِالمِسْطَرَةِ",
+    "targets": [
+      {
+        "lessonId": "math-1ap-t3-ruler-align",
+        "grade": "1AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-07dfde23f7c75ed8.mp3",
+    "texte": "أَصْوَاتُ الحُرُوفِ: أَ - بَ - تَ - ثَ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t1-letters-group1",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-93bf92c52555d32e.mp3",
+    "texte": "أَتَعَرَّفُ عَلَى الحَرَكَاتِ: َ ُ ِ ْ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t1-harakat",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-790692de9c668cd1.mp3",
+    "texte": "أَصْوَاتُ الحُرُوفِ: مَ - نَ - لَ - رَ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t1-letters-group2",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-ef1f67e5bcdff099.mp3",
+    "texte": "أَصْوَاتُ الحُرُوفِ: دَ - ذَ - سَ - شَ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t2-letters-group3",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-272e50787a5156b7.mp3",
+    "texte": "أَصْوَاتُ الحُرُوفِ: عَ - غَ - فَ - قَ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t2-letters-group4",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-d2205b3ee20929f7.mp3",
+    "texte": "أَصْوَاتُ الحُرُوفِ: كَ - هَ - وَ - يَ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t3-letters-group5",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-69ef3b2ca1f402da.mp3",
+    "texte": "أُتْقِنُ رَسْمَ الحُرُوفِ وَأَكْتُبُ اسْمِي",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t3-tracing-name",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-a3e18d9a77a7810f.mp3",
+    "texte": "أَتَعَرَّفُ عَلَى المُدُودِ: ا ـ و ـ ي",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t2-madd",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-1d6cb36c44f8a450.mp3",
+    "texte": "أَتَكَلَّمُ: العَائِلَةُ، المَدْرَسَةُ، اللَّعِبُ",
+    "targets": [
+      {
+        "lessonId": "arabic-1ap-t1-oral-daily",
+        "grade": "1AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-de25df5119c256d1.mp3",
+    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-reading",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-5b1be0ba01b16337.mp3",
+    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً)",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-clock-half-hour",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-a7754018de7530e1.mp3",
+    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-currency-dzd",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-aa5189958f336818.mp3",
+    "texte": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-subtraction-with-carry",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-3156487d33fa5c68.mp3",
+    "texte": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ …",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t2-number-framing",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-f3e0b96b7dab2153.mp3",
+    "texte": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-right-angle",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-8273a63acf09440a.mp3",
+    "texte": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-meter-cm",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-135d80b5c224a496.mp3",
+    "texte": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-gram-kg",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-c529a8f6a0142fa3.mp3",
+    "texte": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3",
+    "targets": [
+      {
+        "lessonId": "math-2ap-t3-multiplication-concept",
+        "grade": "2AP",
+        "subject": "math",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-9ab074103082ad7f.mp3",
+    "texte": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-295e3022b16659f0.mp3",
+    "texte": "حُرُوفُ المَدِّ وَالتَّنْوِينُ",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-3bc74323368c8ab9.mp3",
+    "texte": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  }
+]

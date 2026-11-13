@@ -3,24 +3,24 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3354,
-    "recordedTexts": 23,
-    "missingTexts": 3331,
-    "reusedFiles": 22,
-    "integrityCheckedArabicFiles": 454,
+    "recordedTexts": 47,
+    "missingTexts": 3307,
+    "reusedFiles": 46,
+    "integrityCheckedArabicFiles": 478,
     "byGrade": [
       {
         "grade": "1AP",
         "lessons": 57,
         "requestedSegments": 2412,
-        "recordedSegments": 11,
-        "lessonsWithAnyRecording": 7
+        "recordedSegments": 24,
+        "lessonsWithAnyRecording": 20
       },
       {
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 12,
-        "lessonsWithAnyRecording": 2
+        "recordedSegments": 24,
+        "lessonsWithAnyRecording": 14
       }
     ]
   },
@@ -30,84 +30,84 @@
       "grade": "1AP",
       "titleAr": "الفَضَاءُ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ 🐱⚽",
       "requestedSegments": 47,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t1-right-left-inside-outside",
       "grade": "1AP",
       "titleAr": "الاتِّجَاهَاتُ: يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ ✋📦",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t1-numbers-0-5",
       "grade": "1AP",
       "titleAr": "أَتَعَرَّفُ عَلَى الأَعْدَادِ: 0 - 1 - 2 - 3 - 4 - 5 🖐️",
       "requestedSegments": 44,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t1-shapes-colors",
       "grade": "1AP",
       "titleAr": "الأَشْكَالُ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ 🔴🟦🔺",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t2-numbers-6-10",
       "grade": "1AP",
       "titleAr": "الأَعْدَادُ 6، 7، 8، 9 وَمَا قَبْلُ وَمَا بَعْدُ 🖐️",
       "requestedSegments": 44,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t2-addition-concept",
       "grade": "1AP",
       "titleAr": "الجَمْعُ: أُضِيفُ، أَجْمَعُ، أَتَقَدَّمُ ➕🎈",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t2-numbers-11-20",
       "grade": "1AP",
       "titleAr": "مِنْ 10 إِلَى 20: عَشَرَاتٌ وَوَحَدَاتٌ وَكِتَابَةٌ 🧩",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t2-subtraction-and-lengths",
       "grade": "1AP",
       "titleAr": "الطَّرْحُ: أَنْقُصُ، أُخْرِجُ، أَرْجِعُ ➖🎈",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t3-complete-tens-up-to-90",
       "grade": "1AP",
       "titleAr": "مِنْ 21 إِلَى 49: عَشَرَاتٌ وَحُرُوفٌ وَإِطَارٌ 🔢",
       "requestedSegments": 42,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t3-place-value-and-n99",
       "grade": "1AP",
       "titleAr": "مِنْ 50 إِلَى 99: العَشَرَاتُ وَالوِحْدَاتُ 📊",
       "requestedSegments": 42,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t3-addition-and-time-money",
       "grade": "1AP",
       "titleAr": "أَحُلُّ مَسْأَلَةً: أَفْهَمُ وَأَخْتَارُ (+) أَوْ (−) 🧩",
       "requestedSegments": 43,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t2-compare-quantities",
       "grade": "1AP",
       "titleAr": "أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ ⚖️",
       "requestedSegments": 49,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-1ap-t1-grandeurs",
@@ -296,7 +296,7 @@
       "grade": "1AP",
       "titleAr": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟ 🐦🐟🐇🐍",
       "requestedSegments": 44,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "science-1ap-t2-my-body-parts",
@@ -429,77 +429,77 @@
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ 🔢",
       "requestedSegments": 25,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t1-spatial-position",
       "grade": "2AP",
       "titleAr": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ 🧭",
       "requestedSegments": 28,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t1-addition-no-carry",
       "grade": "2AP",
       "titleAr": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ ➕",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t2-numbers-50-99",
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ 🔟",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t2-numbers-100-999",
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ 💯",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t2-addition-with-carry",
       "grade": "2AP",
       "titleAr": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ ➕",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t2-subtraction-no-carry",
       "grade": "2AP",
       "titleAr": "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ ➖",
       "requestedSegments": 26,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t2-shapes",
       "grade": "2AP",
       "titleAr": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ 📐",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t3-double-half",
       "grade": "2AP",
       "titleAr": "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ ⚖️",
       "requestedSegments": 25,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t3-measures-length-mass",
       "grade": "2AP",
       "titleAr": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ) 📏",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t3-ruler-cm",
       "grade": "2AP",
       "titleAr": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم) 📐",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "math-2ap-t3-clock-reading",
@@ -730,7 +730,7 @@
       "grade": "2AP",
       "titleAr": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟ 🐾",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 1
     },
     {
       "lessonId": "science-2ap-t3-air",
@@ -853,6 +853,186 @@
     }
   ],
   "recorded": [
+    {
+      "text": "الفَضَاءُ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t1-spatial-relations",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-57332addd6c96e64.mp3"
+      ]
+    },
+    {
+      "text": "الاتِّجَاهَاتُ: يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t1-right-left-inside-outside",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d7ddbc727f0d2fb.mp3"
+      ]
+    },
+    {
+      "text": "أَتَعَرَّفُ عَلَى الأَعْدَادِ: 0 - 1 - 2 - 3 - 4 - 5",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t1-numbers-0-5",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2a1a8b545fb8fc8.mp3"
+      ]
+    },
+    {
+      "text": "الأَشْكَالُ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t1-shapes-colors",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72be5ae9662ba9d3.mp3"
+      ]
+    },
+    {
+      "text": "الأَعْدَادُ 6، 7، 8، 9 وَمَا قَبْلُ وَمَا بَعْدُ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t2-numbers-6-10",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5c4eef84ce3abf1a.mp3"
+      ]
+    },
+    {
+      "text": "الجَمْعُ: أُضِيفُ، أَجْمَعُ، أَتَقَدَّمُ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t2-addition-concept",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-48c3a94de569dd37.mp3"
+      ]
+    },
+    {
+      "text": "مِنْ 10 إِلَى 20: عَشَرَاتٌ وَوَحَدَاتٌ وَكِتَابَةٌ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t2-numbers-11-20",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-289e279dee818fe3.mp3"
+      ]
+    },
+    {
+      "text": "الطَّرْحُ: أَنْقُصُ، أُخْرِجُ، أَرْجِعُ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t2-subtraction-and-lengths",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6cf8a2de68850a26.mp3"
+      ]
+    },
+    {
+      "text": "مِنْ 21 إِلَى 49: عَشَرَاتٌ وَحُرُوفٌ وَإِطَارٌ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t3-complete-tens-up-to-90",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2174f1c2e5e70b4.mp3"
+      ]
+    },
+    {
+      "text": "مِنْ 50 إِلَى 99: العَشَرَاتُ وَالوِحْدَاتُ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t3-place-value-and-n99",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-554de720b52bd265.mp3"
+      ]
+    },
+    {
+      "text": "أَحُلُّ مَسْأَلَةً: أَفْهَمُ وَأَخْتَارُ (+) أَوْ (−)",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t3-addition-and-time-money",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9d3f84723c7ae5be.mp3"
+      ]
+    },
+    {
+      "text": "أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t2-compare-quantities",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d06f3a7b8d6e81a7.mp3"
+      ]
+    },
     {
       "text": "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.",
       "targets": [
@@ -1016,6 +1196,193 @@
       ],
       "clips": [
         "/sounds/preschool/ar/language-next-ar-7.mp3"
+      ]
+    },
+    {
+      "text": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟",
+      "targets": [
+        {
+          "lessonId": "science-1ap-t1-animal-locomotion",
+          "grade": "1AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        },
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3f501a59488dedef.mp3"
+      ]
+    },
+    {
+      "text": "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-50fdff84296dc50b.mp3"
+      ]
+    },
+    {
+      "text": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72e6f22090bfb08a.mp3"
+      ]
+    },
+    {
+      "text": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3fa24e02637c53af.mp3"
+      ]
+    },
+    {
+      "text": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-28b6344448609d58.mp3"
+      ]
+    },
+    {
+      "text": "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b02cb78ea49a7f0b.mp3"
+      ]
+    },
+    {
+      "text": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e83da5c44213cbb3.mp3"
+      ]
+    },
+    {
+      "text": "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2e08af312ec4af8.mp3"
+      ]
+    },
+    {
+      "text": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2b0a5ba8e95518bd.mp3"
+      ]
+    },
+    {
+      "text": "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-25b2c776d8d815c0.mp3"
+      ]
+    },
+    {
+      "text": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-29ae3ad869a1d900.mp3"
+      ]
+    },
+    {
+      "text": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9681b2dda75f60a5.mp3"
       ]
     },
     {

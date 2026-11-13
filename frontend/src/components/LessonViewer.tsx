@@ -744,6 +744,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </motion.div>
       </AnimatePresence>
 
+      {isCompactGrade && <p data-synthetic-voice-notice className="text-xs leading-relaxed text-[var(--app-text-muted)]">
+        {locale === 'fr' ? 'Certaines voix de lecture sont générées par intelligence artificielle.' : 'بعض أصوات القراءة مولدة بالذكاء الاصطناعي.'}
+      </p>}
       <LessonStepFooter
         availableSteps={availableSteps}
         currentStepIndex={currentStepIndex}

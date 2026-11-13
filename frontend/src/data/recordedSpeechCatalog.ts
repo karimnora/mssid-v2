@@ -409,6 +409,102 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/colors-memory-gems-success.mp3",
       "durationMs": 3518
     },
+    "الفَضَاءُ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ": {
+      "src": "/sounds/preschool/ar/course-cedar-57332addd6c96e64.mp3",
+      "durationMs": 6650
+    },
+    "الاتِّجَاهَاتُ: يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-6d7ddbc727f0d2fb.mp3",
+      "durationMs": 6750
+    },
+    "أَتَعَرَّفُ عَلَى الأَعْدَادِ: 0 - 1 - 2 - 3 - 4 - 5": {
+      "src": "/sounds/preschool/ar/course-cedar-e2a1a8b545fb8fc8.mp3",
+      "durationMs": 7900
+    },
+    "الأَشْكَالُ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-72be5ae9662ba9d3.mp3",
+      "durationMs": 6750
+    },
+    "الأَعْدَادُ 6، 7، 8، 9 وَمَا قَبْلُ وَمَا بَعْدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5c4eef84ce3abf1a.mp3",
+      "durationMs": 6450
+    },
+    "الجَمْعُ: أُضِيفُ، أَجْمَعُ، أَتَقَدَّمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-48c3a94de569dd37.mp3",
+      "durationMs": 4000
+    },
+    "مِنْ 10 إِلَى 20: عَشَرَاتٌ وَوَحَدَاتٌ وَكِتَابَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-289e279dee818fe3.mp3",
+      "durationMs": 6450
+    },
+    "الطَّرْحُ: أَنْقُصُ، أُخْرِجُ، أَرْجِعُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6cf8a2de68850a26.mp3",
+      "durationMs": 3600
+    },
+    "مِنْ 21 إِلَى 49: عَشَرَاتٌ وَحُرُوفٌ وَإِطَارٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-e2174f1c2e5e70b4.mp3",
+      "durationMs": 6650
+    },
+    "مِنْ 50 إِلَى 99: العَشَرَاتُ وَالوِحْدَاتُ": {
+      "src": "/sounds/preschool/ar/course-cedar-554de720b52bd265.mp3",
+      "durationMs": 5700
+    },
+    "أَحُلُّ مَسْأَلَةً: أَفْهَمُ وَأَخْتَارُ (+) أَوْ (−)": {
+      "src": "/sounds/preschool/ar/course-cedar-9d3f84723c7ae5be.mp3",
+      "durationMs": 4000
+    },
+    "أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d06f3a7b8d6e81a7.mp3",
+      "durationMs": 5300
+    },
+    "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3f501a59488dedef.mp3",
+      "durationMs": 4450
+    },
+    "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-50fdff84296dc50b.mp3",
+      "durationMs": 6900
+    },
+    "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ": {
+      "src": "/sounds/preschool/ar/course-cedar-72e6f22090bfb08a.mp3",
+      "durationMs": 7050
+    },
+    "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-3fa24e02637c53af.mp3",
+      "durationMs": 4200
+    },
+    "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-28b6344448609d58.mp3",
+      "durationMs": 8450
+    },
+    "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b02cb78ea49a7f0b.mp3",
+      "durationMs": 7600
+    },
+    "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e83da5c44213cbb3.mp3",
+      "durationMs": 3900
+    },
+    "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e2e08af312ec4af8.mp3",
+      "durationMs": 6450
+    },
+    "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2b0a5ba8e95518bd.mp3",
+      "durationMs": 8550
+    },
+    "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-25b2c776d8d815c0.mp3",
+      "durationMs": 4000
+    },
+    "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ)": {
+      "src": "/sounds/preschool/ar/course-cedar-29ae3ad869a1d900.mp3",
+      "durationMs": 6550
+    },
+    "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم)": {
+      "src": "/sounds/preschool/ar/course-cedar-9681b2dda75f60a5.mp3",
+      "durationMs": 4250
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

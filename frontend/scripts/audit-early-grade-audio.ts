@@ -93,7 +93,7 @@ const summary = {
       lessonsWithAnyRecording: new Set(targets.filter(target => target.recorded).map(target => target.lessonId)).size };
   }),
 };
-const pending = entries.filter(entry => !entry.clips).map((entry, index) => ({ fichier: `course-ar-${String(index + 1).padStart(5, '0')}.mp3`, texte: entry.text, targets: entry.targets, reviewRequired: true }));
+const pending = entries.filter(entry => !entry.clips).map(entry => ({ fichier: `course-ar-${createHash('sha256').update(entry.text).digest('hex').slice(0, 16)}.mp3`, texte: entry.text, targets: entry.targets, reviewRequired: true }));
 // A manageable first delivery: entry titles, balanced across both grades.
 const firstBatch = ['1AP', '2AP'].flatMap(grade => pending.filter(entry => entry.targets.some(target => target.grade === grade && target.category === 'entry')).slice(0, 12));
 mkdirSync(output, { recursive: true });
@@ -103,6 +103,6 @@ const byLesson = lessons.map(lesson => {
 });
 writeFileSync(resolve(output, 'couverture.json'), JSON.stringify({ summary, byLesson, recorded: entries.filter(entry => entry.clips) }, null, 2) + '\n');
 writeFileSync(resolve(output, 'ar-manquants.json'), JSON.stringify(pending, null, 2) + '\n');
-writeFileSync(resolve(output, 'lot-01-ar-decoupage.json'), JSON.stringify(firstBatch, null, 2) + '\n');
-writeFileSync(resolve(output, 'lot-01-ar-texte-a-relire.txt'), firstBatch.map(entry => entry.texte).join('\n\n') + '\n');
+writeFileSync(resolve(output, 'prochain-lot-ar-decoupage.json'), JSON.stringify(firstBatch, null, 2) + '\n');
+writeFileSync(resolve(output, 'prochain-lot-ar-texte-a-relire.txt'), firstBatch.map(entry => entry.texte).join('\n\n') + '\n');
 console.log(JSON.stringify(summary, null, 2));

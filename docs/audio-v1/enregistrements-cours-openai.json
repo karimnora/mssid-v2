@@ -1,0 +1,367 @@
+{
+  "ar": {
+    "clips": [
+      {
+        "texte": "الفَضَاءُ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ",
+        "fichier": "course-cedar-57332addd6c96e64.mp3",
+        "duration": 6.65,
+        "sha256": "ad481b84d4d7df02cb605f174e5c626606f08eeecfd2a8abe3ea6a8ae8533750",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:17.699Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "09aa54be406ffb5d7a5825d41c6f869dfec9e907a8f693e203326dbf20b5105e",
+        "uses": [
+          "course:math-1ap-t1-spatial-relations:title"
+        ]
+      },
+      {
+        "texte": "الاتِّجَاهَاتُ: يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ",
+        "fichier": "course-cedar-6d7ddbc727f0d2fb.mp3",
+        "duration": 6.75,
+        "sha256": "cc6ee2214d5819ca711951de0923294fe504488887739595b1093bc9f95f9c3c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:19.682Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2d5c50a01fa90d6ea9a33bdd5882be67be9bad17ccf620e525ff31fcf84fc4ba",
+        "uses": [
+          "course:math-1ap-t1-right-left-inside-outside:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى الأَعْدَادِ: 0 - 1 - 2 - 3 - 4 - 5",
+        "fichier": "course-cedar-e2a1a8b545fb8fc8.mp3",
+        "duration": 7.9,
+        "sha256": "0d2136140b88ec32fa6695796a603ec67b855316aca4cae59d68efdfee4b9f46",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:21.980Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "da149afe798c980e8a51570c70dbf179f9be2b733a4f6fc1817ee086d9f567f8",
+        "uses": [
+          "course:math-1ap-t1-numbers-0-5:title"
+        ]
+      },
+      {
+        "texte": "الأَشْكَالُ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ",
+        "fichier": "course-cedar-72be5ae9662ba9d3.mp3",
+        "duration": 6.75,
+        "sha256": "1599c7abad1d3ac04f7590bd9c674e82d58e4e3c53a08b3cfb71e8469ed4a1c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:24.072Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "59f88836bc974ec3a0e5d66ab632a1d2c0da5786b0be2dfa9e11c1050150d23c",
+        "uses": [
+          "course:math-1ap-t1-shapes-colors:title"
+        ]
+      },
+      {
+        "texte": "الأَعْدَادُ 6، 7، 8، 9 وَمَا قَبْلُ وَمَا بَعْدُ",
+        "fichier": "course-cedar-5c4eef84ce3abf1a.mp3",
+        "duration": 6.45,
+        "sha256": "1572c5b6525b831dfbb4ab38cab5b91db1b55ab9d89089c5fc718a97d4203204",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:26.374Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bd308480d7f82895ad8651f82c9e31ee44d8f9a09915e82d76f982e5a2d1efca",
+        "uses": [
+          "course:math-1ap-t2-numbers-6-10:title"
+        ]
+      },
+      {
+        "texte": "الجَمْعُ: أُضِيفُ، أَجْمَعُ، أَتَقَدَّمُ",
+        "fichier": "course-cedar-48c3a94de569dd37.mp3",
+        "duration": 4,
+        "sha256": "13369b353cb4b7e5e62b5baad1d98275db6cc303d97d283b81eda3e6169d1862",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:27.746Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bbc58a0522f846fd29abe95158cad94c5c78e7c6a5ab0b3ca3ac6fa413d5239f",
+        "uses": [
+          "course:math-1ap-t2-addition-concept:title"
+        ]
+      },
+      {
+        "texte": "مِنْ 10 إِلَى 20: عَشَرَاتٌ وَوَحَدَاتٌ وَكِتَابَةٌ",
+        "fichier": "course-cedar-289e279dee818fe3.mp3",
+        "duration": 6.45,
+        "sha256": "4e2ba0337dfbd07981cab841ebd44363d0d24b031ca1903b48781396008a6744",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:29.613Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ffc29d81611c95c7b606cf59f732b29df3cda8300c6e2a1d9c16b35a817864c",
+        "uses": [
+          "course:math-1ap-t2-numbers-11-20:title"
+        ]
+      },
+      {
+        "texte": "الطَّرْحُ: أَنْقُصُ، أُخْرِجُ، أَرْجِعُ",
+        "fichier": "course-cedar-6cf8a2de68850a26.mp3",
+        "duration": 3.6,
+        "sha256": "ade777961614bdc940ff8b175dfdd80b45d8cec7c06f73b8c9fda7c49604dcaf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:31.148Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b1cb5930278d15086af498ceb424c185c7bf9ce1fc4b1ced376bba5982766f49",
+        "uses": [
+          "course:math-1ap-t2-subtraction-and-lengths:title"
+        ]
+      },
+      {
+        "texte": "مِنْ 21 إِلَى 49: عَشَرَاتٌ وَحُرُوفٌ وَإِطَارٌ",
+        "fichier": "course-cedar-e2174f1c2e5e70b4.mp3",
+        "duration": 6.65,
+        "sha256": "75ee2a5ff85e913ab6a768a6267b04bfd65b19ac209bc26487120f8ca5f10669",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:33.087Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1a0a8939de8f8ffa1e334843b56ce620dc2839294caf21252e0a88e33db467ec",
+        "uses": [
+          "course:math-1ap-t3-complete-tens-up-to-90:title"
+        ]
+      },
+      {
+        "texte": "مِنْ 50 إِلَى 99: العَشَرَاتُ وَالوِحْدَاتُ",
+        "fichier": "course-cedar-554de720b52bd265.mp3",
+        "duration": 5.7,
+        "sha256": "78335e3aca6dce1322195e4f371cfa9f6a479b3530d14e60265f74f37c449e5f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:34.565Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "58637d49b50351e1e1f7dbe4962cb7a9849a53793926fc40f8817e9700793c94",
+        "uses": [
+          "course:math-1ap-t3-place-value-and-n99:title"
+        ]
+      },
+      {
+        "texte": "أَحُلُّ مَسْأَلَةً: أَفْهَمُ وَأَخْتَارُ (+) أَوْ (−)",
+        "fichier": "course-cedar-9d3f84723c7ae5be.mp3",
+        "duration": 4,
+        "sha256": "e4fd13b0c50d5a4f02531dbb58cb3ae96e78188f51ab8d95524afd50c83fb8ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:35.960Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "126e87fb91d3f698c72d80843e611d9286a62a261ecdedb9a4e4030ab60f38bf",
+        "uses": [
+          "course:math-1ap-t3-addition-and-time-money:title"
+        ]
+      },
+      {
+        "texte": "أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ",
+        "fichier": "course-cedar-d06f3a7b8d6e81a7.mp3",
+        "duration": 5.3,
+        "sha256": "5fa3d54bef4021a9ad959c5a8218e35693760d290d1eede702f8d2da28058895",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:37.664Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a1ae9a533954cf2af691a473e20449e75fc7a459b24c97bf9a387d7f4be5e368",
+        "uses": [
+          "course:math-1ap-t2-compare-quantities:title"
+        ]
+      },
+      {
+        "texte": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟",
+        "fichier": "course-cedar-3f501a59488dedef.mp3",
+        "duration": 4.45,
+        "sha256": "ace5620fe1f5eb1825cdba0280b4dce3a3b2683a1fe4718108ec9d296f76e1a6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:39.098Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4f8bb760cac102ba0a4c7b960d494ead8c28f22bb9f66990c92ee05c9d16c361",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:title",
+          "course:science-2ap-t2-animal-movement:title"
+        ]
+      },
+      {
+        "texte": "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ",
+        "fichier": "course-cedar-50fdff84296dc50b.mp3",
+        "duration": 6.9,
+        "sha256": "60577abbf887dadb2011f79bd21d9a5eb940e882dd873d12c884771a8285c0a2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:41.170Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "10bfb2a769c5f727d3d384ac9b01c0f25d757f2806936e2a67472c8359561f8f",
+        "uses": [
+          "course:math-2ap-t1-numbers-0-49:title"
+        ]
+      },
+      {
+        "texte": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ",
+        "fichier": "course-cedar-72e6f22090bfb08a.mp3",
+        "duration": 7.05,
+        "sha256": "2da5c66d213518d9fade2b351d796788a92a9d6af4e4d136b9d3cad11c93b7b0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:43.116Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d29208ad9c3c9eda4bbcbeb808b0feb2cd8deba011ad6abc052b700936a9b0b9",
+        "uses": [
+          "course:math-2ap-t1-spatial-position:title"
+        ]
+      },
+      {
+        "texte": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ",
+        "fichier": "course-cedar-3fa24e02637c53af.mp3",
+        "duration": 4.2,
+        "sha256": "82fbde806c93d5deea81abffd9d3e6c45de7ce8c62eb798e4fc809618041dc6d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:44.553Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba6c4eb5fe0abc80670c1f821b1cc416525df0edcd517ca3bd085566d952c2a0",
+        "uses": [
+          "course:math-2ap-t1-addition-no-carry:title"
+        ]
+      },
+      {
+        "texte": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ",
+        "fichier": "course-cedar-28b6344448609d58.mp3",
+        "duration": 8.45,
+        "sha256": "ceaba362fbd0aad18e0084b2d07a291124e1ea13aba53039823f249980f3e251",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:46.704Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9e37b1e3d85120fa4d2f76e505daa409d914b0d538135cd0b51d48475afc8025",
+        "uses": [
+          "course:math-2ap-t2-numbers-50-99:title"
+        ]
+      },
+      {
+        "texte": "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ",
+        "fichier": "course-cedar-b02cb78ea49a7f0b.mp3",
+        "duration": 7.6,
+        "sha256": "7bd739b105a41dc57db450167d4a1d69ee36fee29d25dd30bd857578c71c9cf3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:48.609Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ae0bf25d57d3427a38c4d9107f5039ef4f698e17a0e34d56e5ca338a22a7247",
+        "uses": [
+          "course:math-2ap-t2-numbers-100-999:title"
+        ]
+      },
+      {
+        "texte": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ",
+        "fichier": "course-cedar-e83da5c44213cbb3.mp3",
+        "duration": 3.9,
+        "sha256": "00ea95a8ad6f437f0123d42321d2749f62eb518e5d0670617348aae503faa708",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:50.297Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "39e622494e78ee7274446c1287eef48e6e99d4d0fe83c8bf17c730f11bb8c38f",
+        "uses": [
+          "course:math-2ap-t2-addition-with-carry:title"
+        ]
+      },
+      {
+        "texte": "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ",
+        "fichier": "course-cedar-e2e08af312ec4af8.mp3",
+        "duration": 6.45,
+        "sha256": "293589297c0f914d99c14ac7202e650943a2b841e28d36f0eec48aa0bbeae071",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:52.309Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "187d86df04daf7a1155aa22f3384b3435fe201ce3e1f18208d35d8f09e3b75f8",
+        "uses": [
+          "course:math-2ap-t2-subtraction-no-carry:title"
+        ]
+      },
+      {
+        "texte": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ",
+        "fichier": "course-cedar-2b0a5ba8e95518bd.mp3",
+        "duration": 8.55,
+        "sha256": "e63335b28376afe52be966cf7d1f71b950d068462beffa1dd5bba74e850d75e5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:54.832Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a0df121bdeb84e6b03edcbac62eac78f11dd4fea6618924b7a68551e858b1729",
+        "uses": [
+          "course:math-2ap-t2-shapes:title"
+        ]
+      },
+      {
+        "texte": "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ",
+        "fichier": "course-cedar-25b2c776d8d815c0.mp3",
+        "duration": 4,
+        "sha256": "64148b600a128341c87b260ea435210d7639b1957da3a4161d971c00585e56b0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:56.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0415f0eabde070c29f3506be8b7d1bea8a7d25e037449fd75d690980baf8599b",
+        "uses": [
+          "course:math-2ap-t3-double-half:title"
+        ]
+      },
+      {
+        "texte": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ)",
+        "fichier": "course-cedar-29ae3ad869a1d900.mp3",
+        "duration": 6.55,
+        "sha256": "bf15cd675704870c2d435ee7e6412c530b45044f9a8fb27cd0af995c80e8698a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:58.286Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "771fb44cf02ad908fc0ea1dce307f8067d5acc6baa04e627fc95bfcb2e95b242",
+        "uses": [
+          "course:math-2ap-t3-measures-length-mass:title"
+        ]
+      },
+      {
+        "texte": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم)",
+        "fichier": "course-cedar-9681b2dda75f60a5.mp3",
+        "duration": 4.25,
+        "sha256": "e3b819982d6c58c159a66916722b6828b9f6ea14e3686ada5366d2f0510ea376",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T09:05:59.841Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c3728e391d3e5895cbcb685190f79d7dd5b58b4faa640fbbb0489fc92c0b9bb",
+        "uses": [
+          "course:math-2ap-t3-ruler-cm:title"
+        ]
+      }
+    ]
+  }
+}

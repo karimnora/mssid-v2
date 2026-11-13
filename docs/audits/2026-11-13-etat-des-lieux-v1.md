@@ -6,6 +6,8 @@ Complément du même jour : [nouvel accueil illustré](2026-11-13-accueil-illust
 
 Complément audio : [lecteur arabe fiabilisé](2026-11-13-fiabilisation-lecture-arabe.md), texte vocalisé indépendant de l'affichage et réutilisation des phrases enregistrées. L'[audit des 118 cours de 1AP–2AP](../audio-v1/cours-1ap-2ap/README.md) révèle une couverture enregistrée très partielle : neuf cours avec au moins un passage couvert, sans garantie de couverture complète de ces cours. Un premier lot de 24 textes et les manquants sont préparés ; leur génération et validation à l'écoute restent à faire. Commit lecteur : `c5a6615`, sans push.
 
+Suite audio du même jour : [24 MP3 produits avec cedar, la voix de Didou V2](../audio-v1/cours-1ap-2ap/OPENAI-DIDOU-LOT-01.md), et raccordés aux titres. Les anciens sons V1/V2 sont préservés. La couverture passe à 34 cours ayant au moins un passage enregistré ; le contenu intégral et la validation de prononciation restent à compléter.
+
 ## Ce qui est en place
 
 | Domaine | Amélioration disponible | Limite actuelle |

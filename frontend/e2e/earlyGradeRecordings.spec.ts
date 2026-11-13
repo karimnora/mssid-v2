@@ -2,6 +2,38 @@ import { test, expect } from '@playwright/test';
 import { RECORDED_SPEECH_CATALOG } from '../src/data/recordedSpeechCatalog';
 
 for (const scenario of [
+  { grade: '1AP', id: 'math-1ap-t1-spatial-relations', clip: '/sounds/preschool/ar/course-cedar-57332addd6c96e64.mp3' },
+  { grade: '2AP', id: 'science-2ap-t2-animal-movement', clip: '/sounds/preschool/ar/course-cedar-3f501a59488dedef.mp3' },
+]) {
+  test(`${scenario.grade}: Didou V2 cedar reads the new title without a phone voice`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.addInitScript(grade => {
+      localStorage.setItem('mssid_locale_preference', 'ar');
+      localStorage.setItem('mssid_user_profile', JSON.stringify({ grade, xp: 0, tashkeelEnabled: false }));
+      Object.defineProperty(speechSynthesis, 'getVoices', { configurable: true, value: () => [{ lang: 'fr-FR' }] });
+      const state = { clips: [] as string[], ttsCalls: 0 };
+      Object.assign(window, { courseAudioTest: state });
+      speechSynthesis.speak = () => { state.ttsCalls++; };
+      const OriginalAudio = window.Audio;
+      window.Audio = new Proxy(OriginalAudio, { construct(Target, args) {
+        const audio = new Target(...args);
+        audio.addEventListener('playing', () => state.clips.push(audio.src));
+        return audio;
+      } });
+    }, scenario.grade);
+    await page.route('**/api/**', route => route.fulfill({ status: 401, json: {} }));
+    await page.goto(`/lesson/${scenario.id}?g=${scenario.grade}`);
+    const title = page.locator('.lesson-learning-space [data-tap-speak="title"]');
+    await expect(title).toBeVisible({ timeout: 60_000 });
+    await title.click();
+    await expect.poll(() => page.evaluate(() => (window as unknown as { courseAudioTest: { clips: string[] } }).courseAudioTest.clips)).toEqual([expect.stringContaining(scenario.clip)]);
+    expect(await page.evaluate(() => (window as unknown as { courseAudioTest: { ttsCalls: number } }).courseAudioTest.ttsCalls)).toBe(0);
+    await expect(page.locator('[data-synthetic-voice-notice]')).toBeVisible();
+  });
+}
+
+for (const scenario of [
   { grade: '1AP', id: 'arabic-1ap-t1-school-axis', clip: '/sounds/preschool/ar/reading-first-school-book.mp3' },
   { grade: '2AP', id: 'arabic-2ap-t1-reading-school', clip: '/sounds/preschool/ar/reading-school-1.mp3' },
 ]) {
@@ -37,8 +69,8 @@ test('all reused Arabic course files decode and contain a non-silent signal', as
   test.setTimeout(90_000);
   await page.route('**/api/**', route => route.fulfill({ status: 401, json: {} }));
   await page.goto('/');
-  const clips = Object.values(RECORDED_SPEECH_CATALOG.ar).filter(clip => /\/(reading-|language-next-ar-)/.test(clip.src));
-  expect(clips.length).toBeGreaterThanOrEqual(22);
+  const clips = Object.values(RECORDED_SPEECH_CATALOG.ar).filter(clip => /\/(reading-|language-next-ar-|course-cedar-)/.test(clip.src));
+  expect(clips.length).toBeGreaterThanOrEqual(46);
   const decoded = await page.evaluate(async clips => {
     const context = new AudioContext();
     try {
