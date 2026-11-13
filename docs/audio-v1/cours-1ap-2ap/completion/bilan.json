@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-11-13T14:26:43.370486+00:00",
+  "scope": "Fixed authored speech in 118 early-grade courses, excluding dynamic feedback and simulations; technical availability is not linguistic certification",
+  "voice": "cedar",
+  "newUniqueMP3Files": 3293,
+  "additionalFixedTextsCovered": 3295,
+  "newAudioDurationSeconds": 15274.8,
+  "newAudioBytes": 155627212,
+  "totalLocalAudioFiles": 4753,
+  "totalLocalAudioBytes": 217198407,
+  "coverage": {
+    "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
+    "lessons": 118,
+    "uniqueTexts": 3353,
+    "recordedTexts": 3342,
+    "missingTexts": 11,
+    "reusedFiles": 3339,
+    "integrityCheckedArabicFiles": 3777,
+    "byGrade": [
+      {
+        "grade": "1AP",
+        "lessons": 57,
+        "requestedSegments": 2412,
+        "recordedSegments": 2401,
+        "lessonsWithAnyRecording": 57
+      },
+      {
+        "grade": "2AP",
+        "lessons": 61,
+        "requestedSegments": 1519,
+        "recordedSegments": 1519,
+        "lessonsWithAnyRecording": 61
+      }
+    ]
+  },
+  "fullyCoveredFixedSpeechLessons": 114,
+  "approvedRetryLimit": 10,
+  "approvedRetryReservations": 3,
+  "reusedLabelsWithoutExtraCall": 2,
+  "unusableTakesStillPending": 0,
+  "normalizedPhonemes": [
+    {
+      "texte": "تَ",
+      "fichier": "course-cedar-7804d1dd13f07d30.mp3",
+      "normalizationDb": 30
+    },
+    {
+      "texte": "بَ",
+      "fichier": "course-cedar-18392da46d3bcad7.mp3",
+      "normalizationDb": 29.22094869406946
+    },
+    {
+      "texte": "لَ",
+      "fichier": "course-cedar-56d33ad3952c2668.mp3",
+      "normalizationDb": 28.927987612531247
+    },
+    {
+      "texte": "قَ",
+      "fichier": "course-cedar-45b1c37e75f6deb4.mp3",
+      "normalizationDb": 26.057270713869848
+    }
+  ],
+  "verification": {
+    "metadataEntriesChecked": 4812,
+    "metadataIntegrityErrors": 0,
+    "missingLiteralAssetReferences": 0,
+    "unitTests": 43,
+    "browserTests": 7,
+    "typeScript": "passed",
+    "productionBuild": "passed",
+    "cacheRangeOffline": "passed"
+  },
+  "publication": "Local commits only, no push or deployment"
+}

@@ -46,6 +46,7 @@ export function playRecordedSpeech(src: string, rate = 1): Promise<PlaybackResul
   if (typeof Audio === 'undefined') return Promise.resolve('failed');
   return new Promise(resolve => {
     const audio = new Audio(src);
+    audio.crossOrigin = 'anonymous';
     audio.playbackRate = Math.min(2, Math.max(0.5, rate));
     let settled = false;
     const finish = (result: PlaybackResult) => {

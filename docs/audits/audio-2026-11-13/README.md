@@ -2,7 +2,15 @@
 
 13 novembre 2026, V1 locale. Première étape : 109 fichiers réutilisés depuis la V2 sans génération. Complément demandé ensuite : 49 enregistrements absents de la V2, produits avec la même voix cedar. Tous les sons antérieurs restent conservés. Commits locaux uniquement, sans push.
 
-## Contrôles techniques
+## Complément des cours 1AP–2AP
+
+La production demandée ensuite ajoute **3 293 MP3 cedar** (155,6 Mo, environ 4 h 14 min 35 s) et deux réutilisations explicites de noms de signes. Les cours couvrent **3 342 / 3 353 textes fixes**, soit 2 401 / 2 412 passages 1AP et 1 519 / 1 519 passages 2AP. Les 11 citations coraniques restent séparées ; le lecteur de récitation existant est conservé. Détails et limites : [rapport des cours](../../audio-v1/cours-1ap-2ap/README.md).
+
+Bilan actuel : **4 718 clés de lecture** (arabe 3 781, français 476, anglais 461), **4 726 sources enregistrées distinctes**, **4 753 fichiers audio locaux** (environ 217,2 Mo) et **4 812 entrées de métadonnées vérifiées**, sans erreur d'empreinte ni référence locale littérale manquante. Les contrôles de décodage historiques ci-dessous et ceux effectués à la production couvrent des lots différents ; les WAV refusés restent hors de l'application.
+
+Validation du complément : 43 tests ciblés, sept scénarios Chromium, TypeScript complet et construction passent. Les scénarios vérifient les raccordements planifiés, des décodages par section, les lectures sans voix système et le cache de production hors ligne avec Range. Trois réservations sur dix appels supplémentaires autorisés ont été utilisées ; deux reprises ont réutilisé des sons disponibles. La prononciation et Android réel restent à valider.
+
+## Contrôles techniques du lot précédent
 
 | Contrôle | Résultat |
 |---|---|
@@ -29,7 +37,7 @@ La comparaison a retrouvé **109 phrases exactes déjà enregistrées avec cedar
 
 Cela couvre deux messages par activité, pour **200 activités dans 23 modules**. Cela ne signifie pas que chaque mot du micro, chaque carte, chaque récit complet et chaque interface dispose d'un MP3. Les correspondances texte/fichier ne présentent aucun désaccord après prise en compte du tatweel décoratif et de l'ellipse typographique déjà prévue dans les anciens lots de lettres. Aucune voyelle arabe n'a été effacée pour fabriquer une correspondance.
 
-L'index contient désormais 1 420 textes distincts : arabe 483, français 476, anglais 461. Les 1 433 sources enregistrées et les 1 460 fichiers locaux ont des périmètres différents : la boîte à sons et certains fichiers complémentaires ne sont pas des phrases du catalogue.
+À la fin du lot précédent, l'index contenait 1 420 textes distincts : arabe 483, français 476, anglais 461. Les 1 433 sources enregistrées et les 1 460 fichiers locaux de ce lot précédent ont des périmètres différents : la boîte à sons et certains fichiers complémentaires ne sont pas des phrases du catalogue.
 
 ## Couverture après correction des manques fixes
 
@@ -64,6 +72,6 @@ Complément des 49 sons : 38 tests ciblés réussis dans sept fichiers (studio D
 
 Restent la validation linguistique à l'écoute, les essais sur Android réel (haut-parleur/casque, interruption, mode avion), les récits et mots non couverts, et la généralisation de la couverture des cours. Le [protocole audio](../../audio-qa-protocol.md) conserve ces exigences avant publication.
 
-Le cache initial PWA inclut actuellement les MP3 des trois langues et la boîte à sons. Le volume local d'audio contrôlé est d'environ 61,6 Mo ; ce chiffre n'est pas une mesure du trafic ni du cache effectif d'un téléphone. Une stratégie de téléchargement par langue mérite d'être étudiée après mesure mobile, sans supprimer les fichiers existants dans ce lot.
+Le cache initial PWA inclut actuellement les MP3 des trois langues et la boîte à sons. Avant le complément des cours, le volume local d'audio contrôlé était d'environ 61,6 Mo ; ce chiffre n'est pas une mesure du trafic ni du cache effectif d'un téléphone. Une stratégie de téléchargement par langue mérite d'être étudiée après mesure mobile, sans supprimer les fichiers existants dans ce lot.
 
 Autoévaluation : exactitude 4/5 (mesures reproductibles, phonétique non certifiée), complétude 3/5 (tous les fichiers locaux contrôlés, toutes les interactions et variantes non couvertes), clarté 4/5 (périmètres séparés), action possible 4/5 (109 copies effectuées et prochaines demandes identifiées), concision 4/5 (preuves liées). Moyenne 3,8/5. Les 49 manques fixes sont complétés ; priorité restante : écoute ciblée des contenus pédagogiques et recette Android, sans régénérer les fichiers déjà utilisables.

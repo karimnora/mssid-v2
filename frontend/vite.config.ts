@@ -59,6 +59,8 @@ export default defineConfig(() => {
               handler: 'CacheFirst',
               options: {
                 cacheName: 'mssid-course-recordings-v1',
+                // Fetch the full small MP3 on a miss, not an uncacheable 206 partial response.
+                fetchOptions: { headers: {} },
                 cacheableResponse: { statuses: [200] },
                 rangeRequests: true,
                 expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 30, purgeOnQuotaError: true },
@@ -103,6 +105,7 @@ export default defineConfig(() => {
           // ChallengesArena → ArcadeGamesSection, and Workbox refuses to precache a 7+ MiB file.
           manualChunks: {
             phaser: ['phaser'],
+            'recorded-speech': ['./src/data/recordedSpeechCatalog.ts'],
           },
         },
       },
