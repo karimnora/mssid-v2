@@ -1,0 +1,16 @@
+[
+  {
+    "texte": "ً",
+    "language": "ar",
+    "reason": "Unusable original; no additional API call made",
+    "sourceWavSha256": "edbbe3007a69288422f24f250b1e03251d26e63febb1166c0a2283860cb9584f",
+    "reviewRequired": true
+  },
+  {
+    "texte": "ٍ",
+    "language": "ar",
+    "reason": "Unusable original; no additional API call made",
+    "sourceWavSha256": "186e279976c70e0854e570c5fe1147d10c8c9647d83e5b478bb1b28994afd13b",
+    "reviewRequired": true
+  }
+]

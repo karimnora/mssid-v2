@@ -625,6 +625,2762 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-8cfc034c9eb3fcce.mp3",
       "durationMs": 6600
     },
+    "الحَرْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f0d47ec02dd6d444.mp3",
+      "durationMs": 1050
+    },
+    "حرف البَاءِ (ب): صوته \"بَ\" مثل بَطَّةٌ وَبَابَا (نقطة واحدة تحت الصحن).": {
+      "src": "/sounds/preschool/ar/course-cedar-5deb05c60d6d7382.mp3",
+      "durationMs": 7800
+    },
+    "حرف الثَّاءِ (ث): صوته \"ثَ\" مثل ثَعْلَبٌ وَثَوْبٌ (ثلاث نقاط مثل المثلث الصغير).": {
+      "src": "/sounds/preschool/ar/course-cedar-2f373de5f64233af.mp3",
+      "durationMs": 10250
+    },
+    "حرف التَّاءِ (ت): صوته \"تَ\" مثل تُفَّاحَةٌ وَتَمْرٌ (نقطتان كالعينين في الأعلى).": {
+      "src": "/sounds/preschool/ar/course-cedar-33e352cceebc144b.mp3",
+      "durationMs": 8950
+    },
+    "النُّقْطَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-636d80cddbb92257.mp3",
+      "durationMs": 1700
+    },
+    "ما هو الصوت الأول في كلمة \"بَطَّةٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-49bc61d2dbfee27b.mp3",
+      "durationMs": 4900
+    },
+    "بَ (حرف الباء).": {
+      "src": "/sounds/preschool/ar/course-cedar-ed1043f9da2a946b.mp3",
+      "durationMs": 2100
+    },
+    "ارسم مع الطفل صحناً في الهواء: إذا وضعنا نقطة في الأسفل صار (ب)، ونقطتان في الأعلى صار (ت)، وثلاث نقاط صار (ث)!": {
+      "src": "/sounds/preschool/ar/course-cedar-02722a5bc389fe66.mp3",
+      "durationMs": 11800
+    },
+    "أ = أَسَدٌ | ب = بَطَّةٌ | ت = تُفَّاحَةٌ | ث = ثَعْلَبٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-72ea81aa1cabd20a.mp3",
+      "durationMs": 8750
+    },
+    "ما الصوت الأول في كلمة \"أَسَدٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-36f1f589fc52d3bd.mp3",
+      "durationMs": 4400
+    },
+    "ارْبِطْ الحَرْفَ": {
+      "src": "/sounds/preschool/ar/course-cedar-ed0582c900dfb5ef.mp3",
+      "durationMs": 2650
+    },
+    "أي حرف نجده في بداية كلمة \"ثَعْلَبٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f5442b90cf76ae54.mp3",
+      "durationMs": 4550
+    },
+    "بَ (حَرْفُ البَاءِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-f2d3653f6f23ce10.mp3",
+      "durationMs": 3850
+    },
+    "أي حرف نجده في بداية كلمة \"بَابَا\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d3e1c2a187120da5.mp3",
+      "durationMs": 4900
+    },
+    "أَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8c900b1c0d188ee4.mp3",
+      "durationMs": 900
+    },
+    "كم نقطة تحت الباء؟ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-a40647f87cc1a242.mp3",
+      "durationMs": 3450
+    },
+    "تَ": {
+      "src": "/sounds/preschool/ar/course-cedar-7804d1dd13f07d30.mp3",
+      "durationMs": 1450
+    },
+    "أَرْنَبٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-56eb10285660e13b.mp3",
+      "durationMs": 2250
+    },
+    "بَ": {
+      "src": "/sounds/preschool/ar/course-cedar-18392da46d3bcad7.mp3",
+      "durationMs": 1150
+    },
+    "ثَ كم نقطة فوق؟": {
+      "src": "/sounds/preschool/ar/course-cedar-73c1441ff4886593.mp3",
+      "durationMs": 2850
+    },
+    "اربط كل صورة بالحرف الذي تبدأ به!": {
+      "src": "/sounds/preschool/ar/course-cedar-89996aab539d88c5.mp3",
+      "durationMs": 4450
+    },
+    "تُفَّاحَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-7d8331ed201fd6f1.mp3",
+      "durationMs": 2000
+    },
+    "ثَ": {
+      "src": "/sounds/preschool/ar/course-cedar-7b82ac0fa5cd936c.mp3",
+      "durationMs": 950
+    },
+    "بَطَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-fead6972b1f7b69c.mp3",
+      "durationMs": 2450
+    },
+    "أَرْنَبٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8956711d5017e8bc.mp3",
+      "durationMs": 1250
+    },
+    "ثَوْبٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-bea71fda626b1591.mp3",
+      "durationMs": 3000
+    },
+    "هَذِهِ الفَتْحَةُ فَوْقَ بَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-229fbdff56b3b623.mp3",
+      "durationMs": 2600
+    },
+    "هَذِهِ الضَّمَّةُ فَوْقَ بُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-00a22dd2686315c6.mp3",
+      "durationMs": 2950
+    },
+    "هَذِهِ الكَسْرَةُ تَحْتَ بِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1ede01ae82e8769f.mp3",
+      "durationMs": 2300
+    },
+    "هَذَا السُّكُونُ فَوْقَ بْ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8dc57bdd3acdce84.mp3",
+      "durationMs": 3250
+    },
+    "الضَّمَّةُ: وَاوٌ صَغِيرَةٌ فَوْقَ الحَرْفِ. نَقْرَأُ: بُ مِثْلَ دُبٍّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e400859f8c61cb74.mp3",
+      "durationMs": 6350
+    },
+    "الفَتْحَةُ: خَطٌّ صَغِيرٌ فَوْقَ الحَرْفِ. نَقْرَأُ: بَ مِثْلَ قَلَمٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e82faaec267f4505.mp3",
+      "durationMs": 8350
+    },
+    "التَّشْكِيلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-da907b4f5750b770.mp3",
+      "durationMs": 1550
+    },
+    "الكَسْرَةُ: خَطٌّ صَغِيرٌ تَحْتَ الحَرْفِ. نَقْرَأُ: بِ مِثْلَ بِنْتٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-c57b4cdb5f518b8e.mp3",
+      "durationMs": 6950
+    },
+    "الفَتْحَةُ َ": {
+      "src": "/sounds/preschool/ar/course-cedar-08d3e1592f3f6433.mp3",
+      "durationMs": 2200
+    },
+    "السُّكُونُ: دَائِرَةٌ صَغِيرَةٌ فَوْقَ الحَرْفِ. الحَرْفُ سَاكِنٌ: بْ مِثْلَ قَلْبٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6da57f090febbb6b.mp3",
+      "durationMs": 7100
+    },
+    "الكَسْرَةُ ِ": {
+      "src": "/sounds/preschool/ar/course-cedar-98e3615ca88b97f8.mp3",
+      "durationMs": 1750
+    },
+    "الضَّمَّةُ ُ": {
+      "src": "/sounds/preschool/ar/course-cedar-12d1eec84a9cb9d7.mp3",
+      "durationMs": 1600
+    },
+    "السُّكُونُ ْ": {
+      "src": "/sounds/preschool/ar/course-cedar-213e3fca7c9db05b.mp3",
+      "durationMs": 2250
+    },
+    "اِقْرَأْ مَعَ التَّشْكِيلِ: بَ — بُ — بِ — بْ. أَيْنَ الفَتْحَةُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-470174c9f896b3dc.mp3",
+      "durationMs": 6300
+    },
+    "الفَتْحَةُ فَوْقَ بَ. نَقْرَأُ: بَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-c82dd4c08915d8bc.mp3",
+      "durationMs": 3900
+    },
+    "مَا اسْمُ هَذِهِ الحَرَكَةِ فَوْقَ بَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1184788db62a1ee5.mp3",
+      "durationMs": 3600
+    },
+    "بَ فَتْحَةٌ — بُ ضَمَّةٌ — بِ كَسْرَةٌ — بْ سُكُونٌ. نَقْرَأُ كُلَّ كَلِمَةٍ بِالتَّشْكِيلِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-f644d59e11ef5bde.mp3",
+      "durationMs": 10850
+    },
+    "أَيْنَ نَكْتُبُ الكَسْرَةَ ِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a9dbddeca318739a.mp3",
+      "durationMs": 2450
+    },
+    "ارْبِطِ الحَرَكَةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-357822c122dc5ca9.mp3",
+      "durationMs": 1700
+    },
+    "اِنْطِقْ أَمَامَ الطِّفْلِ: بَ (فَمٌ مَفْتُوحٌ) — بُ (شَفَتَانِ مُدَوَّرَتَانِ) — بِ (فَمٌ مَكْسُورٌ إِلَى أَسْفَلِ) — بْ (وَقْفٌ قَصِيرٌ). ثُمَّ اِقْرَأَا مَعًا: قَلَمٌ، دُبٌّ، كِتَابٌ، قَلْبٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-cfc5059734a8b9a4.mp3",
+      "durationMs": 18200
+    },
+    "أَيْنَ تُكْتَبُ الكَسْرَةُ ِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c709a03abcd77982.mp3",
+      "durationMs": 3350
+    },
+    "فَوْقَ الحَرْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-90b6648eba5c6041.mp3",
+      "durationMs": 2350
+    },
+    "تَحْتَ الحَرْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-0cc9797a1df64091.mp3",
+      "durationMs": 1750
+    },
+    "بَعْدَ الحَرْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6a47063cc97c07cc.mp3",
+      "durationMs": 1800
+    },
+    "بَ الحَرَكَةُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2cfc781560d17de1.mp3",
+      "durationMs": 1500
+    },
+    "سَاكِنَةٌ ْ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2a0dd6d4763abc0.mp3",
+      "durationMs": 2100
+    },
+    "فِي قَلْبٌ اللَّامُ:": {
+      "src": "/sounds/preschool/ar/course-cedar-c6d481a9b31829cf.mp3",
+      "durationMs": 1700
+    },
+    "الحَرَكَةُ تَحْتَ الحَرْفِ:": {
+      "src": "/sounds/preschool/ar/course-cedar-6dbd4132061fe401.mp3",
+      "durationMs": 2650
+    },
+    "اِخْتَرِ الحَرَكَةَ الصَّحِيحَةَ لِكُلِّ مَقْطَعٍ مَشْكُولٍ!": {
+      "src": "/sounds/preschool/ar/course-cedar-f3bef3155bf8006e.mp3",
+      "durationMs": 4950
+    },
+    "مَفْتُوحَةٌ َ": {
+      "src": "/sounds/preschool/ar/course-cedar-7189b36816f9648a.mp3",
+      "durationMs": 1600
+    },
+    "بُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7eb7e7d76152742c.mp3",
+      "durationMs": 650
+    },
+    "بِ": {
+      "src": "/sounds/preschool/ar/course-cedar-8f99899975ee7a4e.mp3",
+      "durationMs": 1350
+    },
+    "سُكُونٌ ْ": {
+      "src": "/sounds/preschool/ar/course-cedar-792ed55a2395d649.mp3",
+      "durationMs": 2150
+    },
+    "بْ": {
+      "src": "/sounds/preschool/ar/course-cedar-c044fa9f866d4daf.mp3",
+      "durationMs": 650
+    },
+    "فَتْحَةٌ َ": {
+      "src": "/sounds/preschool/ar/course-cedar-83ea6059623e5b67.mp3",
+      "durationMs": 1650
+    },
+    "قَلْبٌ فِيهِ": {
+      "src": "/sounds/preschool/ar/course-cedar-37afb75ba5d3a697.mp3",
+      "durationMs": 1750
+    },
+    "سُكُونٌ عَلَى اللَّامِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2df778076f594002.mp3",
+      "durationMs": 3300
+    },
+    "فَتْحَةٌ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-2e44604f83f91559.mp3",
+      "durationMs": 2850
+    },
+    "استمع: مَوْزٌ ، نَحْلَةٌ ، لَيْمُونٌ ، رُمَّانٌ — ما الصوت الأول في كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-22a80eadd546210a.mp3",
+      "durationMs": 7750
+    },
+    "حرف المِيمِ (م): صوته \"مَ\" مثل مَوْزٌ وَمَامَا .": {
+      "src": "/sounds/preschool/ar/course-cedar-93a686c4f69373aa.mp3",
+      "durationMs": 6750
+    },
+    "حرف اللَّامِ (ل): صوته \"لَ\" مثل لَيْمُونٌ وَلِعْبَةٌ (يشبه مقبض المظلة).": {
+      "src": "/sounds/preschool/ar/course-cedar-1c9a19de34d1e221.mp3",
+      "durationMs": 7900
+    },
+    "حرف النُّونِ (ن): صوته \"نَ\" مثل نَحْلَةٌ وَنَجْمَةٌ (صحن عميق وفوقه نقطة).": {
+      "src": "/sounds/preschool/ar/course-cedar-de979d9ff4c36eab.mp3",
+      "durationMs": 11600
+    },
+    "النُّطْقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f9c6dc589d996690.mp3",
+      "durationMs": 1500
+    },
+    "ما هو الصوت الأول في كلمة \"نَحْلَةٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c50b0f69631eb612.mp3",
+      "durationMs": 4850
+    },
+    "نَ (حرف النون).": {
+      "src": "/sounds/preschool/ar/course-cedar-04ba4c30ba3dc645.mp3",
+      "durationMs": 2350
+    },
+    "حرف الرَّاءِ (ر): صوته \"رَ\" مثل رُمَّانٌ وَرَجُلٌ (يشبه هلال الموزة اللطيف).": {
+      "src": "/sounds/preschool/ar/course-cedar-d9b66e40bd64119b.mp3",
+      "durationMs": 10350
+    },
+    "ما الصوت الأول في كلمة \"مَوْزٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-84a36117902cfbc2.mp3",
+      "durationMs": 4900
+    },
+    "العب لعبة الصدى: انطق الحرف بصوت مرح واطلب من الطفل أن يعيده كالصدى.": {
+      "src": "/sounds/preschool/ar/course-cedar-fa9d613a6ac42b27.mp3",
+      "durationMs": 8400
+    },
+    "م = مَوْزٌ | ن = نَحْلَةٌ | ل = لَيْمُونٌ | ر = رُمَّانٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-231713cc67c16e7c.mp3",
+      "durationMs": 8700
+    },
+    "أي حرف نجده في بداية كلمة \"لَيْمُونٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-06e43af9349e3f87.mp3",
+      "durationMs": 4400
+    },
+    "رَ": {
+      "src": "/sounds/preschool/ar/course-cedar-4dee54ed980db1a5.mp3",
+      "durationMs": 800
+    },
+    "مَ (حَرْفُ المِيمِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-def1f954a0f72759.mp3",
+      "durationMs": 2850
+    },
+    "نَ": {
+      "src": "/sounds/preschool/ar/course-cedar-b93dac172087707a.mp3",
+      "durationMs": 2400
+    },
+    "أي حرف نجده في بداية كلمة \"مَدْرَسَةٌ\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-27bfbca97bdccd74.mp3",
+      "durationMs": 4400
+    },
+    "مَاءٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-c57bf5fe46b2caa2.mp3",
+      "durationMs": 2550
+    },
+    "مَ": {
+      "src": "/sounds/preschool/ar/course-cedar-556f224f3dcb9c79.mp3",
+      "durationMs": 650
+    },
+    "نَحْلَةٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-12f830f03dad18e0.mp3",
+      "durationMs": 2300
+    },
+    "لَبَنٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-ffb58e613d988391.mp3",
+      "durationMs": 2650
+    },
+    "مَوْزٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-10d37450cea79085.mp3",
+      "durationMs": 1350
+    },
+    "اربط كل فاكهة بالحرف الأول من اسمها!": {
+      "src": "/sounds/preschool/ar/course-cedar-f3eff50e947de677.mp3",
+      "durationMs": 4000
+    },
+    "نَحْلَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-df86fa99caf5ce6f.mp3",
+      "durationMs": 1400
+    },
+    "لَ": {
+      "src": "/sounds/preschool/ar/course-cedar-56d33ad3952c2668.mp3",
+      "durationMs": 350
+    },
+    "لَيْمُونٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-4a2e038e26787101.mp3",
+      "durationMs": 2050
+    },
+    "رَمَّانٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-d5517e92c90514db.mp3",
+      "durationMs": 2400
+    },
+    "استمع: دُبٌّ ، ذُبَابَةٌ ، سَمَكَةٌ ، شَمْسٌ — ما الصوت الأول في كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-137a5c99e6c9bf11.mp3",
+      "durationMs": 9350
+    },
+    "حرف الدَّالِ (د): صوته \"دَ\" مثل دُبٌّ وَدَارٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-9d9568e5447e20ca.mp3",
+      "durationMs": 5750
+    },
+    "حرف الشِّينِ (ش): صوته \"شَ\" مثل شَمْسٌ وَشَجَرَةٌ (3 أسنان وفوقها 3 نقاط).": {
+      "src": "/sounds/preschool/ar/course-cedar-f98b02aa9278de72.mp3",
+      "durationMs": 9200
+    },
+    "حرف السِّينِ (س): صوته \"سَ\" مثل سَمَكَةٌ وَسَيَّارَةٌ (له 3 أسنان بلا نقاط).": {
+      "src": "/sounds/preschool/ar/course-cedar-cbc42d9023009ce0.mp3",
+      "durationMs": 10200
+    },
+    "حرف الذَّالِ (ذ): صوته \"ذَ\" مثل ذُبَابَةٌ وَذِئْبٌ (نخرج طرف لساننا برفق ونضع نقطة فوقه).": {
+      "src": "/sounds/preschool/ar/course-cedar-f376f664e1450be5.mp3",
+      "durationMs": 11350
+    },
+    "التَّمْيِيزُ الصَّوْتِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-0dc233650bc50c17.mp3",
+      "durationMs": 2900
+    },
+    "د = دُبٌّ | ذ = ذُبَابَةٌ | س = سَمَكَةٌ | ش = شَمْسٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-7adf4816874bd9fe.mp3",
+      "durationMs": 4850
+    },
+    "ما هو الصوت الأول في كلمة \"شَمْسٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cabdbb6e462a5819.mp3",
+      "durationMs": 4600
+    },
+    "شَ (حرف الشين).": {
+      "src": "/sounds/preschool/ar/course-cedar-e1a9bd0ecb488a4b.mp3",
+      "durationMs": 3050
+    },
+    "المس حلقك عند نطق الدال وأخرج طرف لسانك برفق عند نطق الذال كأنك تدغدغ شفتك.": {
+      "src": "/sounds/preschool/ar/course-cedar-308f9a82fe40ede3.mp3",
+      "durationMs": 9750
+    },
+    "كم نقطة لحرف الشين (ش)؟": {
+      "src": "/sounds/preschool/ar/course-cedar-966945b3b68ea6be.mp3",
+      "durationMs": 3300
+    },
+    "أي حرف نجده في بداية كلمة \"شَمْسٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1a102f177b49426c.mp3",
+      "durationMs": 4550
+    },
+    "ما الصوت الأول في كلمة \"سَمَكَةٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-916c58457fd8859f.mp3",
+      "durationMs": 4050
+    },
+    "3 نِقَاطٍ فِي الأَعْلَى": {
+      "src": "/sounds/preschool/ar/course-cedar-690cf2698d0d468e.mp3",
+      "durationMs": 3150
+    },
+    "ليس له نقاط": {
+      "src": "/sounds/preschool/ar/course-cedar-35d9efa8f226f16c.mp3",
+      "durationMs": 2150
+    },
+    "نقطة واحدة": {
+      "src": "/sounds/preschool/ar/course-cedar-f5957c46de30d368.mp3",
+      "durationMs": 1500
+    },
+    "بِنُقْطَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-fd5987e7b3efeedc.mp3",
+      "durationMs": 1650
+    },
+    "دَال بلا نقطة، ذال؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a3c3dc0b87565431.mp3",
+      "durationMs": 2500
+    },
+    "بِلَا نُقْطَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-ec4a78fe1f7dd570.mp3",
+      "durationMs": 2100
+    },
+    "سَمَكَةٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-e6193db0dd420d57.mp3",
+      "durationMs": 2100
+    },
+    "شَين كم نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4cbe0bc5d8983530.mp3",
+      "durationMs": 2550
+    },
+    "دُبٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-7edab99717efa136.mp3",
+      "durationMs": 1750
+    },
+    "شَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8590d9684b9f7916.mp3",
+      "durationMs": 1350
+    },
+    "اربط الكلمة بالحرف المناسب!": {
+      "src": "/sounds/preschool/ar/course-cedar-8873a22dffa6d589.mp3",
+      "durationMs": 2700
+    },
+    "سَ": {
+      "src": "/sounds/preschool/ar/course-cedar-3346e2c8230e6211.mp3",
+      "durationMs": 1550
+    },
+    "دَ": {
+      "src": "/sounds/preschool/ar/course-cedar-2dac25d7290d0a28.mp3",
+      "durationMs": 1500
+    },
+    "ذَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8fdd254c8337ddcc.mp3",
+      "durationMs": 700
+    },
+    "شَمْسٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-1ce133778bf6a42c.mp3",
+      "durationMs": 1250
+    },
+    "سَمَكَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-24892f6a118497eb.mp3",
+      "durationMs": 1600
+    },
+    "ذِئْبٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-75ee22690dccd33d.mp3",
+      "durationMs": 2500
+    },
+    "استمع: عِنَبٌ ، غُرَابٌ ، فِيلٌ ، قِطَّةٌ — ما الصوت الأول في كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1dc8c2ff7c8b29aa.mp3",
+      "durationMs": 6850
+    },
+    "حرف العَيْنِ (ع): صوته \"عَ\" مثل عِنَبٌ وَعَلَمٌ (يخرج من وسط الحلق بلا نقاط).": {
+      "src": "/sounds/preschool/ar/course-cedar-db3e3309b8f82b65.mp3",
+      "durationMs": 8500
+    },
+    "حرف الغَيْنِ (غ): صوته \"غَ\" مثل غُرَابٌ وَغَابَةٌ (نقطة واحدة فوق رأسه).": {
+      "src": "/sounds/preschool/ar/course-cedar-a1df52e83ee695d9.mp3",
+      "durationMs": 9300
+    },
+    "حرف الفَاءِ (ف): صوته \"فَ\" مثل فِيلٌ وَفَرَاشَةٌ (صحن مسطح بنقطة واحدة).": {
+      "src": "/sounds/preschool/ar/course-cedar-a4c7747a938dae27.mp3",
+      "durationMs": 9050
+    },
+    "حُرُوفُ الحَلْقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d32c5cce1d53f0b8.mp3",
+      "durationMs": 2200
+    },
+    "حرف القَافِ (ق): صوته \"قَ\" مثل قِطَّةٌ وَقَلَمٌ (صحن عميق بنقطتين في الأعلى).": {
+      "src": "/sounds/preschool/ar/course-cedar-b92a87ffc0120fd1.mp3",
+      "durationMs": 8900
+    },
+    "ما هو الصوت الأول في كلمة \"فِيلٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-de6c60b962d89864.mp3",
+      "durationMs": 3900
+    },
+    "فَ (حرف الفاء).": {
+      "src": "/sounds/preschool/ar/course-cedar-6bec71f32a894894.mp3",
+      "durationMs": 2150
+    },
+    "المس رقبتك عند نطق (ع) و (غ)، وضم شفتيك برفق مع (ف) و (ق).": {
+      "src": "/sounds/preschool/ar/course-cedar-150e6334a98c8dde.mp3",
+      "durationMs": 7300
+    },
+    "ما الصوت الأول في كلمة \"قِطَّةٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7b89288d5d36ba3d.mp3",
+      "durationMs": 4250
+    },
+    "ع = عِنَبٌ | غ = غُرَابٌ | ف = فِيلٌ | ق = قِطَّةٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-ebfddc70b49e2db1.mp3",
+      "durationMs": 7850
+    },
+    "كم نقطة لحرف الفاء (ف)؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fe212c19c8b24b0b.mp3",
+      "durationMs": 3000
+    },
+    "أي حرف نجده في بداية كلمة \"فِيلٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fbbec13b1f351035.mp3",
+      "durationMs": 5000
+    },
+    "نُقْطَةٌ وَاحِدَةٌ فِي الأَعْلَى (ف)": {
+      "src": "/sounds/preschool/ar/course-cedar-124f7d101826d7dc.mp3",
+      "durationMs": 3350
+    },
+    "نقطتان في الأعلى": {
+      "src": "/sounds/preschool/ar/course-cedar-2df6c6f8e00d60e9.mp3",
+      "durationMs": 2400
+    },
+    "بلا نقاط": {
+      "src": "/sounds/preschool/ar/course-cedar-8dc515b149f8c98f.mp3",
+      "durationMs": 1600
+    },
+    "قاف كم نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dec08b117a34bc03.mp3",
+      "durationMs": 1750
+    },
+    "بِلَا": {
+      "src": "/sounds/preschool/ar/course-cedar-173f785283bbdf27.mp3",
+      "durationMs": 1050
+    },
+    "عين بلا نقطة، غين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e6be8cb652eedbcb.mp3",
+      "durationMs": 2300
+    },
+    "فَمٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-6b2746371be14add.mp3",
+      "durationMs": 2700
+    },
+    "فَ": {
+      "src": "/sounds/preschool/ar/course-cedar-62a8dfea9a1c979e.mp3",
+      "durationMs": 1900
+    },
+    "قَ": {
+      "src": "/sounds/preschool/ar/course-cedar-45b1c37e75f6deb4.mp3",
+      "durationMs": 350
+    },
+    "اربط الكائن بالحرف المناسب!": {
+      "src": "/sounds/preschool/ar/course-cedar-7d215f9df0ecd466.mp3",
+      "durationMs": 2750
+    },
+    "عَ": {
+      "src": "/sounds/preschool/ar/course-cedar-09e221e43b78cd7b.mp3",
+      "durationMs": 1250
+    },
+    "عِنَبٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-09dcf60f3165cd4a.mp3",
+      "durationMs": 1650
+    },
+    "غَ": {
+      "src": "/sounds/preschool/ar/course-cedar-49c18bbf9801e167.mp3",
+      "durationMs": 1100
+    },
+    "فَرَاشَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a7f037049d0cad1f.mp3",
+      "durationMs": 2100
+    },
+    "غَيْمٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-63b0c33c630a165e.mp3",
+      "durationMs": 2350
+    },
+    "قَلَمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-26be321a5bf6fb6d.mp3",
+      "durationMs": 2100
+    },
+    "حرف الكَافِ (ك): صوته \"كَ\" مثل كِتَابٌ وَكَلْبٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-1f46e76b92b427c9.mp3",
+      "durationMs": 5800
+    },
+    "استمع: كِتَابٌ ، هِلَالٌ ، وَرْدَةٌ ، يَدٌ — ما الصوت الأول في كل كلمة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-650533d2f1a6c90e.mp3",
+      "durationMs": 8000
+    },
+    "حرف الهَاءِ (ه): صوته \"هَ\" مثل هِلَالٌ وَهَدِيَّةٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-8d28287e4607adc3.mp3",
+      "durationMs": 5700
+    },
+    "حرف الوَاوِ (و): صوته \"وَ\" مثل وَرْدَةٌ وَوَلَدٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-64e1321130b388f1.mp3",
+      "durationMs": 5600
+    },
+    "حُرُوفُ المَدِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-85de77adcc605491.mp3",
+      "durationMs": 2950
+    },
+    "حرف اليَاءِ (ي): صوته \"يَ\" مثل يَدٌ وَيَاسَمِينٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-2bf14671658cad45.mp3",
+      "durationMs": 6700
+    },
+    "ما هو الصوت الأول في كلمة \"وَرْدَةٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e09a1e7e2849f9bf.mp3",
+      "durationMs": 3550
+    },
+    "وَ (حرف الواو).": {
+      "src": "/sounds/preschool/ar/course-cedar-707b49119b88e05e.mp3",
+      "durationMs": 2000
+    },
+    "اطلب من الطفل رسم يده وكتابة حرف الياء (ي) بجانبها، ورسم هلال رمضان مع حرف الهاء (ه).": {
+      "src": "/sounds/preschool/ar/course-cedar-254349ad7f47ab7d.mp3",
+      "durationMs": 10000
+    },
+    "ك = كِتَابٌ | ه = هِلَالٌ | و = وَرْدَةٌ | ي = يَدٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-0c417a192d9e4a1c.mp3",
+      "durationMs": 7700
+    },
+    "أي حرف نجده في بداية كلمة \"وَرْدَةٌ\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b459fba9c9ba4bd1.mp3",
+      "durationMs": 4550
+    },
+    "وَ (حَرْفُ الوَاوِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-964e9680135c272c.mp3",
+      "durationMs": 2150
+    },
+    "أي حرف نجده في بداية كلمة \"يَدٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-48701879cabeee62.mp3",
+      "durationMs": 4950
+    },
+    "ما الصوت الأول في كلمة \"كِتَابٌ\" ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9219059f1cfad8e1.mp3",
+      "durationMs": 4500
+    },
+    "كَ": {
+      "src": "/sounds/preschool/ar/course-cedar-25f4d402f683d1f7.mp3",
+      "durationMs": 750
+    },
+    "يَ": {
+      "src": "/sounds/preschool/ar/course-cedar-cb20ad5ccba88a80.mp3",
+      "durationMs": 3250
+    },
+    "كَلْبٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-e663f77b3fb9127b.mp3",
+      "durationMs": 2950
+    },
+    "وَ": {
+      "src": "/sounds/preschool/ar/course-cedar-541600fcd7a461f9.mp3",
+      "durationMs": 1450
+    },
+    "هَ": {
+      "src": "/sounds/preschool/ar/course-cedar-77b106420a6f1405.mp3",
+      "durationMs": 1200
+    },
+    "وَلَدٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-c5ae808df69eebae.mp3",
+      "durationMs": 2850
+    },
+    "يَمَامَةٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-80810a888e4dea5f.mp3",
+      "durationMs": 2700
+    },
+    "و": {
+      "src": "/sounds/preschool/ar/course-cedar-4bdef7e0bcb3023a.mp3",
+      "durationMs": 900
+    },
+    "هِلَالٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-c975ee50ede77f7a.mp3",
+      "durationMs": 1100
+    },
+    "وَرْدَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-1bf28a28325aa317.mp3",
+      "durationMs": 1800
+    },
+    "كِتَابٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-c2b5721df8d7cb5d.mp3",
+      "durationMs": 1350
+    },
+    "هِلَالٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-164c6b6f3c853274.mp3",
+      "durationMs": 1950
+    },
+    "اتِّجَاهُ الكِتَابَةِ : اللغة العربية تُكتب دائماً من اليمين إلى اليسار.": {
+      "src": "/sounds/preschool/ar/course-cedar-cbd3cc805cee36f4.mp3",
+      "durationMs": 6500
+    },
+    "أمسك قلمك الرصاص كالفنان الصغير: هيا نرسم خطاً مستقيماً ثم دائرة ثم نكتب أول حرف من اسمك البطل!": {
+      "src": "/sounds/preschool/ar/course-cedar-927ba9bce477d264.mp3",
+      "durationMs": 11850
+    },
+    "المَسْكَةُ الثُّلاَثِيَّةُ : نمسك القلم بثلاثة أصابع (الإبهام والسبابة والوسطى) دون ضغط شديد.": {
+      "src": "/sounds/preschool/ar/course-cedar-49ab482ad32111a4.mp3",
+      "durationMs": 9100
+    },
+    "سُطُورُ الكُرَّاسِ : الحرف يجلس على السطر، لا يطير فوقه ولا يسقط تحته.": {
+      "src": "/sounds/preschool/ar/course-cedar-889b0a984d816762.mp3",
+      "durationMs": 8100
+    },
+    "خَطُّ القَاعِدَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-7ec5296daa9279fd.mp3",
+      "durationMs": 2900
+    },
+    "الغِرَافِيزْمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-dedc33b0d5f767fc.mp3",
+      "durationMs": 2650
+    },
+    "تَدَرُّجُ الغِرَافِيزْمِ : خطوط مستقيمة منحنيات دوائر حروف كاملة.": {
+      "src": "/sounds/preschool/ar/course-cedar-07f40a36556b7404.mp3",
+      "durationMs": 8450
+    },
+    "كيف نكتب الحروف العربية من حيث الاتجاه ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9fc81edaf5dc2d2f.mp3",
+      "durationMs": 4000
+    },
+    "دائماً من اليمين إلى اليسار .": {
+      "src": "/sounds/preschool/ar/course-cedar-523b7314ffeeb7c5.mp3",
+      "durationMs": 3700
+    },
+    "بكم إصبعاً يجب أن نمسك القلم لنكتب براحة وثبات؟": {
+      "src": "/sounds/preschool/ar/course-cedar-664885ee2c97dae2.mp3",
+      "durationMs": 6600
+    },
+    "أمسك القلم ب 3 أصابع، أكتب من اليمين لليسار، وأرسم الحروف بجمال وثقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-8a387208193a87b7.mp3",
+      "durationMs": 8100
+    },
+    "استعمل لوحة الرسم التفاعلية في التطبيق للتمرن على رسم الدوائر والخطوط والأمواج بالألوان المبهجة.": {
+      "src": "/sounds/preschool/ar/course-cedar-1a3b4aa13e334204.mp3",
+      "durationMs": 9700
+    },
+    "نكتب من؟": {
+      "src": "/sounds/preschool/ar/course-cedar-529c91be6d1ea39e.mp3",
+      "durationMs": 1300
+    },
+    "في أي اتجاه نكتب الكلمات والحروف في لغتنا العربية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7783b8747fd79467.mp3",
+      "durationMs": 6650
+    },
+    "كيف نكتب لغتنا العربية الجميلة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-48626abf4536e1d6.mp3",
+      "durationMs": 4250
+    },
+    "مِنَ اليَمِينِ إِلَى اليَسَارِ بِثَلاَثَةِ أَصَابِعَ": {
+      "src": "/sounds/preschool/ar/course-cedar-06d93648b6140932.mp3",
+      "durationMs": 5050
+    },
+    "من اليسار لليمين وبقبضة كاملة": {
+      "src": "/sounds/preschool/ar/course-cedar-7f23ca5c7f18f368.mp3",
+      "durationMs": 4800
+    },
+    "نمسك القلم ب": {
+      "src": "/sounds/preschool/ar/course-cedar-b35586f57a8ad562.mp3",
+      "durationMs": 1800
+    },
+    "اليَدِ اليُمْنَى": {
+      "src": "/sounds/preschool/ar/course-cedar-580d7f0d2d658ca2.mp3",
+      "durationMs": 2150
+    },
+    "الحرف يجلس على": {
+      "src": "/sounds/preschool/ar/course-cedar-60a821fddb8f6c92.mp3",
+      "durationMs": 2300
+    },
+    "القَدَمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e34ee1513767ee43.mp3",
+      "durationMs": 1200
+    },
+    "السَّطْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e607858142cc00db.mp3",
+      "durationMs": 1450
+    },
+    "السَّقْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-13ebfac54619c964.mp3",
+      "durationMs": 2050
+    },
+    "نتدرّب برسم": {
+      "src": "/sounds/preschool/ar/course-cedar-e47dee7c9aee609d.mp3",
+      "durationMs": 3350
+    },
+    "كَبِيرٍ وَوَاضِحٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-4dc3230073c85ff4.mp3",
+      "durationMs": 2550
+    },
+    "سَرِيعٍ مُبْهَمٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-5b2a80fcf99e03a8.mp3",
+      "durationMs": 2500
+    },
+    "اختر العادة الصحيحة في الكتابة!": {
+      "src": "/sounds/preschool/ar/course-cedar-1b20653d7f230417.mp3",
+      "durationMs": 3500
+    },
+    "مِنَ اليَمِينِ إِلَى اليَسَارِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ba7bbb0fd6bad56c.mp3",
+      "durationMs": 2900
+    },
+    "اتجاه الكتابة الصحيح للغة العربية": {
+      "src": "/sounds/preschool/ar/course-cedar-d44f7d38ea8dc7f3.mp3",
+      "durationMs": 3800
+    },
+    "من اليسار إلى اليمين": {
+      "src": "/sounds/preschool/ar/course-cedar-14abb25c51cbc037.mp3",
+      "durationMs": 3000
+    },
+    "مسكة القلم الصحيحة": {
+      "src": "/sounds/preschool/ar/course-cedar-5a58a2e9416be314.mp3",
+      "durationMs": 2500
+    },
+    "بِثَلاَثَةِ أَصَابِعَ": {
+      "src": "/sounds/preschool/ar/course-cedar-fa3106b8ada8a391.mp3",
+      "durationMs": 2350
+    },
+    "اسمي أكتبه ب": {
+      "src": "/sounds/preschool/ar/course-cedar-d33ea996e3fb676c.mp3",
+      "durationMs": 2450
+    },
+    "بقبضة اليد كاملة": {
+      "src": "/sounds/preschool/ar/course-cedar-c2a23f74b35a6e0a.mp3",
+      "durationMs": 3100
+    },
+    "نرسم الحرف على": {
+      "src": "/sounds/preschool/ar/course-cedar-eb52bd4b016eb530.mp3",
+      "durationMs": 2300
+    },
+    "الهَوَاءِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-ae6ab044976d449f.mp3",
+      "durationMs": 2400
+    },
+    "الأَرْقَامِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-6f82535980eee2f8.mp3",
+      "durationMs": 2450
+    },
+    "الحُرُوفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-efd45c666a82230c.mp3",
+      "durationMs": 1700
+    },
+    "استمع: بَ … ثم بَا. هل بقي الصوت قصيراً أم صار أطول مثل غناء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5a33a208e5023516.mp3",
+      "durationMs": 7700
+    },
+    "المَدُّ بِالأَلِفِ: بعد الفتحة نكتب ا فنمدّ الصوت: بَ + ا = بَا، مثل بَابٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-b98555f83de5738f.mp3",
+      "durationMs": 8600
+    },
+    "المَدُّ بِالوَاوِ: بعد الضمة نكتب و فنمدّ الصوت: نُ + و = نُو، مثل نُورٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-c6c9f5eaa8938bc8.mp3",
+      "durationMs": 9350
+    },
+    "المَدُّ بِاليَاءِ: بعد الكسرة نكتب ي فنمدّ الصوت: تِ + ي = تِي، مثل تِينٌ .": {
+      "src": "/sounds/preschool/ar/course-cedar-6b6e1e9f8bfbb1b9.mp3",
+      "durationMs": 9400
+    },
+    "الحركة القصيرة صوت قصير، والمدّ صوت أطول. لا نخلط بَ وَبَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-3fbd4946baae87bd.mp3",
+      "durationMs": 7350
+    },
+    "المَدُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-3698bd7f28d7828e.mp3",
+      "durationMs": 1550
+    },
+    "أَلِفُ المَدِّ ا": {
+      "src": "/sounds/preschool/ar/course-cedar-8267dd7a84c69c67.mp3",
+      "durationMs": 2050
+    },
+    "وَاوُ المَدِّ و": {
+      "src": "/sounds/preschool/ar/course-cedar-6f28598b5823c05b.mp3",
+      "durationMs": 2300
+    },
+    "يَاءُ المَدِّ ي": {
+      "src": "/sounds/preschool/ar/course-cedar-19e440ef4ee346a6.mp3",
+      "durationMs": 2450
+    },
+    "أمدّ الفتحة في «بَ». ماذا أكتب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-772745c59fb946c4.mp3",
+      "durationMs": 4450
+    },
+    "بَا (فتحة + ألف المد).": {
+      "src": "/sounds/preschool/ar/course-cedar-4599160d5721f18e.mp3",
+      "durationMs": 4400
+    },
+    "ارسم خطاً قصيراً لصوت بَ وخطاً أطول لصوت بَا، واطلب من الطفل أن يغنّي الصوت الطويل بفم مفتوح.": {
+      "src": "/sounds/preschool/ar/course-cedar-d2bf131b18de318b.mp3",
+      "durationMs": 10550
+    },
+    "َ + ا = مد بالألف | ُ + و = مد بالواو | ِ + ي = مد بالياء.": {
+      "src": "/sounds/preschool/ar/course-cedar-31a4fe14098adf58.mp3",
+      "durationMs": 5700
+    },
+    "بَ + ا = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fd8d916056ac24a6.mp3",
+      "durationMs": 3800
+    },
+    "أي مدّ في كلمة «تِينٌ» ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-88fe748831347d6e.mp3",
+      "durationMs": 3900
+    },
+    "اقرأ: بَابُ المَسْجِدِ — أين المدّ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-31f545b23a79af89.mp3",
+      "durationMs": 3750
+    },
+    "مَا المد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2f7fa659882f5fb9.mp3",
+      "durationMs": 2150
+    },
+    "بَا": {
+      "src": "/sounds/preschool/ar/course-cedar-9e0f27490e7cb6c1.mp3",
+      "durationMs": 900
+    },
+    "بُو": {
+      "src": "/sounds/preschool/ar/course-cedar-461f1979fcc80696.mp3",
+      "durationMs": 750
+    },
+    "بِي": {
+      "src": "/sounds/preschool/ar/course-cedar-e626bd79bce4c159.mp3",
+      "durationMs": 2050
+    },
+    "كلمة «نُورٌ» فيها مدّ…": {
+      "src": "/sounds/preschool/ar/course-cedar-37d8375ac5414ce7.mp3",
+      "durationMs": 2950
+    },
+    "بِالوَاوِ": {
+      "src": "/sounds/preschool/ar/course-cedar-b1b17213ab9caa46.mp3",
+      "durationMs": 1750
+    },
+    "بِالأَلِفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2301f13a51a818e3.mp3",
+      "durationMs": 1450
+    },
+    "بِاليَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-fa9ff36545ec22c2.mp3",
+      "durationMs": 1600
+    },
+    "ما الفرق بين بَ وَبَا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e8300be6b83d01b9.mp3",
+      "durationMs": 4350
+    },
+    "بَا صوت أطول (مدّ)": {
+      "src": "/sounds/preschool/ar/course-cedar-a653d0caf3ab4779.mp3",
+      "durationMs": 3550
+    },
+    "بَا أقصر من بَ": {
+      "src": "/sounds/preschool/ar/course-cedar-375a9f1e0988d3d1.mp3",
+      "durationMs": 2350
+    },
+    "بِي المد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e0c5dfcf3b549aa4.mp3",
+      "durationMs": 1950
+    },
+    "اربط كل مقطع بنوع المدّ!": {
+      "src": "/sounds/preschool/ar/course-cedar-b85737386ec12edf.mp3",
+      "durationMs": 2850
+    },
+    "لا فرق بينهما": {
+      "src": "/sounds/preschool/ar/course-cedar-14082c9dfa125a45.mp3",
+      "durationMs": 3000
+    },
+    "مَدٌّ بِالوَاوِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1368491c8037d23b.mp3",
+      "durationMs": 2550
+    },
+    "نُو": {
+      "src": "/sounds/preschool/ar/course-cedar-c6f77cee10542f5c.mp3",
+      "durationMs": 1100
+    },
+    "مَدٌّ بِاليَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c854599ab4195fab.mp3",
+      "durationMs": 2200
+    },
+    "مَدٌّ بِالأَلِفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-77284aed7da949a8.mp3",
+      "durationMs": 2050
+    },
+    "ولأمك في البيت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b9925a88da559852.mp3",
+      "durationMs": 1950
+    },
+    "تِي": {
+      "src": "/sounds/preschool/ar/course-cedar-dde4679336ec945c.mp3",
+      "durationMs": 1550
+    },
+    "في الصباح تدخل القسم. ماذا تقول للمعلم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5adbd489a0d84ae4.mp3",
+      "durationMs": 4850
+    },
+    "التَّحِيَّةُ: صَبَاحُ الخَيْرِ، مَسَاءُ الخَيْرِ، وَعَلَيْكُمُ السَّلَامُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-9fd09a0608f778ac.mp3",
+      "durationMs": 5950
+    },
+    "الأُسْرَةُ: هَذَا أَبِي، هَذِهِ أُمِّي، هَذَا أَخِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-a46ec5d8a9e48193.mp3",
+      "durationMs": 5300
+    },
+    "الأَدَبُ: مِنْ فَضْلِكَ، شُكْراً، عَفْواً. اللَّعِبُ: هَيَّا نَلْعَبُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ae97eccd5ebafaa5.mp3",
+      "durationMs": 5950
+    },
+    "المَدْرَسَةُ: أَنَا تِلْمِيذٌ / تِلْمِيذَةٌ. هَذَا قِسْمِي. هَذَا مُعَلِّمِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-7e093f6be24112a4.mp3",
+      "durationMs": 7850
+    },
+    "صَبَاحُ الخَيْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3058317728cc2090.mp3",
+      "durationMs": 2250
+    },
+    "مِنْ فَضْلِكَ": {
+      "src": "/sounds/preschool/ar/course-cedar-f864f1af7dbfff72.mp3",
+      "durationMs": 1100
+    },
+    "ماذا تقول وأنت تدخل القسم صباحاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-78f3a0a7e3e65eaf.mp3",
+      "durationMs": 4300
+    },
+    "صَبَاحُ الخَيْرِ يَا مُعَلِّمِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-403990ba2ba39b89.mp3",
+      "durationMs": 3000
+    },
+    "مسرحية: طفل يسلّم، يقدّم أمه، يطلب كرة ب «من فضلك».": {
+      "src": "/sounds/preschool/ar/course-cedar-312f9471666735bd.mp3",
+      "durationMs": 7000
+    },
+    "أسلّم، أعرّف أسرتي وقسمي، أقول شكراً ومن فضلك.": {
+      "src": "/sounds/preschool/ar/course-cedar-01a37bcdf12346b8.mp3",
+      "durationMs": 4950
+    },
+    "ماذا تقول لأمك صباحاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6e8cb8c3c66bb0c4.mp3",
+      "durationMs": 3400
+    },
+    "طلبت كرة. تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fc4e9f47164dfb76.mp3",
+      "durationMs": 2550
+    },
+    "تريد الكرة من صديقك. ماذا تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d8586aef373fc2e2.mp3",
+      "durationMs": 3950
+    },
+    "كيف نقدّم الأم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ffa31cd0724edc2e.mp3",
+      "durationMs": 2650
+    },
+    "هَذِهِ أُمِّي": {
+      "src": "/sounds/preschool/ar/course-cedar-598096ca59b4815c.mp3",
+      "durationMs": 2750
+    },
+    "هَذَا أُمِّي": {
+      "src": "/sounds/preschool/ar/course-cedar-d23577c8d13a3a4b.mp3",
+      "durationMs": 1800
+    },
+    "صباحاً في القسم:": {
+      "src": "/sounds/preschool/ar/course-cedar-4f0d4efcdbba54cf.mp3",
+      "durationMs": 2100
+    },
+    "مَعَ السَّلَامَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5bc5cc5007fa2535.mp3",
+      "durationMs": 2300
+    },
+    "هَذِهِ أُمِّي. من تتكلم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-02b58fec581839a4.mp3",
+      "durationMs": 3350
+    },
+    "عَنْ أُمِّهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-dab5c474a14e8067.mp3",
+      "durationMs": 1950
+    },
+    "عَنْ كُرَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-d13fe648a1ceeeb9.mp3",
+      "durationMs": 1400
+    },
+    "هيا نلعب تعني": {
+      "src": "/sounds/preschool/ar/course-cedar-679a0140f7d5d239.mp3",
+      "durationMs": 2100
+    },
+    "أَدْعُو لِلَّعِبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5925e3fb21004e44.mp3",
+      "durationMs": 2600
+    },
+    "أَنَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4a14022353097e07.mp3",
+      "durationMs": 1550
+    },
+    "اختر الجملة المناسبة!": {
+      "src": "/sounds/preschool/ar/course-cedar-effc10958c338721.mp3",
+      "durationMs": 2650
+    },
+    "دخلت القسم صباحاً": {
+      "src": "/sounds/preschool/ar/course-cedar-adc29bd2d5fd8e90.mp3",
+      "durationMs": 2650
+    },
+    "أعطاك أخوك تمرة": {
+      "src": "/sounds/preschool/ar/course-cedar-9dbea19dd0c686e7.mp3",
+      "durationMs": 2350
+    },
+    "شُكْراً": {
+      "src": "/sounds/preschool/ar/course-cedar-914343795675db45.mp3",
+      "durationMs": 950
+    },
+    "هَيَّا نَلْعَبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-715d3952746fe40e.mp3",
+      "durationMs": 1450
+    },
+    "مساءً نقول": {
+      "src": "/sounds/preschool/ar/course-cedar-57051d7ef1e62644.mp3",
+      "durationMs": 1650
+    },
+    "مَسَاءُ الخَيْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a1f6c8af1d7f8057.mp3",
+      "durationMs": 1650
+    },
+    "أعطاك صديق قلماً": {
+      "src": "/sounds/preschool/ar/course-cedar-b14ed2f0d6d801cd.mp3",
+      "durationMs": 3250
+    },
+    "جَمَلٌ ، حَلِيبٌ ، خُبْزٌ — أي صوت أول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fa214cef8c097e02.mp3",
+      "durationMs": 5200
+    },
+    "الجِيمُ ج": {
+      "src": "/sounds/preschool/ar/course-cedar-1d553190ddd43560.mp3",
+      "durationMs": 2050
+    },
+    "الحَاءُ (ح): بلا نقطة، من الحلق. حَقْلٌ . ح / ح / ح.": {
+      "src": "/sounds/preschool/ar/course-cedar-d8c4bbae183f88eb.mp3",
+      "durationMs": 5900
+    },
+    "الخَاءُ (خ): نقطة فوق. خَسٌّ . خ / خ / خ.": {
+      "src": "/sounds/preschool/ar/course-cedar-4bac0e33d449e135.mp3",
+      "durationMs": 7200
+    },
+    "الجِيمُ (ج): نقطة تحت. جَمَلٌ. في الأول: ج ، في الوسط: ج ، في الآخر: ج.": {
+      "src": "/sounds/preschool/ar/course-cedar-709e07f90a1bedc9.mp3",
+      "durationMs": 8500
+    },
+    "الحَاءُ ح": {
+      "src": "/sounds/preschool/ar/course-cedar-19627fc96c6f8727.mp3",
+      "durationMs": 1900
+    },
+    "الخَاءُ خ": {
+      "src": "/sounds/preschool/ar/course-cedar-4136fcafb63398f2.mp3",
+      "durationMs": 2350
+    },
+    "ما الحرف الأول في «جَمَلٌ»؟ وأين نقطته؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3e2e1b72570a5dd3.mp3",
+      "durationMs": 4450
+    },
+    "جَ — نقطة تحت.": {
+      "src": "/sounds/preschool/ar/course-cedar-54db0d2596fe7c85.mp3",
+      "durationMs": 2750
+    },
+    "خُبْزٌ يبدأ بأي حرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fd616b3f8bb50c0b.mp3",
+      "durationMs": 2800
+    },
+    "ارسم العروة ثم حرّك النقطة: تحت = ج، لا شيء = ح، فوق = خ.": {
+      "src": "/sounds/preschool/ar/course-cedar-965f1482c36ce98d.mp3",
+      "durationMs": 6650
+    },
+    "حرف بلا نقطة من الحلق، في كلمة «حَلِيبٌ». ما هو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c66e8e0153fe14bc.mp3",
+      "durationMs": 5250
+    },
+    "ج نقطة تحت | ح بلا نقطة | خ نقطة فوق. أول / وسط / آخر.": {
+      "src": "/sounds/preschool/ar/course-cedar-f813a31cf8c5b0be.mp3",
+      "durationMs": 7050
+    },
+    "أين نقطة الجيم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8d7cbcbffe0bb9fd.mp3",
+      "durationMs": 2700
+    },
+    "فَوْقَ العُرْوَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2201e43c610af1c9.mp3",
+      "durationMs": 2000
+    },
+    "خاء نقطتها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0d520740037e9847.mp3",
+      "durationMs": 2500
+    },
+    "فَوْقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f52b0f9532af0b88.mp3",
+      "durationMs": 1300
+    },
+    "وَسْطٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-604a3e119938e002.mp3",
+      "durationMs": 1050
+    },
+    "حاء بلا نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a436caceda3c891f.mp3",
+      "durationMs": 2950
+    },
+    "جَمَلٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-310a4a12b09b71ab.mp3",
+      "durationMs": 2300
+    },
+    "تَحْتَ العُرْوَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-38d7b4583f374f94.mp3",
+      "durationMs": 1850
+    },
+    "جَ": {
+      "src": "/sounds/preschool/ar/course-cedar-30b95324e65ef8a1.mp3",
+      "durationMs": 1250
+    },
+    "جَمَلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-cfab90a400fb22b3.mp3",
+      "durationMs": 1300
+    },
+    "اربط الصورة بالحرف!": {
+      "src": "/sounds/preschool/ar/course-cedar-c90fb8f249dab382.mp3",
+      "durationMs": 2000
+    },
+    "خَ": {
+      "src": "/sounds/preschool/ar/course-cedar-98829a8f038bc2ca.mp3",
+      "durationMs": 1650
+    },
+    "خَسٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-9e1301c00605b233.mp3",
+      "durationMs": 1650
+    },
+    "حَ": {
+      "src": "/sounds/preschool/ar/course-cedar-ec5d4ac7dc0dd769.mp3",
+      "durationMs": 1550
+    },
+    "جَرَسٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-5d894b6d4584cbfe.mp3",
+      "durationMs": 2400
+    },
+    "رَمَّانٌ بلا نقطة. زَرَافَةٌ بنقطة. ما الفرق؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8c2dd32a8fe68d30.mp3",
+      "durationMs": 4500
+    },
+    "حَقْلٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-4776dc8bd0a9b5fa.mp3",
+      "durationMs": 2600
+    },
+    "الزَّايُ (ز): صوته «زَ»، نقطة فوق القوس. زَرَافَةٌ، مَوْزٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-34d2026db5e14444.mp3",
+      "durationMs": 8850
+    },
+    "الرَّاءُ (ر) بلا نقطة. لا نخلط ر و ز.": {
+      "src": "/sounds/preschool/ar/course-cedar-b14c5e7aaec8f0d9.mp3",
+      "durationMs": 6800
+    },
+    "في أول الكلمة: ز ، في الآخر: ز أو ز.": {
+      "src": "/sounds/preschool/ar/course-cedar-4618ab8a46e0da72.mp3",
+      "durationMs": 5050
+    },
+    "الزَّايُ ز": {
+      "src": "/sounds/preschool/ar/course-cedar-2fbfcba2d27ac139.mp3",
+      "durationMs": 2600
+    },
+    "ما الحرف الأول في «زَرَافَةٌ»؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0c7e9f7b585fbe05.mp3",
+      "durationMs": 4350
+    },
+    "زَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-f36e46a743d5914b.mp3",
+      "durationMs": 1550
+    },
+    "ز = نقطة + أزيز. ر بلا نقطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-839b9d6837db6fd7.mp3",
+      "durationMs": 4750
+    },
+    "ضع إصبعاً على الحلق: زاي تهتز، راء لا.": {
+      "src": "/sounds/preschool/ar/course-cedar-64d2942bf1b8c662.mp3",
+      "durationMs": 6050
+    },
+    "مَوْزٌ فيه أي حرف بصوت الأزيز؟": {
+      "src": "/sounds/preschool/ar/course-cedar-879f73507096be9f.mp3",
+      "durationMs": 4450
+    },
+    "زَرَافَةٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-487d8ba0960c82ec.mp3",
+      "durationMs": 3300
+    },
+    "رَ أم زَ في بداية «زَيْتٌ» ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-817eb4ace7a06523.mp3",
+      "durationMs": 4500
+    },
+    "ما الذي يميّز الزاي عن الراء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c1bdcabdf0c93ce1.mp3",
+      "durationMs": 3300
+    },
+    "نُقْطَةٌ فَوْقَ الزَّايِ": {
+      "src": "/sounds/preschool/ar/course-cedar-533188870ac7a6ac.mp3",
+      "durationMs": 2550
+    },
+    "زَيتون يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-b4ceabd733d6b7f0.mp3",
+      "durationMs": 2700
+    },
+    "ثَلَاثُ نِقَاطٍ تَحْتُ": {
+      "src": "/sounds/preschool/ar/course-cedar-8d486becb4f2a2aa.mp3",
+      "durationMs": 2450
+    },
+    "اللَّوْنُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6e8cbeb74f88f8ae.mp3",
+      "durationMs": 1200
+    },
+    "رَمَل بلا نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c0a7fc008253c8ae.mp3",
+      "durationMs": 2100
+    },
+    "زَ": {
+      "src": "/sounds/preschool/ar/course-cedar-e1fee858a89367c6.mp3",
+      "durationMs": 1950
+    },
+    "الفرق ر / ز": {
+      "src": "/sounds/preschool/ar/course-cedar-8c9d26d6611c6893.mp3",
+      "durationMs": 2550
+    },
+    "اختر الحرف!": {
+      "src": "/sounds/preschool/ar/course-cedar-49179868520e997d.mp3",
+      "durationMs": 2650
+    },
+    "رَاء بلا نقطة، زاي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-03fb80f8f78e21ed.mp3",
+      "durationMs": 3900
+    },
+    "رَمَّانٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-0c26e5c71c730535.mp3",
+      "durationMs": 1900
+    },
+    "زَرَافَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8ba54f5cd76d68b9.mp3",
+      "durationMs": 2000
+    },
+    "زَهْرَةٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-638da22b754783e0.mp3",
+      "durationMs": 2400
+    },
+    "الصَّادُ (ص): بلا نقطة، فم مستدير. صَقْرٌ. ص / ص / ص.": {
+      "src": "/sounds/preschool/ar/course-cedar-56b2bf1085f61267.mp3",
+      "durationMs": 6650
+    },
+    "صَبَارٌ ، ضِفْدَعٌ ، طَائِرٌ ، ظِلٌّ — أصوات غليظة من الفم.": {
+      "src": "/sounds/preschool/ar/course-cedar-287235f18f4607f6.mp3",
+      "durationMs": 7650
+    },
+    "الضَّادُ (ض): نقطة فوق. ضِفْدَعٌ. ض / ض / ض.": {
+      "src": "/sounds/preschool/ar/course-cedar-02775419fe3a0478.mp3",
+      "durationMs": 6450
+    },
+    "الطَّاءُ (ط): ألف صغيرة فوق الطبق، بلا نقطة. طَبْلٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-62f5890f65ec6e30.mp3",
+      "durationMs": 6550
+    },
+    "الضَّادُ ض": {
+      "src": "/sounds/preschool/ar/course-cedar-35c50e1858ceb876.mp3",
+      "durationMs": 1700
+    },
+    "الصَّادُ ص": {
+      "src": "/sounds/preschool/ar/course-cedar-79908a2b28723141.mp3",
+      "durationMs": 2750
+    },
+    "الظَّاءُ (ظ): مثل الطاء ونقطة. ظِلٌّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ac9b9a8c65c3d346.mp3",
+      "durationMs": 3750
+    },
+    "الطَّاءُ ط / الظَّاءُ ظ": {
+      "src": "/sounds/preschool/ar/course-cedar-8bcab64d115bb701.mp3",
+      "durationMs": 4600
+    },
+    "صَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e7334132eeebdfbf.mp3",
+      "durationMs": 1600
+    },
+    "صَقْرٌ يبدأ بماذا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-949f87125b927b2f.mp3",
+      "durationMs": 3450
+    },
+    "صفّ ص/ض ثم ط/ظ: أضف النقطة على الثاني من كل زوج.": {
+      "src": "/sounds/preschool/ar/course-cedar-a541874cf2ebdece.mp3",
+      "durationMs": 6450
+    },
+    "ص بلا نقطة، ض نقطة. ط بلا نقطة، ظ نقطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-004de05dc806b33a.mp3",
+      "durationMs": 6250
+    },
+    "ضِفْدَعٌ : صاد أم ضاد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-097474471792f3f2.mp3",
+      "durationMs": 3300
+    },
+    "طَبْلٌ يبدأ بأي حرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7cd7482f49850cf2.mp3",
+      "durationMs": 2850
+    },
+    "أي حرف بلا نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5ad62e1696a595cc.mp3",
+      "durationMs": 2300
+    },
+    "صَ وَ طَ": {
+      "src": "/sounds/preschool/ar/course-cedar-a8c93667245a8523.mp3",
+      "durationMs": 2200
+    },
+    "صَ": {
+      "src": "/sounds/preschool/ar/course-cedar-0b4f7ef3ecfaefda.mp3",
+      "durationMs": 1000
+    },
+    "صاد بلا نقطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2e78dc0f2ca4efb2.mp3",
+      "durationMs": 2400
+    },
+    "ضَ وَ ظَ": {
+      "src": "/sounds/preschool/ar/course-cedar-daf20f111a52de1e.mp3",
+      "durationMs": 2650
+    },
+    "طَ": {
+      "src": "/sounds/preschool/ar/course-cedar-20d4c70b42e41646.mp3",
+      "durationMs": 650
+    },
+    "طَاوِلَة تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-269b29dcd519bd85.mp3",
+      "durationMs": 2800
+    },
+    "ظَ": {
+      "src": "/sounds/preschool/ar/course-cedar-bddab64d151ec80e.mp3",
+      "durationMs": 1600
+    },
+    "ضَوْء يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-845bece5f5581d8d.mp3",
+      "durationMs": 2400
+    },
+    "ضَ": {
+      "src": "/sounds/preschool/ar/course-cedar-ecf9ca48afa73438.mp3",
+      "durationMs": 900
+    },
+    "صَقْرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-669c621098853205.mp3",
+      "durationMs": 2450
+    },
+    "ظِلٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-94692fac21b0e6b2.mp3",
+      "durationMs": 1550
+    },
+    "ظَرْفٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-0df639b5f7108a23.mp3",
+      "durationMs": 2750
+    },
+    "اربط الكلمة بالحرف!": {
+      "src": "/sounds/preschool/ar/course-cedar-6c443d65d01df2eb.mp3",
+      "durationMs": 2750
+    },
+    "أَكَلَ، أُمٌّ: همزة في أول الكلمة على ألف.": {
+      "src": "/sounds/preschool/ar/course-cedar-040adc71edda5994.mp3",
+      "durationMs": 4900
+    },
+    "ضَفْدَعٌ يبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-540df7480c9be767.mp3",
+      "durationMs": 2550
+    },
+    "أَكَلَ — صوت في الحلق ينقطع. عَيْنٌ صوت آخر. هل هما سواء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7f34310cc79cfef5.mp3",
+      "durationMs": 7650
+    },
+    "الهَمْزَةُ صوت من الحلق، نكتبه ء أو فوق الألف أَ / تحتها إِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e36bbcb94ee88029.mp3",
+      "durationMs": 6950
+    },
+    "أَ / إِ": {
+      "src": "/sounds/preschool/ar/course-cedar-aab67a1be41cdd80.mp3",
+      "durationMs": 1600
+    },
+    "الهَمْزَةُ ء": {
+      "src": "/sounds/preschool/ar/course-cedar-f977fd2165046133.mp3",
+      "durationMs": 2000
+    },
+    "أين الهمزة في «أُمٌّ»؟": {
+      "src": "/sounds/preschool/ar/course-cedar-50dae70bf8ca3b89.mp3",
+      "durationMs": 2750
+    },
+    "سَمَاءٌ: همزة في الآخر شكلها ء.": {
+      "src": "/sounds/preschool/ar/course-cedar-3a9addcd61f6499a.mp3",
+      "durationMs": 5950
+    },
+    "في الأول: أُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-bbf7dde91d566c2b.mp3",
+      "durationMs": 1650
+    },
+    "همزة = أَ في أكل، و ء في سماء.": {
+      "src": "/sounds/preschool/ar/course-cedar-8e564d5fd13748c5.mp3",
+      "durationMs": 5050
+    },
+    "أَسَدٌ يبدأ بهمزة أم بعين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-81021f25be99c48c.mp3",
+      "durationMs": 4450
+    },
+    "ضع يدك على الحلق: أَكَلَ همزة، عَمَلَ عين.": {
+      "src": "/sounds/preschool/ar/course-cedar-8eaef2a747a52050.mp3",
+      "durationMs": 5350
+    },
+    "في «سَمَاءٌ» أين الهمزة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d5762f430c0633e5.mp3",
+      "durationMs": 3100
+    },
+    "أَكَلَ الهمزة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e0dab55029df0b4d.mp3",
+      "durationMs": 2450
+    },
+    "أَ (عَلَى الأَلِفِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-180cf9b03b8c446a.mp3",
+      "durationMs": 2800
+    },
+    "كيف نكتب همزة «أَكَلَ» في الأول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b631af1614918608.mp3",
+      "durationMs": 4250
+    },
+    "أَبٌ تبدأ ب": {
+      "src": "/sounds/preschool/ar/course-cedar-5dd862c7d383b562.mp3",
+      "durationMs": 2250
+    },
+    "هَمْزَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-39998675084f0318.mp3",
+      "durationMs": 2100
+    },
+    "عَيْنٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-2e0adbab6390202f.mp3",
+      "durationMs": 1050
+    },
+    "عين و همزة مختلفان؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9799a32ca2fdd2a4.mp3",
+      "durationMs": 2850
+    },
+    "شَيْء فيها": {
+      "src": "/sounds/preschool/ar/course-cedar-0d57264fb31dc139.mp3",
+      "durationMs": 1850
+    },
+    "اختر!": {
+      "src": "/sounds/preschool/ar/course-cedar-a1d3ec52f8fd17dc.mp3",
+      "durationMs": 1400
+    },
+    "ثَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-e67d84279baffbf6.mp3",
+      "durationMs": 1650
+    },
+    "هَمْزَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a3cf6ff2bf41ec38.mp3",
+      "durationMs": 1900
+    },
+    "عَيْنٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a9fbf5028597bc7c.mp3",
+      "durationMs": 1350
+    },
+    "ء تشبه": {
+      "src": "/sounds/preschool/ar/course-cedar-d6142bb89740d2d5.mp3",
+      "durationMs": 1700
+    },
+    "أُمٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-60a30bbf2ef8808b.mp3",
+      "durationMs": 1400
+    },
+    "عَيْنًا صَغِيرَةً مَقْطُوعَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-8f63887482041f1a.mp3",
+      "durationMs": 2550
+    },
+    "بَاءً": {
+      "src": "/sounds/preschool/ar/course-cedar-0eb9ff477b8649e0.mp3",
+      "durationMs": 1500
+    },
+    "تَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-7703c56378064791.mp3",
+      "durationMs": 1950
+    },
+    "سَأَلَ فيها": {
+      "src": "/sounds/preschool/ar/course-cedar-4e33c8ae8772edb6.mp3",
+      "durationMs": 2050
+    },
+    "بَابٌ ، شَبَكَةٌ ، كَلْبٌ — الباء في ثلاثة أماكن، هل ترسمها سواء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-22bd366d49fdbd79.mp3",
+      "durationMs": 6750
+    },
+    "فِي الأَوَّلِ (ب): الحرف يتصل بما بعده فقط: ب ت ج.": {
+      "src": "/sounds/preschool/ar/course-cedar-11da77201d1a578c.mp3",
+      "durationMs": 6600
+    },
+    "فِي الوَسَطِ (ب): يتصل من الجهتين: ب ت.": {
+      "src": "/sounds/preschool/ar/course-cedar-dcd99b272588058f.mp3",
+      "durationMs": 4400
+    },
+    "أَوَّلُ الكَلِمَةِ (ب)": {
+      "src": "/sounds/preschool/ar/course-cedar-e9eef9f21489b27c.mp3",
+      "durationMs": 3050
+    },
+    "فِي الآخِرِ (ب): يتصل بما قبله أو ينفصل: ب / ب.": {
+      "src": "/sounds/preschool/ar/course-cedar-0599af2238eb7aca.mp3",
+      "durationMs": 7050
+    },
+    "أين باء «كِتَاب» ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3c72b139a1bb84ea.mp3",
+      "durationMs": 2400
+    },
+    "في الآخر: ب.": {
+      "src": "/sounds/preschool/ar/course-cedar-52ea21fba2d78f7d.mp3",
+      "durationMs": 1950
+    },
+    "وَسَطُ الكَلِمَةِ (ب)": {
+      "src": "/sounds/preschool/ar/course-cedar-ab70c800b7a6edce.mp3",
+      "durationMs": 2350
+    },
+    "ثلاث بطاقات ب / ب / ب تحت صورة باب، شبكة، كلب.": {
+      "src": "/sounds/preschool/ar/course-cedar-af559e18dbeef62e.mp3",
+      "durationMs": 5400
+    },
+    "في «بَابٌ » الباء الأولى متصلة بماذا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-44380fedacaae361.mp3",
+      "durationMs": 5950
+    },
+    "باء «كَلْبٌ » في الأول أم في الآخر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bda306ff201688c9.mp3",
+      "durationMs": 4850
+    },
+    "ب في بَيْت أول الحرف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9eb05215110c3fb9.mp3",
+      "durationMs": 4050
+    },
+    "صوت واحد، ثلاثة أشكال حسب المكان.": {
+      "src": "/sounds/preschool/ar/course-cedar-45728b146f959054.mp3",
+      "durationMs": 4300
+    },
+    "ب شكل أي موضع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2acf95ce344f5eff.mp3",
+      "durationMs": 2600
+    },
+    "فَقَطْ فِي الأَوَّلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-028e1ba203d8d7f3.mp3",
+      "durationMs": 2100
+    },
+    "وَسَطُ الكَلِمَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-fd107124d2193d32.mp3",
+      "durationMs": 2450
+    },
+    "الحرف له كم شكل غالباً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9fe8ac6efdd24d0b.mp3",
+      "durationMs": 3750
+    },
+    "مَاء الميم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8f64e3b3b697cd9d.mp3",
+      "durationMs": 1900
+    },
+    "أَوَّلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-4b1013679b0428da.mp3",
+      "durationMs": 1700
+    },
+    "آخِرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2e24619f66eafe19.mp3",
+      "durationMs": 1450
+    },
+    "قَلَم اللام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1cf8170e0b88cfff.mp3",
+      "durationMs": 1900
+    },
+    "وَسَطٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ef3dd17f39d23b7b.mp3",
+      "durationMs": 1100
+    },
+    "أول، وسط، أم آخر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-12fb048315cb8383.mp3",
+      "durationMs": 2650
+    },
+    "تَمْرٌ — التاء": {
+      "src": "/sounds/preschool/ar/course-cedar-216bb53a149fb1ea.mp3",
+      "durationMs": 2550
+    },
+    "كِتَابٌ — الباء": {
+      "src": "/sounds/preschool/ar/course-cedar-d07d42387e0bc272.mp3",
+      "durationMs": 2350
+    },
+    "ب في كِتَاب آخر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-51d69a6692583093.mp3",
+      "durationMs": 2300
+    },
+    "ب في كَتَبَت وسط؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2a2afd98bf77bdfb.mp3",
+      "durationMs": 3050
+    },
+    "قَلَمٌ — بعد الميم نون صغيرة لا تُكتب حرفاً. اسمع: قَلَمُنْ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e21acecb97acb89e.mp3",
+      "durationMs": 7300
+    },
+    "تَنْوِينُ الفَتْحِ ً: فتحتان، صوت أَنْ. كِتَابًا.": {
+      "src": "/sounds/preschool/ar/course-cedar-afc3b3c238b1ef07.mp3",
+      "durationMs": 4400
+    },
+    "التنوين في آخر الاسم، وليس نوناً مكتوبة.": {
+      "src": "/sounds/preschool/ar/course-cedar-3689c83ceefaa81e.mp3",
+      "durationMs": 4150
+    },
+    "تَنْوِينُ الضَّمِّ ٌ: ضمتان، صوت أُنْ. كِتَابٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-480788dd31134502.mp3",
+      "durationMs": 4500
+    },
+    "تَنْوِينُ الكَسْرِ ٍ: كسرتان، صوت إِنْ. كِتَابٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-609296bd996ba345.mp3",
+      "durationMs": 5600
+    },
+    "التَّنْوِينُ": {
+      "src": "/sounds/preschool/ar/course-cedar-cb30106df67eb5fa.mp3",
+      "durationMs": 1650
+    },
+    "ً / ٌ / ٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-e37b0963b3280ba8.mp3",
+      "durationMs": 1700
+    },
+    "كيف نقرأ «بَابٌ»؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ce15c407ac7f7994.mp3",
+      "durationMs": 2200
+    },
+    "بَابُنْ (ضمتان).": {
+      "src": "/sounds/preschool/ar/course-cedar-3cedbcd341704dd6.mp3",
+      "durationMs": 2800
+    },
+    "غطِّ الأنف قليلاً: تنوين له نون طنين.": {
+      "src": "/sounds/preschool/ar/course-cedar-4a4fb244296b7b9c.mp3",
+      "durationMs": 4600
+    },
+    "كِتَابًا التنوين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-179134b7638591ec.mp3",
+      "durationMs": 2750
+    },
+    "قَلَمٌ فيه أي تنوين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a15eb43e8606de8a.mp3",
+      "durationMs": 2700
+    },
+    "كَيْفَ نَقْرَأُ آخِرَ «كِتَابًا»؟": {
+      "src": "/sounds/preschool/ar/course-cedar-479cbde738ca9c5b.mp3",
+      "durationMs": 3350
+    },
+    "ً = أن | ٌ = أنْ بضم | ٍ = إن.": {
+      "src": "/sounds/preschool/ar/course-cedar-70bb435cb9b1ea34.mp3",
+      "durationMs": 6000
+    },
+    "نُونٍ صَغِيرَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-a142685290461fb5.mp3",
+      "durationMs": 2000
+    },
+    "التنوين يُسمع في الآخر ك…": {
+      "src": "/sounds/preschool/ar/course-cedar-68c3e2645078e4e5.mp3",
+      "durationMs": 4200
+    },
+    "مَدٍّ بِالأَلِفِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-31fb64fbbe311ff4.mp3",
+      "durationMs": 2400
+    },
+    "التنوين صوت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-be111eeea0deb931.mp3",
+      "durationMs": 2150
+    },
+    "نُونٍ خَفِيفَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-0cc8bedbef6c89a1.mp3",
+      "durationMs": 2300
+    },
+    "ً رسمها": {
+      "src": "/sounds/preschool/ar/course-cedar-394f7c523186c519.mp3",
+      "durationMs": 2850
+    },
+    "فَتْحَتَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a2486957d9923d3e.mp3",
+      "durationMs": 1750
+    },
+    "سُكُونٍ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-a443a42cc0dc0973.mp3",
+      "durationMs": 1950
+    },
+    "ضَمَّتَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-adb0f065cae7e278.mp3",
+      "durationMs": 1550
+    },
+    "ٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-22a739d88d4956f6.mp3",
+      "durationMs": 900
+    },
+    "بَابٌ آخره": {
+      "src": "/sounds/preschool/ar/course-cedar-c716413b09ac3f15.mp3",
+      "durationMs": 1800
+    },
+    "اختر الحركة المزدوجة!": {
+      "src": "/sounds/preschool/ar/course-cedar-4f731b63255ff9c1.mp3",
+      "durationMs": 2700
+    },
+    "كَسْرٌ ٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-7ebe2c0b02d29d03.mp3",
+      "durationMs": 1650
+    },
+    "كِتَابٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-ee1102f30d0ea03c.mp3",
+      "durationMs": 1750
+    },
+    "ضَمٌّ ٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-f54c4db864451c07.mp3",
+      "durationMs": 1850
+    },
+    "بَيْتٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-0e647fc3222b1329.mp3",
+      "durationMs": 1350
+    },
+    "طاولة، سبورة، كتاباً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3addd5444b63aace.mp3",
+      "durationMs": 3050
+    },
+    "فَتْحٌ ً": {
+      "src": "/sounds/preschool/ar/course-cedar-5cd1c4e72d21c7cd.mp3",
+      "durationMs": 2550
+    },
+    "انظر حولك في القسم: ماذا ترى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ff6afee5afd01340.mp3",
+      "durationMs": 4400
+    },
+    "المَدْرَسَةُ: المكان الذي أذهب إليه لأتعلم القراءة والكتابة.": {
+      "src": "/sounds/preschool/ar/course-cedar-5155faad16c0daa6.mp3",
+      "durationMs": 6650
+    },
+    "القِسْمُ: الغرفة التي أجلس فيها مع زملائي.": {
+      "src": "/sounds/preschool/ar/course-cedar-f7b69bc4d7004e06.mp3",
+      "durationMs": 5550
+    },
+    "المُعَلِّمُ / المُعَلِّمَةُ: من يشرح لنا الدرس ويساعدنا على التعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-2ddc3e66d8809144.mp3",
+      "durationMs": 7150
+    },
+    "الكِتَابُ وَالقَلَمُ: أدواتي التي أتعلم بها كل يوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-a53084eb6deb10c8.mp3",
+      "durationMs": 6400
+    },
+    "السَّاحَةُ: المكان الذي نلعب فيه وقت الاستراحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-041d6d5e07713618.mp3",
+      "durationMs": 5400
+    },
+    "مَدْرَسَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-4d3591a02f0c14a5.mp3",
+      "durationMs": 1750
+    },
+    "مُعَلِّمٌ / مُعَلِّمَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-f33a0f0faa164e30.mp3",
+      "durationMs": 3450
+    },
+    "قِسْمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-5a3ff79218e043f0.mp3",
+      "durationMs": 1600
+    },
+    "سَاحَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-f51963040d3ffedb.mp3",
+      "durationMs": 2250
+    },
+    "أين نتعلم القراءة والكتابة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cc0ba14a879556d2.mp3",
+      "durationMs": 3750
+    },
+    "فِي المَدْرَسَةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-d64945945aff2980.mp3",
+      "durationMs": 1800
+    },
+    "ارسم مدرسة صغيرة فيها باب وقسم وساحة، وسمِّ كل جزء بصوت عالٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-034db94af5d4af94.mp3",
+      "durationMs": 9000
+    },
+    "أين نلعب وقت الاستراحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3208c065fb091ecf.mp3",
+      "durationMs": 3000
+    },
+    "من يشرح لنا الدرس في القسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1321309184b9d40d.mp3",
+      "durationMs": 4000
+    },
+    "مدرسة، معلم، قسم، كتاب، ساحة — كلمات مدرستي.": {
+      "src": "/sounds/preschool/ar/course-cedar-ea29c00df6deced4.mp3",
+      "durationMs": 7200
+    },
+    "المَدْرَسَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f02aec8d4d49a04b.mp3",
+      "durationMs": 1850
+    },
+    "السُّوقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-560e426f7395029b.mp3",
+      "durationMs": 1600
+    },
+    "مكان تعلّمي هو": {
+      "src": "/sounds/preschool/ar/course-cedar-17402e369c4b9204.mp3",
+      "durationMs": 2900
+    },
+    "المكان الذي أتعلم فيه القراءة والكتابة هو:": {
+      "src": "/sounds/preschool/ar/course-cedar-5c75a029cbdbdd88.mp3",
+      "durationMs": 4850
+    },
+    "من يشرح الدرس؟": {
+      "src": "/sounds/preschool/ar/course-cedar-74698041ac1ae49f.mp3",
+      "durationMs": 2300
+    },
+    "الجَارُ": {
+      "src": "/sounds/preschool/ar/course-cedar-849c17b07955278f.mp3",
+      "durationMs": 1250
+    },
+    "المُعَلِّمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0215a3dbd8446545.mp3",
+      "durationMs": 1750
+    },
+    "أقرأ في": {
+      "src": "/sounds/preschool/ar/course-cedar-c7391f362bb408fa.mp3",
+      "durationMs": 1950
+    },
+    "اربط كل أداة باسمها!": {
+      "src": "/sounds/preschool/ar/course-cedar-2edd97ddf8571342.mp3",
+      "durationMs": 3600
+    },
+    "السَّاحَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-f23bafead24a963b.mp3",
+      "durationMs": 2400
+    },
+    "الكِتَابِ": {
+      "src": "/sounds/preschool/ar/course-cedar-94a4c0df89934e7d.mp3",
+      "durationMs": 2300
+    },
+    "أقرأ فيه": {
+      "src": "/sounds/preschool/ar/course-cedar-b30456e4f590a6fb.mp3",
+      "durationMs": 2950
+    },
+    "السَّاحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6a73314e7446c8e8.mp3",
+      "durationMs": 1650
+    },
+    "أجلس فيها مع زملائي": {
+      "src": "/sounds/preschool/ar/course-cedar-9a00d064e7fe3e5e.mp3",
+      "durationMs": 3200
+    },
+    "نلعب فيها وقت الاستراحة": {
+      "src": "/sounds/preschool/ar/course-cedar-dd50fea151716937.mp3",
+      "durationMs": 2900
+    },
+    "القِسْمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-faae77245c29c30c.mp3",
+      "durationMs": 1500
+    },
+    "قَلَمٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-9f6b252f8c063cfe.mp3",
+      "durationMs": 1050
+    },
+    "نكتب ب": {
+      "src": "/sounds/preschool/ar/course-cedar-ae6fba4858a858f4.mp3",
+      "durationMs": 1850
+    },
+    "مِمْحَاةٍ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-6e0c4b5f00e6c84f.mp3",
+      "durationMs": 2100
+    },
+    "انظر إلى صورة عائلتك: من فيها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1c2dfe81bd3a746a.mp3",
+      "durationMs": 3700
+    },
+    "أب، أم، أخ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8c23026187c20008.mp3",
+      "durationMs": 2250
+    },
+    "الأَبُ: يعمل ويحمي العائلة ويحبني كثيراً.": {
+      "src": "/sounds/preschool/ar/course-cedar-390829d66bcf6961.mp3",
+      "durationMs": 4850
+    },
+    "الأُمُّ: تعتني بالبيت والأطفال بحنان.": {
+      "src": "/sounds/preschool/ar/course-cedar-6f5fe72e05a0a847.mp3",
+      "durationMs": 4450
+    },
+    "الأَخُ وَالأُخْتُ: نلعب وندرس معاً في البيت.": {
+      "src": "/sounds/preschool/ar/course-cedar-5565cdbd7ec1067a.mp3",
+      "durationMs": 5300
+    },
+    "أَخٌ / أُخْتٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-96f9d98788a833eb.mp3",
+      "durationMs": 1800
+    },
+    "الجَدُّ وَالجَدَّةُ: نزورهما ونحترمهما ونستمع لقصصهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-69608588b6a7483d.mp3",
+      "durationMs": 7450
+    },
+    "أَبٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-0f354f9774466053.mp3",
+      "durationMs": 1100
+    },
+    "العَائِلَةُ: كل هؤلاء يعيشون معاً ويتحابون.": {
+      "src": "/sounds/preschool/ar/course-cedar-3a8f083d5f7cf67b.mp3",
+      "durationMs": 5550
+    },
+    "جَدٌّ / جَدَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-63906fec3eda3a26.mp3",
+      "durationMs": 3050
+    },
+    "الأَبُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-2ef4010fbcb6d5c2.mp3",
+      "durationMs": 1400
+    },
+    "من يعمل ويحمي العائلة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8244453f7eeea744.mp3",
+      "durationMs": 4500
+    },
+    "ارسم شجرة صغيرة لعائلتك وسمِّ كل فرد بصوت عالٍ: هذا أبي، هذه أمي.": {
+      "src": "/sounds/preschool/ar/course-cedar-cbf3c31a50e250e2.mp3",
+      "durationMs": 8700
+    },
+    "أب، أم، أخ، أخت، جد، جدة — عائلتي أحبها.": {
+      "src": "/sounds/preschool/ar/course-cedar-9fd96fb215fc8fd7.mp3",
+      "durationMs": 5500
+    },
+    "من يعتني بالبيت والأطفال بحنان؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7a35db461bd2deae.mp3",
+      "durationMs": 4300
+    },
+    "من هما والدا أبي أو أمي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d47ac15a4c0555e3.mp3",
+      "durationMs": 4100
+    },
+    "الأَبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-af3f7f02555f499d.mp3",
+      "durationMs": 1850
+    },
+    "الشخص الذي يعمل ويحمي العائلة هو:": {
+      "src": "/sounds/preschool/ar/course-cedar-b8a4b21c7b1b0de8.mp3",
+      "durationMs": 3900
+    },
+    "الأَخُ": {
+      "src": "/sounds/preschool/ar/course-cedar-79460079c7c4d2f7.mp3",
+      "durationMs": 1850
+    },
+    "إخوتي هم": {
+      "src": "/sounds/preschool/ar/course-cedar-b47bbc577d0719e6.mp3",
+      "durationMs": 2100
+    },
+    "الأُمُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-59c2470d6f11a56b.mp3",
+      "durationMs": 1300
+    },
+    "من يعتني بالبيت بحنان؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4f3f335663e72f2e.mp3",
+      "durationMs": 2850
+    },
+    "جِيرَانِي": {
+      "src": "/sounds/preschool/ar/course-cedar-d779fe32e31d9df5.mp3",
+      "durationMs": 2400
+    },
+    "أَخِي وَأُخْتِي": {
+      "src": "/sounds/preschool/ar/course-cedar-9a07bacd6ba7d06a.mp3",
+      "durationMs": 2450
+    },
+    "يعمل ويحمي العائلة": {
+      "src": "/sounds/preschool/ar/course-cedar-44c3d116b4c8443e.mp3",
+      "durationMs": 2500
+    },
+    "اربط كل فرد باسمه!": {
+      "src": "/sounds/preschool/ar/course-cedar-2fa26d208c264078.mp3",
+      "durationMs": 2900
+    },
+    "أَخٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-df9375293ed7ffbc.mp3",
+      "durationMs": 1000
+    },
+    "جَدٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-4f0bcd3435de26c9.mp3",
+      "durationMs": 2350
+    },
+    "نزوره ونستمع لقصصه": {
+      "src": "/sounds/preschool/ar/course-cedar-f95fca5f37e07d15.mp3",
+      "durationMs": 4300
+    },
+    "نلعب معه في البيت": {
+      "src": "/sounds/preschool/ar/course-cedar-799be19b0051d7aa.mp3",
+      "durationMs": 2800
+    },
+    "من نافذة غرفتك: ماذا ترى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7586fe417ecf5574.mp3",
+      "durationMs": 3850
+    },
+    "نزورهما ونسمع قصصهما": {
+      "src": "/sounds/preschool/ar/course-cedar-2d194406979f2ee2.mp3",
+      "durationMs": 3200
+    },
+    "الجَدُّ وَالجَدَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a91b921cfffb99b6.mp3",
+      "durationMs": 2700
+    },
+    "بيتاً، شارعاً، حديقة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cf2f42fb8817b2b1.mp3",
+      "durationMs": 2800
+    },
+    "الشَّارِعُ: الطريق في الحي حيث تمشي السيارات والناس.": {
+      "src": "/sounds/preschool/ar/course-cedar-7f4b0cca46e339c7.mp3",
+      "durationMs": 5750
+    },
+    "الجَارُ: شخص يسكن بجانب بيتنا.": {
+      "src": "/sounds/preschool/ar/course-cedar-0ffb85eb34a82e50.mp3",
+      "durationMs": 4500
+    },
+    "البَيْتُ: المكان الذي ننام ونأكل فيه مع العائلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-6c6d44603e98225f.mp3",
+      "durationMs": 5900
+    },
+    "بَيْتٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-7368a8ec386b441f.mp3",
+      "durationMs": 950
+    },
+    "شَارِعٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-0c32bc2906ae5da1.mp3",
+      "durationMs": 1650
+    },
+    "الحَدِيقَةُ: مكان أخضر للعب والمشي في الحي.": {
+      "src": "/sounds/preschool/ar/course-cedar-810ff94cc326cddb.mp3",
+      "durationMs": 5950
+    },
+    "السُّوقُ: مكان نشتري فيه الخبز والخضر.": {
+      "src": "/sounds/preschool/ar/course-cedar-ac9f88e3cfb993b1.mp3",
+      "durationMs": 3800
+    },
+    "جَارٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-1164f8ec3c0ee14d.mp3",
+      "durationMs": 1450
+    },
+    "حَدِيقَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-3672ef582aac28d4.mp3",
+      "durationMs": 1450
+    },
+    "سُوقٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8fe05ca4e64e32bd.mp3",
+      "durationMs": 1700
+    },
+    "فِي البَيْتِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-5a980e097edf01bc.mp3",
+      "durationMs": 2400
+    },
+    "أين ننام ليلاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f3b2aac1062b712d.mp3",
+      "durationMs": 2400
+    },
+    "ارسم بيتاً وشارعاً وجاراً يلوّح: «هذا جاري، هذا شارع حيّي».": {
+      "src": "/sounds/preschool/ar/course-cedar-592f138c550f01f1.mp3",
+      "durationMs": 7000
+    },
+    "بيت، شارع، جار، حديقة، سوق — كلمات حَيِّي.": {
+      "src": "/sounds/preschool/ar/course-cedar-9a34fc3bb841995d.mp3",
+      "durationMs": 6150
+    },
+    "أين نشتري الخبز في الحي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-633ade8982f617a5.mp3",
+      "durationMs": 3850
+    },
+    "من يسكن بجانب بيتنا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3b8c8afdf46af290.mp3",
+      "durationMs": 2950
+    },
+    "ارْبِطْ في الحي": {
+      "src": "/sounds/preschool/ar/course-cedar-5a2a299e0d193805.mp3",
+      "durationMs": 1800
+    },
+    "الطريق في الحي اسمه:": {
+      "src": "/sounds/preschool/ar/course-cedar-0f4da4046a280477.mp3",
+      "durationMs": 2650
+    },
+    "أَسْكُنُ فِي": {
+      "src": "/sounds/preschool/ar/course-cedar-ba16b3ced092e307.mp3",
+      "durationMs": 2500
+    },
+    "من بجانب بيتنا": {
+      "src": "/sounds/preschool/ar/course-cedar-2eaf0f932e7b4b10.mp3",
+      "durationMs": 2000
+    },
+    "سُوقٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-bdfd09c3a4e8e791.mp3",
+      "durationMs": 1450
+    },
+    "اربط كل مكان بكلمته!": {
+      "src": "/sounds/preschool/ar/course-cedar-2896214faefa6180.mp3",
+      "durationMs": 2750
+    },
+    "الطريق في الحي": {
+      "src": "/sounds/preschool/ar/course-cedar-18f6dd432acaa67d.mp3",
+      "durationMs": 1550
+    },
+    "نشتري في": {
+      "src": "/sounds/preschool/ar/course-cedar-05415ed17a5e9497.mp3",
+      "durationMs": 1700
+    },
+    "ننام فيه": {
+      "src": "/sounds/preschool/ar/course-cedar-b9ca49691dd57e7b.mp3",
+      "durationMs": 1750
+    },
+    "السُّوقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-e8259faf406aace6.mp3",
+      "durationMs": 1500
+    },
+    "نلعب فيها": {
+      "src": "/sounds/preschool/ar/course-cedar-120f9b7a17f0b8a2.mp3",
+      "durationMs": 2650
+    },
+    "الحَدِيقَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1fed8d9910fcf76b.mp3",
+      "durationMs": 1600
+    },
+    "الشَّارِعِ": {
+      "src": "/sounds/preschool/ar/course-cedar-b43cf3791dc8d7b5.mp3",
+      "durationMs": 1500
+    },
+    "نلعب في": {
+      "src": "/sounds/preschool/ar/course-cedar-19eb6d8f7df48aa3.mp3",
+      "durationMs": 2050
+    },
+    "بعد اللعب في الساحة تشعر بقلبك سريعاً وتعطش. ماذا تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9fac21ba083926fc.mp3",
+      "durationMs": 6650
+    },
+    "الصِّحَّةُ: نأكل جيداً، ننام، نغسل أيدينا.": {
+      "src": "/sounds/preschool/ar/course-cedar-821e40a6e5c5f223.mp3",
+      "durationMs": 5700
+    },
+    "المَاءُ: نشربه كل يوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-8468b44e76970547.mp3",
+      "durationMs": 3150
+    },
+    "الفَاكِهَةُ وَالخُضْرُ: طعام مفيد للجسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-0607fb377bece6bd.mp3",
+      "durationMs": 5000
+    },
+    "الرِّيَاضَةُ: الجري، القفز، اللعب — تقوي الجسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-e6a1487090ef575f.mp3",
+      "durationMs": 5000
+    },
+    "صِحَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-aed4298c4c8d0947.mp3",
+      "durationMs": 1350
+    },
+    "رِيَاضَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-1259283d9e52fb59.mp3",
+      "durationMs": 2300
+    },
+    "نَوْمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-431de87c2022d0e6.mp3",
+      "durationMs": 1750
+    },
+    "النَّوْمُ: نرتاح ليلاً لنستيقظ نشيطين.": {
+      "src": "/sounds/preschool/ar/course-cedar-202c36543bf98cea.mp3",
+      "durationMs": 5300
+    },
+    "ماذا نشرب كل يوم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d74bcdf98439472a.mp3",
+      "durationMs": 3100
+    },
+    "نَظَافَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-923ec4c171cfe559.mp3",
+      "durationMs": 1450
+    },
+    "المَاءَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-1719f25803e09940.mp3",
+      "durationMs": 1000
+    },
+    "تمثيل: «أشرب ماء»، «أغسل يدي»، «أجري في الساحة».": {
+      "src": "/sounds/preschool/ar/course-cedar-2193fbafccddf6a3.mp3",
+      "durationMs": 4750
+    },
+    "بعد اللعب العنيف ماذا نشرب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-16f60fe84eaf342a.mp3",
+      "durationMs": 3550
+    },
+    "قبل الأكل أغسل": {
+      "src": "/sounds/preschool/ar/course-cedar-603c4eb6c9085170.mp3",
+      "durationMs": 2200
+    },
+    "الجري في الساحة نوع من:": {
+      "src": "/sounds/preschool/ar/course-cedar-26c1d47924878eeb.mp3",
+      "durationMs": 3200
+    },
+    "ماء، فاكهة، رياضة، نوم، نظافة = صحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-db979d0f0db862d4.mp3",
+      "durationMs": 4400
+    },
+    "ليلاً أحتاج": {
+      "src": "/sounds/preschool/ar/course-cedar-426158cf26e6dd32.mp3",
+      "durationMs": 1850
+    },
+    "أَنَا بِخَيْرٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-bd9f1dcf65f11386.mp3",
+      "durationMs": 1750
+    },
+    "أَنَا مَرِيضٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-54a4613091840666.mp3",
+      "durationMs": 2500
+    },
+    "عندما أكون بخير أقول:": {
+      "src": "/sounds/preschool/ar/course-cedar-df487ef9bf1d6225.mp3",
+      "durationMs": 2800
+    },
+    "نَوْماً": {
+      "src": "/sounds/preschool/ar/course-cedar-4a2182353023695a.mp3",
+      "durationMs": 1350
+    },
+    "أَنَا سَعِيدٌ وَصِحِّيٌّ": {
+      "src": "/sounds/preschool/ar/course-cedar-cd997d24c73992d2.mp3",
+      "durationMs": 3250
+    },
+    "أَنَا بِخَيْرٍ تعني": {
+      "src": "/sounds/preschool/ar/course-cedar-be0800d6759c47dd.mp3",
+      "durationMs": 2800
+    },
+    "كُرَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-e0a0b91baff2bcdf.mp3",
+      "durationMs": 2100
+    },
+    "الفاكهة": {
+      "src": "/sounds/preschool/ar/course-cedar-561df041bee8853e.mp3",
+      "durationMs": 1500
+    },
+    "مُفِيدَةٌ لِلْجِسْمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a64800e868ef8bb0.mp3",
+      "durationMs": 2750
+    },
+    "ضَارَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ce367fef801452db.mp3",
+      "durationMs": 1800
+    },
+    "اختر العادة الصحية!": {
+      "src": "/sounds/preschool/ar/course-cedar-1ac60e5a0045e0c6.mp3",
+      "durationMs": 2600
+    },
+    "يَدَيَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-7c7d298c9c5cef8a.mp3",
+      "durationMs": 1400
+    },
+    "حَلْوَى": {
+      "src": "/sounds/preschool/ar/course-cedar-c05cc789126c746e.mp3",
+      "durationMs": 1500
+    },
+    "حِذَائِي": {
+      "src": "/sounds/preschool/ar/course-cedar-00a006ba5df55b18.mp3",
+      "durationMs": 1750
+    },
+    "بعد اللعب نشرب": {
+      "src": "/sounds/preschool/ar/course-cedar-96edb37be0f49016.mp3",
+      "durationMs": 2050
+    },
+    "مَاءً": {
+      "src": "/sounds/preschool/ar/course-cedar-785004213ecbc5c9.mp3",
+      "durationMs": 1400
+    },
+    "الجري نوع من": {
+      "src": "/sounds/preschool/ar/course-cedar-1417ee5abcc1ac7d.mp3",
+      "durationMs": 2750
+    },
+    "الرِّيَاضَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-36047adf87f55550.mp3",
+      "durationMs": 1000
+    },
+    "النَّوْمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-dced954536f3788a.mp3",
+      "durationMs": 1750
+    },
+    "الشَّجَرَةُ: تعطينا الظل والفواكه والهواء النظيف.": {
+      "src": "/sounds/preschool/ar/course-cedar-407482790d7c8c5c.mp3",
+      "durationMs": 5500
+    },
+    "انظر من النافذة: هل ترى شجرة أو سماء زرقاء أو طائراً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b2ff126ed20bf652.mp3",
+      "durationMs": 5650
+    },
+    "الوَرْدَةُ: زهرة جميلة لها رائحة زكية.": {
+      "src": "/sounds/preschool/ar/course-cedar-9b56f995dbaffad5.mp3",
+      "durationMs": 5100
+    },
+    "السَّمَاءُ: زرقاء فيها الشمس نهاراً والنجوم ليلاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-7770ed12fc7f0b03.mp3",
+      "durationMs": 5850
+    },
+    "المَاءُ: ضروري للنبات والحيوان والإنسان.": {
+      "src": "/sounds/preschool/ar/course-cedar-e454914e3de3a027.mp3",
+      "durationMs": 5250
+    },
+    "شَجَرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-97bb228408afdf5c.mp3",
+      "durationMs": 1600
+    },
+    "نُحَافِظُ عَلَى الطَّبِيعَةِ: لا نكسر الأشجار ولا نلوث الماء.": {
+      "src": "/sounds/preschool/ar/course-cedar-2a1d12571f965e02.mp3",
+      "durationMs": 6200
+    },
+    "سَمَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-d32fcb8aeed0f45a.mp3",
+      "durationMs": 2250
+    },
+    "مَاءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-6251a9650fc60240.mp3",
+      "durationMs": 1300
+    },
+    "ماذا تعطينا الشجرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bc09c3190e3c1ff4.mp3",
+      "durationMs": 2250
+    },
+    "طَائِرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-efeb55610bac1f87.mp3",
+      "durationMs": 1650
+    },
+    "الظِّلَّ وَالفَوَاكِهَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8288af9b5276a809.mp3",
+      "durationMs": 2700
+    },
+    "اخرج مع الطفل للحديقة وسمِّ كل ما يراه: شجرة، وردة، طائراً، سماء.": {
+      "src": "/sounds/preschool/ar/course-cedar-16178125102d7a35.mp3",
+      "durationMs": 8150
+    },
+    "ماذا نفعل حتى نحافظ على الطبيعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ed13648aa57fc19e.mp3",
+      "durationMs": 3700
+    },
+    "شجرة، وردة، سماء، ماء، طائر — أحافظ على الطبيعة من حولي.": {
+      "src": "/sounds/preschool/ar/course-cedar-48fc829e880cc9ba.mp3",
+      "durationMs": 6950
+    },
+    "ماذا نرى في السماء نهاراً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fbd8e5d1cb9fda6d.mp3",
+      "durationMs": 2300
+    },
+    "المَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2f0167f17f50ddaa.mp3",
+      "durationMs": 2100
+    },
+    "اللُّعْبَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e83c09daa843db70.mp3",
+      "durationMs": 1550
+    },
+    "الشيء الضروري للنبات والحيوان والإنسان هو:": {
+      "src": "/sounds/preschool/ar/course-cedar-77dab408d4e6a92b.mp3",
+      "durationMs": 4950
+    },
+    "ضروري للنبات والحيوان": {
+      "src": "/sounds/preschool/ar/course-cedar-9a892e883853f4e3.mp3",
+      "durationMs": 2850
+    },
+    "يطير ويغرد": {
+      "src": "/sounds/preschool/ar/course-cedar-60b51f0a05555651.mp3",
+      "durationMs": 2150
+    },
+    "الطَّائِرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-444628802e8b8e4a.mp3",
+      "durationMs": 1700
+    },
+    "السَّمَكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d2c85ac1a9e03827.mp3",
+      "durationMs": 1300
+    },
+    "نحافظ على الطبيعة ب": {
+      "src": "/sounds/preschool/ar/course-cedar-644de06739ad3d55.mp3",
+      "durationMs": 2550
+    },
+    "اربط كل عنصر باسمه!": {
+      "src": "/sounds/preschool/ar/course-cedar-cecc1174b5923cc1.mp3",
+      "durationMs": 2400
+    },
+    "كَسْرِ الأَغْصَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-415f1f34a2e421cf.mp3",
+      "durationMs": 2000
+    },
+    "عَدَمِ إِيذَائِهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-3f399e7405b7d8f2.mp3",
+      "durationMs": 2050
+    },
+    "لها رائحة زكية": {
+      "src": "/sounds/preschool/ar/course-cedar-77167e290037d098.mp3",
+      "durationMs": 3150
+    },
+    "الشَّجَرَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-967e6e1b915be341.mp3",
+      "durationMs": 1650
+    },
+    "في وقت الفراغ: ماذا تحب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0068b6d405c68da4.mp3",
+      "durationMs": 2800
+    },
+    "تعطينا الظل والفواكه": {
+      "src": "/sounds/preschool/ar/course-cedar-17720d15d2a2c272.mp3",
+      "durationMs": 3100
+    },
+    "الوَرْدَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a8a487dc1745ccf5.mp3",
+      "durationMs": 1900
+    },
+    "كرة ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-338628e07f8eb332.mp3",
+      "durationMs": 1400
+    },
+    "رسم ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d79ca1f08d51ebf4.mp3",
+      "durationMs": 950
+    },
+    "اللُّعْبَةُ : ما نستمتع به (كرة، دمية، لغز).": {
+      "src": "/sounds/preschool/ar/course-cedar-d950c78d70efdf89.mp3",
+      "durationMs": 6950
+    },
+    "الكُرَةُ : نركلها أو نرميها في اللعب.": {
+      "src": "/sounds/preschool/ar/course-cedar-28dde9980b67a023.mp3",
+      "durationMs": 3950
+    },
+    "الرَّسْمُ : نلوّن ونرسم بقلم أو طباشير.": {
+      "src": "/sounds/preschool/ar/course-cedar-e8ef25b2715216db.mp3",
+      "durationMs": 4800
+    },
+    "القِصَّةُ : حكاية نسمعها أو نتخيلها.": {
+      "src": "/sounds/preschool/ar/course-cedar-b7e9f99b3ca0f47b.mp3",
+      "durationMs": 5350
+    },
+    "المُوسِيقَى : أغاني وإيقاع نستمع إليه.": {
+      "src": "/sounds/preschool/ar/course-cedar-d809746f642cbfd8.mp3",
+      "durationMs": 4650
+    },
+    "لُعْبَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-193df86286264bd1.mp3",
+      "durationMs": 1550
+    },
+    "قِصَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2565cbc84c6013b1.mp3",
+      "durationMs": 1350
+    },
+    "كُرَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a988849d5489733e.mp3",
+      "durationMs": 1750
+    },
+    "كيف ندعو صديقاً للعب ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5e590f860b5f7da5.mp3",
+      "durationMs": 3250
+    },
+    "رَسْمٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a4c4fe00436695c0.mp3",
+      "durationMs": 1700
+    },
+    "هَيَّا نَلْعَبُ / تَعَالَ نَلْعَبُ .": {
+      "src": "/sounds/preschool/ar/course-cedar-1733ed7338f8528d.mp3",
+      "durationMs": 3600
+    },
+    "هيا نلعب! كرة، رسم، قصة = تسلية.": {
+      "src": "/sounds/preschool/ar/course-cedar-90c073f12317ac68.mp3",
+      "durationMs": 5150
+    },
+    "تريد اللعب مع صديق. ماذا تقول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d8aee11d7f29c185.mp3",
+      "durationMs": 4250
+    },
+    "صندوق ألعاب: سمّ كل لعبة بصوت عالٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8d640725af9b34da.mp3",
+      "durationMs": 5050
+    },
+    "دَعْوَةٌ لِلَّعِبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-8a882dbb9e0b4db6.mp3",
+      "durationMs": 2300
+    },
+    "نرسم ب …": {
+      "src": "/sounds/preschool/ar/course-cedar-d5d2d25139e9c9ce.mp3",
+      "durationMs": 3550
+    },
+    "ارْبِطْ اللَّعِبَ": {
+      "src": "/sounds/preschool/ar/course-cedar-e4bb589ab6f46570.mp3",
+      "durationMs": 1700
+    },
+    "«هَيَّا نَلْعَبُ» تعني:": {
+      "src": "/sounds/preschool/ar/course-cedar-dfc2b63bafc8d5af.mp3",
+      "durationMs": 3300
+    },
+    "نستمع إلى": {
+      "src": "/sounds/preschool/ar/course-cedar-e15c7dde03636ff0.mp3",
+      "durationMs": 2050
+    },
+    "مُوسِيقَى": {
+      "src": "/sounds/preschool/ar/course-cedar-2eeb908c9a75e016.mp3",
+      "durationMs": 1150
+    },
+    "وَدَاعاً": {
+      "src": "/sounds/preschool/ar/course-cedar-3f54dadeb22ff2a5.mp3",
+      "durationMs": 1900
+    },
+    "أُدْعُو صَدِيقِي": {
+      "src": "/sounds/preschool/ar/course-cedar-ad9304838bdea641.mp3",
+      "durationMs": 1750
+    },
+    "«تَعَالَ نَلْعَبُ»": {
+      "src": "/sounds/preschool/ar/course-cedar-3490e1d99bb2b3e1.mp3",
+      "durationMs": 2200
+    },
+    "وَدَاعٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-4e520ecd5f70b25b.mp3",
+      "durationMs": 1950
+    },
+    "طَعَامٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-ca70df9aeac692c9.mp3",
+      "durationMs": 1450
+    },
+    "دَعْوَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-36251dfeffee4a8b.mp3",
+      "durationMs": 2000
+    },
+    "اختر الكلمة!": {
+      "src": "/sounds/preschool/ar/course-cedar-b7e3a73e9e3b3dbc.mp3",
+      "durationMs": 2350
+    },
+    "في العيد: ماذا ترى؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e7c3ab584d47d31c.mp3",
+      "durationMs": 2300
+    },
+    "في الملعب": {
+      "src": "/sounds/preschool/ar/course-cedar-806af07494b868fc.mp3",
+      "durationMs": 1750
+    },
+    "على الورق": {
+      "src": "/sounds/preschool/ar/course-cedar-b26a15807867d8f4.mp3",
+      "durationMs": 1800
+    },
+    "هدايا، فرح، عائلة مجتمعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fe06bc5449c3e0ad.mp3",
+      "durationMs": 4300
+    },
+    "الفَرَحُ: شعور السعادة في القلب .": {
+      "src": "/sounds/preschool/ar/course-cedar-b4930ad0b336414d.mp3",
+      "durationMs": 4350
+    },
+    "الهَدِيَّةُ: شيء جميل نعطيه أو نأخذه في العيد.": {
+      "src": "/sounds/preschool/ar/course-cedar-0428ddca1616c025.mp3",
+      "durationMs": 6100
+    },
+    "العِيدُ: يوم فرح نلبس فيه ملابس جديدة ونزور العائلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-aab7a09a1250bb4d.mp3",
+      "durationMs": 7800
+    },
+    "العَائِلَةُ: أب، أم، إخوة — معنا في الأعياد.": {
+      "src": "/sounds/preschool/ar/course-cedar-9a780fa6639d2fd2.mp3",
+      "durationMs": 5800
+    },
+    "هَدِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-6675016b305ec25b.mp3",
+      "durationMs": 1550
+    },
+    "الطُّفُولَةُ: زمن اللعب والتعلم الصغير.": {
+      "src": "/sounds/preschool/ar/course-cedar-3b9e247d4b08ca20.mp3",
+      "durationMs": 4700
+    },
+    "عِيدٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-a314fe27dc357bbc.mp3",
+      "durationMs": 1500
+    },
+    "فَرَحٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-e6655aec445fdac2.mp3",
+      "durationMs": 1550
+    },
+    "عِيدٌ سَعِيدٌ.": {
+      "src": "/sounds/preschool/ar/course-cedar-34ad8e7162bdcf72.mp3",
+      "durationMs": 2100
+    },
+    "طُفُولَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-74f60854c8f07760.mp3",
+      "durationMs": 1350
+    },
+    "ماذا نقول في العيد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0a2e9f7cee0f4f5d.mp3",
+      "durationMs": 3100
+    },
+    "ارسم هدية واكتب «عيد سعيد» بخط كبير.": {
+      "src": "/sounds/preschool/ar/course-cedar-54f4846a6563504a.mp3",
+      "durationMs": 5400
+    },
+    "ما الذي نعطيه أو نأخذه في العيد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2e0653aee83b4b26.mp3",
+      "durationMs": 3800
+    },
+    "عيد سعيد! هدية، فرح، عائلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-25d1336889a758b3.mp3",
+      "durationMs": 4150
+    },
+    "ماذا نقول للعائلة في العيد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0001546aacb65384.mp3",
+      "durationMs": 3150
+    },
+    "في العيد أقول": {
+      "src": "/sounds/preschool/ar/course-cedar-9c56d3cbd493e388.mp3",
+      "durationMs": 1700
+    },
+    "عندما أكون سعيداً أشعر": {
+      "src": "/sounds/preschool/ar/course-cedar-6fd8fe367c0f54b8.mp3",
+      "durationMs": 3300
+    },
+    "تَحِيَّةُ العِيدِ": {
+      "src": "/sounds/preschool/ar/course-cedar-38e47dda6a37b9be.mp3",
+      "durationMs": 2250
+    },
+    "«عِيدٌ سَعِيدٌ» هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-4af3ba332b5c0cb5.mp3",
+      "durationMs": 2400
+    },
+    "في العيد نجتمع مع": {
+      "src": "/sounds/preschool/ar/course-cedar-dd0bcd8fb2518ba8.mp3",
+      "durationMs": 2850
+    },
+    "العَائِلَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-3f16f10ebc0b3b35.mp3",
+      "durationMs": 1300
+    },
+    "فَرَحاً": {
+      "src": "/sounds/preschool/ar/course-cedar-39b089d99626393d.mp3",
+      "durationMs": 1000
+    },
+    "حُزْناً": {
+      "src": "/sounds/preschool/ar/course-cedar-17751e929a979590.mp3",
+      "durationMs": 900
+    },
+    "دَرْسٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-2515422be8f93b37.mp3",
+      "durationMs": 1600
+    },
+    "في القلب": {
+      "src": "/sounds/preschool/ar/course-cedar-13f816422fc575a7.mp3",
+      "durationMs": 1250
+    },
+    "في العيد": {
+      "src": "/sounds/preschool/ar/course-cedar-196d3d3beee299d2.mp3",
+      "durationMs": 1800
+    },
+    "أشكر أمي بقول": {
+      "src": "/sounds/preschool/ar/course-cedar-88846867b519af67.mp3",
+      "durationMs": 2500
+    },
+    "حُزْنٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-9ba7fe2ab056c33b.mp3",
+      "durationMs": 1100
+    },
+    "في العيد نأخذ": {
+      "src": "/sounds/preschool/ar/course-cedar-7d50f37fb760e388.mp3",
+      "durationMs": 2400
+    },
+    "هَدِيَّةً": {
+      "src": "/sounds/preschool/ar/course-cedar-2873c8a6ad50fcc7.mp3",
+      "durationMs": 1750
+    },
+    "دَرْساً": {
+      "src": "/sounds/preschool/ar/course-cedar-c477f7dd60744d3f.mp3",
+      "durationMs": 1150
+    },
+    "اللَّعِبِ وَالتَّعَلُّمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ea36187459cb0588.mp3",
+      "durationMs": 2500
+    },
+    "الطفولة زمن": {
+      "src": "/sounds/preschool/ar/course-cedar-538d7e27032364b5.mp3",
+      "durationMs": 2200
+    },
+    "النَّوْمِ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-7e6053a49aca29b9.mp3",
+      "durationMs": 2000
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325
