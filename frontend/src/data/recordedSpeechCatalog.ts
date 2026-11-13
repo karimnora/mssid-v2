@@ -45,6 +45,10 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-d819d415dc821c58.mp3",
       "durationMs": 1950
     },
+    "11": {
+      "src": "/sounds/preschool/ar/course-cedar-359b46d59b7dfd77.mp3",
+      "durationMs": 1400
+    },
     "12": {
       "src": "/sounds/preschool/ar/course-cedar-e3b14e66913ee491.mp3",
       "durationMs": 2500
@@ -52,6 +56,14 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "13": {
       "src": "/sounds/preschool/ar/course-cedar-e18c50d302ad756b.mp3",
       "durationMs": 2000
+    },
+    "15": {
+      "src": "/sounds/preschool/ar/course-cedar-63aac2e7e25f3b74.mp3",
+      "durationMs": 1250
+    },
+    "16": {
+      "src": "/sounds/preschool/ar/course-cedar-e3577dde38827e49.mp3",
+      "durationMs": 1200
     },
     "17": {
       "src": "/sounds/preschool/ar/course-cedar-5f41f267458cac32.mp3",
@@ -73,6 +85,14 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-3e98d6a8f262b148.mp3",
       "durationMs": 2050
     },
+    "23": {
+      "src": "/sounds/preschool/ar/course-cedar-70f16375e3ba7008.mp3",
+      "durationMs": 2400
+    },
+    "24": {
+      "src": "/sounds/preschool/ar/course-cedar-c5ef19b704258bb4.mp3",
+      "durationMs": 2400
+    },
     "25": {
       "src": "/sounds/preschool/ar/course-cedar-a738ab3669f4509d.mp3",
       "durationMs": 1850
@@ -81,9 +101,25 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-90000401559cd918.mp3",
       "durationMs": 2450
     },
+    "29": {
+      "src": "/sounds/preschool/ar/course-cedar-2a0e017bd94bba6c.mp3",
+      "durationMs": 1550
+    },
     "30": {
       "src": "/sounds/preschool/ar/course-cedar-7f1b665a33c6cab0.mp3",
       "durationMs": 1200
+    },
+    "33": {
+      "src": "/sounds/preschool/ar/course-cedar-cc2cad7c4fef8413.mp3",
+      "durationMs": 2500
+    },
+    "34": {
+      "src": "/sounds/preschool/ar/course-cedar-55c4582ebfb2b2ff.mp3",
+      "durationMs": 2450
+    },
+    "35": {
+      "src": "/sounds/preschool/ar/course-cedar-70754688c9cb34c5.mp3",
+      "durationMs": 1650
     },
     "39": {
       "src": "/sounds/preschool/ar/course-cedar-9ba46a49f106921a.mp3",
@@ -92,6 +128,22 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "40": {
       "src": "/sounds/preschool/ar/course-cedar-c7df5cad2e3330a4.mp3",
       "durationMs": 2950
+    },
+    "43": {
+      "src": "/sounds/preschool/ar/course-cedar-85b3b24220ba22ae.mp3",
+      "durationMs": 3100
+    },
+    "44": {
+      "src": "/sounds/preschool/ar/course-cedar-fa8a0a4f1fb4f023.mp3",
+      "durationMs": 2400
+    },
+    "45": {
+      "src": "/sounds/preschool/ar/course-cedar-f46d4e0889841c1b.mp3",
+      "durationMs": 2300
+    },
+    "48": {
+      "src": "/sounds/preschool/ar/course-cedar-ab594dfb1164cf75.mp3",
+      "durationMs": 2800
     },
     "49": {
       "src": "/sounds/preschool/ar/course-cedar-19758bc2576ca3a3.mp3",
@@ -105,6 +157,14 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-8946106752c6f130.mp3",
       "durationMs": 2300
     },
+    "53": {
+      "src": "/sounds/preschool/ar/course-cedar-dabc5c33660ffa12.mp3",
+      "durationMs": 1300
+    },
+    "55": {
+      "src": "/sounds/preschool/ar/course-cedar-c09592ea56259063.mp3",
+      "durationMs": 2300
+    },
     "56": {
       "src": "/sounds/preschool/ar/course-cedar-8b291a30a7bb3a5b.mp3",
       "durationMs": 1550
@@ -113,6 +173,18 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-a5ed05eb2c46ca3c.mp3",
       "durationMs": 1400
     },
+    "74": {
+      "src": "/sounds/preschool/ar/course-cedar-a77e5cfb56b11d58.mp3",
+      "durationMs": 3000
+    },
+    "81": {
+      "src": "/sounds/preschool/ar/course-cedar-7be29c4f5cfb1af6.mp3",
+      "durationMs": 2450
+    },
+    "84": {
+      "src": "/sounds/preschool/ar/course-cedar-83e058b03564eec2.mp3",
+      "durationMs": 3100
+    },
     "88": {
       "src": "/sounds/preschool/ar/course-cedar-804e7b38c40b6a57.mp3",
       "durationMs": 2450
@@ -120,6 +192,22 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "90": {
       "src": "/sounds/preschool/ar/course-cedar-35f5fcf75edd31e4.mp3",
       "durationMs": 2750
+    },
+    "94": {
+      "src": "/sounds/preschool/ar/course-cedar-e4a06568a8995756.mp3",
+      "durationMs": 1550
+    },
+    "203": {
+      "src": "/sounds/preschool/ar/course-cedar-3d1241b4886a8bce.mp3",
+      "durationMs": 1900
+    },
+    "640": {
+      "src": "/sounds/preschool/ar/course-cedar-d0ea032c2d80b720.mp3",
+      "durationMs": 2400
+    },
+    "780": {
+      "src": "/sounds/preschool/ar/course-cedar-8192298e8df0484a.mp3",
+      "durationMs": 2350
     },
     "اِسْحَبِ الفَنَكَ: صَحْرَاء، نَخْلَة، جَبَل، بَحْر، ثُمَّ العَلَم!": {
       "src": "/sounds/preschool/ar/algeria-fennec-flag-prompt.mp3",
@@ -11072,6 +11160,1662 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "أَتَفَاخَرُ عَلَيْهِ": {
       "src": "/sounds/preschool/ar/course-cedar-5c581a9d4ab80f63.mp3",
       "durationMs": 3100
+    },
+    "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7f1b4535f6ada5bd.mp3",
+      "durationMs": 3850
+    },
+    "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ": {
+      "src": "/sounds/preschool/ar/course-cedar-40fc8766c6c3c453.mp3",
+      "durationMs": 3200
+    },
+    "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً)": {
+      "src": "/sounds/preschool/ar/course-cedar-3f12c8cfe2ed9947.mp3",
+      "durationMs": 4750
+    },
+    "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ba1a22e59e7acf15.mp3",
+      "durationMs": 6050
+    },
+    "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ …": {
+      "src": "/sounds/preschool/ar/course-cedar-d14a4d1587eeb434.mp3",
+      "durationMs": 4150
+    },
+    "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-67230536e3dc1261.mp3",
+      "durationMs": 3100
+    },
+    "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6ec8a4e1d257d3f0.mp3",
+      "durationMs": 3900
+    },
+    "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ee3c48f067d29b7c.mp3",
+      "durationMs": 4250
+    },
+    "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3": {
+      "src": "/sounds/preschool/ar/course-cedar-96dc325ad18cb330.mp3",
+      "durationMs": 6500
+    },
+    "قراءة وكتابة أي عدد من 0 إلى 49 وتفكيكه إلى عشرات ووحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-36b24e1c764b4565.mp3",
+      "durationMs": 7800
+    },
+    "عند سارة 3 حُزَم من 10 أقلام، وقلمان زائدان بمفردهما. كم قلماً عند سارة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4d26147a441954a8.mp3",
+      "durationMs": 8450
+    },
+    "يتعلم التلميذ قراءة وكتابة الأعداد من 0 إلى 49، وتفكيكها إلى عشرات ووحدات باستعمال أدوات بسيطة كالحُزَم والعِصِيِّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e1ee9678263fc76e.mp3",
+      "durationMs": 13750
+    },
+    "كل حُزْمَةٍ من 10 أشياء تساوي \"عَشَرَةً واحدةً\".": {
+      "src": "/sounds/preschool/ar/course-cedar-7ef86b1c55eb4ea3.mp3",
+      "durationMs": 6550
+    },
+    "كل عدد كبير يمكن تقسيمه إلى مجموعات من 10 (عشرات) وما يبقى بمفرده (وحدات). هذا يساعدنا على العد بسرعة دون تعداد كل شيء واحداً واحداً.": {
+      "src": "/sounds/preschool/ar/course-cedar-14945d7ea4d76f37.mp3",
+      "durationMs": 14850
+    },
+    "العَدَدُ يتكون من مَنْزِلَتَيْنِ: مَنْزِلَةُ العَشَرَاتِ (على اليسار) ومَنْزِلَةُ الوَحَدَاتِ (على اليمين).": {
+      "src": "/sounds/preschool/ar/course-cedar-63fc8cdd43e9a678.mp3",
+      "durationMs": 11200
+    },
+    "الوَحَدَةُ 1": {
+      "src": "/sounds/preschool/ar/course-cedar-e2f646abc4223bef.mp3",
+      "durationMs": 1950
+    },
+    "نَكْتُبُ رقم العشرات على اليسار ورقم الوحدات على اليمين. وعند القراءة بالعربية ننطق الوحدات أولاً ثم العشرات (مثال: 27 = سَبْعَةٌ وَعِشْرُونَ).": {
+      "src": "/sounds/preschool/ar/course-cedar-cf3ddb37b08dbb95.mp3",
+      "durationMs": 16600
+    },
+    "العَدَدُ صِفْرٌ (0) يعني \"لا شيء\" ولا نضعه أبداً في مَنْزِلَةِ العَشَرَاتِ إن كان العدد أكبر من 9.": {
+      "src": "/sounds/preschool/ar/course-cedar-36c692ad233d031c.mp3",
+      "durationMs": 9500
+    },
+    "التَّفْكِيكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9b6b4154f021383e.mp3",
+      "durationMs": 2150
+    },
+    "كم عدد الوحدات في العدد 27؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5441360a234d80e7.mp3",
+      "durationMs": 4900
+    },
+    "العشرات دائماً تُكتب أولاً على اليسار: 1 عشرة ثم 5 وحدات = 15.": {
+      "src": "/sounds/preschool/ar/course-cedar-c402b038be3df685.mp3",
+      "durationMs": 10200
+    },
+    "كل عدد من رقمين = (عدد العشرات × 10) + عدد الوحدات. العشرات على اليسار، الوحدات على اليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-9b35bb7a14967213.mp3",
+      "durationMs": 11050
+    },
+    "نكتب صفراً في خانة الوحدات لأنه لا يوجد أي وحدة زائدة: 40 = 4 عشرات + 0 وحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-257bde518eb194de.mp3",
+      "durationMs": 11500
+    },
+    "اكتب العدد الذي يتكون من 4 عشرات و 5 وحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-95bd20fa48570b7f.mp3",
+      "durationMs": 6500
+    },
+    "ثَلَاثُونَ": {
+      "src": "/sounds/preschool/ar/course-cedar-dcd299ab55cec071.mp3",
+      "durationMs": 1250
+    },
+    "تِسْعَةَ عَشَرَ": {
+      "src": "/sounds/preschool/ar/course-cedar-3ba3850f46ecf44c.mp3",
+      "durationMs": 1950
+    },
+    "اقرأ كل عدد بسرعة واختر كتابته الصحيحة بالحروف!": {
+      "src": "/sounds/preschool/ar/course-cedar-327c891fea0cce9e.mp3",
+      "durationMs": 5200
+    },
+    "العدد 38 يتكون من:": {
+      "src": "/sounds/preschool/ar/course-cedar-0d27bdbf0c5bd502.mp3",
+      "durationMs": 3850
+    },
+    "ثَلَاثَةَ عَشَرَ": {
+      "src": "/sounds/preschool/ar/course-cedar-e6a22f75e4aa12c0.mp3",
+      "durationMs": 2850
+    },
+    "استعمال كلمات التموقع المكاني بدقة، والقراءة على الشريط العددي وجدول ذي مدخلين.": {
+      "src": "/sounds/preschool/ar/course-cedar-eb7c4b5d0ecfa064.mp3",
+      "durationMs": 8750
+    },
+    "القطة فوق الطاولة، والكرة تحت الطاولة. وأنت الآن: ماذا يوجد أمامك؟ وماذا يوجد خلفك؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1fdcb6fafd01a0b0.mp3",
+      "durationMs": 9550
+    },
+    "يتعلم التلميذ تحديد مكان شيء أو شخص بالنسبة لغيره باستعمال كلمات التموقع، ويستعمل الشريط العددي والجدول ذا المدخلين.": {
+      "src": "/sounds/preschool/ar/course-cedar-999a5bc30020275c.mp3",
+      "durationMs": 11500
+    },
+    "قبل أن نتعلم الحساب على الورقة، نتعلم أن نتموقع في الفضاء من حولنا: أين أنا؟ أين الأشياء الأخرى بالنسبة لي؟ هذا يساعدنا على القراءة والفهم لاحقاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-dcd5c457ebb41371.mp3",
+      "durationMs": 15950
+    },
+    "أَمَامَ ≠ خَلْفَ: الشيء الذي \"أمامي\" أراه مباشرة، والشيء \"خلفي\" لا أراه إلا إذا استدرت.": {
+      "src": "/sounds/preschool/ar/course-cedar-1c01be900f58f741.mp3",
+      "durationMs": 9550
+    },
+    "فَوْقَ ≠ تَحْتَ: \"فوق\" يعني في الأعلى، و\"تحت\" يعني في الأسفل.": {
+      "src": "/sounds/preschool/ar/course-cedar-47d29c30e263bc2b.mp3",
+      "durationMs": 7000
+    },
+    "يَمِينٌ ≠ يَسَارٌ: يدي اليمنى هي التي نكتب بها غالباً (لغير الأعسر)، والأخرى يسرى.": {
+      "src": "/sounds/preschool/ar/course-cedar-c7214854b499c41d.mp3",
+      "durationMs": 8700
+    },
+    "الشَّرِيطُ العَدَدِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-a7ffbda4ec60a08a.mp3",
+      "durationMs": 2000
+    },
+    "الجَدْوَلُ ذُو المَدْخَلَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4f1d6513d6258a53.mp3",
+      "durationMs": 3700
+    },
+    "الشَّرِيطُ العَدَدِيُّ: خط مرسوم عليه الأعداد بالترتيب، كلما اتجهنا لليمين زاد العدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-d488e1152a8c7bf4.mp3",
+      "durationMs": 9250
+    },
+    "الجَدْوَلُ ذُو المَدْخَلَيْنِ: نقرأ المعلومة بتقاطع سطر (أفقي) مع عمود (عمودي).": {
+      "src": "/sounds/preschool/ar/course-cedar-817b2673d89fea7b.mp3",
+      "durationMs": 9600
+    },
+    "ذكّر التلميذ بيده التي يكتب بها عادة لتثبيت الجهة.": {
+      "src": "/sounds/preschool/ar/course-cedar-16b3c756b96cc383.mp3",
+      "durationMs": 5900
+    },
+    "الشريط العددي دائماً يُقرأ من اليسار إلى اليمين، والأعداد تكبر كلما تقدمنا لليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-1de4996f05a3282a.mp3",
+      "durationMs": 7400
+    },
+    "الطائر يطير في السماء، والسمكة تسبح في الماء. أين يوجد الطائر بالنسبة للسمكة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bd1f4d18332eae5b.mp3",
+      "durationMs": 8500
+    },
+    "أَمَامَ/خَلْفَ وفَوْقَ/تَحْتَ ويَمِينَ/يَسَارَ: ثلاثة أزواج من الكلمات تصف مكان الأشياء. الشريط العددي يزداد دائماً من اليسار إلى اليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-21a82a8aceb51c54.mp3",
+      "durationMs": 14250
+    },
+    "على الشريط العددي، أين يقع العدد 15 بالنسبة للعدد 12؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f4480c0c820e36ba.mp3",
+      "durationMs": 6800
+    },
+    "على الشريط العددي، أي عدد يأتي مباشرة بعد 9 وأنت تتجه نحو اليمين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4c247753a293ab44.mp3",
+      "durationMs": 8400
+    },
+    "اختر كلمة التموقع الصحيحة لكل جملة!": {
+      "src": "/sounds/preschool/ar/course-cedar-76eaed2eb672b46b.mp3",
+      "durationMs": 3750
+    },
+    "الكرة داخل الصندوق وتحت الطاولة": {
+      "src": "/sounds/preschool/ar/course-cedar-139529485c298319.mp3",
+      "durationMs": 4600
+    },
+    "يَمِينَ": {
+      "src": "/sounds/preschool/ar/course-cedar-914aae880a29859c.mp3",
+      "durationMs": 950
+    },
+    "خَلْفَ": {
+      "src": "/sounds/preschool/ar/course-cedar-9de8df6f1856a983.mp3",
+      "durationMs": 950
+    },
+    "القطة تقف خلف الباب": {
+      "src": "/sounds/preschool/ar/course-cedar-8186d5693d04bc58.mp3",
+      "durationMs": 2750
+    },
+    "إجراء عملية جمع عمودية بين عددين دون احتفاظ، مع وضع صحيح للأرقام.": {
+      "src": "/sounds/preschool/ar/course-cedar-eea04469cff89ce1.mp3",
+      "durationMs": 7450
+    },
+    "عند ياسين 23 كرة زجاجية، وأعطاه صديقه 15 كرة أخرى. كم كرة أصبحت عند ياسين؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bba29e3b8ce22fdf.mp3",
+      "durationMs": 9850
+    },
+    "الجمع العمودي طريقة منظمة لجمع عددين كبيرين بسهولة: نضع كل رقم في مكانه الصحيح (بيته) ونجمع كل عمود على حدة.": {
+      "src": "/sounds/preschool/ar/course-cedar-012f6511e903ec53.mp3",
+      "durationMs": 12700
+    },
+    "يتعلم التلميذ وضع عددين فوق بعضهما بشكل صحيح (وحدات تحت وحدات، عشرات تحت عشرات) وجمعهما دون الحاجة إلى الاحتفاظ.": {
+      "src": "/sounds/preschool/ar/course-cedar-4b04786e7bb43fce.mp3",
+      "durationMs": 12800
+    },
+    "نكتب العدد الأول ثم العدد الثاني تحته، بحيث تكون الوحدات تحت الوحدات، والعشرات تحت العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-a9ee0370d702923f.mp3",
+      "durationMs": 8450
+    },
+    "نبدأ الجمع دائماً من اليمين: نجمع الوحدات أولاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-f04d7b992e5dc0fb.mp3",
+      "durationMs": 5200
+    },
+    "الجَمْعُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e9123140c6b926ae.mp3",
+      "durationMs": 1450
+    },
+    "ثم نجمع العشرات ونكتب الناتج في مكانه.": {
+      "src": "/sounds/preschool/ar/course-cedar-6bedd3cf4d4f7681.mp3",
+      "durationMs": 4300
+    },
+    "المَجْمُوعُ (النَّاتِجُ)": {
+      "src": "/sounds/preschool/ar/course-cedar-baddba16232971db.mp3",
+      "durationMs": 2950
+    },
+    "إذا كان مجموع الوحدات أقل من 10، نكتبه مباشرة دون أي احتفاظ.": {
+      "src": "/sounds/preschool/ar/course-cedar-607f2a0722bd50e9.mp3",
+      "durationMs": 7300
+    },
+    "العَمُودُ": {
+      "src": "/sounds/preschool/ar/course-cedar-93eaad7a2ee2159b.mp3",
+      "durationMs": 1400
+    },
+    "احسب عمودياً: 12 + 6": {
+      "src": "/sounds/preschool/ar/course-cedar-9c7360c05d440f40.mp3",
+      "durationMs": 4550
+    },
+    "دائماً حاذِ الأرقام عمودياً حسب المنزلة: العمود الأيمن للوحدات، والعمود الأيسر للعشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-0ab8198d7bd18425.mp3",
+      "durationMs": 9850
+    },
+    "الجمع العمودي: أحاذي الوحدات مع الوحدات والعشرات مع العشرات، وأجمع كل عمود بدءاً من اليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-b680ad436181c50b.mp3",
+      "durationMs": 9100
+    },
+    "اجمع الوحدات وحدها أولاً، ثم العشرات وحدها، ولا تخلط بينهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-7b6c02990242f02f.mp3",
+      "durationMs": 8550
+    },
+    "احسب عمودياً: 34 + 25": {
+      "src": "/sounds/preschool/ar/course-cedar-8918b83069373c07.mp3",
+      "durationMs": 4600
+    },
+    "احسب الجمع بسرعة قبل انتهاء الوقت!": {
+      "src": "/sounds/preschool/ar/course-cedar-ead2a5a43e53fe11.mp3",
+      "durationMs": 4300
+    },
+    "21 + 18 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0c1eff9ff4c22c2e.mp3",
+      "durationMs": 4050
+    },
+    "اشترت ليلى 24 تفاحة و 13 كمثرى. كم ثمرة عندها في المجموع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-224265e8f87364f1.mp3",
+      "durationMs": 8600
+    },
+    "43 + 5 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-50c19b0c7d5d01cf.mp3",
+      "durationMs": 1900
+    },
+    "قراءة وكتابة الأعداد من 50 إلى 99 ومقارنتها وترتيبها باستعمال الرموز > و< و=.": {
+      "src": "/sounds/preschool/ar/course-cedar-6505c8be42e129a0.mp3",
+      "durationMs": 10750
+    },
+    "عند نور 62 ديناراً، وعند أخيها 68 ديناراً. من يملك مالاً أكثر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4ccbb4165f9b35c8.mp3",
+      "durationMs": 8350
+    },
+    "يواصل التلميذ اكتشاف الأعداد إلى غاية 99، ويتعلم مقارنة عددين وترتيب مجموعة أعداد من الأصغر إلى الأكبر.": {
+      "src": "/sounds/preschool/ar/course-cedar-643f937ca38e5d6d.mp3",
+      "durationMs": 12150
+    },
+    "بعد أن تعرفنا على الأعداد إلى 49، نكمل الطريق إلى 99. المقارنة تساعدنا على معرفة أي عدد أكبر وأي عدد أصغر، تماماً كما نقارن كمية الحلوى بين طفلين.": {
+      "src": "/sounds/preschool/ar/course-cedar-7a679ecad4d34efe.mp3",
+      "durationMs": 18300
+    },
+    "لمقارنة عددين من رقمين، نقارن أولاً عدد العشرات: من له عشرات أكثر فهو أكبر.": {
+      "src": "/sounds/preschool/ar/course-cedar-16b5d1c62132f6cb.mp3",
+      "durationMs": 8500
+    },
+    "إذا تساوت العشرات، نقارن الوحدات: من له وحدات أكثر فهو أكبر.": {
+      "src": "/sounds/preschool/ar/course-cedar-d981205497a68dd3.mp3",
+      "durationMs": 8650
+    },
+    "أَكْبَرُ مِنْ >": {
+      "src": "/sounds/preschool/ar/course-cedar-65caca00c33e804c.mp3",
+      "durationMs": 1800
+    },
+    "أَصْغَرُ مِنْ <": {
+      "src": "/sounds/preschool/ar/course-cedar-2a6b66585af41c29.mp3",
+      "durationMs": 1950
+    },
+    "العدد 99 هو أكبر عدد من رقمين، ويليه مباشرة 100.": {
+      "src": "/sounds/preschool/ar/course-cedar-32ef0c87b48639b7.mp3",
+      "durationMs": 7000
+    },
+    "الرمز > يعني \"أكبر من\"، والرمز < يعني \"أصغر من\"، ويشير رأس الرمز الحاد دائماً إلى العدد الأصغر.": {
+      "src": "/sounds/preschool/ar/course-cedar-8839f87dba0d4466.mp3",
+      "durationMs": 10200
+    },
+    "التَّرْتِيبُ التَّصَاعُدِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-d1c0e97f126fc2c8.mp3",
+      "durationMs": 3200
+    },
+    "تذكر: فم التمساح ينفتح دوماً نحو العدد الأكبر، وضيقه نحو العدد الأصغر.": {
+      "src": "/sounds/preschool/ar/course-cedar-7a0051ac3643298a.mp3",
+      "durationMs": 7550
+    },
+    "دائماً نبدأ المقارنة بالعشرات (الرقم الأيسر) لأنه الأهم في تحديد حجم العدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-8d85f5af368011eb.mp3",
+      "durationMs": 7950
+    },
+    "أي عدد أكبر: 56 أم 65؟": {
+      "src": "/sounds/preschool/ar/course-cedar-523417f2e3ac3b15.mp3",
+      "durationMs": 5000
+    },
+    "لمقارنة عددين: قارن العشرات أولاً، فإن تساويا قارن الوحدات. فم التمساح (> أو <) ينفتح نحو العدد الأكبر دائماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-81cd113f4d95c332.mp3",
+      "durationMs": 11850
+    },
+    "عند خالد 63 ديناراً وعند سعيد 68 ديناراً. من يملك مالاً أكثر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dc92ede20eb83582.mp3",
+      "durationMs": 8100
+    },
+    "اختر الرمز الصحيح الذي يفتح فمه نحو العدد الأكبر!": {
+      "src": "/sounds/preschool/ar/course-cedar-da8bab52382f2010.mp3",
+      "durationMs": 5750
+    },
+    "رتب هذه الأعداد تنازلياً: 78 - 87 - 77": {
+      "src": "/sounds/preschool/ar/course-cedar-65e42831bd77da7c.mp3",
+      "durationMs": 8550
+    },
+    "52 ... 59": {
+      "src": "/sounds/preschool/ar/course-cedar-de9b5f9774d2750c.mp3",
+      "durationMs": 3500
+    },
+    "90 ... 89": {
+      "src": "/sounds/preschool/ar/course-cedar-2005aec4d25758b9.mp3",
+      "durationMs": 3600
+    },
+    "قراءة وكتابة أي عدد من 100 إلى 999، وتفكيكه إلى مئات وعشرات ووحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-1adcb8cbf11985c3.mp3",
+      "durationMs": 9750
+    },
+    "يكتشف التلميذ منزلة المئات الجديدة، ويتعلم قراءة وكتابة وتفكيك أعداد من 3 أرقام إلى مئات وعشرات ووحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-5477208e4f906473.mp3",
+      "durationMs": 11650
+    },
+    "العَدَدُ مِنْ 3 أَرْقَامٍ له ثلاث منازل: المئات (على اليسار)، العشرات (في الوسط)، الوحدات (على اليمين).": {
+      "src": "/sounds/preschool/ar/course-cedar-5a4ed0f13eedd854.mp3",
+      "durationMs": 11850
+    },
+    "عند المكتبة 100 كتاب في صندوق كبير واحد، و 20 كتاباً في صناديق صغيرة، و 5 كتب بمفردها. كم كتاباً في المجموع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f44ff0e3b7b9c8dd.mp3",
+      "durationMs": 13350
+    },
+    "بعد أن ملأنا 9 عشرات كاملة (90) وأضفنا وحدة أخرى، نصل إلى 100! هذا يفتح لنا منزلة جديدة اسمها \"المئات\"، تماماً كما فتحت لنا العشرات طريقاً لتجاوز 9.": {
+      "src": "/sounds/preschool/ar/course-cedar-cb8287e4cde46c1c.mp3",
+      "durationMs": 15800
+    },
+    "المِئَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-465181dd6c2ead39.mp3",
+      "durationMs": 1900
+    },
+    "المِئَةُ = 10 عشرات كاملة = 100 وحدة. عندما تكتمل 10 حزم من 10، نحصل على \"مئة\" واحدة.": {
+      "src": "/sounds/preschool/ar/course-cedar-d0ac04446e0372ee.mp3",
+      "durationMs": 10750
+    },
+    "العدد 999 هو أكبر عدد من 3 أرقام، ويليه مباشرة 1000.": {
+      "src": "/sounds/preschool/ar/course-cedar-c9a177791e7675a1.mp3",
+      "durationMs": 8750
+    },
+    "مَنْزِلَةُ المِئَاتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c5264a63ef0461cf.mp3",
+      "durationMs": 2650
+    },
+    "نَكْتُبُ المئات ثم العشرات ثم الوحدات من اليسار إلى اليمين. وعند القراءة بالعربية ننطق المئات أولاً، ثم الوحدات، ثم العشرات (مثال: 347 = ثَلَاثُ مِئَةٍ وَسَبْعَةٌ وَأَرْبَعُونَ).": {
+      "src": "/sounds/preschool/ar/course-cedar-db209a7bb4654899.mp3",
+      "durationMs": 19050
+    },
+    "رتب المنازل دائماً من اليسار: المئات أولاً، ثم العشرات، ثم الوحدات في أقصى اليمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-0a8f6b81617efec3.mp3",
+      "durationMs": 10500
+    },
+    "العدد 305 يعني 3 مئات و0 عشرات و5 وحدات؛ يجب كتابة الصفر في مكانه ليبقى العدد بثلاثة أرقام.": {
+      "src": "/sounds/preschool/ar/course-cedar-a44b2cfcd69ce6cb.mp3",
+      "durationMs": 11150
+    },
+    "كم عدد المئات في العدد 456؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c5a241599ca950f3.mp3",
+      "durationMs": 5050
+    },
+    "كل عدد من 3 أرقام = (عدد المئات × 100) + (عدد العشرات × 10) + عدد الوحدات. المئات يسار، الوحدات يمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-a34aa7d5bace98ae.mp3",
+      "durationMs": 14250
+    },
+    "اكتب العدد الذي يتكون من 6 مئات و 2 عشرات و 9 وحدات.": {
+      "src": "/sounds/preschool/ar/course-cedar-6855be80cc594de2.mp3",
+      "durationMs": 6950
+    },
+    "العدد 615 يتكون من:": {
+      "src": "/sounds/preschool/ar/course-cedar-4e0cf70da7a4afe1.mp3",
+      "durationMs": 4250
+    },
+    "اقرأ كل عدد بسرعة واختر كتابته الصحيحة!": {
+      "src": "/sounds/preschool/ar/course-cedar-570a4578ca295bf9.mp3",
+      "durationMs": 5650
+    },
+    "ثَلَاثُ مِئَةٍ وَاثْنَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-56f13fc8135c0201.mp3",
+      "durationMs": 2600
+    },
+    "مِئَتَانِ وَثَلَاثَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-85e287d7b1f24eb9.mp3",
+      "durationMs": 2550
+    },
+    "سَبْعُ مِئَةٍ وَثَمَانُونَ": {
+      "src": "/sounds/preschool/ar/course-cedar-d0afc2f766d2b2f0.mp3",
+      "durationMs": 2700
+    },
+    "ثَمَانِي مِئَةٍ وَسَبْعُونَ": {
+      "src": "/sounds/preschool/ar/course-cedar-19ff57978074f994.mp3",
+      "durationMs": 2950
+    },
+    "إجراء عملية جمع عمودية بالاحتفاظ بين عددين من رقمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-50807254fbf7d984.mp3",
+      "durationMs": 6450
+    },
+    "عند رامي 27 كرة، اشترى 15 كرة أخرى. عندما نجمع 7 + 5 في الوحدات نحصل على 12، وهذا أكبر من 9! ماذا نفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a2e5d890a77b50fd.mp3",
+      "durationMs": 13650
+    },
+    "نضيف ال 1 المحتفظ بها إلى مجموع العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-95312c17fb9a6355.mp3",
+      "durationMs": 4950
+    },
+    "يتعلم التلميذ ما معنى \"الاحتفاظ\" عندما يتجاوز مجموع الوحدات العدد 9، وكيفية نقل الاحتفاظ إلى خانة العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-c086a6d1fc2397d9.mp3",
+      "durationMs": 10750
+    },
+    "إذا كان مجموع الوحدات 10 أو أكثر، نكتب رقم الوحدات فقط، ونحتفظ ب 1 وننقلها فوق خانة العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-bf2bf8e6fbfbf447.mp3",
+      "durationMs": 10400
+    },
+    "\"الاحتفاظ\" ليس أمراً صعباً: هو فقط تذكيرنا بأن كل 10 وحدات تُصبح عشرة واحدة كاملة، ننقلها بأمانة إلى عمود العشرات حتى لا نضيعها.": {
+      "src": "/sounds/preschool/ar/course-cedar-3814ec57ac2d8598.mp3",
+      "durationMs": 15050
+    },
+    "الاحْتِفَاظُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4becc7e2a3d23f76.mp3",
+      "durationMs": 1800
+    },
+    "الاحتفاظ يعني ببساطة: 10 وحدات = عشرة واحدة كاملة ننقلها لخانة العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-f5109e404439842a.mp3",
+      "durationMs": 10200
+    },
+    "نكتب رقماً واحداً فقط في خانة الوحدات (2) ونحتفظ بالرقم الآخر (1) لخانة العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-eb8a472cadde9814.mp3",
+      "durationMs": 10050
+    },
+    "الاحتفاظ عدد حقيقي يجب أن يُضاف دائماً إلى مجموع العشرات، وليس مجرد ملاحظة نتجاهلها.": {
+      "src": "/sounds/preschool/ar/course-cedar-ff1e39475acbbdc5.mp3",
+      "durationMs": 11450
+    },
+    "8 + 5 = 13. كم عشرة كاملة نحتفظ بها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-919486ddcf0252cc.mp3",
+      "durationMs": 7200
+    },
+    "إذا تجاوز مجموع الوحدات 9: أكتب رقم الوحدات فقط، واحتفظ ب1 (عشرة كاملة) وأضفها إلى مجموع العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-70477a0e5f148a66.mp3",
+      "durationMs": 11550
+    },
+    "19 + 14 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a6ce0c803ecbc6b1.mp3",
+      "durationMs": 5200
+    },
+    "احسب عمودياً بالاحتفاظ: 46 + 27": {
+      "src": "/sounds/preschool/ar/course-cedar-c802899fb8086c3c.mp3",
+      "durationMs": 5800
+    },
+    "احسب ناتج كل عملية جمع بالاحتفاظ بسرعة!": {
+      "src": "/sounds/preschool/ar/course-cedar-918498510675c42a.mp3",
+      "durationMs": 5500
+    },
+    "عند فوزية 35 دفتراً، أهدتها معلمتها 28 دفتراً إضافياً. كم دفتراً أصبح عندها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d1053332dfac42bd.mp3",
+      "durationMs": 10000
+    },
+    "58 + 26 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5903f2ba67f904e2.mp3",
+      "durationMs": 5200
+    },
+    "إجراء عملية طرح عمودية دون احتفاظ، وتحديد العملية المناسبة (جمع أو طرح) لحل وضعية بسيطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e8d9b1d4a56fe104.mp3",
+      "durationMs": 8900
+    },
+    "عند أمين 39 ديناراً، اشترى قلماً ب 15 ديناراً. كم بقي معه من المال؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6349f31ae804ec6f.mp3",
+      "durationMs": 8700
+    },
+    "يتعلم التلميذ طرح عددين عمودياً دون احتفاظ، وحل مسائل بسيطة من الحياة اليومية تتطلب الجمع أو الطرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-6881de4102643241.mp3",
+      "durationMs": 11250
+    },
+    "نبدأ الطرح من اليمين: نطرح الوحدات أولاً ثم العشرات.": {
+      "src": "/sounds/preschool/ar/course-cedar-964e46f090d9bbba.mp3",
+      "durationMs": 5950
+    },
+    "في الطرح، العدد الكبير يوضع دائماً فوق (المطروح منه)، والعدد الصغير تحته (المطروح).": {
+      "src": "/sounds/preschool/ar/course-cedar-6df32093ed07472d.mp3",
+      "durationMs": 8250
+    },
+    "الطرح عكس الجمع: بدل أن نزيد كمية، ننقص منها. نستعمله عندما \"يبقى\" شيء بعد أخذ جزء منه.": {
+      "src": "/sounds/preschool/ar/course-cedar-857a3694c66568b3.mp3",
+      "durationMs": 10400
+    },
+    "كلمات تدل على الطرح: \"بقي\"، \"أنفق\"، \"أعطى\"، \"الفرق بين\". كلمات تدل على الجمع: \"مجموع\"، \"أضاف\"، \"اشترى إضافة إلى\".": {
+      "src": "/sounds/preschool/ar/course-cedar-763e145f07cbd853.mp3",
+      "durationMs": 11900
+    },
+    "الطَّرْحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-cdaecd246e0e3eec.mp3",
+      "durationMs": 1500
+    },
+    "الفَرْقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d7388f5fa776f308.mp3",
+      "durationMs": 1950
+    },
+    "وَضْعِيَّةُ مَسْأَلَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-590775aec80587d1.mp3",
+      "durationMs": 2300
+    },
+    "احسب عمودياً: 27 - 4": {
+      "src": "/sounds/preschool/ar/course-cedar-b906336e5f033736.mp3",
+      "durationMs": 4650
+    },
+    "كلمة \"بقي\" تعني أن شيئاً أُخذ، إذن نستعمل الطرح دائماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-8de3c2397353f0a8.mp3",
+      "durationMs": 7200
+    },
+    "في هَذِهِ المَرْحَلَةِ نَطْرَحُ فَقَطْ مِنْ عَدَدٍ كَبِيرٍ عَدَداً أَصْغَرَ مِنْهُ، فَيُوضَعُ الكَبِيرُ دَائِماً فِي الأَعْلَى.": {
+      "src": "/sounds/preschool/ar/course-cedar-1e6119a28816b785.mp3",
+      "durationMs": 10650
+    },
+    "الطرح العمودي: العدد الكبير فوق، الصغير تحت، نطرح الوحدات ثم العشرات. كلمة \"بقي\" أو \"أخذ\" تدل على الطرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-532d04cad44628ce.mp3",
+      "durationMs": 11500
+    },
+    "احسب الفرق بسرعة قبل انتهاء الوقت!": {
+      "src": "/sounds/preschool/ar/course-cedar-006df75b4195ad62.mp3",
+      "durationMs": 3750
+    },
+    "48 - 15 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d34549340091d4d3.mp3",
+      "durationMs": 3850
+    },
+    "عند مريم 45 قلماً ملوناً، أعطت 12 قلماً لصديقتها. كم قلماً بقي عندها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cbfdd45c0c57f821.mp3",
+      "durationMs": 8950
+    },
+    "عند سمير 56 صورة، أعطى 23 صورة لأخيه. كم صورة بقيت عنده؟": {
+      "src": "/sounds/preschool/ar/course-cedar-611549a12896aec7.mp3",
+      "durationMs": 9050
+    },
+    "79 - 24 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-dbcb2ad1d4857134.mp3",
+      "durationMs": 4150
+    },
+    "التعرف على المربع والمستطيل والمثلث والدائرة في المحيط اليومي، ونقل رسم بسيط على شبكة مربعات.": {
+      "src": "/sounds/preschool/ar/course-cedar-5f7c3eecf650830b.mp3",
+      "durationMs": 11150
+    },
+    "انظر حولك في القسم: ما شكل السبورة؟ ما شكل الساعة الحائطية؟ هل لهما نفس الشكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2f9ebc2e4af69e93.mp3",
+      "durationMs": 7750
+    },
+    "يتعرف التلميذ على الأشكال الهندسية الأساسية الأربعة، ويميز بينها حسب عدد أضلاعها وشكلها، وينقل رسماً بسيطاً على شبكة.": {
+      "src": "/sounds/preschool/ar/course-cedar-2cea94b991709d03.mp3",
+      "durationMs": 11550
+    },
+    "الأشكال الهندسية موجودة في كل مكان حولنا: النافذة، الطاولة، عجلة الدراجة... تعلمها يساعدنا على وصف الأشياء ورسمها بدقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e6a30f65b4ddcd40.mp3",
+      "durationMs": 12850
+    },
+    "المُرَبَّعُ: له 4 أضلاع متساوية الطول، و4 زوايا متساوية.": {
+      "src": "/sounds/preschool/ar/course-cedar-10ff399fa2f31c31.mp3",
+      "durationMs": 8000
+    },
+    "المُسْتَطِيلُ: له 4 أضلاع، لكن الطول يختلف عن العرض (ضلعان طويلان وضلعان قصيران).": {
+      "src": "/sounds/preschool/ar/course-cedar-f41789b29a1e6f8c.mp3",
+      "durationMs": 9250
+    },
+    "الزَّاوِيَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a8ae66d8ffc6b817.mp3",
+      "durationMs": 2550
+    },
+    "الضِّلْعُ": {
+      "src": "/sounds/preschool/ar/course-cedar-fbc901e5da3d4d44.mp3",
+      "durationMs": 2750
+    },
+    "المُثَلَّثُ: له 3 أضلاع و3 زوايا فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-f22fca73c9ce2989.mp3",
+      "durationMs": 5400
+    },
+    "الشَّبَكَةُ (الشَّطَرَنجِيَّةُ)": {
+      "src": "/sounds/preschool/ar/course-cedar-7b9907a19ef81e54.mp3",
+      "durationMs": 3700
+    },
+    "الدَّائِرَةُ: شكل مستدير ليس له أضلاع ولا زوايا، وكل نقطة فيها تبعد نفس المسافة عن المركز.": {
+      "src": "/sounds/preschool/ar/course-cedar-35b7e9f1aff25ea2.mp3",
+      "durationMs": 11850
+    },
+    "الدائرة ليس لها أي زاوية ولا أي ضلع مستقيم، إنها مستديرة تماماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-2457a5d43a96b475.mp3",
+      "durationMs": 8000
+    },
+    "في المربع كل الأضلاع الأربعة متساوية، أما في المستطيل فالأضلاع المتقابلة فقط متساوية.": {
+      "src": "/sounds/preschool/ar/course-cedar-7896cd6ce1abefb0.mp3",
+      "durationMs": 9350
+    },
+    "كم عدد أضلاع المربع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-177f089856460e55.mp3",
+      "durationMs": 3400
+    },
+    "عجلة السيارة، ما شكلها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8279481e391bf97c.mp3",
+      "durationMs": 4500
+    },
+    "أي شكل ليس له أي زاوية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ea9a829b0b2ffc17.mp3",
+      "durationMs": 4050
+    },
+    "مربع = 4 أضلاع متساوية. مستطيل = 4 أضلاع (طول ≠ عرض). مثلث = 3 أضلاع. دائرة = بدون أضلاع ولا زوايا.": {
+      "src": "/sounds/preschool/ar/course-cedar-61c92ac7e64f6a6c.mp3",
+      "durationMs": 16100
+    },
+    "اربط كل شيء من محيطك بشكله الهندسي المناسب!": {
+      "src": "/sounds/preschool/ar/course-cedar-e29cc660c26b10cd.mp3",
+      "durationMs": 5350
+    },
+    "شباك الغرفة": {
+      "src": "/sounds/preschool/ar/course-cedar-3024493d7e752092.mp3",
+      "durationMs": 2450
+    },
+    "قطعة بيتزا": {
+      "src": "/sounds/preschool/ar/course-cedar-fe317504f780dc83.mp3",
+      "durationMs": 2350
+    },
+    "حساب ضعف عدد صغير ونصف عدد زوجي باستعمال أدوات بصرية.": {
+      "src": "/sounds/preschool/ar/course-cedar-bf6f0fdd9906566e.mp3",
+      "durationMs": 7300
+    },
+    "عند نور 4 حلويات، وأعطتها أمها 4 حلويات أخرى مماثلة. كم أصبح عندها؟ (هذا هو \"ضِعْفُ\" 4).": {
+      "src": "/sounds/preschool/ar/course-cedar-b9de0c965f47179c.mp3",
+      "durationMs": 9650
+    },
+    "يكتشف التلميذ مفهومي \"ضِعف\" (جمع العدد مع نفسه) و\"نصف\" (تقسيم العدد إلى جزأين متساويين) بطريقة بصرية بسيطة.": {
+      "src": "/sounds/preschool/ar/course-cedar-9ee11a7842d894d2.mp3",
+      "durationMs": 11050
+    },
+    "الضعف يعني \"مرتين بالضبط\"، مثل توأمين متشابهين. النصف يعني \"تقسيم الكعكة إلى قطعتين متساويتين بالضبط\" حتى لا يشعر أحد بالظلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-13cac927a71019c6.mp3",
+      "durationMs": 14000
+    },
+    "الضِّعْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1ed34c0b26d960d2.mp3",
+      "durationMs": 1650
+    },
+    "ضِعْفُ عَدَدٍ = العَدَدُ + نَفْسُ العَدَدِ (مثال: ضعف 5 نحسبه هكذا: 5 + 5 = 10).": {
+      "src": "/sounds/preschool/ar/course-cedar-4b012885c60fa083.mp3",
+      "durationMs": 11100
+    },
+    "الضعف والنصف عمليتان متعاكستان: إذا كان ضعف 6 هو 12، فإن نصف 12 هو 6.": {
+      "src": "/sounds/preschool/ar/course-cedar-9022b3d0f209035d.mp3",
+      "durationMs": 9300
+    },
+    "نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8).": {
+      "src": "/sounds/preschool/ar/course-cedar-a6b7690e9a32ed26.mp3",
+      "durationMs": 11500
+    },
+    "النِّصْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e9925cd464b5f241.mp3",
+      "durationMs": 1300
+    },
+    "الضعف يعني تكرار العدد نفسه مرتين كاملتين، وليس إضافة رقم واحد فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-824e3d82431aba16.mp3",
+      "durationMs": 8050
+    },
+    "ما هو ضعف العدد 3؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6b06993edd64d626.mp3",
+      "durationMs": 3800
+    },
+    "ضِعْفُ العدد = العدد + العدد (مثل 6+6=12). نِصْفُ العدد = تقسيمه لجزأين متساويين (مثل 12 نصفه 6).": {
+      "src": "/sounds/preschool/ar/course-cedar-6bbd461cfe328fa8.mp3",
+      "durationMs": 12750
+    },
+    "عند ياسمين 16 حبة فراولة، أرادت اقتسامها بالتساوي مع أختها. كم حبة تأخذ كل واحدة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-582151349df0bdb2.mp3",
+      "durationMs": 10100
+    },
+    "فِي هَذِهِ المَرْحَلَةِ نَتَعَلَّمُ النِّصْفَ فَقَطْ لِلأَعْدَادِ الزَّوْجِيَّةِ (2، 4، 6، 8، 10...) الَّتِي تُقْسَمُ دُونَ بَاقٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8a0269a2c067e459.mp3",
+      "durationMs": 12450
+    },
+    "عند سامي 5 كرات، وعند أخيه ضعف هذا العدد. كم كرة عند أخيه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f99fd0aa93a58fc9.mp3",
+      "durationMs": 8100
+    },
+    "ضعف 9 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8fe4d2ddb3bff208.mp3",
+      "durationMs": 3450
+    },
+    "اختر الجواب الصحيح للضعف أو النصف بسرعة!": {
+      "src": "/sounds/preschool/ar/course-cedar-e2338e0564e76e92.mp3",
+      "durationMs": 5100
+    },
+    "نصف 14 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c507de299b80d17f.mp3",
+      "durationMs": 3600
+    },
+    "قارن طولك بطول صديقك: من أطول؟ وقارن حقيبتك بحقيبته: من أثقل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b0b5987345b6a98e.mp3",
+      "durationMs": 6400
+    },
+    "مقارنة أطوال وكتل أشياء ملموسة، وترتيبها من الأقصر للأطول أو من الأخف للأثقل.": {
+      "src": "/sounds/preschool/ar/course-cedar-8ee060379a522684.mp3",
+      "durationMs": 8800
+    },
+    "يتعلم التلميذ مقارنة طول شيئين (أطول من / أقصر من) وكتلة شيئين (أثقل من / أخف من) دون الحاجة إلى أدوات قياس دقيقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-a1dbed38e74fcfca.mp3",
+      "durationMs": 12300
+    },
+    "قبل استعمال المسطرة والميزان بدقة، نتعلم أولاً المقارنة البسيطة بالعين واليد: من أطول؟ من أثقل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6075718ea0e92f6c.mp3",
+      "durationMs": 10150
+    },
+    "لمقارنة طولين، نضع الشيئين جنباً إلى جنب من نفس نقطة البداية، والذي يمتد أكثر هو الأطول.": {
+      "src": "/sounds/preschool/ar/course-cedar-b14cc1d835283d5f.mp3",
+      "durationMs": 9050
+    },
+    "لمقارنة الكتلة (الثقل)، نحمل الشيئين بيدينا أو نستعمل ميزاناً بسيطاً: الذي يُنزل الكفة هو الأثقل.": {
+      "src": "/sounds/preschool/ar/course-cedar-447499d0ea3da875.mp3",
+      "durationMs": 10300
+    },
+    "أَطْوَلُ / أَقْصَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-25187215ea680fec.mp3",
+      "durationMs": 1900
+    },
+    "الأشياء الكبيرة ليست دائماً أثقل: كرة كبيرة من الإسفنج قد تكون أخف من حجر صغير.": {
+      "src": "/sounds/preschool/ar/course-cedar-6404843dc5f946d1.mp3",
+      "durationMs": 8100
+    },
+    "المِيزَانُ": {
+      "src": "/sounds/preschool/ar/course-cedar-98c6b5fa54a9a19b.mp3",
+      "durationMs": 2800
+    },
+    "أَثْقَلُ / أَخَفُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-cb2b70187fde8f2e.mp3",
+      "durationMs": 2600
+    },
+    "الحجم لا يحدد الوزن دائماً؛ يجب التجربة الفعلية بالميزان أو اليد.": {
+      "src": "/sounds/preschool/ar/course-cedar-1dee034ab10ffc32.mp3",
+      "durationMs": 7700
+    },
+    "يجب محاذاة بداية الشيئين معاً لمقارنة عادلة لأطوالهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-0ca78ac25dbee016.mp3",
+      "durationMs": 7000
+    },
+    "شجرة وزهرة صغيرة. أيهما أطول؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1067c3dd6450f59a.mp3",
+      "durationMs": 4300
+    },
+    "أُقَارِنُ الطول بمحاذاة الأشياء من نفس البداية، وأُقَارِنُ الكتلة بحملها أو بالميزان — وليس بالحجم فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-019d5ee439ab129b.mp3",
+      "durationMs": 10800
+    },
+    "ريشة طائر مقابل حجر صغير": {
+      "src": "/sounds/preschool/ar/course-cedar-dc9bd44641351b0c.mp3",
+      "durationMs": 3600
+    },
+    "فيل وقطة. أيهما أثقل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b014cc1582bb374f.mp3",
+      "durationMs": 3150
+    },
+    "اختر أيهما أثقل أو أطول في كل مقارنة!": {
+      "src": "/sounds/preschool/ar/course-cedar-65b58cd421a3f62b.mp3",
+      "durationMs": 5150
+    },
+    "لدينا 3 حبال بأطوال مختلفة. كيف نعرف الأطول بدقة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b6fcfcd3f2f43af5.mp3",
+      "durationMs": 6400
+    },
+    "الرِّيشَةُ أَثْقَلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1e6284e1e5201623.mp3",
+      "durationMs": 2450
+    },
+    "حَبْلُ ال 2 مِتْرٍ أَطْوَلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-552c0f570e5b2dfc.mp3",
+      "durationMs": 2950
+    },
+    "حبل طوله 2 متر مقابل حبل طوله 1 متر": {
+      "src": "/sounds/preschool/ar/course-cedar-25416205aa3c1ab4.mp3",
+      "durationMs": 6000
+    },
+    "استعمال المسطرة المدرجة لقياس طول أشياء بسيطة بالسنتيمتر، ورسم خط بطول محدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-3804862283d5fa09.mp3",
+      "durationMs": 9100
+    },
+    "ضع مسطرتك بجانب قلمك الرصاص، بحيث تبدأ من العلامة 0. عند أي رقم ينتهي القلم؟ هذا هو طوله بالسنتيمتر.": {
+      "src": "/sounds/preschool/ar/course-cedar-9311ca91ea8449e9.mp3",
+      "durationMs": 11300
+    },
+    "بعد المقارنة البصرية، يتعلم التلميذ استعمال المسطرة المدرجة لقياس طول شيء بدقة بوحدة السنتيمتر (سم).": {
+      "src": "/sounds/preschool/ar/course-cedar-09d62b6feddcc078.mp3",
+      "durationMs": 9650
+    },
+    "السَّنْتِيمِتْرُ (سم): وحدة صغيرة نقيس بها الأشياء القريبة منا، ورمزها \"سم\".": {
+      "src": "/sounds/preschool/ar/course-cedar-70857a36c4c7d226.mp3",
+      "durationMs": 8100
+    },
+    "بعد أن قارنّا الأطوال بالعين، أصبحنا الآن جاهزين لاستعمال أداة دقيقة: المسطرة المدرجة. بها نعرف طول أي شيء بالضبط بوحدة اسمها السنتيمتر.": {
+      "src": "/sounds/preschool/ar/course-cedar-9375c592c5c959a2.mp3",
+      "durationMs": 14700
+    },
+    "لقياس شيء بدقة، أضع بداية الشيء تماماً عند العلامة 0 على المسطرة.": {
+      "src": "/sounds/preschool/ar/course-cedar-992d64be9027d1b8.mp3",
+      "durationMs": 7300
+    },
+    "المِسْطَرَةُ المُدَرَّجَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-520af596c9dddef1.mp3",
+      "durationMs": 2350
+    },
+    "أَقْرَأُ الرقم الذي تنتهي عنده نهاية الشيء — هذا هو طوله بالسنتيمتر.": {
+      "src": "/sounds/preschool/ar/course-cedar-ebe283d6d7d9f3ae.mp3",
+      "durationMs": 7500
+    },
+    "لرسم خط بطول معين (مثلاً 5 سم)، أضع نقطة عند 0 ونقطة أخرى عند 5، ثم أصل بينهما بخط مستقيم.": {
+      "src": "/sounds/preschool/ar/course-cedar-5f39f8ec6eecca80.mp3",
+      "durationMs": 11400
+    },
+    "السَّنْتِيمِتْرُ (سم)": {
+      "src": "/sounds/preschool/ar/course-cedar-542956d8a7eb2680.mp3",
+      "durationMs": 2300
+    },
+    "انظر عمودياً فوق نهاية الشيء مباشرة لقراءة الرقم الصحيح على المسطرة.": {
+      "src": "/sounds/preschool/ar/course-cedar-dbee058c8a5208da.mp3",
+      "durationMs": 6800
+    },
+    "يجب أن تكون بداية الشيء دائماً عند العلامة 0 بالضبط، وليس عند حافة المسطرة التي قد لا تبدأ من 0.": {
+      "src": "/sounds/preschool/ar/course-cedar-d7e5a71ff202f767.mp3",
+      "durationMs": 9600
+    },
+    "ما رمز وحدة السنتيمتر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-87f11e3739fb7a2d.mp3",
+      "durationMs": 2100
+    },
+    "أضع بداية الشيء عند 0 على المسطرة، وأقرأ الرقم عند نهايته — هذا طوله بالسنتيمتر (سم).": {
+      "src": "/sounds/preschool/ar/course-cedar-bc829863a141a574.mp3",
+      "durationMs": 9450
+    },
+    "أين يجب أن نضع بداية الشيء عند القياس بالمسطرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c687c3ccd4ce1411.mp3",
+      "durationMs": 5350
+    },
+    "بدأ خط عند العلامة 0 وانتهى عند العلامة 12. كم طوله بالسنتيمتر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6236e9def85a47a2.mp3",
+      "durationMs": 8200
+    },
+    "اربط كل أداة بطولها التقريبي بالسنتيمتر!": {
+      "src": "/sounds/preschool/ar/course-cedar-6ea2bfc7583731c7.mp3",
+      "durationMs": 4500
+    },
+    "قَلَمُ الرَّصَاصِ": {
+      "src": "/sounds/preschool/ar/course-cedar-95f6df9eacafde9f.mp3",
+      "durationMs": 1800
+    },
+    "حَوَالَيْ 4 سم": {
+      "src": "/sounds/preschool/ar/course-cedar-94a62f86f63a017c.mp3",
+      "durationMs": 3350
+    },
+    "حَوَالَيْ 1 سم": {
+      "src": "/sounds/preschool/ar/course-cedar-cebb72352455a88a.mp3",
+      "durationMs": 3000
+    },
+    "حَوَالَيْ 17 سم": {
+      "src": "/sounds/preschool/ar/course-cedar-4ffa3ff07645515d.mp3",
+      "durationMs": 3550
+    },
+    "حَوَالَيْ 40 سم": {
+      "src": "/sounds/preschool/ar/course-cedar-272de2eab9c4a09c.mp3",
+      "durationMs": 3350
+    },
+    "انظر إلى ساعة الحائط في القسم: متى يشير العقربان إلى وقت خروجنا للاستراحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f8def18025345dd2.mp3",
+      "durationMs": 7850
+    },
+    "قراءة الوقت بالساعات الكاملة على ساعة ذات عقارب وربطها بلحظات من يومه.": {
+      "src": "/sounds/preschool/ar/course-cedar-45aa25738b452d67.mp3",
+      "durationMs": 8750
+    },
+    "يتعلم التلميذ قراءة الساعات الكاملة على ساعة ذات عقارب، والتمييز بين العقرب الصغير (الساعات) والعقرب الكبير (الدقائق).": {
+      "src": "/sounds/preschool/ar/course-cedar-6aa399e6e79cf208.mp3",
+      "durationMs": 13000
+    },
+    "الساعة صديقتنا التي تنظم يومنا: تخبرنا متى نستيقظ، ومتى نذهب للمدرسة، ومتى ننام. نبدأ بتعلم قراءتها في أبسط حالة: الساعات الكاملة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ac7460969542a31e.mp3",
+      "durationMs": 16900
+    },
+    "عندما يكون العقرب الكبير مشيراً بالضبط إلى الرقم 12، فهذا يعني أن الوقت \"ساعة كاملة\" (بدون دقائق زائدة).": {
+      "src": "/sounds/preschool/ar/course-cedar-aaa640110339ddb0.mp3",
+      "durationMs": 11800
+    },
+    "للساعة عقربان: العقرب الصغير (القصير) يشير إلى عدد \"الساعة\"، والعقرب الكبير (الطويل) يشير إلى \"الدقائق\".": {
+      "src": "/sounds/preschool/ar/course-cedar-d35ccf9e8db285c8.mp3",
+      "durationMs": 12600
+    },
+    "العَقْرَبُ الصَّغِيرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-60faa1d33cccdcf5.mp3",
+      "durationMs": 2450
+    },
+    "العَقْرَبُ الكَبِيرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-40b644f4281bb108.mp3",
+      "durationMs": 2150
+    },
+    "ساعةٌ تَمَامًا": {
+      "src": "/sounds/preschool/ar/course-cedar-7be0d7b945569364.mp3",
+      "durationMs": 1900
+    },
+    "نقرأ الساعة الكاملة بقول: \"الساعة\" + الرقم الذي يشير إليه العقرب الصغير (مثال: العقرب الصغير على 7 والكبير على 12 = الساعة السابعة تماماً).": {
+      "src": "/sounds/preschool/ar/course-cedar-a98328f713595096.mp3",
+      "durationMs": 15300
+    },
+    "نقرأ رقم الساعة دائماً من موضع العقرب الصغير (القصير)، وليس الكبير.": {
+      "src": "/sounds/preschool/ar/course-cedar-516c1a960b84be13.mp3",
+      "durationMs": 6400
+    },
+    "العقرب الصغير القصير هو الأهم لمعرفة \"الساعة\"، والعقرب الكبير الطويل يخبرنا بالدقائق.": {
+      "src": "/sounds/preschool/ar/course-cedar-34062b2e53cc6bf0.mp3",
+      "durationMs": 9550
+    },
+    "أي عقرب يشير إلى رقم الساعة: الصغير أم الكبير؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1e83c7cb8e2cb518.mp3",
+      "durationMs": 6150
+    },
+    "الساعة الكاملة: العقرب الكبير على 12، والعقرب الصغير يشير إلى رقم الساعة. نقول مثلاً \"الساعة الثامنة تماماً\".": {
+      "src": "/sounds/preschool/ar/course-cedar-1c3b436a78414410.mp3",
+      "durationMs": 11750
+    },
+    "العقرب الصغير على 9 والعقرب الكبير على 12. اكتب الساعة.": {
+      "src": "/sounds/preschool/ar/course-cedar-88f0df8d3e8fef0c.mp3",
+      "durationMs": 5200
+    },
+    "اربط كل ساعة بالنشاط المناسب من يوم التلميذ!": {
+      "src": "/sounds/preschool/ar/course-cedar-f3f4d9d3be47fca8.mp3",
+      "durationMs": 4800
+    },
+    "الساعة السابعة تماماً": {
+      "src": "/sounds/preschool/ar/course-cedar-fe3edd9e517f98d3.mp3",
+      "durationMs": 3100
+    },
+    "الاسْتِيقَاظُ لِلْمَدْرَسَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-68b678091d7ea648.mp3",
+      "durationMs": 3350
+    },
+    "العقرب الصغير يشير إلى 12 والعقرب الكبير يشير إلى 12 أيضاً. كم الساعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b19c3458b8e343d1.mp3",
+      "durationMs": 9550
+    },
+    "النَّوْمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-25fe79840692ec9a.mp3",
+      "durationMs": 1150
+    },
+    "الساعة التاسعة تماماً ليلاً": {
+      "src": "/sounds/preschool/ar/course-cedar-7b05eeb16bf7a1dc.mp3",
+      "durationMs": 3750
+    },
+    "اللَّعِبُ فِي السَّاحَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4d54c874629e98f1.mp3",
+      "durationMs": 2300
+    },
+    "قراءة الوقت بصيغة \"الساعة والنصف\" على ساعة ذات عقارب وربطها بأنشطة يومه.": {
+      "src": "/sounds/preschool/ar/course-cedar-7baf743de84aa2fc.mp3",
+      "durationMs": 9850
+    },
+    "بعد أن تعلمنا الساعات الكاملة، نتعلم الآن قراءة الوقت عندما يمر نصف ساعة فقط: هذا ما نسميه \"الساعة والنصف\".": {
+      "src": "/sounds/preschool/ar/course-cedar-e85dfecedda57095.mp3",
+      "durationMs": 11400
+    },
+    "بعد الساعات الكاملة، يتعلم التلميذ قراءة \"الساعة والنصف\" عندما يشير العقرب الكبير إلى الرقم 6 (30 دقيقة).": {
+      "src": "/sounds/preschool/ar/course-cedar-1987e82f88a19cce.mp3",
+      "durationMs": 11100
+    },
+    "انظر إلى العقرب الكبير: عندما يكون على الرقم 12 نقول \"تماماً\"، فماذا نقول عندما يكون بالضبط في المنتصف على الرقم 6؟": {
+      "src": "/sounds/preschool/ar/course-cedar-656001aa054680f7.mp3",
+      "durationMs": 11900
+    },
+    "نِصْفُ السَّاعَةِ = 30 دَقِيقَةً، لأن الساعة الكاملة تحتوي على 60 دقيقة، ونصفها 30.": {
+      "src": "/sounds/preschool/ar/course-cedar-bfd04ce1ebb27580.mp3",
+      "durationMs": 10000
+    },
+    "الساعةُ وَالنِّصْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-72aaa9d7fd5b7b14.mp3",
+      "durationMs": 2450
+    },
+    "عندما يكون العقرب الكبير على الرقم 6 بالضبط، فهذا يعني \"والنصف\" (30 دقيقة).": {
+      "src": "/sounds/preschool/ar/course-cedar-fdd8c4bae3289c52.mp3",
+      "durationMs": 8350
+    },
+    "نقرأ: \"السَّاعَةُ\" + الرقم الذي تجاوزه العقرب الصغير + \"وَالنِّصْفُ\" (مثال: السابعة والنصف = 7:30).": {
+      "src": "/sounds/preschool/ar/course-cedar-92b256c63b9fede9.mp3",
+      "durationMs": 13750
+    },
+    "في \"الساعة والنصف\"، يكون العقرب الصغير بين رقمين، وليس بالضبط على رقم واحد كما في الساعة الكاملة (مثال: بين 7 و8 يعني السابعة والنصف).": {
+      "src": "/sounds/preschool/ar/course-cedar-785497143631e205.mp3",
+      "durationMs": 15150
+    },
+    "ذكّر الطفل أن العقرب الصغير يكون بين رقمين في هذه الحالة، ونقرأ الرقم الأصغر (الذي تجاوزه) + \"والنصف\".": {
+      "src": "/sounds/preschool/ar/course-cedar-b03f778819b3c6aa.mp3",
+      "durationMs": 11100
+    },
+    "كم دقيقة يساوي \"نصف ساعة\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6d2b5cfa1aa9af1b.mp3",
+      "durationMs": 3300
+    },
+    "العقرب الكبير على 12 = تماماً (0 دقيقة). العقرب الكبير على 6 = والنصف (30 دقيقة).": {
+      "src": "/sounds/preschool/ar/course-cedar-d2f8ea2344e49770.mp3",
+      "durationMs": 11300
+    },
+    "الساعة والنصف = 30 دقيقة = العقرب الكبير على الرقم 6، والعقرب الصغير بين رقمين متتاليين.": {
+      "src": "/sounds/preschool/ar/course-cedar-021c86c2e92d9920.mp3",
+      "durationMs": 10100
+    },
+    "متى نقول \"والنصف\" عند قراءة الساعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ae4e93c09c7c08e6.mp3",
+      "durationMs": 4300
+    },
+    "العقرب الكبير على 6، والعقرب الصغير بين 9 و10. اكتب الساعة.": {
+      "src": "/sounds/preschool/ar/course-cedar-a5e6ee3e31c40a74.mp3",
+      "durationMs": 6150
+    },
+    "اربط كل وقت بالنشاط المناسب من يوم التلميذ!": {
+      "src": "/sounds/preschool/ar/course-cedar-506038c9f7c727ac.mp3",
+      "durationMs": 4500
+    },
+    "السَّاعَةُ السَّابِعَةُ وَالنِّصْفُ صَبَاحاً": {
+      "src": "/sounds/preschool/ar/course-cedar-4d0e63d3c1f75e09.mp3",
+      "durationMs": 4050
+    },
+    "الذَّهَابُ إِلَى المَدْرَسَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-4ac73ad44886a6f7.mp3",
+      "durationMs": 2350
+    },
+    "السَّاعَةُ الثَّامِنَةُ وَالنِّصْفُ مَسَاءً": {
+      "src": "/sounds/preschool/ar/course-cedar-dfdc304d6437a1f1.mp3",
+      "durationMs": 3900
+    },
+    "التَّحْضِيرُ لِلنَّوْمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6d5833628a116415.mp3",
+      "durationMs": 3150
+    },
+    "الذَّهَابُ لِلْمَدْرَسَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-6d1bd4654d1a2a44.mp3",
+      "durationMs": 2300
+    },
+    "ذهبت مع أمك للسوق ومعها ورقة 500 دج، واشترت خبزاً ب 50 دج. كم بقي معها من المال؟": {
+      "src": "/sounds/preschool/ar/course-cedar-aa074032559191d6.mp3",
+      "durationMs": 10550
+    },
+    "التعرف على فئات الدينار الجزائري وحل مسائل شراء بسيطة بالجمع أو الطرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-4a1d5e926b82c6e6.mp3",
+      "durationMs": 7650
+    },
+    "نستعمل الدينار الجزائري كل يوم في السوق والمدرسة. معرفة فئاته وكيفية الجمع والطرح بها تساعدنا على التسوق بذكاء ومعرفة ما ندفعه وما يعاد لنا.": {
+      "src": "/sounds/preschool/ar/course-cedar-84ae40358c3c1230.mp3",
+      "durationMs": 16600
+    },
+    "يتعرف التلميذ على قطع وأوراق العملة الجزائرية (50، 100، 200، 500 دج)، ويحل مسائل بسيطة عن الشراء باستعمال الجمع والطرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-5f91b1d240ab2eb0.mp3",
+      "durationMs": 15300
+    },
+    "الدِّينَارُ الجَزَائِرِيُّ (دج)": {
+      "src": "/sounds/preschool/ar/course-cedar-a65aed38cf9a40e6.mp3",
+      "durationMs": 2900
+    },
+    "الدِّينَارُ الجَزَائِرِيُّ (دج): عملة بلادنا، ولها قطع نقدية وأوراق بفئات مختلفة: 50، 100، 200، 500 دج.": {
+      "src": "/sounds/preschool/ar/course-cedar-ed80e2054dad36e6.mp3",
+      "durationMs": 13100
+    },
+    "البَاقِي": {
+      "src": "/sounds/preschool/ar/course-cedar-8505489b4968931f.mp3",
+      "durationMs": 1700
+    },
+    "لِمَعْرِفَةِ ثَمَنِ عدة أشياء معاً، نجمع أثمانها (مثال: قلم ب 30 دج + كراس ب 50 دج = 80 دج).": {
+      "src": "/sounds/preschool/ar/course-cedar-4acc680de5d71170.mp3",
+      "durationMs": 12300
+    },
+    "لِمَعْرِفَةِ البَاقِي بعد الدفع، نطرح ثمن الشيء من المبلغ الذي دفعناه (مثال: دفعت 100 دج لشيء ثمنه 60 دج، الباقي = 100 - 60 = 40 دج).": {
+      "src": "/sounds/preschool/ar/course-cedar-1491d3c7b68661fc.mp3",
+      "durationMs": 15250
+    },
+    "اشتريت قلماً ب 40 دج وممحاة ب 20 دج. كم دفعت في المجموع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-31967eb894f61779.mp3",
+      "durationMs": 7050
+    },
+    "دفعت 200 دج ثمن كتاب يكلف 150 دج. كم استرجعت من الباقي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c00fa7a3a5da891e.mp3",
+      "durationMs": 7700
+    },
+    "أجمع دائماً عندما أريد معرفة مجموع أثمان أشياء، وأطرح عندما أريد معرفة الباقي بعد الدفع.": {
+      "src": "/sounds/preschool/ar/course-cedar-0306be9a09568540.mp3",
+      "durationMs": 9600
+    },
+    "فئات الدينار: 50، 100، 200، 500 دج. لثمن أشياء متعددة: أجمع. للباقي بعد الدفع: أطرح المبلغ المدفوع ناقص الثمن.": {
+      "src": "/sounds/preschool/ar/course-cedar-5da16534da893e3b.mp3",
+      "durationMs": 13650
+    },
+    "احسب الثمن الإجمالي أو الباقي بسرعة!": {
+      "src": "/sounds/preschool/ar/course-cedar-f7809a82dbc4e6d2.mp3",
+      "durationMs": 3900
+    },
+    "عصير ب 80 دج + خبز ب 50 دج = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3d955b86e72e4313.mp3",
+      "durationMs": 4700
+    },
+    "اشترى ياسين حقيبة ب 350 دج، ودفع بورقة 500 دج. كم استرجع من الباقي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-423a167a1dd98d4d.mp3",
+      "durationMs": 9250
+    },
+    "130 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-93dba406c4cb8af8.mp3",
+      "durationMs": 2300
+    },
+    "30 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-694c12051d1786af.mp3",
+      "durationMs": 1350
+    },
+    "200 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-861d8b851a0bdece.mp3",
+      "durationMs": 1100
+    },
+    "110 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-36e9811db738e617.mp3",
+      "durationMs": 2600
+    },
+    "دفعت 500 دج ثمن لعبة ب 300 دج. الباقي = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-670595149694ac39.mp3",
+      "durationMs": 7450
+    },
+    "800 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-8bba0ebfe8b588aa.mp3",
+      "durationMs": 4750
+    },
+    "300 دج": {
+      "src": "/sounds/preschool/ar/course-cedar-5111023e55defeed.mp3",
+      "durationMs": 2000
+    },
+    "إجراء طرح عمودي بسيط بالاحتفاظ بين عددين من رقمين.": {
+      "src": "/sounds/preschool/ar/course-cedar-b3e05fabd6ef33c3.mp3",
+      "durationMs": 6700
+    },
+    "نَبْدَأُ دَائِماً مِنَ اليَمِينِ: الوَحَدَاتُ ثُمَّ العَشَرَاتُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8bc2bda5eeb8b2eb.mp3",
+      "durationMs": 4700
+    },
+    "عند آدم 42 كرّاساً. أعطى 18 كرّاساً لأخيه. في الوحدات: 2 أصغر من 8. ماذا نفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ff4d9c1af3f5550f.mp3",
+      "durationMs": 9900
+    },
+    "يتعلّم التلميذ طرح عددين من رقمين عندما تكون الوحدات في الأعلى أصغر من الوحدات في الأسفل: نستعير عشرة.": {
+      "src": "/sounds/preschool/ar/course-cedar-14682aa928fd3042.mp3",
+      "durationMs": 8650
+    },
+    "أحياناً لا نقدر أن نطرح الوحدات لأنها أصغر. نستعير حزمة عشرات ونفكّها إلى 10 وحدات — نفس فكرة الحزم في الجمع بالاحتفاظ، لكن بالعكس.": {
+      "src": "/sounds/preschool/ar/course-cedar-63538fb9fa16643e.mp3",
+      "durationMs": 15700
+    },
+    "الاِسْتِعَارَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4c58e78ffc9fddab.mp3",
+      "durationMs": 1850
+    },
+    "نَضَعُ العَدَدَ الأَكْبَرَ فِي الأَعْلَى دَائِماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-82fa2b8a3cd4d07f.mp3",
+      "durationMs": 5400
+    },
+    "إِذَا كَانَ الرَّقْمُ فَوْقُ أَصْغَرَ، نَسْتَعِيرُ 1 عَشَرَةً (= 10 وَحَدَاتٍ) مِنَ العَشَرَاتِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-dbb3f6a00f2e3f5b.mp3",
+      "durationMs": 9550
+    },
+    "مِثَالُ 42 − 18: الوَحَدَاتُ 12 − 8 = 4، ثُمَّ العَشَرَاتُ 3 − 1 = 2. النَّاتِجُ 24.": {
+      "src": "/sounds/preschool/ar/course-cedar-5f7c92a4831893b8.mp3",
+      "durationMs": 12450
+    },
+    "الاِحْتِفَاظُ فِي الطَّرْحِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2096196692e20aa0.mp3",
+      "durationMs": 2650
+    },
+    "لا نعكس: نستعير ثم نطرح الرقم السفلي من العلوي الجديد.": {
+      "src": "/sounds/preschool/ar/course-cedar-234d895256f0e60e.mp3",
+      "durationMs": 5750
+    },
+    "كل استعارة تنقص رقم العشرات فوق بواحد.": {
+      "src": "/sounds/preschool/ar/course-cedar-338774eaa25a3d4d.mp3",
+      "durationMs": 5150
+    },
+    "وحدات أصغر فوق؟ أستعير 10، أطرح، ثم أنقص العشرات بواحد.": {
+      "src": "/sounds/preschool/ar/course-cedar-147e3fec9d874685.mp3",
+      "durationMs": 7500
+    },
+    "احسب: 63 − 29": {
+      "src": "/sounds/preschool/ar/course-cedar-139caf6b3de0409a.mp3",
+      "durationMs": 4450
+    },
+    "متى نستعير عشرة في الطرح العمودي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f1a844795f1d3e48.mp3",
+      "durationMs": 3750
+    },
+    "في 42 − 18، كم تصبح الوحدات بعد الاستعارة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3b12b592e8a2f754.mp3",
+      "durationMs": 5350
+    },
+    "42 − 18 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c36a12a8cb42198d.mp3",
+      "durationMs": 3350
+    },
+    "احسب بسرعة!": {
+      "src": "/sounds/preschool/ar/course-cedar-e7bdd5dd083df081.mp3",
+      "durationMs": 1500
+    },
+    "51 − 17 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a0e3fdd45bbb5a6f.mp3",
+      "durationMs": 3950
+    },
+    "80 − 35 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-de63c7d65d4a8543.mp3",
+      "durationMs": 5600
+    },
+    "إحاطة عدد بأصغر وأكبر عشرة (أو مئة) محيطتين.": {
+      "src": "/sounds/preschool/ar/course-cedar-a34c7e314dfb9ec5.mp3",
+      "durationMs": 6100
+    },
+    "العدد 47 على الشريط: ما أقرب عشرة قبله؟ وما أقرب عشرة بعده؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c8dd64c378edcb1a.mp3",
+      "durationMs": 7350
+    },
+    "الإحاطة تعني وضع العدد بين جارين دائريين: عشرات أو مئات. هذا يساعدنا على التقدير والمقارنة.": {
+      "src": "/sounds/preschool/ar/course-cedar-6ab9cd363417b430.mp3",
+      "durationMs": 11350
+    },
+    "يحيط التلميذ عدداً بعشرتين متتاليتين أو بمئتين، ويرتّب الأعداد على الشريط.": {
+      "src": "/sounds/preschool/ar/course-cedar-f81616d37905417f.mp3",
+      "durationMs": 11150
+    },
+    "الإِحَاطَةُ بِالعَشَرَاتِ: نبحث عن العشرة التي قبل العدد مباشرة والعشرة التي بعده مباشرة. 47 بين 40 و 50.": {
+      "src": "/sounds/preschool/ar/course-cedar-b7e12669af5ea45e.mp3",
+      "durationMs": 12100
+    },
+    "الإِحَاطَةُ بِالمِئَاتِ: 347 بين 300 و 400.": {
+      "src": "/sounds/preschool/ar/course-cedar-ece74e4167a2b4bb.mp3",
+      "durationMs": 7050
+    },
+    "السَّابِقُ = العدد − 1. التَّالِي = العدد + 1.": {
+      "src": "/sounds/preschool/ar/course-cedar-ebeac6c31c92e5b0.mp3",
+      "durationMs": 5000
+    },
+    "عَلَى الشَّرِيطِ: كلما اتجهنا يميناً زاد العدد.": {
+      "src": "/sounds/preschool/ar/course-cedar-f8cfcbb41cc6ec4a.mp3",
+      "durationMs": 5550
+    },
+    "الإِحَاطَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-400ce792e2299bf3.mp3",
+      "durationMs": 2050
+    },
+    "العَشَرَةُ المُغْلَقَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e098909a2634c79e.mp3",
+      "durationMs": 2500
+    },
+    "الأصغر يساراً دائماً: 40 < 47 < 50.": {
+      "src": "/sounds/preschool/ar/course-cedar-0dea2969726888ca.mp3",
+      "durationMs": 7850
+    },
+    "أكمل: 40 < 47 < …": {
+      "src": "/sounds/preschool/ar/course-cedar-e265c8b91e8d9580.mp3",
+      "durationMs": 5150
+    },
+    "أحصر العدد بين عشرتين أو مئتين متتاليتين، الأصغر يساراً.": {
+      "src": "/sounds/preschool/ar/course-cedar-1f6743fd1182bb1e.mp3",
+      "durationMs": 7000
+    },
+    "اختر الإحاطة الصحيحة!": {
+      "src": "/sounds/preschool/ar/course-cedar-6e916b5cbb9c3da7.mp3",
+      "durationMs": 2350
+    },
+    "أحِط 215 بالمئات.": {
+      "src": "/sounds/preschool/ar/course-cedar-7dacabacd1a44147.mp3",
+      "durationMs": 3200
+    },
+    "ما الإحاطة الصحيحة ل 36؟": {
+      "src": "/sounds/preschool/ar/course-cedar-048885cebcb6bcab.mp3",
+      "durationMs": 3750
+    },
+    "70 < 81 < 80": {
+      "src": "/sounds/preschool/ar/course-cedar-d9fe67b6f722d05d.mp3",
+      "durationMs": 5500
+    },
+    "80 < 81 < 90": {
+      "src": "/sounds/preschool/ar/course-cedar-92273fd9025e9d54.mp3",
+      "durationMs": 6000
+    },
+    "600 < 640 < 700": {
+      "src": "/sounds/preschool/ar/course-cedar-4126d607be5214f7.mp3",
+      "durationMs": 4700
+    },
+    "تمييز الزاوية القائمة واستعمال المزواة للتحقق منها.": {
+      "src": "/sounds/preschool/ar/course-cedar-dbb49f63c646c057.mp3",
+      "durationMs": 5700
+    },
+    "يتعرّف التلميذ على الزاوية القائمة في المربع والمستطيل، ويتحقق منها بالمزواة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e25b51600a7cdcf6.mp3",
+      "durationMs": 7800
+    },
+    "640 < 600 < 700": {
+      "src": "/sounds/preschool/ar/course-cedar-808116719210f0c0.mp3",
+      "durationMs": 6600
+    },
+    "انظر إلى ركن كراسك ثم إلى ركن بلاطة في الأرض: هل هما متشابهان؟ هذا الركن المستقيم يسمى «زاوية قائمة».": {
+      "src": "/sounds/preschool/ar/course-cedar-32984bb75cb37369.mp3",
+      "durationMs": 11200
+    },
+    "المُرَبَّعُ وَالمُسْتَطِيلُ لَهُمَا 4 زَوَايَا قَائِمَة.": {
+      "src": "/sounds/preschool/ar/course-cedar-df1ec9299216cdf8.mp3",
+      "durationMs": 5800
+    },
+    "الزَّاوِيَةُ القَائِمَةُ: ركن مربع تماماً، مثل ركن الورقة أو البلاط.": {
+      "src": "/sounds/preschool/ar/course-cedar-3e8f56b47a032f01.mp3",
+      "durationMs": 6900
+    },
+    "المِزْوَاةُ: أداة على شكل مثلث قائم نضعها على الركن: إن انطبقت فالزاوية قائمة.": {
+      "src": "/sounds/preschool/ar/course-cedar-c85117f5b9c8700d.mp3",
+      "durationMs": 9350
+    },
+    "قبل رسم المستقيمات في السنة الثالثة ابتدائي، نتعلّم رؤية الركن القائم في الأشياء من حولنا والتحقق بالمزواة.": {
+      "src": "/sounds/preschool/ar/course-cedar-0b8e2dbaebb1e8cc.mp3",
+      "durationMs": 10100
+    },
+    "الزَّاوِيَةُ القَائِمَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d718ce104a0d60d8.mp3",
+      "durationMs": 2300
+    },
+    "المِزْوَاةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-28e61ca459880caf.mp3",
+      "durationMs": 3000
+    },
+    "الدَّائِرَةُ لَيْسَ لَهَا زَاوِيَةٌ. المُثَلَّثُ قَدْ يَكُونُ فِيهِ زَاوِيَةٌ قَائِمَةٌ وَاحِدَةٌ أَوْ لَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-4f3654d8792edf17.mp3",
+      "durationMs": 8300
+    },
+    "نتحقق بالمزواة: كثير من الأركان أوسع أو أضيق.": {
+      "src": "/sounds/preschool/ar/course-cedar-95604036afe21322.mp3",
+      "durationMs": 6350
+    },
+    "الزاوية القائمة = ركن المربع. المزواة تتحقق منها. المربع والمستطيل فيهما 4.": {
+      "src": "/sounds/preschool/ar/course-cedar-38e7a70b3a0f9692.mp3",
+      "durationMs": 9750
+    },
+    "كم زاوية قائمة للمستطيل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ebf968b541d1bef6.mp3",
+      "durationMs": 3500
+    },
+    "بماذا نتحقق أن الركن قائم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cc0aa3fc90352dec.mp3",
+      "durationMs": 4150
+    },
+    "أي شكل له 4 زوايا قائمة؟ المربع أم الدائرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-4ab2c98bbc128f61.mp3",
+      "durationMs": 6850
+    },
+    "صنّف الركن!": {
+      "src": "/sounds/preschool/ar/course-cedar-96f55979f2c6fe9c.mp3",
+      "durationMs": 1900
+    },
+    "ركن الدفتر": {
+      "src": "/sounds/preschool/ar/course-cedar-e7df7c7bff600906.mp3",
+      "durationMs": 2000
+    },
+    "لَيْسَتْ قَائِمَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-35a572b18fec1b0a.mp3",
+      "durationMs": 2150
+    },
+    "زَاوِيَةٌ قَائِمَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ac696beb718ba476.mp3",
+      "durationMs": 3000
+    },
+    "فتحة البيتزا المثلثة الحادة": {
+      "src": "/sounds/preschool/ar/course-cedar-7913c6c64fe4b574.mp3",
+      "durationMs": 3400
+    },
+    "التمييز بين المتر والسنتيمتر واستعمال كل واحد في الموقف المناسب.": {
+      "src": "/sounds/preschool/ar/course-cedar-21fc1d389ad804da.mp3",
+      "durationMs": 6700
+    },
+    "مسطرتك طولها 20 سم. هل تكفي لقياس طول الباب؟ ماذا نستعمل إذن؟": {
+      "src": "/sounds/preschool/ar/course-cedar-623009ab2a803596.mp3",
+      "durationMs": 7250
+    },
+    "بعد المسطرة بالسم، يتعرّف التلميذ على المتر: 1 م = 100 سم، ويختار الوحدة المناسبة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ccc40ec4dd39ba59.mp3",
+      "durationMs": 10200
+    },
+    "السَّنْتِيمِتْرُ (سم): وحدة صغيرة للقلم، الممحاة، الكراس.": {
+      "src": "/sounds/preschool/ar/course-cedar-354c8ba3f2c90b0e.mp3",
+      "durationMs": 5550
+    },
+    "المسطرة تقيس السم. شريط القياس أو المتر الخشبي يقيس الأطوال الكبيرة. الوحدتان تتعاونان.": {
+      "src": "/sounds/preschool/ar/course-cedar-b2056d19a8edc500.mp3",
+      "durationMs": 9050
+    },
+    "المِتْرُ (م): وحدة أكبر لطول القسم، الباب، الطفل.": {
+      "src": "/sounds/preschool/ar/course-cedar-fb4009cf8cf91e03.mp3",
+      "durationMs": 6450
+    },
+    "1 م = 100 سم. متران = 200 سم.": {
+      "src": "/sounds/preschool/ar/course-cedar-e85089f21b9289a1.mp3",
+      "durationMs": 5650
+    },
+    "المِتْرُ (م)": {
+      "src": "/sounds/preschool/ar/course-cedar-3e0017372a030609.mp3",
+      "durationMs": 1150
+    },
+    "8 م أوضح من 800 سم لطول القسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-d6119b0d2395da8e.mp3",
+      "durationMs": 4050
+    },
+    "القلم → سم. الباب والقسم → م. 1 م = 100 سم.": {
+      "src": "/sounds/preschool/ar/course-cedar-b770a22d7943cb67.mp3",
+      "durationMs": 8750
+    },
+    "نختار الوحدة: إن كان الشيء أقصر من المسطرة غالباً نستخدم السم، وإن كان أطول بكثير نستخدم المتر.": {
+      "src": "/sounds/preschool/ar/course-cedar-2efbfaeb853f3777.mp3",
+      "durationMs": 9300
+    },
+    "كم سنتيمتراً في متر واحد؟": {
+      "src": "/sounds/preschool/ar/course-cedar-467df23496f1738a.mp3",
+      "durationMs": 3100
+    },
+    "هل نقيس طول الملعب بالسم أم بالمتر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-632c0b4225a0f39a.mp3",
+      "durationMs": 4450
+    },
+    "3 م تساوي كم سم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a45810cf8bc4a2ff.mp3",
+      "durationMs": 3100
+    },
+    "طول الممحاة": {
+      "src": "/sounds/preschool/ar/course-cedar-ba385d3d0b64e037.mp3",
+      "durationMs": 1950
+    },
+    "م": {
+      "src": "/sounds/preschool/ar/course-cedar-78621b941841f9b1.mp3",
+      "durationMs": 900
+    },
+    "سم": {
+      "src": "/sounds/preschool/ar/course-cedar-a1d5c4cbe9413d57.mp3",
+      "durationMs": 1750
+    },
+    "اختر الوحدة المناسبة!": {
+      "src": "/sounds/preschool/ar/course-cedar-28d5b7ad6d70c1cd.mp3",
+      "durationMs": 3100
+    },
+    "طول السبورة": {
+      "src": "/sounds/preschool/ar/course-cedar-31f6ae5cfe9f0c3a.mp3",
+      "durationMs": 2050
+    },
+    "التمييز بين الغرام والكيلوغرام وربط كل وحدة بأشياء مألوفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-defd24cbf042898c.mp3",
+      "durationMs": 6850
+    },
+    "كيس سكر وزنه 1 كغ (kg/كيلوغرام)، وعلبة بسكويت وزنها 200 غ (g/غرام). أيهما وحدة أكبر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-53eb37801de15e38.mp3",
+      "durationMs": 9850
+    },
+    "بعد مقارنة أثقل/أخف، يتعرّف التلميذ على وحدتي الكتلة: غرام للخفيف، كيلوغرام للثقيل.": {
+      "src": "/sounds/preschool/ar/course-cedar-db37eaeea527949a.mp3",
+      "durationMs": 9650
+    },
+    "اليد تقول «أثقل». الميزان يقول رقماً. نتعلّم قراءته بالغرام أو بالكيلوغرام حسب الشيء.": {
+      "src": "/sounds/preschool/ar/course-cedar-0d1ea2f56c9db6e7.mp3",
+      "durationMs": 10450
+    },
+    "الغِرَامُ (غ): وحدة صغيرة: رسالة، بيضة، قطعة شوكولا.": {
+      "src": "/sounds/preschool/ar/course-cedar-9b88447e505ff8ae.mp3",
+      "durationMs": 7250
+    },
+    "الكِيلُوغِرَامُ (كغ): وحدة أكبر: كيس سكر، كيس دقيق، وكتلة الطفل تقال بالكيلوغرام.": {
+      "src": "/sounds/preschool/ar/course-cedar-ea538f1afdb77941.mp3",
+      "durationMs": 7800
+    },
+    "الكيلوغرام أكبر بكثير من الغرام: كيس سكر 1 كغ يساوي كيسين من 500 غ.": {
+      "src": "/sounds/preschool/ar/course-cedar-40d97e5d8e26d664.mp3",
+      "durationMs": 8750
+    },
+    "الغِرَامُ (غ)": {
+      "src": "/sounds/preschool/ar/course-cedar-89164ffb80002b83.mp3",
+      "durationMs": 1600
+    },
+    "الكِيلُوغِرَامُ (كغ)": {
+      "src": "/sounds/preschool/ar/course-cedar-19bab578c22d6272.mp3",
+      "durationMs": 3100
+    },
+    "المِيزَانُ يخبرنا بالكتلة، لا بالحجم: علبة كبيرة فارغة أخف من حجر صغير.": {
+      "src": "/sounds/preschool/ar/course-cedar-d4e1416e591cb65f.mp3",
+      "durationMs": 9800
+    },
+    "السم للطول، الكغ والغرام للثقل.": {
+      "src": "/sounds/preschool/ar/course-cedar-42be4f98f84bc05d.mp3",
+      "durationMs": 3950
+    },
+    "خفيف وصغير → غرام. ثقيل (سكر، طفل) → كيلوغرام. 1 كغ = 500 غ + 500 غ.": {
+      "src": "/sounds/preschool/ar/course-cedar-7d5f12ac85631a45.mp3",
+      "durationMs": 10200
+    },
+    "اختر الوحدة!": {
+      "src": "/sounds/preschool/ar/course-cedar-e9759c86741080c7.mp3",
+      "durationMs": 1200
+    },
+    "أي جملة صحيحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-48729d2c070f2889.mp3",
+      "durationMs": 2550
+    },
+    "نزن كيس البطاطا عادة ب: غ أم كغ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-de464e27a916d802.mp3",
+      "durationMs": 5300
+    },
+    "حبة دواء": {
+      "src": "/sounds/preschool/ar/course-cedar-6bc6c712085f57a5.mp3",
+      "durationMs": 2900
+    },
+    "غ": {
+      "src": "/sounds/preschool/ar/course-cedar-d3315b04e022e72f.mp3",
+      "durationMs": 1400
+    },
+    "أيهما أثقل: كيس سكر كتلته 1 كغ أم علبة بسكويت كتلتها 200 غ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-94d6a2e69d57f2ff.mp3",
+      "durationMs": 8100
+    },
+    "كغ": {
+      "src": "/sounds/preschool/ar/course-cedar-0a1cb7fe9606ec7e.mp3",
+      "durationMs": 1200
+    },
+    "وزن الطفل": {
+      "src": "/sounds/preschool/ar/course-cedar-606618ebbdec5031.mp3",
+      "durationMs": 1400
+    },
+    "ربط مجموعات متساوية بجمع مكرر، وقراءة صيغة بسيطة مثل 3 × 3 = 9.": {
+      "src": "/sounds/preschool/ar/course-cedar-97f4a8ec16157df1.mp3",
+      "durationMs": 10950
+    },
+    "في كل صف 4 طاولات، وفي 3 صفوف. كم طاولة؟ نعد: 4 + 4 + 4 = 12.": {
+      "src": "/sounds/preschool/ar/course-cedar-ddd710038f215fc6.mp3",
+      "durationMs": 11600
+    },
+    "يكتشف التلميذ أن الضرب هو جمع متكرر لنفس العدد (مجموعات متساوية) — تمهيداً لحفظ الجداول.": {
+      "src": "/sounds/preschool/ar/course-cedar-4a661d1b1e51d90a.mp3",
+      "durationMs": 10100
+    },
+    "الضرب ليس حفظاً فقط في السنة الثانية ابتدائي: نعد مجموعات متساوية ونجمع. مثل صفوف الكراسي في القسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-fe47ffac4619ec85.mp3",
+      "durationMs": 9350
+    },
+    "الضَّرْبُ في السَّنَةِ الثَّانِيَةِ ابْتِدَائِيّ = جَمْعُ نَفْسِ العَدَدِ عِدَّةَ مَرَّاتٍ (جَمْعٌ مُكَرَّرٌ).": {
+      "src": "/sounds/preschool/ar/course-cedar-f50fde683945b631.mp3",
+      "durationMs": 8000
+    },
+    "مِثَال: 5 × 2 = 5 + 5 = 10 (مجموعتان من 5).": {
+      "src": "/sounds/preschool/ar/course-cedar-bf6b40bae5d536eb.mp3",
+      "durationMs": 6250
+    },
+    "مِثَال: 3 × 4 = 3 + 3 + 3 + 3 = 12 (أربع مجموعات من 3).": {
+      "src": "/sounds/preschool/ar/course-cedar-22cee31ddb2c3e61.mp3",
+      "durationMs": 9850
+    },
+    "نَتَعَلَّمُ فِي هَذِهِ السَّنَةِ جَدَاوِلَ الضَّرْبِ فِي 2 وَ3 وَ4 وَ5 وَ10، وَبَاقِي الجَدَاوِلِ تُدْرَسُ فِي السَّنَةِ الثَّالِثَةِ ابْتِدَائِيّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-ed2570f60274f9c4.mp3",
+      "durationMs": 12350
+    },
+    "مَجْمُوعَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-15cf5cefca8ae37d.mp3",
+      "durationMs": 2150
+    },
+    "عَلامَةُ ×": {
+      "src": "/sounds/preschool/ar/course-cedar-e03d534b30914b82.mp3",
+      "durationMs": 2100
+    },
+    "جَمْعٌ مُكَرَّرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-fa54feaf9bbaf6c1.mp3",
+      "durationMs": 2650
+    },
+    "عد المجموعات أولاً، ثم اجمع.": {
+      "src": "/sounds/preschool/ar/course-cedar-0e9331da819593ea.mp3",
+      "durationMs": 4150
+    },
+    "في 3 × 4 نكرر العدد 3 أربع مرات، ولا نجمع 3 + 4.": {
+      "src": "/sounds/preschool/ar/course-cedar-b012bfe4cb7e809a.mp3",
+      "durationMs": 7950
+    },
+    "الضرب = جمع مكرر لنفس العدد. 3 × 4 = 3 + 3 + 3 + 3.": {
+      "src": "/sounds/preschool/ar/course-cedar-d1cc600aff88833d.mp3",
+      "durationMs": 9550
+    },
+    "3 × 2 = 3 + … = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-62b6495623af6b86.mp3",
+      "durationMs": 5650
+    },
+    "4 × 3 = 4 + 4 + 4 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-742de2b4cebec620.mp3",
+      "durationMs": 5500
+    },
+    "2 × 5 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ea3cd5e3971bfdd5.mp3",
+      "durationMs": 1750
+    },
+    "3 × 4 تعني:": {
+      "src": "/sounds/preschool/ar/course-cedar-74aa36d649510226.mp3",
+      "durationMs": 3000
+    },
+    "اختر ناتج الجمع المكرر!": {
+      "src": "/sounds/preschool/ar/course-cedar-423f96991a21bae3.mp3",
+      "durationMs": 3500
+    },
+    "5 × 2 = ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-08d94bac61256b96.mp3",
+      "durationMs": 2850
     },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",

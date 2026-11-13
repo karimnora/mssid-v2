@@ -26,5 +26,12 @@
     "reason": "Unusable recording; excluded from the child audio index",
     "sourceWavSha256": "f59b716bece6b24a2d5cc4f89589b79b09c13ddedef46dc19daf96f84ddd0796",
     "reviewRequired": true
+  },
+  {
+    "texte": "38",
+    "language": "ar",
+    "reason": "Unusable recording; excluded from the child audio index",
+    "sourceWavSha256": "845f43d0ceacd0d6aa827d8391e9c2290ed724dc8fa67afbf1c8be3c877c8efd",
+    "reviewRequired": true
   }
 ]

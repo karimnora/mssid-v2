@@ -1,131 +1,5 @@
 [
   {
-    "fichier": "course-ar-de25df5119c256d1.mp3",
-    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-clock-reading",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-5b1be0ba01b16337.mp3",
-    "texte": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً)",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-clock-half-hour",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-a7754018de7530e1.mp3",
-    "texte": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-currency-dzd",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-aa5189958f336818.mp3",
-    "texte": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t2-subtraction-with-carry",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-3156487d33fa5c68.mp3",
-    "texte": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ …",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t2-number-framing",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-f3e0b96b7dab2153.mp3",
-    "texte": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-right-angle",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-8273a63acf09440a.mp3",
-    "texte": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-meter-cm",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-135d80b5c224a496.mp3",
-    "texte": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-gram-kg",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-c529a8f6a0142fa3.mp3",
-    "texte": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3",
-    "targets": [
-      {
-        "lessonId": "math-2ap-t3-multiplication-concept",
-        "grade": "2AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-1d09d26b9901955e.mp3",
     "texte": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ",
     "targets": [
@@ -159,6 +33,76 @@
     "targets": [
       {
         "lessonId": "science-2ap-t1-breathing-heart-effort",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-5f42d0e43d41d1d8.mp3",
+    "texte": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-plants-around-us",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-0ff8bf73654734a5.mp3",
+    "texte": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t2-domestic-wild-animals",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-74e350da61900175.mp3",
+    "texte": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-solids-liquids-sound",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-24a58fdfad8d2ee2.mp3",
+    "texte": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-water-states",
+        "grade": "2AP",
+        "subject": "science",
+        "category": "entry",
+        "key": "title"
+      }
+    ],
+    "reviewRequired": true
+  },
+  {
+    "fichier": "course-ar-e04bb3dfc2411ada.mp3",
+    "texte": "الهَوَاءُ مِنْ حَوْلِنَا",
+    "targets": [
+      {
+        "lessonId": "science-2ap-t3-air",
         "grade": "2AP",
         "subject": "science",
         "category": "entry",

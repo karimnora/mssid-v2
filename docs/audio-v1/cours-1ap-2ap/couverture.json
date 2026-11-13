@@ -3,10 +3,10 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 2683,
-    "missingTexts": 670,
-    "reusedFiles": 2682,
-    "integrityCheckedArabicFiles": 3120,
+    "recordedTexts": 3119,
+    "missingTexts": 234,
+    "reusedFiles": 3118,
+    "integrityCheckedArabicFiles": 3556,
     "byGrade": [
       {
         "grade": "1AP",
@@ -19,8 +19,8 @@
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 834,
-        "lessonsWithAnyRecording": 47
+        "recordedSegments": 1286,
+        "lessonsWithAnyRecording": 55
       }
     ]
   },
@@ -429,140 +429,140 @@
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 0 إِلَى 49: القِرَاءَةُ وَالكِتَابَةُ وَالتَّفْكِيكُ 🔢",
       "requestedSegments": 25,
-      "recordedSegments": 5
+      "recordedSegments": 25
     },
     {
       "lessonId": "math-2ap-t1-spatial-position",
       "grade": "2AP",
       "titleAr": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ 🧭",
       "requestedSegments": 28,
-      "recordedSegments": 6
+      "recordedSegments": 28
     },
     {
       "lessonId": "math-2ap-t1-addition-no-carry",
       "grade": "2AP",
       "titleAr": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ ➕",
       "requestedSegments": 27,
-      "recordedSegments": 3
+      "recordedSegments": 26
     },
     {
       "lessonId": "math-2ap-t2-numbers-50-99",
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ 🔟",
       "requestedSegments": 27,
-      "recordedSegments": 3
+      "recordedSegments": 23
     },
     {
       "lessonId": "math-2ap-t2-numbers-100-999",
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 100 إِلَى 999: المِئَاتُ وَالعَشَرَاتُ وَالوَحَدَاتُ 💯",
       "requestedSegments": 24,
-      "recordedSegments": 1
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t2-addition-with-carry",
       "grade": "2AP",
       "titleAr": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ ➕",
       "requestedSegments": 24,
-      "recordedSegments": 1
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t2-subtraction-no-carry",
       "grade": "2AP",
       "titleAr": "الطَّرْحُ العَمُودِيُّ دُونَ احْتِفَاظٍ وَحَلُّ المَسَائِلِ البَسِيطَةِ ➖",
       "requestedSegments": 26,
-      "recordedSegments": 2
+      "recordedSegments": 26
     },
     {
       "lessonId": "math-2ap-t2-shapes",
       "grade": "2AP",
       "titleAr": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ 📐",
       "requestedSegments": 27,
-      "recordedSegments": 7
+      "recordedSegments": 27
     },
     {
       "lessonId": "math-2ap-t3-double-half",
       "grade": "2AP",
       "titleAr": "مَفْهُومُ ضِعْفِ عَدَدٍ وَنِصْفِ عَدَدٍ ⚖️",
       "requestedSegments": 25,
-      "recordedSegments": 5
+      "recordedSegments": 25
     },
     {
       "lessonId": "math-2ap-t3-measures-length-mass",
       "grade": "2AP",
       "titleAr": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ) 📏",
       "requestedSegments": 24,
-      "recordedSegments": 3
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t3-ruler-cm",
       "grade": "2AP",
       "titleAr": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم) 📐",
       "requestedSegments": 24,
-      "recordedSegments": 2
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t3-clock-reading",
       "grade": "2AP",
       "titleAr": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ ⏰",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t3-clock-half-hour",
       "grade": "2AP",
       "titleAr": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً) ⏱️",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t3-currency-dzd",
       "grade": "2AP",
       "titleAr": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ 🪙",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 24
     },
     {
       "lessonId": "math-2ap-t2-subtraction-with-carry",
       "grade": "2AP",
       "titleAr": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ ➖",
       "requestedSegments": 27,
-      "recordedSegments": 0
+      "recordedSegments": 27
     },
     {
       "lessonId": "math-2ap-t2-number-framing",
       "grade": "2AP",
       "titleAr": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ … 📏",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 23
     },
     {
       "lessonId": "math-2ap-t3-right-angle",
       "grade": "2AP",
       "titleAr": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ 📐",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 23
     },
     {
       "lessonId": "math-2ap-t3-meter-cm",
       "grade": "2AP",
       "titleAr": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ 📏",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 23
     },
     {
       "lessonId": "math-2ap-t3-gram-kg",
       "grade": "2AP",
       "titleAr": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ ⚖️",
       "requestedSegments": 23,
-      "recordedSegments": 0
+      "recordedSegments": 23
     },
     {
       "lessonId": "math-2ap-t3-multiplication-concept",
       "grade": "2AP",
       "titleAr": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3 ✖️",
       "requestedSegments": 27,
-      "recordedSegments": 5
+      "recordedSegments": 27
     },
     {
       "lessonId": "arabic-2ap-t1-letters-short-vowels",
@@ -674,7 +674,7 @@
       "grade": "2AP",
       "titleAr": "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ 👫",
       "requestedSegments": 24,
-      "recordedSegments": 23
+      "recordedSegments": 24
     },
     {
       "lessonId": "science-2ap-t1-growth-nutrition",
@@ -33688,6 +33688,306 @@
       ]
     },
     {
+      "text": "قراءة وكتابة أي عدد من 0 إلى 49 وتفكيكه إلى عشرات ووحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36b24e1c764b4565.mp3"
+      ]
+    },
+    {
+      "text": "عند سارة 3 حُزَم من 10 أقلام، وقلمان زائدان بمفردهما. كم قلماً عند سارة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d26147a441954a8.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ قراءة وكتابة الأعداد من 0 إلى 49، وتفكيكها إلى عشرات ووحدات باستعمال أدوات بسيطة كالحُزَم والعِصِيِّ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e1ee9678263fc76e.mp3"
+      ]
+    },
+    {
+      "text": "كل عدد كبير يمكن تقسيمه إلى مجموعات من 10 (عشرات) وما يبقى بمفرده (وحدات). هذا يساعدنا على العد بسرعة دون تعداد كل شيء واحداً واحداً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-14945d7ea4d76f37.mp3"
+      ]
+    },
+    {
+      "text": "العَدَدُ يتكون من مَنْزِلَتَيْنِ: مَنْزِلَةُ العَشَرَاتِ (على اليسار) ومَنْزِلَةُ الوَحَدَاتِ (على اليمين).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63fc8cdd43e9a678.mp3"
+      ]
+    },
+    {
+      "text": "كل حُزْمَةٍ من 10 أشياء تساوي \"عَشَرَةً واحدةً\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7ef86b1c55eb4ea3.mp3"
+      ]
+    },
+    {
+      "text": "نَكْتُبُ رقم العشرات على اليسار ورقم الوحدات على اليمين. وعند القراءة بالعربية ننطق الوحدات أولاً ثم العشرات (مثال: 27 = سَبْعَةٌ وَعِشْرُونَ).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cf3ddb37b08dbb95.mp3"
+      ]
+    },
+    {
+      "text": "العَدَدُ صِفْرٌ (0) يعني \"لا شيء\" ولا نضعه أبداً في مَنْزِلَةِ العَشَرَاتِ إن كان العدد أكبر من 9.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36c692ad233d031c.mp3"
+      ]
+    },
+    {
+      "text": "الوَحَدَةُ 1",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2f646abc4223bef.mp3"
+      ]
+    },
+    {
+      "text": "التَّفْكِيكُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b6b4154f021383e.mp3"
+      ]
+    },
+    {
+      "text": "العشرات دائماً تُكتب أولاً على اليسار: 1 عشرة ثم 5 وحدات = 15.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c402b038be3df685.mp3"
+      ]
+    },
+    {
+      "text": "نكتب صفراً في خانة الوحدات لأنه لا يوجد أي وحدة زائدة: 40 = 4 عشرات + 0 وحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-257bde518eb194de.mp3"
+      ]
+    },
+    {
+      "text": "كل عدد من رقمين = (عدد العشرات × 10) + عدد الوحدات. العشرات على اليسار، الوحدات على اليمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b35bb7a14967213.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد الوحدات في العدد 27؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-numbers"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5441360a234d80e7.mp3"
+      ]
+    },
+    {
+      "text": "اكتب العدد الذي يتكون من 4 عشرات و 5 وحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-numbers"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95bd20fa48570b7f.mp3"
+      ]
+    },
+    {
+      "text": "العدد 38 يتكون من:",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-numbers"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0d27bdbf0c5bd502.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ كل عدد بسرعة واختر كتابته الصحيحة بالحروف!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-327c891fea0cce9e.mp3"
+      ]
+    },
+    {
+      "text": "تِسْعَةَ عَشَرَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3ba3850f46ecf44c.mp3"
+      ]
+    },
+    {
+      "text": "ثَلَاثُونَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dcd299ab55cec071.mp3"
+      ]
+    },
+    {
+      "text": "ثَلَاثَةَ عَشَرَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-numbers-0-49",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6a22f75e4aa12c0.mp3"
+      ]
+    },
+    {
       "text": "التَّمَوْقُعُ فِي الفَضَاءِ: أَمَامَ، خَلْفَ، فَوْقَ، تَحْتَ، يَمِينَ، يَسَارَ",
       "targets": [
         {
@@ -33700,6 +34000,336 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-72e6f22090bfb08a.mp3"
+      ]
+    },
+    {
+      "text": "استعمال كلمات التموقع المكاني بدقة، والقراءة على الشريط العددي وجدول ذي مدخلين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb7c4b5d0ecfa064.mp3"
+      ]
+    },
+    {
+      "text": "القطة فوق الطاولة، والكرة تحت الطاولة. وأنت الآن: ماذا يوجد أمامك؟ وماذا يوجد خلفك؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1fdcb6fafd01a0b0.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ تحديد مكان شيء أو شخص بالنسبة لغيره باستعمال كلمات التموقع، ويستعمل الشريط العددي والجدول ذا المدخلين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-999a5bc30020275c.mp3"
+      ]
+    },
+    {
+      "text": "قبل أن نتعلم الحساب على الورقة، نتعلم أن نتموقع في الفضاء من حولنا: أين أنا؟ أين الأشياء الأخرى بالنسبة لي؟ هذا يساعدنا على القراءة والفهم لاحقاً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dcd5c457ebb41371.mp3"
+      ]
+    },
+    {
+      "text": "أَمَامَ ≠ خَلْفَ: الشيء الذي \"أمامي\" أراه مباشرة، والشيء \"خلفي\" لا أراه إلا إذا استدرت.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1c01be900f58f741.mp3"
+      ]
+    },
+    {
+      "text": "فَوْقَ ≠ تَحْتَ: \"فوق\" يعني في الأعلى، و\"تحت\" يعني في الأسفل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-47d29c30e263bc2b.mp3"
+      ]
+    },
+    {
+      "text": "يَمِينٌ ≠ يَسَارٌ: يدي اليمنى هي التي نكتب بها غالباً (لغير الأعسر)، والأخرى يسرى.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c7214854b499c41d.mp3"
+      ]
+    },
+    {
+      "text": "الشَّرِيطُ العَدَدِيُّ: خط مرسوم عليه الأعداد بالترتيب، كلما اتجهنا لليمين زاد العدد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d488e1152a8c7bf4.mp3"
+      ]
+    },
+    {
+      "text": "الجَدْوَلُ ذُو المَدْخَلَيْنِ: نقرأ المعلومة بتقاطع سطر (أفقي) مع عمود (عمودي).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-817b2673d89fea7b.mp3"
+      ]
+    },
+    {
+      "text": "الشَّرِيطُ العَدَدِيُّ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a7ffbda4ec60a08a.mp3"
+      ]
+    },
+    {
+      "text": "الجَدْوَلُ ذُو المَدْخَلَيْنِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4f1d6513d6258a53.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر التلميذ بيده التي يكتب بها عادة لتثبيت الجهة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16b3c756b96cc383.mp3"
+      ]
+    },
+    {
+      "text": "الشريط العددي دائماً يُقرأ من اليسار إلى اليمين، والأعداد تكبر كلما تقدمنا لليمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1de4996f05a3282a.mp3"
+      ]
+    },
+    {
+      "text": "أَمَامَ/خَلْفَ وفَوْقَ/تَحْتَ ويَمِينَ/يَسَارَ: ثلاثة أزواج من الكلمات تصف مكان الأشياء. الشريط العددي يزداد دائماً من اليسار إلى اليمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21a82a8aceb51c54.mp3"
+      ]
+    },
+    {
+      "text": "الطائر يطير في السماء، والسمكة تسبح في الماء. أين يوجد الطائر بالنسبة للسمكة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-position"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bd1f4d18332eae5b.mp3"
+      ]
+    },
+    {
+      "text": "على الشريط العددي، أي عدد يأتي مباشرة بعد 9 وأنت تتجه نحو اليمين؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-position"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4c247753a293ab44.mp3"
+      ]
+    },
+    {
+      "text": "على الشريط العددي، أين يقع العدد 15 بالنسبة للعدد 12؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-position"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f4480c0c820e36ba.mp3"
+      ]
+    },
+    {
+      "text": "اختر كلمة التموقع الصحيحة لكل جملة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-76eaed2eb672b46b.mp3"
+      ]
+    },
+    {
+      "text": "الكرة داخل الصندوق وتحت الطاولة",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-139529485c298319.mp3"
+      ]
+    },
+    {
+      "text": "القطة تقف خلف الباب",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8186d5693d04bc58.mp3"
+      ]
+    },
+    {
+      "text": "خَلْفَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9de8df6f1856a983.mp3"
+      ]
+    },
+    {
+      "text": "يَمِينَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-spatial-position",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-914aae880a29859c.mp3"
       ]
     },
     {
@@ -33718,6 +34348,358 @@
       ]
     },
     {
+      "text": "إجراء عملية جمع عمودية بين عددين دون احتفاظ، مع وضع صحيح للأرقام.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eea04469cff89ce1.mp3"
+      ]
+    },
+    {
+      "text": "عند ياسين 23 كرة زجاجية، وأعطاه صديقه 15 كرة أخرى. كم كرة أصبحت عند ياسين؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bba29e3b8ce22fdf.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ وضع عددين فوق بعضهما بشكل صحيح (وحدات تحت وحدات، عشرات تحت عشرات) وجمعهما دون الحاجة إلى الاحتفاظ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4b04786e7bb43fce.mp3"
+      ]
+    },
+    {
+      "text": "الجمع العمودي طريقة منظمة لجمع عددين كبيرين بسهولة: نضع كل رقم في مكانه الصحيح (بيته) ونجمع كل عمود على حدة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-012f6511e903ec53.mp3"
+      ]
+    },
+    {
+      "text": "نكتب العدد الأول ثم العدد الثاني تحته، بحيث تكون الوحدات تحت الوحدات، والعشرات تحت العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a9ee0370d702923f.mp3"
+      ]
+    },
+    {
+      "text": "نبدأ الجمع دائماً من اليمين: نجمع الوحدات أولاً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f04d7b992e5dc0fb.mp3"
+      ]
+    },
+    {
+      "text": "ثم نجمع العشرات ونكتب الناتج في مكانه.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6bedd3cf4d4f7681.mp3"
+      ]
+    },
+    {
+      "text": "إذا كان مجموع الوحدات أقل من 10، نكتبه مباشرة دون أي احتفاظ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-607f2a0722bd50e9.mp3"
+      ]
+    },
+    {
+      "text": "الجَمْعُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        },
+        {
+          "lessonId": "arabic-2ap-t3-gender-number",
+          "grade": "2AP",
+          "subject": "arabic",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e9123140c6b926ae.mp3"
+      ]
+    },
+    {
+      "text": "المَجْمُوعُ (النَّاتِجُ)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-baddba16232971db.mp3"
+      ]
+    },
+    {
+      "text": "العَمُودُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-93eaad7a2ee2159b.mp3"
+      ]
+    },
+    {
+      "text": "دائماً حاذِ الأرقام عمودياً حسب المنزلة: العمود الأيمن للوحدات، والعمود الأيسر للعشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ab8198d7bd18425.mp3"
+      ]
+    },
+    {
+      "text": "اجمع الوحدات وحدها أولاً، ثم العشرات وحدها، ولا تخلط بينهما.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7b6c02990242f02f.mp3"
+      ]
+    },
+    {
+      "text": "الجمع العمودي: أحاذي الوحدات مع الوحدات والعشرات مع العشرات، وأجمع كل عمود بدءاً من اليمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b680ad436181c50b.mp3"
+      ]
+    },
+    {
+      "text": "احسب عمودياً: 12 + 6",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-add1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9c7360c05d440f40.mp3"
+      ]
+    },
+    {
+      "text": "احسب عمودياً: 34 + 25",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-add1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8918b83069373c07.mp3"
+      ]
+    },
+    {
+      "text": "اشترت ليلى 24 تفاحة و 13 كمثرى. كم ثمرة عندها في المجموع؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-add1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-224265e8f87364f1.mp3"
+      ]
+    },
+    {
+      "text": "احسب الجمع بسرعة قبل انتهاء الوقت!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ead2a5a43e53fe11.mp3"
+      ]
+    },
+    {
+      "text": "21 + 18 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0c1eff9ff4c22c2e.mp3"
+      ]
+    },
+    {
+      "text": "29",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a0e017bd94bba6c.mp3"
+      ]
+    },
+    {
+      "text": "43 + 5 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-50c19b0c7d5d01cf.mp3"
+      ]
+    },
+    {
+      "text": "48",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ab594dfb1164cf75.mp3"
+      ]
+    },
+    {
+      "text": "53",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dabc5c33660ffa12.mp3"
+      ]
+    },
+    {
       "text": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ",
       "targets": [
         {
@@ -33730,6 +34712,306 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-28b6344448609d58.mp3"
+      ]
+    },
+    {
+      "text": "قراءة وكتابة الأعداد من 50 إلى 99 ومقارنتها وترتيبها باستعمال الرموز > و< و=.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6505c8be42e129a0.mp3"
+      ]
+    },
+    {
+      "text": "عند نور 62 ديناراً، وعند أخيها 68 ديناراً. من يملك مالاً أكثر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ccbb4165f9b35c8.mp3"
+      ]
+    },
+    {
+      "text": "يواصل التلميذ اكتشاف الأعداد إلى غاية 99، ويتعلم مقارنة عددين وترتيب مجموعة أعداد من الأصغر إلى الأكبر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-643f937ca38e5d6d.mp3"
+      ]
+    },
+    {
+      "text": "بعد أن تعرفنا على الأعداد إلى 49، نكمل الطريق إلى 99. المقارنة تساعدنا على معرفة أي عدد أكبر وأي عدد أصغر، تماماً كما نقارن كمية الحلوى بين طفلين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7a679ecad4d34efe.mp3"
+      ]
+    },
+    {
+      "text": "لمقارنة عددين من رقمين، نقارن أولاً عدد العشرات: من له عشرات أكثر فهو أكبر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16b5d1c62132f6cb.mp3"
+      ]
+    },
+    {
+      "text": "إذا تساوت العشرات، نقارن الوحدات: من له وحدات أكثر فهو أكبر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d981205497a68dd3.mp3"
+      ]
+    },
+    {
+      "text": "الرمز > يعني \"أكبر من\"، والرمز < يعني \"أصغر من\"، ويشير رأس الرمز الحاد دائماً إلى العدد الأصغر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8839f87dba0d4466.mp3"
+      ]
+    },
+    {
+      "text": "العدد 99 هو أكبر عدد من رقمين، ويليه مباشرة 100.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-32ef0c87b48639b7.mp3"
+      ]
+    },
+    {
+      "text": "أَكْبَرُ مِنْ >",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-65caca00c33e804c.mp3"
+      ]
+    },
+    {
+      "text": "أَصْغَرُ مِنْ <",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a6b66585af41c29.mp3"
+      ]
+    },
+    {
+      "text": "التَّرْتِيبُ التَّصَاعُدِيُّ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1c0e97f126fc2c8.mp3"
+      ]
+    },
+    {
+      "text": "دائماً نبدأ المقارنة بالعشرات (الرقم الأيسر) لأنه الأهم في تحديد حجم العدد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8d85f5af368011eb.mp3"
+      ]
+    },
+    {
+      "text": "تذكر: فم التمساح ينفتح دوماً نحو العدد الأكبر، وضيقه نحو العدد الأصغر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7a0051ac3643298a.mp3"
+      ]
+    },
+    {
+      "text": "لمقارنة عددين: قارن العشرات أولاً، فإن تساويا قارن الوحدات. فم التمساح (> أو <) ينفتح نحو العدد الأكبر دائماً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-81cd113f4d95c332.mp3"
+      ]
+    },
+    {
+      "text": "أي عدد أكبر: 56 أم 65؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-numbers2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-523417f2e3ac3b15.mp3"
+      ]
+    },
+    {
+      "text": "رتب هذه الأعداد تنازلياً: 78 - 87 - 77",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-numbers2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-65e42831bd77da7c.mp3"
+      ]
+    },
+    {
+      "text": "عند خالد 63 ديناراً وعند سعيد 68 ديناراً. من يملك مالاً أكثر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-numbers2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dc92ede20eb83582.mp3"
+      ]
+    },
+    {
+      "text": "اختر الرمز الصحيح الذي يفتح فمه نحو العدد الأكبر!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-da8bab52382f2010.mp3"
+      ]
+    },
+    {
+      "text": "52 ... 59",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de9b5f9774d2750c.mp3"
+      ]
+    },
+    {
+      "text": "90 ... 89",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2005aec4d25758b9.mp3"
       ]
     },
     {
@@ -33748,6 +35030,351 @@
       ]
     },
     {
+      "text": "قراءة وكتابة أي عدد من 100 إلى 999، وتفكيكه إلى مئات وعشرات ووحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1adcb8cbf11985c3.mp3"
+      ]
+    },
+    {
+      "text": "عند المكتبة 100 كتاب في صندوق كبير واحد، و 20 كتاباً في صناديق صغيرة، و 5 كتب بمفردها. كم كتاباً في المجموع؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f44ff0e3b7b9c8dd.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ منزلة المئات الجديدة، ويتعلم قراءة وكتابة وتفكيك أعداد من 3 أرقام إلى مئات وعشرات ووحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5477208e4f906473.mp3"
+      ]
+    },
+    {
+      "text": "بعد أن ملأنا 9 عشرات كاملة (90) وأضفنا وحدة أخرى، نصل إلى 100! هذا يفتح لنا منزلة جديدة اسمها \"المئات\"، تماماً كما فتحت لنا العشرات طريقاً لتجاوز 9.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cb8287e4cde46c1c.mp3"
+      ]
+    },
+    {
+      "text": "العَدَدُ مِنْ 3 أَرْقَامٍ له ثلاث منازل: المئات (على اليسار)، العشرات (في الوسط)، الوحدات (على اليمين).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5a4ed0f13eedd854.mp3"
+      ]
+    },
+    {
+      "text": "المِئَةُ = 10 عشرات كاملة = 100 وحدة. عندما تكتمل 10 حزم من 10، نحصل على \"مئة\" واحدة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d0ac04446e0372ee.mp3"
+      ]
+    },
+    {
+      "text": "نَكْتُبُ المئات ثم العشرات ثم الوحدات من اليسار إلى اليمين. وعند القراءة بالعربية ننطق المئات أولاً، ثم الوحدات، ثم العشرات (مثال: 347 = ثَلَاثُ مِئَةٍ وَسَبْعَةٌ وَأَرْبَعُونَ).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db209a7bb4654899.mp3"
+      ]
+    },
+    {
+      "text": "العدد 999 هو أكبر عدد من 3 أرقام، ويليه مباشرة 1000.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c9a177791e7675a1.mp3"
+      ]
+    },
+    {
+      "text": "المِئَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-465181dd6c2ead39.mp3"
+      ]
+    },
+    {
+      "text": "مَنْزِلَةُ المِئَاتِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c5264a63ef0461cf.mp3"
+      ]
+    },
+    {
+      "text": "رتب المنازل دائماً من اليسار: المئات أولاً، ثم العشرات، ثم الوحدات في أقصى اليمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a8f6b81617efec3.mp3"
+      ]
+    },
+    {
+      "text": "العدد 305 يعني 3 مئات و0 عشرات و5 وحدات؛ يجب كتابة الصفر في مكانه ليبقى العدد بثلاثة أرقام.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a44b2cfcd69ce6cb.mp3"
+      ]
+    },
+    {
+      "text": "كل عدد من 3 أرقام = (عدد المئات × 100) + (عدد العشرات × 10) + عدد الوحدات. المئات يسار، الوحدات يمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a34aa7d5bace98ae.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد المئات في العدد 456؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-numbers3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c5a241599ca950f3.mp3"
+      ]
+    },
+    {
+      "text": "اكتب العدد الذي يتكون من 6 مئات و 2 عشرات و 9 وحدات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-numbers3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6855be80cc594de2.mp3"
+      ]
+    },
+    {
+      "text": "العدد 615 يتكون من:",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-numbers3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4e0cf70da7a4afe1.mp3"
+      ]
+    },
+    {
+      "text": "اقرأ كل عدد بسرعة واختر كتابته الصحيحة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-570a4578ca295bf9.mp3"
+      ]
+    },
+    {
+      "text": "203",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d1241b4886a8bce.mp3"
+      ]
+    },
+    {
+      "text": "مِئَتَانِ وَثَلَاثَةٌ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-85e287d7b1f24eb9.mp3"
+      ]
+    },
+    {
+      "text": "ثَلَاثُ مِئَةٍ وَاثْنَانِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-56f13fc8135c0201.mp3"
+      ]
+    },
+    {
+      "text": "780",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8192298e8df0484a.mp3"
+      ]
+    },
+    {
+      "text": "سَبْعُ مِئَةٍ وَثَمَانُونَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d0afc2f766d2b2f0.mp3"
+      ]
+    },
+    {
+      "text": "ثَمَانِي مِئَةٍ وَسَبْعُونَ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-numbers-100-999",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-19ff57978074f994.mp3"
+      ]
+    },
+    {
       "text": "الجَمْعُ العَمُودِيُّ بِالاحْتِفَاظِ",
       "targets": [
         {
@@ -33760,6 +35387,372 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-e83da5c44213cbb3.mp3"
+      ]
+    },
+    {
+      "text": "إجراء عملية جمع عمودية بالاحتفاظ بين عددين من رقمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-50807254fbf7d984.mp3"
+      ]
+    },
+    {
+      "text": "عند رامي 27 كرة، اشترى 15 كرة أخرى. عندما نجمع 7 + 5 في الوحدات نحصل على 12، وهذا أكبر من 9! ماذا نفعل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a2e5d890a77b50fd.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ ما معنى \"الاحتفاظ\" عندما يتجاوز مجموع الوحدات العدد 9، وكيفية نقل الاحتفاظ إلى خانة العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c086a6d1fc2397d9.mp3"
+      ]
+    },
+    {
+      "text": "\"الاحتفاظ\" ليس أمراً صعباً: هو فقط تذكيرنا بأن كل 10 وحدات تُصبح عشرة واحدة كاملة، ننقلها بأمانة إلى عمود العشرات حتى لا نضيعها.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3814ec57ac2d8598.mp3"
+      ]
+    },
+    {
+      "text": "إذا كان مجموع الوحدات 10 أو أكثر، نكتب رقم الوحدات فقط، ونحتفظ بـ 1 وننقلها فوق خانة العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf2bf8e6fbfbf447.mp3"
+      ]
+    },
+    {
+      "text": "نضيف الـ 1 المحتفظ بها إلى مجموع العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95312c17fb9a6355.mp3"
+      ]
+    },
+    {
+      "text": "الاحتفاظ يعني ببساطة: 10 وحدات = عشرة واحدة كاملة ننقلها لخانة العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f5109e404439842a.mp3"
+      ]
+    },
+    {
+      "text": "الاحْتِفَاظُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4becc7e2a3d23f76.mp3"
+      ]
+    },
+    {
+      "text": "نكتب رقماً واحداً فقط في خانة الوحدات (2) ونحتفظ بالرقم الآخر (1) لخانة العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb8a472cadde9814.mp3"
+      ]
+    },
+    {
+      "text": "الاحتفاظ عدد حقيقي يجب أن يُضاف دائماً إلى مجموع العشرات، وليس مجرد ملاحظة نتجاهلها.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ff1e39475acbbdc5.mp3"
+      ]
+    },
+    {
+      "text": "إذا تجاوز مجموع الوحدات 9: أكتب رقم الوحدات فقط، واحتفظ بـ1 (عشرة كاملة) وأضفها إلى مجموع العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-70477a0e5f148a66.mp3"
+      ]
+    },
+    {
+      "text": "8 + 5 = 13. كم عشرة كاملة نحتفظ بها؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-add2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-919486ddcf0252cc.mp3"
+      ]
+    },
+    {
+      "text": "احسب عمودياً بالاحتفاظ: 46 + 27",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-add2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c802899fb8086c3c.mp3"
+      ]
+    },
+    {
+      "text": "عند فوزية 35 دفتراً، أهدتها معلمتها 28 دفتراً إضافياً. كم دفتراً أصبح عندها؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-add2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1053332dfac42bd.mp3"
+      ]
+    },
+    {
+      "text": "احسب ناتج كل عملية جمع بالاحتفاظ بسرعة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-918498510675c42a.mp3"
+      ]
+    },
+    {
+      "text": "19 + 14 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6ce0c803ecbc6b1.mp3"
+      ]
+    },
+    {
+      "text": "33",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cc2cad7c4fef8413.mp3"
+      ]
+    },
+    {
+      "text": "23",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-70f16375e3ba7008.mp3"
+      ]
+    },
+    {
+      "text": "43",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-85b3b24220ba22ae.mp3"
+      ]
+    },
+    {
+      "text": "58 + 26 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5903f2ba67f904e2.mp3"
+      ]
+    },
+    {
+      "text": "84",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-83e058b03564eec2.mp3"
+      ]
+    },
+    {
+      "text": "74",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a77e5cfb56b11d58.mp3"
+      ]
+    },
+    {
+      "text": "94",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-addition-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e4a06568a8995756.mp3"
       ]
     },
     {
@@ -33778,6 +35771,335 @@
       ]
     },
     {
+      "text": "إجراء عملية طرح عمودية دون احتفاظ، وتحديد العملية المناسبة (جمع أو طرح) لحل وضعية بسيطة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e8d9b1d4a56fe104.mp3"
+      ]
+    },
+    {
+      "text": "عند أمين 39 ديناراً، اشترى قلماً بـ 15 ديناراً. كم بقي معه من المال؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6349f31ae804ec6f.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ طرح عددين عمودياً دون احتفاظ، وحل مسائل بسيطة من الحياة اليومية تتطلب الجمع أو الطرح.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6881de4102643241.mp3"
+      ]
+    },
+    {
+      "text": "الطرح عكس الجمع: بدل أن نزيد كمية، ننقص منها. نستعمله عندما \"يبقى\" شيء بعد أخذ جزء منه.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-857a3694c66568b3.mp3"
+      ]
+    },
+    {
+      "text": "في الطرح، العدد الكبير يوضع دائماً فوق (المطروح منه)، والعدد الصغير تحته (المطروح).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6df32093ed07472d.mp3"
+      ]
+    },
+    {
+      "text": "نبدأ الطرح من اليمين: نطرح الوحدات أولاً ثم العشرات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-964e46f090d9bbba.mp3"
+      ]
+    },
+    {
+      "text": "كلمات تدل على الطرح: \"بقي\"، \"أنفق\"، \"أعطى\"، \"الفرق بين\". كلمات تدل على الجمع: \"مجموع\"، \"أضاف\"، \"اشترى إضافة إلى\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-763e145f07cbd853.mp3"
+      ]
+    },
+    {
+      "text": "الطَّرْحُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cdaecd246e0e3eec.mp3"
+      ]
+    },
+    {
+      "text": "الفَرْقُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d7388f5fa776f308.mp3"
+      ]
+    },
+    {
+      "text": "وَضْعِيَّةُ مَسْأَلَةٍ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-590775aec80587d1.mp3"
+      ]
+    },
+    {
+      "text": "في هَذِهِ المَرْحَلَةِ نَطْرَحُ فَقَطْ مِنْ عَدَدٍ كَبِيرٍ عَدَداً أَصْغَرَ مِنْهُ، فَيُوضَعُ الكَبِيرُ دَائِماً فِي الأَعْلَى.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e6119a28816b785.mp3"
+      ]
+    },
+    {
+      "text": "كلمة \"بقي\" تعني أن شيئاً أُخذ، إذن نستعمل الطرح دائماً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8de3c2397353f0a8.mp3"
+      ]
+    },
+    {
+      "text": "الطرح العمودي: العدد الكبير فوق، الصغير تحت، نطرح الوحدات ثم العشرات. كلمة \"بقي\" أو \"أخذ\" تدل على الطرح.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-532d04cad44628ce.mp3"
+      ]
+    },
+    {
+      "text": "احسب عمودياً: 27 - 4",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-sub1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b906336e5f033736.mp3"
+      ]
+    },
+    {
+      "text": "عند سمير 56 صورة، أعطى 23 صورة لأخيه. كم صورة بقيت عنده؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-sub1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-611549a12896aec7.mp3"
+      ]
+    },
+    {
+      "text": "عند مريم 45 قلماً ملوناً، أعطت 12 قلماً لصديقتها. كم قلماً بقي عندها؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-sub1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cbfdd45c0c57f821.mp3"
+      ]
+    },
+    {
+      "text": "احسب الفرق بسرعة قبل انتهاء الوقت!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-006df75b4195ad62.mp3"
+      ]
+    },
+    {
+      "text": "48 - 15 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d34549340091d4d3.mp3"
+      ]
+    },
+    {
+      "text": "79 - 24 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dbcb2ad1d4857134.mp3"
+      ]
+    },
+    {
+      "text": "55",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c09592ea56259063.mp3"
+      ]
+    },
+    {
+      "text": "45",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f46d4e0889841c1b.mp3"
+      ]
+    },
+    {
       "text": "الأَشْكَالُ الهَنْدَسِيَّةُ البَسِيطَةُ: المُرَبَّعُ، المُسْتَطِيلُ، المُثَلَّثُ، الدَّائِرَةُ",
       "targets": [
         {
@@ -33790,6 +36112,306 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-2b0a5ba8e95518bd.mp3"
+      ]
+    },
+    {
+      "text": "التعرف على المربع والمستطيل والمثلث والدائرة في المحيط اليومي، ونقل رسم بسيط على شبكة مربعات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f7c3eecf650830b.mp3"
+      ]
+    },
+    {
+      "text": "انظر حولك في القسم: ما شكل السبورة؟ ما شكل الساعة الحائطية؟ هل لهما نفس الشكل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2f9ebc2e4af69e93.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على الأشكال الهندسية الأساسية الأربعة، ويميز بينها حسب عدد أضلاعها وشكلها، وينقل رسماً بسيطاً على شبكة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2cea94b991709d03.mp3"
+      ]
+    },
+    {
+      "text": "الأشكال الهندسية موجودة في كل مكان حولنا: النافذة، الطاولة، عجلة الدراجة... تعلمها يساعدنا على وصف الأشياء ورسمها بدقة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e6a30f65b4ddcd40.mp3"
+      ]
+    },
+    {
+      "text": "المُرَبَّعُ: له 4 أضلاع متساوية الطول، و4 زوايا متساوية.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-10ff399fa2f31c31.mp3"
+      ]
+    },
+    {
+      "text": "المُسْتَطِيلُ: له 4 أضلاع، لكن الطول يختلف عن العرض (ضلعان طويلان وضلعان قصيران).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f41789b29a1e6f8c.mp3"
+      ]
+    },
+    {
+      "text": "المُثَلَّثُ: له 3 أضلاع و3 زوايا فقط.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f22fca73c9ce2989.mp3"
+      ]
+    },
+    {
+      "text": "الدَّائِرَةُ: شكل مستدير ليس له أضلاع ولا زوايا، وكل نقطة فيها تبعد نفس المسافة عن المركز.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-35b7e9f1aff25ea2.mp3"
+      ]
+    },
+    {
+      "text": "الضِّلْعُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fbc901e5da3d4d44.mp3"
+      ]
+    },
+    {
+      "text": "الزَّاوِيَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a8ae66d8ffc6b817.mp3"
+      ]
+    },
+    {
+      "text": "الشَّبَكَةُ (الشَّطَرَنجِيَّةُ)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7b9907a19ef81e54.mp3"
+      ]
+    },
+    {
+      "text": "في المربع كل الأضلاع الأربعة متساوية، أما في المستطيل فالأضلاع المتقابلة فقط متساوية.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7896cd6ce1abefb0.mp3"
+      ]
+    },
+    {
+      "text": "الدائرة ليس لها أي زاوية ولا أي ضلع مستقيم، إنها مستديرة تماماً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2457a5d43a96b475.mp3"
+      ]
+    },
+    {
+      "text": "مربع = 4 أضلاع متساوية. مستطيل = 4 أضلاع (طول ≠ عرض). مثلث = 3 أضلاع. دائرة = بدون أضلاع ولا زوايا.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-61c92ac7e64f6a6c.mp3"
+      ]
+    },
+    {
+      "text": "كم عدد أضلاع المربع؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-shapes"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-177f089856460e55.mp3"
+      ]
+    },
+    {
+      "text": "عجلة السيارة، ما شكلها؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-shapes"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8279481e391bf97c.mp3"
+      ]
+    },
+    {
+      "text": "أي شكل ليس له أي زاوية؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-shapes"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea9a829b0b2ffc17.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل شيء من محيطك بشكله الهندسي المناسب!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e29cc660c26b10cd.mp3"
+      ]
+    },
+    {
+      "text": "شباك الغرفة",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3024493d7e752092.mp3"
+      ]
+    },
+    {
+      "text": "قطعة بيتزا",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-shapes",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fe317504f780dc83.mp3"
       ]
     },
     {
@@ -33808,6 +36430,313 @@
       ]
     },
     {
+      "text": "حساب ضعف عدد صغير ونصف عدد زوجي باستعمال أدوات بصرية.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf6f0fdd9906566e.mp3"
+      ]
+    },
+    {
+      "text": "عند نور 4 حلويات، وأعطتها أمها 4 حلويات أخرى مماثلة. كم أصبح عندها؟ (هذا هو \"ضِعْفُ\" 4).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b9de0c965f47179c.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ مفهومي \"ضِعف\" (جمع العدد مع نفسه) و\"نصف\" (تقسيم العدد إلى جزأين متساويين) بطريقة بصرية بسيطة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9ee11a7842d894d2.mp3"
+      ]
+    },
+    {
+      "text": "الضعف يعني \"مرتين بالضبط\"، مثل توأمين متشابهين. النصف يعني \"تقسيم الكعكة إلى قطعتين متساويتين بالضبط\" حتى لا يشعر أحد بالظلم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-13cac927a71019c6.mp3"
+      ]
+    },
+    {
+      "text": "ضِعْفُ عَدَدٍ = العَدَدُ + نَفْسُ العَدَدِ (مثال: ضعف 5 نحسبه هكذا: 5 + 5 = 10).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4b012885c60fa083.mp3"
+      ]
+    },
+    {
+      "text": "نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6b7690e9a32ed26.mp3"
+      ]
+    },
+    {
+      "text": "الضعف والنصف عمليتان متعاكستان: إذا كان ضعف 6 هو 12، فإن نصف 12 هو 6.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9022b3d0f209035d.mp3"
+      ]
+    },
+    {
+      "text": "الضِّعْفُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1ed34c0b26d960d2.mp3"
+      ]
+    },
+    {
+      "text": "النِّصْفُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e9925cd464b5f241.mp3"
+      ]
+    },
+    {
+      "text": "الضعف يعني تكرار العدد نفسه مرتين كاملتين، وليس إضافة رقم واحد فقط.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-824e3d82431aba16.mp3"
+      ]
+    },
+    {
+      "text": "فِي هَذِهِ المَرْحَلَةِ نَتَعَلَّمُ النِّصْفَ فَقَطْ لِلأَعْدَادِ الزَّوْجِيَّةِ (2، 4، 6، 8، 10...) الَّتِي تُقْسَمُ دُونَ بَاقٍ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8a0269a2c067e459.mp3"
+      ]
+    },
+    {
+      "text": "ضِعْفُ العدد = العدد + العدد (مثل 6+6=12). نِصْفُ العدد = تقسيمه لجزأين متساويين (مثل 12 نصفه 6).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6bbd461cfe328fa8.mp3"
+      ]
+    },
+    {
+      "text": "ما هو ضعف العدد 3؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-doublehalf"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6b06993edd64d626.mp3"
+      ]
+    },
+    {
+      "text": "عند ياسمين 16 حبة فراولة، أرادت اقتسامها بالتساوي مع أختها. كم حبة تأخذ كل واحدة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-doublehalf"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-582151349df0bdb2.mp3"
+      ]
+    },
+    {
+      "text": "عند سامي 5 كرات، وعند أخيه ضعف هذا العدد. كم كرة عند أخيه؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-doublehalf"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f99fd0aa93a58fc9.mp3"
+      ]
+    },
+    {
+      "text": "اختر الجواب الصحيح للضعف أو النصف بسرعة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e2338e0564e76e92.mp3"
+      ]
+    },
+    {
+      "text": "ضعف 9 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8fe4d2ddb3bff208.mp3"
+      ]
+    },
+    {
+      "text": "11",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-359b46d59b7dfd77.mp3"
+      ]
+    },
+    {
+      "text": "16",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e3577dde38827e49.mp3"
+      ]
+    },
+    {
+      "text": "نصف 14 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-double-half",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c507de299b80d17f.mp3"
+      ]
+    },
+    {
       "text": "مُقَارَنَةُ الأَطْوَالِ (أَطْوَلُ/أَقْصَرُ) وَالكُتَلِ (أَثْقَلُ/أَخَفُّ)",
       "targets": [
         {
@@ -33823,6 +36752,321 @@
       ]
     },
     {
+      "text": "مقارنة أطوال وكتل أشياء ملموسة، وترتيبها من الأقصر للأطول أو من الأخف للأثقل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8ee060379a522684.mp3"
+      ]
+    },
+    {
+      "text": "قارن طولك بطول صديقك: من أطول؟ وقارن حقيبتك بحقيبته: من أثقل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b0b5987345b6a98e.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ مقارنة طول شيئين (أطول من / أقصر من) وكتلة شيئين (أثقل من / أخف من) دون الحاجة إلى أدوات قياس دقيقة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a1dbed38e74fcfca.mp3"
+      ]
+    },
+    {
+      "text": "قبل استعمال المسطرة والميزان بدقة، نتعلم أولاً المقارنة البسيطة بالعين واليد: من أطول؟ من أثقل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6075718ea0e92f6c.mp3"
+      ]
+    },
+    {
+      "text": "لمقارنة طولين، نضع الشيئين جنباً إلى جنب من نفس نقطة البداية، والذي يمتد أكثر هو الأطول.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b14cc1d835283d5f.mp3"
+      ]
+    },
+    {
+      "text": "لمقارنة الكتلة (الثقل)، نحمل الشيئين بيدينا أو نستعمل ميزاناً بسيطاً: الذي يُنزل الكفة هو الأثقل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-447499d0ea3da875.mp3"
+      ]
+    },
+    {
+      "text": "الأشياء الكبيرة ليست دائماً أثقل: كرة كبيرة من الإسفنج قد تكون أخف من حجر صغير.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6404843dc5f946d1.mp3"
+      ]
+    },
+    {
+      "text": "أَطْوَلُ / أَقْصَرُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-25187215ea680fec.mp3"
+      ]
+    },
+    {
+      "text": "أَثْقَلُ / أَخَفُّ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cb2b70187fde8f2e.mp3"
+      ]
+    },
+    {
+      "text": "المِيزَانُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-98c6b5fa54a9a19b.mp3"
+      ]
+    },
+    {
+      "text": "الحجم لا يحدد الوزن دائماً؛ يجب التجربة الفعلية بالميزان أو اليد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1dee034ab10ffc32.mp3"
+      ]
+    },
+    {
+      "text": "يجب محاذاة بداية الشيئين معاً لمقارنة عادلة لأطوالهما.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ca78ac25dbee016.mp3"
+      ]
+    },
+    {
+      "text": "أُقَارِنُ الطول بمحاذاة الأشياء من نفس البداية، وأُقَارِنُ الكتلة بحملها أو بالميزان — وليس بالحجم فقط.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-019d5ee439ab129b.mp3"
+      ]
+    },
+    {
+      "text": "شجرة وزهرة صغيرة. أيهما أطول؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-measures"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1067c3dd6450f59a.mp3"
+      ]
+    },
+    {
+      "text": "فيل وقطة. أيهما أثقل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-measures"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b014cc1582bb374f.mp3"
+      ]
+    },
+    {
+      "text": "لدينا 3 حبال بأطوال مختلفة. كيف نعرف الأطول بدقة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-measures"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6fcfcd3f2f43af5.mp3"
+      ]
+    },
+    {
+      "text": "اختر أيهما أثقل أو أطول في كل مقارنة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-65b58cd421a3f62b.mp3"
+      ]
+    },
+    {
+      "text": "ريشة طائر مقابل حجر صغير",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dc9bd44641351b0c.mp3"
+      ]
+    },
+    {
+      "text": "الرِّيشَةُ أَثْقَلُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e6284e1e5201623.mp3"
+      ]
+    },
+    {
+      "text": "حبل طوله 2 متر مقابل حبل طوله 1 متر",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-25416205aa3c1ab4.mp3"
+      ]
+    },
+    {
+      "text": "حَبْلُ الـ 2 مِتْرٍ أَطْوَلُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-measures-length-mass",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-552c0f570e5b2dfc.mp3"
+      ]
+    },
+    {
       "text": "أَقِيسُ بِالمِسْطَرَةِ المُدَرَّجَةِ (سم)",
       "targets": [
         {
@@ -33835,6 +37079,3414 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-9681b2dda75f60a5.mp3"
+      ]
+    },
+    {
+      "text": "استعمال المسطرة المدرجة لقياس طول أشياء بسيطة بالسنتيمتر، ورسم خط بطول محدد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3804862283d5fa09.mp3"
+      ]
+    },
+    {
+      "text": "ضع مسطرتك بجانب قلمك الرصاص، بحيث تبدأ من العلامة 0. عند أي رقم ينتهي القلم؟ هذا هو طوله بالسنتيمتر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9311ca91ea8449e9.mp3"
+      ]
+    },
+    {
+      "text": "بعد المقارنة البصرية، يتعلم التلميذ استعمال المسطرة المدرجة لقياس طول شيء بدقة بوحدة السنتيمتر (سم).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-09d62b6feddcc078.mp3"
+      ]
+    },
+    {
+      "text": "بعد أن قارنّا الأطوال بالعين، أصبحنا الآن جاهزين لاستعمال أداة دقيقة: المسطرة المدرجة. بها نعرف طول أي شيء بالضبط بوحدة اسمها السنتيمتر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9375c592c5c959a2.mp3"
+      ]
+    },
+    {
+      "text": "السَّنْتِيمِتْرُ (سم): وحدة صغيرة نقيس بها الأشياء القريبة منا، ورمزها \"سم\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-70857a36c4c7d226.mp3"
+      ]
+    },
+    {
+      "text": "لقياس شيء بدقة، أضع بداية الشيء تماماً عند العلامة 0 على المسطرة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-992d64be9027d1b8.mp3"
+      ]
+    },
+    {
+      "text": "أَقْرَأُ الرقم الذي تنتهي عنده نهاية الشيء — هذا هو طوله بالسنتيمتر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebe283d6d7d9f3ae.mp3"
+      ]
+    },
+    {
+      "text": "لرسم خط بطول معين (مثلاً 5 سم)، أضع نقطة عند 0 ونقطة أخرى عند 5، ثم أصل بينهما بخط مستقيم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f39f8ec6eecca80.mp3"
+      ]
+    },
+    {
+      "text": "المِسْطَرَةُ المُدَرَّجَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-520af596c9dddef1.mp3"
+      ]
+    },
+    {
+      "text": "السَّنْتِيمِتْرُ (سم)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-542956d8a7eb2680.mp3"
+      ]
+    },
+    {
+      "text": "يجب أن تكون بداية الشيء دائماً عند العلامة 0 بالضبط، وليس عند حافة المسطرة التي قد لا تبدأ من 0.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d7e5a71ff202f767.mp3"
+      ]
+    },
+    {
+      "text": "انظر عمودياً فوق نهاية الشيء مباشرة لقراءة الرقم الصحيح على المسطرة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dbee058c8a5208da.mp3"
+      ]
+    },
+    {
+      "text": "أضع بداية الشيء عند 0 على المسطرة، وأقرأ الرقم عند نهايته — هذا طوله بالسنتيمتر (سم).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bc829863a141a574.mp3"
+      ]
+    },
+    {
+      "text": "ما رمز وحدة السنتيمتر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-ruler"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-87f11e3739fb7a2d.mp3"
+      ]
+    },
+    {
+      "text": "بدأ خط عند العلامة 0 وانتهى عند العلامة 12. كم طوله بالسنتيمتر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-ruler"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6236e9def85a47a2.mp3"
+      ]
+    },
+    {
+      "text": "أين يجب أن نضع بداية الشيء عند القياس بالمسطرة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-ruler"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c687c3ccd4ce1411.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل أداة بطولها التقريبي بالسنتيمتر!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ea2bfc7583731c7.mp3"
+      ]
+    },
+    {
+      "text": "قَلَمُ الرَّصَاصِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95f6df9eacafde9f.mp3"
+      ]
+    },
+    {
+      "text": "حَوَالَيْ 17 سم",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ffa3ff07645515d.mp3"
+      ]
+    },
+    {
+      "text": "حَوَالَيْ 1 سم",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cebb72352455a88a.mp3"
+      ]
+    },
+    {
+      "text": "حَوَالَيْ 4 سم",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-94a62f86f63a017c.mp3"
+      ]
+    },
+    {
+      "text": "حَوَالَيْ 40 سم",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-ruler-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-272de2eab9c4a09c.mp3"
+      ]
+    },
+    {
+      "text": "قِرَاءَةُ السَّاعَةِ: السَّاعَاتُ الكَامِلَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f1b4535f6ada5bd.mp3"
+      ]
+    },
+    {
+      "text": "قراءة الوقت بالساعات الكاملة على ساعة ذات عقارب وربطها بلحظات من يومه.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-45aa25738b452d67.mp3"
+      ]
+    },
+    {
+      "text": "انظر إلى ساعة الحائط في القسم: متى يشير العقربان إلى وقت خروجنا للاستراحة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f8def18025345dd2.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ قراءة الساعات الكاملة على ساعة ذات عقارب، والتمييز بين العقرب الصغير (الساعات) والعقرب الكبير (الدقائق).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6aa399e6e79cf208.mp3"
+      ]
+    },
+    {
+      "text": "الساعة صديقتنا التي تنظم يومنا: تخبرنا متى نستيقظ، ومتى نذهب للمدرسة، ومتى ننام. نبدأ بتعلم قراءتها في أبسط حالة: الساعات الكاملة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac7460969542a31e.mp3"
+      ]
+    },
+    {
+      "text": "للساعة عقربان: العقرب الصغير (القصير) يشير إلى عدد \"الساعة\"، والعقرب الكبير (الطويل) يشير إلى \"الدقائق\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d35ccf9e8db285c8.mp3"
+      ]
+    },
+    {
+      "text": "عندما يكون العقرب الكبير مشيراً بالضبط إلى الرقم 12، فهذا يعني أن الوقت \"ساعة كاملة\" (بدون دقائق زائدة).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aaa640110339ddb0.mp3"
+      ]
+    },
+    {
+      "text": "نقرأ الساعة الكاملة بقول: \"الساعة\" + الرقم الذي يشير إليه العقرب الصغير (مثال: العقرب الصغير على 7 والكبير على 12 = الساعة السابعة تماماً).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a98328f713595096.mp3"
+      ]
+    },
+    {
+      "text": "العَقْرَبُ الصَّغِيرُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-60faa1d33cccdcf5.mp3"
+      ]
+    },
+    {
+      "text": "العَقْرَبُ الكَبِيرُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40b644f4281bb108.mp3"
+      ]
+    },
+    {
+      "text": "ساعةٌ تَمَامًا",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7be0d7b945569364.mp3"
+      ]
+    },
+    {
+      "text": "العقرب الصغير القصير هو الأهم لمعرفة \"الساعة\"، والعقرب الكبير الطويل يخبرنا بالدقائق.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-34062b2e53cc6bf0.mp3"
+      ]
+    },
+    {
+      "text": "نقرأ رقم الساعة دائماً من موضع العقرب الصغير (القصير)، وليس الكبير.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-516c1a960b84be13.mp3"
+      ]
+    },
+    {
+      "text": "الساعة الكاملة: العقرب الكبير على 12، والعقرب الصغير يشير إلى رقم الساعة. نقول مثلاً \"الساعة الثامنة تماماً\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1c3b436a78414410.mp3"
+      ]
+    },
+    {
+      "text": "أي عقرب يشير إلى رقم الساعة: الصغير أم الكبير؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-clock"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e83c7cb8e2cb518.mp3"
+      ]
+    },
+    {
+      "text": "العقرب الصغير على 9 والعقرب الكبير على 12. اكتب الساعة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-clock"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-88f0df8d3e8fef0c.mp3"
+      ]
+    },
+    {
+      "text": "العقرب الصغير يشير إلى 12 والعقرب الكبير يشير إلى 12 أيضاً. كم الساعة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-clock"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b19c3458b8e343d1.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل ساعة بالنشاط المناسب من يوم التلميذ!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f3f4d9d3be47fca8.mp3"
+      ]
+    },
+    {
+      "text": "الساعة السابعة تماماً",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fe3edd9e517f98d3.mp3"
+      ]
+    },
+    {
+      "text": "الاسْتِيقَاظُ لِلْمَدْرَسَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-68b678091d7ea648.mp3"
+      ]
+    },
+    {
+      "text": "النَّوْمُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-25fe79840692ec9a.mp3"
+      ]
+    },
+    {
+      "text": "الساعة التاسعة تماماً ليلاً",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7b05eeb16bf7a1dc.mp3"
+      ]
+    },
+    {
+      "text": "اللَّعِبُ فِي السَّاحَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-reading",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d54c874629e98f1.mp3"
+      ]
+    },
+    {
+      "text": "قِرَاءَةُ السَّاعَةِ: السَّاعَةُ وَالنِّصْفُ (30 دَقِيقَةً)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3f12c8cfe2ed9947.mp3"
+      ]
+    },
+    {
+      "text": "قراءة الوقت بصيغة \"الساعة والنصف\" على ساعة ذات عقارب وربطها بأنشطة يومه.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7baf743de84aa2fc.mp3"
+      ]
+    },
+    {
+      "text": "انظر إلى العقرب الكبير: عندما يكون على الرقم 12 نقول \"تماماً\"، فماذا نقول عندما يكون بالضبط في المنتصف على الرقم 6؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-656001aa054680f7.mp3"
+      ]
+    },
+    {
+      "text": "بعد الساعات الكاملة، يتعلم التلميذ قراءة \"الساعة والنصف\" عندما يشير العقرب الكبير إلى الرقم 6 (30 دقيقة).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1987e82f88a19cce.mp3"
+      ]
+    },
+    {
+      "text": "بعد أن تعلمنا الساعات الكاملة، نتعلم الآن قراءة الوقت عندما يمر نصف ساعة فقط: هذا ما نسميه \"الساعة والنصف\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e85dfecedda57095.mp3"
+      ]
+    },
+    {
+      "text": "نِصْفُ السَّاعَةِ = 30 دَقِيقَةً، لأن الساعة الكاملة تحتوي على 60 دقيقة، ونصفها 30.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bfd04ce1ebb27580.mp3"
+      ]
+    },
+    {
+      "text": "عندما يكون العقرب الكبير على الرقم 6 بالضبط، فهذا يعني \"والنصف\" (30 دقيقة).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fdd8c4bae3289c52.mp3"
+      ]
+    },
+    {
+      "text": "في \"الساعة والنصف\"، يكون العقرب الصغير بين رقمين، وليس بالضبط على رقم واحد كما في الساعة الكاملة (مثال: بين 7 و8 يعني السابعة والنصف).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-785497143631e205.mp3"
+      ]
+    },
+    {
+      "text": "نقرأ: \"السَّاعَةُ\" + الرقم الذي تجاوزه العقرب الصغير + \"وَالنِّصْفُ\" (مثال: السابعة والنصف = 7:30).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92b256c63b9fede9.mp3"
+      ]
+    },
+    {
+      "text": "الساعةُ وَالنِّصْفُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72aaa9d7fd5b7b14.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل أن العقرب الصغير يكون بين رقمين في هذه الحالة، ونقرأ الرقم الأصغر (الذي تجاوزه) + \"والنصف\".",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b03f778819b3c6aa.mp3"
+      ]
+    },
+    {
+      "text": "العقرب الكبير على 12 = تماماً (0 دقيقة). العقرب الكبير على 6 = والنصف (30 دقيقة).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d2f8ea2344e49770.mp3"
+      ]
+    },
+    {
+      "text": "الساعة والنصف = 30 دقيقة = العقرب الكبير على الرقم 6، والعقرب الصغير بين رقمين متتاليين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-021c86c2e92d9920.mp3"
+      ]
+    },
+    {
+      "text": "كم دقيقة يساوي \"نصف ساعة\"؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-halfhour"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d2b5cfa1aa9af1b.mp3"
+      ]
+    },
+    {
+      "text": "العقرب الكبير على 6، والعقرب الصغير بين 9 و10. اكتب الساعة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-halfhour"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a5e6ee3e31c40a74.mp3"
+      ]
+    },
+    {
+      "text": "متى نقول \"والنصف\" عند قراءة الساعة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-halfhour"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ae4e93c09c7c08e6.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل وقت بالنشاط المناسب من يوم التلميذ!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-506038c9f7c727ac.mp3"
+      ]
+    },
+    {
+      "text": "السَّاعَةُ السَّابِعَةُ وَالنِّصْفُ صَبَاحاً",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d0e63d3c1f75e09.mp3"
+      ]
+    },
+    {
+      "text": "الذَّهَابُ إِلَى المَدْرَسَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ac73ad44886a6f7.mp3"
+      ]
+    },
+    {
+      "text": "السَّاعَةُ الثَّامِنَةُ وَالنِّصْفُ مَسَاءً",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dfdc304d6437a1f1.mp3"
+      ]
+    },
+    {
+      "text": "التَّحْضِيرُ لِلنَّوْمِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d5833628a116415.mp3"
+      ]
+    },
+    {
+      "text": "الذَّهَابُ لِلْمَدْرَسَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-clock-half-hour",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6d1bd4654d1a2a44.mp3"
+      ]
+    },
+    {
+      "text": "الدِّينَارُ الجَزَائِرِيُّ (دج) وَحَلُّ مَسَائِلِ الشِّرَاءِ البَسِيطَةِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ba1a22e59e7acf15.mp3"
+      ]
+    },
+    {
+      "text": "التعرف على فئات الدينار الجزائري وحل مسائل شراء بسيطة بالجمع أو الطرح.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4a1d5e926b82c6e6.mp3"
+      ]
+    },
+    {
+      "text": "ذهبت مع أمك للسوق ومعها ورقة 500 دج، واشترت خبزاً بـ 50 دج. كم بقي معها من المال؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aa074032559191d6.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على قطع وأوراق العملة الجزائرية (50، 100، 200، 500 دج)، ويحل مسائل بسيطة عن الشراء باستعمال الجمع والطرح.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f91b1d240ab2eb0.mp3"
+      ]
+    },
+    {
+      "text": "نستعمل الدينار الجزائري كل يوم في السوق والمدرسة. معرفة فئاته وكيفية الجمع والطرح بها تساعدنا على التسوق بذكاء ومعرفة ما ندفعه وما يعاد لنا.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-84ae40358c3c1230.mp3"
+      ]
+    },
+    {
+      "text": "الدِّينَارُ الجَزَائِرِيُّ (دج): عملة بلادنا، ولها قطع نقدية وأوراق بفئات مختلفة: 50، 100، 200، 500 دج.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed80e2054dad36e6.mp3"
+      ]
+    },
+    {
+      "text": "لِمَعْرِفَةِ ثَمَنِ عدة أشياء معاً، نجمع أثمانها (مثال: قلم بـ 30 دج + كراس بـ 50 دج = 80 دج).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4acc680de5d71170.mp3"
+      ]
+    },
+    {
+      "text": "لِمَعْرِفَةِ البَاقِي بعد الدفع، نطرح ثمن الشيء من المبلغ الذي دفعناه (مثال: دفعت 100 دج لشيء ثمنه 60 دج، الباقي = 100 - 60 = 40 دج).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1491d3c7b68661fc.mp3"
+      ]
+    },
+    {
+      "text": "الدِّينَارُ الجَزَائِرِيُّ (دج)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a65aed38cf9a40e6.mp3"
+      ]
+    },
+    {
+      "text": "البَاقِي",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8505489b4968931f.mp3"
+      ]
+    },
+    {
+      "text": "أجمع دائماً عندما أريد معرفة مجموع أثمان أشياء، وأطرح عندما أريد معرفة الباقي بعد الدفع.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0306be9a09568540.mp3"
+      ]
+    },
+    {
+      "text": "فئات الدينار: 50، 100، 200، 500 دج. لثمن أشياء متعددة: أجمع. للباقي بعد الدفع: أطرح المبلغ المدفوع ناقص الثمن.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5da16534da893e3b.mp3"
+      ]
+    },
+    {
+      "text": "اشتريت قلماً بـ 40 دج وممحاة بـ 20 دج. كم دفعت في المجموع؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-currency"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-31967eb894f61779.mp3"
+      ]
+    },
+    {
+      "text": "دفعت 200 دج ثمن كتاب يكلف 150 دج. كم استرجعت من الباقي؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-currency"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c00fa7a3a5da891e.mp3"
+      ]
+    },
+    {
+      "text": "اشترى ياسين حقيبة بـ 350 دج، ودفع بورقة 500 دج. كم استرجع من الباقي؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-currency"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-423a167a1dd98d4d.mp3"
+      ]
+    },
+    {
+      "text": "احسب الثمن الإجمالي أو الباقي بسرعة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f7809a82dbc4e6d2.mp3"
+      ]
+    },
+    {
+      "text": "عصير بـ 80 دج + خبز بـ 50 دج = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d955b86e72e4313.mp3"
+      ]
+    },
+    {
+      "text": "130 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-93dba406c4cb8af8.mp3"
+      ]
+    },
+    {
+      "text": "30 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-694c12051d1786af.mp3"
+      ]
+    },
+    {
+      "text": "110 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36e9811db738e617.mp3"
+      ]
+    },
+    {
+      "text": "دفعت 500 دج ثمن لعبة بـ 300 دج. الباقي = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-670595149694ac39.mp3"
+      ]
+    },
+    {
+      "text": "200 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-861d8b851a0bdece.mp3"
+      ]
+    },
+    {
+      "text": "800 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8bba0ebfe8b588aa.mp3"
+      ]
+    },
+    {
+      "text": "300 دج",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-currency-dzd",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5111023e55defeed.mp3"
+      ]
+    },
+    {
+      "text": "الطَّرْحُ العَمُودِيُّ بِالاحْتِفَاظِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40fc8766c6c3c453.mp3"
+      ]
+    },
+    {
+      "text": "إجراء طرح عمودي بسيط بالاحتفاظ بين عددين من رقمين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b3e05fabd6ef33c3.mp3"
+      ]
+    },
+    {
+      "text": "عند آدم 42 كرّاساً. أعطى 18 كرّاساً لأخيه. في الوحدات: 2 أصغر من 8. ماذا نفعل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ff4d9c1af3f5550f.mp3"
+      ]
+    },
+    {
+      "text": "يتعلّم التلميذ طرح عددين من رقمين عندما تكون الوحدات في الأعلى أصغر من الوحدات في الأسفل: نستعير عشرة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-14682aa928fd3042.mp3"
+      ]
+    },
+    {
+      "text": "أحياناً لا نقدر أن نطرح الوحدات لأنها أصغر. نستعير حزمة عشرات ونفكّها إلى 10 وحدات — نفس فكرة الحزم في الجمع بالاحتفاظ، لكن بالعكس.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63538fb9fa16643e.mp3"
+      ]
+    },
+    {
+      "text": "نَبْدَأُ دَائِماً مِنَ اليَمِينِ: الوَحَدَاتُ ثُمَّ العَشَرَاتُ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8bc2bda5eeb8b2eb.mp3"
+      ]
+    },
+    {
+      "text": "إِذَا كَانَ الرَّقْمُ فَوْقُ أَصْغَرَ، نَسْتَعِيرُ 1 عَشَرَةً (= 10 وَحَدَاتٍ) مِنَ العَشَرَاتِ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dbb3f6a00f2e3f5b.mp3"
+      ]
+    },
+    {
+      "text": "مِثَالُ 42 − 18: الوَحَدَاتُ 12 − 8 = 4، ثُمَّ العَشَرَاتُ 3 − 1 = 2. النَّاتِجُ 24.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5f7c92a4831893b8.mp3"
+      ]
+    },
+    {
+      "text": "نَضَعُ العَدَدَ الأَكْبَرَ فِي الأَعْلَى دَائِماً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-82fa2b8a3cd4d07f.mp3"
+      ]
+    },
+    {
+      "text": "الاِسْتِعَارَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4c58e78ffc9fddab.mp3"
+      ]
+    },
+    {
+      "text": "الاِحْتِفَاظُ فِي الطَّرْحِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2096196692e20aa0.mp3"
+      ]
+    },
+    {
+      "text": "لا نعكس: نستعير ثم نطرح الرقم السفلي من العلوي الجديد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-234d895256f0e60e.mp3"
+      ]
+    },
+    {
+      "text": "كل استعارة تنقص رقم العشرات فوق بواحد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-338774eaa25a3d4d.mp3"
+      ]
+    },
+    {
+      "text": "وحدات أصغر فوق؟ أستعير 10، أطرح، ثم أنقص العشرات بواحد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-147e3fec9d874685.mp3"
+      ]
+    },
+    {
+      "text": "في 42 − 18، كم تصبح الوحدات بعد الاستعارة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-subcarry"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3b12b592e8a2f754.mp3"
+      ]
+    },
+    {
+      "text": "احسب: 63 − 29",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-subcarry"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-139caf6b3de0409a.mp3"
+      ]
+    },
+    {
+      "text": "متى نستعير عشرة في الطرح العمودي؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-subcarry"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f1a844795f1d3e48.mp3"
+      ]
+    },
+    {
+      "text": "42 − 18 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q2-math2ap-subcarry"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c36a12a8cb42198d.mp3"
+      ]
+    },
+    {
+      "text": "احسب بسرعة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7bdd5dd083df081.mp3"
+      ]
+    },
+    {
+      "text": "51 − 17 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a0e3fdd45bbb5a6f.mp3"
+      ]
+    },
+    {
+      "text": "34",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-55c4582ebfb2b2ff.mp3"
+      ]
+    },
+    {
+      "text": "44",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fa8a0a4f1fb4f023.mp3"
+      ]
+    },
+    {
+      "text": "24",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c5ef19b704258bb4.mp3"
+      ]
+    },
+    {
+      "text": "80 − 35 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de63c7d65d4a8543.mp3"
+      ]
+    },
+    {
+      "text": "35",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-subtraction-with-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-70754688c9cb34c5.mp3"
+      ]
+    },
+    {
+      "text": "إِحَاطَةُ الأَعْدَادِ: بَيْنَ … وَ …",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d14a4d1587eeb434.mp3"
+      ]
+    },
+    {
+      "text": "إحاطة عدد بأصغر وأكبر عشرة (أو مئة) محيطتين.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a34c7e314dfb9ec5.mp3"
+      ]
+    },
+    {
+      "text": "العدد 47 على الشريط: ما أقرب عشرة قبله؟ وما أقرب عشرة بعده؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c8dd64c378edcb1a.mp3"
+      ]
+    },
+    {
+      "text": "يحيط التلميذ عدداً بعشرتين متتاليتين أو بمئتين، ويرتّب الأعداد على الشريط.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f81616d37905417f.mp3"
+      ]
+    },
+    {
+      "text": "الإحاطة تعني وضع العدد بين جارين دائريين: عشرات أو مئات. هذا يساعدنا على التقدير والمقارنة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ab9cd363417b430.mp3"
+      ]
+    },
+    {
+      "text": "الإِحَاطَةُ بِالعَشَرَاتِ: نبحث عن العشرة التي قبل العدد مباشرة والعشرة التي بعده مباشرة. 47 بين 40 و 50.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b7e12669af5ea45e.mp3"
+      ]
+    },
+    {
+      "text": "الإِحَاطَةُ بِالمِئَاتِ: 347 بين 300 و 400.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ece74e4167a2b4bb.mp3"
+      ]
+    },
+    {
+      "text": "السَّابِقُ = العدد − 1. التَّالِي = العدد + 1.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebeac6c31c92e5b0.mp3"
+      ]
+    },
+    {
+      "text": "عَلَى الشَّرِيطِ: كلما اتجهنا يميناً زاد العدد.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f8cfcbb41cc6ec4a.mp3"
+      ]
+    },
+    {
+      "text": "الإِحَاطَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-400ce792e2299bf3.mp3"
+      ]
+    },
+    {
+      "text": "العَشَرَةُ المُغْلَقَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e098909a2634c79e.mp3"
+      ]
+    },
+    {
+      "text": "الأصغر يساراً دائماً: 40 < 47 < 50.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0dea2969726888ca.mp3"
+      ]
+    },
+    {
+      "text": "أحصر العدد بين عشرتين أو مئتين متتاليتين، الأصغر يساراً.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1f6743fd1182bb1e.mp3"
+      ]
+    },
+    {
+      "text": "أكمل: 40 < 47 < …",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-frame"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e265c8b91e8d9580.mp3"
+      ]
+    },
+    {
+      "text": "أحِط 215 بالمئات.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-frame"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7dacabacd1a44147.mp3"
+      ]
+    },
+    {
+      "text": "ما الإحاطة الصحيحة لـ 36؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-frame"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-048885cebcb6bcab.mp3"
+      ]
+    },
+    {
+      "text": "اختر الإحاطة الصحيحة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e916b5cbb9c3da7.mp3"
+      ]
+    },
+    {
+      "text": "81",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7be29c4f5cfb1af6.mp3"
+      ]
+    },
+    {
+      "text": "80 < 81 < 90",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-92273fd9025e9d54.mp3"
+      ]
+    },
+    {
+      "text": "70 < 81 < 80",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d9fe67b6f722d05d.mp3"
+      ]
+    },
+    {
+      "text": "640",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d0ea032c2d80b720.mp3"
+      ]
+    },
+    {
+      "text": "600 < 640 < 700",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4126d607be5214f7.mp3"
+      ]
+    },
+    {
+      "text": "640 < 600 < 700",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t2-number-framing",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-808116719210f0c0.mp3"
+      ]
+    },
+    {
+      "text": "الزَّاوِيَةُ القَائِمَةُ وَالمِزْوَاةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ec8a4e1d257d3f0.mp3"
+      ]
+    },
+    {
+      "text": "تمييز الزاوية القائمة واستعمال المزواة للتحقق منها.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dbb49f63c646c057.mp3"
+      ]
+    },
+    {
+      "text": "انظر إلى ركن كراسك ثم إلى ركن بلاطة في الأرض: هل هما متشابهان؟ هذا الركن المستقيم يسمى «زاوية قائمة».",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-32984bb75cb37369.mp3"
+      ]
+    },
+    {
+      "text": "يتعرّف التلميذ على الزاوية القائمة في المربع والمستطيل، ويتحقق منها بالمزواة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e25b51600a7cdcf6.mp3"
+      ]
+    },
+    {
+      "text": "قبل رسم المستقيمات في السنة الثالثة ابتدائي، نتعلّم رؤية الركن القائم في الأشياء من حولنا والتحقق بالمزواة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0b8e2dbaebb1e8cc.mp3"
+      ]
+    },
+    {
+      "text": "الزَّاوِيَةُ القَائِمَةُ: ركن مربع تماماً، مثل ركن الورقة أو البلاط.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3e8f56b47a032f01.mp3"
+      ]
+    },
+    {
+      "text": "المُرَبَّعُ وَالمُسْتَطِيلُ لَهُمَا 4 زَوَايَا قَائِمَة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-df1ec9299216cdf8.mp3"
+      ]
+    },
+    {
+      "text": "المِزْوَاةُ: أداة على شكل مثلث قائم نضعها على الركن: إن انطبقت فالزاوية قائمة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c85117f5b9c8700d.mp3"
+      ]
+    },
+    {
+      "text": "الدَّائِرَةُ لَيْسَ لَهَا زَاوِيَةٌ. المُثَلَّثُ قَدْ يَكُونُ فِيهِ زَاوِيَةٌ قَائِمَةٌ وَاحِدَةٌ أَوْ لَا.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4f3654d8792edf17.mp3"
+      ]
+    },
+    {
+      "text": "الزَّاوِيَةُ القَائِمَةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d718ce104a0d60d8.mp3"
+      ]
+    },
+    {
+      "text": "المِزْوَاةُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-28e61ca459880caf.mp3"
+      ]
+    },
+    {
+      "text": "نتحقق بالمزواة: كثير من الأركان أوسع أو أضيق.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95604036afe21322.mp3"
+      ]
+    },
+    {
+      "text": "الزاوية القائمة = ركن المربع. المزواة تتحقق منها. المربع والمستطيل فيهما 4.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-38e7a70b3a0f9692.mp3"
+      ]
+    },
+    {
+      "text": "أي شكل له 4 زوايا قائمة؟ المربع أم الدائرة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-rightangle"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ab2c98bbc128f61.mp3"
+      ]
+    },
+    {
+      "text": "بماذا نتحقق أن الركن قائم؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-rightangle"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cc0aa3fc90352dec.mp3"
+      ]
+    },
+    {
+      "text": "كم زاوية قائمة للمستطيل؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-rightangle"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebf968b541d1bef6.mp3"
+      ]
+    },
+    {
+      "text": "صنّف الركن!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-96f55979f2c6fe9c.mp3"
+      ]
+    },
+    {
+      "text": "ركن الدفتر",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7df7c7bff600906.mp3"
+      ]
+    },
+    {
+      "text": "زَاوِيَةٌ قَائِمَةٌ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ac696beb718ba476.mp3"
+      ]
+    },
+    {
+      "text": "لَيْسَتْ قَائِمَةً",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-35a572b18fec1b0a.mp3"
+      ]
+    },
+    {
+      "text": "فتحة البيتزا المثلثة الحادة",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-right-angle",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7913c6c64fe4b574.mp3"
+      ]
+    },
+    {
+      "text": "أَقِيسُ بِالمِتْرِ وَالسَّنْتِيمِتْرِ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-67230536e3dc1261.mp3"
+      ]
+    },
+    {
+      "text": "التمييز بين المتر والسنتيمتر واستعمال كل واحد في الموقف المناسب.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-21fc1d389ad804da.mp3"
+      ]
+    },
+    {
+      "text": "مسطرتك طولها 20 سم. هل تكفي لقياس طول الباب؟ ماذا نستعمل إذن؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-623009ab2a803596.mp3"
+      ]
+    },
+    {
+      "text": "بعد المسطرة بالسم، يتعرّف التلميذ على المتر: 1 م = 100 سم، ويختار الوحدة المناسبة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ccc40ec4dd39ba59.mp3"
+      ]
+    },
+    {
+      "text": "المسطرة تقيس السم. شريط القياس أو المتر الخشبي يقيس الأطوال الكبيرة. الوحدتان تتعاونان.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b2056d19a8edc500.mp3"
+      ]
+    },
+    {
+      "text": "السَّنْتِيمِتْرُ (سم): وحدة صغيرة للقلم، الممحاة، الكراس.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-354c8ba3f2c90b0e.mp3"
+      ]
+    },
+    {
+      "text": "المِتْرُ (م): وحدة أكبر لطول القسم، الباب، الطفل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fb4009cf8cf91e03.mp3"
+      ]
+    },
+    {
+      "text": "1 م = 100 سم. متران = 200 سم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e85089f21b9289a1.mp3"
+      ]
+    },
+    {
+      "text": "نختار الوحدة: إن كان الشيء أقصر من المسطرة غالباً نستخدم السم، وإن كان أطول بكثير نستخدم المتر.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2efbfaeb853f3777.mp3"
+      ]
+    },
+    {
+      "text": "المِتْرُ (م)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3e0017372a030609.mp3"
+      ]
+    },
+    {
+      "text": "8 م أوضح من 800 سم لطول القسم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d6119b0d2395da8e.mp3"
+      ]
+    },
+    {
+      "text": "القلم → سم. الباب والقسم → م. 1 م = 100 سم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b770a22d7943cb67.mp3"
+      ]
+    },
+    {
+      "text": "كم سنتيمتراً في متر واحد؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-meter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-467df23496f1738a.mp3"
+      ]
+    },
+    {
+      "text": "هل نقيس طول الملعب بالسم أم بالمتر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-meter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-632c0b4225a0f39a.mp3"
+      ]
+    },
+    {
+      "text": "3 م تساوي كم سم؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-meter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a45810cf8bc4a2ff.mp3"
+      ]
+    },
+    {
+      "text": "اختر الوحدة المناسبة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-28d5b7ad6d70c1cd.mp3"
+      ]
+    },
+    {
+      "text": "طول الممحاة",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ba385d3d0b64e037.mp3"
+      ]
+    },
+    {
+      "text": "سم",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a1d5c4cbe9413d57.mp3"
+      ]
+    },
+    {
+      "text": "م",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-78621b941841f9b1.mp3"
+      ]
+    },
+    {
+      "text": "طول السبورة",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-meter-cm",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-31f6ae5cfe9f0c3a.mp3"
+      ]
+    },
+    {
+      "text": "الكُتْلَةُ: الغِرَامُ وَالكِيلُوغِرَامُ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ee3c48f067d29b7c.mp3"
+      ]
+    },
+    {
+      "text": "التمييز بين الغرام والكيلوغرام وربط كل وحدة بأشياء مألوفة.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-defd24cbf042898c.mp3"
+      ]
+    },
+    {
+      "text": "كيس سكر وزنه 1 كغ (kg/كيلوغرام)، وعلبة بسكويت وزنها 200 غ (g/غرام). أيهما وحدة أكبر؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53eb37801de15e38.mp3"
+      ]
+    },
+    {
+      "text": "بعد مقارنة أثقل/أخف، يتعرّف التلميذ على وحدتي الكتلة: غرام للخفيف، كيلوغرام للثقيل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db37eaeea527949a.mp3"
+      ]
+    },
+    {
+      "text": "اليد تقول «أثقل». الميزان يقول رقماً. نتعلّم قراءته بالغرام أو بالكيلوغرام حسب الشيء.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0d1ea2f56c9db6e7.mp3"
+      ]
+    },
+    {
+      "text": "الغِرَامُ (غ): وحدة صغيرة: رسالة، بيضة، قطعة شوكولا.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9b88447e505ff8ae.mp3"
+      ]
+    },
+    {
+      "text": "الكِيلُوغِرَامُ (كغ): وحدة أكبر: كيس سكر، كيس دقيق، وكتلة الطفل تقال بالكيلوغرام.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea538f1afdb77941.mp3"
+      ]
+    },
+    {
+      "text": "الكيلوغرام أكبر بكثير من الغرام: كيس سكر 1 كغ يساوي كيسين من 500 غ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-40d97e5d8e26d664.mp3"
+      ]
+    },
+    {
+      "text": "المِيزَانُ يخبرنا بالكتلة، لا بالحجم: علبة كبيرة فارغة أخف من حجر صغير.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d4e1416e591cb65f.mp3"
+      ]
+    },
+    {
+      "text": "الغِرَامُ (غ)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-89164ffb80002b83.mp3"
+      ]
+    },
+    {
+      "text": "الكِيلُوغِرَامُ (كغ)",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-19bab578c22d6272.mp3"
+      ]
+    },
+    {
+      "text": "السم للطول، الكغ والغرام للثقل.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-42be4f98f84bc05d.mp3"
+      ]
+    },
+    {
+      "text": "خفيف وصغير → غرام. ثقيل (سكر، طفل) → كيلوغرام. 1 كغ = 500 غ + 500 غ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d5f12ac85631a45.mp3"
+      ]
+    },
+    {
+      "text": "أيهما أثقل: كيس سكر كتلته 1 كغ أم علبة بسكويت كتلتها 200 غ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-kg"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-94d6a2e69d57f2ff.mp3"
+      ]
+    },
+    {
+      "text": "نزن كيس البطاطا عادة بـ: غ أم كغ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-kg"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-de464e27a916d802.mp3"
+      ]
+    },
+    {
+      "text": "أي جملة صحيحة؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-kg"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-48729d2c070f2889.mp3"
+      ]
+    },
+    {
+      "text": "اختر الوحدة!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e9759c86741080c7.mp3"
+      ]
+    },
+    {
+      "text": "حبة دواء",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6bc6c712085f57a5.mp3"
+      ]
+    },
+    {
+      "text": "غ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d3315b04e022e72f.mp3"
+      ]
+    },
+    {
+      "text": "كغ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a1cb7fe9606ec7e.mp3"
+      ]
+    },
+    {
+      "text": "وزن الطفل",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-gram-kg",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-606618ebbdec5031.mp3"
+      ]
+    },
+    {
+      "text": "الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-96dc325ad18cb330.mp3"
+      ]
+    },
+    {
+      "text": "ربط مجموعات متساوية بجمع مكرر، وقراءة صيغة بسيطة مثل 3 × 3 = 9.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-97f4a8ec16157df1.mp3"
+      ]
+    },
+    {
+      "text": "في كل صف 4 طاولات، وفي 3 صفوف. كم طاولة؟ نعد: 4 + 4 + 4 = 12.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ddd710038f215fc6.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ أن الضرب هو جمع متكرر لنفس العدد (مجموعات متساوية) — تمهيداً لحفظ الجداول.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4a661d1b1e51d90a.mp3"
+      ]
+    },
+    {
+      "text": "الضرب ليس حفظاً فقط في السنة الثانية ابتدائي: نعد مجموعات متساوية ونجمع. مثل صفوف الكراسي في القسم.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fe47ffac4619ec85.mp3"
+      ]
+    },
+    {
+      "text": "الضَّرْبُ في السَّنَةِ الثَّانِيَةِ ابْتِدَائِيّ = جَمْعُ نَفْسِ العَدَدِ عِدَّةَ مَرَّاتٍ (جَمْعٌ مُكَرَّرٌ).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f50fde683945b631.mp3"
+      ]
+    },
+    {
+      "text": "مِثَال: 3 × 4 = 3 + 3 + 3 + 3 = 12 (أربع مجموعات من 3).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-22cee31ddb2c3e61.mp3"
+      ]
+    },
+    {
+      "text": "مِثَال: 5 × 2 = 5 + 5 = 10 (مجموعتان من 5).",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf6b40bae5d536eb.mp3"
+      ]
+    },
+    {
+      "text": "نَتَعَلَّمُ فِي هَذِهِ السَّنَةِ جَدَاوِلَ الضَّرْبِ فِي 2 وَ3 وَ4 وَ5 وَ10، وَبَاقِي الجَدَاوِلِ تُدْرَسُ فِي السَّنَةِ الثَّالِثَةِ ابْتِدَائِيّ.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed2570f60274f9c4.mp3"
+      ]
+    },
+    {
+      "text": "مَجْمُوعَةٌ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-15cf5cefca8ae37d.mp3"
+      ]
+    },
+    {
+      "text": "جَمْعٌ مُكَرَّرٌ",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fa54feaf9bbaf6c1.mp3"
+      ]
+    },
+    {
+      "text": "عَلامَةُ ×",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e03d534b30914b82.mp3"
+      ]
+    },
+    {
+      "text": "في 3 × 4 نكرر العدد 3 أربع مرات، ولا نجمع 3 + 4.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b012bfe4cb7e809a.mp3"
+      ]
+    },
+    {
+      "text": "عد المجموعات أولاً، ثم اجمع.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0e9331da819593ea.mp3"
+      ]
+    },
+    {
+      "text": "الضرب = جمع مكرر لنفس العدد. 3 × 4 = 3 + 3 + 3 + 3.",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d1cc600aff88833d.mp3"
+      ]
+    },
+    {
+      "text": "3 × 2 = 3 + … = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex1-math2ap-mult"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-62b6495623af6b86.mp3"
+      ]
+    },
+    {
+      "text": "4 × 3 = 4 + 4 + 4 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "practice",
+          "key": "practice-ex2-math2ap-mult"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-742de2b4cebec620.mp3"
+      ]
+    },
+    {
+      "text": "3 × 4 تعني:",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q1-math2ap-mult"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-74aa36d649510226.mp3"
+      ]
+    },
+    {
+      "text": "اختر ناتج الجمع المكرر!",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-423f96991a21bae3.mp3"
+      ]
+    },
+    {
+      "text": "2 × 5 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea3cd5e3971bfdd5.mp3"
+      ]
+    },
+    {
+      "text": "5 × 2 = ؟",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-08d94bac61256b96.mp3"
+      ]
+    },
+    {
+      "text": "15",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t3-multiplication-concept",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-63aac2e7e25f3b74.mp3"
       ]
     },
     {
