@@ -22,7 +22,7 @@ test('a student can navigate to a lesson and complete its quiz', async ({ page }
 
   // Not anchored: the step-pastille button's accessible name also concatenates an icon and a step
   // index around the label, so only a substring match is reliable here.
-  await page.getByRole('button', { name: new RegExp(`الاختبار التفاعلي \\(${lesson.quiz!.length}\\)`) }).click();
+  await page.getByRole('button', { name: new RegExp(`أختبر نفسي \\(${lesson.quiz!.length}\\)`) }).click();
 
   for (const question of lesson.quiz!) {
     const correctOption = question.options.find((o) => o.isCorrect)!;
@@ -32,5 +32,5 @@ test('a student can navigate to a lesson and complete its quiz', async ({ page }
   }
 
   await expect(page.getByText('أحسنت! أجبت عن كل الأسئلة.')).toBeVisible();
-  await expect(page.getByText('100%')).toBeVisible();
+  await expect(page.getByText(`${lesson.quiz!.length}/${lesson.quiz!.length}`, { exact: true })).toBeVisible();
 });
