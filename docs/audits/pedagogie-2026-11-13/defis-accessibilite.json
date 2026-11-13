@@ -1,0 +1,78 @@
+{
+  "scope": "1AP challenge active on a 390px viewport",
+  "observationNotDesiredBehaviour": true,
+  "violations": [
+    {
+      "id": "nested-interactive",
+      "impact": "serious",
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+      "help": "Interactive controls must not be nested",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/nested-interactive?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<button type=\"button\" data-tap-speak=\"q-0-opt-0\" aria-label=\"استمع\" aria-pressed=\"false\" class=\"w-12 h-12 text-xl shrink-0 rounded-full flex items-center justify-center cursor-pointer shadow-sm bg-amber-200 text-slate-900 hover:bg-amber-300\" tabindex=\"0\"><span aria-hidden=\"true\">🔊</span></button>",
+                  "target": [
+                    "button[data-tap-speak=\"q-0-opt-0\"]"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button class=\"p-4 rounded-2xl border text-right text-sm font-bold transition-all cursor-pointer flex items-center justify-between gap-2 shadow-xs bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)] hover:border-emerald-300\">",
+          "target": [
+            ".p-4.text-right.bg-\\[var\\(--app-card-subtle\\)\\]:nth-child(1)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<button type=\"button\" data-tap-speak=\"q-0-opt-1\" aria-label=\"استمع\" aria-pressed=\"false\" class=\"w-12 h-12 text-xl shrink-0 rounded-full flex items-center justify-center cursor-pointer shadow-sm bg-amber-200 text-slate-900 hover:bg-amber-300\" tabindex=\"0\"><span aria-hidden=\"true\">🔊</span></button>",
+                  "target": [
+                    "button[data-tap-speak=\"q-0-opt-1\"]"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button class=\"p-4 rounded-2xl border text-right text-sm font-bold transition-all cursor-pointer flex items-center justify-between gap-2 shadow-xs bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)] hover:border-emerald-300\">",
+          "target": [
+            ".p-4.text-right.bg-\\[var\\(--app-card-subtle\\)\\]:nth-child(2)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+        }
+      ]
+    }
+  ]
+}
