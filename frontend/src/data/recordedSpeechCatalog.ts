@@ -12817,6 +12817,878 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-08d94bac61256b96.mp3",
       "durationMs": 2850
     },
+    "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-30302fde4a327c92.mp3",
+      "durationMs": 4700
+    },
+    "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-46e3e83a92897a24.mp3",
+      "durationMs": 6550
+    },
+    "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-c2d7a8d59e018e23.mp3",
+      "durationMs": 4700
+    },
+    "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d90ea1fce3ccb14b.mp3",
+      "durationMs": 7500
+    },
+    "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-ed3f82011d6261ab.mp3",
+      "durationMs": 5950
+    },
+    "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-381eafca11bf6d22.mp3",
+      "durationMs": 4400
+    },
+    "الهَوَاءُ مِنْ حَوْلِنَا": {
+      "src": "/sounds/preschool/ar/course-cedar-d0cb943c8aa5769b.mp3",
+      "durationMs": 2550
+    },
+    "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-a6617c8dcb4e2032.mp3",
+      "durationMs": 5900
+    },
+    "التعرف على مظاهر النمو عند الطفل، وإدراك أهمية الفطور الصباحي والغذاء المتوازن.": {
+      "src": "/sounds/preschool/ar/course-cedar-a84575a813d8083c.mp3",
+      "durationMs": 7800
+    },
+    "قارن بين حذائك القديم وحذائك الحالي: هل أصبح صغيراً عليك؟ لماذا برأيك؟": {
+      "src": "/sounds/preschool/ar/course-cedar-428e164ecb427e24.mp3",
+      "durationMs": 8350
+    },
+    "يكتشف التلميذ علامات نموه (يكبر طوله ووزنه) وأهمية تناول وجبة فطور متوازنة قبل الذهاب إلى المدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-e21671b719675908.mp3",
+      "durationMs": 11400
+    },
+    "جسمي يتغير كل سنة: أصبح أطول وأثقل قليلاً، وهذا أمر طبيعي وجميل. ولكي أنمو بشكل سليم، يجب أن آكل غذاءً متنوعاً ومتوازناً كل يوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-2808e16f28b88da1.mp3",
+      "durationMs": 15200
+    },
+    "أُنَمُو وَأَكْبَرُ: يزداد طولي ووزني تدريجياً كل سنة، وتتبدل أسناني اللبنية بأسنان دائمة أقوى.": {
+      "src": "/sounds/preschool/ar/course-cedar-b6503ae4bf84cf0a.mp3",
+      "durationMs": 10050
+    },
+    "النُّمُوُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-d9af65cc2dd69aa3.mp3",
+      "durationMs": 1600
+    },
+    "الفُطُورُ الصَّبَاحِيُّ ضَرُورِيٌّ: يمنحني الطاقة اللازمة للتركيز واللعب طيلة الصباح في المدرسة.": {
+      "src": "/sounds/preschool/ar/course-cedar-85473c8055e127e4.mp3",
+      "durationMs": 8400
+    },
+    "الغِذَاءُ المُتَوَازِنُ يشمل: الحليب ومشتقاته، الخضر والفواكه، اللحوم والبيض، والخبز والحبوب — كلٌّ بكمية مناسبة.": {
+      "src": "/sounds/preschool/ar/course-cedar-7f833b7fc3e3614a.mp3",
+      "durationMs": 11750
+    },
+    "الفُطُورُ": {
+      "src": "/sounds/preschool/ar/course-cedar-db309ffc6f0edc46.mp3",
+      "durationMs": 1800
+    },
+    "الغِذَاءُ المُتَوَازِنُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5733fb918248649c.mp3",
+      "durationMs": 2200
+    },
+    "تخطي الفطور يجعل الجسم يفتقر للطاقة، فيشعر التلميذ بالتعب وصعوبة التركيز في الدرس.": {
+      "src": "/sounds/preschool/ar/course-cedar-4ffade5d954e6d1b.mp3",
+      "durationMs": 8900
+    },
+    "الفطور المتوازن يحتاج حليباً أو بيضاً أو خبزاً مع فاكهة، وليس الحلويات فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-4772f278b3c2ad97.mp3",
+      "durationMs": 8200
+    },
+    "ما الوجبة الأولى التي نتناولها في الصباح؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8313fc1e59508e52.mp3",
+      "durationMs": 4500
+    },
+    "أَنْمُو كل سنة (طولاً ووزناً)، وأحتاج فطوراً صباحياً متوازناً (حليب، خبز، فاكهة) ليمنحني الطاقة والنمو السليم.": {
+      "src": "/sounds/preschool/ar/course-cedar-9bb0bf27e4a6b6bd.mp3",
+      "durationMs": 11150
+    },
+    "اذكر عنصرين من عناصر الفطور المتوازن.": {
+      "src": "/sounds/preschool/ar/course-cedar-4591ae497c1c6522.mp3",
+      "durationMs": 4550
+    },
+    "ماذا يحدث لجسمي وأنا أكبر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f25ae00cf1adb7c5.mp3",
+      "durationMs": 5000
+    },
+    "غَيْرُ مُنَاسِبٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-b27e4c5cd5269e3a.mp3",
+      "durationMs": 2050
+    },
+    "كوب حليب": {
+      "src": "/sounds/preschool/ar/course-cedar-8c66add73e6596a5.mp3",
+      "durationMs": 2000
+    },
+    "مُنَاسِبٌ لِلْفُطُورِ": {
+      "src": "/sounds/preschool/ar/course-cedar-145134bc41eb931c.mp3",
+      "durationMs": 2350
+    },
+    "اختر ما يجب وضعه في صندوق الفطور المتوازن!": {
+      "src": "/sounds/preschool/ar/course-cedar-71e46e9cf027a8fe.mp3",
+      "durationMs": 4350
+    },
+    "قطعة شوكولاتة فقط": {
+      "src": "/sounds/preschool/ar/course-cedar-a1112e2a01feee06.mp3",
+      "durationMs": 2650
+    },
+    "غَيْرُ كَافٍ وَحْدَهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-925e0aa65624bc50.mp3",
+      "durationMs": 2700
+    },
+    "لماذا ننصحك دائماً بغسل يديك قبل تناول الطعام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bbd47ab9b4ad42c5.mp3",
+      "durationMs": 6300
+    },
+    "تطبيق قواعد النظافة الشخصية اليومية وربطها بالوقاية من المرض.": {
+      "src": "/sounds/preschool/ar/course-cedar-24697b477e89c3d5.mp3",
+      "durationMs": 7050
+    },
+    "أَغْسِلُ يَدَيَّ بِالمَاءِ وَالصَّابُونِ: قبل الأكل، بعد استعمال الحمام، وبعد اللعب في الخارج.": {
+      "src": "/sounds/preschool/ar/course-cedar-c66c18eb70d6bc26.mp3",
+      "durationMs": 8300
+    },
+    "أُنَظِّفُ أَسْنَانِي بِالفُرْشَاةِ مرتين يومياً على الأقل: صباحاً ومساءً قبل النوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-bf61447e1f186165.mp3",
+      "durationMs": 8100
+    },
+    "يتعلم التلميذ قواعد النظافة الأساسية (غسل اليدين، تنظيف الأسنان، الاستحمام) وأهميتها في الوقاية من الأمراض.": {
+      "src": "/sounds/preschool/ar/course-cedar-c4b8ee3040ff5fa7.mp3",
+      "durationMs": 12400
+    },
+    "جسمي أمانة يجب أن أعتني بها. النظافة اليومية البسيطة تحميني من جراثيم صغيرة جداً لا أراها بعيني، لكنها قد تسبب المرض.": {
+      "src": "/sounds/preschool/ar/course-cedar-8be2ea484eb25983.mp3",
+      "durationMs": 12400
+    },
+    "الجَرَاثِيمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e03ee3780f22e4b4.mp3",
+      "durationMs": 1900
+    },
+    "النَّظَافَةُ الشَّخْصِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d96dea08c536e59a.mp3",
+      "durationMs": 2650
+    },
+    "الصابون ضروري لأنه يزيل الجراثيم بفعالية أكبر من الماء وحده.": {
+      "src": "/sounds/preschool/ar/course-cedar-4272c9659e6f6398.mp3",
+      "durationMs": 7000
+    },
+    "الجَرَاثِيمُ صَغِيرَةٌ جِدّاً لا نراها بالعين، لكنها قد تسبب المرض إذا لم نتنظف.": {
+      "src": "/sounds/preschool/ar/course-cedar-16662238de7b8449.mp3",
+      "durationMs": 9700
+    },
+    "تنظيف الأسنان مساءً ضروري لإزالة بقايا الطعام التي تتراكم طوال اليوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-8613c0ee68342eb0.mp3",
+      "durationMs": 7750
+    },
+    "كم مرة يجب تنظيف الأسنان في اليوم على الأقل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b5ff90fe79da5ecd.mp3",
+      "durationMs": 4400
+    },
+    "بماذا نغسل أيدينا لإزالة الجراثيم بفعالية؟": {
+      "src": "/sounds/preschool/ar/course-cedar-397602557ea6868f.mp3",
+      "durationMs": 5500
+    },
+    "لماذا نغسل أيدينا قبل الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b00b31df09a22bb5.mp3",
+      "durationMs": 4550
+    },
+    "أغسل يديّ بالماء والصابون قبل الأكل وبعد الحمام واللعب، وأنظف أسناني صباحاً ومساءً — هذا يحميني من الجراثيم والمرض.": {
+      "src": "/sounds/preschool/ar/course-cedar-2b3ce2892fb8ac53.mp3",
+      "durationMs": 12050
+    },
+    "اختر التصرف الصحيح في كل موقف!": {
+      "src": "/sounds/preschool/ar/course-cedar-c2930da78939a8fc.mp3",
+      "durationMs": 3700
+    },
+    "قبل تناول وجبة الغداء": {
+      "src": "/sounds/preschool/ar/course-cedar-429c9b3a8c9105c4.mp3",
+      "durationMs": 2800
+    },
+    "أَغْسِلُ يَدَيَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-b8ecc8f5ef13f7ff.mp3",
+      "durationMs": 2150
+    },
+    "آكُلُ مُبَاشَرَةً": {
+      "src": "/sounds/preschool/ar/course-cedar-26789b02861f3a31.mp3",
+      "durationMs": 2550
+    },
+    "اجرِ في الساحة لمدة دقيقة واحدة، ثم ضع يدك على صدرك. ماذا تلاحظ بالمقارنة مع وقت الجلوس الهادئ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a926683c4b5137ee.mp3",
+      "durationMs": 10150
+    },
+    "يلاحظ التلميذ أن تنفسه ونبض قلبه يتسارعان عند الجري أو اللعب الرياضي، ويعودان إلى وضعهما الهادئ بعد الراحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-1b59d2d5fe3eedb2.mp3",
+      "durationMs": 12550
+    },
+    "ملاحظة تسارع التنفس ونبض القلب أثناء الجهد العضلي، وإدراك عودتهما للوضع الطبيعي بعد الراحة.": {
+      "src": "/sounds/preschool/ar/course-cedar-6ca7bf99a46a2ee6.mp3",
+      "durationMs": 11250
+    },
+    "جسمي يعمل كآلة ذكية: عندما ألعب وأجري، يحتاج جسمي طاقة أكبر، فيسرّع قلبي ضرباته ورئتاي تنفسهما لإيصال الهواء والطاقة لعضلاتي.": {
+      "src": "/sounds/preschool/ar/course-cedar-d52ce9ec80b9a085.mp3",
+      "durationMs": 15950
+    },
+    "التَّنَفُّسُ: أخذ الهواء عبر الأنف أو الفم إلى الرئتين ثم إخراجه، وهذا يحدث طوال الوقت دون أن نفكر فيه.": {
+      "src": "/sounds/preschool/ar/course-cedar-d88bb4121981be67.mp3",
+      "durationMs": 11600
+    },
+    "بَعْدَ الرَّاحَةِ: يعود تنفسي ونبض قلبي تدريجياً إلى وتيرتهما الهادئة الطبيعية.": {
+      "src": "/sounds/preschool/ar/course-cedar-7cc5c55c2fe008f4.mp3",
+      "durationMs": 9650
+    },
+    "عِنْدَ الجَهْدِ العَضَلِيِّ (الجري، القفز، اللعب النشيط): يتسارع تنفسي ويصبح أعمق، ويزداد نبض قلبي لأن عضلاتي تحتاج طاقة وهواء أكثر.": {
+      "src": "/sounds/preschool/ar/course-cedar-9dd95a11763efaea.mp3",
+      "durationMs": 14200
+    },
+    "نَبَضَاتُ القَلْبِ": {
+      "src": "/sounds/preschool/ar/course-cedar-98755079722e2923.mp3",
+      "durationMs": 2400
+    },
+    "الجَهْدُ العَضَلِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-9fbfc4ab6d67a394.mp3",
+      "durationMs": 2750
+    },
+    "يُمْكِنُنِي الإِحْسَاسُ بِنَبَضَاتِ قَلْبِي بِوَضْعِ يَدِي عَلَى صَدْرِي أَوْ عَلَى رَسْغِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-856af05fca707ba7.mp3",
+      "durationMs": 5950
+    },
+    "ماذا يحدث لتنفسي عندما أجري بسرعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c2cea4283af1ba31.mp3",
+      "durationMs": 4300
+    },
+    "ماذا يحدث لنبض قلبي ونفسي بعد فترة راحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6a2b093b71bf61b9.mp3",
+      "durationMs": 4700
+    },
+    "هذا أمر طبيعي وصحي تماماً، فهو يدل على أن الجسم يعمل بكفاءة لتزويد العضلات بالطاقة.": {
+      "src": "/sounds/preschool/ar/course-cedar-5ec123f94ba17863.mp3",
+      "durationMs": 9350
+    },
+    "أثناء الجهد العضلي (الجري، اللعب) يتسارع تنفسي ونبض قلبي، وبعد الراحة يعودان هادئين تدريجياً.": {
+      "src": "/sounds/preschool/ar/course-cedar-5fe5dc5c35190604.mp3",
+      "durationMs": 11450
+    },
+    "لماذا يتسارع نبض قلبي أثناء الجري؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ab0d489ac22b8041.mp3",
+      "durationMs": 3800
+    },
+    "بعد القفز على الحبل لمدة دقيقتين": {
+      "src": "/sounds/preschool/ar/course-cedar-35a8c55c27094b1e.mp3",
+      "durationMs": 4400
+    },
+    "اختر ما يحدث لجسمك في كل موقف!": {
+      "src": "/sounds/preschool/ar/course-cedar-6eae55cac60efa9a.mp3",
+      "durationMs": 3650
+    },
+    "نَبَضِي وَتَنَفُّسِي يَتَسَارَعَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2275ec31bacae918.mp3",
+      "durationMs": 3900
+    },
+    "لَا يَتَغَيَّرُ شَيْءٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ff73bd920fd9c59d.mp3",
+      "durationMs": 3300
+    },
+    "ملاحظة مراحل نمو نبتة بسيطة، وإدراك حاجتها للماء والضوء.": {
+      "src": "/sounds/preschool/ar/course-cedar-b677c9f3acd35204.mp3",
+      "durationMs": 6550
+    },
+    "إذا نسينا سقي نبتة في المنزل لمدة أسبوع، ماذا سيحدث لها في رأيك؟": {
+      "src": "/sounds/preschool/ar/course-cedar-696cd2fd897dc681.mp3",
+      "durationMs": 7950
+    },
+    "يكتشف التلميذ أن النباتات كائنات حية تنمو وتحتاج إلى الماء والضوء لتعيش، من خلال ملاحظة نبتة حقيقية.": {
+      "src": "/sounds/preschool/ar/course-cedar-961d02ebd4d7421e.mp3",
+      "durationMs": 11950
+    },
+    "النباتات مثلنا كائنات حية: تولد وتنمو وتحتاج إلى الغذاء لتعيش. لكن غذاءها يأتي من الماء وضوء الشمس بدل الطعام الذي نأكله نحن.": {
+      "src": "/sounds/preschool/ar/course-cedar-81e7ba07cc52f68d.mp3",
+      "durationMs": 14050
+    },
+    "الذُّبُولُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b9b869fd1021c755.mp3",
+      "durationMs": 1900
+    },
+    "يَحْتَاجُ النَّبَاتُ إِلَى المَاءِ لِيَبْقَى حَيّاً وطرياً؛ بدونه يذبل ويجف.": {
+      "src": "/sounds/preschool/ar/course-cedar-e45ee65c54b57505.mp3",
+      "durationMs": 7200
+    },
+    "النَّبَاتُ كَائِنٌ حَيٌّ: يولد من بذرة، ينمو، ثم يزهر ويثمر (عند بعض النباتات).": {
+      "src": "/sounds/preschool/ar/course-cedar-ba93f3aad080b38c.mp3",
+      "durationMs": 10450
+    },
+    "يَحْتَاجُ النَّبَاتُ إِلَى ضَوْءِ الشَّمْسِ لينمو بشكل سليم وأخضر اللون.": {
+      "src": "/sounds/preschool/ar/course-cedar-f820eb3708e781d9.mp3",
+      "durationMs": 6700
+    },
+    "النبات يحتاج أيضاً الماء وضوء الشمس، وليس التراب فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-0d5f46f4165d00d5.mp3",
+      "durationMs": 6350
+    },
+    "بعض النباتات تُزهر فقط دون أن تعطي ثماراً نأكلها، مثل الزهور الزينة.": {
+      "src": "/sounds/preschool/ar/course-cedar-f6d83c0cb7a15628.mp3",
+      "durationMs": 8700
+    },
+    "من أين تبدأ حياة نبتة جديدة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2c54a185284fa39f.mp3",
+      "durationMs": 3700
+    },
+    "اذكر شيئين تحتاجهما النبتة لتبقى حية.": {
+      "src": "/sounds/preschool/ar/course-cedar-ffa525a6fa03346d.mp3",
+      "durationMs": 4250
+    },
+    "لماذا تذبل النبتة إذا لم نسقها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b99413b68e70fdea.mp3",
+      "durationMs": 4200
+    },
+    "النبتة كائن حي: تنمو من بذرة، وتحتاج الماء وضوء الشمس لتبقى حية وخضراء. بدون ماء تذبل وتجف.": {
+      "src": "/sounds/preschool/ar/course-cedar-4e02fc94986067b5.mp3",
+      "durationMs": 11100
+    },
+    "نبتة ذبلت قرب النافذة. اقترح سببين وعلاجاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-53026f76c0ad3d4b.mp3",
+      "durationMs": 6100
+    },
+    "النبتة الخضراء تحتاج أساساً إلى:": {
+      "src": "/sounds/preschool/ar/course-cedar-645ebd45c1abe95e.mp3",
+      "durationMs": 3300
+    },
+    "أين تثبت النبتة غالباً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ea93f05ec1f9dcd9.mp3",
+      "durationMs": 3050
+    },
+    "أوراق النبات تساعد على:": {
+      "src": "/sounds/preschool/ar/course-cedar-c7e1d2b78489c91a.mp3",
+      "durationMs": 3300
+    },
+    "ماذا يحدث إن لم تُسق النبتة أسابيع؟": {
+      "src": "/sounds/preschool/ar/course-cedar-7100d89f4b95b927.mp3",
+      "durationMs": 4200
+    },
+    "نبتة في خزانة مغلقة بلا ضوء:": {
+      "src": "/sounds/preschool/ar/course-cedar-59bff6479ab1a9e6.mp3",
+      "durationMs": 4250
+    },
+    "ماء": {
+      "src": "/sounds/preschool/ar/course-cedar-52a8b6b88ec61e42.mp3",
+      "durationMs": 1200
+    },
+    "ضَرُورِيٌّ لِلنَّبَاتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2a72c1b445e3daad.mp3",
+      "durationMs": 3050
+    },
+    "اختر ما يحتاجه النبات ليبقى حياً بصحة جيدة!": {
+      "src": "/sounds/preschool/ar/course-cedar-3d45a583156cfba3.mp3",
+      "durationMs": 4900
+    },
+    "غَيْرُ مُهِمٍّ": {
+      "src": "/sounds/preschool/ar/course-cedar-3c3f6942073a5d45.mp3",
+      "durationMs": 1950
+    },
+    "ضوء الشمس": {
+      "src": "/sounds/preschool/ar/course-cedar-94ae2140db7833b3.mp3",
+      "durationMs": 1850
+    },
+    "هل يمكن أن يعيش الأسد في بيتنا مثل القطة؟ لماذا؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5a9744ad96000b4a.mp3",
+      "durationMs": 5800
+    },
+    "التمييز بين الحيوان الأليف والحيوان البري، وربط كل حيوان بصوته وغذائه المناسب.": {
+      "src": "/sounds/preschool/ar/course-cedar-beec5b11a138014d.mp3",
+      "durationMs": 8900
+    },
+    "يتعرف التلميذ على الفرق بين الحيوانات الأليفة (التي يربيها الإنسان) والحيوانات البرية، ويربط كل حيوان بصوته وغذائه.": {
+      "src": "/sounds/preschool/ar/course-cedar-0801d6607b1b9d1c.mp3",
+      "durationMs": 11100
+    },
+    "لِكُلِّ حَيَوَانٍ صَوْتٌ مُمَيَّزٌ: البقرة تخور، القطة تموء، الكلب ينبح، الأسد يزأر.": {
+      "src": "/sounds/preschool/ar/course-cedar-014b64bc4085e444.mp3",
+      "durationMs": 8750
+    },
+    "الحَيَوَانُ البَرِّيُّ: يعيش بعيداً عن الإنسان في الغابة أو الصحراء، مثل: الأسد، الذئب، الثعلب.": {
+      "src": "/sounds/preschool/ar/course-cedar-1d950a89c9a3100c.mp3",
+      "durationMs": 10100
+    },
+    "حولنا حيوانات كثيرة ومختلفة: بعضها يعيش معنا في بيوتنا ومزارعنا، وبعضها يعيش بعيداً في الغابات والصحاري بمفرده.": {
+      "src": "/sounds/preschool/ar/course-cedar-afe4c82faf2c37bf.mp3",
+      "durationMs": 12250
+    },
+    "الحَيَوَانُ الأَلِيفُ: يعيش قرب الإنسان ويعتني به الإنسان، مثل: القطة، الكلب، الدجاجة، الغنم.": {
+      "src": "/sounds/preschool/ar/course-cedar-a47f99ad8542dba3.mp3",
+      "durationMs": 10600
+    },
+    "الحَيَوَانُ البَرِّيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-f56c7dd4c8109902.mp3",
+      "durationMs": 2450
+    },
+    "الحَيَوَانُ الأَلِيفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1e859407f32143d5.mp3",
+      "durationMs": 2300
+    },
+    "ذكّر الطفل أن الكلب \"ينبح\" وهو أليف، أما الذئب فيعوي وهو بري.": {
+      "src": "/sounds/preschool/ar/course-cedar-0a5a8e6874219d40.mp3",
+      "durationMs": 7350
+    },
+    "الفراء لا يحدد إن كان الحيوان أليفاً أم برياً؛ الذئب مثلاً له فراء لكنه حيوان بري.": {
+      "src": "/sounds/preschool/ar/course-cedar-56cde78a697832c9.mp3",
+      "durationMs": 10800
+    },
+    "أي صوت يصدر عن القطة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6f44073d2f5acc32.mp3",
+      "durationMs": 3300
+    },
+    "الحيوان الأليف يعيش قرب الإنسان ويعتني به (قطة، كلب، دجاجة). الحيوان البري يعيش بعيداً وحراً (أسد، ذئب، ثعلب). لكل حيوان صوت مميز.": {
+      "src": "/sounds/preschool/ar/course-cedar-4919a8f687c92048.mp3",
+      "durationMs": 17350
+    },
+    "هل الأسد حيوان أليف أم بري؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b6c7315f9b50ad38.mp3",
+      "durationMs": 4250
+    },
+    "لماذا الأرنب في البيت أليف والأسد في الغابة بري؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c8fd67275640c52e.mp3",
+      "durationMs": 5150
+    },
+    "أي حيوان من هذه الحيوانات أليف؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6e410b0d0dde5fca.mp3",
+      "durationMs": 4200
+    },
+    "الثعلب حيوان:": {
+      "src": "/sounds/preschool/ar/course-cedar-7c8d98f0c159ba92.mp3",
+      "durationMs": 2600
+    },
+    "من الحيوانات الأليفة:": {
+      "src": "/sounds/preschool/ar/course-cedar-843b4b4ac7874e2b.mp3",
+      "durationMs": 2700
+    },
+    "القط في البيت حيوان:": {
+      "src": "/sounds/preschool/ar/course-cedar-fa8098ab37bf252a.mp3",
+      "durationMs": 3800
+    },
+    "لماذا لا نلمس حيواناً برياً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f84c635c05d1b9c3.mp3",
+      "durationMs": 3500
+    },
+    "اربط كل حيوان بصوته الصحيح!": {
+      "src": "/sounds/preschool/ar/course-cedar-aec88d1639b10cd3.mp3",
+      "durationMs": 3350
+    },
+    "الكلب الذي يحرس البيت:": {
+      "src": "/sounds/preschool/ar/course-cedar-361ec05f3f6f880b.mp3",
+      "durationMs": 3050
+    },
+    "يَنْبَحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4f98e5739ce87ad0.mp3",
+      "durationMs": 1550
+    },
+    "الكَلْبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0ab0b10441b3a0b0.mp3",
+      "durationMs": 1350
+    },
+    "يَزْأَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-fb8c2bdad0a2598f.mp3",
+      "durationMs": 1300
+    },
+    "يَمُوءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-cea72270cf942c53.mp3",
+      "durationMs": 1900
+    },
+    "الأَسَدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7f391fe5556a247e.mp3",
+      "durationMs": 2200
+    },
+    "يَخُورُ": {
+      "src": "/sounds/preschool/ar/course-cedar-4ce86eda476d28a7.mp3",
+      "durationMs": 2300
+    },
+    "التمييز بين الجسم الصلب والسائل، والتعرف على بعض مصادر الصوت من حولنا.": {
+      "src": "/sounds/preschool/ar/course-cedar-57f1cfb8746f2edb.mp3",
+      "durationMs": 7700
+    },
+    "يميز التلميذ بين الأجسام الصلبة (تحتفظ بشكلها) والأجسام السائلة (تأخذ شكل إنائها)، ويكتشف أن الصوت ينتج عن اهتزاز أشياء مختلفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-8bc95d38cec8dfe7.mp3",
+      "durationMs": 14050
+    },
+    "صب كأس ماء في إناء مستدير ثم في إناء مربع. هل يتغير شكل الماء؟ والآن انظر إلى قلمك، هل يتغير شكله إذا نقلته من مكان لآخر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-36f4b5867a25f002.mp3",
+      "durationMs": 13400
+    },
+    "الجِسْمُ الصُّلْبُ: يحتفظ بشكله الخاص أينما وضعناه، مثل: القلم، الكتاب، الكرسي.": {
+      "src": "/sounds/preschool/ar/course-cedar-6386c8943af51e5a.mp3",
+      "durationMs": 9050
+    },
+    "الجِسْمُ السَّائِلُ: يأخذ شكل الإناء الذي يوضع فيه، ويتحرك بسهولة، مثل: الماء، الحليب، العصير.": {
+      "src": "/sounds/preschool/ar/course-cedar-b1a94a576eb3fd4f.mp3",
+      "durationMs": 10550
+    },
+    "الجِسْمُ الصُّلْبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1cee9994ac452f8c.mp3",
+      "durationMs": 1750
+    },
+    "يَصْدُرُ الصَّوْتُ عن اهتزاز الأشياء: عندما نطرق الطاولة، أو نضرب على طبل، أو نتكلم، تهتز أشياء صغيرة تُصدر صوتاً نسمعه بآذاننا.": {
+      "src": "/sounds/preschool/ar/course-cedar-f003dcae6f37194f.mp3",
+      "durationMs": 15000
+    },
+    "الأشياء من حولنا نوعان: أشياء صلبة تحتفظ بشكلها دائماً، وأشياء سائلة تتغير شكلها حسب الإناء. وكل الأصوات التي نسمعها تأتي من اهتزاز شيء ما.": {
+      "src": "/sounds/preschool/ar/course-cedar-f71200f60153c908.mp3",
+      "durationMs": 15950
+    },
+    "الجِسْمُ السَّائِلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d97779d17a3706dc.mp3",
+      "durationMs": 2100
+    },
+    "الاهْتِزَازُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e09829dcee7c73f3.mp3",
+      "durationMs": 1650
+    },
+    "الرمل والسكر أجسام صلبة مكونة من حبيبات صغيرة صلبة، حتى لو بدت تتدفق كالسوائل.": {
+      "src": "/sounds/preschool/ar/course-cedar-69a10395d7113efc.mp3",
+      "durationMs": 9150
+    },
+    "الصوت يمكن أن يصدر عن أشياء كثيرة مختلفة: الأدوات، الأصوات البشرية، الآلات الموسيقية.": {
+      "src": "/sounds/preschool/ar/course-cedar-8652b3476411ec44.mp3",
+      "durationMs": 9050
+    },
+    "هل القلم جسم صلب أم سائل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bde6c238b0607616.mp3",
+      "durationMs": 4700
+    },
+    "كيف ينتج صوت الطبل عندما نضربه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ed3c62cca82fbef2.mp3",
+      "durationMs": 4100
+    },
+    "الجسم الصلب يحتفظ بشكله (القلم، الكتاب). الجسم السائل يأخذ شكل إنائه (الماء، الحليب). الصوت ينتج عن اهتزاز الأشياء.": {
+      "src": "/sounds/preschool/ar/course-cedar-d38871f07832b687.mp3",
+      "durationMs": 13750
+    },
+    "الحجر مادة:": {
+      "src": "/sounds/preschool/ar/course-cedar-f29b91fd64c08c23.mp3",
+      "durationMs": 2250
+    },
+    "ما الذي يُنتج الصوت عندما نتكلم أو نقرع طبلاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5e3bf1deaf16439d.mp3",
+      "durationMs": 4800
+    },
+    "الماء في الكأس:": {
+      "src": "/sounds/preschool/ar/course-cedar-bd139a2537113762.mp3",
+      "durationMs": 2500
+    },
+    "قارن شكل الحجر وشكل الماء إذا نقلناهما إلى علبة أخرى.": {
+      "src": "/sounds/preschool/ar/course-cedar-d074407514813a8f.mp3",
+      "durationMs": 6200
+    },
+    "الهواء من حولنا:": {
+      "src": "/sounds/preschool/ar/course-cedar-33a78197baaa7808.mp3",
+      "durationMs": 3000
+    },
+    "الصوت ينتقل جيداً عبر:": {
+      "src": "/sounds/preschool/ar/course-cedar-64719385bdc7d55c.mp3",
+      "durationMs": 3050
+    },
+    "العصير في الكأس:": {
+      "src": "/sounds/preschool/ar/course-cedar-d36323fa58381098.mp3",
+      "durationMs": 2050
+    },
+    "صنّف كل شيء حسب حالته!": {
+      "src": "/sounds/preschool/ar/course-cedar-f377670a9131e04f.mp3",
+      "durationMs": 3850
+    },
+    "العصير": {
+      "src": "/sounds/preschool/ar/course-cedar-60b60f9e4bc8cc2c.mp3",
+      "durationMs": 1200
+    },
+    "صُلْبٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-14fc2a4d4816e7d7.mp3",
+      "durationMs": 1450
+    },
+    "الكِتَابُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a3acb6a161555eba.mp3",
+      "durationMs": 1950
+    },
+    "سَائِلٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-bb96b557f631f9a1.mp3",
+      "durationMs": 1700
+    },
+    "أخرجت مكعب ثلج من الفريزر ووضعته في طبق على الطاولة. ماذا سيحدث له بعد قليل من الوقت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c4fcff3ef4fad053.mp3",
+      "durationMs": 8850
+    },
+    "التعرف على حالات الماء الثلاث وملاحظة تحول الماء من حالة إلى أخرى بتأثير الحرارة أو البرودة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ed7f669da4aac993.mp3",
+      "durationMs": 8650
+    },
+    "يكتشف التلميذ أن الماء يتخذ ثلاث حالات (صلبة، سائلة، غازية)، وأن الحرارة تحوّله من حالة إلى أخرى.": {
+      "src": "/sounds/preschool/ar/course-cedar-53c2c904cd152911.mp3",
+      "durationMs": 11200
+    },
+    "الماء ساحر: يمكنه أن يكون صلباً كالجليد، أو سائلاً كما نشربه، أو غازياً كالبخار الذي نراه فوق كوب الشاي الساخن. والحرارة والبرودة هما ما يغيران حالته.": {
+      "src": "/sounds/preschool/ar/course-cedar-6854f9af69b3cc21.mp3",
+      "durationMs": 17200
+    },
+    "الانْصِهَارُ: عندما نُسَخِّنُ الجليد الصلب، يتحول تدريجياً إلى ماء سائل.": {
+      "src": "/sounds/preschool/ar/course-cedar-8e23ee0955dd34ca.mp3",
+      "durationMs": 8000
+    },
+    "المَاءُ لَهُ 3 حَالَاتٍ: الحَالَةُ الصُّلْبَةُ (الجليد أو الثلج)، الحَالَةُ السَّائِلَةُ (الماء العادي)، وَالحَالَةُ الغَازِيَّةُ (بخار الماء).": {
+      "src": "/sounds/preschool/ar/course-cedar-3ea00f7660220779.mp3",
+      "durationMs": 12400
+    },
+    "التَّجَمُّدُ: عندما نضع الماء السائل في البرودة الشديدة (الفريزر)، يتحول إلى جليد صلب.": {
+      "src": "/sounds/preschool/ar/course-cedar-017985ae753f9c7d.mp3",
+      "durationMs": 9700
+    },
+    "التَّبَخُّرُ: عندما نُسَخِّنُ الماء السائل كثيراً (كما في القدر على النار)، يتحول جزء منه إلى بخار غازي يتصاعد في الهواء.": {
+      "src": "/sounds/preschool/ar/course-cedar-a90e38ea77cc02eb.mp3",
+      "durationMs": 13550
+    },
+    "الانْصِهَارُ": {
+      "src": "/sounds/preschool/ar/course-cedar-36a6241c4f01a1d2.mp3",
+      "durationMs": 1750
+    },
+    "التَّبَخُّرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-7d182713733a93a4.mp3",
+      "durationMs": 1600
+    },
+    "التَّجَمُّدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c8122fc54d04780c.mp3",
+      "durationMs": 1300
+    },
+    "الانصهار يبدأ من الجليد، والتبخر يبدأ من الماء السائل — كل واحد له نقطة انطلاق مختلفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-951dc790c06786c3.mp3",
+      "durationMs": 9150
+    },
+    "ما اسم عملية تحول الجليد إلى ماء سائل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-49d1e41fc8d0d0ac.mp3",
+      "durationMs": 4750
+    },
+    "بخار الماء لا يختفي، بل يبقى في الهواء وقد يتكاثف لاحقاً ليعود ماءً من جديد (كما في تكوّن السحب والمطر).": {
+      "src": "/sounds/preschool/ar/course-cedar-ef7e605e399a156b.mp3",
+      "durationMs": 12300
+    },
+    "للماء 3 حالات: صلبة (جليد)، سائلة (ماء)، غازية (بخار). الحرارة تُذيب الجليد (انصهار) وتُبخّر الماء (تبخر)، والبرودة تُجمّد الماء.": {
+      "src": "/sounds/preschool/ar/course-cedar-e8d82e763d985e54.mp3",
+      "durationMs": 14850
+    },
+    "سمّ التحولين: جليد في الشمس / ماء في المجمّد.": {
+      "src": "/sounds/preschool/ar/course-cedar-ccdf93356c085a10.mp3",
+      "durationMs": 5200
+    },
+    "ماذا يحدث للماء السائل إذا وضعناه في الفريزر لوقت طويل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-39b87a069368bead.mp3",
+      "durationMs": 5550
+    },
+    "ما اسم عملية تحول الماء السائل إلى بخار؟": {
+      "src": "/sounds/preschool/ar/course-cedar-0c68836d4c1e461e.mp3",
+      "durationMs": 4700
+    },
+    "الثلج إذا سخن يصبح:": {
+      "src": "/sounds/preschool/ar/course-cedar-30b3471cd2872c26.mp3",
+      "durationMs": 3200
+    },
+    "ماء في المجمّد يصبح:": {
+      "src": "/sounds/preschool/ar/course-cedar-ebb83f6d39e2097a.mp3",
+      "durationMs": 3000
+    },
+    "قطرات على غطاء القدر:": {
+      "src": "/sounds/preschool/ar/course-cedar-e1e2d14fa7cf9d49.mp3",
+      "durationMs": 3100
+    },
+    "البخار فوق القدر:": {
+      "src": "/sounds/preschool/ar/course-cedar-948a04c36bba09be.mp3",
+      "durationMs": 3250
+    },
+    "ثلاث حالات الماء:": {
+      "src": "/sounds/preschool/ar/course-cedar-b81902d41a2de12f.mp3",
+      "durationMs": 1950
+    },
+    "اربط كل مثال بحالة الماء الصحيحة!": {
+      "src": "/sounds/preschool/ar/course-cedar-f2af554c7e4f6518.mp3",
+      "durationMs": 4400
+    },
+    "حَالَةٌ سَائِلَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-dadf445f7cb44acb.mp3",
+      "durationMs": 2600
+    },
+    "حَالَةٌ غَازِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-819c7e6a50806e29.mp3",
+      "durationMs": 2350
+    },
+    "حَالَةٌ صُلْبَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ffc8c1083b31e287.mp3",
+      "durationMs": 3600
+    },
+    "مُكَعَّبُ ثَلْجٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-8323232eecd5fd47.mp3",
+      "durationMs": 2550
+    },
+    "البُخَارُ فَوْقَ كُوبِ الشَّايِ السَّاخِنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-eb2fa2a97f859cbd.mp3",
+      "durationMs": 3800
+    },
+    "ربط حيوان مألوف بطريقة تنقّله.": {
+      "src": "/sounds/preschool/ar/course-cedar-486c2c566c1055d4.mp3",
+      "durationMs": 4700
+    },
+    "في الحديقة عصفور وقطة وحلزون. كيف يصل كل واحد إلى الغصن أو العشب؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ed41badfc33e4612.mp3",
+      "durationMs": 6900
+    },
+    "يميّز التلميذ أنماط التنقل: المشي، الطيران، السباحة، والزحف.": {
+      "src": "/sounds/preschool/ar/course-cedar-3373379a59ad1555.mp3",
+      "durationMs": 7450
+    },
+    "المَشْيُ: أرجل على الأرض (قط، كلب، حصان).": {
+      "src": "/sounds/preschool/ar/course-cedar-d44ce895f6d526b8.mp3",
+      "durationMs": 4700
+    },
+    "كل حيوان يتنقل بما يناسب جسمه ومكان عيشه: أرض، هواء، ماء.": {
+      "src": "/sounds/preschool/ar/course-cedar-af67db391d89eeb5.mp3",
+      "durationMs": 7750
+    },
+    "الطَّيَرَانُ: أجنحة في الهواء (عصفور، فراشة).": {
+      "src": "/sounds/preschool/ar/course-cedar-bb6c2e9c25659102.mp3",
+      "durationMs": 5650
+    },
+    "السِّبَاحَةُ: زعانف في الماء (سمكة). البط يسبح أيضاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-0fb2a9004b110e25.mp3",
+      "durationMs": 5600
+    },
+    "الزَّحْفُ: بلا أرجل ظاهرة أو بأرجل قصيرة جداً (ثعبان، حلزون).": {
+      "src": "/sounds/preschool/ar/course-cedar-7f6939060094b44e.mp3",
+      "durationMs": 7250
+    },
+    "الجَنَاحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-6094e6ce84dcce0d.mp3",
+      "durationMs": 1600
+    },
+    "الزِّعْنِفَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-91531a37b6a6701c.mp3",
+      "durationMs": 1750
+    },
+    "الدجاجة تمشي كثيراً وتطير قليلاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-2d2c17a5e0d5bc54.mp3",
+      "durationMs": 5400
+    },
+    "كيف يتنقل القط؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c895fac252d9a04d.mp3",
+      "durationMs": 3100
+    },
+    "بماذا تسبح السمكة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-18686c67e20e2f53.mp3",
+      "durationMs": 2500
+    },
+    "أرجل → مشي. أجنحة → طيران. زعانف → سباحة. زحف بلا أرجل طويلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-83421a0e3c482885.mp3",
+      "durationMs": 8900
+    },
+    "الحلزون يتنقل ب:": {
+      "src": "/sounds/preschool/ar/course-cedar-342df3aaee4bbb63.mp3",
+      "durationMs": 2750
+    },
+    "الفَرَاشَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0510790eece50c10.mp3",
+      "durationMs": 2150
+    },
+    "يَمْشِي": {
+      "src": "/sounds/preschool/ar/course-cedar-a990043e9d06ba52.mp3",
+      "durationMs": 1200
+    },
+    "اختر التنقل!": {
+      "src": "/sounds/preschool/ar/course-cedar-b5a197e554bf3541.mp3",
+      "durationMs": 1950
+    },
+    "الحِصَانُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a20edc7ac7758991.mp3",
+      "durationMs": 1700
+    },
+    "تَسْبَحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-ccb253d155fc5d19.mp3",
+      "durationMs": 2100
+    },
+    "تَطِيرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-32176216bd0ede32.mp3",
+      "durationMs": 2250
+    },
+    "إدراك وجود الهواء ببعض الآثار البسيطة (الريح، البالون، التنفس).": {
+      "src": "/sounds/preschool/ar/course-cedar-034d4204711eff5c.mp3",
+      "durationMs": 7500
+    },
+    "لوّح بمروحة ورقية أو كيس فارغ: لماذا يتحرّك؟ هل «لا شيء» يدفعه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-26e857df1d449e26.mp3",
+      "durationMs": 7850
+    },
+    "ما لا نراه قد يكون موجوداً. الهواء نلمسه بآثاره.": {
+      "src": "/sounds/preschool/ar/course-cedar-582b52934562a484.mp3",
+      "durationMs": 6800
+    },
+    "يكتشف التلميذ أن الهواء موجود رغم أنه لا يُرى، وأنه يحرّك الأشياء ونتنفسه.": {
+      "src": "/sounds/preschool/ar/course-cedar-66a77523ec7d6f17.mp3",
+      "durationMs": 8850
+    },
+    "الهَوَاءُ مَادَّةٌ شَفَّافَةٌ تَمْلَأُ المَكَانَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-99f8b4d5acbdda0b.mp3",
+      "durationMs": 5000
+    },
+    "الرِّيحُ هَوَاءٌ يَتَحَرَّكُ: تُحَرِّكُ الأَوْرَاقَ وَالرَّايَةَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-95af4fd251a9341e.mp3",
+      "durationMs": 5400
+    },
+    "نَمْلَأُ البَالُونَ بِالهَوَاءِ عِنْدَ النَّفْخِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-72cb74fad125e9a5.mp3",
+      "durationMs": 4050
+    },
+    "الرِّيحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-1ceefdabdb376048.mp3",
+      "durationMs": 950
+    },
+    "النَّفْخُ": {
+      "src": "/sounds/preschool/ar/course-cedar-228ec7880cf68a4b.mp3",
+      "durationMs": 1700
+    },
+    "نَحْتَاجُ الهَوَاءَ لِلتَّنَفُّسِ (رَبْطٌ بِدَرْسِ القَلْبِ وَالرِّئَتَيْنِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-77189f053b9c8d39.mp3",
+      "durationMs": 6400
+    },
+    "الهواء مادة: يحرّك ويُتنفَّس ويُنفخ.": {
+      "src": "/sounds/preschool/ar/course-cedar-024fc36caf38bd0d.mp3",
+      "durationMs": 4850
+    },
+    "الهواء موجود دون أن نراه. الريح أثره. نتنفسه وننفخ به.": {
+      "src": "/sounds/preschool/ar/course-cedar-ab632a1e410b3937.mp3",
+      "durationMs": 6900
+    },
+    "ماذا نضع داخل البالون عند النفخ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-72e70020042eae46.mp3",
+      "durationMs": 3800
+    },
+    "هل نرى الهواء بأعيننا عادة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-00b2018116dc9adb.mp3",
+      "durationMs": 3850
+    },
+    "الهَوَاءُ / الرِّيحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-cdb5f999e76b2700.mp3",
+      "durationMs": 2300
+    },
+    "تحريك الغسيل على الحبل": {
+      "src": "/sounds/preschool/ar/course-cedar-4d04b58b716bed2e.mp3",
+      "durationMs": 2450
+    },
+    "الحَجَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f1467cb9b0ff457b.mp3",
+      "durationMs": 2050
+    },
+    "الريح هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-595b87f211e812b3.mp3",
+      "durationMs": 2900
+    },
+    "الحَجَرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-169a5bb437b1a17b.mp3",
+      "durationMs": 1400
+    },
+    "نملأ البالون ب": {
+      "src": "/sounds/preschool/ar/course-cedar-6f40bb8815de5067.mp3",
+      "durationMs": 2450
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

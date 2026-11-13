@@ -47089,6 +47089,3286 @@
         "uses": [
           "course:math-2ap-t3-multiplication-concept:game-1-opt-2"
         ]
+      },
+      {
+        "texte": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ",
+        "fichier": "course-cedar-30302fde4a327c92.mp3",
+        "duration": 4.7,
+        "sha256": "25e03fb2524d756f9f010a18a568c862b541d9590c683b0ffe7d47733bd53fa0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:09.505Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eb928cc8f34cd49328daa49abad53b5099c9d9958778a77267e55569c6dac0f2",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:title"
+        ]
+      },
+      {
+        "texte": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ",
+        "fichier": "course-cedar-46e3e83a92897a24.mp3",
+        "duration": 6.55,
+        "sha256": "06cd71fa9ce9dc6f0f4084292d36936813d468d2a4e37ffa00decc9de4a83a09",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:09.658Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c101f1f010a27e48e3e64f2cd1776c2d652722e0576647d25cb9b17cfd8343dc",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:title"
+        ]
+      },
+      {
+        "texte": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ",
+        "fichier": "course-cedar-c2d7a8d59e018e23.mp3",
+        "duration": 4.7,
+        "sha256": "3df9b272bd3abb8fc20a0587e93693eeb66eccaa9f679171b0884a8fb667e2fe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:09.711Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1dba3eed227e6f6f9c02f3892f03c7a51e70b3fd2a60fdaa8b1e103eda2db31e",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:title"
+        ]
+      },
+      {
+        "texte": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ",
+        "fichier": "course-cedar-d90ea1fce3ccb14b.mp3",
+        "duration": 7.5,
+        "sha256": "f2b04e79586aad60efdc4373523d1591b49329522c4ded61815b56d8aa95f9d3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:09.939Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "82462ac726de53940ae2f293182fdd0447d6075a8371d9faf3404a6092fa6b73",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:title"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا",
+        "fichier": "course-cedar-ed3f82011d6261ab.mp3",
+        "duration": 5.95,
+        "sha256": "d0a16a4f4e50cc5a2f6ee07da13b2dd6f3e51f42c5c2768459849c1fe517e4b9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:11.355Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "804c1bbf12beae4c4da6e5e09a0e839ba3ac9720b438d7f36fc495801bb13aac",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:title"
+        ]
+      },
+      {
+        "texte": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ",
+        "fichier": "course-cedar-381eafca11bf6d22.mp3",
+        "duration": 4.4,
+        "sha256": "87a1bdfb61caae0c64cd512a0e59f59a693198f286fae537c6529edb65a87444",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:11.421Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4b5b2b3d0e6a771948f2b67a892939388bb9ee936a75e8199326add6b446ec5d",
+        "uses": [
+          "course:science-2ap-t3-water-states:title"
+        ]
+      },
+      {
+        "texte": "الهَوَاءُ مِنْ حَوْلِنَا",
+        "fichier": "course-cedar-d0cb943c8aa5769b.mp3",
+        "duration": 2.55,
+        "sha256": "19ae0fe4d0a25c605ba70d1f7b91e19694fb04f57d75cb0dd63975757599ac36",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:11.461Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8d9e274138b7db742cf9b48bcd259b9d9d1247d806df28dea254c3d5438d0d5d",
+        "uses": [
+          "course:science-2ap-t3-air:title"
+        ]
+      },
+      {
+        "texte": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ",
+        "fichier": "course-cedar-a6617c8dcb4e2032.mp3",
+        "duration": 5.9,
+        "sha256": "bec8a6dc28ae90705c095a6620471819125d6b6b78772f3835c39643fb6c759c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:11.553Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc9dd83e03ff7182d59c6f01237b4c95d492053262021d204a4b3e6b7838cc85",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:title"
+        ]
+      },
+      {
+        "texte": "التعرف على مظاهر النمو عند الطفل، وإدراك أهمية الفطور الصباحي والغذاء المتوازن.",
+        "fichier": "course-cedar-a84575a813d8083c.mp3",
+        "duration": 7.8,
+        "sha256": "57912628898da4c96a637ffe16cae0753f292c5488dfdc92778082b42486f45b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:13.199Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "706344e5b5243a64d06106162029e7c0da161dd9914c29b2146c662c72cce738",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:objective"
+        ]
+      },
+      {
+        "texte": "قارن بين حذائك القديم وحذائك الحالي: هل أصبح صغيراً عليك؟ لماذا برأيك؟",
+        "fichier": "course-cedar-428e164ecb427e24.mp3",
+        "duration": 8.35,
+        "sha256": "fdbd3cc9a928c1600a78dcdbaf8b5e40bbcc5a968c8a7db21e35aa0ecf9ad825",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:13.340Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2f04da797ba6d2370ab13b556ff447d07c2057e2cf23a9a19d13173e224cdb7",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:discovery"
+        ]
+      },
+      {
+        "texte": "يكتشف التلميذ علامات نموه (يكبر طوله ووزنه) وأهمية تناول وجبة فطور متوازنة قبل الذهاب إلى المدرسة.",
+        "fichier": "course-cedar-e21671b719675908.mp3",
+        "duration": 11.4,
+        "sha256": "0babeeca1b94c517c880cecbc3d650656e63787aa2a0f17daede024f45986b1c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:13.933Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "62f78b38162b975f585607fbb8ea55ab8da61515c387ddde647e05f7afe558ea",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:summary"
+        ]
+      },
+      {
+        "texte": "جسمي يتغير كل سنة: أصبح أطول وأثقل قليلاً، وهذا أمر طبيعي وجميل. ولكي أنمو بشكل سليم، يجب أن آكل غذاءً متنوعاً ومتوازناً كل يوم.",
+        "fichier": "course-cedar-2808e16f28b88da1.mp3",
+        "duration": 15.2,
+        "sha256": "5b7846ea705fb93132319626affdff900e280416178fc828def77a8b76b17835",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:14.248Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "24ac97e215022f8d0abdb9170601dff4ed0c7bd82f8003d8ba4aa095c665cb46",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:intro"
+        ]
+      },
+      {
+        "texte": "أُنَمُو وَأَكْبَرُ: يزداد طولي ووزني تدريجياً كل سنة، وتتبدل أسناني اللبنية بأسنان دائمة أقوى.",
+        "fichier": "course-cedar-b6503ae4bf84cf0a.mp3",
+        "duration": 10.05,
+        "sha256": "4a6b30ce3ff1aa24635aa957089a3bca7ec66afe04ca737cce274f9785dd8fd8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:15.861Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4437e9df25450cc0ea36fba13626b719882fc1062ad2458f4c452982fca789c4",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:rule-0"
+        ]
+      },
+      {
+        "texte": "النُّمُوُّ",
+        "fichier": "course-cedar-d9af65cc2dd69aa3.mp3",
+        "duration": 1.6,
+        "sha256": "40c7e0a6708c08efae5b5cdb0f83729104c90e8873c7babeb165091b73a700e0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:15.909Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "27ace40af747fc9cf00e10a4cac3b0e4f5bfeb6135654707fe771fa649515899",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:vocab-0"
+        ]
+      },
+      {
+        "texte": "الفُطُورُ الصَّبَاحِيُّ ضَرُورِيٌّ: يمنحني الطاقة اللازمة للتركيز واللعب طيلة الصباح في المدرسة.",
+        "fichier": "course-cedar-85473c8055e127e4.mp3",
+        "duration": 8.4,
+        "sha256": "461d7f91d3c220116c6c47240593bef12f510661325a586bf5731a2a33a86ee9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:15.948Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6254799e7d0e8ec9088d69325e4afce76f5a271c7284d109c7f52b0babd1bba2",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:rule-1"
+        ]
+      },
+      {
+        "texte": "الغِذَاءُ المُتَوَازِنُ يشمل: الحليب ومشتقاته، الخضر والفواكه، اللحوم والبيض، والخبز والحبوب — كلٌّ بكمية مناسبة.",
+        "fichier": "course-cedar-7f833b7fc3e3614a.mp3",
+        "duration": 11.75,
+        "sha256": "e1f74924afeec877d349afded0f2bbdb4106fd9dbf1d4858e58e322db4776a42",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:16.582Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1f0e3060182c2186c55a4c52217fce6dabe502f8ab081e249fcc460148787db8",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:rule-2"
+        ]
+      },
+      {
+        "texte": "الفُطُورُ",
+        "fichier": "course-cedar-db309ffc6f0edc46.mp3",
+        "duration": 1.8,
+        "sha256": "32c999adb25b22a1770ba70c397d256d546b882454330eb1db9e048e86175c38",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:17.074Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4001c941d32827d6ee6af23940e1917c8eae8010c560ea651409b476aa97f87c",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:vocab-1"
+        ]
+      },
+      {
+        "texte": "الغِذَاءُ المُتَوَازِنُ",
+        "fichier": "course-cedar-5733fb918248649c.mp3",
+        "duration": 2.2,
+        "sha256": "c6055de78ad10ecf1466c96363b5078b34128bddac2ec947b47de55082a69122",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:17.310Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "79f71300c607e6988c82846b86df7ba7e4c2977a7b1f3eeb80e94cc9028a2d11",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:vocab-2"
+        ]
+      },
+      {
+        "texte": "تخطي الفطور يجعل الجسم يفتقر للطاقة، فيشعر التلميذ بالتعب وصعوبة التركيز في الدرس.",
+        "fichier": "course-cedar-4ffade5d954e6d1b.mp3",
+        "duration": 8.9,
+        "sha256": "93bdf5291a21a2430b48d1f856fad8051c9613599aaed1e29ae633bbf034406c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:18.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bdcd5cc49e79eba7f7d9465354d273b11ac3043398bc4811f90ee80d8fba1b82",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:mistake-0"
+        ]
+      },
+      {
+        "texte": "الفطور المتوازن يحتاج حليباً أو بيضاً أو خبزاً مع فاكهة، وليس الحلويات فقط.",
+        "fichier": "course-cedar-4772f278b3c2ad97.mp3",
+        "duration": 8.2,
+        "sha256": "6ed4332e218315098ac148858e8995788cabb685aefccedeeeaaf97d072c9091",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:18.565Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5fefd1c0711dcd89dfe9af36a4a7daee17d10c1896a7bc7ed191d0c4b039c101",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:mistake-1"
+        ]
+      },
+      {
+        "texte": "ما الوجبة الأولى التي نتناولها في الصباح؟",
+        "fichier": "course-cedar-8313fc1e59508e52.mp3",
+        "duration": 4.5,
+        "sha256": "d9dbd8a363ba7ef8b11fc2f16ea0d0f2779858e4b4ed5f6d8131682b9c88fa45",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:19.150Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "53c5794389295ab22aa4dcdb3930af0e06bcaded7ad5c0b69eb17d986e468f2a",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:practice-ex1-sc2ap-growth"
+        ]
+      },
+      {
+        "texte": "أَنْمُو كل سنة (طولاً ووزناً)، وأحتاج فطوراً صباحياً متوازناً (حليب، خبز، فاكهة) ليمنحني الطاقة والنمو السليم.",
+        "fichier": "course-cedar-9bb0bf27e4a6b6bd.mp3",
+        "duration": 11.15,
+        "sha256": "359474e95d0e2ced9c96270bd07382cbf3b31189501ab43b4096370b2c4de65b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:19.481Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c19b74bdcbba755bcc4bad0d66b75fdf0df47052461739d3d10d619a2df13c9c",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:takeaway"
+        ]
+      },
+      {
+        "texte": "اذكر عنصرين من عناصر الفطور المتوازن.",
+        "fichier": "course-cedar-4591ae497c1c6522.mp3",
+        "duration": 4.55,
+        "sha256": "c1d31c9b8b5bd9f6979299f724389032636a31705c351496a641a01945a26c23",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:20.132Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7c257e74e9834942ee93aa67775ea89ca476a70cd471b1e14b7128adb0ed4f75",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:practice-ex2-sc2ap-growth"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث لجسمي وأنا أكبر؟",
+        "fichier": "course-cedar-f25ae00cf1adb7c5.mp3",
+        "duration": 5,
+        "sha256": "af2b1cd0983e0c9bfae7c10fd8362e0179d19ca4d9f6c6046d5d52241ddc28d2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:20.381Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a0f410d5572e53b2ee53ce7d131b193432066a1d6254bbefecc5a534aaa9a2ea",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:quiz-q1-sc2ap-growth"
+        ]
+      },
+      {
+        "texte": "غَيْرُ مُنَاسِبٍ",
+        "fichier": "course-cedar-b27e4c5cd5269e3a.mp3",
+        "duration": 2.05,
+        "sha256": "30b6e59f0fddd45f7f619ed7ff2b8bf1e94dbb67486b1494e9194dfec314ccf9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:22.185Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9c1d63aa84afa8199eb1b076bc42205db457fbc5978949754e7332aa3a25cfaa",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "كوب حليب",
+        "fichier": "course-cedar-8c66add73e6596a5.mp3",
+        "duration": 2,
+        "sha256": "83197d93bf1720e2013751a2217a9f78c4247b50834d96a680c18494d46ce439",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:22.290Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "09cd965880ce6ddd37623220a78672778b7d972c3c02717a7deda6f75b78357c",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-0"
+        ]
+      },
+      {
+        "texte": "مُنَاسِبٌ لِلْفُطُورِ",
+        "fichier": "course-cedar-145134bc41eb931c.mp3",
+        "duration": 2.35,
+        "sha256": "1c9ce3ad44e874cc8ee5658007e40d587af3d2fb9a4f782a62528d35af13b3fb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:22.351Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c8bf9374bf2a00500099e48cede54e01031961d61cfae554367d56c3ecfbca38",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-0-opt-0",
+          "course:science-2ap-t1-growth-nutrition:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "اختر ما يجب وضعه في صندوق الفطور المتوازن!",
+        "fichier": "course-cedar-71e46e9cf027a8fe.mp3",
+        "duration": 4.35,
+        "sha256": "6877910f742ea1242de463c8206ef20ab0e9d59aa9ae4b87dd4a2ff270c490ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:22.417Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ca6d9525efbdade70287ffb7a1b0d6d148011779ac2c368a98aa93cb80c46f65",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-instructions"
+        ]
+      },
+      {
+        "texte": "قطعة شوكولاتة فقط",
+        "fichier": "course-cedar-a1112e2a01feee06.mp3",
+        "duration": 2.65,
+        "sha256": "0f33fa1a9c57f4d158f1e2bb9716a3dba4ffa6b69ced87431b0c216d3a159913",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:23.804Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3f567d651fa095c9df5ce90b062a07b57896246f859a9ce007aaede876a1b4a0",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-1"
+        ]
+      },
+      {
+        "texte": "غَيْرُ كَافٍ وَحْدَهُ",
+        "fichier": "course-cedar-925e0aa65624bc50.mp3",
+        "duration": 2.7,
+        "sha256": "c537b4f038496d74dc2765a004f27fedee3980ede6e87919dd813b548f16e185",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:23.933Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dadc22fdefb02c83aa8a9194d19d0b1af0230afa6e2035694e0edad76567dc38",
+        "uses": [
+          "course:science-2ap-t1-growth-nutrition:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "لماذا ننصحك دائماً بغسل يديك قبل تناول الطعام؟",
+        "fichier": "course-cedar-bbd47ab9b4ad42c5.mp3",
+        "duration": 6.3,
+        "sha256": "21f390be4907021eeb1ca91923028940ab873006bb58c222ba86bbb1f76460c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:24.042Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9a6b9e34dc8b975c5a61faea0f39ba94e8dd3082cf26c1bf7932b22acf8f36d9",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:discovery"
+        ]
+      },
+      {
+        "texte": "تطبيق قواعد النظافة الشخصية اليومية وربطها بالوقاية من المرض.",
+        "fichier": "course-cedar-24697b477e89c3d5.mp3",
+        "duration": 7.05,
+        "sha256": "d8c8992d421d018565e5e2c9d5259e0e317514305083314b555ae742415a431e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:24.138Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "67f1f8a300747d7268e4fc9c48920716eab0157fdcaafb532baaaa6f9b447a33",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:objective"
+        ]
+      },
+      {
+        "texte": "أَغْسِلُ يَدَيَّ بِالمَاءِ وَالصَّابُونِ: قبل الأكل، بعد استعمال الحمام، وبعد اللعب في الخارج.",
+        "fichier": "course-cedar-c66c18eb70d6bc26.mp3",
+        "duration": 8.3,
+        "sha256": "f11fe68e3c6b16bbd62f15f98c415d7208d8f87bb2258acff89eb5b046ab2afb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:26.148Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2a9b0f2865365decb2b7ca7b5ef7859c18865975fa250d09e3af90f952af5fa",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:rule-0"
+        ]
+      },
+      {
+        "texte": "أُنَظِّفُ أَسْنَانِي بِالفُرْشَاةِ مرتين يومياً على الأقل: صباحاً ومساءً قبل النوم.",
+        "fichier": "course-cedar-bf61447e1f186165.mp3",
+        "duration": 8.1,
+        "sha256": "d3822d9b3e32fc76a647248a83617c052bf6b9f03b83703512b01148d2b85a64",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:26.213Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d1b734ded8c5ac9037b18671ebed54abcd4e6d65a7193bb7ef455a5c9926de8f",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:rule-1"
+        ]
+      },
+      {
+        "texte": "يتعلم التلميذ قواعد النظافة الأساسية (غسل اليدين، تنظيف الأسنان، الاستحمام) وأهميتها في الوقاية من الأمراض.",
+        "fichier": "course-cedar-c4b8ee3040ff5fa7.mp3",
+        "duration": 12.4,
+        "sha256": "6d326e9eedcb4aec2ae6a3122c022a9b2b5f290157f7e20358c0bc883621c942",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:26.697Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eb0af303af10a73193457b86d2bb119fd0ce8587ce88edab1e5b937bf92ecd54",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:summary"
+        ]
+      },
+      {
+        "texte": "جسمي أمانة يجب أن أعتني بها. النظافة اليومية البسيطة تحميني من جراثيم صغيرة جداً لا أراها بعيني، لكنها قد تسبب المرض.",
+        "fichier": "course-cedar-8be2ea484eb25983.mp3",
+        "duration": 12.4,
+        "sha256": "172047fa4497ada0fd6ce07029b98dceab1c025ed4a5c01f86d068c7a47d739e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:26.744Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5ba4375dcd38f5935992d75dec5557a2a62d101a181e7254886a8941a9b64d60",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:intro"
+        ]
+      },
+      {
+        "texte": "الجَرَاثِيمُ",
+        "fichier": "course-cedar-e03ee3780f22e4b4.mp3",
+        "duration": 1.9,
+        "sha256": "d0a9a9f3a34eb1172bfea036dd8d3afa99db667c21373a5ffa10f7dcde537611",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:27.355Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f38c65630644f1d0ec31d80b29b63068a7878697e573383631add2fb476f7a78",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:vocab-0"
+        ]
+      },
+      {
+        "texte": "النَّظَافَةُ الشَّخْصِيَّةُ",
+        "fichier": "course-cedar-d96dea08c536e59a.mp3",
+        "duration": 2.65,
+        "sha256": "afaee9b616a3a2f19a660d1d8ab895163cb269f9fba1e3e9a88033f64a3e9f3f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:28.052Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e0332a8f4729559f4b675aca957efd861318070173a9ebd1ba8a542aa3357611",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:vocab-1"
+        ]
+      },
+      {
+        "texte": "الصابون ضروري لأنه يزيل الجراثيم بفعالية أكبر من الماء وحده.",
+        "fichier": "course-cedar-4272c9659e6f6398.mp3",
+        "duration": 7,
+        "sha256": "259be7e0431670bd806db9898859de5950aefc8933111199140175c0b162543f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:28.482Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0339653a84221616bc97c563112a68a0f889594a97dfab41cdc33868bdd69b4c",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:mistake-0"
+        ]
+      },
+      {
+        "texte": "الجَرَاثِيمُ صَغِيرَةٌ جِدّاً لا نراها بالعين، لكنها قد تسبب المرض إذا لم نتنظف.",
+        "fichier": "course-cedar-16662238de7b8449.mp3",
+        "duration": 9.7,
+        "sha256": "a38f085c08fe3954666b761e22dd26e248ed1ef9c4b0536d3e4545ee37aadf22",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:28.560Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "56f9791504d3532e50026d58c3d551e5e295bc51a37e6d1ccae5b95f706348c3",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:rule-2"
+        ]
+      },
+      {
+        "texte": "تنظيف الأسنان مساءً ضروري لإزالة بقايا الطعام التي تتراكم طوال اليوم.",
+        "fichier": "course-cedar-8613c0ee68342eb0.mp3",
+        "duration": 7.75,
+        "sha256": "e8d0110b42f5b2be2216e8efe42cb6d15edb0132e3627ab3fdff26ac2e4fbee7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:29.168Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7f5d16a3804cb3106943e8041f29823afd9c244239f0e5abe02ccb9a041fe455",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:mistake-1"
+        ]
+      },
+      {
+        "texte": "كم مرة يجب تنظيف الأسنان في اليوم على الأقل؟",
+        "fichier": "course-cedar-b5ff90fe79da5ecd.mp3",
+        "duration": 4.4,
+        "sha256": "6766f6b2b1f133b3c7abaa849ba7d70eaecbf5f2e2dad4dc122badebbc866ec6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:30.112Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b252417c2d7748c79a83919812714193f0815e18d16593e9c87d4af45312447",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:practice-ex2-sc2ap-hygiene"
+        ]
+      },
+      {
+        "texte": "بماذا نغسل أيدينا لإزالة الجراثيم بفعالية؟",
+        "fichier": "course-cedar-397602557ea6868f.mp3",
+        "duration": 5.5,
+        "sha256": "e64513b545602a77424eececd9083da5aa210ccb167d13d0150a52d2b4c73a32",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:30.311Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "641dda40f3d6d113dedd69daceb52739afeb7d4bc904f0c5ea2afee71fecf307",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:practice-ex1-sc2ap-hygiene"
+        ]
+      },
+      {
+        "texte": "لماذا نغسل أيدينا قبل الأكل؟",
+        "fichier": "course-cedar-b00b31df09a22bb5.mp3",
+        "duration": 4.55,
+        "sha256": "aac8a05477c6abbe6e1a85643a54c538a8025761f5b42fbc535db84fac842dda",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:30.730Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b3a58758dc35b7339229fff47ef7db06f532455654c590a7d33e74fb1a054997",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:quiz-q1-sc2ap-hygiene"
+        ]
+      },
+      {
+        "texte": "أغسل يديّ بالماء والصابون قبل الأكل وبعد الحمام واللعب، وأنظف أسناني صباحاً ومساءً — هذا يحميني من الجراثيم والمرض.",
+        "fichier": "course-cedar-2b3ce2892fb8ac53.mp3",
+        "duration": 12.05,
+        "sha256": "07929b880a16e9961ba6fdcfc6d3f989a79040e0b0bf7ad7625b63bf34856997",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:31.277Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "39b31523c31d7868e7d68154cae34944ef016c0eda34f3a6703bd2c3b1fb2796",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:takeaway"
+        ]
+      },
+      {
+        "texte": "اختر التصرف الصحيح في كل موقف!",
+        "fichier": "course-cedar-c2930da78939a8fc.mp3",
+        "duration": 3.7,
+        "sha256": "12581400e0eabf378a1d85bf26c6863dbdac26d9380d8a963a54824aa9f7ccab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:31.758Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9a42bb449f5711cd41658c48481fec876dcdfc011d00de6d6bde9eee847d8ed6",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:game-instructions"
+        ]
+      },
+      {
+        "texte": "قبل تناول وجبة الغداء",
+        "fichier": "course-cedar-429c9b3a8c9105c4.mp3",
+        "duration": 2.8,
+        "sha256": "0851539d5a3d40db5222a3a8d0b585853c1fb77d6c2fd301e45426a324f0705a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:31.873Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "78df4a8524bb5dbe2874be8a8bda13e998646213391d61306dd5061e4a854e07",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:game-0"
+        ]
+      },
+      {
+        "texte": "أَغْسِلُ يَدَيَّ",
+        "fichier": "course-cedar-b8ecc8f5ef13f7ff.mp3",
+        "duration": 2.15,
+        "sha256": "5938e62085bcb616305bfe0f4e0e6d31c494190606881b36316279b1ba83dbce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:31.997Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9cfaae17ce11ce4631e1eff173e3abb8ecb8e2b59af2efd45998f731e2d4f5c7",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "آكُلُ مُبَاشَرَةً",
+        "fichier": "course-cedar-26789b02861f3a31.mp3",
+        "duration": 2.55,
+        "sha256": "e5376d411897934472785c4e799ae407d1db42b517a6cd963171b7d30dd44802",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:33.183Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "48a7b3c70735ff3a1d84d7e5099d60555c868d26a7e2fd3bbba017bd254b4317",
+        "uses": [
+          "course:science-2ap-t1-hygiene-body-care:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "اجرِ في الساحة لمدة دقيقة واحدة، ثم ضع يدك على صدرك. ماذا تلاحظ بالمقارنة مع وقت الجلوس الهادئ؟",
+        "fichier": "course-cedar-a926683c4b5137ee.mp3",
+        "duration": 10.15,
+        "sha256": "2a24a3c4dd829b797ac9c337edfa3e20d0fcd2162e9295c25fa85902c4b7fea9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:34.503Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "51a3927fe8b0ce98096db24af5f2edfee33636565111cecca35a03f5a1b79dd1",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:discovery"
+        ]
+      },
+      {
+        "texte": "يلاحظ التلميذ أن تنفسه ونبض قلبه يتسارعان عند الجري أو اللعب الرياضي، ويعودان إلى وضعهما الهادئ بعد الراحة.",
+        "fichier": "course-cedar-1b59d2d5fe3eedb2.mp3",
+        "duration": 12.55,
+        "sha256": "106b91a8e367862e2cb14de263c9710a9f811c8996a6acf9f896418af80a3d00",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:35.013Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "22eb21b2b1240a9390dab50db264af7bacebe2794f20e683cbf6354c63bfd7dc",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:summary"
+        ]
+      },
+      {
+        "texte": "ملاحظة تسارع التنفس ونبض القلب أثناء الجهد العضلي، وإدراك عودتهما للوضع الطبيعي بعد الراحة.",
+        "fichier": "course-cedar-6ca7bf99a46a2ee6.mp3",
+        "duration": 11.25,
+        "sha256": "2042d4e3ae7cd5b4b9bc8356daa2a12c582bec94145330bf7a975cafb584f4e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:35.057Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2bc3da586c5ecb49137659364f068fba55780f801c401cd13ab36f6c9672e5f1",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:objective"
+        ]
+      },
+      {
+        "texte": "جسمي يعمل كآلة ذكية: عندما ألعب وأجري، يحتاج جسمي طاقة أكبر، فيسرّع قلبي ضرباته ورئتاي تنفسهما لإيصال الهواء والطاقة لعضلاتي.",
+        "fichier": "course-cedar-d52ce9ec80b9a085.mp3",
+        "duration": 15.95,
+        "sha256": "7840a77ef35fa667d3ad3f451237edbd78976c71867daa9ea245f7364fe54ab7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:36.262Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ef269d18ab91d4d4a1c56988917f8313d1d5cb97e486103ee36b5cbaf1737287",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:intro"
+        ]
+      },
+      {
+        "texte": "التَّنَفُّسُ: أخذ الهواء عبر الأنف أو الفم إلى الرئتين ثم إخراجه، وهذا يحدث طوال الوقت دون أن نفكر فيه.",
+        "fichier": "course-cedar-d88bb4121981be67.mp3",
+        "duration": 11.6,
+        "sha256": "964daeabb44537c6d3c56628ae6e3eb74e73e7e868dcd05b08d10a537271a832",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:36.942Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6b0b34530fd79863a82c04f1d26a04937de743db94322309aaf34b3aab82f503",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:rule-0"
+        ]
+      },
+      {
+        "texte": "بَعْدَ الرَّاحَةِ: يعود تنفسي ونبض قلبي تدريجياً إلى وتيرتهما الهادئة الطبيعية.",
+        "fichier": "course-cedar-7cc5c55c2fe008f4.mp3",
+        "duration": 9.65,
+        "sha256": "f6831b4ff0b7d8cedc2fbbfde2a2462cd9e8d3e4210c5db441846166a06bdd95",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:37.252Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "854713fcba835b1707ea67de76429a9375bcbc89fba9d91d9632a504dc6064ca",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:rule-2"
+        ]
+      },
+      {
+        "texte": "عِنْدَ الجَهْدِ العَضَلِيِّ (الجري، القفز، اللعب النشيط): يتسارع تنفسي ويصبح أعمق، ويزداد نبض قلبي لأن عضلاتي تحتاج طاقة وهواء أكثر.",
+        "fichier": "course-cedar-9dd95a11763efaea.mp3",
+        "duration": 14.2,
+        "sha256": "e5d13c75b4d94ea6127a9050213d41502f43a2d3d89f0d3bc5eebaed749d0275",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:38.615Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ebbc1e7c1a84753f4fff84eddce4b9d9b8ec8b206c00670962f61781d41f5974",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:rule-1"
+        ]
+      },
+      {
+        "texte": "نَبَضَاتُ القَلْبِ",
+        "fichier": "course-cedar-98755079722e2923.mp3",
+        "duration": 2.4,
+        "sha256": "cf4210ef02f655f0724b0d5f8baecb557d9d32713dd9bc71e3053cbbdf194fa8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:38.854Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b432d4d6abb0d9f34eeee71ee8d3875d5afd12870e53eb09d62f2bdd5e5e0930",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:vocab-0"
+        ]
+      },
+      {
+        "texte": "الجَهْدُ العَضَلِيُّ",
+        "fichier": "course-cedar-9fbfc4ab6d67a394.mp3",
+        "duration": 2.75,
+        "sha256": "8b08ca95c6add470108c569bcdf6e96c6a226a72462beb97d02d9b41a5465e21",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:39.002Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8d6ab2541cbae7036af8e83fbcc6673bad6f82fbf93443630270c32c25981af6",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:vocab-1"
+        ]
+      },
+      {
+        "texte": "يُمْكِنُنِي الإِحْسَاسُ بِنَبَضَاتِ قَلْبِي بِوَضْعِ يَدِي عَلَى صَدْرِي أَوْ عَلَى رَسْغِي.",
+        "fichier": "course-cedar-856af05fca707ba7.mp3",
+        "duration": 5.95,
+        "sha256": "5cee56e4b15d797ae0df507bfc1b2fa1982fa62e4bf794b5c7dd4d58656e29f6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:39.190Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7e2537858e263a51d960af07c9a6e21b8e9c0b9e46af6ca2407a2e4128e133f6",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:rule-3"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث لتنفسي عندما أجري بسرعة؟",
+        "fichier": "course-cedar-c2cea4283af1ba31.mp3",
+        "duration": 4.3,
+        "sha256": "abc4f1c61ad4d46c835c7c75e5eaf82f607cd0277d600a1398a4ebc182602e74",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:40.550Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3e392403a76ff28874b53646e3c58d85c0b399ce2660c6857db7eee08d7c9caf",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:practice-ex1-sc2ap-heartbeat"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث لنبض قلبي ونفسي بعد فترة راحة؟",
+        "fichier": "course-cedar-6a2b093b71bf61b9.mp3",
+        "duration": 4.7,
+        "sha256": "b7c28cad7d2850aeb71cd5918c54aa5967eb61b77ad87c6536673ec54884e4bb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:40.971Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "027d21d5d06803b96a4bec4d913b0e8c716cd7f255c57f44d7bfaafd0df95c53",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:practice-ex2-sc2ap-heartbeat"
+        ]
+      },
+      {
+        "texte": "هذا أمر طبيعي وصحي تماماً، فهو يدل على أن الجسم يعمل بكفاءة لتزويد العضلات بالطاقة.",
+        "fichier": "course-cedar-5ec123f94ba17863.mp3",
+        "duration": 9.35,
+        "sha256": "988c8d6b9efb6b2b63f5090a2930efb17d4f6c222641e74e25cfcc8fd3e647af",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:41.046Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "52ca696b30b4791fbb9ce42d4528a40db9ebab86452a7dd33d3298cebda52efa",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:mistake-0"
+        ]
+      },
+      {
+        "texte": "أثناء الجهد العضلي (الجري، اللعب) يتسارع تنفسي ونبض قلبي، وبعد الراحة يعودان هادئين تدريجياً.",
+        "fichier": "course-cedar-5fe5dc5c35190604.mp3",
+        "duration": 11.45,
+        "sha256": "3bc1cf68ec4539b0cbef4f18992f42d82059e0fbb603e8f77b1f6c9f69cebb94",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:41.462Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "99bf17bbf3ebbfae348f1589648cde07ff2e62c606defc4052450930157b85af",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:takeaway"
+        ]
+      },
+      {
+        "texte": "لماذا يتسارع نبض قلبي أثناء الجري؟",
+        "fichier": "course-cedar-ab0d489ac22b8041.mp3",
+        "duration": 3.8,
+        "sha256": "a69d8d0f75c6851fcab004e02b1071e2967e988a9c2cd6a51d122e5c7e7c877f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:42.050Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "202ecdbad9f0379d699c10a44a582ad1a9e2c9a7ab6276d0c7af128506efe605",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:quiz-q1-sc2ap-heartbeat"
+        ]
+      },
+      {
+        "texte": "بعد القفز على الحبل لمدة دقيقتين",
+        "fichier": "course-cedar-35a8c55c27094b1e.mp3",
+        "duration": 4.4,
+        "sha256": "6ef9f2f109d013b6817c999d0ff6f18d6638dd5b428aace9116e26e49c3264b7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:43.042Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3dd637428dff2a6641dea91d76611acc34b32cc281f207ce041d157ce687a5eb",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:game-0"
+        ]
+      },
+      {
+        "texte": "اختر ما يحدث لجسمك في كل موقف!",
+        "fichier": "course-cedar-6eae55cac60efa9a.mp3",
+        "duration": 3.65,
+        "sha256": "6aee6af0ac0e35020dcd34225e16cc5199a5dee257f6d488357ab31df80afde0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:43.121Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "21875d2c1143404883dc292b7c974992f53125d866e1e133e8d0cbd63f41eae3",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:game-instructions"
+        ]
+      },
+      {
+        "texte": "نَبَضِي وَتَنَفُّسِي يَتَسَارَعَانِ",
+        "fichier": "course-cedar-2275ec31bacae918.mp3",
+        "duration": 3.9,
+        "sha256": "e42f6b567c9c09b02d5ae42fe541314adecffa6b832e21feb5694fe617459b96",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:43.248Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aa2ca7c0f2a5123735296b944bfde42a8aa4efcf7523178a88fe209921565320",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "لَا يَتَغَيَّرُ شَيْءٌ",
+        "fichier": "course-cedar-ff73bd920fd9c59d.mp3",
+        "duration": 3.3,
+        "sha256": "02f8bbd00c7229f3aef9120e20e988e10e901c04fa03d48b3b9c4ac74b50d677",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:43.709Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e2577435442d91220b115dbce4ed33ad4cd8c642e272cfabba2e6469c1429963",
+        "uses": [
+          "course:science-2ap-t1-breathing-heart-effort:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "ملاحظة مراحل نمو نبتة بسيطة، وإدراك حاجتها للماء والضوء.",
+        "fichier": "course-cedar-b677c9f3acd35204.mp3",
+        "duration": 6.55,
+        "sha256": "89e991dbed8c9b5fc2c8e23b4c636cb8e87ebc99cc3f46de37dc27fd115c2feb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:45.597Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b10ee9bbd44a788fa307bbe7b91bfe00a685db910ffb54a88d77b8f56f8006e3",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:objective"
+        ]
+      },
+      {
+        "texte": "إذا نسينا سقي نبتة في المنزل لمدة أسبوع، ماذا سيحدث لها في رأيك؟",
+        "fichier": "course-cedar-696cd2fd897dc681.mp3",
+        "duration": 7.95,
+        "sha256": "220408b81d71e9aca3eb78d44b7e2927934e91ec3c9c5b781117e430dc65ee01",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:46.288Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cc5b89535f5ff712fb95f867c618378f34ee723d6d982d5eea5de8932d5637cd",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:discovery"
+        ]
+      },
+      {
+        "texte": "يكتشف التلميذ أن النباتات كائنات حية تنمو وتحتاج إلى الماء والضوء لتعيش، من خلال ملاحظة نبتة حقيقية.",
+        "fichier": "course-cedar-961d02ebd4d7421e.mp3",
+        "duration": 11.95,
+        "sha256": "1e1e2590885e5c1ed6e723a24f2a8fcf0d66a7c86301d37e44dd7e9e69d9f8a1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:46.677Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aedae3a2e0da8ed5a18714053af82aae2db5fa70c8692a066f641462e528d451",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:summary"
+        ]
+      },
+      {
+        "texte": "النباتات مثلنا كائنات حية: تولد وتنمو وتحتاج إلى الغذاء لتعيش. لكن غذاءها يأتي من الماء وضوء الشمس بدل الطعام الذي نأكله نحن.",
+        "fichier": "course-cedar-81e7ba07cc52f68d.mp3",
+        "duration": 14.05,
+        "sha256": "e27563ef0825c7af142d6328210838be29513683a934823813caabe9fd2b7f39",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:47.009Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "39d5655e9a7a89c3332c93ca53657865c4968c46a887e697e25107f9b7a4e60f",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:intro"
+        ]
+      },
+      {
+        "texte": "الذُّبُولُ",
+        "fichier": "course-cedar-b9b869fd1021c755.mp3",
+        "duration": 1.9,
+        "sha256": "6ab77b19fe0d517523d5d417c1657ff8451804a21daf1b32ef9d7c64ffad241a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:48.542Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "22fd8ed52b6a9af37996c1526afaaf5520ecb03a9010abbc1b4d6a05efa46d63",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:vocab-1"
+        ]
+      },
+      {
+        "texte": "يَحْتَاجُ النَّبَاتُ إِلَى المَاءِ لِيَبْقَى حَيّاً وطرياً؛ بدونه يذبل ويجف.",
+        "fichier": "course-cedar-e45ee65c54b57505.mp3",
+        "duration": 7.2,
+        "sha256": "d59dfa359cda276918c726a1a29aa947a0f0b295c1bf758e236e7d0e82040be8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:49.877Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4d06d9b5ab93c52fb13567414f397b9516eba1aab07166d13d83a11177985140",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:rule-1"
+        ]
+      },
+      {
+        "texte": "النَّبَاتُ كَائِنٌ حَيٌّ: يولد من بذرة، ينمو، ثم يزهر ويثمر (عند بعض النباتات).",
+        "fichier": "course-cedar-ba93f3aad080b38c.mp3",
+        "duration": 10.45,
+        "sha256": "a0ed5a8693177c37c5c8b7faeba6bbf2a7627b41a6785f07fb2ec3c0b0aada1c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:50.783Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7087fb6fe232105bea363a7fc8b2bbee33aaa3c60e7d9e9237ec28fe319c9797",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:rule-0"
+        ]
+      },
+      {
+        "texte": "يَحْتَاجُ النَّبَاتُ إِلَى ضَوْءِ الشَّمْسِ لينمو بشكل سليم وأخضر اللون.",
+        "fichier": "course-cedar-f820eb3708e781d9.mp3",
+        "duration": 6.7,
+        "sha256": "60b936f27d818a12a4297bffd4cc98a0f69b939cf321935f8b8d3b509bf915ab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:50.873Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6f94b98d9dd42c13c03313ad25364908b9734ec5095d3d5d86ff076d67565bc1",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:rule-2"
+        ]
+      },
+      {
+        "texte": "النبات يحتاج أيضاً الماء وضوء الشمس، وليس التراب فقط.",
+        "fichier": "course-cedar-0d5f46f4165d00d5.mp3",
+        "duration": 6.35,
+        "sha256": "983ad544747ea69fcf20abdc63a116db91398f4a1d1398696bb9b3756d99069e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:51.063Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "45a3dc656326feb67895ee1e68783b8228cf04968aa195ae52ce0b2061169e1d",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:mistake-0"
+        ]
+      },
+      {
+        "texte": "بعض النباتات تُزهر فقط دون أن تعطي ثماراً نأكلها، مثل الزهور الزينة.",
+        "fichier": "course-cedar-f6d83c0cb7a15628.mp3",
+        "duration": 8.7,
+        "sha256": "ff3fe4875cbdc53637b9cd4cffd55e0ae594a612f114337646668cd6a74f7766",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:52.038Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f8f98173d84d085e360b331b57c2b3a470e049154bf8b7e386614d126d62fc30",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:mistake-1"
+        ]
+      },
+      {
+        "texte": "من أين تبدأ حياة نبتة جديدة؟",
+        "fichier": "course-cedar-2c54a185284fa39f.mp3",
+        "duration": 3.7,
+        "sha256": "9b80850f46aa7293b0f2b04ff05a51c8ed19d0e1b8e7d63b6e7ab9d3b6e4a9c9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:52.228Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "86a25979b4ac7012adb24c41bde852fa8f04e649efda7a676abc34381ec3887d",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:practice-ex1-sc2ap-plants"
+        ]
+      },
+      {
+        "texte": "اذكر شيئين تحتاجهما النبتة لتبقى حية.",
+        "fichier": "course-cedar-ffa525a6fa03346d.mp3",
+        "duration": 4.25,
+        "sha256": "66c312925356547f405a1dd0695a76128a956ac49d24f8e2e3490844244897e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:52.558Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "176971e3efb170d372bf7fbe25c1bbea88bfba842834dde2f194f758b4204515",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:practice-ex2-sc2ap-plants"
+        ]
+      },
+      {
+        "texte": "لماذا تذبل النبتة إذا لم نسقها؟",
+        "fichier": "course-cedar-b99413b68e70fdea.mp3",
+        "duration": 4.2,
+        "sha256": "ab19e03e295362706ec75da38d758b07a2c2ab39b90a8fecbdf09cb080bd9b0c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:53.988Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3c07f0f9af40d610d0d49b07e79c78c28e378ab7b4eee61a3f50e1c83faf4ecd",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-q1-sc2ap-plants"
+        ]
+      },
+      {
+        "texte": "النبتة كائن حي: تنمو من بذرة، وتحتاج الماء وضوء الشمس لتبقى حية وخضراء. بدون ماء تذبل وتجف.",
+        "fichier": "course-cedar-4e02fc94986067b5.mp3",
+        "duration": 11.1,
+        "sha256": "5cd92983115a501f2d3c206ca3525214327785ad33c8551aa963fc5b9fca37ca",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:54.124Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5092ae4a6d218416473ebb7d5e0279d234406d52236dfb96b0aca8b1dad08688",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:takeaway"
+        ]
+      },
+      {
+        "texte": "نبتة ذبلت قرب النافذة. اقترح سببين وعلاجاً.",
+        "fichier": "course-cedar-53026f76c0ad3d4b.mp3",
+        "duration": 6.1,
+        "sha256": "2ec0536954b3960304ec7cda1f42b5ff8a52b9e22509e7299b1cfc0b90e2d5bd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:54.219Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5052ad5ec4a7dc066d1cceac7baba32d6f999f4774fb1144abaa2cd0787e4ad3",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:practice-ex3-sc2ap-pl"
+        ]
+      },
+      {
+        "texte": "النبتة الخضراء تحتاج أساساً إلى:",
+        "fichier": "course-cedar-645ebd45c1abe95e.mp3",
+        "duration": 3.3,
+        "sha256": "8df590cb54cd45c7a85210b840f5fb2b1d59efcf7605571348a3e3065a44c5ab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:54.342Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4fc49a798eab2139231d52e5485894ab69916e45e1440af8f6316187a1334fa1",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-qb-sc2ap-pl-2"
+        ]
+      },
+      {
+        "texte": "أين تثبت النبتة غالباً؟",
+        "fichier": "course-cedar-ea93f05ec1f9dcd9.mp3",
+        "duration": 3.05,
+        "sha256": "8f3d417fa36819158c876e5b2400e19f7440e2fa5d86f6b2ddf5332ff92f07a0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:55.782Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3b3836d6372971903c851a4d9fe31396d4a1e67fddfe8c9bbd3fba2ec505e810",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-qb-sc2ap-pl-3"
+        ]
+      },
+      {
+        "texte": "أوراق النبات تساعد على:",
+        "fichier": "course-cedar-c7e1d2b78489c91a.mp3",
+        "duration": 3.3,
+        "sha256": "98492a0abb2db57c8d911def5ee0b984b8c32aa5906bbf79bf3c08d7c40a152e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:55.911Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b32aa3868ccf34680d734e59c1400233edb31822e329a40210911d7868bf0f43",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-qb-sc2ap-pl-5"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث إن لم تُسق النبتة أسابيع؟",
+        "fichier": "course-cedar-7100d89f4b95b927.mp3",
+        "duration": 4.2,
+        "sha256": "106c0544bdead48e1939612a20d46d671ee6d25e3f8b98b9b7ac00b2c1d4bf69",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:56.008Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "415e8dc7bc7447cfc685b286bbaf932f53cad40c9bd13b9ca18e4b23da0cdd80",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-qb-sc2ap-pl-4"
+        ]
+      },
+      {
+        "texte": "نبتة في خزانة مغلقة بلا ضوء:",
+        "fichier": "course-cedar-59bff6479ab1a9e6.mp3",
+        "duration": 4.25,
+        "sha256": "689e6231470f1b65a218116527ea9c5902d3e6c401be0c055b6fd69afebfce9c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:56.139Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1cca1c3fa49baea7291861b139a81a60202f052a116277cd45c4d029bb7fd7e7",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:quiz-qb-sc2ap-pl-6"
+        ]
+      },
+      {
+        "texte": "ماء",
+        "fichier": "course-cedar-52a8b6b88ec61e42.mp3",
+        "duration": 1.2,
+        "sha256": "05236c8a7869a86e7aa194a582d8de81701aadc3ba958f30f4d57caf0a8b0fcb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:57.352Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "134c8817da37cd9db00117938211612d1d3fa45059ede233c46617747ccc836c",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:game-0"
+        ]
+      },
+      {
+        "texte": "ضَرُورِيٌّ لِلنَّبَاتِ",
+        "fichier": "course-cedar-2a72c1b445e3daad.mp3",
+        "duration": 3.05,
+        "sha256": "f707d66ec87afea7173ee8e8c5213b6df3080016199c45950a753fcd430b13ae",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:57.458Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "33f2de1a98cc1c9841d014ad338011b67b3200513706b5f303fd228de5cfa434",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:game-0-opt-0",
+          "course:science-2ap-t2-plants-around-us:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "اختر ما يحتاجه النبات ليبقى حياً بصحة جيدة!",
+        "fichier": "course-cedar-3d45a583156cfba3.mp3",
+        "duration": 4.9,
+        "sha256": "021d0594a7c27aeeff89ea72350893fbf2777d7865654b4b9e5b9baacbfa07b6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:57.572Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c45217d1ccdf14e52b77ae5af29c1c280943cda4b848a3b42941bb7e0376093",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:game-instructions"
+        ]
+      },
+      {
+        "texte": "غَيْرُ مُهِمٍّ",
+        "fichier": "course-cedar-3c3f6942073a5d45.mp3",
+        "duration": 1.95,
+        "sha256": "910872ff031b369c3133678a3b53ccb0c8e11fd3e800660ab53c32768a1d2458",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:57.727Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "411868e4b2d565b8173762dccf97faba955f5e9ac4a39b3a9940759fe6720dd5",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:game-0-opt-1",
+          "course:science-2ap-t2-plants-around-us:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "ضوء الشمس",
+        "fichier": "course-cedar-94ae2140db7833b3.mp3",
+        "duration": 1.85,
+        "sha256": "0c7814332e9c16ad4d11f112d790eb76d3e7876bd0d8a106292ac84fd3b81243",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:58.645Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c884601129917b1bd7a78f6cb8db73dce6f9dbd0f879b9a2afff7762145295ed",
+        "uses": [
+          "course:science-2ap-t2-plants-around-us:game-1"
+        ]
+      },
+      {
+        "texte": "هل يمكن أن يعيش الأسد في بيتنا مثل القطة؟ لماذا؟",
+        "fichier": "course-cedar-5a9744ad96000b4a.mp3",
+        "duration": 5.8,
+        "sha256": "d345dbfef1e66078e9bfc4643588d73d313981b8d646ef445ecb3ed283dc9bed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:59.406Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ff60133c07ae9ff8cf4845ed45a167436734f35426098fe3176bfe2666e3fd12",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:discovery"
+        ]
+      },
+      {
+        "texte": "التمييز بين الحيوان الأليف والحيوان البري، وربط كل حيوان بصوته وغذائه المناسب.",
+        "fichier": "course-cedar-beec5b11a138014d.mp3",
+        "duration": 8.9,
+        "sha256": "2ce25823a54082c9984eec9daa3156e8b11bd3735e1acb931e1bbba2ff568b83",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:11:59.764Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fc30189d1111f89a416687b04181ef9f294c7348d9f47fdf44729de42e945c16",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:objective"
+        ]
+      },
+      {
+        "texte": "يتعرف التلميذ على الفرق بين الحيوانات الأليفة (التي يربيها الإنسان) والحيوانات البرية، ويربط كل حيوان بصوته وغذائه.",
+        "fichier": "course-cedar-0801d6607b1b9d1c.mp3",
+        "duration": 11.1,
+        "sha256": "06563f66519786b7759552c224c1477619a33a2aa244c535471e7955db6e2740",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:00.024Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "30c36a61aa61f884a478d991fbbc0d03d84b50394d2619b7e12b20734dcc2300",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:summary"
+        ]
+      },
+      {
+        "texte": "لِكُلِّ حَيَوَانٍ صَوْتٌ مُمَيَّزٌ: البقرة تخور، القطة تموء، الكلب ينبح، الأسد يزأر.",
+        "fichier": "course-cedar-014b64bc4085e444.mp3",
+        "duration": 8.75,
+        "sha256": "ee477516cb735e15bc5048146a5208e8b9ea6754802751ab55223cbd2ef874d3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:02.405Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6555ad416eacb7178eb5802d5182e87d2d5f4820fab3981bc8c131e674427292",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:rule-2"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانُ البَرِّيُّ: يعيش بعيداً عن الإنسان في الغابة أو الصحراء، مثل: الأسد، الذئب، الثعلب.",
+        "fichier": "course-cedar-1d950a89c9a3100c.mp3",
+        "duration": 10.1,
+        "sha256": "2eabd3ea291755eaa482f2e0bedbd684b07df26fc157225b53294672077c38c2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:02.494Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dde17d620e64148824fc7356f2d8413c85ba6d4454700e69117675bc2655475c",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:rule-1"
+        ]
+      },
+      {
+        "texte": "حولنا حيوانات كثيرة ومختلفة: بعضها يعيش معنا في بيوتنا ومزارعنا، وبعضها يعيش بعيداً في الغابات والصحاري بمفرده.",
+        "fichier": "course-cedar-afe4c82faf2c37bf.mp3",
+        "duration": 12.25,
+        "sha256": "f4e2b3b42f72d4eb62e146af4b5c725f310b53cd2832134f1854b8a6d0a974a6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:02.796Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3925170748fff844e4690fceb5f603d1ec88144b9b983ac7ef66f9606afe5e74",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:intro"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانُ الأَلِيفُ: يعيش قرب الإنسان ويعتني به الإنسان، مثل: القطة، الكلب، الدجاجة، الغنم.",
+        "fichier": "course-cedar-a47f99ad8542dba3.mp3",
+        "duration": 10.6,
+        "sha256": "e46a72fc8c7c16ffa72c440fc0a861abbc81dc1f71d29dd1ace2a06cee979d7b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:02.893Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "06f1471283d39be50e38d02dd80b5fc198ef49a587f6562cd35152d32f6c8f77",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:rule-0"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانُ البَرِّيُّ",
+        "fichier": "course-cedar-f56c7dd4c8109902.mp3",
+        "duration": 2.45,
+        "sha256": "3c0d052df6e29e17e9a981b621cc51e7ef94b75f9390cea05342afa9579e2854",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:04.200Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cde3be613d0868561491392f692046544462dbb14521df6dac37435fe9036a5c",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:vocab-1"
+        ]
+      },
+      {
+        "texte": "الحَيَوَانُ الأَلِيفُ",
+        "fichier": "course-cedar-1e859407f32143d5.mp3",
+        "duration": 2.3,
+        "sha256": "7016a880cc656cd89b6915ce7831b7dbf2ff648c963e13644642cf4ce71fec42",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:04.308Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "beb49f4e10989f379f7cb197445c4e1086d14a9a082d410ab8d574271a97daf6",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:vocab-0"
+        ]
+      },
+      {
+        "texte": "ذكّر الطفل أن الكلب \"ينبح\" وهو أليف، أما الذئب فيعوي وهو بري.",
+        "fichier": "course-cedar-0a5a8e6874219d40.mp3",
+        "duration": 7.35,
+        "sha256": "cec1ccea8d56a48eae4c0f0c2fc9853c12ed1eb1c31a59c632aacd08f787e787",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:06.040Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e5de279be9c644e2f3bf53a25f6f3a0d762a59e9accebaf2bb9ac98cd94ee45b",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:mistake-1"
+        ]
+      },
+      {
+        "texte": "الفراء لا يحدد إن كان الحيوان أليفاً أم برياً؛ الذئب مثلاً له فراء لكنه حيوان بري.",
+        "fichier": "course-cedar-56cde78a697832c9.mp3",
+        "duration": 10.8,
+        "sha256": "b47a3681956f58fc53adab5ba87836ae3fe8c57fc72ec446b9ffb0da94efa258",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:06.316Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "afe20d3b8166e73a3912f217413630283bca2d4e215a33db885b089e7bfaf1a3",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:mistake-0"
+        ]
+      },
+      {
+        "texte": "أي صوت يصدر عن القطة؟",
+        "fichier": "course-cedar-6f44073d2f5acc32.mp3",
+        "duration": 3.3,
+        "sha256": "916d337cebbca091ad9bdcf8b3877411ad76b7aee3af1d49d1dd15a91c4fa9e2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:06.722Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bd1562659eef8fbc4346d88dbb78ad7d3e1cb68ca1b404163e8dd76ad53e4303",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:practice-ex1-sc2ap-animals"
+        ]
+      },
+      {
+        "texte": "الحيوان الأليف يعيش قرب الإنسان ويعتني به (قطة، كلب، دجاجة). الحيوان البري يعيش بعيداً وحراً (أسد، ذئب، ثعلب). لكل حيوان صوت مميز.",
+        "fichier": "course-cedar-4919a8f687c92048.mp3",
+        "duration": 17.35,
+        "sha256": "752aa4affb3dc48fcd1973869d4c0ff4f50f7a5c0938787a53bd38c74ba147bb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:07.763Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9e7e6054ac771bbeb4fa654a0e8e39f923e1c6fa682d906e495855c33020b124",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:takeaway"
+        ]
+      },
+      {
+        "texte": "هل الأسد حيوان أليف أم بري؟",
+        "fichier": "course-cedar-b6c7315f9b50ad38.mp3",
+        "duration": 4.25,
+        "sha256": "cffaa804b59def94ea43e0f9665417cc69df397e6c9e5ab97f6a6a39d089e5e9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:08.126Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f07c0ab1cc9645b9b8e8f4d02578417df4eb55b2f6e64af2537a4c0c69fba95a",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:practice-ex2-sc2ap-animals"
+        ]
+      },
+      {
+        "texte": "لماذا الأرنب في البيت أليف والأسد في الغابة بري؟",
+        "fichier": "course-cedar-c8fd67275640c52e.mp3",
+        "duration": 5.15,
+        "sha256": "de058a5af550b6db4752778714e5a5193ed2dd19f7a165ae1ecc0bdeadd0b75c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:08.208Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "70c313a3ed39c920d2a5f7c91dd3722c2b3440db56aa1131e3180f91b5089245",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:practice-ex3-sc2ap-an"
+        ]
+      },
+      {
+        "texte": "أي حيوان من هذه الحيوانات أليف؟",
+        "fichier": "course-cedar-6e410b0d0dde5fca.mp3",
+        "duration": 4.2,
+        "sha256": "d41d363e8440c752a4c541cdb3bef5d87b01bf0cd7264fcf99eb7f4e6a94df4f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:08.512Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f8f8d6c01c7abfae5b8d268ee98722a376d979ad5e02b95850939885251cece3",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-q1-sc2ap-animals"
+        ]
+      },
+      {
+        "texte": "الثعلب حيوان:",
+        "fichier": "course-cedar-7c8d98f0c159ba92.mp3",
+        "duration": 2.6,
+        "sha256": "ab6052a5178c560027500f9e400c343c5f740cb30da7d9b81c4b28c7d7685dbc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:09.833Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "791e54cc292529fc9c5e63b7dd433bb39a005a6e688dff8dbf1b66f2390d7b4b",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-qb-sc2ap-an-3"
+        ]
+      },
+      {
+        "texte": "من الحيوانات الأليفة:",
+        "fichier": "course-cedar-843b4b4ac7874e2b.mp3",
+        "duration": 2.7,
+        "sha256": "d7fd04ad5eaf73ed0764bacc5d90c0b6ec925e6397f1c9e9db1bf19467d1bf34",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:09.969Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bf4acb30b7f1326ae8478270c41cbec363ccc9f5865c266341ebdea9ce79116a",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-qb-sc2ap-an-4"
+        ]
+      },
+      {
+        "texte": "القط في البيت حيوان:",
+        "fichier": "course-cedar-fa8098ab37bf252a.mp3",
+        "duration": 3.8,
+        "sha256": "fef50f2285f96792d86b83e63e97934b9725ad6b876a28a06c34104065c72734",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:10.253Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "046961989612092abaa282642fc7bd48962e2e22b5140682393cd7880d3396d2",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-qb-sc2ap-an-2"
+        ]
+      },
+      {
+        "texte": "لماذا لا نلمس حيواناً برياً؟",
+        "fichier": "course-cedar-f84c635c05d1b9c3.mp3",
+        "duration": 3.5,
+        "sha256": "bfdf57abcb6f3fc9ea12e0d17ec5a190d455d963f60c927194ac54f4c986470d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:10.369Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "502feb855842825b1e0a738b8b17c455c608978a755219d9c0c20e6a7a0144f2",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-qb-sc2ap-an-5"
+        ]
+      },
+      {
+        "texte": "اربط كل حيوان بصوته الصحيح!",
+        "fichier": "course-cedar-aec88d1639b10cd3.mp3",
+        "duration": 3.35,
+        "sha256": "c9db3b902d785d05e53e25f7bf32d124e10815437c95255fec379842ffc84e76",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:11.899Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e0048c94fffe3ec150772f6621d0bcd56274dcdafc0fcba013740604a9425c1",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-instructions"
+        ]
+      },
+      {
+        "texte": "الكلب الذي يحرس البيت:",
+        "fichier": "course-cedar-361ec05f3f6f880b.mp3",
+        "duration": 3.05,
+        "sha256": "5049ceae7f7a7e5d1379952ac5b09ef095b06cc88ba99bc40778548318cd5106",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:12.050Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bb5290a040771aab6099313dbc75bba980ae24ab10df98c2a90add8d5f465a63",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:quiz-qb-sc2ap-an-6"
+        ]
+      },
+      {
+        "texte": "يَنْبَحُ",
+        "fichier": "course-cedar-4f98e5739ce87ad0.mp3",
+        "duration": 1.55,
+        "sha256": "860393d3b451c6e90daa97fb00e725a77caba0896f78370e0bb129e7d9d9487f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:12.175Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8b07ee32039a2749d1dac17f2856b6078ebcf809e5f887962adcc4efeb3ab813",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-0-opt-0",
+          "course:science-2ap-t2-domestic-wild-animals:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "الكَلْبُ",
+        "fichier": "course-cedar-0ab0b10441b3a0b0.mp3",
+        "duration": 1.35,
+        "sha256": "2eeed85ec0fe329a1442a7a1c34f3d9ba2227398e870994eed3cdb21de5360f2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:12.251Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6c5d04c7691b3a548e2cb683e3f257083fe640d21c6b4616012cd31ac64f7639",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-0"
+        ]
+      },
+      {
+        "texte": "يَزْأَرُ",
+        "fichier": "course-cedar-fb8c2bdad0a2598f.mp3",
+        "duration": 1.3,
+        "sha256": "1a17d2ab55f13d0bae452a4b619e089bc41db9a32b5c6e8220686b500bdc2f1e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:13.896Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fa79641dd56e3d2d4be7fc0d8d8ca7661987a577acf258a8dbb4a83bad62d3a4",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-0-opt-1",
+          "course:science-2ap-t2-domestic-wild-animals:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "يَمُوءُ",
+        "fichier": "course-cedar-cea72270cf942c53.mp3",
+        "duration": 1.9,
+        "sha256": "35b34236d3c6ec9133e885b9e13652c9cd2d58338cc81c2d2eecacfb1b576465",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:13.941Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ed4f4678b6bdcefce6454627d8ecf45bd985930b1e770abc3cc5e29593347452",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-0-opt-2"
+        ]
+      },
+      {
+        "texte": "الأَسَدُ",
+        "fichier": "course-cedar-7f391fe5556a247e.mp3",
+        "duration": 2.2,
+        "sha256": "e84aa0d6384c2a925b41e8a9b85fd450146ec9fe77c2d13aceac03fb00efeedc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:14.004Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba0ace4fa0b6471061652922c0176f57d68175e46aa757890336a8ad8e5b5c9f",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-1"
+        ]
+      },
+      {
+        "texte": "يَخُورُ",
+        "fichier": "course-cedar-4ce86eda476d28a7.mp3",
+        "duration": 2.3,
+        "sha256": "1b260dc1e4489f49644a867f2bdab2adc74f9a055adfe722007170cfab4957fc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:15.536Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c52e0a8f7825f426b0a5f85f4e651d30b3e1d4a963ec26af17ef35f2d9d0539d",
+        "uses": [
+          "course:science-2ap-t2-domestic-wild-animals:game-1-opt-2"
+        ]
+      },
+      {
+        "texte": "التمييز بين الجسم الصلب والسائل، والتعرف على بعض مصادر الصوت من حولنا.",
+        "fichier": "course-cedar-57f1cfb8746f2edb.mp3",
+        "duration": 7.7,
+        "sha256": "28a67cf744ea4d36bb26511fa347c3135509619b3be395b59551bd88f661f4c5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:16.265Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35b7d2943d72cb1654db713abb275b69e8fb4bbfd9a30cdecea9798a948707d6",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:objective"
+        ]
+      },
+      {
+        "texte": "يميز التلميذ بين الأجسام الصلبة (تحتفظ بشكلها) والأجسام السائلة (تأخذ شكل إنائها)، ويكتشف أن الصوت ينتج عن اهتزاز أشياء مختلفة.",
+        "fichier": "course-cedar-8bc95d38cec8dfe7.mp3",
+        "duration": 14.05,
+        "sha256": "b563d4dacb5ebdc08e4908e971aa9f2d103e5d26c86bdd4664a878dfa67b6d5d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:17.214Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "61996fd390bc48f926e3a25c1519d02e391f09bbc361483f30155e66c7736a74",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:summary"
+        ]
+      },
+      {
+        "texte": "صب كأس ماء في إناء مستدير ثم في إناء مربع. هل يتغير شكل الماء؟ والآن انظر إلى قلمك، هل يتغير شكله إذا نقلته من مكان لآخر؟",
+        "fichier": "course-cedar-36f4b5867a25f002.mp3",
+        "duration": 13.4,
+        "sha256": "5858372fdf5d229b0aab964a4abab4290b0e73a9ebe439d74da9679a58e0c4ff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:17.539Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "53489cae5bb3dd71e7f8df56aca1c0717dd680252d0bd0269c98b4438c66768d",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:discovery"
+        ]
+      },
+      {
+        "texte": "الجِسْمُ الصُّلْبُ: يحتفظ بشكله الخاص أينما وضعناه، مثل: القلم، الكتاب، الكرسي.",
+        "fichier": "course-cedar-6386c8943af51e5a.mp3",
+        "duration": 9.05,
+        "sha256": "a0ed8d24d1db27f79a5f59d9b7f96f2773760b93c74d12eb290ad662d2215bc5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:19.009Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5784d18d6106ec838e3100fdaa6dbb94cfa4957aa44e99c803fda39b4f9f0c39",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:rule-0"
+        ]
+      },
+      {
+        "texte": "الجِسْمُ السَّائِلُ: يأخذ شكل الإناء الذي يوضع فيه، ويتحرك بسهولة، مثل: الماء، الحليب، العصير.",
+        "fichier": "course-cedar-b1a94a576eb3fd4f.mp3",
+        "duration": 10.55,
+        "sha256": "48cc6f47ee1b21fb75f5f907c6f69f486cae90bb4daf6d949370e863361e4c01",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:20.012Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e03e1c6a1204abff1e32c1044bef9abc678c8b7bb1646f4ca91e1f304306d510",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:rule-1"
+        ]
+      },
+      {
+        "texte": "الجِسْمُ الصُّلْبُ",
+        "fichier": "course-cedar-1cee9994ac452f8c.mp3",
+        "duration": 1.75,
+        "sha256": "64d64cc42e123c5a49ad7a5245d8de99a4967390a587a4b5cfe357582f3278da",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:23.196Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c74d6f39a3337d228b2d8fa33a18823c3b6a329d328e3ced75a6cd5fc3bcc10e",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:vocab-0"
+        ]
+      },
+      {
+        "texte": "يَصْدُرُ الصَّوْتُ عن اهتزاز الأشياء: عندما نطرق الطاولة، أو نضرب على طبل، أو نتكلم، تهتز أشياء صغيرة تُصدر صوتاً نسمعه بآذاننا.",
+        "fichier": "course-cedar-f003dcae6f37194f.mp3",
+        "duration": 15,
+        "sha256": "f9284412e0d03a6fd0f744d65ef623f73b15e4b885558ee38a3e9c59c216fe98",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:24.226Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "32b6b55df7df4e71adcf293e793decab4ca476884399a29dc5a4db902ad6488b",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:rule-2"
+        ]
+      },
+      {
+        "texte": "الأشياء من حولنا نوعان: أشياء صلبة تحتفظ بشكلها دائماً، وأشياء سائلة تتغير شكلها حسب الإناء. وكل الأصوات التي نسمعها تأتي من اهتزاز شيء ما.",
+        "fichier": "course-cedar-f71200f60153c908.mp3",
+        "duration": 15.95,
+        "sha256": "c24495c48fda7d64c5da38feb915c3096253c65b681dd5bff5411267e8190a86",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:24.478Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "94d224b3784db44711f07059a9b7e7aa71bc593acd6652e0c35885d80f2e02bf",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:intro"
+        ]
+      },
+      {
+        "texte": "الجِسْمُ السَّائِلُ",
+        "fichier": "course-cedar-d97779d17a3706dc.mp3",
+        "duration": 2.1,
+        "sha256": "f265222516fa3c2c34dcd142cf6479f3334a38ffd7a17f8cf8dec9733acf0e80",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:25.236Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "504a169bac1479e3e121b49d5656c3fa4d3040e0e7d8c25c870c33840c42e32d",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:vocab-1"
+        ]
+      },
+      {
+        "texte": "الاهْتِزَازُ",
+        "fichier": "course-cedar-e09829dcee7c73f3.mp3",
+        "duration": 1.65,
+        "sha256": "87b71af51d8694b0529ec2c23a5a5849108c4d4cb9dee3df3b68308829d295a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:25.791Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c707901b49aa84313d62e4c0687aabe796bb7c668a566a5c25110c54a69c81fc",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:vocab-2"
+        ]
+      },
+      {
+        "texte": "الرمل والسكر أجسام صلبة مكونة من حبيبات صغيرة صلبة، حتى لو بدت تتدفق كالسوائل.",
+        "fichier": "course-cedar-69a10395d7113efc.mp3",
+        "duration": 9.15,
+        "sha256": "916fe42d5b67ddd3a8db54964685d474e58feb46b9ef4d52ac8f3f3770c3f8f3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:26.578Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4a06fe4cfb87f5eb5b301ff7571ca8bb72d15542c0fe1564ce3d4dbccf65ffc5",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:mistake-0"
+        ]
+      },
+      {
+        "texte": "الصوت يمكن أن يصدر عن أشياء كثيرة مختلفة: الأدوات، الأصوات البشرية، الآلات الموسيقية.",
+        "fichier": "course-cedar-8652b3476411ec44.mp3",
+        "duration": 9.05,
+        "sha256": "7e65ae0edbe1f046cc9acca5b54895c22657704eeb6eafae9433d227e9e461fb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:28.146Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7998d4fb834539adb7ed81759a2aa06236b4da7e4f083992b8b17081fbdb895a",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:mistake-1"
+        ]
+      },
+      {
+        "texte": "هل القلم جسم صلب أم سائل؟",
+        "fichier": "course-cedar-bde6c238b0607616.mp3",
+        "duration": 4.7,
+        "sha256": "1d022bf40c6491f3bb48500350d41a5d4a80392e551e5a6da70960d32e1dac9f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:28.213Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0e7c1f6ab62f086ce4516479b1b2cb6cdf2b9403c629848bbec5e7bd677d3bde",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:practice-ex1-sc2ap-matter"
+        ]
+      },
+      {
+        "texte": "كيف ينتج صوت الطبل عندما نضربه؟",
+        "fichier": "course-cedar-ed3c62cca82fbef2.mp3",
+        "duration": 4.1,
+        "sha256": "345096bd73caf3bbc4d53b703b16ab66816b2fbdaa49e244c4ec0457da22aa1d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:28.282Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0516a8829e7b2352f47ffd1b760c9fa5ed6092726f5dcdc5c9f72c2a86a536d1",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:practice-ex2-sc2ap-matter"
+        ]
+      },
+      {
+        "texte": "الجسم الصلب يحتفظ بشكله (القلم، الكتاب). الجسم السائل يأخذ شكل إنائه (الماء، الحليب). الصوت ينتج عن اهتزاز الأشياء.",
+        "fichier": "course-cedar-d38871f07832b687.mp3",
+        "duration": 13.75,
+        "sha256": "05220e0e3c4aa7c427f0e82700e163096173bb8735eac54947d1d1a1a6976346",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:28.481Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dcd1e7a792a8b936e6d9dc0b8fd599a4a722ef7d83509fc644bb9aa00dc43f5e",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:takeaway"
+        ]
+      },
+      {
+        "texte": "الحجر مادة:",
+        "fichier": "course-cedar-f29b91fd64c08c23.mp3",
+        "duration": 2.25,
+        "sha256": "c022ea6ff2c4c9e7d1a9403e752522c30a0c9561ee7b4e0a20b8ddfe073bfa3a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:30.159Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "250a1340e1a78d14b16da84fc0cdd930499c7b1af82e5d239805b7bc192e1178",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-qb-sc2ap-sol-2"
+        ]
+      },
+      {
+        "texte": "ما الذي يُنتج الصوت عندما نتكلم أو نقرع طبلاً؟",
+        "fichier": "course-cedar-5e3bf1deaf16439d.mp3",
+        "duration": 4.8,
+        "sha256": "7e1db94aa8464392f2011725822f23901662e43480dbe5440a28d2eb9327ee8a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:30.386Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "144557a06cd11399270abae26dde4c668ba8175874d741de83fa9fd9f0148f71",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-q1-sc2ap-matter"
+        ]
+      },
+      {
+        "texte": "الماء في الكأس:",
+        "fichier": "course-cedar-bd139a2537113762.mp3",
+        "duration": 2.5,
+        "sha256": "dd5c04797fde6d02cb792a15d28000ccd787251d76f3030e916c4b6c48f15dc8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:30.457Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4c35ff0f63178513c12b9d27f98886848e40cdc7c650c97d781341afa5a16f32",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-qb-sc2ap-sol-3"
+        ]
+      },
+      {
+        "texte": "قارن شكل الحجر وشكل الماء إذا نقلناهما إلى علبة أخرى.",
+        "fichier": "course-cedar-d074407514813a8f.mp3",
+        "duration": 6.2,
+        "sha256": "a447cc73cd1ecc789e6d90627d7dee3e4e9afa72e423dfce8da5fa694a838a2d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:30.524Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "97c3148a009a8e6becb1d9b41475cd70061cc6b8303ee02d794db5768ab21a81",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:practice-ex3-sc2ap-sol"
+        ]
+      },
+      {
+        "texte": "الهواء من حولنا:",
+        "fichier": "course-cedar-33a78197baaa7808.mp3",
+        "duration": 3,
+        "sha256": "0e7657b950d7c9dacb36074c96a1b0441bfa0d447e9040955d49c7c87b8bdafd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:31.981Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "55369afb6f06058cd24b23c70610ce2e6b3bb6737d85ff0770ede034203e1070",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-qb-sc2ap-sol-4"
+        ]
+      },
+      {
+        "texte": "الصوت ينتقل جيداً عبر:",
+        "fichier": "course-cedar-64719385bdc7d55c.mp3",
+        "duration": 3.05,
+        "sha256": "a8d1c0a3a7b699ed227c8109b801b430324336ac2fa07a615e4ce2c9e30e2681",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:32.090Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d5ddbe89749959cf6e07cb89a0aad17e547309e1a02bfe10cff9d3a4e426c1d2",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-qb-sc2ap-sol-5"
+        ]
+      },
+      {
+        "texte": "العصير في الكأس:",
+        "fichier": "course-cedar-d36323fa58381098.mp3",
+        "duration": 2.05,
+        "sha256": "e7c9068c4abab1796e44d20634587f4303c5213daf134f4f514a3778dc7c2dd1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:32.235Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d669501563c5f88f09e665dfe8cdada33f4e0cb5b7e47106320cff4bf2c7b1ae",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:quiz-qb-sc2ap-sol-6"
+        ]
+      },
+      {
+        "texte": "صنّف كل شيء حسب حالته!",
+        "fichier": "course-cedar-f377670a9131e04f.mp3",
+        "duration": 3.85,
+        "sha256": "089c4a905cb7c86e0c586cf11229fa9ebe90f23f6742ee00ae0975bcce44f7a9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:32.357Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fab8abb0511050e11c258d8c94e0423326010758d5a402ec59de9c154ee112be",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:game-instructions"
+        ]
+      },
+      {
+        "texte": "العصير",
+        "fichier": "course-cedar-60b60f9e4bc8cc2c.mp3",
+        "duration": 1.2,
+        "sha256": "e8cdee44f0988055b66926d04a8ff9795b35814b9b7f845abf540e08bfdf8867",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:34.060Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "33b8cfa386ceaa4053be051f5be13f43cb7b5e6e655b37fef70db3480ae45fdb",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:game-0"
+        ]
+      },
+      {
+        "texte": "صُلْبٌ",
+        "fichier": "course-cedar-14fc2a4d4816e7d7.mp3",
+        "duration": 1.45,
+        "sha256": "b43afd7c7094e8dcfa3864ec768e862d8a35bf78034e63ac9569104e3ac8c675",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:34.187Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fc2a56e2502dc13f28d1c082135fd5ee1d4a5cf885476a4f2993f290783a2b16",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:game-0-opt-1",
+          "course:science-2ap-t3-solids-liquids-sound:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الكِتَابُ",
+        "fichier": "course-cedar-a3acb6a161555eba.mp3",
+        "duration": 1.95,
+        "sha256": "b4d0e2c266871d9ec026c5854456e82b9ee7a15131f8b95ee0bd937d30d70556",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:34.461Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1fa5886c557198a84ef6c2994cfca0a8d99541680be6feca018c84cf60abd305",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:game-1"
+        ]
+      },
+      {
+        "texte": "سَائِلٌ",
+        "fichier": "course-cedar-bb96b557f631f9a1.mp3",
+        "duration": 1.7,
+        "sha256": "82b99fb5a8a548954d6f426938296ca260d46adfe900191f28f3f1fd74a49434",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:34.668Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "371b6b665b1858f9fe34bd00932ff337df73309c3f51b63b4304e1b583105b3e",
+        "uses": [
+          "course:science-2ap-t3-solids-liquids-sound:game-0-opt-0",
+          "course:science-2ap-t3-solids-liquids-sound:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "أخرجت مكعب ثلج من الفريزر ووضعته في طبق على الطاولة. ماذا سيحدث له بعد قليل من الوقت؟",
+        "fichier": "course-cedar-c4fcff3ef4fad053.mp3",
+        "duration": 8.85,
+        "sha256": "c6ce91f906ec08e6f782499c4156ecacc85088c06bd06403d1e40531eb3322e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:37.632Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0b49b650ae7fba35d716a33ac5f8710e91f307897ca4ca87886cacb74edb7af8",
+        "uses": [
+          "course:science-2ap-t3-water-states:discovery"
+        ]
+      },
+      {
+        "texte": "التعرف على حالات الماء الثلاث وملاحظة تحول الماء من حالة إلى أخرى بتأثير الحرارة أو البرودة.",
+        "fichier": "course-cedar-ed7f669da4aac993.mp3",
+        "duration": 8.65,
+        "sha256": "5580b29adaddfe752f6117d355453d8d0d2198f5db90f72ee3ee95376f4dcc79",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:37.927Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d6c233994812bc782c3039826b1e810894abcdf70b123c3e423192576c47ea96",
+        "uses": [
+          "course:science-2ap-t3-water-states:objective"
+        ]
+      },
+      {
+        "texte": "يكتشف التلميذ أن الماء يتخذ ثلاث حالات (صلبة، سائلة، غازية)، وأن الحرارة تحوّله من حالة إلى أخرى.",
+        "fichier": "course-cedar-53c2c904cd152911.mp3",
+        "duration": 11.2,
+        "sha256": "6f2f0cc78dff61ac610c294d2e95822e669bf0612433c5817f3b49b898f6c091",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:38.099Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "21ebc15b9ae1cba85830ec4ce7490dd0322a7be8cf4362669fc8a86c881cd096",
+        "uses": [
+          "course:science-2ap-t3-water-states:summary"
+        ]
+      },
+      {
+        "texte": "الماء ساحر: يمكنه أن يكون صلباً كالجليد، أو سائلاً كما نشربه، أو غازياً كالبخار الذي نراه فوق كوب الشاي الساخن. والحرارة والبرودة هما ما يغيران حالته.",
+        "fichier": "course-cedar-6854f9af69b3cc21.mp3",
+        "duration": 17.2,
+        "sha256": "a19a09c8c07851ffb3df4e796f3045a3675cc4181b02976740c2bc63c4de514f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:39.295Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b2b8d95f3b99bc7575bac1483a3cfbd1b2fa4fdc6c4940e90ea690a32ce250ca",
+        "uses": [
+          "course:science-2ap-t3-water-states:intro"
+        ]
+      },
+      {
+        "texte": "الانْصِهَارُ: عندما نُسَخِّنُ الجليد الصلب، يتحول تدريجياً إلى ماء سائل.",
+        "fichier": "course-cedar-8e23ee0955dd34ca.mp3",
+        "duration": 8,
+        "sha256": "f8b681d040d02757f9da585ef4ce17e906ff986006caf2793ee5c2eff6aa770d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:40.559Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "66f7122cab328e9bf274133bb881d935f964c17edf04f59e2063f985e07239d2",
+        "uses": [
+          "course:science-2ap-t3-water-states:rule-1"
+        ]
+      },
+      {
+        "texte": "المَاءُ لَهُ 3 حَالَاتٍ: الحَالَةُ الصُّلْبَةُ (الجليد أو الثلج)، الحَالَةُ السَّائِلَةُ (الماء العادي)، وَالحَالَةُ الغَازِيَّةُ (بخار الماء).",
+        "fichier": "course-cedar-3ea00f7660220779.mp3",
+        "duration": 12.4,
+        "sha256": "49756eebfb49a9bc29452bad832280ba3375807d85ccd086ff442314243933cb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:41.281Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eab970e463b7393daf79ce40d47b2b4b371b4359d1ee75fffbce79e9fb053c71",
+        "uses": [
+          "course:science-2ap-t3-water-states:rule-0"
+        ]
+      },
+      {
+        "texte": "التَّجَمُّدُ: عندما نضع الماء السائل في البرودة الشديدة (الفريزر)، يتحول إلى جليد صلب.",
+        "fichier": "course-cedar-017985ae753f9c7d.mp3",
+        "duration": 9.7,
+        "sha256": "7f3c937b5131592d12e9a537934ca6ff40a60eeb1e8d5be20b0a6dec3de643bb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:42.695Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "666dbf7259ec0bc266e3ab56cdc48f0a8b6df58dfc108c2c28fb9b5017abb467",
+        "uses": [
+          "course:science-2ap-t3-water-states:rule-3"
+        ]
+      },
+      {
+        "texte": "التَّبَخُّرُ: عندما نُسَخِّنُ الماء السائل كثيراً (كما في القدر على النار)، يتحول جزء منه إلى بخار غازي يتصاعد في الهواء.",
+        "fichier": "course-cedar-a90e38ea77cc02eb.mp3",
+        "duration": 13.55,
+        "sha256": "732b4c57077a944432dde297dd00d8235fcdd1d090d51213d615a8f6ceb96ec8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:42.764Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "caefd1f664c5225eed316aade6cfd2d7704eeb08b83870aeb8f6e0ec3b422ed9",
+        "uses": [
+          "course:science-2ap-t3-water-states:rule-2"
+        ]
+      },
+      {
+        "texte": "الانْصِهَارُ",
+        "fichier": "course-cedar-36a6241c4f01a1d2.mp3",
+        "duration": 1.75,
+        "sha256": "c00090231af2f544f1f58390b1c6b53871bb38b48f427ceb9b0732434415934a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:42.875Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "498b2ffbe9a9970b19324e1c4a05a58054397998318a5fe8ae3b3fdba9117c93",
+        "uses": [
+          "course:science-2ap-t3-water-states:vocab-0"
+        ]
+      },
+      {
+        "texte": "التَّبَخُّرُ",
+        "fichier": "course-cedar-7d182713733a93a4.mp3",
+        "duration": 1.6,
+        "sha256": "750889ca3b52069b1c81bb07a3e91bdc2f00d209be0ff110857f3fac3f0b60aa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:43.509Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9b25c9666dbbfe8a60f17ff586c5ad39aa1d62aec97034f9234d72db30e963af",
+        "uses": [
+          "course:science-2ap-t3-water-states:vocab-1"
+        ]
+      },
+      {
+        "texte": "التَّجَمُّدُ",
+        "fichier": "course-cedar-c8122fc54d04780c.mp3",
+        "duration": 1.3,
+        "sha256": "bb174f1d7485d1e33e86c938dd11cb25f8d0656471061a36ed388b4bafd28911",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:44.011Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8ba603ac1d0c98047c55f89c4aed9a35f508281a91651cccacf887ea55ff4804",
+        "uses": [
+          "course:science-2ap-t3-water-states:vocab-2"
+        ]
+      },
+      {
+        "texte": "الانصهار يبدأ من الجليد، والتبخر يبدأ من الماء السائل — كل واحد له نقطة انطلاق مختلفة.",
+        "fichier": "course-cedar-951dc790c06786c3.mp3",
+        "duration": 9.15,
+        "sha256": "5c99897107590da772b367b43af6d7e8919ac90e922c0909c63ff7c7dc2cd038",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:46.041Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a6d1a175c7a3f8f9f4e270f930fe96ea1d35972f04214df5967dddeae147c03e",
+        "uses": [
+          "course:science-2ap-t3-water-states:mistake-1"
+        ]
+      },
+      {
+        "texte": "ما اسم عملية تحول الجليد إلى ماء سائل؟",
+        "fichier": "course-cedar-49d1e41fc8d0d0ac.mp3",
+        "duration": 4.75,
+        "sha256": "984feecff44f23ba62df3f833fe5265f22cde0427d3b4430208bbaa1367f2521",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:46.101Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6b32b1dda1f0a46b8a9f749d486cdab938e8390ea4d744a73cf24cacd4794270",
+        "uses": [
+          "course:science-2ap-t3-water-states:practice-ex1-sc2ap-waterstates"
+        ]
+      },
+      {
+        "texte": "بخار الماء لا يختفي، بل يبقى في الهواء وقد يتكاثف لاحقاً ليعود ماءً من جديد (كما في تكوّن السحب والمطر).",
+        "fichier": "course-cedar-ef7e605e399a156b.mp3",
+        "duration": 12.3,
+        "sha256": "ad0b0ef9d5e1304c236807799dc2226c29415e1ea967c15d83b824fe5822dff7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:46.513Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "20b591fcbbae0dfc6cefec2b03c986203fb996697c7985330979c5156d8fbf69",
+        "uses": [
+          "course:science-2ap-t3-water-states:mistake-0"
+        ]
+      },
+      {
+        "texte": "للماء 3 حالات: صلبة (جليد)، سائلة (ماء)، غازية (بخار). الحرارة تُذيب الجليد (انصهار) وتُبخّر الماء (تبخر)، والبرودة تُجمّد الماء.",
+        "fichier": "course-cedar-e8d82e763d985e54.mp3",
+        "duration": 14.85,
+        "sha256": "3570b917b5e698e024fe87208a18de2b9df8e41a64bb2162e057814addb480c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:47.408Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "209226ceb6a6a05abd92ca598beb30d6c1e1e0a47f2425ef6f3787ef72c81b0e",
+        "uses": [
+          "course:science-2ap-t3-water-states:takeaway"
+        ]
+      },
+      {
+        "texte": "سمّ التحولين: جليد في الشمس / ماء في المجمّد.",
+        "fichier": "course-cedar-ccdf93356c085a10.mp3",
+        "duration": 5.2,
+        "sha256": "fab78b92764fe718815b12bd0844a02d13a356c81be9a600fbb58e69a18d6485",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:47.747Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5700ead5b4945c4d681118359b54ce8a0db6379559f00f8b1ad2d23b012375ae",
+        "uses": [
+          "course:science-2ap-t3-water-states:practice-ex3-sc2ap-wat"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث للماء السائل إذا وضعناه في الفريزر لوقت طويل؟",
+        "fichier": "course-cedar-39b87a069368bead.mp3",
+        "duration": 5.55,
+        "sha256": "f765f589045ca4d8030efa5b01630862001b0abe61bcf6f4674e6195cda8ccef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:48.323Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "44f4843c088edc05e784191f72dbd27d33fb4e25ee6b2af9e8df58a5f4b5e29b",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-q1-sc2ap-waterstates"
+        ]
+      },
+      {
+        "texte": "ما اسم عملية تحول الماء السائل إلى بخار؟",
+        "fichier": "course-cedar-0c68836d4c1e461e.mp3",
+        "duration": 4.7,
+        "sha256": "e1377e57f2ece45e0f10d844a66a5a7fcca3153dd9423331e8b6dd50856a35a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:48.946Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c5dfcfbe8fb9f81a891cd7cc00e282086b3833beab987c3e5171643584d4ccb1",
+        "uses": [
+          "course:science-2ap-t3-water-states:practice-ex2-sc2ap-waterstates"
+        ]
+      },
+      {
+        "texte": "الثلج إذا سخن يصبح:",
+        "fichier": "course-cedar-30b3471cd2872c26.mp3",
+        "duration": 3.2,
+        "sha256": "46ce971def95ffc59252f88db91225f43b80d65cee13f95cf410b4c5710ed926",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:49.224Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d26c9e5baf4f438c8ebca1f3f9a3421be8867a459a428e23b7f8d7b9a2af9f9a",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-qb-sc2ap-wat-2"
+        ]
+      },
+      {
+        "texte": "ماء في المجمّد يصبح:",
+        "fichier": "course-cedar-ebb83f6d39e2097a.mp3",
+        "duration": 3,
+        "sha256": "880e70f4973ee81ff0a2e5a36dd49027a67c0c7f81ca01b05b63eab973f17f9f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:49.283Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2a0bccfeec3a38ff7d49cc6201ec2b69e5e3d66ddf294b764b8a05785aaaf61",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-qb-sc2ap-wat-3"
+        ]
+      },
+      {
+        "texte": "قطرات على غطاء القدر:",
+        "fichier": "course-cedar-e1e2d14fa7cf9d49.mp3",
+        "duration": 3.1,
+        "sha256": "93d203f1d4b892e2a70ba03ff82f2b50e9c20a6df26740864faa2b50b94ecdb5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:50.931Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "801bd21ac6a6fbca3720d57311be0cfe69181bc55bbe1720a8dfbbfdfd63a268",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-qb-sc2ap-wat-5"
+        ]
+      },
+      {
+        "texte": "البخار فوق القدر:",
+        "fichier": "course-cedar-948a04c36bba09be.mp3",
+        "duration": 3.25,
+        "sha256": "485817e6b2380e71596c75fa6797ba7467a71ffaa4ce6d3c33ffc7ff30fa5b92",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:51.068Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25f96cc98e88a773d7866ddb5506408e4bbeff479e457411eb1d4041bfaa993c",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-qb-sc2ap-wat-4"
+        ]
+      },
+      {
+        "texte": "ثلاث حالات الماء:",
+        "fichier": "course-cedar-b81902d41a2de12f.mp3",
+        "duration": 1.95,
+        "sha256": "83c17fce8225b01e8c86f9ef643c3361ccfb6bd4757e8079f21cb58b6d909f00",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:51.119Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "741206f7d1e6d1c03fefeb35ab372f21b0ae5dcf680145272f3ba4df5febda1e",
+        "uses": [
+          "course:science-2ap-t3-water-states:quiz-qb-sc2ap-wat-6"
+        ]
+      },
+      {
+        "texte": "اربط كل مثال بحالة الماء الصحيحة!",
+        "fichier": "course-cedar-f2af554c7e4f6518.mp3",
+        "duration": 4.4,
+        "sha256": "eead2a9a2a75053e6346cfc7aa504b95da1380889813360297d1f324b60169a0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:51.208Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c26560f00278da9ee3d0ac0b3f6483e9428872ab64ffbfaeb5de6038040a651b",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-instructions"
+        ]
+      },
+      {
+        "texte": "حَالَةٌ سَائِلَةٌ",
+        "fichier": "course-cedar-dadf445f7cb44acb.mp3",
+        "duration": 2.6,
+        "sha256": "4b76440b6f466437a5f48f2c475b16591c2ca6852734b72a772f717c6f1c6331",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:52.856Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "818df0beba6c8638451553fc29ed95fa9f200caf492820f9a6d64ab9ff98a54a",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-0-opt-1",
+          "course:science-2ap-t3-water-states:game-1-opt-2"
+        ]
+      },
+      {
+        "texte": "حَالَةٌ غَازِيَّةٌ",
+        "fichier": "course-cedar-819c7e6a50806e29.mp3",
+        "duration": 2.35,
+        "sha256": "845392180069b980ad21499f8cd31c0887c452279379a8d5f44ae6ed20de254a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:52.965Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1a07b92468a9bed5050fcec70af8fb4d8f30dc4bad52d38b70c6ce316a1569d",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-0-opt-2",
+          "course:science-2ap-t3-water-states:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "حَالَةٌ صُلْبَةٌ",
+        "fichier": "course-cedar-ffc8c1083b31e287.mp3",
+        "duration": 3.6,
+        "sha256": "f8a855027176ec13f5316242ee805f7908857cef9b0ee3cb27235f8129fccea8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:53.018Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37b2c9e9b958f43dcae24632f1763f4ac3cf0848b2b74a1bef88049a583351b0",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-0-opt-0",
+          "course:science-2ap-t3-water-states:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "مُكَعَّبُ ثَلْجٍ",
+        "fichier": "course-cedar-8323232eecd5fd47.mp3",
+        "duration": 2.55,
+        "sha256": "0e3e9cc89b5f27a50e985b4cdbf94ffee0f38880be9ed980495ce7f9cd50419f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:53.070Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b0e1ce870b124cd628fa812a284e3009b6f65bfeace13cbe919dbc668bba1432",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-0"
+        ]
+      },
+      {
+        "texte": "البُخَارُ فَوْقَ كُوبِ الشَّايِ السَّاخِنِ",
+        "fichier": "course-cedar-eb2fa2a97f859cbd.mp3",
+        "duration": 3.8,
+        "sha256": "244055964ab5b8a9ba2ecc1ec2036a3d465fe42ba57b35a3e8851617e3278651",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:54.524Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "176ddb72015b76d86cc96fc469f62c03968a9f47e6818fc9b3e13cc0eb53bc2e",
+        "uses": [
+          "course:science-2ap-t3-water-states:game-1"
+        ]
+      },
+      {
+        "texte": "ربط حيوان مألوف بطريقة تنقّله.",
+        "fichier": "course-cedar-486c2c566c1055d4.mp3",
+        "duration": 4.7,
+        "sha256": "004106051bbea9fbb2a53971be832cfe1661e890f67f5fe1871d53f33118730d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:54.571Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f487b41a4aa352671d449bee109d12d44be91c40a501e5cf3f1aaaabb488faa0",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:objective"
+        ]
+      },
+      {
+        "texte": "في الحديقة عصفور وقطة وحلزون. كيف يصل كل واحد إلى الغصن أو العشب؟",
+        "fichier": "course-cedar-ed41badfc33e4612.mp3",
+        "duration": 6.9,
+        "sha256": "1f49145001132415105b6fb6a970ab69f98f5c71d19b3925947b2c33dcddbcd6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:55.042Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3980682d108cad81f653e3d5240ec0cfd808b8038d758c6f18511c2b336b3145",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:discovery"
+        ]
+      },
+      {
+        "texte": "يميّز التلميذ أنماط التنقل: المشي، الطيران، السباحة، والزحف.",
+        "fichier": "course-cedar-3373379a59ad1555.mp3",
+        "duration": 7.45,
+        "sha256": "fc31dbd6aaff769ee9aab9b8877f32bff996c1af1985e81e13fea34c418b2004",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:55.367Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "17de2a5a5f5fc73b6dc88061c7e8ba0f4da4a581491cc579f4e6f3a9a781af9d",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:summary"
+        ]
+      },
+      {
+        "texte": "المَشْيُ: أرجل على الأرض (قط، كلب، حصان).",
+        "fichier": "course-cedar-d44ce895f6d526b8.mp3",
+        "duration": 4.7,
+        "sha256": "33e53656d0be8a05281c576134f5da3ca87b65d07d14c8725f53f530b1b720c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:56.066Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a95c99fbb873acb9015e30006d09524429c7c41c38f89fb3ed94bc1e3a96fdb6",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:rule-0"
+        ]
+      },
+      {
+        "texte": "كل حيوان يتنقل بما يناسب جسمه ومكان عيشه: أرض، هواء، ماء.",
+        "fichier": "course-cedar-af67db391d89eeb5.mp3",
+        "duration": 7.75,
+        "sha256": "a0da5b15f23d57e4b09f3a73595670d5a8bb2942f8f9678521d9031d9ab2780a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:56.631Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "327846ebad5d0ae2dd60e87a39bd17c63f0e5ac6f7ba796a85a61f920155d88e",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:intro"
+        ]
+      },
+      {
+        "texte": "الطَّيَرَانُ: أجنحة في الهواء (عصفور، فراشة).",
+        "fichier": "course-cedar-bb6c2e9c25659102.mp3",
+        "duration": 5.65,
+        "sha256": "31cb837b47a2051f97845adb9c796acdf14dcf12e142de7b76514158005dff0b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:56.958Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8a329c2bb73e2c8070310b0629224ebe1821d2ea71df48b7fc094e5ed92ab883",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:rule-1"
+        ]
+      },
+      {
+        "texte": "السِّبَاحَةُ: زعانف في الماء (سمكة). البط يسبح أيضاً.",
+        "fichier": "course-cedar-0fb2a9004b110e25.mp3",
+        "duration": 5.6,
+        "sha256": "c9d4caeeacf45022766e8d35fc46e64bac041c677d4896a4815d1578cb78c493",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:57.227Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b4e8a1a8d7a9947181a9c284243ee1cdccebb82d944afc180286d49b7b994cba",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:rule-2"
+        ]
+      },
+      {
+        "texte": "الزَّحْفُ: بلا أرجل ظاهرة أو بأرجل قصيرة جداً (ثعبان، حلزون).",
+        "fichier": "course-cedar-7f6939060094b44e.mp3",
+        "duration": 7.25,
+        "sha256": "ec5e2762396adcffa30bcd915c102b499d9b0d522bad7e6cc32b346a7182787d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:58.242Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a85b5b9c712e4c690b0ef792ff24bf13eb04c176a42bb130f647f8a85e95e85e",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:rule-3"
+        ]
+      },
+      {
+        "texte": "الجَنَاحُ",
+        "fichier": "course-cedar-6094e6ce84dcce0d.mp3",
+        "duration": 1.6,
+        "sha256": "cb9fa22f7e031bf6a5d0999b020bfd3600c2c10ec64b541fe0e4707f7526d1ab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:58.575Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cde45399f9b05967c6b4a658e68a25903256c64a5fb51d79f88b974e280c128d",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:vocab-1"
+        ]
+      },
+      {
+        "texte": "الزِّعْنِفَةُ",
+        "fichier": "course-cedar-91531a37b6a6701c.mp3",
+        "duration": 1.75,
+        "sha256": "d1351b085ae1a252e0c6c328f13a9a9668d0b2692570a7711c0a7d03ef0fda5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:58.641Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "23244ca47effa168a5b65fc21ffe9493d231726f3b22af7aabf04fe946607df5",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:vocab-0"
+        ]
+      },
+      {
+        "texte": "الدجاجة تمشي كثيراً وتطير قليلاً.",
+        "fichier": "course-cedar-2d2c17a5e0d5bc54.mp3",
+        "duration": 5.4,
+        "sha256": "ab178c8c230af88ca8331f156cab9474b58a5bde6ef637acfe2333e1728d1435",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:59.228Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0da6c91d3928ba70a302f5304f9f8c49cf07bd6430f36cafd5e8f51890311967",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:mistake-0"
+        ]
+      },
+      {
+        "texte": "كيف يتنقل القط؟",
+        "fichier": "course-cedar-c895fac252d9a04d.mp3",
+        "duration": 3.1,
+        "sha256": "e59f9aff15f27c7cedafeceab696e8a5ea8807feecfa221878d60c89c8302636",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:12:59.996Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ee2fd0b066deeec7a6f68fec46ce9eecbc615741e0c3a64dbf64a53893526272",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:practice-ex1-sc2ap-move"
+        ]
+      },
+      {
+        "texte": "بماذا تسبح السمكة؟",
+        "fichier": "course-cedar-18686c67e20e2f53.mp3",
+        "duration": 2.5,
+        "sha256": "4ab3a858366f95925af5b8b9c1d822b6a0d276b18481cb7d6b89b4a63b8a15b5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:00.070Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6a4d8865d223a60bd22613f297c98c55c5a269a944664dc063713373178f26fb",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:practice-ex2-sc2ap-move"
+        ]
+      },
+      {
+        "texte": "أرجل → مشي. أجنحة → طيران. زعانف → سباحة. زحف بلا أرجل طويلة.",
+        "fichier": "course-cedar-83421a0e3c482885.mp3",
+        "duration": 8.9,
+        "sha256": "4ed9fa10ea4be6cf27dc2b538a131b617df057f8e1ee338329e213c5b1845a4b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:00.342Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "039927e4e847f0721d4b3adfc9493c19bc6bc6d243380f807275f7ff9203f91b",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:takeaway"
+        ]
+      },
+      {
+        "texte": "الحلزون يتنقل بـ:",
+        "fichier": "course-cedar-342df3aaee4bbb63.mp3",
+        "duration": 2.75,
+        "sha256": "4cbb0557c4a62b082b0ad6be2bc026f08527d46b3002979224fab6c0af93ea5f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:00.574Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "732ff090ccaa63573bf3cd1fa5d3dcee8ab36029df20bfd1de49c65a06ad4478",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:quiz-q1-sc2ap-move"
+        ]
+      },
+      {
+        "texte": "الفَرَاشَةُ",
+        "fichier": "course-cedar-0510790eece50c10.mp3",
+        "duration": 2.15,
+        "sha256": "bfb8eb95be28f51cfccbbf1a9d24a05a022388d1ff57185124c4b742caaf749d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:02.500Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3ea4b994e221acbdc0d0efe2168a104a092be1e0523af16e315402028f02d66a",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-1"
+        ]
+      },
+      {
+        "texte": "يَمْشِي",
+        "fichier": "course-cedar-a990043e9d06ba52.mp3",
+        "duration": 1.2,
+        "sha256": "2d96ab7ff7343681d88c979bd97dcba3a521be244a1cf27f877f53025c0c7878",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:02.545Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "50978ba0cfbdf34bc283a76c81cd6607ffbbec1b0d2328bcc9b23e41666066ad",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "اختر التنقل!",
+        "fichier": "course-cedar-b5a197e554bf3541.mp3",
+        "duration": 1.95,
+        "sha256": "0971c910b9575d55d1d7c9f5ee222f6499a46687cfcc8d10305ad9e697d5950c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:02.680Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9b6d0d97ec0583abfb7cec034888c36d16ef3de95bc111bdadce793bfed2ebb8",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-instructions"
+        ]
+      },
+      {
+        "texte": "الحِصَانُ",
+        "fichier": "course-cedar-a20edc7ac7758991.mp3",
+        "duration": 1.7,
+        "sha256": "3f0ecc2e8a6499296d2cee40cbd5ffd0f020eb84d8baf460ef4542dede63ffff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:02.783Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c0fb308979f746a7195e423fe11b660276a15021d0e60b7641df9efb5aee6a25",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-0"
+        ]
+      },
+      {
+        "texte": "تَسْبَحُ",
+        "fichier": "course-cedar-ccb253d155fc5d19.mp3",
+        "duration": 2.1,
+        "sha256": "20927d0423c031deb31767c787f8da0b1e1c24c2737d50c2992c9dd866e87063",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:03.876Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d9f7c3537d3adedd22426bf1d0187a7873f964bf60cfbd31cb5545b1972bed92",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "تَطِيرُ",
+        "fichier": "course-cedar-32176216bd0ede32.mp3",
+        "duration": 2.25,
+        "sha256": "81ea7af9f6e87ffd62b987056e36a471f43854061bfcc9a69f40df8242b3f744",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:03.978Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9d812fcbe8f1431f4b139c4e86772e06eea1524ffe4caca1ebf3aa138c18d5a8",
+        "uses": [
+          "course:science-2ap-t2-animal-movement:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "إدراك وجود الهواء ببعض الآثار البسيطة (الريح، البالون، التنفس).",
+        "fichier": "course-cedar-034d4204711eff5c.mp3",
+        "duration": 7.5,
+        "sha256": "bf9d9fd6a9a05ef1371c79f4afa05f2baa7fe1ec9883d69d51ce14aa45e6b40b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:04.490Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "da23eca7794569efb85d499700dd3be4510535442c9d34cd4c6e7440bf214902",
+        "uses": [
+          "course:science-2ap-t3-air:objective"
+        ]
+      },
+      {
+        "texte": "لوّح بمروحة ورقية أو كيس فارغ: لماذا يتحرّك؟ هل «لا شيء» يدفعه؟",
+        "fichier": "course-cedar-26e857df1d449e26.mp3",
+        "duration": 7.85,
+        "sha256": "3744a12933c9e0c4ccb4e3ca34b76520823699bc458ffbcd33bfca6151d9c350",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:04.771Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "10ada86af1f25b7c0ba9bb829d76c4ccc17f23699112f0d634c7b13354578da1",
+        "uses": [
+          "course:science-2ap-t3-air:discovery"
+        ]
+      },
+      {
+        "texte": "ما لا نراه قد يكون موجوداً. الهواء نلمسه بآثاره.",
+        "fichier": "course-cedar-582b52934562a484.mp3",
+        "duration": 6.8,
+        "sha256": "b384a3d3c6a272b03aad11237d0b5d72597935ee60e440188f3426118b40e0b9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:05.852Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a94d6189df9c1143ff81b106713ecf82257e8ec78ef3a6e1b40f37f5ed08192f",
+        "uses": [
+          "course:science-2ap-t3-air:intro"
+        ]
+      },
+      {
+        "texte": "يكتشف التلميذ أن الهواء موجود رغم أنه لا يُرى، وأنه يحرّك الأشياء ونتنفسه.",
+        "fichier": "course-cedar-66a77523ec7d6f17.mp3",
+        "duration": 8.85,
+        "sha256": "a3dcd7296666c45e3af03873d99b25dde298db5cf7e931e3df92522dddc50c56",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:06.151Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7bad87872eb6919241639e7f5ff9bbbe25920b110df091d0ad8b8e075214fcfb",
+        "uses": [
+          "course:science-2ap-t3-air:summary"
+        ]
+      },
+      {
+        "texte": "الهَوَاءُ مَادَّةٌ شَفَّافَةٌ تَمْلَأُ المَكَانَ.",
+        "fichier": "course-cedar-99f8b4d5acbdda0b.mp3",
+        "duration": 5,
+        "sha256": "e74866670474a8b1ff1c79aa11d21e2b5fe26b8d87ef97976b5e95ce90f25b81",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:06.278Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3cb17e2bf801f38b4ceb3c95aab2a100d068385d9c16c606eb95fbfe3408ab22",
+        "uses": [
+          "course:science-2ap-t3-air:rule-0"
+        ]
+      },
+      {
+        "texte": "الرِّيحُ هَوَاءٌ يَتَحَرَّكُ: تُحَرِّكُ الأَوْرَاقَ وَالرَّايَةَ.",
+        "fichier": "course-cedar-95af4fd251a9341e.mp3",
+        "duration": 5.4,
+        "sha256": "cbb586db6450ceb377ea83e5bdf2825bdcae8ad4368fa74deb7d708394dda54a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:06.740Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3996c64648e3bb51f22c442895658393491487c0b2e7769dd196438db01e190a",
+        "uses": [
+          "course:science-2ap-t3-air:rule-1"
+        ]
+      },
+      {
+        "texte": "نَمْلَأُ البَالُونَ بِالهَوَاءِ عِنْدَ النَّفْخِ.",
+        "fichier": "course-cedar-72cb74fad125e9a5.mp3",
+        "duration": 4.05,
+        "sha256": "9bd9358f09311183022ca7c8859d5a955d4116c94d088108abfb5f5d4580b35b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:07.823Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c159894aedf91d22ada5657265d014dec5800bb580b8c2e71776b6bda89e738e",
+        "uses": [
+          "course:science-2ap-t3-air:rule-2"
+        ]
+      },
+      {
+        "texte": "الرِّيحُ",
+        "fichier": "course-cedar-1ceefdabdb376048.mp3",
+        "duration": 0.95,
+        "sha256": "02ffb68b8d92f9c170e790471d5953981809bdbf500722f5c61571104c53d325",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:07.896Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9a2c1957112fc369848f958835bd57b57b616b78a0e2797a56f986ed40702137",
+        "uses": [
+          "course:science-2ap-t3-air:vocab-0"
+        ]
+      },
+      {
+        "texte": "النَّفْخُ",
+        "fichier": "course-cedar-228ec7880cf68a4b.mp3",
+        "duration": 1.7,
+        "sha256": "54c96f0a130e77a2548b63774f0761d0efef2d47f368e203c5f6eb3637544f54",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:08.121Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5aa3815cee0a172329102b8511cb2362e95e277b8257dd2fd72253b34027993a",
+        "uses": [
+          "course:science-2ap-t3-air:vocab-1"
+        ]
+      },
+      {
+        "texte": "نَحْتَاجُ الهَوَاءَ لِلتَّنَفُّسِ (رَبْطٌ بِدَرْسِ القَلْبِ وَالرِّئَتَيْنِ).",
+        "fichier": "course-cedar-77189f053b9c8d39.mp3",
+        "duration": 6.4,
+        "sha256": "a5c35b25869f837cfa35dbc6a60d95a96a7c00505ec3087a6e8bc9f019afe5ac",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:08.334Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "631a7d43279e865844c1a322703e48379ba1585d1eb754a4949d54009714c2ed",
+        "uses": [
+          "course:science-2ap-t3-air:rule-3"
+        ]
+      },
+      {
+        "texte": "الهواء مادة: يحرّك ويُتنفَّس ويُنفخ.",
+        "fichier": "course-cedar-024fc36caf38bd0d.mp3",
+        "duration": 4.85,
+        "sha256": "d1a0b079f08ea88d6f88ba2dadcd9941f4728cd46ea7a4eaaa6e69a8d372627b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:10.210Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "27fba9a5308d0794b3b8be70899070c87be8c2e10c6798098165eea31aea75e3",
+        "uses": [
+          "course:science-2ap-t3-air:mistake-0"
+        ]
+      },
+      {
+        "texte": "الهواء موجود دون أن نراه. الريح أثره. نتنفسه وننفخ به.",
+        "fichier": "course-cedar-ab632a1e410b3937.mp3",
+        "duration": 6.9,
+        "sha256": "00dd834a61e9b17fce59f9d02f746b69828d58e0cb98cbfd110696d0986092f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:10.269Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d60f2b8996c0bc035bdc2931fe28dec535b042390dd84b8c40bdadd2bb196738",
+        "uses": [
+          "course:science-2ap-t3-air:takeaway"
+        ]
+      },
+      {
+        "texte": "ماذا نضع داخل البالون عند النفخ؟",
+        "fichier": "course-cedar-72e70020042eae46.mp3",
+        "duration": 3.8,
+        "sha256": "942e3b96b348272526dcf7e4e34e04ef064ac57821d712e5d387319d1458eacd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:10.338Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "506df26ee6ef60e6ecc2ea4945034dae67a86f6a156f1880f6a422201797c12a",
+        "uses": [
+          "course:science-2ap-t3-air:practice-ex2-sc2ap-air"
+        ]
+      },
+      {
+        "texte": "هل نرى الهواء بأعيننا عادة؟",
+        "fichier": "course-cedar-00b2018116dc9adb.mp3",
+        "duration": 3.85,
+        "sha256": "6aef798d838813971e3667105f91f4967843f748e3a16871864b06df2685fc00",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:10.403Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "67e5cb43f194bb761e605f84f81a8c76a87cb0cdb3d53bc41183f95d59b001c3",
+        "uses": [
+          "course:science-2ap-t3-air:practice-ex1-sc2ap-air"
+        ]
+      },
+      {
+        "texte": "الهَوَاءُ / الرِّيحُ",
+        "fichier": "course-cedar-cdb5f999e76b2700.mp3",
+        "duration": 2.3,
+        "sha256": "31a7802a8461f969dba9cc64e66ee148b77cacc6b7acc9f4882dd3a0dafe957c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:11.599Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6f981901459eec5bdf895496962109465bcadc206c8de44306c1a5bd26059237",
+        "uses": [
+          "course:science-2ap-t3-air:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "تحريك الغسيل على الحبل",
+        "fichier": "course-cedar-4d04b58b716bed2e.mp3",
+        "duration": 2.45,
+        "sha256": "051e3aae2cede77d5031b05aaed86a0672f27d549f005b90620d875f404fec13",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:11.659Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1f263a4b7574e0ab73915e77053a0b9c2b812b10f0173e1e9768c9dea20ac638",
+        "uses": [
+          "course:science-2ap-t3-air:game-0"
+        ]
+      },
+      {
+        "texte": "الحَجَرُ",
+        "fichier": "course-cedar-f1467cb9b0ff457b.mp3",
+        "duration": 2.05,
+        "sha256": "bc559965ea8c3ff5ed52349fb7e271a9ebe7b972ec18447e4d517e0e1429ce3a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:12.042Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35c2a00fd8ab211cb7b62ef601415e1dbd754b787c32cb9382570c0c42708689",
+        "uses": [
+          "course:science-2ap-t3-air:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "الريح هي:",
+        "fichier": "course-cedar-595b87f211e812b3.mp3",
+        "duration": 2.9,
+        "sha256": "fa8ba6e5012af8df385979d9142dd4fcdd68f596b712799c775cc4492aff417a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:12.336Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "00e4f1caef84583d99e4f30316cdb936240f6f01a987d3894c4c2ee2e7657e23",
+        "uses": [
+          "course:science-2ap-t3-air:quiz-q1-sc2ap-air"
+        ]
+      },
+      {
+        "texte": "الحَجَرِ",
+        "fichier": "course-cedar-169a5bb437b1a17b.mp3",
+        "duration": 1.4,
+        "sha256": "d5a8624b92defe020763d32ee43cf04fdf1df150e89dc105744d6517d65fc11d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:13.449Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "16559814c17bad65206e40e647920b3fe69e61b9b0dbe4517dd9d3b5ef2f68c7",
+        "uses": [
+          "course:science-2ap-t3-air:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "نملأ البالون بـ",
+        "fichier": "course-cedar-6f40bb8815de5067.mp3",
+        "duration": 2.45,
+        "sha256": "a0ea38ca5002846c6b0c8d47ec7dda8ec71e47a3858433766c72896d05067c0e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:13:13.686Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c0a238b21dd956a44a67e3d98448bf57ddf17a182646a73ea3e8125ab5fdc367",
+        "uses": [
+          "course:science-2ap-t3-air:game-1"
+        ]
       }
     ]
   },

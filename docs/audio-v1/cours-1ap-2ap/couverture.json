@@ -3,10 +3,10 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 3119,
-    "missingTexts": 234,
-    "reusedFiles": 3118,
-    "integrityCheckedArabicFiles": 3556,
+    "recordedTexts": 3337,
+    "missingTexts": 16,
+    "reusedFiles": 3336,
+    "integrityCheckedArabicFiles": 3774,
     "byGrade": [
       {
         "grade": "1AP",
@@ -19,8 +19,8 @@
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 1286,
-        "lessonsWithAnyRecording": 55
+        "recordedSegments": 1514,
+        "lessonsWithAnyRecording": 61
       }
     ]
   },
@@ -681,63 +681,63 @@
       "grade": "2AP",
       "titleAr": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ 🥗",
       "requestedSegments": 24,
-      "recordedSegments": 0
+      "recordedSegments": 24
     },
     {
       "lessonId": "science-2ap-t1-hygiene-body-care",
       "grade": "2AP",
       "titleAr": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ 🧼",
       "requestedSegments": 20,
-      "recordedSegments": 0
+      "recordedSegments": 20
     },
     {
       "lessonId": "science-2ap-t1-breathing-heart-effort",
       "grade": "2AP",
       "titleAr": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ 🫀",
       "requestedSegments": 20,
-      "recordedSegments": 0
+      "recordedSegments": 20
     },
     {
       "lessonId": "science-2ap-t2-plants-around-us",
       "grade": "2AP",
       "titleAr": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ 🌱",
       "requestedSegments": 29,
-      "recordedSegments": 1
+      "recordedSegments": 29
     },
     {
       "lessonId": "science-2ap-t2-domestic-wild-animals",
       "grade": "2AP",
       "titleAr": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا 🦁",
       "requestedSegments": 31,
-      "recordedSegments": 0
+      "recordedSegments": 31
     },
     {
       "lessonId": "science-2ap-t3-solids-liquids-sound",
       "grade": "2AP",
       "titleAr": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ 🔊",
       "requestedSegments": 30,
-      "recordedSegments": 0
+      "recordedSegments": 30
     },
     {
       "lessonId": "science-2ap-t3-water-states",
       "grade": "2AP",
       "titleAr": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ 🧊",
       "requestedSegments": 33,
-      "recordedSegments": 0
+      "recordedSegments": 33
     },
     {
       "lessonId": "science-2ap-t2-animal-movement",
       "grade": "2AP",
       "titleAr": "كَيْفَ تَتَنَقَّلُ الحَيَوَانَاتُ؟ 🐾",
       "requestedSegments": 23,
-      "recordedSegments": 2
+      "recordedSegments": 23
     },
     {
       "lessonId": "science-2ap-t3-air",
       "grade": "2AP",
       "titleAr": "الهَوَاءُ مِنْ حَوْلِنَا 💨",
       "requestedSegments": 23,
-      "recordedSegments": 2
+      "recordedSegments": 23
     },
     {
       "lessonId": "islamic-2ap-t1-short-surahs-1",
@@ -46633,6 +46633,3346 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-5077cc6ed322ab70.mp3"
+      ]
+    },
+    {
+      "text": "مَظَاهِرُ النُّمُوِّ عِنْدَ الطِّفْلِ وَأَهَمِّيَّةُ التَّغْذِيَةِ المُتَوَازِنَةِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d90ea1fce3ccb14b.mp3"
+      ]
+    },
+    {
+      "text": "التعرف على مظاهر النمو عند الطفل، وإدراك أهمية الفطور الصباحي والغذاء المتوازن.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a84575a813d8083c.mp3"
+      ]
+    },
+    {
+      "text": "قارن بين حذائك القديم وحذائك الحالي: هل أصبح صغيراً عليك؟ لماذا برأيك؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-428e164ecb427e24.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ علامات نموه (يكبر طوله ووزنه) وأهمية تناول وجبة فطور متوازنة قبل الذهاب إلى المدرسة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e21671b719675908.mp3"
+      ]
+    },
+    {
+      "text": "جسمي يتغير كل سنة: أصبح أطول وأثقل قليلاً، وهذا أمر طبيعي وجميل. ولكي أنمو بشكل سليم، يجب أن آكل غذاءً متنوعاً ومتوازناً كل يوم.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2808e16f28b88da1.mp3"
+      ]
+    },
+    {
+      "text": "أُنَمُو وَأَكْبَرُ: يزداد طولي ووزني تدريجياً كل سنة، وتتبدل أسناني اللبنية بأسنان دائمة أقوى.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6503ae4bf84cf0a.mp3"
+      ]
+    },
+    {
+      "text": "الفُطُورُ الصَّبَاحِيُّ ضَرُورِيٌّ: يمنحني الطاقة اللازمة للتركيز واللعب طيلة الصباح في المدرسة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-85473c8055e127e4.mp3"
+      ]
+    },
+    {
+      "text": "الغِذَاءُ المُتَوَازِنُ يشمل: الحليب ومشتقاته، الخضر والفواكه، اللحوم والبيض، والخبز والحبوب — كلٌّ بكمية مناسبة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f833b7fc3e3614a.mp3"
+      ]
+    },
+    {
+      "text": "النُّمُوُّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d9af65cc2dd69aa3.mp3"
+      ]
+    },
+    {
+      "text": "الفُطُورُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-db309ffc6f0edc46.mp3"
+      ]
+    },
+    {
+      "text": "الغِذَاءُ المُتَوَازِنُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5733fb918248649c.mp3"
+      ]
+    },
+    {
+      "text": "تخطي الفطور يجعل الجسم يفتقر للطاقة، فيشعر التلميذ بالتعب وصعوبة التركيز في الدرس.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ffade5d954e6d1b.mp3"
+      ]
+    },
+    {
+      "text": "الفطور المتوازن يحتاج حليباً أو بيضاً أو خبزاً مع فاكهة، وليس الحلويات فقط.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4772f278b3c2ad97.mp3"
+      ]
+    },
+    {
+      "text": "أَنْمُو كل سنة (طولاً ووزناً)، وأحتاج فطوراً صباحياً متوازناً (حليب، خبز، فاكهة) ليمنحني الطاقة والنمو السليم.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9bb0bf27e4a6b6bd.mp3"
+      ]
+    },
+    {
+      "text": "ما الوجبة الأولى التي نتناولها في الصباح؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-growth"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8313fc1e59508e52.mp3"
+      ]
+    },
+    {
+      "text": "اذكر عنصرين من عناصر الفطور المتوازن.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-growth"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4591ae497c1c6522.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يحدث لجسمي وأنا أكبر؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-growth"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f25ae00cf1adb7c5.mp3"
+      ]
+    },
+    {
+      "text": "اختر ما يجب وضعه في صندوق الفطور المتوازن!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-71e46e9cf027a8fe.mp3"
+      ]
+    },
+    {
+      "text": "كوب حليب",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8c66add73e6596a5.mp3"
+      ]
+    },
+    {
+      "text": "مُنَاسِبٌ لِلْفُطُورِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-145134bc41eb931c.mp3"
+      ]
+    },
+    {
+      "text": "غَيْرُ مُنَاسِبٍ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b27e4c5cd5269e3a.mp3"
+      ]
+    },
+    {
+      "text": "قطعة شوكولاتة فقط",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a1112e2a01feee06.mp3"
+      ]
+    },
+    {
+      "text": "غَيْرُ كَافٍ وَحْدَهُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-growth-nutrition",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-925e0aa65624bc50.mp3"
+      ]
+    },
+    {
+      "text": "النَّظَافَةُ الشَّخْصِيَّةُ وَحِمَايَةُ الجِسْمِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-30302fde4a327c92.mp3"
+      ]
+    },
+    {
+      "text": "تطبيق قواعد النظافة الشخصية اليومية وربطها بالوقاية من المرض.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-24697b477e89c3d5.mp3"
+      ]
+    },
+    {
+      "text": "لماذا ننصحك دائماً بغسل يديك قبل تناول الطعام؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bbd47ab9b4ad42c5.mp3"
+      ]
+    },
+    {
+      "text": "يتعلم التلميذ قواعد النظافة الأساسية (غسل اليدين، تنظيف الأسنان، الاستحمام) وأهميتها في الوقاية من الأمراض.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c4b8ee3040ff5fa7.mp3"
+      ]
+    },
+    {
+      "text": "جسمي أمانة يجب أن أعتني بها. النظافة اليومية البسيطة تحميني من جراثيم صغيرة جداً لا أراها بعيني، لكنها قد تسبب المرض.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8be2ea484eb25983.mp3"
+      ]
+    },
+    {
+      "text": "أَغْسِلُ يَدَيَّ بِالمَاءِ وَالصَّابُونِ: قبل الأكل، بعد استعمال الحمام، وبعد اللعب في الخارج.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c66c18eb70d6bc26.mp3"
+      ]
+    },
+    {
+      "text": "أُنَظِّفُ أَسْنَانِي بِالفُرْشَاةِ مرتين يومياً على الأقل: صباحاً ومساءً قبل النوم.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bf61447e1f186165.mp3"
+      ]
+    },
+    {
+      "text": "الجَرَاثِيمُ صَغِيرَةٌ جِدّاً لا نراها بالعين، لكنها قد تسبب المرض إذا لم نتنظف.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-16662238de7b8449.mp3"
+      ]
+    },
+    {
+      "text": "الجَرَاثِيمُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e03ee3780f22e4b4.mp3"
+      ]
+    },
+    {
+      "text": "النَّظَافَةُ الشَّخْصِيَّةُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d96dea08c536e59a.mp3"
+      ]
+    },
+    {
+      "text": "الصابون ضروري لأنه يزيل الجراثيم بفعالية أكبر من الماء وحده.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4272c9659e6f6398.mp3"
+      ]
+    },
+    {
+      "text": "تنظيف الأسنان مساءً ضروري لإزالة بقايا الطعام التي تتراكم طوال اليوم.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8613c0ee68342eb0.mp3"
+      ]
+    },
+    {
+      "text": "أغسل يديّ بالماء والصابون قبل الأكل وبعد الحمام واللعب، وأنظف أسناني صباحاً ومساءً — هذا يحميني من الجراثيم والمرض.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2b3ce2892fb8ac53.mp3"
+      ]
+    },
+    {
+      "text": "بماذا نغسل أيدينا لإزالة الجراثيم بفعالية؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-hygiene"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-397602557ea6868f.mp3"
+      ]
+    },
+    {
+      "text": "كم مرة يجب تنظيف الأسنان في اليوم على الأقل؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-hygiene"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5ff90fe79da5ecd.mp3"
+      ]
+    },
+    {
+      "text": "لماذا نغسل أيدينا قبل الأكل؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-hygiene"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b00b31df09a22bb5.mp3"
+      ]
+    },
+    {
+      "text": "اختر التصرف الصحيح في كل موقف!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c2930da78939a8fc.mp3"
+      ]
+    },
+    {
+      "text": "قبل تناول وجبة الغداء",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-429c9b3a8c9105c4.mp3"
+      ]
+    },
+    {
+      "text": "أَغْسِلُ يَدَيَّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b8ecc8f5ef13f7ff.mp3"
+      ]
+    },
+    {
+      "text": "آكُلُ مُبَاشَرَةً",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-hygiene-body-care",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-26789b02861f3a31.mp3"
+      ]
+    },
+    {
+      "text": "التَّنَفُّسُ وَنَبَضَاتُ القَلْبِ أَثْنَاءَ الجَهْدِ العَضَلِيِّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-46e3e83a92897a24.mp3"
+      ]
+    },
+    {
+      "text": "ملاحظة تسارع التنفس ونبض القلب أثناء الجهد العضلي، وإدراك عودتهما للوضع الطبيعي بعد الراحة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6ca7bf99a46a2ee6.mp3"
+      ]
+    },
+    {
+      "text": "اجرِ في الساحة لمدة دقيقة واحدة، ثم ضع يدك على صدرك. ماذا تلاحظ بالمقارنة مع وقت الجلوس الهادئ؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a926683c4b5137ee.mp3"
+      ]
+    },
+    {
+      "text": "يلاحظ التلميذ أن تنفسه ونبض قلبه يتسارعان عند الجري أو اللعب الرياضي، ويعودان إلى وضعهما الهادئ بعد الراحة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1b59d2d5fe3eedb2.mp3"
+      ]
+    },
+    {
+      "text": "جسمي يعمل كآلة ذكية: عندما ألعب وأجري، يحتاج جسمي طاقة أكبر، فيسرّع قلبي ضرباته ورئتاي تنفسهما لإيصال الهواء والطاقة لعضلاتي.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d52ce9ec80b9a085.mp3"
+      ]
+    },
+    {
+      "text": "التَّنَفُّسُ: أخذ الهواء عبر الأنف أو الفم إلى الرئتين ثم إخراجه، وهذا يحدث طوال الوقت دون أن نفكر فيه.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d88bb4121981be67.mp3"
+      ]
+    },
+    {
+      "text": "عِنْدَ الجَهْدِ العَضَلِيِّ (الجري، القفز، اللعب النشيط): يتسارع تنفسي ويصبح أعمق، ويزداد نبض قلبي لأن عضلاتي تحتاج طاقة وهواء أكثر.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9dd95a11763efaea.mp3"
+      ]
+    },
+    {
+      "text": "بَعْدَ الرَّاحَةِ: يعود تنفسي ونبض قلبي تدريجياً إلى وتيرتهما الهادئة الطبيعية.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7cc5c55c2fe008f4.mp3"
+      ]
+    },
+    {
+      "text": "يُمْكِنُنِي الإِحْسَاسُ بِنَبَضَاتِ قَلْبِي بِوَضْعِ يَدِي عَلَى صَدْرِي أَوْ عَلَى رَسْغِي.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-856af05fca707ba7.mp3"
+      ]
+    },
+    {
+      "text": "نَبَضَاتُ القَلْبِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-98755079722e2923.mp3"
+      ]
+    },
+    {
+      "text": "الجَهْدُ العَضَلِيُّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9fbfc4ab6d67a394.mp3"
+      ]
+    },
+    {
+      "text": "هذا أمر طبيعي وصحي تماماً، فهو يدل على أن الجسم يعمل بكفاءة لتزويد العضلات بالطاقة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5ec123f94ba17863.mp3"
+      ]
+    },
+    {
+      "text": "أثناء الجهد العضلي (الجري، اللعب) يتسارع تنفسي ونبض قلبي، وبعد الراحة يعودان هادئين تدريجياً.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5fe5dc5c35190604.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يحدث لتنفسي عندما أجري بسرعة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-heartbeat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c2cea4283af1ba31.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يحدث لنبض قلبي ونفسي بعد فترة راحة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-heartbeat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6a2b093b71bf61b9.mp3"
+      ]
+    },
+    {
+      "text": "لماذا يتسارع نبض قلبي أثناء الجري؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-heartbeat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ab0d489ac22b8041.mp3"
+      ]
+    },
+    {
+      "text": "اختر ما يحدث لجسمك في كل موقف!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6eae55cac60efa9a.mp3"
+      ]
+    },
+    {
+      "text": "بعد القفز على الحبل لمدة دقيقتين",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-35a8c55c27094b1e.mp3"
+      ]
+    },
+    {
+      "text": "نَبَضِي وَتَنَفُّسِي يَتَسَارَعَانِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2275ec31bacae918.mp3"
+      ]
+    },
+    {
+      "text": "لَا يَتَغَيَّرُ شَيْءٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t1-breathing-heart-effort",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ff73bd920fd9c59d.mp3"
+      ]
+    },
+    {
+      "text": "النَّبَاتَاتُ مِنْ حَوْلِنَا: النُّمُوُّ وَالحَاجَةُ إِلَى المَاءِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c2d7a8d59e018e23.mp3"
+      ]
+    },
+    {
+      "text": "ملاحظة مراحل نمو نبتة بسيطة، وإدراك حاجتها للماء والضوء.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b677c9f3acd35204.mp3"
+      ]
+    },
+    {
+      "text": "إذا نسينا سقي نبتة في المنزل لمدة أسبوع، ماذا سيحدث لها في رأيك؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-696cd2fd897dc681.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ أن النباتات كائنات حية تنمو وتحتاج إلى الماء والضوء لتعيش، من خلال ملاحظة نبتة حقيقية.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-961d02ebd4d7421e.mp3"
+      ]
+    },
+    {
+      "text": "النباتات مثلنا كائنات حية: تولد وتنمو وتحتاج إلى الغذاء لتعيش. لكن غذاءها يأتي من الماء وضوء الشمس بدل الطعام الذي نأكله نحن.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-81e7ba07cc52f68d.mp3"
+      ]
+    },
+    {
+      "text": "النَّبَاتُ كَائِنٌ حَيٌّ: يولد من بذرة، ينمو، ثم يزهر ويثمر (عند بعض النباتات).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ba93f3aad080b38c.mp3"
+      ]
+    },
+    {
+      "text": "يَحْتَاجُ النَّبَاتُ إِلَى المَاءِ لِيَبْقَى حَيّاً وطرياً؛ بدونه يذبل ويجف.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e45ee65c54b57505.mp3"
+      ]
+    },
+    {
+      "text": "يَحْتَاجُ النَّبَاتُ إِلَى ضَوْءِ الشَّمْسِ لينمو بشكل سليم وأخضر اللون.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f820eb3708e781d9.mp3"
+      ]
+    },
+    {
+      "text": "الذُّبُولُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b9b869fd1021c755.mp3"
+      ]
+    },
+    {
+      "text": "النبات يحتاج أيضاً الماء وضوء الشمس، وليس التراب فقط.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0d5f46f4165d00d5.mp3"
+      ]
+    },
+    {
+      "text": "بعض النباتات تُزهر فقط دون أن تعطي ثماراً نأكلها، مثل الزهور الزينة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f6d83c0cb7a15628.mp3"
+      ]
+    },
+    {
+      "text": "النبتة كائن حي: تنمو من بذرة، وتحتاج الماء وضوء الشمس لتبقى حية وخضراء. بدون ماء تذبل وتجف.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4e02fc94986067b5.mp3"
+      ]
+    },
+    {
+      "text": "من أين تبدأ حياة نبتة جديدة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-plants"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2c54a185284fa39f.mp3"
+      ]
+    },
+    {
+      "text": "اذكر شيئين تحتاجهما النبتة لتبقى حية.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-plants"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ffa525a6fa03346d.mp3"
+      ]
+    },
+    {
+      "text": "نبتة ذبلت قرب النافذة. اقترح سببين وعلاجاً.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex3-sc2ap-pl"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53026f76c0ad3d4b.mp3"
+      ]
+    },
+    {
+      "text": "لماذا تذبل النبتة إذا لم نسقها؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-plants"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b99413b68e70fdea.mp3"
+      ]
+    },
+    {
+      "text": "النبتة الخضراء تحتاج أساساً إلى:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-pl-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-645ebd45c1abe95e.mp3"
+      ]
+    },
+    {
+      "text": "أين تثبت النبتة غالباً؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-pl-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ea93f05ec1f9dcd9.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يحدث إن لم تُسق النبتة أسابيع؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-pl-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7100d89f4b95b927.mp3"
+      ]
+    },
+    {
+      "text": "أوراق النبات تساعد على:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-pl-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c7e1d2b78489c91a.mp3"
+      ]
+    },
+    {
+      "text": "نبتة في خزانة مغلقة بلا ضوء:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-pl-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-59bff6479ab1a9e6.mp3"
+      ]
+    },
+    {
+      "text": "اختر ما يحتاجه النبات ليبقى حياً بصحة جيدة!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3d45a583156cfba3.mp3"
+      ]
+    },
+    {
+      "text": "ماء",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-52a8b6b88ec61e42.mp3"
+      ]
+    },
+    {
+      "text": "ضَرُورِيٌّ لِلنَّبَاتِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2a72c1b445e3daad.mp3"
+      ]
+    },
+    {
+      "text": "غَيْرُ مُهِمٍّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3c3f6942073a5d45.mp3"
+      ]
+    },
+    {
+      "text": "ضوء الشمس",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-plants-around-us",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-94ae2140db7833b3.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانَاتُ الأَلِيفَةُ وَالبَرِّيَّةُ: أَصْوَاتُهَا وَتَغْذِيَتُهَا",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed3f82011d6261ab.mp3"
+      ]
+    },
+    {
+      "text": "التمييز بين الحيوان الأليف والحيوان البري، وربط كل حيوان بصوته وغذائه المناسب.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-beec5b11a138014d.mp3"
+      ]
+    },
+    {
+      "text": "هل يمكن أن يعيش الأسد في بيتنا مثل القطة؟ لماذا؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5a9744ad96000b4a.mp3"
+      ]
+    },
+    {
+      "text": "يتعرف التلميذ على الفرق بين الحيوانات الأليفة (التي يربيها الإنسان) والحيوانات البرية، ويربط كل حيوان بصوته وغذائه.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0801d6607b1b9d1c.mp3"
+      ]
+    },
+    {
+      "text": "حولنا حيوانات كثيرة ومختلفة: بعضها يعيش معنا في بيوتنا ومزارعنا، وبعضها يعيش بعيداً في الغابات والصحاري بمفرده.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-afe4c82faf2c37bf.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانُ الأَلِيفُ: يعيش قرب الإنسان ويعتني به الإنسان، مثل: القطة، الكلب، الدجاجة، الغنم.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a47f99ad8542dba3.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانُ البَرِّيُّ: يعيش بعيداً عن الإنسان في الغابة أو الصحراء، مثل: الأسد، الذئب، الثعلب.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1d950a89c9a3100c.mp3"
+      ]
+    },
+    {
+      "text": "لِكُلِّ حَيَوَانٍ صَوْتٌ مُمَيَّزٌ: البقرة تخور، القطة تموء، الكلب ينبح، الأسد يزأر.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-014b64bc4085e444.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانُ الأَلِيفُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1e859407f32143d5.mp3"
+      ]
+    },
+    {
+      "text": "الحَيَوَانُ البَرِّيُّ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f56c7dd4c8109902.mp3"
+      ]
+    },
+    {
+      "text": "الفراء لا يحدد إن كان الحيوان أليفاً أم برياً؛ الذئب مثلاً له فراء لكنه حيوان بري.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-56cde78a697832c9.mp3"
+      ]
+    },
+    {
+      "text": "ذكّر الطفل أن الكلب \"ينبح\" وهو أليف، أما الذئب فيعوي وهو بري.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0a5a8e6874219d40.mp3"
+      ]
+    },
+    {
+      "text": "الحيوان الأليف يعيش قرب الإنسان ويعتني به (قطة، كلب، دجاجة). الحيوان البري يعيش بعيداً وحراً (أسد، ذئب، ثعلب). لكل حيوان صوت مميز.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4919a8f687c92048.mp3"
+      ]
+    },
+    {
+      "text": "أي صوت يصدر عن القطة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-animals"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6f44073d2f5acc32.mp3"
+      ]
+    },
+    {
+      "text": "هل الأسد حيوان أليف أم بري؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-animals"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b6c7315f9b50ad38.mp3"
+      ]
+    },
+    {
+      "text": "لماذا الأرنب في البيت أليف والأسد في الغابة بري؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex3-sc2ap-an"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c8fd67275640c52e.mp3"
+      ]
+    },
+    {
+      "text": "أي حيوان من هذه الحيوانات أليف؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-animals"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6e410b0d0dde5fca.mp3"
+      ]
+    },
+    {
+      "text": "القط في البيت حيوان:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-an-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fa8098ab37bf252a.mp3"
+      ]
+    },
+    {
+      "text": "الثعلب حيوان:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-an-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7c8d98f0c159ba92.mp3"
+      ]
+    },
+    {
+      "text": "من الحيوانات الأليفة:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-an-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-843b4b4ac7874e2b.mp3"
+      ]
+    },
+    {
+      "text": "لماذا لا نلمس حيواناً برياً؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-an-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f84c635c05d1b9c3.mp3"
+      ]
+    },
+    {
+      "text": "الكلب الذي يحرس البيت:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-an-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-361ec05f3f6f880b.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل حيوان بصوته الصحيح!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-aec88d1639b10cd3.mp3"
+      ]
+    },
+    {
+      "text": "الكَلْبُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0ab0b10441b3a0b0.mp3"
+      ]
+    },
+    {
+      "text": "يَنْبَحُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4f98e5739ce87ad0.mp3"
+      ]
+    },
+    {
+      "text": "يَزْأَرُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fb8c2bdad0a2598f.mp3"
+      ]
+    },
+    {
+      "text": "يَمُوءُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cea72270cf942c53.mp3"
+      ]
+    },
+    {
+      "text": "الأَسَدُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f391fe5556a247e.mp3"
+      ]
+    },
+    {
+      "text": "يَخُورُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-domestic-wild-animals",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4ce86eda476d28a7.mp3"
+      ]
+    },
+    {
+      "text": "أَجْسَامٌ صُلْبَةٌ وَأَجْسَامٌ سَائِلَةٌ، وَمَصَادِرُ الصَّوْتِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a6617c8dcb4e2032.mp3"
+      ]
+    },
+    {
+      "text": "التمييز بين الجسم الصلب والسائل، والتعرف على بعض مصادر الصوت من حولنا.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-57f1cfb8746f2edb.mp3"
+      ]
+    },
+    {
+      "text": "صب كأس ماء في إناء مستدير ثم في إناء مربع. هل يتغير شكل الماء؟ والآن انظر إلى قلمك، هل يتغير شكله إذا نقلته من مكان لآخر؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36f4b5867a25f002.mp3"
+      ]
+    },
+    {
+      "text": "يميز التلميذ بين الأجسام الصلبة (تحتفظ بشكلها) والأجسام السائلة (تأخذ شكل إنائها)، ويكتشف أن الصوت ينتج عن اهتزاز أشياء مختلفة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8bc95d38cec8dfe7.mp3"
+      ]
+    },
+    {
+      "text": "الأشياء من حولنا نوعان: أشياء صلبة تحتفظ بشكلها دائماً، وأشياء سائلة تتغير شكلها حسب الإناء. وكل الأصوات التي نسمعها تأتي من اهتزاز شيء ما.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f71200f60153c908.mp3"
+      ]
+    },
+    {
+      "text": "الجِسْمُ الصُّلْبُ: يحتفظ بشكله الخاص أينما وضعناه، مثل: القلم، الكتاب، الكرسي.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6386c8943af51e5a.mp3"
+      ]
+    },
+    {
+      "text": "الجِسْمُ السَّائِلُ: يأخذ شكل الإناء الذي يوضع فيه، ويتحرك بسهولة، مثل: الماء، الحليب، العصير.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b1a94a576eb3fd4f.mp3"
+      ]
+    },
+    {
+      "text": "يَصْدُرُ الصَّوْتُ عن اهتزاز الأشياء: عندما نطرق الطاولة، أو نضرب على طبل، أو نتكلم، تهتز أشياء صغيرة تُصدر صوتاً نسمعه بآذاننا.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f003dcae6f37194f.mp3"
+      ]
+    },
+    {
+      "text": "الجِسْمُ الصُّلْبُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1cee9994ac452f8c.mp3"
+      ]
+    },
+    {
+      "text": "الجِسْمُ السَّائِلُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d97779d17a3706dc.mp3"
+      ]
+    },
+    {
+      "text": "الاهْتِزَازُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e09829dcee7c73f3.mp3"
+      ]
+    },
+    {
+      "text": "الرمل والسكر أجسام صلبة مكونة من حبيبات صغيرة صلبة، حتى لو بدت تتدفق كالسوائل.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-69a10395d7113efc.mp3"
+      ]
+    },
+    {
+      "text": "الصوت يمكن أن يصدر عن أشياء كثيرة مختلفة: الأدوات، الأصوات البشرية، الآلات الموسيقية.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8652b3476411ec44.mp3"
+      ]
+    },
+    {
+      "text": "الجسم الصلب يحتفظ بشكله (القلم، الكتاب). الجسم السائل يأخذ شكل إنائه (الماء، الحليب). الصوت ينتج عن اهتزاز الأشياء.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d38871f07832b687.mp3"
+      ]
+    },
+    {
+      "text": "هل القلم جسم صلب أم سائل؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-matter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bde6c238b0607616.mp3"
+      ]
+    },
+    {
+      "text": "كيف ينتج صوت الطبل عندما نضربه؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-matter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed3c62cca82fbef2.mp3"
+      ]
+    },
+    {
+      "text": "قارن شكل الحجر وشكل الماء إذا نقلناهما إلى علبة أخرى.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex3-sc2ap-sol"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d074407514813a8f.mp3"
+      ]
+    },
+    {
+      "text": "ما الذي يُنتج الصوت عندما نتكلم أو نقرع طبلاً؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-matter"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-5e3bf1deaf16439d.mp3"
+      ]
+    },
+    {
+      "text": "الحجر مادة:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-sol-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f29b91fd64c08c23.mp3"
+      ]
+    },
+    {
+      "text": "الماء في الكأس:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-sol-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bd139a2537113762.mp3"
+      ]
+    },
+    {
+      "text": "الهواء من حولنا:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-sol-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-33a78197baaa7808.mp3"
+      ]
+    },
+    {
+      "text": "الصوت ينتقل جيداً عبر:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-sol-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-64719385bdc7d55c.mp3"
+      ]
+    },
+    {
+      "text": "العصير في الكأس:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-sol-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d36323fa58381098.mp3"
+      ]
+    },
+    {
+      "text": "صنّف كل شيء حسب حالته!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f377670a9131e04f.mp3"
+      ]
+    },
+    {
+      "text": "العصير",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-60b60f9e4bc8cc2c.mp3"
+      ]
+    },
+    {
+      "text": "سَائِلٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb96b557f631f9a1.mp3"
+      ]
+    },
+    {
+      "text": "صُلْبٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-14fc2a4d4816e7d7.mp3"
+      ]
+    },
+    {
+      "text": "الكِتَابُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-solids-liquids-sound",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a3acb6a161555eba.mp3"
+      ]
+    },
+    {
+      "text": "حَالَاتُ المَاءِ: الانْصِهَارُ وَالتَّبَخُّرُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-381eafca11bf6d22.mp3"
+      ]
+    },
+    {
+      "text": "التعرف على حالات الماء الثلاث وملاحظة تحول الماء من حالة إلى أخرى بتأثير الحرارة أو البرودة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed7f669da4aac993.mp3"
+      ]
+    },
+    {
+      "text": "أخرجت مكعب ثلج من الفريزر ووضعته في طبق على الطاولة. ماذا سيحدث له بعد قليل من الوقت؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c4fcff3ef4fad053.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ أن الماء يتخذ ثلاث حالات (صلبة، سائلة، غازية)، وأن الحرارة تحوّله من حالة إلى أخرى.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-53c2c904cd152911.mp3"
+      ]
+    },
+    {
+      "text": "الماء ساحر: يمكنه أن يكون صلباً كالجليد، أو سائلاً كما نشربه، أو غازياً كالبخار الذي نراه فوق كوب الشاي الساخن. والحرارة والبرودة هما ما يغيران حالته.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6854f9af69b3cc21.mp3"
+      ]
+    },
+    {
+      "text": "المَاءُ لَهُ 3 حَالَاتٍ: الحَالَةُ الصُّلْبَةُ (الجليد أو الثلج)، الحَالَةُ السَّائِلَةُ (الماء العادي)، وَالحَالَةُ الغَازِيَّةُ (بخار الماء).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3ea00f7660220779.mp3"
+      ]
+    },
+    {
+      "text": "الانْصِهَارُ: عندما نُسَخِّنُ الجليد الصلب، يتحول تدريجياً إلى ماء سائل.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8e23ee0955dd34ca.mp3"
+      ]
+    },
+    {
+      "text": "التَّبَخُّرُ: عندما نُسَخِّنُ الماء السائل كثيراً (كما في القدر على النار)، يتحول جزء منه إلى بخار غازي يتصاعد في الهواء.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a90e38ea77cc02eb.mp3"
+      ]
+    },
+    {
+      "text": "التَّجَمُّدُ: عندما نضع الماء السائل في البرودة الشديدة (الفريزر)، يتحول إلى جليد صلب.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-017985ae753f9c7d.mp3"
+      ]
+    },
+    {
+      "text": "الانْصِهَارُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-36a6241c4f01a1d2.mp3"
+      ]
+    },
+    {
+      "text": "التَّبَخُّرُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7d182713733a93a4.mp3"
+      ]
+    },
+    {
+      "text": "التَّجَمُّدُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c8122fc54d04780c.mp3"
+      ]
+    },
+    {
+      "text": "بخار الماء لا يختفي، بل يبقى في الهواء وقد يتكاثف لاحقاً ليعود ماءً من جديد (كما في تكوّن السحب والمطر).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ef7e605e399a156b.mp3"
+      ]
+    },
+    {
+      "text": "الانصهار يبدأ من الجليد، والتبخر يبدأ من الماء السائل — كل واحد له نقطة انطلاق مختلفة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-951dc790c06786c3.mp3"
+      ]
+    },
+    {
+      "text": "للماء 3 حالات: صلبة (جليد)، سائلة (ماء)، غازية (بخار). الحرارة تُذيب الجليد (انصهار) وتُبخّر الماء (تبخر)، والبرودة تُجمّد الماء.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e8d82e763d985e54.mp3"
+      ]
+    },
+    {
+      "text": "ما اسم عملية تحول الجليد إلى ماء سائل؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-waterstates"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-49d1e41fc8d0d0ac.mp3"
+      ]
+    },
+    {
+      "text": "ما اسم عملية تحول الماء السائل إلى بخار؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-waterstates"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0c68836d4c1e461e.mp3"
+      ]
+    },
+    {
+      "text": "سمّ التحولين: جليد في الشمس / ماء في المجمّد.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex3-sc2ap-wat"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ccdf93356c085a10.mp3"
+      ]
+    },
+    {
+      "text": "ماذا يحدث للماء السائل إذا وضعناه في الفريزر لوقت طويل؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-waterstates"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-39b87a069368bead.mp3"
+      ]
+    },
+    {
+      "text": "الثلج إذا سخن يصبح:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-wat-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-30b3471cd2872c26.mp3"
+      ]
+    },
+    {
+      "text": "ماء في المجمّد يصبح:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-wat-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ebb83f6d39e2097a.mp3"
+      ]
+    },
+    {
+      "text": "البخار فوق القدر:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-wat-4"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-948a04c36bba09be.mp3"
+      ]
+    },
+    {
+      "text": "قطرات على غطاء القدر:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-wat-5"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e1e2d14fa7cf9d49.mp3"
+      ]
+    },
+    {
+      "text": "ثلاث حالات الماء:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-qb-sc2ap-wat-6"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b81902d41a2de12f.mp3"
+      ]
+    },
+    {
+      "text": "اربط كل مثال بحالة الماء الصحيحة!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f2af554c7e4f6518.mp3"
+      ]
+    },
+    {
+      "text": "مُكَعَّبُ ثَلْجٍ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-8323232eecd5fd47.mp3"
+      ]
+    },
+    {
+      "text": "حَالَةٌ صُلْبَةٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ffc8c1083b31e287.mp3"
+      ]
+    },
+    {
+      "text": "حَالَةٌ سَائِلَةٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-dadf445f7cb44acb.mp3"
+      ]
+    },
+    {
+      "text": "حَالَةٌ غَازِيَّةٌ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-819c7e6a50806e29.mp3"
+      ]
+    },
+    {
+      "text": "البُخَارُ فَوْقَ كُوبِ الشَّايِ السَّاخِنِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-water-states",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-eb2fa2a97f859cbd.mp3"
+      ]
+    },
+    {
+      "text": "ربط حيوان مألوف بطريقة تنقّله.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-486c2c566c1055d4.mp3"
+      ]
+    },
+    {
+      "text": "في الحديقة عصفور وقطة وحلزون. كيف يصل كل واحد إلى الغصن أو العشب؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ed41badfc33e4612.mp3"
+      ]
+    },
+    {
+      "text": "يميّز التلميذ أنماط التنقل: المشي، الطيران، السباحة، والزحف.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-3373379a59ad1555.mp3"
+      ]
+    },
+    {
+      "text": "كل حيوان يتنقل بما يناسب جسمه ومكان عيشه: أرض، هواء، ماء.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-af67db391d89eeb5.mp3"
+      ]
+    },
+    {
+      "text": "المَشْيُ: أرجل على الأرض (قط، كلب، حصان).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d44ce895f6d526b8.mp3"
+      ]
+    },
+    {
+      "text": "الطَّيَرَانُ: أجنحة في الهواء (عصفور، فراشة).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-bb6c2e9c25659102.mp3"
+      ]
+    },
+    {
+      "text": "السِّبَاحَةُ: زعانف في الماء (سمكة). البط يسبح أيضاً.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0fb2a9004b110e25.mp3"
+      ]
+    },
+    {
+      "text": "الزَّحْفُ: بلا أرجل ظاهرة أو بأرجل قصيرة جداً (ثعبان، حلزون).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-7f6939060094b44e.mp3"
+      ]
+    },
+    {
+      "text": "الزِّعْنِفَةُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-91531a37b6a6701c.mp3"
+      ]
+    },
+    {
+      "text": "الجَنَاحُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6094e6ce84dcce0d.mp3"
+      ]
+    },
+    {
+      "text": "الدجاجة تمشي كثيراً وتطير قليلاً.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-2d2c17a5e0d5bc54.mp3"
+      ]
+    },
+    {
+      "text": "أرجل → مشي. أجنحة → طيران. زعانف → سباحة. زحف بلا أرجل طويلة.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-83421a0e3c482885.mp3"
+      ]
+    },
+    {
+      "text": "كيف يتنقل القط؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-move"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-c895fac252d9a04d.mp3"
+      ]
+    },
+    {
+      "text": "بماذا تسبح السمكة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-move"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-18686c67e20e2f53.mp3"
+      ]
+    },
+    {
+      "text": "الحلزون يتنقل بـ:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-move"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-342df3aaee4bbb63.mp3"
+      ]
+    },
+    {
+      "text": "اختر التنقل!",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-instructions"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-b5a197e554bf3541.mp3"
+      ]
+    },
+    {
+      "text": "الحِصَانُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a20edc7ac7758991.mp3"
+      ]
+    },
+    {
+      "text": "يَمْشِي",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-a990043e9d06ba52.mp3"
+      ]
+    },
+    {
+      "text": "الفَرَاشَةُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-0510790eece50c10.mp3"
+      ]
+    },
+    {
+      "text": "تَطِيرُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-32176216bd0ede32.mp3"
+      ]
+    },
+    {
+      "text": "تَسْبَحُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t2-animal-movement",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ccb253d155fc5d19.mp3"
+      ]
+    },
+    {
+      "text": "الهَوَاءُ مِنْ حَوْلِنَا",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "entry",
+          "key": "title"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-d0cb943c8aa5769b.mp3"
+      ]
+    },
+    {
+      "text": "إدراك وجود الهواء ببعض الآثار البسيطة (الريح، البالون، التنفس).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "objective"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-034d4204711eff5c.mp3"
+      ]
+    },
+    {
+      "text": "لوّح بمروحة ورقية أو كيس فارغ: لماذا يتحرّك؟ هل «لا شيء» يدفعه؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "explanation",
+          "key": "discovery"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-26e857df1d449e26.mp3"
+      ]
+    },
+    {
+      "text": "يكتشف التلميذ أن الهواء موجود رغم أنه لا يُرى، وأنه يحرّك الأشياء ونتنفسه.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "summary"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-66a77523ec7d6f17.mp3"
+      ]
+    },
+    {
+      "text": "ما لا نراه قد يكون موجوداً. الهواء نلمسه بآثاره.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "intro"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-582b52934562a484.mp3"
+      ]
+    },
+    {
+      "text": "الهَوَاءُ مَادَّةٌ شَفَّافَةٌ تَمْلَأُ المَكَانَ.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-99f8b4d5acbdda0b.mp3"
+      ]
+    },
+    {
+      "text": "الرِّيحُ هَوَاءٌ يَتَحَرَّكُ: تُحَرِّكُ الأَوْرَاقَ وَالرَّايَةَ.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-95af4fd251a9341e.mp3"
+      ]
+    },
+    {
+      "text": "نَمْلَأُ البَالُونَ بِالهَوَاءِ عِنْدَ النَّفْخِ.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72cb74fad125e9a5.mp3"
+      ]
+    },
+    {
+      "text": "نَحْتَاجُ الهَوَاءَ لِلتَّنَفُّسِ (رَبْطٌ بِدَرْسِ القَلْبِ وَالرِّئَتَيْنِ).",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "rule-3"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-77189f053b9c8d39.mp3"
+      ]
+    },
+    {
+      "text": "الرِّيحُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-1ceefdabdb376048.mp3"
+      ]
+    },
+    {
+      "text": "النَّفْخُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "vocab-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-228ec7880cf68a4b.mp3"
+      ]
+    },
+    {
+      "text": "الهواء مادة: يحرّك ويُتنفَّس ويُنفخ.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "mistake-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-024fc36caf38bd0d.mp3"
+      ]
+    },
+    {
+      "text": "الهواء موجود دون أن نراه. الريح أثره. نتنفسه وننفخ به.",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "content",
+          "key": "takeaway"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-ab632a1e410b3937.mp3"
+      ]
+    },
+    {
+      "text": "هل نرى الهواء بأعيننا عادة؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex1-sc2ap-air"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-00b2018116dc9adb.mp3"
+      ]
+    },
+    {
+      "text": "ماذا نضع داخل البالون عند النفخ؟",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "practice",
+          "key": "practice-ex2-sc2ap-air"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-72e70020042eae46.mp3"
+      ]
+    },
+    {
+      "text": "الريح هي:",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "quiz",
+          "key": "quiz-q1-sc2ap-air"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-595b87f211e812b3.mp3"
+      ]
+    },
+    {
+      "text": "تحريك الغسيل على الحبل",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4d04b58b716bed2e.mp3"
+      ]
+    },
+    {
+      "text": "الهَوَاءُ / الرِّيحُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-cdb5f999e76b2700.mp3"
+      ]
+    },
+    {
+      "text": "الحَجَرُ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-0-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-f1467cb9b0ff457b.mp3"
+      ]
+    },
+    {
+      "text": "نملأ البالون بـ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-6f40bb8815de5067.mp3"
+      ]
+    },
+    {
+      "text": "الحَجَرِ",
+      "targets": [
+        {
+          "lessonId": "science-2ap-t3-air",
+          "grade": "2AP",
+          "subject": "science",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-169a5bb437b1a17b.mp3"
       ]
     },
     {
