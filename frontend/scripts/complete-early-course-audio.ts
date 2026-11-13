@@ -1,7 +1,7 @@
 /** Explicitly invoked offline production, one verified local commit per grade/subject. No push. */
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { readFileSync, mkdirSync, appendFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, appendFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,7 +19,7 @@ async function main() {
   for (const section of manifest.sections) {
     const plan = `${directory}/${section.file}`;
     while (true) {
-      const output = await script('generate-course-audio.ts', ['--plan', plan, '--limit', '24', '--concurrency', '4', '--complete-plan', '--generate']);
+      const output = await script('generate-course-audio.ts', ['--plan', plan, '--limit', '24', '--concurrency', '4', '--complete-plan', '--defer-invalid', '--generate']);
       appendFileSync(resolve(root, 'output/course-audio-completion/production.log'), output);
       const summary = JSON.parse(output.split(/\r?\n/).find(line => line.startsWith('{'))!);
       console.log(JSON.stringify({ section: section.section, pendingBeforeBatch: summary.pending, produced: summary.selected, remaining: summary.pending - summary.selected }));
@@ -35,7 +35,7 @@ async function main() {
     });
     if ((await run('git', ['diff', '--cached', '--name-only'])).trim()) throw new Error('Another process staged files; stopping before commit.');
     // Explicit paths only: other agents may be changing course source files in parallel.
-    const paths = [...files, plan, 'docs/audio-v1/enregistrements-cours-openai.json', 'docs/audio-v1/REUTILISATION-AUDIO.json',
+    const paths = [...files, ...(existsSync(resolve(root, directory, 'reprises-necessaires.json')) ? [`${directory}/reprises-necessaires.json`] : []), plan, 'docs/audio-v1/enregistrements-cours-openai.json', 'docs/audio-v1/REUTILISATION-AUDIO.json',
       'frontend/src/data/recordedSpeechCatalog.ts', ...['couverture.json', 'ar-manquants.json', 'prochain-lot-ar-decoupage.json', 'prochain-lot-ar-texte-a-relire.txt'].map(file => `docs/audio-v1/cours-1ap-2ap/${file}`)];
     // Keep Windows command lines below their length limit.
     for (let i = 0; i < paths.length; i += 30) await run('git', ['add', '--', ...paths.slice(i, i + 30)]);
