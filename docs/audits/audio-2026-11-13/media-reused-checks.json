@@ -1,0 +1,993 @@
+{
+  "summary": {
+    "total": 109,
+    "decoded": 109,
+    "failed": 0,
+    "suspiciousSilence": 0,
+    "decodeWarnings": 0,
+    "totalBytes": 4166156
+  },
+  "results": [
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-004a20c8e8789f47.mp3",
+      "bytes": 19964,
+      "decoded": true,
+      "meanDb": -21.9,
+      "peakDb": -5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-015b5aad561d62c8.mp3",
+      "bytes": 33884,
+      "decoded": true,
+      "meanDb": -23.4,
+      "peakDb": -6.5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-0730dde5c07600e1.mp3",
+      "bytes": 77804,
+      "decoded": true,
+      "meanDb": -24.6,
+      "peakDb": -5.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-076c402679dbbd65.mp3",
+      "bytes": 50444,
+      "decoded": true,
+      "meanDb": -23,
+      "peakDb": -3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-0b941940898fb4b5.mp3",
+      "bytes": 25964,
+      "decoded": true,
+      "meanDb": -23.7,
+      "peakDb": -5.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-0eea280611ba561b.mp3",
+      "bytes": 48284,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -3.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-0f4dd57673cf6b07.mp3",
+      "bytes": 27404,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -6.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-157d376dffe44cf7.mp3",
+      "bytes": 42764,
+      "decoded": true,
+      "meanDb": -22.8,
+      "peakDb": -5.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-176202f21a5b879a.mp3",
+      "bytes": 30764,
+      "decoded": true,
+      "meanDb": -24.4,
+      "peakDb": -6.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-2070acefd5008f15.mp3",
+      "bytes": 17804,
+      "decoded": true,
+      "meanDb": -23.8,
+      "peakDb": -8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-22f45209086b75bc.mp3",
+      "bytes": 17804,
+      "decoded": true,
+      "meanDb": -23.9,
+      "peakDb": -7.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-272a593545600ed8.mp3",
+      "bytes": 23324,
+      "decoded": true,
+      "meanDb": -24.4,
+      "peakDb": -3.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-289fe23d34c389fb.mp3",
+      "bytes": 21884,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -5.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-2dafdc329925f9e6.mp3",
+      "bytes": 56444,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -4.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-2dba3056fd6f0216.mp3",
+      "bytes": 43964,
+      "decoded": true,
+      "meanDb": -24.2,
+      "peakDb": -4.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-3243352fa88c5b54.mp3",
+      "bytes": 50444,
+      "decoded": true,
+      "meanDb": -23.8,
+      "peakDb": -4.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-3d374388119638d5.mp3",
+      "bytes": 33404,
+      "decoded": true,
+      "meanDb": -22.5,
+      "peakDb": -6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-3e214e0b245d93f9.mp3",
+      "bytes": 50444,
+      "decoded": true,
+      "meanDb": -25.4,
+      "peakDb": -4.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-3f6ce5e8465b36c1.mp3",
+      "bytes": 29324,
+      "decoded": true,
+      "meanDb": -21.9,
+      "peakDb": -5.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-44945c1e0af78232.mp3",
+      "bytes": 49964,
+      "decoded": true,
+      "meanDb": -23.9,
+      "peakDb": -5.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-44c38cccd7199fa3.mp3",
+      "bytes": 50924,
+      "decoded": true,
+      "meanDb": -24.7,
+      "peakDb": -6.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-47b0460b41387c96.mp3",
+      "bytes": 30284,
+      "decoded": true,
+      "meanDb": -21.8,
+      "peakDb": -3.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-4cc9bd0e31c9ed06.mp3",
+      "bytes": 24764,
+      "decoded": true,
+      "meanDb": -21.5,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-4d69592c0a03a4ad.mp3",
+      "bytes": 24284,
+      "decoded": true,
+      "meanDb": -24.6,
+      "peakDb": -6.5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-4d73d9c3f4b7d101.mp3",
+      "bytes": 50924,
+      "decoded": true,
+      "meanDb": -25.8,
+      "peakDb": -7.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-4f6b13187a5081dd.mp3",
+      "bytes": 33404,
+      "decoded": true,
+      "meanDb": -23.6,
+      "peakDb": -6.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-53e3b5bfb6f8716b.mp3",
+      "bytes": 33404,
+      "decoded": true,
+      "meanDb": -24.1,
+      "peakDb": -7.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-54030282458a1782.mp3",
+      "bytes": 65804,
+      "decoded": true,
+      "meanDb": -22.7,
+      "peakDb": -3.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-57d177de7c36bbcb.mp3",
+      "bytes": 37964,
+      "decoded": true,
+      "meanDb": -24.3,
+      "peakDb": -7.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-5851e74d4e68b97d.mp3",
+      "bytes": 46844,
+      "decoded": true,
+      "meanDb": -23.7,
+      "peakDb": -4.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-595dcd819e68800a.mp3",
+      "bytes": 45884,
+      "decoded": true,
+      "meanDb": -23.8,
+      "peakDb": -4.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-66856c50474d9c38.mp3",
+      "bytes": 60284,
+      "decoded": true,
+      "meanDb": -24.4,
+      "peakDb": -7.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-66e3be87ac3bbea9.mp3",
+      "bytes": 25964,
+      "decoded": true,
+      "meanDb": -22.6,
+      "peakDb": -3.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-6c9ddb0c5773e807.mp3",
+      "bytes": 25964,
+      "decoded": true,
+      "meanDb": -24.6,
+      "peakDb": -5.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-71b2ef8ecc8ecad5.mp3",
+      "bytes": 48764,
+      "decoded": true,
+      "meanDb": -25,
+      "peakDb": -8.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-726c6c7880076592.mp3",
+      "bytes": 30284,
+      "decoded": true,
+      "meanDb": -24.3,
+      "peakDb": -5.5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-72d75d77f641d055.mp3",
+      "bytes": 24764,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -6.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-72d96c2b4c7dbd16.mp3",
+      "bytes": 56924,
+      "decoded": true,
+      "meanDb": -23.6,
+      "peakDb": -5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-7446cb3c866809a4.mp3",
+      "bytes": 39884,
+      "decoded": true,
+      "meanDb": -21,
+      "peakDb": -2.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-7a88d0e6e91cdac8.mp3",
+      "bytes": 17804,
+      "decoded": true,
+      "meanDb": -23.6,
+      "peakDb": -5.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-8091c7230aff8974.mp3",
+      "bytes": 42764,
+      "decoded": true,
+      "meanDb": -22.7,
+      "peakDb": -3.5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-870ede3e4d3e38d6.mp3",
+      "bytes": 23324,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -5.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-8e0438cce74eaa9f.mp3",
+      "bytes": 31484,
+      "decoded": true,
+      "meanDb": -25,
+      "peakDb": -5.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-90d9cecdb139db77.mp3",
+      "bytes": 44924,
+      "decoded": true,
+      "meanDb": -23.3,
+      "peakDb": -4.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9479ccabb269c0ed.mp3",
+      "bytes": 39404,
+      "decoded": true,
+      "meanDb": -22.5,
+      "peakDb": -4.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-962b976e915395d1.mp3",
+      "bytes": 25484,
+      "decoded": true,
+      "meanDb": -21.9,
+      "peakDb": -4.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9b6f32755c5e14ac.mp3",
+      "bytes": 30764,
+      "decoded": true,
+      "meanDb": -23.6,
+      "peakDb": -6.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9bc2d34b22723b67.mp3",
+      "bytes": 37484,
+      "decoded": true,
+      "meanDb": -25.6,
+      "peakDb": -6.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9c76256c961ea35a.mp3",
+      "bytes": 28844,
+      "decoded": true,
+      "meanDb": -24.4,
+      "peakDb": -7.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9c8e6dacc218886f.mp3",
+      "bytes": 40364,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -3.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-9f3d78e8ab69c625.mp3",
+      "bytes": 27884,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -3.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-a159169f6249d480.mp3",
+      "bytes": 41324,
+      "decoded": true,
+      "meanDb": -23.2,
+      "peakDb": -7.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-a3f3cd6e4dbc433c.mp3",
+      "bytes": 48284,
+      "decoded": true,
+      "meanDb": -24,
+      "peakDb": -5.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-a5217daa4f9d2877.mp3",
+      "bytes": 46844,
+      "decoded": true,
+      "meanDb": -23.6,
+      "peakDb": -4.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-a5e0e8e3527674a0.mp3",
+      "bytes": 49484,
+      "decoded": true,
+      "meanDb": -24.8,
+      "peakDb": -5.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-aaef8430114301db.mp3",
+      "bytes": 21404,
+      "decoded": true,
+      "meanDb": -25.8,
+      "peakDb": -7.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-ad41560fef63a044.mp3",
+      "bytes": 21884,
+      "decoded": true,
+      "meanDb": -21.6,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-af5234b8f2bd2f16.mp3",
+      "bytes": 21884,
+      "decoded": true,
+      "meanDb": -20.9,
+      "peakDb": -2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-b19d1f954d3fb3cc.mp3",
+      "bytes": 21884,
+      "decoded": true,
+      "meanDb": -23.4,
+      "peakDb": -3.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-b3a39a14b1b5d21c.mp3",
+      "bytes": 32924,
+      "decoded": true,
+      "meanDb": -22.3,
+      "peakDb": -3.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-bc7af25aac0942ef.mp3",
+      "bytes": 33404,
+      "decoded": true,
+      "meanDb": -25.2,
+      "peakDb": -6.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-bcc4367a4151b1f0.mp3",
+      "bytes": 86924,
+      "decoded": true,
+      "meanDb": -22.6,
+      "peakDb": -3.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-beef893bcf2db32c.mp3",
+      "bytes": 50444,
+      "decoded": true,
+      "meanDb": -24.9,
+      "peakDb": -6.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-c29775765017f0c6.mp3",
+      "bytes": 52844,
+      "decoded": true,
+      "meanDb": -24,
+      "peakDb": -4.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-c5326c385fed086c.mp3",
+      "bytes": 47324,
+      "decoded": true,
+      "meanDb": -24.4,
+      "peakDb": -4.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-c87ffe28f169160e.mp3",
+      "bytes": 40364,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -3.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-ca783998fc685ade.mp3",
+      "bytes": 46364,
+      "decoded": true,
+      "meanDb": -21.9,
+      "peakDb": -5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-cf7464958ffc61f1.mp3",
+      "bytes": 34364,
+      "decoded": true,
+      "meanDb": -23.3,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-d1c9af69a9c188bc.mp3",
+      "bytes": 47324,
+      "decoded": true,
+      "meanDb": -23.1,
+      "peakDb": -3.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-d4abc2c1e484af08.mp3",
+      "bytes": 22844,
+      "decoded": true,
+      "meanDb": -24.3,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-dd9d5c31450f3842.mp3",
+      "bytes": 25484,
+      "decoded": true,
+      "meanDb": -23.1,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-dec06cc7e1faf4f1.mp3",
+      "bytes": 52364,
+      "decoded": true,
+      "meanDb": -23.2,
+      "peakDb": -4.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-e7c8bf8bcdde5b45.mp3",
+      "bytes": 26444,
+      "decoded": true,
+      "meanDb": -22,
+      "peakDb": -3.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/en/openai-v2-f7c6b79d8c7f20c0.mp3",
+      "bytes": 47324,
+      "decoded": true,
+      "meanDb": -23.7,
+      "peakDb": -5.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-06543819b2bbbf11.mp3",
+      "bytes": 29324,
+      "decoded": true,
+      "meanDb": -22,
+      "peakDb": -3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-06e92d36869b1308.mp3",
+      "bytes": 39404,
+      "decoded": true,
+      "meanDb": -21.8,
+      "peakDb": -4.2,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-183707f8560d21a6.mp3",
+      "bytes": 24764,
+      "decoded": true,
+      "meanDb": -23.5,
+      "peakDb": -4.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-2aa199b92a96a379.mp3",
+      "bytes": 31484,
+      "decoded": true,
+      "meanDb": -23.8,
+      "peakDb": -7.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-2f9a4a49f856e21f.mp3",
+      "bytes": 49964,
+      "decoded": true,
+      "meanDb": -22.6,
+      "peakDb": -5.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-3b6ea2a198fdacbc.mp3",
+      "bytes": 31484,
+      "decoded": true,
+      "meanDb": -23.9,
+      "peakDb": -4.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-3da6e317e4723334.mp3",
+      "bytes": 58364,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -4.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-4db29130dbb40a01.mp3",
+      "bytes": 24284,
+      "decoded": true,
+      "meanDb": -25.7,
+      "peakDb": -6.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-4ea0dadc9d429b5a.mp3",
+      "bytes": 32924,
+      "decoded": true,
+      "meanDb": -23.2,
+      "peakDb": -6.5,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-4f0f20c94ea2ca3d.mp3",
+      "bytes": 70364,
+      "decoded": true,
+      "meanDb": -21.7,
+      "peakDb": -3.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-5a46fe2a29beb17e.mp3",
+      "bytes": 35804,
+      "decoded": true,
+      "meanDb": -23,
+      "peakDb": -6.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-5c820efbc3223b48.mp3",
+      "bytes": 58364,
+      "decoded": true,
+      "meanDb": -21.6,
+      "peakDb": -1.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-67d35492cd1aca15.mp3",
+      "bytes": 46844,
+      "decoded": true,
+      "meanDb": -22.7,
+      "peakDb": -5.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-6bde9a7bbc75a0dd.mp3",
+      "bytes": 54764,
+      "decoded": true,
+      "meanDb": -20.4,
+      "peakDb": -1.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-714dfecc716c2902.mp3",
+      "bytes": 41804,
+      "decoded": true,
+      "meanDb": -22.1,
+      "peakDb": -3.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-784867911d47a90d.mp3",
+      "bytes": 29804,
+      "decoded": true,
+      "meanDb": -21.8,
+      "peakDb": -2.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-88bb01ebbbfdb91a.mp3",
+      "bytes": 61484,
+      "decoded": true,
+      "meanDb": -23.4,
+      "peakDb": -4.7,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-a0e0c6f7ca0d05a0.mp3",
+      "bytes": 23804,
+      "decoded": true,
+      "meanDb": -22.4,
+      "peakDb": -4.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b133565de72e1747.mp3",
+      "bytes": 30284,
+      "decoded": true,
+      "meanDb": -24.3,
+      "peakDb": -6.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b1673f4b2a7c76e6.mp3",
+      "bytes": 53804,
+      "decoded": true,
+      "meanDb": -21.3,
+      "peakDb": -4.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b17db69abdb6c5a8.mp3",
+      "bytes": 47324,
+      "decoded": true,
+      "meanDb": -23.7,
+      "peakDb": -4.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b317cb3af10dd46f.mp3",
+      "bytes": 34844,
+      "decoded": true,
+      "meanDb": -23.3,
+      "peakDb": -5.3,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b42491b6317d011c.mp3",
+      "bytes": 43964,
+      "decoded": true,
+      "meanDb": -20.9,
+      "peakDb": -4.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-b82070d752929125.mp3",
+      "bytes": 21404,
+      "decoded": true,
+      "meanDb": -23.4,
+      "peakDb": -4.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-c28159c7c06df94e.mp3",
+      "bytes": 20924,
+      "decoded": true,
+      "meanDb": -22.7,
+      "peakDb": -7.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-c4e6cc1c7972ca9b.mp3",
+      "bytes": 22844,
+      "decoded": true,
+      "meanDb": -21.8,
+      "peakDb": -7.1,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-c5ec4b0f7632bf74.mp3",
+      "bytes": 58364,
+      "decoded": true,
+      "meanDb": -20.9,
+      "peakDb": -3.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-d4fea64dd0b9139f.mp3",
+      "bytes": 18764,
+      "decoded": true,
+      "meanDb": -20.4,
+      "peakDb": -4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-d6483176ae6c3f86.mp3",
+      "bytes": 36764,
+      "decoded": true,
+      "meanDb": -23.7,
+      "peakDb": -7.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-de886e05288cba95.mp3",
+      "bytes": 23804,
+      "decoded": true,
+      "meanDb": -23.2,
+      "peakDb": -4.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-df855826e31e8faf.mp3",
+      "bytes": 19484,
+      "decoded": true,
+      "meanDb": -23.3,
+      "peakDb": -2.9,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-e95257ca61a690b4.mp3",
+      "bytes": 28364,
+      "decoded": true,
+      "meanDb": -27.4,
+      "peakDb": -6.6,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-f04ef5d5cbf2f440.mp3",
+      "bytes": 23804,
+      "decoded": true,
+      "meanDb": -26.6,
+      "peakDb": -8.4,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-f5f68b56c0aaf09a.mp3",
+      "bytes": 71324,
+      "decoded": true,
+      "meanDb": -24.2,
+      "peakDb": -4.8,
+      "suspiciousSilence": false,
+      "warning": false
+    },
+    {
+      "file": "frontend/public/sounds/preschool/fr/openai-v2-fdc5e5df4072f04a.mp3",
+      "bytes": 45404,
+      "decoded": true,
+      "meanDb": -22.5,
+      "peakDb": -3.8,
+      "suspiciousSilence": false,
+      "warning": false
+    }
+  ]
+}

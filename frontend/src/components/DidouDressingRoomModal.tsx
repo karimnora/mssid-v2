@@ -16,6 +16,7 @@ import {
   Info,
 } from 'lucide-react';
 import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { getDidouEnergy, getDidouEnergyAfterTreat, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 import { DidouOutfitItem, DidouOutfitId, DidouPetSpecies, DidouAvatarConfig } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
@@ -44,6 +45,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   const isFrench = locale === 'fr';
   const reducedMotion = useReducedMotion();
   const voiceAvailable = useVoiceAvailable(isFrench ? 'fr-FR' : 'ar-SA');
+  const voiceReadingEnabled = useFeatureFlag('voiceReading');
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -256,6 +258,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   };
 
   const handlePlayDialogue = (text: string, index: number) => {
+    if (!voiceReadingEnabled) return;
     stopSpeech();
     setPlayingDialogueIndex(index);
     const langCode = isFrench ? 'fr-FR' : 'ar-SA';
@@ -383,7 +386,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
               {voiceAvailable === false && <p className="didou-small">{isFrench ? 'La voix n’est pas disponible sur cet appareil. Tu peux lire tous les messages.' : 'الصوت غير متاح على هذا الجهاز. يمكنك قراءة كل الرسائل.'}</p>}
               <div className="didou-dialogues">{(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).map((quote, index) => <article key={index} data-speaking={playingDialogueIndex === index || undefined}>
                 <p>{quote}</p>
-                {voiceAvailable === true && <button type="button" className="didou-secondary-button" onClick={() => {
+                {voiceReadingEnabled && voiceAvailable === true && <button type="button" className="didou-secondary-button" onClick={() => {
                   if (playingDialogueIndex === index) { stopSpeech(); setPlayingDialogueIndex(null); } else handlePlayDialogue(quote, index);
                 }}><Volume2 className="w-4 h-4" />{playingDialogueIndex === index ? (isFrench ? 'Arrêter' : 'أوقف') : (isFrench ? 'Écouter' : 'أستمع')}</button>}
               </article>)}</div>

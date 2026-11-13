@@ -8,6 +8,8 @@ Complément audio : [lecteur arabe fiabilisé](2026-11-13-fiabilisation-lecture-
 
 Suite audio du même jour : [24 MP3 produits avec cedar, la voix de Didou V2](../audio-v1/cours-1ap-2ap/OPENAI-DIDOU-LOT-01.md), et raccordés aux titres. Les anciens sons V1/V2 sont préservés. La couverture passe à 34 cours ayant au moins un passage enregistré ; le contenu intégral et la validation de prononciation restent à compléter.
 
+Audit audio étendu : [contrôle des autres zones de l'app](audio-2026-11-13/README.md). Les 1 302 fichiers initiaux et les 109 fichiers repris de la V2 se décodent sans erreur ; aucun appel de génération payant. Les 1 200 consignes/félicitations préscolaires sont maintenant enregistrées dans les trois langues. Les autres paroles restent partiellement couvertes, notamment les messages de Didou et certains laboratoires.
+
 ## Ce qui est en place
 
 | Domaine | Amélioration disponible | Limite actuelle |

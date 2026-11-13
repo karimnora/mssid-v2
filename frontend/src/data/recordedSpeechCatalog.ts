@@ -3447,6 +3447,146 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/pronunciation-fr-sentence-bonjour.mp3",
       "durationMs": 2067
     },
+    "Mains propres ! Raconte l’histoire à maman !": {
+      "src": "/sounds/preschool/fr/openai-v2-06543819b2bbbf11.mp3",
+      "durationMs": 2850
+    },
+    "Range les images : on se réveille, puis l’école, puis un câlin ! Ensuite raconte l’histoire !": {
+      "src": "/sounds/preschool/fr/openai-v2-4f0f20c94ea2ca3d.mp3",
+      "durationMs": 6950
+    },
+    "Belle histoire ! Raconte-la à papa !": {
+      "src": "/sounds/preschool/fr/openai-v2-b317cb3af10dd46f.mp3",
+      "durationMs": 3400
+    },
+    "Glisse le crayon : visage, soleil, fleur, maison, fennec, puis le couscous !": {
+      "src": "/sounds/preschool/fr/openai-v2-f5f68b56c0aaf09a.mp3",
+      "durationMs": 7050
+    },
+    "Le cahier de dessin est prêt ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-3b6ea2a198fdacbc.mp3",
+      "durationMs": 3050
+    },
+    "Choisis une couleur et touche le visage, les yeux et la bouche !": {
+      "src": "/sounds/preschool/fr/openai-v2-b17db69abdb6c5a8.mp3",
+      "durationMs": 4650
+    },
+    "Un beau visage ! Tu es un artiste !": {
+      "src": "/sounds/preschool/fr/openai-v2-4ea0dadc9d429b5a.mp3",
+      "durationMs": 3200
+    },
+    "Colorie le soleil ! Touche le rond et les rayons !": {
+      "src": "/sounds/preschool/fr/openai-v2-b42491b6317d011c.mp3",
+      "durationMs": 4300
+    },
+    "Ton soleil brille ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-784867911d47a90d.mp3",
+      "durationMs": 2900
+    },
+    "Colorie la fleur ! Les pétales, le cœur et la tige !": {
+      "src": "/sounds/preschool/fr/openai-v2-714dfecc716c2902.mp3",
+      "durationMs": 4100
+    },
+    "Quelle belle fleur !": {
+      "src": "/sounds/preschool/fr/openai-v2-f04ef5d5cbf2f440.mp3",
+      "durationMs": 2300
+    },
+    "Colorie la maison ! Le toit, le mur, la porte et la fenêtre !": {
+      "src": "/sounds/preschool/fr/openai-v2-3da6e317e4723334.mp3",
+      "durationMs": 5750
+    },
+    "Une belle maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-c4e6cc1c7972ca9b.mp3",
+      "durationMs": 2200
+    },
+    "Colorie le fennec ! Grandes oreilles, le petit renard du Sahara !": {
+      "src": "/sounds/preschool/fr/openai-v2-c5ec4b0f7632bf74.mp3",
+      "durationMs": 5750
+    },
+    "Un superbe fennec !": {
+      "src": "/sounds/preschool/fr/openai-v2-a0e0c6f7ca0d05a0.mp3",
+      "durationMs": 2300
+    },
+    "Colorie le dromadaire ! Le vaisseau du désert et sa bosse !": {
+      "src": "/sounds/preschool/fr/openai-v2-b1673f4b2a7c76e6.mp3",
+      "durationMs": 5300
+    },
+    "Un dromadaire fort !": {
+      "src": "/sounds/preschool/fr/openai-v2-b133565de72e1747.mp3",
+      "durationMs": 2950
+    },
+    "Colorie le plat de couscous ! La marmite, le couvercle et le plat !": {
+      "src": "/sounds/preschool/fr/openai-v2-6bde9a7bbc75a0dd.mp3",
+      "durationMs": 5400
+    },
+    "Miam ! Ton plat est prêt !": {
+      "src": "/sounds/preschool/fr/openai-v2-183707f8560d21a6.mp3",
+      "durationMs": 2400
+    },
+    "Glisse : pomme, fourmi, poisson, ferme, puis abeille !": {
+      "src": "/sounds/preschool/fr/openai-v2-5c820efbc3223b48.mp3",
+      "durationMs": 5750
+    },
+    "On joue ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-d4fea64dd0b9139f.mp3",
+      "durationMs": 1800
+    },
+    "Choisis une couleur et colorie la pomme ! Le fruit, la tige et la feuille !": {
+      "src": "/sounds/preschool/fr/openai-v2-88bb01ebbbfdb91a.mp3",
+      "durationMs": 6050
+    },
+    "Une belle pomme !": {
+      "src": "/sounds/preschool/fr/openai-v2-b82070d752929125.mp3",
+      "durationMs": 2050
+    },
+    "Glisse la fourmi jusqu'à la feuille verte !": {
+      "src": "/sounds/preschool/fr/openai-v2-5a46fe2a29beb17e.mp3",
+      "durationMs": 3500
+    },
+    "La fourmi est arrivée !": {
+      "src": "/sounds/preschool/fr/openai-v2-df855826e31e8faf.mp3",
+      "durationMs": 1850
+    },
+    "Glisse le poisson dans la mer jusqu'au coquillage !": {
+      "src": "/sounds/preschool/fr/openai-v2-d6483176ae6c3f86.mp3",
+      "durationMs": 3600
+    },
+    "Le poisson a trouvé son coquillage !": {
+      "src": "/sounds/preschool/fr/openai-v2-2aa199b92a96a379.mp3",
+      "durationMs": 3050
+    },
+    "Mets le soleil, l'arbre et la maison à leur place !": {
+      "src": "/sounds/preschool/fr/openai-v2-fdc5e5df4072f04a.mp3",
+      "durationMs": 4450
+    },
+    "La ferme est complète !": {
+      "src": "/sounds/preschool/fr/openai-v2-4db29130dbb40a01.mp3",
+      "durationMs": 2350
+    },
+    "Mets le soleil, le dromadaire, le fennec et le palmier à leur place !": {
+      "src": "/sounds/preschool/fr/openai-v2-2f9a4a49f856e21f.mp3",
+      "durationMs": 4900
+    },
+    "Une belle oasis !": {
+      "src": "/sounds/preschool/fr/openai-v2-c28159c7c06df94e.mp3",
+      "durationMs": 2000
+    },
+    "Glisse la voiture sur la route jusqu'à la maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-06e92d36869b1308.mp3",
+      "durationMs": 3850
+    },
+    "La voiture est arrivée à la maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-de886e05288cba95.mp3",
+      "durationMs": 2300
+    },
+    "Mets les abeilles avec le miel, et les papillons avec la fleur !": {
+      "src": "/sounds/preschool/fr/openai-v2-67d35492cd1aca15.mp3",
+      "durationMs": 4600
+    },
+    "Chacun à sa place !": {
+      "src": "/sounds/preschool/fr/openai-v2-e95257ca61a690b4.mp3",
+      "durationMs": 2750
+    },
     "Glisse l'oiseau à travers les saisons : fleur, soleil, feuille, neige !": {
       "src": "/sounds/preschool/fr/seasons-year-path-prompt.mp3",
       "durationMs": 5236
@@ -4944,6 +5084,302 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Hello! How are you?": {
       "src": "/sounds/preschool/en/pronunciation-en-sentence-hello.mp3",
       "durationMs": 1912
+    },
+    "Drag: long train, heavy stone, bird up high, house, light balloon, then the brain!": {
+      "src": "/sounds/preschool/en/openai-v2-bcc4367a4151b1f0.mp3",
+      "durationMs": 8600
+    },
+    "Your little mind is thinking! Bravo!": {
+      "src": "/sounds/preschool/en/openai-v2-7446cb3c866809a4.mp3",
+      "durationMs": 3900
+    },
+    "Touch the train! The train is long, the car is short!": {
+      "src": "/sounds/preschool/en/openai-v2-9c8e6dacc218886f.mp3",
+      "durationMs": 3950
+    },
+    "Well done! That is a long train!": {
+      "src": "/sounds/preschool/en/openai-v2-9f3d78e8ab69c625.mp3",
+      "durationMs": 2700
+    },
+    "Touch the stone! The stone is heavy, the balloon is light!": {
+      "src": "/sounds/preschool/en/openai-v2-beef893bcf2db32c.mp3",
+      "durationMs": 4950
+    },
+    "Yes! The stone is heavy!": {
+      "src": "/sounds/preschool/en/openai-v2-b19d1f954d3fb3cc.mp3",
+      "durationMs": 2100
+    },
+    "Touch the ball above the line! Same ball, two places.": {
+      "src": "/sounds/preschool/en/openai-v2-8091c7230aff8974.mp3",
+      "durationMs": 4200
+    },
+    "Yes! The ball is above!": {
+      "src": "/sounds/preschool/en/openai-v2-962b976e915395d1.mp3",
+      "durationMs": 2450
+    },
+    "Put the stone and the car with the elephant, the balloon and the leaf with the feather!": {
+      "src": "/sounds/preschool/en/openai-v2-dec06cc7e1faf4f1.mp3",
+      "durationMs": 5150
+    },
+    "You know heavy and light!": {
+      "src": "/sounds/preschool/en/openai-v2-289fe23d34c389fb.mp3",
+      "durationMs": 2100
+    },
+    "Touch the ball that is INSIDE the box! Same ball, two places!": {
+      "src": "/sounds/preschool/en/openai-v2-66856c50474d9c38.mp3",
+      "durationMs": 5950
+    },
+    "Yes! The ball is inside the box!": {
+      "src": "/sounds/preschool/en/openai-v2-3f6ce5e8465b36c1.mp3",
+      "durationMs": 2850
+    },
+    "Touch the bear that is IN FRONT of the box! Same bear, two different places!": {
+      "src": "/sounds/preschool/en/openai-v2-2dafdc329925f9e6.mp3",
+      "durationMs": 5550
+    },
+    "Yes! The bear is in front of the box!": {
+      "src": "/sounds/preschool/en/openai-v2-47b0460b41387c96.mp3",
+      "durationMs": 2950
+    },
+    "Touch the right hand! We eat and shake hands with it!": {
+      "src": "/sounds/preschool/en/openai-v2-9bc2d34b22723b67.mp3",
+      "durationMs": 3650
+    },
+    "That is the right hand! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-66e3be87ac3bbea9.mp3",
+      "durationMs": 2500
+    },
+    "Train, car, train, car, train… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-71b2ef8ecc8ecad5.mp3",
+      "durationMs": 4800
+    },
+    "The car comes after the train! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-53e3b5bfb6f8716b.mp3",
+      "durationMs": 3250
+    },
+    "Flip the cards! Say: train, elephant, bird!": {
+      "src": "/sounds/preschool/en/openai-v2-9479ccabb269c0ed.mp3",
+      "durationMs": 3850
+    },
+    "Your mind is strong!": {
+      "src": "/sounds/preschool/en/openai-v2-ad41560fef63a044.mp3",
+      "durationMs": 2100
+    },
+    "Red, blue, red, blue, red… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-0eea280611ba561b.mp3",
+      "durationMs": 4750
+    },
+    "Blue comes after red! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-4cc9bd0e31c9ed06.mp3",
+      "durationMs": 2400
+    },
+    "Cat, dog, cat, dog, cat… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-c29775765017f0c6.mp3",
+      "durationMs": 5200
+    },
+    "The dog comes after the cat! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-c87ffe28f169160e.mp3",
+      "durationMs": 3950
+    },
+    "Sun, moon, sun, moon, sun… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-595dcd819e68800a.mp3",
+      "durationMs": 4500
+    },
+    "The moon comes after the sun! Great!": {
+      "src": "/sounds/preschool/en/openai-v2-176202f21a5b879a.mp3",
+      "durationMs": 3000
+    },
+    "Apple, banana, apple, banana, apple… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-d1c9af69a9c188bc.mp3",
+      "durationMs": 4650
+    },
+    "Banana comes after the apple!": {
+      "src": "/sounds/preschool/en/openai-v2-6c9ddb0c5773e807.mp3",
+      "durationMs": 2500
+    },
+    "Elephant, mouse, elephant, mouse, elephant… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-5851e74d4e68b97d.mp3",
+      "durationMs": 4600
+    },
+    "The small mouse comes after the elephant!": {
+      "src": "/sounds/preschool/en/openai-v2-2dba3056fd6f0216.mp3",
+      "durationMs": 4300
+    },
+    "Car, bus, bus, car, bus… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-3243352fa88c5b54.mp3",
+      "durationMs": 4950
+    },
+    "A second bus! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-870ede3e4d3e38d6.mp3",
+      "durationMs": 2250
+    },
+    "Sun, cloud, rain, sun, cloud… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-3e214e0b245d93f9.mp3",
+      "durationMs": 4950
+    },
+    "Rain comes after the cloud! Genius!": {
+      "src": "/sounds/preschool/en/openai-v2-8e0438cce74eaa9f.mp3",
+      "durationMs": 3050
+    },
+    "One, two, three… which number is next?": {
+      "src": "/sounds/preschool/en/openai-v2-cf7464958ffc61f1.mp3",
+      "durationMs": 3350
+    },
+    "Four! Numbers champion!": {
+      "src": "/sounds/preschool/en/openai-v2-dd9d5c31450f3842.mp3",
+      "durationMs": 2450
+    },
+    "Put the pictures in order: Dido is hungry, then couscous, then he smiles! Then tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-0730dde5c07600e1.mp3",
+      "durationMs": 7700
+    },
+    "Well done! Now tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-b3a39a14b1b5d21c.mp3",
+      "durationMs": 3200
+    },
+    "Put the pictures in order: dirty hands, then soap, then clean hands! Then tell the story!": {
+      "src": "/sounds/preschool/en/openai-v2-54030282458a1782.mp3",
+      "durationMs": 6500
+    },
+    "Clean hands! Tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-4f6b13187a5081dd.mp3",
+      "durationMs": 3250
+    },
+    "Put the pictures in order: we wake up, then school, then a hug! Then tell the story!": {
+      "src": "/sounds/preschool/en/openai-v2-c5326c385fed086c.mp3",
+      "durationMs": 4650
+    },
+    "A lovely story! Tell it to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-e7c8bf8bcdde5b45.mp3",
+      "durationMs": 2550
+    },
+    "Drag the pencil: face, sun, flower, house, fennec, then couscous!": {
+      "src": "/sounds/preschool/en/openai-v2-72d96c2b4c7dbd16.mp3",
+      "durationMs": 5600
+    },
+    "The drawing book is ready! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-9b6f32755c5e14ac.mp3",
+      "durationMs": 3000
+    },
+    "Pick a color and tap the face, the eyes and the mouth!": {
+      "src": "/sounds/preschool/en/openai-v2-90d9cecdb139db77.mp3",
+      "durationMs": 4400
+    },
+    "A lovely face! You are an artist!": {
+      "src": "/sounds/preschool/en/openai-v2-3d374388119638d5.mp3",
+      "durationMs": 3250
+    },
+    "Color the sun! Tap the circle and the rays!": {
+      "src": "/sounds/preschool/en/openai-v2-a5217daa4f9d2877.mp3",
+      "durationMs": 4600
+    },
+    "Your sun shines! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-9c76256c961ea35a.mp3",
+      "durationMs": 2800
+    },
+    "Color the flower! The petals, the center and the stem!": {
+      "src": "/sounds/preschool/en/openai-v2-44c38cccd7199fa3.mp3",
+      "durationMs": 5000
+    },
+    "A wonderful flower!": {
+      "src": "/sounds/preschool/en/openai-v2-004a20c8e8789f47.mp3",
+      "durationMs": 1900
+    },
+    "Color the house! The roof, the wall, the door and the window!": {
+      "src": "/sounds/preschool/en/openai-v2-ca783998fc685ade.mp3",
+      "durationMs": 4550
+    },
+    "A beautiful house!": {
+      "src": "/sounds/preschool/en/openai-v2-d4abc2c1e484af08.mp3",
+      "durationMs": 2200
+    },
+    "Color the fennec! Big ears, the little fox of our Sahara!": {
+      "src": "/sounds/preschool/en/openai-v2-a3f3cd6e4dbc433c.mp3",
+      "durationMs": 4750
+    },
+    "A wonderful fennec!": {
+      "src": "/sounds/preschool/en/openai-v2-272a593545600ed8.mp3",
+      "durationMs": 2250
+    },
+    "Color the camel! The ship of the desert and its hump!": {
+      "src": "/sounds/preschool/en/openai-v2-f7c6b79d8c7f20c0.mp3",
+      "durationMs": 4650
+    },
+    "A strong camel!": {
+      "src": "/sounds/preschool/en/openai-v2-22f45209086b75bc.mp3",
+      "durationMs": 1700
+    },
+    "Color the couscous dish! The pot, the lid and the food!": {
+      "src": "/sounds/preschool/en/openai-v2-a5e0e8e3527674a0.mp3",
+      "durationMs": 4850
+    },
+    "Yum! Your dish is ready!": {
+      "src": "/sounds/preschool/en/openai-v2-72d75d77f641d055.mp3",
+      "durationMs": 2400
+    },
+    "Drag: apple, ant, fish, farm, then bee!": {
+      "src": "/sounds/preschool/en/openai-v2-076c402679dbbd65.mp3",
+      "durationMs": 4950
+    },
+    "Let's play! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-af5234b8f2bd2f16.mp3",
+      "durationMs": 2100
+    },
+    "Pick a color and color the apple! The fruit, the stem and the leaf!": {
+      "src": "/sounds/preschool/en/openai-v2-4d73d9c3f4b7d101.mp3",
+      "durationMs": 5000
+    },
+    "A beautiful apple!": {
+      "src": "/sounds/preschool/en/openai-v2-bc7af25aac0942ef.mp3",
+      "durationMs": 3250
+    },
+    "Drag the ant all the way to the green leaf!": {
+      "src": "/sounds/preschool/en/openai-v2-015b5aad561d62c8.mp3",
+      "durationMs": 3300
+    },
+    "The ant arrived!": {
+      "src": "/sounds/preschool/en/openai-v2-7a88d0e6e91cdac8.mp3",
+      "durationMs": 1700
+    },
+    "Drag the fish through the sea to the shell!": {
+      "src": "/sounds/preschool/en/openai-v2-726c6c7880076592.mp3",
+      "durationMs": 2950
+    },
+    "The fish found its shell!": {
+      "src": "/sounds/preschool/en/openai-v2-4d69592c0a03a4ad.mp3",
+      "durationMs": 2350
+    },
+    "Put the sun, the tree and the house in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-157d376dffe44cf7.mp3",
+      "durationMs": 4200
+    },
+    "The farm is complete!": {
+      "src": "/sounds/preschool/en/openai-v2-aaef8430114301db.mp3",
+      "durationMs": 2050
+    },
+    "Put the sun, the camel, the fennec and the palm in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-44945c1e0af78232.mp3",
+      "durationMs": 4900
+    },
+    "A beautiful oasis!": {
+      "src": "/sounds/preschool/en/openai-v2-0b941940898fb4b5.mp3",
+      "durationMs": 2500
+    },
+    "Drag the car along the road all the way home!": {
+      "src": "/sounds/preschool/en/openai-v2-a159169f6249d480.mp3",
+      "durationMs": 4050
+    },
+    "The car arrived home!": {
+      "src": "/sounds/preschool/en/openai-v2-2070acefd5008f15.mp3",
+      "durationMs": 1700
+    },
+    "Put the bees with the honey, and the butterflies with the flower!": {
+      "src": "/sounds/preschool/en/openai-v2-57d177de7c36bbcb.mp3",
+      "durationMs": 3700
+    },
+    "Everyone in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-0f4dd57673cf6b07.mp3",
+      "durationMs": 2650
     },
     "Drag the bird through the seasons: flower, sun, leaf, snow!": {
       "src": "/sounds/preschool/en/seasons-year-path-prompt.mp3",

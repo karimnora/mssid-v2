@@ -27,7 +27,7 @@ describe('last preschool recordings and incomplete-language fallback', () => {
     }
   });
 
-  it('keeps missing French and English phrases available for synthesis with no foreign recording', () => {
+  it('reuses the 109 previously missing French and English phrases from V2 in the correct language', () => {
     for (const language of ['fr', 'en'] as const) {
       const plan: Clip[] = JSON.parse(readFileSync(resolve(process.cwd(), `../docs/audio-v1/prochains/reste-a-generer/${language}-decoupage.json`), 'utf8'));
       const missing = language === 'fr' ? plan.slice(39) : plan;
@@ -35,10 +35,22 @@ describe('last preschool recordings and incomplete-language fallback', () => {
       for (const cue of missing) {
         const content = PRESCHOOL_MODULES.find(module => module.id === cue.moduleId)!.activities.find(item => item.id === cue.activiteId)!.i18n[language];
         expect(cue.type === 'prompt' ? content.promptAudio : content.successAudio).toBe(cue.texte);
-        expect(cue.type === 'prompt' ? content.promptAudioSrc : content.successAudioSrc).toBeUndefined();
-        expect(findRecordedSpeech(cue.texte, language)).toBeUndefined();
+        const recording = findRecordedSpeech(cue.texte, language);
+        expect(recording?.src).toMatch(new RegExp(`^/sounds/preschool/${language}/openai-v2-`));
+        expect(cue.type === 'prompt' ? content.promptAudioSrc : content.successAudioSrc).toBe(recording?.src);
+        expect(statSync(resolve(process.cwd(), 'public', recording!.src.slice(1))).size).toBeGreaterThan(1000);
       }
     }
+  });
+
+  it('retains a synthesis fallback for a genuinely unrecorded phrase without substituting a foreign clip', () => {
+    const source = structuredClone(EMOTIONS_MODULE);
+    const content = source.activities[0].i18n.fr;
+    content.promptAudio = 'Une nouvelle consigne de test sans enregistrement existant.';
+    delete content.promptAudioSrc;
+    const result = withRecordedAudio(source);
+    expect(result.activities[0].i18n.fr.promptAudioSrc).toBeUndefined();
+    expect(result.activities[0].i18n.fr.promptAudio).toBe(content.promptAudio);
   });
 
   it('preserves explicitly selected voices and durations without mutating the source module', () => {

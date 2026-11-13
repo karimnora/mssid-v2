@@ -6,6 +6,7 @@ import { DidouPortrait } from './DidouPortrait';
 import { LocaleProvider } from '../context/LocaleContext';
 import { setStoredLocale } from '../localePreference';
 import { speakText } from '../utils/speech';
+import { setFeatureFlagOverride, resetFeatureFlagOverride } from '../featureFlags';
 
 const voice = vi.hoisted(() => ({ available: true }));
 vi.mock('../context/AuthContext', () => ({ useAuth: () => ({ authUser: null }) }));
@@ -23,9 +24,17 @@ function setup(coins = 150) {
   render(<Harness />);
   return updated;
 }
-afterEach(() => { setStoredLocale('ar'); voice.available = true; vi.clearAllMocks(); });
+afterEach(() => { resetFeatureFlagOverride('voiceReading'); setStoredLocale('ar'); voice.available = true; vi.clearAllMocks(); });
 
 describe('Didou studio interactions', () => {
+  it('keeps messages readable without inactive listen buttons when voice reading is switched off', () => {
+    setFeatureFlagOverride('voiceReading', false);
+    setup();
+    fireEvent.click(screen.getByRole('tab', { name: 'Parler' }));
+    expect(document.querySelectorAll('.didou-dialogues article')).toHaveLength(6);
+    expect(screen.queryByRole('button', { name: 'Écouter' })).not.toBeInTheDocument();
+    expect(speakText).not.toHaveBeenCalled();
+  });
   it('previews a costume before spending coins, then equips it once', () => {
     const updated = setup();
     fireEvent.click(document.querySelector('[data-outfit="cheche_sahara"]')!);
