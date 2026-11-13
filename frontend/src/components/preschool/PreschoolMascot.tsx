@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import greet from '../../assets/v2-reused/didou-greet.webp';
+import cheer from '../../assets/v2-reused/didou-cheer.webp';
+import point from '../../assets/v2-reused/didou-point.webp';
 
 export type MascotMood = 'idle' | 'happy' | 'encourage' | 'celebrate';
 
@@ -8,15 +11,14 @@ interface PreschoolMascotProps {
   size?: 'md' | 'lg';
 }
 
-// "أمين الفنك" / Amine the Fennec — reacts to the child's actions. Kept to pure CSS/motion (a big
-// emoji + spring animations), no image/lottie asset pipeline needed for the MVP.
+// Didou reacts using the existing V2 illustrations. Idle motion stops after two cycles.
 export const PreschoolMascot: React.FC<PreschoolMascotProps> = ({ mood, size = 'lg' }) => {
-  const dimension = size === 'lg' ? 'text-7xl sm:text-8xl' : 'text-5xl';
+  const dimension = size === 'lg' ? 'w-28 h-28 sm:w-36 sm:h-36' : 'w-20 h-20';
 
   const animationByMood: Record<MascotMood, { animate: Record<string, number[]>; transition: Record<string, unknown> }> = {
     idle: {
       animate: { y: [0, -6, 0], rotate: [0, -2, 2, 0] },
-      transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+      transition: { duration: 3, repeat: 1, ease: 'easeInOut' },
     },
     happy: {
       animate: { y: [0, -18, 0], rotate: [0, -8, 8, 0] },
@@ -41,9 +43,9 @@ export const PreschoolMascot: React.FC<PreschoolMascotProps> = ({ mood, size = '
       transition={config.transition}
       className={`select-none ${dimension} drop-shadow-lg`}
       role="img"
-      aria-label="Amine the Fennec mascot"
+      aria-label="Didou"
     >
-      🦊
+      <img src={mood === 'encourage' ? point : mood === 'idle' ? greet : cheer} alt="" width={144} height={144} className="w-full h-full object-contain" draggable={false} />
     </motion.div>
   );
 };

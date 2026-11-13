@@ -1,3 +1,4 @@
+import village from '../../assets/v2-reused/village-landscape.webp';
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
@@ -105,7 +106,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
       'Imprime des fiches d’exercices papier pour ton enfant',
       'Print paper worksheets for your child',
     ),
-    title: t('عَالَمُ الصِّغَار (3-5 سَنَوَات) 🎈', 'Monde des Petits (3-5 ans) 🎈', 'Little Ones World (3-5 years) 🎈'),
+    title: t('عَالَمُ الصِّغَار (3-5 سَنَوَات)', 'Monde des Petits (3-5 ans)', 'Little Ones World (3-5 years)'),
     subtitle: t(
       'اِخْتَرْ بَاباً وَالْعَبْ مَعَ دِيدُو!',
       'Choisis une porte et joue avec Dido !',
@@ -214,7 +215,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     : [];
 
   return (
-    <div dir={dir} className="preschool-safe-top min-h-screen bg-[#F8F9FA] px-4 py-6 sm:py-8">
+    <div dir={dir} className="preschool-safe-top min-h-screen bg-[#FFF9EF] px-4 py-6 sm:py-8">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
@@ -256,7 +257,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           </button>
         </div>
 
-        <div className="flex flex-col items-center text-center gap-3 px-2">
+        <div className="relative isolate overflow-hidden rounded-[2rem] border border-amber-200 bg-white/90 flex flex-col items-center text-center gap-3 px-5 py-6 shadow-sm">
+          <img src={village} alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-15" />
           <PreschoolMascot mood="idle" size="md" />
           <h1 className="text-2xl sm:text-3xl font-black text-[#1E293B]">{sectionTitle}</h1>
           {view === 'home' && (
@@ -274,30 +276,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           />
         )}
 
-        {/* Parent-facing feature (printing needs an adult) — was buried as a small toolbar pill
-            up top, easy to miss next to the back/mute/language controls. A proper banner here
-            gives it the visual weight it needs, same treatment as the daily challenge above it. */}
         {view === 'home' && (
-          <motion.button
-            onClick={() => setShowPrintables(true)}
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-700 to-cyan-800 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start"
-          >
-            <span className="text-3xl shrink-0">🖨️</span>
-            <div className="flex-1 min-w-0">
-              <p className="text-white font-black text-base">{labels.printables}</p>
-              <p className="text-white text-xs font-bold leading-snug">{labels.printablesDesc}</p>
-            </div>
-            <span className="text-white text-xl shrink-0">{dir === 'rtl' ? '◀' : '▶'}</span>
-          </motion.button>
-        )}
-
-        {view === 'home' && (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 [&>button:nth-child(2)]:col-span-2 [&>button:nth-child(2)]:order-first sm:[&>button:nth-child(2)]:col-span-1 sm:[&>button:nth-child(2)]:order-none">
             <DoorCard
               icon="🎨"
               title={labels.ateliers}
@@ -328,8 +308,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               <motion.button
                 key={tool.id}
                 onClick={() => onSelectSpecialTool(tool.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
                 transition={spring}
                 className={`min-h-32 rounded-3xl bg-gradient-to-br ${tool.gradient} p-6 text-white shadow-md border-2 ${tool.border}
                             flex items-center gap-5 cursor-pointer text-start`}
@@ -357,8 +337,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                 <motion.button
                   key={group.id}
                   onClick={() => onLearnGroupChange(group.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={spring}
                   className={`min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
                               flex flex-col justify-between cursor-pointer text-start`}
@@ -390,8 +370,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                 <motion.button
                   key={mod.id}
                   onClick={() => onSelectModule(mod.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={spring}
                   className="min-h-24 rounded-3xl bg-white shadow-md border-2 border-amber-200 hover:border-amber-400
                              flex items-center gap-4 px-5 py-4 cursor-pointer text-start"
@@ -444,14 +424,14 @@ const DoorCard: React.FC<{
 }> = ({ icon, title, desc, gradient, onClick }) => (
   <motion.button
     onClick={onClick}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
+    whileHover={{ y: -3 }}
+    whileTap={{ scale: 0.98 }}
     transition={spring}
-    className={`min-h-40 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white shadow-md
+    className={`min-h-36 rounded-3xl bg-gradient-to-br ${gradient} p-5 text-white shadow-[0_5px_0_rgba(30,41,59,0.15)] border border-white/30 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-sky-700
                 flex flex-col justify-between cursor-pointer text-start`}
   >
     <span className="text-5xl">{icon}</span>
-    <div className="mt-6 space-y-1">
+    <div className="mt-4 space-y-1">
       <p className="text-2xl font-black">{title}</p>
       <p className="text-sm font-medium text-white leading-snug">{desc}</p>
     </div>
