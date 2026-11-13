@@ -9789,6 +9789,562 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-5077cc6ed322ab70.mp3",
       "durationMs": 2050
     },
+    "أَتَعَرَّفُ عَلَى رُمُوزِ وَطَنِي الجَزَائِرِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d8b0caef097ec543.mp3",
+      "durationMs": 3800
+    },
+    "آدَابُ الاسْتِمَاعِ وَالحِوَارِ وَاحْتِرَامُ المُعَلِّمِ وَالرِّفَاقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-903893e203f336b9.mp3",
+      "durationMs": 6450
+    },
+    "الفَرْقُ بَيْنَ مُمْتَلَكَاتِي الخَاصَّةِ وَالمُمْتَلَكَاتِ العَامَّةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d766139e61606fcf.mp3",
+      "durationMs": 6250
+    },
+    "نَظَافَةُ المُحِيطِ المَدْرَسِيِّ وَالحَيِّ وَحِمَايَةُ المُمْتَلَكَاتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-251f26d1edc683bb.mp3",
+      "durationMs": 5500
+    },
+    "السَّلَامَةُ المُرُورِيَّةُ: طَرِيقُ المَدْرَسَةِ وَإِشَارَةُ المُرُورِ": {
+      "src": "/sounds/preschool/ar/course-cedar-89fa7d3fff40ae9f.mp3",
+      "durationMs": 5750
+    },
+    "وَثَائِقِي: بِطَاقَةُ التَّعْرِيفِ وَدَفْتَرُ العَائِلَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-27513330eac7ef0e.mp3",
+      "durationMs": 5350
+    },
+    "تطبيق آداب الاستماع والحوار البسيطة، واحترام المعلم والزملاء في محيط القسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-6891c8fe557604b3.mp3",
+      "durationMs": 7700
+    },
+    "حَقِّي فِي الرَّاحَةِ وَاللَّعِبِ وَالمُشَارَكَةِ فِي الأَنْشِطَةِ المَدْرَسِيَّةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9a63f19a80d15eac.mp3",
+      "durationMs": 7100
+    },
+    "ماذا يحدث إذا تكلم كل تلاميذ القسم في نفس الوقت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6fdcfa67d1fcfbaf.mp3",
+      "durationMs": 5050
+    },
+    "يتعلم التلميذ قواعد الاستماع الجيد وأدب الحوار مع الآخرين، وأهمية احترام المعلم والرفاق داخل القسم.": {
+      "src": "/sounds/preschool/ar/course-cedar-7adf53293a85c494.mp3",
+      "durationMs": 10000
+    },
+    "الاسْتِمَاعُ الجَيِّدُ: أنظر لمن يتكلم، وأنصت له دون مقاطعته حتى ينتهي.": {
+      "src": "/sounds/preschool/ar/course-cedar-bd5811dd4791a322.mp3",
+      "durationMs": 7950
+    },
+    "القسم بيت صغير نتعلم فيه معاً، ولكي يسود الاحترام والنظام، يجب أن نتعلم كيف نستمع لبعضنا البعض وكيف نتحاور بأدب.": {
+      "src": "/sounds/preschool/ar/course-cedar-2afad828807d6856.mp3",
+      "durationMs": 13550
+    },
+    "أَدَبُ الحِوَارِ: أرفع يدي قبل الكلام، وأنتظر دوري، وأتحدث بصوت هادئ.": {
+      "src": "/sounds/preschool/ar/course-cedar-7c4d770e2daf7736.mp3",
+      "durationMs": 8450
+    },
+    "احْتِرَامُ المُعَلِّمِ: أستمع لتوجيهاته، وأنفذ ما يطلبه مني بأدب.": {
+      "src": "/sounds/preschool/ar/course-cedar-9f17d05624419c51.mp3",
+      "durationMs": 7400
+    },
+    "احْتِرَامُ الرِّفَاقِ: لا أسخر من أحد، وأتعاون معهم، وأشاركهم أدواتي عند الحاجة.": {
+      "src": "/sounds/preschool/ar/course-cedar-2db02ab3e25007b5.mp3",
+      "durationMs": 8450
+    },
+    "الإِنْصَاتُ": {
+      "src": "/sounds/preschool/ar/course-cedar-12be42d319bcca78.mp3",
+      "durationMs": 1750
+    },
+    "الحِوَارُ": {
+      "src": "/sounds/preschool/ar/course-cedar-265f8d9c19e1dde4.mp3",
+      "durationMs": 1200
+    },
+    "ننتظر دائماً حتى ينتهي المتحدث من كلامه قبل أن نتكلم نحن.": {
+      "src": "/sounds/preschool/ar/course-cedar-e3809bf769c52572.mp3",
+      "durationMs": 7200
+    },
+    "قبل الكلام في القسم، ماذا يجب أن أفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-678c1735c4ef31ef.mp3",
+      "durationMs": 4950
+    },
+    "نرفع اليد بهدوء وننتظر دورنا، بدل الصراخ أو رفع الصوت.": {
+      "src": "/sounds/preschool/ar/course-cedar-12fbcb9256376249.mp3",
+      "durationMs": 7550
+    },
+    "أستمع دون مقاطعة، أرفع يدي قبل الكلام، وأحترم معلمي ورفاقي دائماً — هذا يجعل القسم مكاناً هادئاً ومريحاً للجميع.": {
+      "src": "/sounds/preschool/ar/course-cedar-ff1594112c7e1471.mp3",
+      "durationMs": 11850
+    },
+    "زميلك يتحدث الآن، ما التصرف الصحيح؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2e4eeb0cf52d50bf.mp3",
+      "durationMs": 4300
+    },
+    "ما هو التصرف الصحيح إذا أردت الكلام في القسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-82037dd9e783dd38.mp3",
+      "durationMs": 4800
+    },
+    "اختر التصرف الصحيح في كل موقف من مواقف القسم!": {
+      "src": "/sounds/preschool/ar/course-cedar-e94e682f6c7ec78f.mp3",
+      "durationMs": 5400
+    },
+    "المعلم يشرح الدرس": {
+      "src": "/sounds/preschool/ar/course-cedar-d3185cfe2d2d9b29.mp3",
+      "durationMs": 2950
+    },
+    "أَتَحَدَّثُ مَعَ زَمِيلِي": {
+      "src": "/sounds/preschool/ar/course-cedar-30284703ed86aedc.mp3",
+      "durationMs": 2350
+    },
+    "أَسْتَمِعُ بِهُدُوءٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-d46430c0a296f7b7.mp3",
+      "durationMs": 2400
+    },
+    "التعرف على العلم والعملة والنشيد الوطني الجزائري واحترامها كرموز للسيادة الوطنية.": {
+      "src": "/sounds/preschool/ar/course-cedar-774de1377f8419e9.mp3",
+      "durationMs": 7550
+    },
+    "كل صباح في طابور المدرسة، ماذا نرفع بفخر ونحن واقفون بهدوء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-76c433ac73973c22.mp3",
+      "durationMs": 7300
+    },
+    "يتعرف التلميذ على العلم الوطني والدينار الجزائري والنشيد الوطني \"قسماً\" كرموز تمثل سيادة الجزائر واستقلالها.": {
+      "src": "/sounds/preschool/ar/course-cedar-edb911230e00d80f.mp3",
+      "durationMs": 12400
+    },
+    "عَلَمُ الجَزَائِرِ : لونان أخضر وأبيض، وفي وسطه هلال ونجمة حمراء، نحييه بفخر واعتزاز.": {
+      "src": "/sounds/preschool/ar/course-cedar-0b03fb0dc0306bae.mp3",
+      "durationMs": 8900
+    },
+    "علمنا ودينارنا ونشيدنا الوطني رموز غالية تذكّرنا بحب وطننا الجزائر وسيادته المستقلة، ونحترمها جميعاً بفخر واعتزاز.": {
+      "src": "/sounds/preschool/ar/course-cedar-9e306702a2853651.mp3",
+      "durationMs": 14250
+    },
+    "الدِّينَارُ الجَزَائِرِيُّ (دج): العُمْلَةُ الوَطَنِيَّةُ الرَّسْمِيَّةُ التي نستعملها للبيع والشراء في كل أنحاء الجزائر.": {
+      "src": "/sounds/preschool/ar/course-cedar-8edd25c36e4cd3b2.mp3",
+      "durationMs": 9850
+    },
+    "السِّيَادَةُ الوَطَنِيَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-66a0777925c48d24.mp3",
+      "durationMs": 2450
+    },
+    "النَّشِيدُ الوَطَنِيُّ \"قَسَماً\" : نشيد بلادنا الذي نردده بفخر في المناسبات الوطنية الكبرى.": {
+      "src": "/sounds/preschool/ar/course-cedar-05a0708ce9dfd7cd.mp3",
+      "durationMs": 8450
+    },
+    "هَذِهِ الرُّمُوزُ تُمَثِّلُ سِيَادَةَ الجَزَائِرِ وَاسْتِقْلَالَهَا، ونحترمها جميعاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-21eb1c126bc60273.mp3",
+      "durationMs": 8200
+    },
+    "ذكّر الطفل دائماً: أخضر وأبيض، مع هلال ونجمة حمراء في الوسط.": {
+      "src": "/sounds/preschool/ar/course-cedar-1ca554a2ca8633af.mp3",
+      "durationMs": 6350
+    },
+    "ما اسم عملة بلادي الجزائر؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fdba8dd1dbc2368e.mp3",
+      "durationMs": 3100
+    },
+    "علم الجزائر: أخضر وأبيض بهلال ونجمة حمراء. عملتها: الدينار الجزائري. نشيدها الوطني: \"قسماً\".": {
+      "src": "/sounds/preschool/ar/course-cedar-904e13abaf6f9c29.mp3",
+      "durationMs": 10950
+    },
+    "المحافظة على نظافة المحيط المدرسي والحي، واحترام الممتلكات الخاصة والعامة.": {
+      "src": "/sounds/preschool/ar/course-cedar-a8421e997b7524c1.mp3",
+      "durationMs": 7150
+    },
+    "ماذا يحدث إذا رمى كل تلميذ نفاياته على الأرض بدل سلة المهملات؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b841f147e8ce9537.mp3",
+      "durationMs": 6800
+    },
+    "يتعلم التلميذ أهمية المحافظة على نظافة القسم والمدرسة والحي، واحترام الممتلكات الخاصة والعامة وعدم إتلافها.": {
+      "src": "/sounds/preschool/ar/course-cedar-40a92b42b1cb02af.mp3",
+      "durationMs": 10500
+    },
+    "المدرسة والحي بيتنا الكبير، ونظافتهما مسؤوليتنا جميعاً. كما أن احترام أدوات الآخرين والأماكن العامة يجعل حياتنا الجماعية أجمل.": {
+      "src": "/sounds/preschool/ar/course-cedar-025e03a452287893.mp3",
+      "durationMs": 14050
+    },
+    "أَرْمِي النِّفَايَاتِ فِي سَلَّةِ المُهْمَلَاتِ وَلَيْسَ عَلَى الأَرْضِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-d12ab8698324df47.mp3",
+      "durationMs": 5500
+    },
+    "أُحَافِظُ عَلَى الحَدَائِقِ العَامَّةِ وَالأَلْعَابِ فِي حَيِّي وَلَا أُتْلِفُهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-3a8baf73cbac474f.mp3",
+      "durationMs": 8050
+    },
+    "الإِتْلَافُ": {
+      "src": "/sounds/preschool/ar/course-cedar-71d89c7d25f879ee.mp3",
+      "durationMs": 1950
+    },
+    "المُمْتَلَكَاتُ العَامَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-8f93f5ba07b92f69.mp3",
+      "durationMs": 3550
+    },
+    "المُمْتَلَكَاتُ الخَاصَّةُ (مثل أدوات زميلي) وَالمُمْتَلَكَاتُ العَامَّةُ (مثل مقاعد المدرسة) يجب أن أحترمها كأنها ملكي.": {
+      "src": "/sounds/preschool/ar/course-cedar-d75894fe591a0ff2.mp3",
+      "durationMs": 11950
+    },
+    "أين نضع النفايات بعد الأكل في المدرسة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9bdf8ba712fe6138.mp3",
+      "durationMs": 4200
+    },
+    "يجب أن أحترم كل ممتلكات مدرستي وحيّي كما أحترم أغراضي الخاصة.": {
+      "src": "/sounds/preschool/ar/course-cedar-0ddfec984b811bec.mp3",
+      "durationMs": 6750
+    },
+    "كل فرد مسؤول عن عدم تلويث المكان أصلاً، بدل الاعتماد على تنظيف الآخرين له.": {
+      "src": "/sounds/preschool/ar/course-cedar-5cc00ee29b6e694a.mp3",
+      "durationMs": 7800
+    },
+    "أرمي النفايات في مكانها، أحافظ على نظافة مدرستي وحيّي، وأحترم الممتلكات الخاصة والعامة ولا أُتلفها.": {
+      "src": "/sounds/preschool/ar/course-cedar-503a465a69d61583.mp3",
+      "durationMs": 11000
+    },
+    "زميلك يريد كسر مقعد المدرسة للعب. ماذا تنصحه؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c6dbe15116a546c1.mp3",
+      "durationMs": 6400
+    },
+    "مقاعد المدرسة والألعاب في الحديقة العامة هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-dbdd8a0fdd4149d2.mp3",
+      "durationMs": 5500
+    },
+    "رأيت ورقة على أرض القسم": {
+      "src": "/sounds/preschool/ar/course-cedar-325eb1b9d512a37c.mp3",
+      "durationMs": 3400
+    },
+    "اختر التصرف الصحيح للحفاظ على النظافة والممتلكات!": {
+      "src": "/sounds/preschool/ar/course-cedar-94a818511b14a5f9.mp3",
+      "durationMs": 4850
+    },
+    "أَلْتَقِطُهَا وَأَضَعُهَا فِي سَلَّةِ المُهْمَلَاتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-385d8c0894598be8.mp3",
+      "durationMs": 4850
+    },
+    "أَتْرُكُهَا هُنَاكَ": {
+      "src": "/sounds/preschool/ar/course-cedar-de5ca32523e73e15.mp3",
+      "durationMs": 2250
+    },
+    "التمييز بين الممتلكات الخاصة والعامة، وتطبيق سلوك الأمانة والاحترام تجاه كل نوع منها.": {
+      "src": "/sounds/preschool/ar/course-cedar-14060ec089425723.mp3",
+      "durationMs": 8850
+    },
+    "محفظتك ملك لك وحدك، لكن مقاعد المدرسة يستعملها كل التلاميذ. هل هما نفس النوع من الممتلكات؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3b13cea927c5532a.mp3",
+      "durationMs": 9700
+    },
+    "بعض الأشياء تخصني وحدي، وبعضها الآخر يخص الجميع معاً. كلا النوعين يستحق نفس الاحترام والأمانة.": {
+      "src": "/sounds/preschool/ar/course-cedar-c46bf1a18798baac.mp3",
+      "durationMs": 10600
+    },
+    "يميز التلميذ بين ممتلكاته الشخصية (أدواته الخاصة) والممتلكات العامة (مرافق المدرسة والشارع)، ويتعلم احترام النوعين.": {
+      "src": "/sounds/preschool/ar/course-cedar-55f769f911d312c5.mp3",
+      "durationMs": 12200
+    },
+    "المُمْتَلَكَاتُ الخَاصَّةُ: أشياء تخصني وحدي أو تخص شخصاً آخر بعينه، مثل محفظتي وأقلامي وألعابي.": {
+      "src": "/sounds/preschool/ar/course-cedar-daf39be0446b0c8f.mp3",
+      "durationMs": 9700
+    },
+    "المُمْتَلَكَاتُ العَامَّةُ: أشياء يستفيد منها كل الناس معاً، مثل مقاعد المدرسة، الحدائق العامة، وإنارة الشارع.": {
+      "src": "/sounds/preschool/ar/course-cedar-47d1fdb7d4038f96.mp3",
+      "durationMs": 11600
+    },
+    "أَحْتَرِمُ النَّوْعَيْنِ بِنَفْسِ القَدْرِ: لَا آخُذُ مُمْتَلَكَاتِ غَيْرِي دُونَ إِذْنٍ، وَلَا أُتْلِفُ مَا يَسْتَفِيدُ مِنْهُ الجَمِيعُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-fbe3f3f4e017595d.mp3",
+      "durationMs": 10750
+    },
+    "المُمْتَلَكَاتُ الخَاصَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-80e4de9fdd7aa429.mp3",
+      "durationMs": 2950
+    },
+    "الأَمَانَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-65f472c1a6ea2c6d.mp3",
+      "durationMs": 1550
+    },
+    "إِذَا وَجَدْتُ شَيْئاً لَيْسَ مِلْكِي فِي الشَّارِعِ أَوِ المَدْرَسَةِ، أَسْأَلُ عَنْ صَاحِبِهِ أَوْ أُسَلِّمُهُ لِلْمُعَلِّمِ بَدَلَ أَخْذِهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-d537bb39e797c362.mp3",
+      "durationMs": 10550
+    },
+    "الممتلكات العامة تخص الجميع معاً، فإتلافها يضر كل من يستفيد منها.": {
+      "src": "/sounds/preschool/ar/course-cedar-36464eaaecc22814.mp3",
+      "durationMs": 7750
+    },
+    "إذا وجدت شيئاً ليس ملكك، الأمانة تقتضي تسليمه لصاحبه أو للمعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-e4855f53f4435770.mp3",
+      "durationMs": 7750
+    },
+    "محفظتك المدرسية، هل هي ممتلكات خاصة أم عامة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-322ebf0c2a66a189.mp3",
+      "durationMs": 6350
+    },
+    "ممتلكاتي الخاصة (محفظتي، أقلامي) تخصني وحدي. الممتلكات العامة (مقاعد المدرسة، الحديقة) تخص الجميع. أحترم النوعين بنفس القدر.": {
+      "src": "/sounds/preschool/ar/course-cedar-530099fb145cc2dc.mp3",
+      "durationMs": 15050
+    },
+    "صنّف كل شيء: ممتلكات خاصة أم عامة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-64942eb45b794487.mp3",
+      "durationMs": 4550
+    },
+    "وجدت دفتراً في القسم ليس دفترك. ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-233494e51a92f5f9.mp3",
+      "durationMs": 5700
+    },
+    "أَلْعَابِي فِي البَيْتِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d6f8f6e2bf027c8c.mp3",
+      "durationMs": 2300
+    },
+    "ماذا أفعل إذا وجدت شيئاً ليس ملكي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5c2813edcca33586.mp3",
+      "durationMs": 4000
+    },
+    "مُمْتَلَكَاتٌ خَاصَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-3e1659f4401c89b3.mp3",
+      "durationMs": 3000
+    },
+    "مُمْتَلَكَاتٌ عَامَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-bd8037cae25f6ab6.mp3",
+      "durationMs": 2450
+    },
+    "مَقَاعِدُ الحَدِيقَةِ العَامَّةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-45ac1a4d280edea3.mp3",
+      "durationMs": 4200
+    },
+    "تطبيق قواعد السلامة المرورية البسيطة عند التنقل إلى المدرسة وعبور الطريق.": {
+      "src": "/sounds/preschool/ar/course-cedar-6cc1446bfe181bef.mp3",
+      "durationMs": 7050
+    },
+    "ما لون إشارة المرور الذي يعني \"قف\"؟": {
+      "src": "/sounds/preschool/ar/course-cedar-3fcb5285530a82e2.mp3",
+      "durationMs": 4450
+    },
+    "اللَّوْنُ الأَحْمَرُ : يعني \"قِف\" — توقف تماماً ولا تتحرك.": {
+      "src": "/sounds/preschool/ar/course-cedar-0d612ef7dca6b8e0.mp3",
+      "durationMs": 5650
+    },
+    "يتعلم التلميذ قواعد السلامة الأساسية أثناء التنقل إلى المدرسة، ومعنى ألوان إشارة المرور الثلاثة وكيفية عبور الطريق بأمان.": {
+      "src": "/sounds/preschool/ar/course-cedar-f77ffcc88a42db6c.mp3",
+      "durationMs": 14300
+    },
+    "اللَّوْنُ الأَصْفَرُ : يعني \"اسْتَعِدَّ\" — انتبه فالإشارة ستتغير قريباً.": {
+      "src": "/sounds/preschool/ar/course-cedar-c4068dd06764da2d.mp3",
+      "durationMs": 7250
+    },
+    "الطريق إلى المدرسة يحتاج انتباهاً وقواعد بسيطة نتبعها لنكون آمنين دائماً، وأهم هذه القواعد فهم ألوان إشارة المرور والعبور من المكان الصحيح.": {
+      "src": "/sounds/preschool/ar/course-cedar-6a1eabc3a1af370d.mp3",
+      "durationMs": 14250
+    },
+    "المَمَرُّ الرَّاجِلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3ef6d2b9c42fd5c5.mp3",
+      "durationMs": 1900
+    },
+    "اللَّوْنُ الأَخْضَرُ : يعني \"امْشِ\" — يمكنك المرور بأمان.": {
+      "src": "/sounds/preschool/ar/course-cedar-59944c83af0e7572.mp3",
+      "durationMs": 5050
+    },
+    "إِشَارَةُ المُرُورِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ca704871073be2c4.mp3",
+      "durationMs": 1900
+    },
+    "أَعْبُرُ الطَّرِيقَ دَائِمًا مِنَ المَمَرِّ الرَّاجِلِ (الخُطُوطُ البَيْضَاءُ)، وَأَنْظُرُ يَمِيناً ثُمَّ يَسَاراً قَبْلَ العُبُورِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-38b27d75fade6bd2.mp3",
+      "durationMs": 10350
+    },
+    "العبور خارج الممر الراجل خطير جداً؛ يجب استعمال الممر المخصص دائماً حتى لو كان أبعد قليلاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-97c81fab1f2ec20a.mp3",
+      "durationMs": 11500
+    },
+    "حتى مع الضوء الأخضر، يجب التأكد بالنظر يميناً ثم يساراً قبل العبور تماماً.": {
+      "src": "/sounds/preschool/ar/course-cedar-6f2f52dfd2cc70bc.mp3",
+      "durationMs": 7650
+    },
+    "ما معنى اللون الأخضر في إشارة المرور؟": {
+      "src": "/sounds/preschool/ar/course-cedar-85fbcd9160d41f83.mp3",
+      "durationMs": 4050
+    },
+    "أحمر = قف. أصفر = استعد. أخضر = امشِ بحذر. أعبر دائماً من الممر الراجل بعد النظر يميناً ثم يساراً.": {
+      "src": "/sounds/preschool/ar/course-cedar-f7b228789f1ee960.mp3",
+      "durationMs": 12300
+    },
+    "اختر التصرف الصحيح حسب لون الإشارة!": {
+      "src": "/sounds/preschool/ar/course-cedar-4602495d73f86947.mp3",
+      "durationMs": 3900
+    },
+    "ماذا يجب أن أفعل قبل عبور الطريق حتى في الممر الراجل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-715ab286542d1a12.mp3",
+      "durationMs": 5900
+    },
+    "أين يجب أن أعبر الطريق دائماً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fc163cd3f9813147.mp3",
+      "durationMs": 3750
+    },
+    "أَتَوَقَّفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e6cf8f5fc8a77681.mp3",
+      "durationMs": 2250
+    },
+    "الإشارة حمراء": {
+      "src": "/sounds/preschool/ar/course-cedar-75c9f316dab13874.mp3",
+      "durationMs": 2800
+    },
+    "الإشارة صفراء": {
+      "src": "/sounds/preschool/ar/course-cedar-5e356af327447c0e.mp3",
+      "durationMs": 2400
+    },
+    "أَعْبُرُ بِسُرْعَةٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-034f004ff058c068.mp3",
+      "durationMs": 2500
+    },
+    "أَسْتَعِدُّ وَأَنْتَبِهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-71491e8c36609463.mp3",
+      "durationMs": 2350
+    },
+    "أَعْبُرُ فَوْراً": {
+      "src": "/sounds/preschool/ar/course-cedar-b41fc30628c3b10f.mp3",
+      "durationMs": 2100
+    },
+    "إدراك الحق في الراحة واللعب والمشاركة في الأنشطة المدرسية، مع احترام حق الآخرين في نفس الأمر.": {
+      "src": "/sounds/preschool/ar/course-cedar-2093b0f78fa34c43.mp3",
+      "durationMs": 9050
+    },
+    "بعد إنهاء واجباتك المدرسية، ألا تستحق قليلاً من الوقت للعب والراحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-067032aa6fd50dc8.mp3",
+      "durationMs": 6950
+    },
+    "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي اللَّعِبِ فِي فُسْحَةِ المَدْرَسَةِ مَعَ رِفَاقِهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-821faa3f13306428.mp3",
+      "durationMs": 6100
+    },
+    "يتعرف التلميذ على حقه في الراحة واللعب بعد إنجاز واجباته، وحقه في المشاركة في الأنشطة المدرسية المختلفة.": {
+      "src": "/sounds/preschool/ar/course-cedar-8b736b9d1938c528.mp3",
+      "durationMs": 13000
+    },
+    "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي الرَّاحَةِ بَعْدَ إِنْجَازِ وَاجِبَاتِهِ المَدْرَسِيَّةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-82db388f2481d1d4.mp3",
+      "durationMs": 6150
+    },
+    "الدراسة مهمة، لكن الراحة واللعب والمشاركة في الأنشطة حق لكل تلميذ أيضاً، فهي تساعدني على النمو بسعادة وتجدد نشاطي للتعلم.": {
+      "src": "/sounds/preschool/ar/course-cedar-c0121c358d1c73e5.mp3",
+      "durationMs": 13450
+    },
+    "الفُسْحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-afd3a3c4dc7b4c3e.mp3",
+      "durationMs": 1600
+    },
+    "النَّشَاطُ المَدْرَسِيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-05adf6b998ce87e2.mp3",
+      "durationMs": 2500
+    },
+    "مَعَ هَذِهِ الحُقُوقِ، عَلَيَّ وَاجِبُ احْتِرَامِ وَقْتِ رَاحَةِ زُمَلَائِي وَلَعِبِهِمْ أَيْضاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-5bda1d6ae4b2bedd.mp3",
+      "durationMs": 6050
+    },
+    "لِكُلِّ تِلْمِيذٍ الحَقُّ فِي المُشَارَكَةِ فِي الأَنْشِطَةِ المَدْرَسِيَّةِ المُخْتَلِفَةِ: الرِّيَاضَةُ، الرَّسْمُ، الأَنَاشِيدُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e4f7d59f107aa7f7.mp3",
+      "durationMs": 10850
+    },
+    "متى يحق لي اللعب والراحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cbdee476c371e6d4.mp3",
+      "durationMs": 4100
+    },
+    "الراحة واللعب يجددان نشاط الطفل الذهني والجسدي، وهما حق أساسي وليسا مضيعة للوقت.": {
+      "src": "/sounds/preschool/ar/course-cedar-6aa74f86f14fe5a1.mp3",
+      "durationMs": 9500
+    },
+    "لي الحق في الراحة بعد الواجبات، وفي اللعب في الفسحة، وفي المشاركة في الأنشطة المدرسية — وأحترم نفس الحق لرفاقي.": {
+      "src": "/sounds/preschool/ar/course-cedar-90c7f2c09b254b6d.mp3",
+      "durationMs": 11400
+    },
+    "اذكر نشاطين مدرسيين يحق لي المشاركة فيهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-1071bfc88f73ba02.mp3",
+      "durationMs": 6200
+    },
+    "ما هو حقي في فسحة المدرسة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8070e760b8ef511f.mp3",
+      "durationMs": 3100
+    },
+    "اختر الحق الصحيح لكل تلميذ!": {
+      "src": "/sounds/preschool/ar/course-cedar-25ce7c0efb44b92c.mp3",
+      "durationMs": 3650
+    },
+    "الرَّاحَةُ وَاللَّعِبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-97af825e64292640.mp3",
+      "durationMs": 2600
+    },
+    "بعد إنجاز واجباتي، من حقي...": {
+      "src": "/sounds/preschool/ar/course-cedar-8ea507935e332b35.mp3",
+      "durationMs": 4100
+    },
+    "عندما يطلب الموظف في البلدية «دفتر العائلة»، ماذا يُخرج الأب أو الأم من الحقيبة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-5177997524e39cef.mp3",
+      "durationMs": 7650
+    },
+    "العَمَلُ المُتَوَاصِلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-5dc62e13355ca037.mp3",
+      "durationMs": 2600
+    },
+    "تسمية وثيقتين رسميتين وفهم أنهما تخصّان الهوية ولا نلعب بهما.": {
+      "src": "/sounds/preschool/ar/course-cedar-9d79293be2357396.mp3",
+      "durationMs": 7950
+    },
+    "يتعرّف التلميذ على وثائق الهوية الرسمية للأسرة: بطاقة التعريف الوطنية ودفتر العائلة، دون بيانات حقيقية.": {
+      "src": "/sounds/preschool/ar/course-cedar-7a8da44bd6b78906.mp3",
+      "durationMs": 8750
+    },
+    "دَفْتَرُ العَائِلَةِ: دفتر تسجَّل فيه الأسرة (الوالدان والأبناء).": {
+      "src": "/sounds/preschool/ar/course-cedar-166d6b09b7faf831.mp3",
+      "durationMs": 6900
+    },
+    "لكل أسرة أوراق تثبت من نحن. الطفل يعرف أسماءها ويحترمها؛ الوالدان يحتفظان بها.": {
+      "src": "/sounds/preschool/ar/course-cedar-c529d3dd0eee8c09.mp3",
+      "durationMs": 9500
+    },
+    "بِطَاقَةُ التَّعْرِيفِ الوَطَنِيَّةُ: بطاقة رسمية تحمل اسم الشخص وصورته، للراشدين غالباً.": {
+      "src": "/sounds/preschool/ar/course-cedar-542e5a3a55bb5b59.mp3",
+      "durationMs": 7500
+    },
+    "البِطَاقَةُ المَدْرَسِيَّةُ مُخْتَلِفَةٌ: تُعرِّف بي في المدرسة فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-fb8c4e014d55ab46.mp3",
+      "durationMs": 6050
+    },
+    "بِطَاقَةُ التَّعْرِيفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-134061778525d759.mp3",
+      "durationMs": 2300
+    },
+    "دَفْتَرُ العَائِلَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-05031f42a0c6e7c4.mp3",
+      "durationMs": 2500
+    },
+    "لَا نَرْسُمُ عَلَى الوَثَائِقِ وَلَا نُعْطِيهَا لِغَرِيبٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8fb662a5720a025f.mp3",
+      "durationMs": 4850
+    },
+    "المدرسية للمدرسة فقط. التعريف وثيقة الدولة للراشد.": {
+      "src": "/sounds/preschool/ar/course-cedar-7eec453b74e36d00.mp3",
+      "durationMs": 6350
+    },
+    "ما اسم الدفتر الذي تُسجَّل فيه الأسرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-33807724adc8d741.mp3",
+      "durationMs": 3450
+    },
+    "بطاقة التعريف الوطنية هي:": {
+      "src": "/sounds/preschool/ar/course-cedar-42dcd608ae25b91e.mp3",
+      "durationMs": 2850
+    },
+    "بطاقة تعريف + دفتر عائلة = وثائق رسمية. نحفظها، لا نلعب بها.": {
+      "src": "/sounds/preschool/ar/course-cedar-87bd046bb03438be.mp3",
+      "durationMs": 7950
+    },
+    "هل نعطي دفتر العائلة لصديق في الساحة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8ecb1efa4280dc66.mp3",
+      "durationMs": 6150
+    },
+    "اختر الوثيقة المناسبة!": {
+      "src": "/sounds/preschool/ar/course-cedar-24c7ecf6c5f1a911.mp3",
+      "durationMs": 2750
+    },
+    "تُعرِّف بي داخل المدرسة": {
+      "src": "/sounds/preschool/ar/course-cedar-e32d92d3857e8c58.mp3",
+      "durationMs": 3400
+    },
+    "يُسجَّل فيها الإخوة": {
+      "src": "/sounds/preschool/ar/course-cedar-d52a834d59f519d1.mp3",
+      "durationMs": 2450
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325
