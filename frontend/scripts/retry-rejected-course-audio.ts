@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { reserveAudioRetry } from './audio-retry-budget';
 import { writeAudioJson } from './audio-atomic-json';
 import { recordedSpeechKey } from '../src/utils/recordedSpeechKey';
+import { discoverV2Root, importV2Recording, loadRecordingLibrary } from './v2-recording-library';
 
 const execute = promisify(execFile);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -15,12 +16,32 @@ const directory = resolve(root, 'docs/audio-v1/cours-1ap-2ap/completion');
 const rejectedPath = resolve(directory, 'reprises-necessaires.json');
 type Rejected = { texte: string; language: string; reason: string; sourceWavSha256: string; reviewRequired: boolean };
 // Name an isolated written mark explicitly, rather than asking a voice to pronounce empty vowels.
-const markNames: Record<string, string> = { 'ً': 'تَنْوِينُ الفَتْحِ', 'ٍ': 'تَنْوِينُ الكَسْرِ', 'ٌ': 'تَنْوِينُ الضَّمِّ', 'َ': 'الفَتْحَةُ', 'ِ': 'الكَسْرَةُ', 'ُ': 'الضَّمَّةُ', 'ْ': 'السُّكُونُ', 'ّ': 'الشَّدَّةُ' };
+const markNames: Record<string, string> = { 'ً': 'تَنْوِينُ الفَتْحِ', 'ٍ': 'تَنْوِينُ الكَسْرِ', 'ٌ': 'تَنْوِينُ الضَّمِّ', 'َ': 'الفَتْحَةُ', 'ِ': 'الكَسْرَةُ', 'ُ': 'الضَّمَّةُ', 'ْ': 'السُّكُونُ', 'ّ': 'الشَّدَّةُ', '>': 'أَكْبَرُ مِنْ', '<': 'أَصْغَرُ مِنْ', '38': 'ثَمَانِيَةٌ وَثَلَاثُونَ' };
 async function main() {
   if (!process.argv.includes('--generate')) throw new Error('Explicit --generate required for the authorized retries');
   const rejected: Rejected[] = existsSync(rejectedPath) ? JSON.parse(readFileSync(rejectedPath, 'utf8')) : [];
+  const v2 = loadRecordingLibrary(discoverV2Root(root));
+  const clearRejected = (job: Rejected) => {
+    const remaining: Rejected[] = JSON.parse(readFileSync(rejectedPath, 'utf8'));
+    writeAudioJson(rejectedPath, remaining.filter(entry => entry.language !== job.language || recordedSpeechKey(entry.texte) !== recordedSpeechKey(job.texte)));
+  };
   mkdirSync(resolve(root, 'output/course-audio-completion'), { recursive: true });
   for (const job of rejected) {
+    const label = job.language === 'ar' ? markNames[job.texte] : undefined;
+    if (label) {
+      // Recheck the actual spoken name too, not only the written symbol, before reserving a call.
+      const local = loadRecordingLibrary(root).find(label, job.language, 'cedar');
+      const existing = local ?? v2.find(label, job.language, 'cedar');
+      if (existing) {
+        if (!local) importV2Recording(root, existing);
+        const path = resolve(root, 'docs/audio-v1/enregistrements-cours-openai.json');
+        const metadata = JSON.parse(readFileSync(path, 'utf8'));
+        metadata[job.language].clips.push({ ...existing.clip, texte: job.texte, spokenText: label, reusedFrom: local ? 'v1' : 'v2', uses: ['explicit-symbol-label-reuse'] });
+        writeAudioJson(path, metadata); clearRejected(job);
+        console.log(JSON.stringify({ reusedLabel: job.texte, spokenText: label, billed: false }));
+        continue;
+      }
+    }
     const reservation = reserveAudioRetry(resolve(directory, 'reprises-autorisees.json'), job.texte, job.language);
     if (!reservation) { console.log(JSON.stringify({ skipped: job.texte, reason: 'Budget exhausted or this text already retried' })); continue; }
     const stem = `course-cedar-${createHash('sha256').update(`cedar:${job.texte}`).digest('hex').slice(0, 16)}`;
@@ -37,8 +58,7 @@ async function main() {
     const metadata = JSON.parse(readFileSync(resolve(root, 'docs/audio-v1/enregistrements-cours-openai.json'), 'utf8'));
     const saved = metadata[job.language]?.clips.some((clip: { texte: string }) => recordedSpeechKey(clip.texte) === recordedSpeechKey(job.texte));
     if (saved) {
-      const remaining: Rejected[] = JSON.parse(readFileSync(rejectedPath, 'utf8'));
-      writeAudioJson(rejectedPath, remaining.filter(entry => entry.language !== job.language || recordedSpeechKey(entry.texte) !== recordedSpeechKey(job.texte)));
+      clearRejected(job);
     }
   }
 }

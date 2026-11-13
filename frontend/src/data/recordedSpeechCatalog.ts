@@ -121,6 +121,10 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-70754688c9cb34c5.mp3",
       "durationMs": 1650
     },
+    "38": {
+      "src": "/sounds/preschool/ar/course-cedar-4a0485f90e85ea5a.mp3",
+      "durationMs": 2300
+    },
     "39": {
       "src": "/sounds/preschool/ar/course-cedar-9ba46a49f106921a.mp3",
       "durationMs": 2550
@@ -13688,6 +13692,34 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "نملأ البالون ب": {
       "src": "/sounds/preschool/ar/course-cedar-6f40bb8815de5067.mp3",
       "durationMs": 2450
+    },
+    "ً": {
+      "src": "/sounds/preschool/ar/course-cedar-e7c6baa442b95cbb.mp3",
+      "durationMs": 1700
+    },
+    "ٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-4af76b9726dbfd0e.mp3",
+      "durationMs": 2000
+    },
+    ">": {
+      "src": "/sounds/preschool/ar/course-cedar-fc1d5a524ac4be95.mp3",
+      "durationMs": 2300
+    },
+    "أَكْبَرُ مِنْ": {
+      "src": "/sounds/preschool/ar/course-cedar-fc1d5a524ac4be95.mp3",
+      "durationMs": 2300
+    },
+    "<": {
+      "src": "/sounds/preschool/ar/course-cedar-9a1dc57a753aa8c3.mp3",
+      "durationMs": 2600
+    },
+    "أَصْغَرُ مِنْ": {
+      "src": "/sounds/preschool/ar/course-cedar-9a1dc57a753aa8c3.mp3",
+      "durationMs": 2600
+    },
+    "ثَمَانِيَةٌ وَثَلَاثُونَ": {
+      "src": "/sounds/preschool/ar/course-cedar-4a0485f90e85ea5a.mp3",
+      "durationMs": 2300
     },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",

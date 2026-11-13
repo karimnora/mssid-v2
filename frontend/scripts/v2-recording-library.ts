@@ -4,7 +4,7 @@ import { constants, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSy
 import { dirname, resolve, sep } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { recordedSpeechKey } from '../src/utils/recordedSpeechKey';
-export type LibraryClip = { texte: string; fichier: string; duration: number; sha256: string; voice?: string; model?: string; [field: string]: unknown };
+export type LibraryClip = { texte: string; spokenText?: string; fichier: string; duration: number; sha256: string; voice?: string; model?: string; [field: string]: unknown };
 export type ExistingRecording = { language: string; clip: LibraryClip; path: string };
 const hash = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 export function discoverV2Root(root: string): string {
@@ -26,9 +26,11 @@ export function loadRecordingLibrary(root: string) {
       const directory = resolve(root, 'frontend/public/sounds/preschool', language);
       const path = resolve(directory, clip.fichier);
       if (!path.startsWith(`${directory}${sep}`)) throw new Error('Invalid recording path in source metadata');
-      const key = `${language}:${recordedSpeechKey(clip.texte)}`;
-      const candidates = entries.get(key) ?? [];
-      candidates.push({ language, clip, path }); entries.set(key, candidates);
+      for (const text of [clip.texte, ...(clip.spokenText ? [clip.spokenText] : [])]) {
+        const key = `${language}:${recordedSpeechKey(text)}`;
+        const candidates = entries.get(key) ?? [];
+        candidates.push({ language, clip, path }); entries.set(key, candidates);
+      }
     }
   }
   const verified = new Set<string>();

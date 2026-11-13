@@ -3,23 +3,23 @@
     "scope": "Fixed authored lesson speech; excludes dynamic feedback, simulations and navigation. Text matching and integrity do not certify pronunciation.",
     "lessons": 118,
     "uniqueTexts": 3353,
-    "recordedTexts": 3337,
-    "missingTexts": 16,
-    "reusedFiles": 3336,
-    "integrityCheckedArabicFiles": 3774,
+    "recordedTexts": 3342,
+    "missingTexts": 11,
+    "reusedFiles": 3339,
+    "integrityCheckedArabicFiles": 3777,
     "byGrade": [
       {
         "grade": "1AP",
         "lessons": 57,
         "requestedSegments": 2412,
-        "recordedSegments": 2388,
+        "recordedSegments": 2401,
         "lessonsWithAnyRecording": 57
       },
       {
         "grade": "2AP",
         "lessons": 61,
         "requestedSegments": 1519,
-        "recordedSegments": 1514,
+        "recordedSegments": 1519,
         "lessonsWithAnyRecording": 61
       }
     ]
@@ -121,7 +121,7 @@
       "grade": "1AP",
       "titleAr": "أُقَارِنُ بِالرَّمْزَيْنِ < وَ > 🐊",
       "requestedSegments": 43,
-      "recordedSegments": 35
+      "recordedSegments": 43
     },
     {
       "lessonId": "math-1ap-t3-ruler-align",
@@ -233,7 +233,7 @@
       "grade": "1AP",
       "titleAr": "التَّنْوِينُ: ً ٌ ٍ 🎵",
       "requestedSegments": 42,
-      "recordedSegments": 37
+      "recordedSegments": 42
     },
     {
       "lessonId": "arabic-1ap-t1-school-axis",
@@ -443,14 +443,14 @@
       "grade": "2AP",
       "titleAr": "الجَمْعُ العَمُودِيُّ دُونَ احْتِفَاظٍ ➕",
       "requestedSegments": 27,
-      "recordedSegments": 26
+      "recordedSegments": 27
     },
     {
       "lessonId": "math-2ap-t2-numbers-50-99",
       "grade": "2AP",
       "titleAr": "الأَعْدَادُ مِنْ 50 إِلَى 99: الكِتَابَةُ وَالمُقَارَنَةُ وَالتَّرْتِيبُ 🔟",
       "requestedSegments": 27,
-      "recordedSegments": 23
+      "recordedSegments": 27
     },
     {
       "lessonId": "math-2ap-t2-numbers-100-999",
@@ -9138,6 +9138,106 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-0fa7a400122244d8.mp3"
+      ]
+    },
+    {
+      "text": "<",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q3-math1ap-symbols-opt-a"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q4-math1ap-symbols-opt-b"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-2-opt-0"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-3-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-9a1dc57a753aa8c3.mp3"
+      ]
+    },
+    {
+      "text": ">",
+      "targets": [
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q3-math1ap-symbols-opt-b"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "quiz",
+          "key": "quiz-q4-math1ap-symbols-opt-c"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-2-opt-1"
+        },
+        {
+          "lessonId": "math-1ap-t3-compare-symbols",
+          "grade": "1AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-3-opt-0"
+        },
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "math-2ap-t2-numbers-50-99",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-fc1d5a524ac4be95.mp3"
       ]
     },
     {
@@ -18056,6 +18156,35 @@
       ]
     },
     {
+      "text": "ً",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "quiz",
+          "key": "quiz-q4-ar1ap-tanween-opt-b"
+        },
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-1"
+        },
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-2"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-e7c6baa442b95cbb.mp3"
+      ]
+    },
+    {
       "text": "اختر الحركة المزدوجة!",
       "targets": [
         {
@@ -18068,6 +18197,28 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-4f731b63255ff9c1.mp3"
+      ]
+    },
+    {
+      "text": "ٍ",
+      "targets": [
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-0-opt-2"
+        },
+        {
+          "lessonId": "arabic-1ap-t3-tanween",
+          "grade": "1AP",
+          "subject": "arabic",
+          "category": "game",
+          "key": "game-1-opt-0"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4af76b9726dbfd0e.mp3"
       ]
     },
     {
@@ -34682,6 +34833,21 @@
       ],
       "clips": [
         "/sounds/preschool/ar/course-cedar-ab594dfb1164cf75.mp3"
+      ]
+    },
+    {
+      "text": "38",
+      "targets": [
+        {
+          "lessonId": "math-2ap-t1-addition-no-carry",
+          "grade": "2AP",
+          "subject": "math",
+          "category": "game",
+          "key": "game-1-opt-1"
+        }
+      ],
+      "clips": [
+        "/sounds/preschool/ar/course-cedar-4a0485f90e85ea5a.mp3"
       ]
     },
     {

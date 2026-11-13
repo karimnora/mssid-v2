@@ -50369,6 +50369,88 @@
         "uses": [
           "course:science-2ap-t3-air:game-1"
         ]
+      },
+      {
+        "texte": "ً",
+        "fichier": "course-cedar-e7c6baa442b95cbb.mp3",
+        "duration": 1.7,
+        "sha256": "3d71fd7b5b06dd18151f275db244ffb0ed3cfb3f0a3c055adbeb1f3b1a833ef4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:58:50.536Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4ec2db6218551d344a4a0f9e59356ff04314ee85a4270ef775444750fa8b0c83",
+        "uses": [
+          "explicit-symbol-label-reuse"
+        ],
+        "spokenText": "تَنْوِينُ الفَتْحِ",
+        "reusedFrom": "v1"
+      },
+      {
+        "texte": "ٍ",
+        "fichier": "course-cedar-4af76b9726dbfd0e.mp3",
+        "duration": 2,
+        "sha256": "17f61903523cb7c69557481a6b133cfa3633776e1e22396311d3b21514b18f1f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:58:50.630Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "30ea64e1a19b61b377e3cef81b57eacc8e784276d098fb801ae442a1df1d95b4",
+        "uses": [
+          "explicit-symbol-label-reuse"
+        ],
+        "spokenText": "تَنْوِينُ الكَسْرِ",
+        "reusedFrom": "v1"
+      },
+      {
+        "texte": ">",
+        "fichier": "course-cedar-fc1d5a524ac4be95.mp3",
+        "duration": 2.3,
+        "sha256": "60915edfba26aacd2054003cbe02667329885761da813ddfc845ddba56744421",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:14:34.741Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9ef8227467d870af5c5a323d25de34b087d545b8b1028a44f3bd5b42fb93305f",
+        "spokenText": "أَكْبَرُ مِنْ",
+        "uses": [
+          "authorized-quality-retry"
+        ]
+      },
+      {
+        "texte": "<",
+        "fichier": "course-cedar-9a1dc57a753aa8c3.mp3",
+        "duration": 2.6,
+        "sha256": "10d8b45a7ca06ce4d457dfb5024cf1ed00156a5b5e3d223c599567a8d0ef6c9b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:14:38.322Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8e2e965b0dce096d0c0609a0f825df256fa67d61262c6c4eb56adc2f6fb6a623",
+        "spokenText": "أَصْغَرُ مِنْ",
+        "uses": [
+          "authorized-quality-retry"
+        ]
+      },
+      {
+        "texte": "38",
+        "fichier": "course-cedar-4a0485f90e85ea5a.mp3",
+        "duration": 2.3,
+        "sha256": "7e72afc7699bfb2a00e29bd33ecd0d4177e0ec77e45689b85a951760b8a404b6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T14:14:44.195Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "438f1690a857a11967b38ce6a7283737cf93a2672898b9bd10dca8fc031e507e",
+        "spokenText": "ثَمَانِيَةٌ وَثَلَاثُونَ",
+        "uses": [
+          "authorized-quality-retry"
+        ]
       }
     ]
   },

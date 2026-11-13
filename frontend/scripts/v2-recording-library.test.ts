@@ -21,6 +21,17 @@ afterEach(() => {
   }
 });
 describe('V2 reuse before paid generation', () => {
+  it('also reuses an explicitly recorded symbol name without guessing other vowels', () => {
+    const root = fixture();
+    const path = join(root, 'docs/audio-v1/enregistrements-test.json');
+    const metadata = JSON.parse(readFileSync(path, 'utf8'));
+    metadata.ar.clips[0].texte = 'ً';
+    metadata.ar.clips[0].spokenText = 'تَنْوِينُ الفَتْحِ';
+    writeFileSync(path, JSON.stringify(metadata));
+    const library = loadRecordingLibrary(root);
+    expect(library.find('ً', 'ar', 'cedar')?.path).toBe(library.find('تَنْوِينُ الفَتْحِ', 'ar', 'cedar')?.path);
+    expect(library.find('تَنْوِينُ الفَتْحُ', 'ar', 'cedar')).toBeUndefined();
+  });
   it('reuses whitespace and visual-stretch variants but never guesses a different vowel or language', () => {
     const library = loadRecordingLibrary(fixture());
     expect(library.find('  كِتَـاب  ', 'ar-SA', 'cedar')).toBeDefined();

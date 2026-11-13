@@ -6,7 +6,7 @@ import { recordedSpeechKey } from '../src/utils/recordedSpeechKey';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const docs = resolve(root, 'docs/audio-v1');
-type Clip = { texte: string; fichier: string; duration: number; sha256: string };
+type Clip = { texte: string; spokenText?: string; fichier: string; duration: number; sha256: string };
 type Entry = { src: string; durationMs: number };
 const catalog: Record<string, Record<string, Entry>> = { ar: {}, fr: {}, en: {} };
 const sources = new Set<string>();
@@ -20,8 +20,11 @@ for (const file of readdirSync(docs).filter(name => /^enregistrements-.*\.json$/
       const digest = createHash('sha256').update(readFileSync(path)).digest('hex');
       if (digest !== clip.sha256) throw new Error(`Recording integrity mismatch: ${src}`);
       if (!(clip.duration > 0)) throw new Error(`Missing duration: ${src}`);
-      const key = recordedSpeechKey(clip.texte);
-      catalog[language][key] ??= { src, durationMs: Math.round(clip.duration * 1000) };
+      // An explicitly named standalone mark also reuses the exact spoken label elsewhere.
+      for (const text of [clip.texte, ...(clip.spokenText ? [clip.spokenText] : [])]) {
+        const key = recordedSpeechKey(text);
+        catalog[language][key] ??= { src, durationMs: Math.round(clip.duration * 1000) };
+      }
       sources.add(src);
     }
   }
