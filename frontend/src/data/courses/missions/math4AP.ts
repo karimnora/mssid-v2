@@ -74,6 +74,7 @@ export const MATH_4AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'ثلاثة رباعيات',
       textAr: 'المربع والمستطيل والمعيّن رباعيات: لكل واحد 4 أضلاع.\nالمربع: 4 أضلاع متساوية و4 زوايا قائمة.\nالمستطيل: 4 زوايا قائمة، وكل ضلعين متقابلين متساويان.\nالمعيّن: 4 أضلاع متساوية، لكن زواياه ليست قائمة دائماً.',
+      visual: { type: 'geometry', figure: { figure: 'quadrilaterals', labelsAr: ['مربع', 'مستطيل', 'معيّن'] }, captionAr: 'ثلاثة رباعيات: المربع والمستطيل لهما زوايا قائمة، والمعيّن أضلاعه الأربعة متساوية.' },
     },
     model: {
       titleAr: 'سؤالان لأعرف الشكل',
@@ -232,6 +233,7 @@ export const MATH_4AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أدور حول الشكل',
       textAr: 'نملة تمشي على حافة مستطيل طوله 5 cm وعرضه 3 cm.\nتمشي 5 ثم 3 ثم 5 ثم 3.\nالمسافة التي قطعتها هي محيط المستطيل.',
+      visual: { type: 'geometry', figure: { figure: 'rectangle', width: 5, height: 3, unit: 'cm' }, captionAr: 'النملة تدور حول المستطيل: 5 ثم 3 ثم 5 ثم 3.' },
     },
     model: {
       titleAr: 'نصف الدورة ثم الدورة كاملة',
@@ -263,6 +265,7 @@ export const MATH_4AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أمشي على الحافة الخارجية فقط',
       textAr: 'ألصقتُ مربعين ضلع كل واحد 4 cm جنباً إلى جنب.\nأحصل على مستطيل طوله 8 cm وعرضه 4 cm.\nالضلع المشترك في الوسط ليس من المحيط: لا أمشي عليه.',
+      visual: { type: 'geometry', figure: { figure: 'rectangle', width: 8, height: 4, unit: 'cm', split: 2 }, captionAr: 'الخط المتقطع هو الضلع المشترك بين المربعين: ليس من المحيط.' },
     },
     model: {
       titleAr: 'أحسب الحافة الخارجية',

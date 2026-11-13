@@ -3,6 +3,7 @@ import type { CourseLesson, LearningPath, LearningPathStep, LearningPathVisual }
 import { BoundPracticeCard, type PracticeBindings } from './practiceBindings';
 import { MathWorkedExample } from './MathWorkedExample';
 import { IrabTable } from './IrabTable';
+import { GeometryFigure } from './GeometryFigure';
 import { TapSpeakButton } from './TapSpeakButton';
 import { isolateMathRuns, latinTextDir, stripArabicGlosses } from '../../utils/textFormatter';
 import didouGuide from '../../assets/v2-reused/didou-point.webp';
@@ -117,6 +118,14 @@ function SentenceParts({ visual, renderText }: { visual: Extract<LearningPathVis
 function ConceptVisual({ visual, renderText }: { visual: LearningPathVisual; renderText: Props['renderArabicText'] }) {
   if (visual.type === 'place_value') return <PlaceValueTable visual={visual} renderText={renderText} />;
   if (visual.type === 'sentence_parts') return <SentenceParts visual={visual} renderText={renderText} />;
+  if (visual.type === 'geometry') {
+    return (
+      <figure className="space-y-3" data-geometry-visual>
+        <GeometryFigure spec={visual.figure} label={visual.captionAr} />
+        <figcaption className="text-sm font-bold text-[var(--app-text)]">{renderText(visual.captionAr)}</figcaption>
+      </figure>
+    );
+  }
   if (visual.type === 'fraction_bar') {
     return (
       <figure className="space-y-3" data-fraction-bar>

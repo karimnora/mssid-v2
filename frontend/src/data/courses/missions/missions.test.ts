@@ -135,3 +135,37 @@ describe('science missions 3AP–5AP', () => {
     }
   });
 });
+
+describe('guided science missions 3AP–5AP', () => {
+  const scienceLessons = COURSES_DATA.filter(lesson => lesson.subject === 'science' && ['3AP', '4AP', '5AP'].includes(lesson.grade));
+
+  it('gives every science lesson a mission', () => {
+    expect(scienceLessons.length).toBeGreaterThan(30);
+    expect(scienceLessons.filter(lesson => !lesson.learningPath).map(lesson => lesson.id)).toEqual([]);
+  });
+
+  it.each(scienceLessons.map(lesson => [lesson.id, lesson] as const))('%s observes, explains, then reasons on a new situation', (_id, lesson) => {
+    const path = lesson.learningPath!;
+    const kinds = path.steps.map(step => step.kind);
+    expect(kinds.slice(0, 3)).toEqual(['observe', 'model', 'guided']);
+    expect(kinds.at(-1)).toBe('transfer');
+    const exercises = exercisesOf(lesson);
+    for (const step of path.steps) {
+      if (!('exerciseId' in step)) {
+        if (step.kind === 'observe') expect(step.visual?.type).toBe('sentence_parts');
+        if (step.kind === 'model') expect(step.irabTable?.length ?? 0).toBeGreaterThanOrEqual(2);
+        continue;
+      }
+      const matches = exercises.filter(ex => ex.id === step.exerciseId);
+      expect(matches, step.exerciseId).toHaveLength(1);
+      const ex = matches[0];
+      expect(ex.type, ex.id).toBe('qcm');
+      const correct = ex.options!.filter(option => option.isCorrect);
+      expect(correct, ex.id).toHaveLength(1);
+      expect(new Set(ex.options!.map(option => option.textAr)).size, ex.id).toBe(ex.options!.length);
+      expect(ex.progressiveHints?.length ?? 0, ex.id).toBeGreaterThanOrEqual(2);
+      // A hint asks a question; it never hands over the answer word for word.
+      for (const hint of ex.progressiveHints ?? []) expect(hint.contentAr.includes(correct[0].textAr), `${ex.id}: ${hint.contentAr}`).toBe(false);
+    }
+  });
+});

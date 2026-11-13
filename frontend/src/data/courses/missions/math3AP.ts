@@ -137,6 +137,7 @@ export const MATH_3AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أتعرف على القطعة المستقيمة',
       textAr: 'القطعة المستقيمة لها بداية ونهاية: نقطتان.\nأسميها بحرفي طرفيها، مثل القطعة AB.\nالمستقيم لا بداية له ولا نهاية.',
+      visual: { type: 'geometry', figure: { figure: 'segment_line', segmentLabelAr: 'القطعة AB', lineLabelAr: 'المستقيم (d)' }, captionAr: 'القطعة AB لها طرفان. المستقيم (d) يمتد من الجهتين دون توقف.' },
     },
     model: {
       titleAr: 'هل النقط على استقامة واحدة؟',
@@ -294,6 +295,7 @@ export const MATH_3AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'الزاوية القائمة حولي',
       textAr: 'ركن الصفحة، ركن الباب، ركن السبورة: كلها زوايا قائمة.\nأتحقق بالكوس: أضع ركنه القائم على الزاوية.\nإذا انطبق تماماً، فالزاوية قائمة.',
+      visual: { type: 'geometry', figure: { figure: 'angles', kinds: ['right', 'acute'], labelsAr: ['زاوية قائمة', 'ليست قائمة'] }, captionAr: 'المربع الصغير في الركن يدل على الزاوية القائمة.' },
     },
     model: {
       titleAr: 'كيف أتحقق بالكوس؟',
@@ -325,6 +327,7 @@ export const MATH_3AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'مستقيمان يصنعان زاوية قائمة',
       textAr: 'عندما يتقاطع مستقيمان ويصنعان زاوية قائمة، نقول إنهما متعامدان.\nمثال: حافتا الكراس عند الركن، وخطوط كراس المربعات.',
+      visual: { type: 'geometry', figure: { figure: 'lines', relation: 'perpendicular' }, captionAr: 'المستقيمان (d) و(k) متعامدان: يصنعان زاوية قائمة عند التقاطع.' },
     },
     model: {
       titleAr: 'كيف أكشف التعامد؟',
@@ -482,6 +485,7 @@ export const MATH_3AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'المكعب حولي',
       textAr: 'النرد وقطعة السكر شكلهما مكعب.\nالمكعب له وجوه مسطحة، وأحرف، ورؤوس.\nكل وجه من وجوه المكعب مربع.',
+      visual: { type: 'geometry', figure: { figure: 'solid', kind: 'cube', faceLabelAr: 'وجه', edgeLabelAr: 'حرف', vertexLabelAr: 'رأس' }, captionAr: 'في المكعب: الوجه مربع، والحرف ضلع بين وجهين، والرأس ركن.' },
     },
     model: {
       titleAr: 'كيف أعدّ الوجوه؟',

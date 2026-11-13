@@ -326,6 +326,19 @@ export interface ProgressiveWorkedExample {
   isRealLife?: boolean; // marks the "situation concrète du quotidien" example (tier 4 by convention)
 }
 
+/** A drawing for a geometry mission, rendered as inline SVG by GeometryFigure. */
+export type GeometryFigureSpec =
+  | { figure: 'segment_line'; segmentLabelAr: string; lineLabelAr: string }
+  | { figure: 'angles'; kinds: ('acute' | 'right' | 'obtuse')[]; labelsAr: string[] }
+  | { figure: 'lines'; relation: 'perpendicular' | 'parallel'; labelAr?: string }
+  | { figure: 'solid'; kind: 'cube' | 'cuboid'; faceLabelAr: string; edgeLabelAr: string; vertexLabelAr: string }
+  | { figure: 'cube_net' }
+  | { figure: 'quadrilaterals'; labelsAr: [string, string, string] }
+  /** Dimensions are whole units; `grid` draws the unit squares, `split` the shared sides of glued shapes. */
+  | { figure: 'rectangle'; width: number; height: number; unit?: string; grid?: boolean; split?: number }
+  | { figure: 'triangles'; labelsAr: [string, string, string] }
+  | { figure: 'circle'; centerLabelAr: string; radiusLabelAr: string; diameterLabelAr: string };
+
 export type LearningPathVisual =
   | { type: 'place_value'; columnsAr: string[]; digits: number[]; captionAr: string }
   | {
@@ -336,6 +349,7 @@ export type LearningPathVisual =
       itemEmoji?: string; itemLabelAr?: string; groupLabelAr?: string;
     }
   | { type: 'fraction_bar'; parts: number; shaded: number; captionAr: string }
+  | { type: 'geometry'; figure: GeometryFigureSpec; captionAr: string }
   /** Grammar: tap each word of a sentence to see its kind and the clue that reveals it. */
   | { type: 'sentence_parts'; words: { textAr: string; kindAr: string; clueAr: string }[]; captionAr: string };
 

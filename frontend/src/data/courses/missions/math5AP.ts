@@ -179,7 +179,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أعدّ المربعات',
       textAr: 'مستطيل طوله 4 cm وعرضه 3 cm.\nأغطيه بمربعات صغيرة ضلع كل واحد 1 cm.\nعدد المربعات هو مساحته.',
-      visual: { type: 'equal_shares', groups: 3, perGroup: 4, itemEmoji: '🟩', itemLabelAr: 'مربعات', groupLabelAr: 'صف', captionAr: '3 صفوف، في كل صف 4 مربعات: 3 × 4 = 12 مربعاً.' },
+      visual: { type: 'geometry', figure: { figure: 'rectangle', width: 4, height: 3, unit: 'cm', grid: true }, captionAr: '3 صفوف، في كل صف 4 مربعات: 3 × 4 = 12 مربعاً.' },
     },
     model: {
       titleAr: 'قاعدة المساحة',
@@ -242,6 +242,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'ثلاثة أنواع من الزوايا',
       textAr: 'أقارن كل زاوية بركن الكوس.\nأضيق من ركن الكوس: زاوية حادة.\nتنطبق عليه تماماً: زاوية قائمة.\nأوسع منه: زاوية منفرجة.',
+      visual: { type: 'geometry', figure: { figure: 'angles', kinds: ['acute', 'right', 'obtuse'], labelsAr: ['حادة', 'قائمة', 'منفرجة'] }, captionAr: 'حادة: أضيق من القائمة. منفرجة: أوسع من القائمة.' },
     },
     model: {
       titleAr: 'كيف أصنف زاوية؟',
@@ -273,6 +274,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أنواع المثلثات',
       textAr: 'أصنف المثلث حسب أضلاعه.\nثلاثة أضلاع متساوية: متساوي الأضلاع.\nضلعان متساويان فقط: متساوي الساقين.\nوإذا كانت له زاوية قائمة: مثلث قائم.',
+      visual: { type: 'geometry', figure: { figure: 'triangles', labelsAr: ['متساوي الأضلاع', 'متساوي الساقين', 'قائم'] }, captionAr: 'ثلاثة مثلثات خاصة. المربع الصغير يدل على الزاوية القائمة.' },
     },
     model: {
       titleAr: 'كيف أتعرف على مثلث؟',
@@ -303,6 +305,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'أفتح العلبة',
       textAr: 'إذا فتحت علبة على شكل مكعب وبسطتها على الطاولة، أحصل على نشر المكعب.\nالنشر مكوّن من 6 مربعات متساوية: مربع لكل وجه.',
+      visual: { type: 'geometry', figure: { figure: 'cube_net' }, captionAr: 'نشر المكعب: 6 مربعات متساوية، مربع لكل وجه.' },
     },
     model: {
       titleAr: 'مجموع أطوال الأحرف',
@@ -428,6 +431,7 @@ export const MATH_5AP_MISSIONS: MissionSpec[] = [
     observe: {
       titleAr: 'المركز، الشعاع، القطر',
       textAr: 'كل نقط الدائرة على البعد نفسه من المركز.\nالشعاع: قطعة تصل المركز بنقطة من الدائرة.\nالقطر: قطعة تصل نقطتين من الدائرة وتمر بالمركز.',
+      visual: { type: 'geometry', figure: { figure: 'circle', centerLabelAr: 'المركز', radiusLabelAr: 'الشعاع', diameterLabelAr: 'القطر' }, captionAr: 'القطر يمر بالمركز، وطوله ضعف طول الشعاع.' },
     },
     model: {
       titleAr: 'القطر ضعف الشعاع',
