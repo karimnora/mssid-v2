@@ -1,47 +1,5 @@
 [
   {
-    "fichier": "course-ar-f8346951908a52de.mp3",
-    "texte": "أُقَارِنُ: أَطْوَلُ، أَثْقَلُ، أَكْبَرُ",
-    "targets": [
-      {
-        "lessonId": "math-1ap-t1-grandeurs",
-        "grade": "1AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-edd91233f9f30652.mp3",
-    "texte": "أُقَارِنُ بِالرَّمْزَيْنِ < وَ >",
-    "targets": [
-      {
-        "lessonId": "math-1ap-t3-compare-symbols",
-        "grade": "1AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
-    "fichier": "course-ar-46ec60cdee5b60d6.mp3",
-    "texte": "أُحَاذِي النِّقَاطَ وَأَرْسُمُ بِالمِسْطَرَةِ",
-    "targets": [
-      {
-        "lessonId": "math-1ap-t3-ruler-align",
-        "grade": "1AP",
-        "subject": "math",
-        "category": "entry",
-        "key": "title"
-      }
-    ],
-    "reviewRequired": true
-  },
-  {
     "fichier": "course-ar-3aa4d196db0dedbf.mp3",
     "texte": "حَوَاسِّي الخَمْسُ وَنَظَافَتِي",
     "targets": [

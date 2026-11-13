@@ -12,5 +12,19 @@
     "reason": "Unusable original; no additional API call made",
     "sourceWavSha256": "186e279976c70e0854e570c5fe1147d10c8c9647d83e5b478bb1b28994afd13b",
     "reviewRequired": true
+  },
+  {
+    "texte": ">",
+    "language": "ar",
+    "reason": "Unusable recording; excluded from the child audio index",
+    "sourceWavSha256": "7e63fd2e7edd1ba3494fb5fa844025a76f7943c97ae8099c3ba5e66089d7b516",
+    "reviewRequired": true
+  },
+  {
+    "texte": "<",
+    "language": "ar",
+    "reason": "Unusable recording; excluded from the child audio index",
+    "sourceWavSha256": "f59b716bece6b24a2d5cc4f89589b79b09c13ddedef46dc19daf96f84ddd0796",
+    "reviewRequired": true
   }
 ]
