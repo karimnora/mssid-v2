@@ -16,6 +16,8 @@ import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 import { SubjectIllustratedCard } from './SubjectIllustratedCard';
 import { CardBlobBackdrop } from './CardBlobBackdrop';
 import didouGreeting from '../assets/v2-reused/didou-greet.webp';
+import villageLandscape from '../assets/v2-reused/village-landscape.webp';
+import { ArrowRight, BookOpen, Sparkles } from 'lucide-react';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -31,6 +33,7 @@ interface HomeViewProps {
   level?: number;
   avatarConfig?: DidouAvatarConfig;
   courseSubjects?: SubjectInfo[];
+  isLoadingCourses?: boolean;
   onSelectPole: (pole: HomePoleId) => void;
   onSelectSubject?: (subject: SubjectId) => void;
   onOpenAuthModal?: () => void;
@@ -131,6 +134,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   level,
   avatarConfig,
   courseSubjects,
+  isLoadingCourses = false,
   onSelectPole,
   onSelectSubject,
   onOpenAuthModal,
@@ -232,121 +236,59 @@ export const HomeView: React.FC<HomeViewProps> = ({
     <MotionConfig reducedMotion="user">
     <div className="home-learning-space space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
       <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || arabicVoiceAvailable === false)} />
-      <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
-        <div className="min-w-0">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <p className="text-[12.5px] font-bold text-white/90">{t('systemBadge')}</p>
-            <div className="flex items-center gap-2 mt-0.5">
-              <h1 className="home-welcome-title text-[22px] font-black leading-snug">
-                {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
-              </h1>
-              {showAudio && (
-                <TapSpeakButton
-                  snippetKey="home-welcome"
-                  text={isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
-                  speakingKey={speakingKey}
-                  onSpeak={handleSpeak}
-                  size="lg"
-                />
-              )}
+      <section className="home-welcome home-hero" aria-labelledby="home-welcome-heading">
+        <img src={villageLandscape} alt="" width={1500} height={844} fetchPriority="high" decoding="async" className="home-village-scene" />
+        <div className="home-hero-shade" aria-hidden="true" />
+        <div className="home-hero-badges">
+          <span className="home-grade-badge"><BookOpen size={16} aria-hidden="true" />{grade}</span>
+          <span className="home-today-label"><Sparkles size={16} aria-hidden="true" />{t('todayTitle')}</span>
+          {showAudio && <TapSpeakButton snippetKey="home-welcome" text={isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })} speakingKey={speakingKey} onSpeak={handleSpeak} />}
+        </div>
+        <div className="home-hero-body">
+          <div className="home-hero-copy">
+            <div className="home-welcome-heading-row">
+              <h1 id="home-welcome-heading" className="home-welcome-title">{isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}</h1>
             </div>
-            <p className="text-[13px] font-medium text-white/90 leading-relaxed mt-1">
-              {t('heroGradeLine', { grade: tNav(GRADE_NAV_KEY[grade]) })}
-            </p>
+            <p className="home-hero-description">{t('heroGradeLine', { grade: tNav(GRADE_NAV_KEY[grade]) })}</p>
           </div>
-          <button
-            type="button"
-            onClick={onOpenDressingRoom}
-            disabled={!onOpenDressingRoom}
-            className="home-avatar-button w-16 h-16 rounded-[20px] bg-white/20 hover:bg-white/30 flex items-center justify-center text-3xl shrink-0 disabled:cursor-default relative group cursor-pointer transition-transform active:scale-95"
-            aria-label={t('dressingRoomLabel')}
-            data-didou-greeting={activeSpecies === 'fennec' && activeOutfitId === 'default' ? 'true' : undefined}
-            title="خزانة وتخصيص ديدو"
-          >
+          <button type="button" onClick={onOpenDressingRoom} disabled={!onOpenDressingRoom}
+            className="home-hero-didou" aria-label={t('dressingRoomLabel')}
+            data-didou-greeting={activeSpecies === 'fennec' && activeOutfitId === 'default' ? 'true' : undefined}>
             {activeSpecies === 'fennec' && activeOutfitId === 'default'
-              ? <img src={didouGreeting} alt="" width={80} height={96} decoding="async" className="home-didou-greeting" />
-              : <span>{petEmoji}</span>}
-            <span className="absolute bottom-1 end-1 text-sm bg-black/40 rounded-lg px-1">
-              {activeOutfit.icon}
-            </span>
+              ? <img src={didouGreeting} alt="" width={160} height={192} decoding="async" />
+              : <span className="home-hero-custom-pet" aria-hidden="true">{petEmoji}<small>{activeOutfit.icon}</small></span>}
           </button>
+          <motion.button type="button" data-pole="courses" data-home-resume={lastActivityTitle && onResumeActivity ? 'true' : undefined}
+            whileTap={reduceMotion ? undefined : { scale: 0.98 }} transition={spring}
+            onClick={() => { if (lastActivityTitle && onResumeActivity) onResumeActivity(); else openSubject('math'); }}
+            className="home-primary-action">
+            <span data-pole-icon="courses" hidden />
+            <span>{lastActivityTitle && onResumeActivity ? t('heroResumeCta', { title: lastActivityTitle }) : t('heroContinueCta')}</span>
+            <ArrowRight className="home-action-arrow" size={22} aria-hidden="true" />
+          </motion.button>
         </div>
-
-        <div className="flex flex-wrap gap-2 justify-start mt-3.5">
-          <span className="home-stat inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-2 text-[13px] font-extrabold bg-white/20">
-            ⭐ {t('levelPill', { level: displayLevel })}
-          </span>
-          <button
-            type="button"
-            onClick={onOpenDressingRoom}
-            disabled={!onOpenDressingRoom}
-            className="home-stat hit-target inline-flex items-center gap-1.5 rounded-2xl px-3.5 text-[13px] font-extrabold bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 disabled:cursor-default"
-          >
-            🪙 {goldCoins} {t('coinsLabel')}
-          </button>
-        </div>
-        </div>
-
-        <div className="min-w-0">
-        <motion.button
-          type="button"
-          data-pole="courses"
-          data-home-resume={lastActivityTitle && onResumeActivity ? 'true' : undefined}
-          whileTap={reduceMotion ? undefined : { scale: 0.95 }}
-          transition={spring}
-          onClick={() => {
-            if (lastActivityTitle && onResumeActivity) onResumeActivity();
-            else openSubject('math');
-          }}
-          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-emerald-700 font-extrabold text-[14.5px] flex items-center justify-center gap-2 px-4"
-        >
-          <span data-pole-icon="courses" hidden />
-          <span className="min-w-0">{lastActivityTitle && onResumeActivity
-            ? t('heroResumeCta', { title: lastActivityTitle })
-            : t('heroContinueCta')}</span>
-        </motion.button>
-
-        <div className="mt-3.5 h-2 rounded-full bg-white/20 overflow-hidden" role="progressbar" aria-label={t('heroProgressLabel', { percent: progressPercent })} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
-          <div
-            className="home-progress-fill h-full rounded-full bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)]"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
+        <div className="home-hero-footer">
+          <div className="home-hero-stats">
+            <span className="home-stat">⭐ {t('levelPill', { level: displayLevel })}</span>
+            <button type="button" onClick={onOpenDressingRoom} disabled={!onOpenDressingRoom} className="home-stat home-coins">🪙 {goldCoins} {t('coinsLabel')}</button>
+          </div>
+          <div className="home-level-progress">
+            <p>{t('heroProgressLabel', { percent: progressPercent })}</p>
+            <div className="home-progress-track" role="progressbar" aria-label={t('heroProgressLabel', { percent: progressPercent })} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
+              <div className="home-progress-fill" style={{ width: `${progressPercent}%` }} />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* VIRTUAL COMPANION EMBEDDED CARD */}
-      <DidouVirtualCompanion
-        avatarConfig={avatarConfig}
-        goldCoins={goldCoins}
-        xp={xp}
-        level={displayLevel}
-        userName={userName}
-        onOpenDressingRoom={onOpenDressingRoom}
-        onFeed={onFeedDidou}
-      />
-
-      {isGuest && (
-        <div className="home-guest-banner rounded-[20px] p-3.5 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-subtle)] kids-pop-soft flex items-center justify-between gap-3">
-          <p className="text-xs font-medium text-[var(--app-text-muted)] leading-relaxed">{t('guestBannerSubtitle')}</p>
-          {onOpenAuthModal && (
-            <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} transition={spring} onClick={onOpenAuthModal} className="hit-target shrink-0 bg-emerald-700 text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm">
-              {t('guestSignupCta')}
-            </motion.button>
-          )}
-        </div>
-      )}
-
-      {isYoung && preschoolBlock}
-
+      <div className="home-content-grid">
+      <div className="home-course-column">
       <section className="min-w-0" aria-labelledby="home-subjects-heading">
-        <div className="flex items-center justify-between gap-3 mb-3">
+        <div className="home-section-heading">
           <button
             type="button"
             onClick={() => onSelectPole('courses')}
-            className="hit-target text-[12.5px] font-bold text-[var(--app-text)] shrink-0"
+            className="home-section-link"
           >
             {t('sectionViewAll')}
           </button>
@@ -362,16 +304,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <h2 id="home-subjects-heading" className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
           </div>
         </div>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+        {isLoadingCourses ? <div className="home-subject-loading" role="status">
+          <span className="sr-only">{t('subjectsLoading')}</span>
+          {[0, 1, 2, 3].map(index => <div key={index} aria-hidden="true"><span /><span /></div>)}
+        </div> : <motion.div
+          className="home-subject-grid"
           variants={homeSubjectGridVariants}
-          initial={reduceMotion ? false : 'hidden'}
+          initial={false}
           animate="show"
         >
           {visibleSubjects.map((subject) => (
             <motion.div key={subject.id} variants={homeSubjectItemVariants} className="h-full">
               <SubjectIllustratedCard
                 id={subject.id}
+                className="home-subject-card"
                 nameAr={subject.nameAr}
                 nameFr={subject.nameFr}
                 data-subject-card={subject.id}
@@ -382,10 +328,38 @@ export const HomeView: React.FC<HomeViewProps> = ({
               />
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div>}
+        {!isLoadingCourses && visibleSubjects.length === 0 && <p className="text-sm text-[var(--app-text-muted)]">{t('subjectsUnavailable')}</p>}
       </section>
 
-      <section>
+      {isYoung && preschoolBlock}
+      </div>
+      <aside className="home-companion-column">
+      <DidouVirtualCompanion
+        avatarConfig={avatarConfig}
+        goldCoins={goldCoins}
+        xp={xp}
+        level={displayLevel}
+        userName={userName}
+        onOpenDressingRoom={onOpenDressingRoom}
+        onFeed={onFeedDidou}
+      />
+
+      </aside>
+      </div>
+      {isGuest && (
+        <div className="home-guest-banner">
+          <p className="text-xs font-medium text-[var(--app-text-muted)] leading-relaxed">{t('guestBannerSubtitle')}</p>
+          {onOpenAuthModal && (
+            <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} transition={spring} onClick={onOpenAuthModal} className="hit-target shrink-0 bg-emerald-700 text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm">
+              {t('guestSignupCta')}
+            </motion.button>
+          )}
+        </div>
+      )}
+
+
+      <section className="home-labs" aria-labelledby="home-labs-heading">
         <div className="flex items-center justify-between mb-3">
           <button
             type="button"
@@ -407,7 +381,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSpeak={handleSpeak}
               />
             )}
-            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleLabsTitle')} 🔬</h2>
+            <h2 id="home-labs-heading" className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleLabsTitle')} 🔬</h2>
           </div>
         </div>
         {onOpenWilayas && (

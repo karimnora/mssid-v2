@@ -33,6 +33,14 @@ const renderHome = (
   );
 
 describe('HomeView', () => {
+  it('reserves the subjects area while the catalogue loads and offers an honest empty state afterwards', () => {
+    const view = renderHome('5AP', { courseSubjects: [], isLoadingCourses: true });
+    expect(screen.getByRole('status')).toHaveTextContent('نحضر موادك');
+    expect(document.querySelectorAll('[data-subject-card]')).toHaveLength(0);
+    view.unmount();
+    renderHome('5AP', { courseSubjects: [], isLoadingCourses: false });
+    expect(screen.getByText(/لا توجد دروس متاحة/)).toBeInTheDocument();
+  });
   it.each([false, null])('hides unavailable 3AP listening buttons (%s)', available => {
     voiceAvailable.value = available;
     renderHome('3AP');

@@ -860,6 +860,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
 
       {/* ILLUSTRATION SIDE (Right in LTR, Left in RTL) */}
       <div
+        data-subject-illustration
         className={`w-28 sm:w-40 md:w-48 relative overflow-hidden flex items-center justify-center shrink-0 select-none ${
           isRtl ? 'order-first' : 'order-last'
         }`}

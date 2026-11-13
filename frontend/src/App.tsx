@@ -439,6 +439,7 @@ function AppContent() {
             level={progress.userProfile.level}
             avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
             courseSubjects={visibleCourseSubjects}
+            isLoadingCourses={coursesData === null}
             onSelectPole={(pole) => {
               setCourseEntrySubject(null);
               nav.handleSelectPole(pole);

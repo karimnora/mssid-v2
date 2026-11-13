@@ -2,6 +2,8 @@
 
 État local au 13 novembre 2026, branche `main`. Aucun push ni déploiement. La V1 reste gratuite, sans nouvelle offre commerciale affichée. Karim a validé les deux cours de référence ; la recette globale et le feu vert de publication restent à obtenir.
 
+Complément du même jour : [nouvel accueil illustré](2026-11-13-accueil-illustre.md), avec village V2, action principale mieux visible, matières remontées avant le compagnon sur téléphone et état de chargement du catalogue. Vérifications : 35 tests ciblés, huit parcours navigateur et TypeScript ; recette téléphone de Karim attendue.
+
 ## Ce qui est en place
 
 | Domaine | Amélioration disponible | Limite actuelle |
