@@ -1,9 +1,12 @@
 # TODO — prochaine version Android
 
-Mise à jour le 6 novembre 2026. Version Android préparée : `versionCode 14` / `versionName 1.0.13` (tag `v1.0.13`). La précédente version taguée était `v1.0.12` (`versionCode` 13). Le tag déclenche le workflow **Android Release Build**, qui génère l’APK et l’AAB signés ; cela ne publie pas l’application sur Google Play.
+Mise à jour le 14 novembre 2026. Version Android préparée : `versionCode 15` / `versionName 1.0.14` (tag `v1.0.14`). La précédente version taguée était `v1.0.13` (`versionCode` 14). Le tag déclenche le workflow **Android Release Build**, qui génère l’APK et l’AAB signés ; cela ne publie pas l’application sur Google Play.
 
 ## Corrections réalisées dans le code
 
+- [x] 1.0.14 : publier les missions guidées, le préscolaire enrichi et les enregistrements des cours 1AP–2AP et des histoires.
+- [x] Ne pas embarquer les enregistrements de cours (`course-cedar-*.mp3`, environ 159 Mo) : `npm run build:android` les retire de `dist`, et l'application les lit à la demande depuis https://mssid-dz.com. Paquet web Android mesuré : 68 Mo, au lieu d'environ 230 Mo (limite Google Play : 200 Mo).
+- [x] **Règle de publication : déployer le site avant de créer le tag Android.** Un enregistrement absent du site resterait muet dans l'application.
 - [x] Transmettre `VITE_GOOGLE_CLIENT_ID` au build Android et refuser une configuration de publication incomplète.
 - [x] Afficher le bouton Google dans l'application Android même si son initialisation échoue, avec une nouvelle tentative possible.
 - [x] Supprimer le workflow « Keep Render backend awake ».
@@ -22,7 +25,9 @@ Mise à jour le 6 novembre 2026. Version Android préparée : `versionCode 14` /
 - [ ] Sur un téléphone Android, valider le client Web Google utilisé par le backend, le package `dz.mssid.app` et le SHA-1 de signature Google Play ; tester connexion, annulation, nouvelle tentative et reconnexion.
 - [ ] Tester les liens et textes FR/AR dans un navigateur Android, l'application Android native, Safari iPhone/iPad et une application web déjà installée.
 - [ ] Tester une mise à jour par-dessus la version Play actuelle : session, progression, leçons, connexion Google et mot de passe.
-- [x] Augmenter la version dans `build.gradle` : **1.0.13 / `versionCode` 14**. Le tag `v1.0.13` déclenche `Android Release Build` ; la synchronisation Capacitor et la génération des fichiers signés sont effectuées par le workflow.
+- [ ] 1.0.14 : sur téléphone, vérifier qu'un titre de cours 1AP, une histoire du préscolaire et un cours 2AP se lisent avec le réseau ; sans réseau, vérifier que l'écran reste utilisable.
+- [x] Augmenter la version dans `build.gradle` : **1.0.14 / `versionCode` 15**. Le tag `v1.0.14` déclenche `Android Release Build`.
+- [x] (précédent) Augmenter la version dans `build.gradle` : **1.0.13 / `versionCode` 14**. Le tag `v1.0.13` déclenche `Android Release Build` ; la synchronisation Capacitor et la génération des fichiers signés sont effectuées par le workflow.
 - [ ] Récupérer l’APK et l’AAB 1.0.13 dans les artefacts du job, puis valider sur téléphone : imprimer une fiche (écriture, tamazight) et un certificat, changer plusieurs fois format/orientation dans l’aperçu, double appui sur « Imprimer » → plus de plantage « printing is already pending » (Play Vitals, Samsung J6 / Android 10).
 - [ ] Valider le nouvel AAB sur la piste interne Google Play avant une éventuelle diffusion publique.
 
