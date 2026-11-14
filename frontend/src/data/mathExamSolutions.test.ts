@@ -33,6 +33,7 @@ describe('math exam corrections', () => {
     const fence = OFFICIAL_EXAMS_DATA.find(exam => exam.id === 'exam-4ap-math-t3-b-2026')!;
     expect(fence.problemExercise.solutionAr).toContain('15 + 1 = 16');
     const purchase = OFFICIAL_EXAMS_DATA.find(exam => exam.id === 'exam-4ap-math-t1-b-2026')!;
-    expect(purchase.problemExercise.solutionAr).toContain('9,000 + 1,200 = 10,200');
+    // Thousands use the catalogue's narrow no-break space (U+202F), not a comma.
+    expect(purchase.problemExercise.solutionAr).toContain('9 000 + 1 200 = 10 200');
   });
 });
