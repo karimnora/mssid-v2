@@ -67,14 +67,14 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 ### Claude
 
 - [x] **CL-09 — Didou compagnon, le contenu** : pour chaque événement (bonne réponse, série, erreur, indice, fin), la pose et la phrase, au masculin et au féminin. Fait : `docs/v2-didou-phrases-lecon.md` (neutre par défaut, le profil n'a pas de genre).
-- [ ] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12.
+- [x] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12. Fait : `docs/v2-sac-de-didou.md`.
 - [x] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes. Fait : `docs/v2-carte-5ap.md` (le plan existant est juste, aucun changement de code).
 - [ ] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité.
 
 ### Codex
 
 - [ ] **CX-11 — Didou compagnon dans les leçons** de 5AP puis de 4AP (`docs/v2-didou-phrases-lecon.md`, section 4) : pose par événement, indice après une erreur, règle après une réussite, bouton « ساعدني ».
-- [ ] **CX-12 — Sac de Didou** (après CL-10) : générer les images des objets à partir des consignes de CL-10 (même style que les 8 mondes et les poses de Didou déjà dans `assets/world/`, WebP léger, aucun texte dans l'image), puis la collection par enfant, sauvegardée. Claude relit les images avant intégration.
+- [ ] **CX-12 — Sac de Didou** (`docs/v2-sac-de-didou.md`) : générer les images des objets à partir des consignes de CL-10 (même style que les 8 mondes et les poses de Didou déjà dans `assets/world/`, WebP léger, aucun texte dans l'image), puis la collection par enfant, sauvegardée. Claude relit les images avant intégration.
 - [ ] **CX-12b — Images restantes du monde de Didou** : île « espace » sans drapeaux, médailles 4 et 7 à refaire, décor de la Casbah moins « Santorin » (voir `docs/v2-pilote-prompts-nanobanana.md`). Claude relit avant intégration.
 - [ ] **CX-13 — Défi du jour** : un niveau de jeu lié à la dernière leçon, sans série à perdre.
 - [ ] **CX-14 — Ambiance sonore par monde**, avec un bouton pour couper, et **mode « données légères »** pour l'accueil. Le mode « données légères » est **une seule fonction partagée** (par exemple `utils/lightMode.ts`), réutilisée par le village, la planète (CX-15) et la carte. Elle est active si `navigator.connection.saveData` est vrai, si la connexion est lente (`effectiveType` en `2g` ou `slow-2g`) ou si le parent l'a choisie dans les réglages. Le mouvement réduit (`prefers-reduced-motion`) coupe les animations, mais pas les images.
