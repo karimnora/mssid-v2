@@ -51,7 +51,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 
 - [x] **CL-05 — Spécification du parcours 5AP maths** : accueil, mission du jour, leçon en cinq étapes, phrases de Didou tirées de `rulesAr` et `keyFormulas`, laboratoire lié, bilan parent. Avec les critères d'acceptation par écran. Fait : `docs/v2-spec-parcours-5ap-maths.md` (fractions et division ; 4 décisions ouvertes pour Karim).
 - [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant.
-- [ ] **CL-07 — Diagnostic d'arabe 5AP** : questions et barème, sur le modèle de `data/diagnostic/math5ap.ts`.
+- [x] **CL-07 — Diagnostic d'arabe 5AP** : questions et barème, sur le modèle de `data/diagnostic/math5ap.ts`. Fait : `frontend/src/data/diagnostic/arabic5ap.ts` (28 questions, 2 par compétence, à faire relire par un enseignant).
 - [ ] **CL-08 — Essais simulés 4AP, 1AP et préscolaire**, un rapport par niveau.
 
 ### Codex
@@ -59,7 +59,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-06 — Appliquer les trois piliers** (`docs/v2-offre-trois-piliers.md`, section 5) dans la fiche d'offre et le registre des droits, sans changer les accès.
 - [ ] **CX-07 — Construire le parcours 5AP maths** selon `docs/v2-spec-parcours-5ap-maths.md`, dans l'ordre de sa section 3. *Critère : les captures 360 × 640 et 390 × 844 correspondent à la spécification.*
 - [ ] **CX-08 — Corriger les blocages** relevés par CL-01 puis CL-08, du plus grave au moins grave. Claude rejoue l'essai après chaque correction.
-- [ ] **CX-09 — Brancher le diagnostic d'arabe 5AP** (après CL-07).
+- [ ] **CX-09 — Brancher le diagnostic d'arabe 5AP** : ajouter `ARABIC_5AP_DIAGNOSTIC` à `DIAGNOSTIC_SETS` (`data/diagnostic/index.ts`), laisser le parent choisir maths ou arabe dans `DiagnosticModal`, mettre à jour le libellé de `levelDiagnostic` dans `access/entitlements.ts` (« maths et arabe 5AP ») et le tableau généré. *Critère : le test ciblé `utils/diagnostic.test.ts` passe pour les deux matières.*
 - [ ] **CX-10 — Progression des jeux sauvegardée sur le serveur**, pour qu'un changement de téléphone ne la perde pas.
 
 ## Phase 2 — Immersion et attachement (22 décembre au 17 janvier)
