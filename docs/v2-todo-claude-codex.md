@@ -1,0 +1,108 @@
+# V2 — Répartition des tâches entre Claude et Codex (15 novembre 2026)
+
+Destinataires : Codex, Claude et Karim. Branche `v2` uniquement ; ne jamais toucher `main`.
+Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la référence de détail pour chaque sujet.
+
+## Qui fait quoi, et pourquoi
+
+| | Codex | Claude |
+|---|---|---|
+| Rôle principal | Construire et brancher : code de l'application, serveur, migrations, tests, mise en ligne, génération des images | Décider quoi construire et vérifier : pédagogie, contenu, textes, essais simulés, revue |
+| Pourquoi | Il lance déjà les tests et le serveur sur ce poste, et il a écrit la plus grande partie du code de `v2` | Il a écrit les missions et les contenus, connaît le programme officiel et rédige les consignes d'image |
+| Ne fait pas | Ne modifie ni questions, ni corrigés, ni règles de validation ; ne refait pas le dessin d'un écran sans spécification | Ne lance ni tests ni build sans le feu vert de Karim ; ne touche pas au serveur |
+
+## Règles de travail
+
+1. **Un seul responsable par tâche.** L'autre relit. Personne ne modifie un fichier d'une tâche qui n'est pas la sienne.
+2. **Ordre.** Une tâche marquée « après CL-xx » ou « après CX-xx » ne commence pas avant la fin de celle-ci.
+3. **Relecture croisée.** Claude relit chaque lot de code de Codex avant le commit. Codex lance les tests sur chaque lot de Claude.
+4. **Commits.** Chacun n'ajoute que ses propres fichiers (`git add` fichier par fichier). Messages en anglais, `feat(v2):`, `fix(v2):` ou `docs(v2):`.
+5. **Périmètre gelé.** Aucun nouveau monde, moteur de jeu ou atelier avant la fin de la phase 1.
+6. **Une case ne se coche qu'une fois le critère atteint**, avec le commit à côté.
+7. **Rien d'inventé** : pas de faux avis, de fausse progression ni de faux résultat d'essai. Les essais de Claude sont dits « simulés ».
+8. Les règles de `CLAUDE.md` restent valables : cibles de 60 px en préscolaire et 1AP, audio sur chaque consigne en 1AP et 2AP, pas de texte rouge, deux colonnes `الحل` / `العمليات`, tableau `الكلمة` / `إعرابها`, aucun prix dans l'application Android.
+
+## Phase 0 — Geler et mettre en ligne (16 au 30 novembre)
+
+### Codex
+
+- [ ] **CX-00 — Vérifier la fusion de la V1 dans la V2** (commit `924f059`, 15 novembre ; sauvegarde : étiquette `v2-backup-before-v1-merge-20261115`). Lancer TypeScript, la suite Vitest et le build ; corriger ce qui casse sans changer les choix de fusion décrits dans le message du commit. Refaire ensuite, sur la nouvelle carte compagnon de la V1, l'affichage du Didou 3D du monde (`world/DidouPortrait`), perdu dans la fusion. *Critère : TypeScript sans erreur, tests et build verts.*
+
+- [ ] **CX-01 — Serveur et site V2 hébergés.** Service Render V2 sur sa propre base vide, migrations V100 à V108 passées, site de test branché dessus. Karim fournit les accès. *Critère : inscription, progression et code d'activation fonctionnent sans laisser de trace dans la V1.*
+- [ ] **CX-02 — APK bêta.** Compiler `assembleBeta` (`dz.mssid.app.beta`) pour que Karim l'installe à côté de la V1. *Critère : connexion Google et compte Premium reconnus sur le téléphone.*
+- [ ] **CX-03 — Étoiles des jeux par enfant.** Vérifier que `mssid_learning_games_v1` (`LearningGameEntry.tsx`) est bien séparée par enfant ; sinon, une clé par enfant avec reprise de l'ancienne. *Critère : test avec deux profils qui ne partagent aucune étoile.*
+- [ ] **CX-04 — Consentement parental** (lot A de `v2-todo-conformite-anpdp.md`) : case obligatoire non cochée à l'inscription et à la connexion Google, refus côté serveur, date et version enregistrées. Texte fourni par CL-03.
+- [ ] **CX-05 — Village ouvert aux comptes gratuits**, avec les cadenas dorés sur ce qui est Premium (aujourd'hui réservé à `isPremiumRole && designMode === 'world'`). *Critère : un compte gratuit voit le village ; aucun prix affiché.*
+
+### Claude
+
+- [ ] **CL-01 — Essais simulés 5AP** (après le feu vert de Karim, sur la V2 lancée en local). Huit profils, rapport dans `docs/v2-essais-simules-5ap.md` : chaque blocage avec capture, gravité et correction proposée.
+- [ ] **CL-02 — L'offre en trois piliers.** Spécification et textes arabe et français : l'aventure de Didou, le suivi du parent, la réussite aux examens. Dit quelle clé de `access/entitlements.ts` va dans quel pilier. Codex l'applique en CX-06.
+- [ ] **CL-03 — Texte du consentement parental** en arabe et en français, adressé au parent, avec sa version. Nécessaire à CX-04.
+- [ ] **CL-04 — Revue des écrans Android** à partir du code : relever tout mot lié au prix ou à l'achat, en particulier `MosaicWorkshop`, `PremiumLearningLabs` et `GardenMission`.
+
+## Phase 1 — Parcours 5AP de référence et essais simulés (1 au 21 décembre)
+
+### Claude
+
+- [ ] **CL-05 — Spécification du parcours 5AP maths** : accueil, mission du jour, leçon en cinq étapes, phrases de Didou tirées de `rulesAr` et `keyFormulas`, laboratoire lié, bilan parent. Avec les critères d'acceptation par écran.
+- [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant.
+- [ ] **CL-07 — Diagnostic d'arabe 5AP** : questions et barème, sur le modèle de `data/diagnostic/math5ap.ts`.
+- [ ] **CL-08 — Essais simulés 4AP, 1AP et préscolaire**, un rapport par niveau.
+
+### Codex
+
+- [ ] **CX-06 — Appliquer les trois piliers** (après CL-02) dans la fiche d'offre et le registre des droits, sans changer les accès.
+- [ ] **CX-07 — Construire le parcours 5AP maths** (après CL-05). *Critère : les captures 360 × 640 et 390 × 844 correspondent à la spécification.*
+- [ ] **CX-08 — Corriger les blocages** relevés par CL-01 puis CL-08, du plus grave au moins grave. Claude rejoue l'essai après chaque correction.
+- [ ] **CX-09 — Brancher le diagnostic d'arabe 5AP** (après CL-07).
+- [ ] **CX-10 — Progression des jeux sauvegardée sur le serveur**, pour qu'un changement de téléphone ne la perde pas.
+
+## Phase 2 — Immersion et attachement (22 décembre au 17 janvier)
+
+### Claude
+
+- [ ] **CL-09 — Didou compagnon, le contenu** : pour chaque événement (bonne réponse, série, erreur, indice, fin), la pose et la phrase, au masculin et au féminin.
+- [ ] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12.
+- [ ] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes.
+- [ ] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité.
+
+### Codex
+
+- [ ] **CX-11 — Didou compagnon dans les leçons** de 5AP puis de 4AP (après CL-09) : pose par événement, indice après une erreur, règle après une réussite, bouton « ساعدني ».
+- [ ] **CX-12 — Sac de Didou** (après CL-10) : générer les images des objets à partir des consignes de CL-10 (même style que les 8 mondes et les poses de Didou déjà dans `assets/world/`, WebP léger, aucun texte dans l'image), puis la collection par enfant, sauvegardée. Claude relit les images avant intégration.
+- [ ] **CX-12b — Images restantes du monde de Didou** : île « espace » sans drapeaux, médailles 4 et 7 à refaire, décor de la Casbah moins « Santorin » (voir `docs/v2-pilote-prompts-nanobanana.md`). Claude relit avant intégration.
+- [ ] **CX-13 — Défi du jour** : un niveau de jeu lié à la dernière leçon, sans série à perdre.
+- [ ] **CX-14 — Ambiance sonore par monde**, avec un bouton pour couper, et **mode « données légères »** pour l'accueil.
+- [ ] **CX-15 — Carte 5AP** (après CL-11) et vérification des stations sur un écran de téléphone.
+
+## Phase 3 — Offre professionnelle et conformité (5 janvier au 7 février)
+
+### Claude
+
+- [ ] **CL-13 — Page « Premium Famille »** : plan de la page, textes arabe et français, questions fréquentes, tableau gratuit / Premium court.
+- [ ] **CL-14 — Projets de conditions de vente et de mise à jour de la politique de confidentialité**, à faire valider par un juriste avant publication.
+- [ ] **CL-15 — Dossier de conformité interne** (lot E) et brouillon du registre des traitements pour Karim.
+- [ ] **CL-16 — Fiche Google Play et plaquette écoles** : textes et choix des captures, sans aucun prix sur la fiche.
+
+### Codex
+
+- [ ] **CX-16 — Construire la page « Premium Famille »** (après CL-13), avec le profil de démonstration clairement indiqué.
+- [ ] **CX-17 — Essai Premium de 7 jours** : une fois par compte, lancé depuis le site, 2 sujets blancs au plus.
+- [ ] **CX-18 — Droits du parent** (lot B) : export des données, suppression complète, liens légaux en bas de page.
+- [ ] **CX-19 — Conservation** (lot C) : purge de nuit, comptes inactifs, Sentry sans données personnelles, aucun appel à une IA.
+
+## Phase 4 — Ouverture de la vente (8 février au 7 mars 2027)
+
+- [ ] **CX-20 — Mesure du parcours** : inscription, activité chaque semaine, carnet activé, essai, paiement ; indicateur « leçon terminée dans les 24 h ».
+- [ ] **CX-21 — Alerte au parent** le jour où l'enfant bloque, et résumé par jeu dans le carnet.
+- [ ] **CL-17 — Textes de campagne** : avant les compositions du 2e trimestre, Ramadan, e-mail du jeudi.
+- [ ] **CL-18 — Essai simulé du parcours d'achat** : essai, code d'activation, reçu, fin d'abonnement et retour au gratuit.
+
+## Ce qui dépend de Karim
+
+- [ ] Donner le feu vert aux essais simulés (CL-01) et dire à Codex que le périmètre est gelé.
+- [ ] Accès Render et client Google de l'APK bêta (CX-01, CX-02), puis installer l'APK sur un téléphone.
+- [ ] Compte ANPDP, registre des traitements, demande de transfert vers l'étranger.
+- [ ] Statut juridique (ANAE ou registre de commerce) et choix de la passerelle de paiement.
+- [ ] Trouver un enseignant relecteur de 5AP et 3 à 5 familles volontaires parmi les utilisateurs de la V1.
