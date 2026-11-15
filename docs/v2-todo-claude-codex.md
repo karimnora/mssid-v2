@@ -20,7 +20,8 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 5. **Périmètre gelé.** Aucun nouveau monde, moteur de jeu ou atelier avant la fin de la phase 1.
 6. **Une case ne se coche qu'une fois le critère atteint**, avec le commit à côté.
 7. **Rien d'inventé** : pas de faux avis, de fausse progression ni de faux résultat d'essai. Les essais de Claude sont dits « simulés ».
-8. Les règles de `CLAUDE.md` restent valables : cibles de 60 px en préscolaire et 1AP, audio sur chaque consigne en 1AP et 2AP, pas de texte rouge, deux colonnes `الحل` / `العمليات`, tableau `الكلمة` / `إعرابها`, aucun prix dans l'application Android.
+8. **Tests ciblés pendant le développement (Karim, 15 novembre 2026), pour Claude comme pour Codex.** Après chaque lot, ne lancer que les tests des fichiers modifiés (`npx vitest run <fichiers>` ou leurs tests voisins). Pas de suite complète, pas de build, pas de tests navigateur à chaque lot. La batterie complète se fait une seule fois, à la fin (CX-23), avant la mise en ligne.
+9. Les règles de `CLAUDE.md` restent valables : cibles de 60 px en préscolaire et 1AP, audio sur chaque consigne en 1AP et 2AP, pas de texte rouge, deux colonnes `الحل` / `العمليات`, tableau `الكلمة` / `إعرابها`, aucun prix dans l'application Android.
 
 ## Phase 0 — Geler et faire tourner la V2 en local (16 au 30 novembre)
 
@@ -28,7 +29,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 
 ### Codex
 
-- [ ] **CX-00 — Vérifier la fusion de la V1 dans la V2** (commit `924f059`, 15 novembre ; sauvegarde : étiquette `v2-backup-before-v1-merge-20261115`). Lancer TypeScript, la suite Vitest et le build ; corriger ce qui casse sans changer les choix de fusion décrits dans le message du commit. Refaire ensuite, sur la nouvelle carte compagnon de la V1, l'affichage du Didou 3D du monde (`world/DidouPortrait`), perdu dans la fusion. *Critère : TypeScript sans erreur, tests et build verts.*
+- [ ] **CX-00 — Vérifier la fusion de la V1 dans la V2** (commit `924f059`, 15 novembre ; sauvegarde : étiquette `v2-backup-before-v1-merge-20261115`). Lancer seulement les tests liés aux 39 fichiers résolus à la main (liste dans le message du commit) ; corriger ce qui casse sans changer les choix de fusion. La suite complète et le build attendent CX-23. Refaire ensuite, sur la nouvelle carte compagnon de la V1, l'affichage du Didou 3D du monde (`world/DidouPortrait`), perdu dans la fusion. *Critère : les tests ciblés passent.*
 
 - [ ] **CX-01 — Pile V2 complète en local.** Faire tourner `compose.v2.yml` (site, serveur Spring profil `v2`, PostgreSQL vide) sur le PC de Karim avec la V2 fusionnée : migrations V100 à V108 passées, site sur http://localhost:3002. Ajouter deux scripts à double-cliquer à la racine, `v2-demarrer.cmd` et `v2-arreter.cmd` (arrêt sans `-v`, les comptes de test sont gardés). Créer en local un compte administrateur et un compte Premium fictifs, et noter dans `docs/v2-tests-isoles.md` comment les recréer. *Critère : inscription, profils enfants, progression, carnet parent et activation d'un code fonctionnent, sans aucune requête vers la V1.*
 - [ ] **CX-02 — Tester sur un téléphone, en local.** Permettre, seulement quand Karim le demande, d'ouvrir le site local depuis un téléphone sur le même Wi-Fi (adresse du PC, port 3002), sans exposer le PC à Internet. *Critère : connexion, leçon et carnet parent utilisables dans Chrome Android.* L'APK bêta n'est pas possible en local (il exige un serveur HTTPS) : il passe dans CX-22.
@@ -93,7 +94,8 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-17 — Essai Premium de 7 jours** : une fois par compte, lancé depuis le site, 2 sujets blancs au plus.
 - [ ] **CX-18 — Droits du parent** (lot B) : export des données, suppression complète, liens légaux en bas de page.
 - [ ] **CX-19 — Conservation** (lot C) : purge de nuit, comptes inactifs, Sentry sans données personnelles, aucun appel à une IA.
-- [ ] **CX-22 — Mise en ligne, quand Karim déclare le produit fini.** Push de `v2` (sans forcer), serveur V2 hébergé sur sa propre base vide, site de test, client Google de l'APK bêta, APK `assembleBeta` installé sur un vrai téléphone. Les réglages des tableaux de bord sont vérifiés avant le premier push (`docs/v2-tests-isoles.md`). *Critère : les parcours testés en local fonctionnent aussi en ligne et sur l'APK, sans trace dans la V1.*
+- [ ] **CX-23 — Batterie complète de fin**, une seule fois, quand Karim déclare le produit fini et avant CX-22 : TypeScript, suite Vitest complète, tests du serveur, build, tests navigateur. Corriger tout ce qui casse. Claude rejoue ensuite tous les essais simulés sur la version finale.
+- [ ] **CX-22 — Mise en ligne, après CX-23.** Push de `v2` (sans forcer), serveur V2 hébergé sur sa propre base vide, site de test, client Google de l'APK bêta, APK `assembleBeta` installé sur un vrai téléphone. Les réglages des tableaux de bord sont vérifiés avant le premier push (`docs/v2-tests-isoles.md`). *Critère : les parcours testés en local fonctionnent aussi en ligne et sur l'APK, sans trace dans la V1.*
 
 ## Phase 4 — Ouverture de la vente (8 février au 7 mars 2027)
 
