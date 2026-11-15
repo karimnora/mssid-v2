@@ -35,6 +35,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-02 — Tester sur un téléphone, en local.** Permettre, seulement quand Karim le demande, d'ouvrir le site local depuis un téléphone sur le même Wi-Fi (adresse du PC, port 3002), sans exposer le PC à Internet. *Critère : connexion, leçon et carnet parent utilisables dans Chrome Android.* L'APK bêta n'est pas possible en local (il exige un serveur HTTPS) : il passe dans CX-22.
 - [ ] **CX-03 — Étoiles des jeux par enfant.** Vérifier que `mssid_learning_games_v1` (`LearningGameEntry.tsx`) est bien séparée par enfant ; sinon, une clé par enfant avec reprise de l'ancienne. *Critère : test avec deux profils qui ne partagent aucune étoile.*
 - [ ] **CX-04 — Consentement parental** (lot A de `v2-todo-conformite-anpdp.md`) : case obligatoire non cochée à l'inscription et à la connexion Google, refus côté serveur, date et version enregistrées. Textes : `docs/v2-consentement-parental.md`.
+- [ ] **CX-24 — Android sans mot de paiement, suite de CL-04** (`docs/v2-revue-android-paiement.md`) : section « الاشتراك والدفع » des conditions d'utilisation remplacée par le texte neutre proposé quand l'application tourne sur Android ; garde-fou `NativeNoPaymentWording.test.tsx` étendu au rendu des écrans listés. *Critère : le test ciblé passe et attrape l'ancien texte.*
 - [ ] **CX-05 — Village ouvert aux comptes gratuits**, avec les cadenas dorés sur ce qui est Premium (aujourd'hui réservé à `isPremiumRole && designMode === 'world'`). *Critère : un compte gratuit voit le village ; aucun prix affiché.*
 
 ### Claude
@@ -42,7 +43,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CL-01 — Essais simulés 5AP** (après le feu vert de Karim, sur la V2 lancée en local). Huit profils, rapport dans `docs/v2-essais-simules-5ap.md` : chaque blocage avec capture, gravité et correction proposée.
 - [x] **CL-02 — L'offre en trois piliers.** Fait : `docs/v2-offre-trois-piliers.md`. Spécification et textes arabe et français : l'aventure de Didou, le suivi du parent, la réussite aux examens. Dit quelle clé de `access/entitlements.ts` va dans quel pilier. Codex l'applique en CX-06.
 - [x] **CL-03 — Texte du consentement parental** en arabe et en français, adressé au parent, avec sa version. Fait : `docs/v2-consentement-parental.md` (version `parental-consent-2026-11-v1`). Nécessaire à CX-04.
-- [ ] **CL-04 — Revue des écrans Android** à partir du code : relever tout mot lié au prix ou à l'achat, en particulier `MosaicWorkshop`, `PremiumLearningLabs` et `GardenMission`.
+- [x] **CL-04 — Revue des écrans Android** à partir du code : relever tout mot lié au prix ou à l'achat, en particulier `MosaicWorkshop`, `PremiumLearningLabs` et `GardenMission`. Fait : `docs/v2-revue-android-paiement.md` (3 points à corriger, CX-24).
 
 ## Phase 1 — Parcours 5AP de référence et essais simulés (1 au 21 décembre)
 
@@ -84,7 +85,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 ### Claude
 
 - [ ] **CL-13 — Page « Premium Famille »** : plan de la page, textes arabe et français, questions fréquentes, tableau gratuit / Premium court.
-- [ ] **CL-14 — Projets de conditions de vente et de mise à jour de la politique de confidentialité**, à faire valider par un juriste avant publication.
+- [ ] **CL-14 — Projets de conditions de vente et de mise à jour de la politique de confidentialité**, à faire valider par un juriste avant publication Inclure les points 1 et 2 de `docs/v2-revue-android-paiement.md` (offres 3 et 12 mois, codes d'activation, reçus, aucun moyen de paiement nommé dans la version Android).
 - [ ] **CL-15 — Dossier de conformité interne** (lot E) et brouillon du registre des traitements pour Karim.
 - [ ] **CL-16 — Fiche Google Play et plaquette écoles** : textes et choix des captures, sans aucun prix sur la fiche.
 
