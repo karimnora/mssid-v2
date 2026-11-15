@@ -68,7 +68,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 
 - [x] **CL-09 — Didou compagnon, le contenu** : pour chaque événement (bonne réponse, série, erreur, indice, fin), la pose et la phrase, au masculin et au féminin. Fait : `docs/v2-didou-phrases-lecon.md` (neutre par défaut, le profil n'a pas de genre).
 - [ ] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12.
-- [ ] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes.
+- [x] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes. Fait : `docs/v2-carte-5ap.md` (le plan existant est juste, aucun changement de code).
 - [ ] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité.
 
 ### Codex
@@ -78,10 +78,10 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-12b — Images restantes du monde de Didou** : île « espace » sans drapeaux, médailles 4 et 7 à refaire, décor de la Casbah moins « Santorin » (voir `docs/v2-pilote-prompts-nanobanana.md`). Claude relit avant intégration.
 - [ ] **CX-13 — Défi du jour** : un niveau de jeu lié à la dernière leçon, sans série à perdre.
 - [ ] **CX-14 — Ambiance sonore par monde**, avec un bouton pour couper, et **mode « données légères »** pour l'accueil. Le mode « données légères » est **une seule fonction partagée** (par exemple `utils/lightMode.ts`), réutilisée par le village, la planète (CX-15) et la carte. Elle est active si `navigator.connection.saveData` est vrai, si la connexion est lente (`effectiveType` en `2g` ou `slow-2g`) ou si le parent l'a choisie dans les réglages. Le mouvement réduit (`prefers-reduced-motion`) coupe les animations, mais pas les images.
-- [ ] **CX-15 — Planète de Didou, carte 5AP et mode léger** (après CL-11, en même temps que CX-14).
+- [ ] **CX-15 — Planète de Didou, carte 5AP et mode léger** (en même temps que CX-14).
   1. **Garder et réutiliser la planète tournante existante** (`components/journey/PlanetHub.tsx` : rotation avec les boutons « أدر الكوكب » / « Tourner la planète », 8 mondes, médailles). Ne pas en dessiner une nouvelle.
   2. **En faire l'accès aux mondes depuis le village**, en arabe et en français. En arabe : un lieu ou un bouton « كوكب ديدو » dans `components/home/DidouVillageHome.tsx` ouvre la planète, et un bouton visible ramène au village en un tap. En français, tant que le village n'existe pas dans cette langue : la carte « La planète de Didou » de l'accueil (`HomeView`, déjà présente) ouvre la même planète. Les textes de la planète passent déjà par `pickText` ; vérifier que chaque libellé, bulle de Didou et nom de monde existe dans les deux langues.
-  3. **Relier les mondes aux stations 5AP** selon le tableau de CL-11, dans `data/journey/journeyWorlds.ts`. Chaque station ouvre une vraie leçon du catalogue, validée seulement par un quiz réussi à 100 % (règle F-10). Mondes 1 et 2 gratuits, mondes 3 à 8 avec le cadenas doré (`journeyAllWorlds`), sans prix.
+  3. **Stations 5AP : déjà reliées** (`PLAN_5AP`, vérifié en CL-11, `docs/v2-carte-5ap.md`). Il reste à vérifier sur un écran de téléphone que les 24 stations s'affichent sans chevaucher les décors ni les stations de jeux, en arabe et en français. Mondes 1 et 2 gratuits, mondes 3 à 8 avec le cadenas doré (`journeyAllWorlds`), sans prix.
   4. **Affichage statique en mode « données légères »** (fonction de CX-14) : une image fixe et légère de la planète, sans rotation animée, sans ambiance sonore ni décor animé. Les 8 mondes restent atteignables par des boutons de 60 px au moins (les flèches de rotation changent le monde affiché, sans animation). Décor de la planète d'environ 120 Ko au plus dans ce mode.
   *Critères : depuis le village, une station 5AP s'ouvre en trois taps au plus ; même parcours en français depuis l'accueil ; en mode léger, aucune animation ni son ne se lance et la planète reste utilisable ; captures en 360 × 640 et 390 × 844, en arabe et en français ; tests ciblés des fichiers modifiés.*
 
