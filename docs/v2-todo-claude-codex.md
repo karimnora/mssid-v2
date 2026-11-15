@@ -50,7 +50,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 ### Claude
 
 - [x] **CL-05 — Spécification du parcours 5AP maths** : accueil, mission du jour, leçon en cinq étapes, phrases de Didou tirées de `rulesAr` et `keyFormulas`, laboratoire lié, bilan parent. Avec les critères d'acceptation par écran. Fait : `docs/v2-spec-parcours-5ap-maths.md` (fractions et division ; 4 décisions ouvertes pour Karim).
-- [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant.
+- [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant. En cours : `docs/v2-relecture-5ap.md` (lot 1 fractions et division relu le 15 novembre ; 4 points à corriger dans la division).
 - [x] **CL-07 — Diagnostic d'arabe 5AP** : questions et barème, sur le modèle de `data/diagnostic/math5ap.ts`. Fait : `frontend/src/data/diagnostic/arabic5ap.ts` (28 questions, 2 par compétence, à faire relire par un enseignant).
 - [ ] **CL-08 — Essais simulés 4AP, 1AP et préscolaire**, un rapport par niveau.
 
