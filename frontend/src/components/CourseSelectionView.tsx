@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
-import { Card, Badge, Button } from './ui';
-import { BookOpen, ChevronLeft, Star, Lock } from 'lucide-react';
-import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLessonLayout';
+import { Card } from './ui';
+import { BookOpen, Lock } from 'lucide-react';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
-import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { speakText, speechLangForSubject, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { useTranslation } from '../hooks/useTranslation';
-import { getOfficialAxisLabel } from '../utils/curriculumMeta';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { SubjectIllustratedCard, SubjectVectorIllustration } from './SubjectIllustratedCard';
 import { LessonIllustratedCard } from './LessonIllustratedCard';
+import { useLocaleContext } from '../context/LocaleContext';
+import didouGuide from '../assets/v2-reused/didou-point.webp';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -31,41 +32,9 @@ interface CourseSelectionViewProps {
   onSubjectStepBackChange?: (action: (() => void) | null) => void;
 }
 
-const SUBJECT_EMOJI: Record<string, string> = {
-  math: '📐',
-  arabic: '📗',
-  tamazight: 'ⵣ',
-  science: '🧪',
-  art: '🎨',
-  history_geo: '🧭',
-  islamic: '🕌',
-  civics: '⚖️',
-  french: '🇫🇷',
-  english: '🇬🇧',
-};
-
-const SUBJECT_CARD: Record<string, string> = {
-  arabic: 'kids-card-arabe',
-  math: 'kids-card-maths',
-  french: 'kids-card-francais',
-  science: 'kids-card-sciences',
-  art: 'kids-card-civics',
-  islamic: 'kids-card-islamique',
-  history_geo: 'kids-card-histoire',
-  civics: 'kids-card-civics',
-  english: 'kids-card-english',
-  tamazight: 'kids-card-amazigh',
-};
-
 // Subjects whose lesson text reads left-to-right — flips only the card's text content, never the
 // surrounding RTL layout (a fully mirrored grid would be unverifiable without a real browser here).
 const LTR_SUBJECTS: SubjectId[] = ['french', 'english', 'tamazight'];
-
-const TRIMESTER_LABELS: Record<1 | 2 | 3, string> = {
-  1: 'الفصل الأول (Trimestre 1)',
-  2: 'الفصل الثاني (Trimestre 2)',
-  3: 'الفصل الثالث (Trimestre 3)',
-};
 
 // Algerian school year ≈ Sept-Dec (T1) / Jan-Mar (T2) / Apr-Jun (T3); defaults to T1 outside that
 // window (summer break) per the spec ("le trimestre en cours ou le Trimestre 1").
@@ -119,6 +88,8 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   onSubjectStepBackChange,
 }) => {
   const t = useTranslation('courses');
+  const { locale, direction } = useLocaleContext();
+  const reduceMotion = useReducedMotion();
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(() =>
     initialSubjectId && courseSubjects.some((subject) => subject.id === initialSubjectId)
       ? initialSubjectId
@@ -142,18 +113,27 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   // 1AP-3AP: these readers are still fragile, so every screen (not just lesson content) gets a
   // listen button on its instructions and subject names — matching the audio guidance level inside
   // a lesson instead of leaving the child alone with plain text until they've picked a subject.
-  const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const audioGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const voiceReading = useFeatureFlag('voiceReading');
   const [speakingKey, setSpeakingKey] = useState<string | null>(null);
-  const voiceAvailable = useVoiceAvailable('ar-SA');
+  const voiceAvailable = useVoiceAvailable(locale === 'fr' ? 'fr-FR' : 'ar-SA');
+  const arabicVoiceAvailable = useVoiceAvailable('ar-SA');
+  const lessonLang = speechLangForSubject(selectedSubject ?? 'math');
+  const lessonVoiceAvailable = useVoiceAvailable(lessonLang);
+  const showAudio = audioGrade && voiceReading && (grade !== '3AP' || voiceAvailable === true);
+  const showSubjectAudio = audioGrade && voiceReading && (grade !== '3AP' || arabicVoiceAvailable === true);
+  const showLessonAudio = audioGrade && voiceReading && selectedSubject !== 'tamazight' && (grade !== '3AP' || lessonVoiceAvailable === true);
   useEffect(() => stopSpeech, []);
   const handleSpeak = (key: string, text: string) => {
+    if (!voiceReading) return;
     if (speakingKey === key) {
       stopSpeech();
       setSpeakingKey(null);
       return;
     }
     setSpeakingKey(key);
-    void speakText(text, 'ar-SA', 0.85).then(() => {
+    const lang = key.startsWith('lesson-') ? lessonLang : /[\u0600-\u06ff]/u.test(text) ? 'ar-SA' : 'fr-FR';
+    void speakText(text, lang, 0.85).then(() => {
       setSpeakingKey((prev) => (prev === key ? null : prev));
     });
   };
@@ -163,37 +143,23 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
 
   if (!selectedSubject) {
     return (
-      <div className="space-y-4" dir="rtl">
-        {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
-        <div className="flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-2 min-w-0">
-            {showAudio && (
-              <TapSpeakButton
-                snippetKey="step1-heading"
-                text={grade === '1AP' ? "اختر المادة التي تريد مراجعتها يا بطل" : "اختر المادة التي تريد مراجعتها"}
-                speakingKey={speakingKey}
-                onSpeak={handleSpeak}
-              />
-            )}
-            <div>
-              <h2 className="text-lg font-black text-[var(--app-text)]">
-                {grade === '1AP' ? 'المواد الدراسية المقررة — السنة الأولى ابتدائي 🌟' : `المواد الدراسية المقررة — ${grade}`}
-              </h2>
-              <p className="text-xs text-[var(--app-text-muted)] mt-0.5 font-bold">
-                {isFrenchFreeGrade(grade)
-                  ? 'المقرر الدراسي الجزائري الرسمي — طور التعليم المبكر'
-                  : 'Matières du programme officiel algérien'}
-              </p>
-            </div>
+      <div className="course-browser space-y-5" dir={direction} data-course-browser="subjects">
+        <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || arabicVoiceAvailable === false)} />
+        <header className="course-catalog-heading flex items-center gap-4">
+          <img src={didouGuide} alt="" width={64} height={92} decoding="async" className="w-16 h-[92px] object-contain shrink-0" />
+          <div className="min-w-0 flex-1 space-y-2">
+            <span className="course-eyebrow">{grade} · {t('subjectsCountLabel', { count: visibleSubjects.length })}</span>
+            <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)]">{t('catalogHeading')}</h1>
+            <p className="text-sm text-[var(--app-text-muted)] leading-relaxed">{t('catalogSubtitle')}</p>
           </div>
-          <Badge variant="info">{visibleSubjects.length} مواد</Badge>
-        </div>
+          {showAudio && <TapSpeakButton snippetKey="step1-heading" text={t('catalogSubtitle')} speakingKey={speakingKey} onSpeak={handleSpeak} />}
+        </header>
 
         {/* Schoolmouv-style illustrated banners: single column on mobile, 2 columns on tablet/desktop */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4"
           variants={subjectGridVariants}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           animate="show"
         >
           {visibleSubjects.map((subj) => {
@@ -205,7 +171,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
             ).length;
 
             return (
-              <motion.div key={subj.id} variants={subjectCardItemVariants} className="h-full">
+              <motion.div key={subj.id} variants={subjectCardItemVariants} className="h-full" data-course-subject={subj.id}>
                 <SubjectIllustratedCard
                   id={subj.id}
                   nameAr={subj.nameAr}
@@ -214,7 +180,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                   totalLessons={subjectLessons.length}
                   completedLessons={completedCount}
                   onClick={() => setSelectedSubject(subj.id)}
-                  showAudio={showAudio}
+                  showAudio={showSubjectAudio}
                   speakingKey={speakingKey}
                   onSpeak={handleSpeak}
                 />
@@ -268,11 +234,15 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
       ? Math.round((activeTermCompleted / activeTermLessons.length) * 100)
       : 0;
 
+  const allTermDone = termLessons.length > 0 && termLessons.every(lesson => completedLessonIds.includes(lesson.id));
+  const suggestedLesson = termLessons.find(lesson => !completedLessonIds.includes(lesson.id) && !isLessonLocked?.(lesson))
+    ?? (allTermDone ? termLessons.find(lesson => !isLessonLocked?.(lesson)) : undefined);
+
   // STEP 2 (trimester tabs) + STEP 3 (that trimester's lessons only) — one screen, never all three
   // trimesters shown together, matching "ne jamais afficher les 3 trimestres en même temps".
   return (
-    <div className="space-y-4 sm:space-y-5" dir="rtl">
-      {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
+    <div className="course-browser space-y-4 sm:space-y-5" dir={direction} data-course-browser="lessons">
+      <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || lessonVoiceAvailable === false)} />
       <CourseBreadcrumb
         grade={grade}
         subjectId={selectedSubject}
@@ -281,135 +251,51 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
         onSubjectClick={() => setSelectedSubject(null)}
       />
 
-      {/* Header Banner for Selected Subject */}
-      <div className="kids-pop bg-white dark:bg-slate-900 border-2 border-[#E7E2D7] dark:border-slate-800 rounded-[28px] p-5 sm:p-6 relative overflow-hidden shadow-xs">
-        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-4 min-w-0">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative shadow-xs">
-              <div className="w-24 h-24 absolute -bottom-2 -end-2">
-                <SubjectVectorIllustration id={selectedSubject} />
-              </div>
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] truncate">
-                  {subjectInfo?.nameAr}
-                </h1>
-                <Badge variant="success">{grade}</Badge>
-                {showAudio && subjectInfo && (
-                  <TapSpeakButton
-                    snippetKey="step2-subject"
-                    text={subjectInfo.nameAr}
-                    speakingKey={speakingKey}
-                    onSpeak={handleSpeak}
-                  />
-                )}
-              </div>
-              <p className="text-xs sm:text-sm text-[var(--app-text-muted)] font-semibold mt-0.5">
-                {subjectInfo?.nameFr} — المقرر الدراسي الجزائري الرسمي
-              </p>
-            </div>
+      <header className="course-subject-heading">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="course-subject-art shrink-0"><SubjectVectorIllustration id={selectedSubject} /></div>
+          <div className="min-w-0 flex-1">
+            <span className="course-eyebrow">{grade} · {t('trimesterPrefixLabel')} {selectedTrimester}</span>
+            <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] break-words">{locale === 'fr' ? subjectInfo?.nameFr : subjectInfo?.nameAr}</h1>
+            <p className="text-sm text-[var(--app-text-muted)] mt-1">{t('completedLessonsLabel', { count: activeTermCompleted, total: activeTermLessons.length })}</p>
           </div>
-
-          <div className="flex items-center gap-3 self-end sm:self-center">
-            <div className="text-center bg-slate-50 dark:bg-slate-800/90 rounded-2xl px-5 py-2.5 border border-slate-100 dark:border-slate-700/60 shadow-xs">
-              <span dir="ltr" className="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-tight">
-                {activeTermCompleted} / {activeTermLessons.length}
-              </span>
-              <span className="text-[11px] font-extrabold text-[var(--app-text-muted)]">
-                دروس مكتملة (الفصل {selectedTrimester})
-              </span>
-            </div>
-          </div>
+          {showAudio && subjectInfo && <TapSpeakButton snippetKey="step2-subject" text={locale === 'fr' ? subjectInfo.nameFr : subjectInfo.nameAr} speakingKey={speakingKey} onSpeak={handleSpeak} />}
         </div>
-
-        {/* Trimester Progress Mini-bar */}
-        <div className="mt-4 w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5">
-          <div
-            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500"
-            style={{ width: `${activeTermPercent}%` }}
-          />
+        <div className="course-progress-track" role="progressbar" aria-label={t('courseProgressLabel')} aria-valuemin={0} aria-valuemax={100} aria-valuenow={activeTermPercent}>
+          <div style={{ width: activeTermPercent + '%' }} />
         </div>
-      </div>
+      </header>
 
       {/* STEP 2 — 3 Grands onglets de Trimestre avec badges d'avancement intégrés */}
-      <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5">
-        {([1, 2, 3] as const).map((t) => {
-          const isActive = selectedTrimester === t;
-          const isLocked = isTrimesterLocked(t);
-          const stat = trimesterStats[t - 1];
-
-          return (
-            <motion.button
-              key={t}
-              onClick={() => setSelectedTrimester(t)}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className={`relative rounded-2xl p-3 sm:p-4 font-black transition-all cursor-pointer flex flex-col items-center justify-center gap-1 min-h-[76px] sm:min-h-[84px] text-center ${
-                isActive
-                  ? 'text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-2 border-[#E7E2D7] dark:border-slate-700/80 hover:border-slate-300'
-              }`}
-            >
-              {isActive && (
-                <motion.span
-                  layoutId="term-tab-active"
-                  className={`absolute inset-0 rounded-2xl ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-maths'}`}
-                  transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                />
-              )}
-
-              <div className="relative z-10 flex flex-col items-center justify-center w-full">
-                <div className="flex items-center gap-1.5 justify-center">
-                  {isLocked && <Lock className="w-3.5 h-3.5 shrink-0 text-amber-300" />}
-                  {grade === '1AP' || grade === '2AP' ? (
-                    <span className="text-base sm:text-lg font-black leading-tight">
-                      الفصل {t}
-                    </span>
-                  ) : (
-                    <span className="text-xs sm:text-sm font-black leading-tight">
-                      {isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}
-                    </span>
-                  )}
-                </div>
-
-                {/* Progress pill on each trimester tab */}
-                <div className="mt-1 flex items-center gap-1">
-                  {stat.isFullyCompleted ? (
-                    <span
-                      className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
-                        isActive
-                          ? 'bg-white/25 text-white'
-                          : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                      }`}
-                    >
-                      ✓ مكتمل
-                    </span>
-                  ) : (
-                    <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        isActive
-                          ? 'bg-white/20 text-white'
-                          : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'
-                      }`}
-                    >
-                      {stat.completed}/{stat.total} درس
-                    </span>
-                  )}
-                </div>
-              </div>
-            </motion.button>
-          );
+      <div className="course-term-picker grid grid-cols-3 gap-2" role="group" aria-label={t('chooseTrimesterLabel')}>
+        {([1, 2, 3] as const).map(term => {
+          const stat = trimesterStats[term - 1];
+          return <button type="button" key={term} aria-pressed={selectedTrimester === term} onClick={() => setSelectedTrimester(term)}>
+            <span className="flex items-center justify-center gap-1 font-extrabold text-sm">
+              {isTrimesterLocked(term) && <Lock className="w-4 h-4" aria-hidden="true" />}
+              {isSimpleCard ? t('trimesterPrefixLabel') + ' ' + term : t(term === 1 ? 'trimester1Label' : term === 2 ? 'trimester2Label' : 'trimester3Label')}
+            </span>
+            <span className="text-xs font-bold mt-1" dir="ltr">{stat.completed}/{stat.total} {stat.isFullyCompleted ? '✓' : ''}</span>
+          </button>;
         })}
       </div>
+
+      {suggestedLesson && <section className="course-next-lesson flex items-center gap-3">
+        <img src={didouGuide} alt="" width={46} height={66} decoding="async" className="w-[46px] h-[66px] object-contain shrink-0" />
+        <div className="min-w-0 flex-1">
+          <p className="course-eyebrow mb-1">{t(allTermDone ? 'reviewLessonAction' : 'suggestedLessonLabel')}</p>
+          <p dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-sm font-extrabold leading-relaxed text-[var(--app-text)]">{suggestedLesson.titleAr}</p>
+        </div>
+        <button type="button" data-course-start onClick={() => onSelectLesson(suggestedLesson)} className="course-start-button">{t(allTermDone ? 'reviewLessonAction' : 'openLessonAction')}</button>
+      </section>}
 
       {/* STEP 3 — Liste illustrée des cours du trimestre sélectionné */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`${selectedSubject}-${selectedTrimester}`}
-          initial={{ opacity: 0, y: 8 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
           transition={{ duration: 0.2 }}
         >
           {termLessons.length > 0 ? (
@@ -425,8 +311,10 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     subjectId={selectedSubject}
                     isCompleted={isCompleted}
                     isLocked={locked}
+                    isSuggested={!allTermDone && suggestedLesson?.id === lesson.id}
+                    grade={grade}
                     onClick={() => onSelectLesson(lesson)}
-                    showAudio={showAudio}
+                    showAudio={showLessonAudio}
                     speakingKey={speakingKey}
                     onSpeak={handleSpeak}
                   />
@@ -437,10 +325,10 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
             <Card padding="none" className="p-12 text-center space-y-3 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800">
               <BookOpen className="w-12 h-12 opacity-40 mx-auto text-[var(--app-text-muted)]" />
               <h3 className="text-base font-black text-[var(--app-text)]">
-                لا توجد دروس بعد في هذا الفصل
+                {t('noLessonsHeading')}
               </h3>
               <p className="text-xs text-[var(--app-text-muted)]">
-                جرّب فصلاً دراسياً آخر لهذه المادة لتصفح المحتوى.
+                {t('noLessonsSubtext')}
               </p>
             </Card>
           )}

@@ -39,7 +39,8 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Kept off while the catalog is reviewed. Before a production release an administrator can turn
   // it on to prevent unverified or complementary content from being presented as school content.
   curriculumReviewGate: false,
-  // Off until the parent bilan (login + one-child recap) is ready for families.
+  // Reserved for the paid V2 (product decision, 2026-11-13): the parent report is not offered in the
+  // free V1. Keep it off here and do not enrich it on this branch.
   preschoolParentBilan: false,
   // V2 only (this branch never ships to the V1 prod app). Admin can hide it from the Feature Flags tab.
   didouJourney: true,

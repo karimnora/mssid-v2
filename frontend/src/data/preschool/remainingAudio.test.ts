@@ -63,6 +63,16 @@ describe('last preschool recordings and incomplete-language fallback', () => {
     expect(attached.successAudioDurationMs).toBeUndefined();
     expect(module).toEqual(snapshot);
   });
+  it('retains a synthesis fallback for a genuinely unrecorded phrase without substituting a foreign clip', () => {
+    const source = structuredClone(EMOTIONS_MODULE);
+    const content = source.activities[0].i18n.fr;
+    content.promptAudio = 'Une nouvelle consigne de test sans enregistrement existant.';
+    delete content.promptAudioSrc;
+    const result = withRecordedAudio(source);
+    expect(result.activities[0].i18n.fr.promptAudioSrc).toBeUndefined();
+    expect(result.activities[0].i18n.fr.promptAudio).toBe(content.promptAudio);
+  });
+
   it('preserves explicitly selected voices and durations without mutating the source module', () => {
     const existing = structuredClone(EMOTIONS_MODULE);
     existing.activities[0].i18n.fr.promptAudioSrc = '/custom-prompt.mp3';

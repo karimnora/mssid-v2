@@ -1,3 +1,4 @@
+import { NARRATED_STORIES } from './narratedStories';
 import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule, PreschoolStoryFrame } from './types';
 
@@ -132,4 +133,4 @@ const STORIES_CATALOG: PreschoolModule = {
   ],
 };
 
-export const STORIES_MODULE: PreschoolModule = withRecordedAudio(STORIES_CATALOG);
+export const STORIES_MODULE: PreschoolModule = withRecordedAudio({ ...STORIES_CATALOG, totalSteps: 12, activities: [...STORIES_CATALOG.activities, ...NARRATED_STORIES].map((activity, index) => ({ ...activity, stepNumber: index + 1 })) });

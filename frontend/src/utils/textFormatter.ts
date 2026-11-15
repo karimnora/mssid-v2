@@ -20,7 +20,7 @@ export const PDI = '\u2069';
 // \n): this runs after the newline-insertion passes above, and a run must never bridge across an
 // already-inserted line break \u2014 otherwise an unrelated genuine list marker on the next line (e.g.
 // "2)") gets swallowed into the previous line's math isolate.
-const MATH_RUN = /(?:\([ \t]*)*[0-9٠-٩][0-9٠-٩.,٫٬%\u00B0+x*\-\u2212\u00D7\u00F7/=<>≤≥() \t]*[0-9٠-٩%\u00B0)]/g;
+const MATH_RUN = /(?:\([ \t]*)*[0-9٠-٩][0-9٠-٩.,٫٬\u00A0\u202F%\u00B0+x*\-\u2212\u00D7\u00F7/=<>≤≥() \t]*[0-9٠-٩%\u00B0)]/g;
 // A lone number ("142,800") has no bidi-reordering risk by itself \u2014 only wrap runs that actually
 // combine multiple terms with an operator/comparison symbol.
 const HAS_OPERATOR = /[+x*\-\u2212\u00D7\u00F7/=<>≤≥]/;
@@ -122,4 +122,21 @@ export function formatEducationalText(text: string | undefined | null, options?:
   formatted = isolateMathRuns(formatted);
 
   return formatted.trim();
+}
+
+/**
+ * French/English content lives inside an RTL page. A paragraph that is mostly Latin letters must be
+ * laid out left to right, otherwise its final punctuation jumps to the wrong side ("? Qui parle").
+ * Returns undefined for Arabic (or digit-only) text so the surrounding direction applies.
+ */
+export function latinTextDir(text: string | undefined | null): 'ltr' | undefined {
+  if (!text) return undefined;
+  const latin = text.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]/g)?.length ?? 0;
+  const arabic = text.match(/[\u0600-\u06FF]/g)?.length ?? 0;
+  return latin > arabic && latin >= 2 ? 'ltr' : undefined;
+}
+
+/** A French voice cannot read Arabic glosses: drop "(…عربي…)" groups and any remaining Arabic run. */
+export function stripArabicGlosses(text: string): string {
+  return text.replace(/\s*\([^()]*[\u0600-\u06FF][^()]*\)/g, '').replace(/[\u0600-\u06FF][\u0600-\u06FF\s]*/g, ' ').replace(/[ \t]{2,}/g, ' ').trim();
 }

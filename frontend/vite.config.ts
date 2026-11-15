@@ -62,6 +62,18 @@ export default defineConfig(({ mode }) => {
           navigateFallback: '/index.html',
           runtimeCaching: [
             {
+              urlPattern: ({ url, sameOrigin }: { url: URL; sameOrigin: boolean }) => sameOrigin && /^\/sounds\/preschool\/(ar|fr|en)\/course-cedar-[a-f0-9]+\.mp3$/.test(url.pathname),
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'mssid-course-recordings-v1',
+                // Fetch the full small MP3 on a miss, not an uncacheable 206 partial response.
+                fetchOptions: { headers: {} },
+                cacheableResponse: { statuses: [200] },
+                rangeRequests: true,
+                expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 30, purgeOnQuotaError: true },
+              },
+            },
+            {
               urlPattern: ({ url }: { url: URL }) => url.origin === self.location.origin && /\/(?:assets|sounds)\/[^?]+\.(?:webp|png|jpg|svg|woff2|mp3|ogg)$/.test(url.pathname),
               handler: 'CacheFirst',
               options: { cacheName: 'mssid-media-on-demand-v1', cacheableResponse: { statuses: [200] }, expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 30 } },
@@ -106,6 +118,7 @@ export default defineConfig(({ mode }) => {
           // ChallengesArena → ArcadeGamesSection, and Workbox refuses to precache a 7+ MiB file.
           manualChunks: {
             phaser: ['phaser'],
+            'recorded-speech': ['./src/data/recordedSpeechCatalog.ts'],
           },
         },
       },

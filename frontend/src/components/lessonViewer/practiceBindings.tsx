@@ -14,7 +14,8 @@ export const BoundPracticeCard: React.FC<{
   leadAudio?: React.ReactNode;
   lesson?: CourseLesson;
   showHintButton?: boolean;
-}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, lesson, showHintButton }) => (
+  retryFirst?: boolean;
+}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, lesson, showHintButton, retryFirst = false }) => (
   <>
   <PracticeExerciseCard
     ex={ex}
@@ -24,6 +25,7 @@ export const BoundPracticeCard: React.FC<{
     renderArabicText={renderArabicText}
     playful={playful}
     leadAudio={leadAudio}
+    retryFirst={retryFirst}
     optionOrder={practice.practiceOptionOrder[ex.id]}
     answer={practice.practiceAnswers[ex.id]}
     onAnswerChange={practice.handlePracticeAnswerChange}

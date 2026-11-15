@@ -1,9 +1,18 @@
 import React from 'react';
-import { describe, expect, it, vi } from 'vitest';
-import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import { CourseSelectionView } from './CourseSelectionView';
 import { LocaleProvider } from '../context/LocaleContext';
 import { CourseLesson, SubjectInfo } from '../types';
+import { setStoredLocale } from '../localePreference';
+import { speakText } from '../utils/speech';
+
+const voices = vi.hoisted(() => ({ languages: ['ar-SA', 'fr-FR', 'en-US'] as string[] }));
+vi.mock('../utils/speech', async importOriginal => ({
+  ...await importOriginal<typeof import('../utils/speech')>(),
+  useVoiceAvailable: (lang: string) => voices.languages.includes(lang),
+  speakText: vi.fn().mockResolvedValue(undefined),
+}));
 
 const mockSubjects: SubjectInfo[] = [
   {
@@ -65,6 +74,51 @@ const mockLessons: CourseLesson[] = [
 ];
 
 describe('CourseSelectionView Trimester Animations & Display', () => {
+  beforeEach(() => { setStoredLocale('ar'); voices.languages = ['ar-SA', 'fr-FR', 'en-US']; });
+  afterEach(() => { setStoredLocale('ar'); voices.languages = ['ar-SA', 'fr-FR', 'en-US']; });
+  it('hides unavailable 3AP titles and reads English titles with an English voice in a French interface', async () => {
+    setStoredLocale('fr');
+    const subject: SubjectInfo = { ...mockSubjects[0], id: 'english', nameAr: 'الإنجليزية', nameFr: 'Anglais' };
+    const lesson: CourseLesson = { ...mockLessons[0], id: 'english-test', grade: '3AP', subject: 'english', titleAr: 'My school' };
+    voices.languages = ['fr-FR'];
+    const view = render(<LocaleProvider><CourseSelectionView grade="3AP" courseSubjects={[subject]}
+      allCourseLessons={[lesson]} completedLessonIds={[]} onSelectLesson={vi.fn()} onGoHome={vi.fn()} initialSubjectId="english" /></LocaleProvider>);
+    fireEvent.click(within(screen.getByRole('group')).getByRole('button', { name: /Trimestre 1/ }));
+    expect(document.querySelector('[data-tap-speak="lesson-english-test"]')).toBeNull();
+    view.unmount();
+    voices.languages = ['en-US'];
+    render(<LocaleProvider><CourseSelectionView grade="3AP" courseSubjects={[subject]}
+      allCourseLessons={[lesson]} completedLessonIds={[]} onSelectLesson={vi.fn()} onGoHome={vi.fn()} initialSubjectId="english" /></LocaleProvider>);
+    fireEvent.click(within(screen.getByRole('group')).getByRole('button', { name: /Trimestre 1/ }));
+    await act(async () => fireEvent.click(document.querySelector('[data-tap-speak="lesson-english-test"]')!));
+    expect(speakText).toHaveBeenCalledWith('My school', 'en-US', 0.85);
+    voices.languages = ['ar-SA', 'fr-FR', 'en-US'];
+    setStoredLocale('ar');
+  });
+  it('suggests the first unfinished accessible lesson, without changing completion', () => {
+    const onSelectLesson = vi.fn();
+    render(<LocaleProvider><CourseSelectionView grade="5AP" courseSubjects={mockSubjects}
+      allCourseLessons={mockLessons} completedLessonIds={['math-t1-1']} onSelectLesson={onSelectLesson}
+      onGoHome={vi.fn()} initialSubjectId="math" /></LocaleProvider>);
+    fireEvent.click(screen.getByRole('button', { name: /الفصل الأول/ })!);
+    fireEvent.click(document.querySelector('[data-course-start]')!);
+    expect(onSelectLesson).toHaveBeenCalledWith(mockLessons[1]);
+    expect(document.querySelector('[data-suggested] [data-lesson-id="math-t1-2"]')).toBeTruthy();
+    expect(document.querySelectorAll('[data-completed]')).toHaveLength(1);
+  });
+
+  it('keeps an unavailable lesson out of the suggestion while its existing opening action remains usable', () => {
+    const onSelectLesson = vi.fn();
+    render(<LocaleProvider><CourseSelectionView grade="5AP" courseSubjects={mockSubjects}
+      allCourseLessons={mockLessons} completedLessonIds={[]} onSelectLesson={onSelectLesson}
+      isLessonLocked={lesson => lesson.id === 'math-t1-1'} onGoHome={vi.fn()} initialSubjectId="math" /></LocaleProvider>);
+    fireEvent.click(screen.getByRole('button', { name: /الفصل الأول/ })!);
+    fireEvent.click(document.querySelector('[data-course-start]')!);
+    expect(onSelectLesson).toHaveBeenLastCalledWith(mockLessons[1]);
+    fireEvent.click(screen.getByRole('button', { name: 'الأعداد الطبيعية 1' }));
+    expect(onSelectLesson).toHaveBeenLastCalledWith(mockLessons[0]);
+  });
+
   it('lets the header back button return from a subject to the subject list', () => {
     const backRef: { current: (() => void) | null } = { current: null };
     render(
@@ -109,32 +163,32 @@ describe('CourseSelectionView Trimester Animations & Display', () => {
     expect(screen.getAllByText(/الفصل الثالث/).length).toBeGreaterThan(0);
 
     // Click Trimester 1 tab button
-    const t1Btn = screen.getByText(/Trimestre 1/).closest('button');
+    const t1Btn = screen.getByRole('button', { name: /الفصل الأول/ });
     expect(t1Btn).toBeTruthy();
     if (t1Btn) fireEvent.click(t1Btn);
 
     // Verify Trimester 1 lessons are shown
-    expect(screen.getByText('الأعداد الطبيعية 1')).toBeInTheDocument();
-    expect(screen.getByText('الجمع والطرح')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'الأعداد الطبيعية 1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'الجمع والطرح' })).toBeInTheDocument();
 
     // Switch to Trimester 2
-    const t2Btn = screen.getByText(/Trimestre 2/).closest('button');
+    const t2Btn = screen.getByRole('button', { name: /الفصل الثاني/ });
     expect(t2Btn).toBeTruthy();
     if (t2Btn) fireEvent.click(t2Btn);
 
     // Verify Trimester 2 lesson is displayed
     await waitFor(() => {
-      expect(screen.getByText('الكسور 1')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'الكسور 1' })).toBeInTheDocument();
     });
 
     // Switch to Trimester 3
-    const t3Btn = screen.getByText(/Trimestre 3/).closest('button');
+    const t3Btn = screen.getByRole('button', { name: /الفصل الثالث/ });
     expect(t3Btn).toBeTruthy();
     if (t3Btn) fireEvent.click(t3Btn);
 
     // Verify Trimester 3 lesson is displayed
     await waitFor(() => {
-      expect(screen.getByText('التناسبية والنسب المئوية')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'التناسبية والنسب المئوية' })).toBeInTheDocument();
     });
   });
 });

@@ -6,7 +6,7 @@ import { NUMBER_AUDIO_CLIPS } from './numberAudio';
 
 const metadata = JSON.parse(readFileSync(resolve(process.cwd(), '../docs/audio-v1/enregistrements-nombres.json'), 'utf8'));
 const canonical = (text: string) => text.replace(/ـ/g, '').replace(/\.{2,}/g, '…').trim();
-const activities = [...NUMBERS_MODULE_0_TO_5.activities, ...NUMBERS_MODULE_6_TO_10.activities];
+const activities = [...NUMBERS_MODULE_0_TO_5.activities, ...NUMBERS_MODULE_6_TO_10.activities].filter(activity => !activity.showQuantityGuide);
 
 describe('recorded preschool numbers 0–10', () => {
   it.each(['ar', 'fr', 'en'] as const)('%s uses matching files, texts and reward durations', language => {
@@ -40,4 +40,16 @@ describe('recorded preschool numbers 0–10', () => {
       expect(clip.source).toContain('12_32_43_Asmaa');
     }
   });
+  it('reuses the original voices verbatim for six guided quantity tasks', () => {
+    const all = [...NUMBERS_MODULE_0_TO_5.activities, ...NUMBERS_MODULE_6_TO_10.activities];
+    const guided = all.filter(activity => activity.showQuantityGuide);
+    expect(guided).toHaveLength(6);
+    for (const activity of guided) {
+      const source = all.find(original => original.id === activity.id.replace(/-guided$/, ''))!;
+      expect(activity.i18n).toEqual(source.i18n);
+      expect(activity.visualAssets).toEqual(source.visualAssets);
+      expect(all.indexOf(activity)).toBe(all.indexOf(source) - 1);
+    }
+  });
+
 });

@@ -411,8 +411,8 @@ describe('Preschool (Mode Éveil) data integrity', () => {
 
     const n05 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-0-5');
     const n610 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-6-10');
-    expect(n05?.activities.map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
-    expect(n610?.activities.map((a) => a.id)).toEqual([
+    expect(n05?.activities.filter(a => !a.showQuantityGuide).map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
+    expect(n610?.activities.filter(a => !a.showQuantityGuide).map((a) => a.id)).toEqual([
       'num-6', 'num-7', 'num-8-count', 'num-8', 'num-9-count', 'num-9', 'num-10-count', 'num-10',
     ]);
   });
@@ -540,9 +540,9 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(ballPlaces.find((c) => c.id === 'outside')?.scene?.kind).toBe('outside');
   });
 
-  it('has three 3-picture stories and does not claim the whole alphabet on match-words-2', () => {
+  it('has twelve 3-picture stories and does not claim the whole alphabet on match-words-2', () => {
     const stories = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-stories');
-    expect(stories?.totalSteps).toBe(3);
+    expect(stories?.totalSteps).toBe(12);
     expect(stories?.activities.every((a) => a.interactionType === 'story_order')).toBe(true);
     const match = PRESCHOOL_MODULES
       .find((m) => m.id === 'preschool-letters-2')

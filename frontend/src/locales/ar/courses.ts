@@ -12,9 +12,20 @@ export const courses = {
 
   // CourseSelectionView.tsx
   chooseSubjectHeading: 'اختر المادة التي تريد مراجعتها — {grade}',
-  trimester1Label: 'الفصل الأول (Trimestre 1)',
-  trimester2Label: 'الفصل الثاني (Trimestre 2)',
-  trimester3Label: 'الفصل الثالث (Trimestre 3)',
+  catalogHeading: 'ماذا تريد أن تتعلّم اليوم؟',
+  catalogSubtitle: 'اختر مادة، ثم درساً. ديدو يرافقك خطوة بخطوة.',
+  subjectsCountLabel: '{count} مواد',
+  completedLessonsLabel: '{count} من {total} دروس مكتملة',
+  courseProgressLabel: 'تقدّم الدروس في هذا الفصل',
+  chooseTrimesterLabel: 'اختر الفصل الدراسي',
+  chooseLessonStepLabel: 'اختر مرحلة الدرس',
+  suggestedLessonLabel: 'الدرس التالي لك',
+  openLessonAction: 'أبدأ',
+  reviewLessonAction: 'أراجع',
+  lessonLockedLabel: 'مغلق',
+  trimester1Label: 'الفصل الأول',
+  trimester2Label: 'الفصل الثاني',
+  trimester3Label: 'الفصل الثالث',
   premiumBadge: 'للوالدين',
   completedBadge: '✓ مكتمل',
   quizCountLabel: '{count} أسئلة',
@@ -116,13 +127,13 @@ export const courses = {
   stepPrefixLabel: 'الخطوة',
 
   // LessonViewer.tsx — step tab labels
-  stepExplanationLabel: 'شرح الدرس والتطبيقات',
-  stepContentLabel: 'الملخص والقواعد',
-  stepInteractiveLabel: 'الأداة التفاعلية المخصصة',
+  stepExplanationLabel: 'أفهم',
+  stepContentLabel: 'أتذكر القاعدة',
+  stepInteractiveLabel: 'أجرّب',
   stepPracticeLabel: 'أتدرب ({count})',
-  stepGameplayLabel: 'لعبة المحاكاة التفاعلية',
-  stepEvaluationLabel: 'التقييم النهائي ({count})',
-  stepQuizLabel: 'الاختبار التفاعلي ({count})',
+  stepGameplayLabel: 'ألعب',
+  stepEvaluationLabel: 'أحلّ وحدي ({count})',
+  stepQuizLabel: 'أختبر نفسي ({count})',
 
   // LessonViewer.tsx — practice tab mini-game
   challengeLabel: '🏆 التحدي:',

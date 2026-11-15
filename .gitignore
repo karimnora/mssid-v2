@@ -86,3 +86,9 @@ CLAUDE.md
 .env.v2.local
 
 frontend/v2-tests.log
+
+# Local review artifacts, attachments and temporary scripts
+/.codex-remote-attachments/
+/output/
+/tmp/
+/lot2-contact.jpg

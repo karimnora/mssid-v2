@@ -1,0 +1,160 @@
+{
+  "revisionAuditée": "2650e11",
+  "date": "2026-11-13",
+  "nature": "Observations reproduites, pas des tests de comportement souhaité",
+  "unitReproductions": 7,
+  "browserDiagnosticReproductions": 1,
+  "existingUnitTestsPassed": 1177,
+  "existingBrowserScenariosPassed": 5,
+  "cases": [
+    {
+      "id": "PED-01",
+      "type": "confirmed-interface-defect",
+      "scope": "four Arabic quiz questions with vocalization off",
+      "questions": [
+        {
+          "id": "arabic-1ap-t3-tanween",
+          "path": "quiz[3]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "",
+              ""
+            ],
+            "renderer": "quiz does not preserve distinguishing marks"
+          }
+        },
+        {
+          "id": "arabic-2ap-t2-personal-pronouns",
+          "path": "quiz[3]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "أنت",
+              "أنت",
+              "هي"
+            ],
+            "renderer": "quiz does not preserve distinguishing marks"
+          }
+        },
+        {
+          "id": "arabic-2ap-t2-tanween-three-types",
+          "path": "quiz[0]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "\"أن\"",
+              "\"أن\"",
+              "\"إن\""
+            ],
+            "renderer": "quiz does not preserve distinguishing marks"
+          }
+        },
+        {
+          "id": "arabic-3ap-t1-conjugation-past-present",
+          "path": "quiz[2]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "- نا (مثل: نحن كتبنا)",
+              "- ت (مثل: كتبت)",
+              "- ت (مثل: كتبت)"
+            ],
+            "renderer": "quiz does not preserve distinguishing marks"
+          }
+        }
+      ],
+      "result": "Option contents rendered identical or empty in the real LessonQuizPanel component"
+    },
+    {
+      "id": "EX-01",
+      "type": "confirmed-language-routing-defect",
+      "scope": "3AP French exam, first exercise body",
+      "result": "speakText receives ar-SA with French body, rate 0.85"
+    },
+    {
+      "id": "DEF-01",
+      "type": "confirmed-behaviour-product-rule-to-clarify",
+      "scope": "challenge-math-large-numbers already completed, replay fully correct",
+      "result": {
+        "xpCallback": 0,
+        "coinCallback": 10
+      },
+      "note": "Replay coins may be intentional; the incentive policy must be explicit."
+    },
+    {
+      "id": "DEF-02",
+      "type": "confirmed-recording-lookup-regression",
+      "scope": "274 unique authored 1AP/2AP question/option strings",
+      "result": {
+        "scope": "Unique authored question/option strings in 1AP/2AP only",
+        "cues": 274,
+        "coveredUsingAuthoredText": 55,
+        "coveredUsingActualStrippedText": 31,
+        "lostAfterStripping": [
+          "هَذَا",
+          "هَذِهِ",
+          "أَ",
+          "بَ",
+          "مَوْزٌ 🍌",
+          "تَ",
+          "قَ",
+          "فَ",
+          "تُفَّاحَةٌ 🍎",
+          "ثَ",
+          "بَطَّةٌ 🦆",
+          "الأُذُنُ 👂",
+          "الأَنْفُ 👃",
+          "اللِّسَانُ 👅",
+          "بُ",
+          "بِ",
+          "بْ",
+          "بَيْتٌ",
+          "عِيدٌ",
+          "حَدِيقَةٌ",
+          "كُرَةٌ",
+          "💧 نَشْرَبُهُ",
+          "هَدِيَّةً",
+          "⚽ لُعْبَةٌ",
+          "جَارٌ",
+          "هَدِيَّةٌ",
+          "شَارِعٌ"
+        ]
+      }
+    },
+    {
+      "id": "DEF-03",
+      "type": "confirmed-accessibility-defect",
+      "scope": "active 1AP challenge on mobile",
+      "resultFile": "defis-accessibilite.json"
+    },
+    {
+      "id": "PED-01-GAME",
+      "type": "confirmed-interface-defect",
+      "scope": "arabic-1ap-t3-tanween, educationalGame.items[0..1], vocalization off",
+      "result": "Six empty answer buttons in the real LessonPracticePanel component",
+      "items": [
+        {
+          "id": "arabic-1ap-t3-tanween",
+          "path": "game[0]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "",
+              "",
+              ""
+            ],
+            "renderer": "quiz/game does not preserve distinguishing marks"
+          }
+        },
+        {
+          "id": "arabic-1ap-t3-tanween",
+          "path": "game[1]",
+          "detail": {
+            "duplicateVisibleOptions": [
+              "",
+              "",
+              ""
+            ],
+            "renderer": "quiz/game does not preserve distinguishing marks"
+          }
+        }
+      ]
+    }
+  ]
+}

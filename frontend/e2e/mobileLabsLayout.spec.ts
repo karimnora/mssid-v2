@@ -62,7 +62,7 @@ for (const width of [320, 390]) {
       const content = page.locator('#lesson-active-step-container');
       await expect(content).toBeVisible();
       for (let i = 0; i < 8; i++) {
-        if (await content.getByRole('heading', { name: /الأداة التفاعلية المخصصة|أُجَرِّبُ|أُجَرِّبُ وأكتشف/ }).first().isVisible()) break;
+        if (await content.getByRole('heading', { name: /الأداة التفاعلية المخصصة|أُجَرِّبُ|أُجَرِّبُ وأكتشف|أجرّب/ }).first().isVisible()) break;
         await page.locator('[data-primary-cta="next-step"]').click();
       }
       const player = page.locator('[data-quran-player]');

@@ -1,3 +1,4 @@
+import { findRecordedSpeechSequence } from '../utils/recordedSpeech';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import React, { useState, useEffect, useMemo, useRef, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -22,7 +23,7 @@ import { stripArabicTashkeel, formatEducationalText } from '../utils/textFormatt
 import { playGentleNudge, playSuccessChime, playModuleCompleteFanfare } from './preschool/usePreschoolAudio';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { isFeatureEnabled } from '../featureFlags';
-import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../utils/speech';
+import { speakText, useVoiceAvailable, speechLangForSubject, stopSpeech as stopSynth } from '../utils/speech';
 import { SpeedMathDuelGame } from './games/SpeedMathDuelGame';
 import { MemoryMatrixGame } from './games/MemoryMatrixGame';
 import { BossBattleGame } from './games/BossBattleGame';
@@ -73,8 +74,8 @@ const MODE_MATCH: Record<Exclude<ChallengeMode, 'all'>, (c: Challenge) => boolea
 };
 
 const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: string; descAr: string; bandClass: string }[] = [
-  { id: 'quick', icon: '🎯', titleAr: 'تحدٍّ سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', bandClass: 'kids-card-defis' },
-  { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'دقيقتان لحل أكبر عدد من الأسئلة', bandClass: 'kids-card-defis' },
+  { id: 'quick', icon: '🎯', titleAr: 'تحدٍّ سريع', descAr: 'أسئلة قصيرة بدون وقت محدد', bandClass: 'kids-card-defis' },
+  { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'أجب قبل انتهاء الوقت المعروض', bandClass: 'kids-card-defis' },
   { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', bandClass: 'kids-card-labs' },
 ];
 
@@ -141,6 +142,9 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   }, [gradeChallenges, subjectFilter, difficultyFilter]);
 
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null);
+  const speechLanguage = speechLangForSubject(activeChallenge?.subject ?? 'arabic');
+  const voiceAvailable = useVoiceAvailable(speechLanguage);
+  const canSpeak = (text: string) => isFeatureEnabled('voiceReading') && (voiceAvailable !== false || !!findRecordedSpeechSequence(text, speechLanguage));
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
@@ -387,7 +391,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             </h1>
             <p className="text-xs sm:text-sm text-[var(--app-text-muted)] mt-1 max-w-2xl">
               {isYoung
-                ? 'سؤال أو اثنان، ثم أحسنت — مثل اللعب بعد الدرس.'
+                ? 'تحدٍ قصير، سؤالاً بعد سؤال، مثل اللعب بعد الدرس.'
                 : 'اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.'}
             </p>
           </div>
@@ -767,10 +771,10 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
 
       <Card padding="lg" className="space-y-5">
         <div className="flex items-center gap-3">
-          {isYoung && currentItem && (
+          {isYoung && currentItem && canSpeak(currentItem.questionOrPromptAr) && (
             <TapSpeakButton
               snippetKey={`q-${itemIndex}`}
-              text={stripArabicTashkeel(currentItem.questionOrPromptAr).replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
+              text={currentItem.questionOrPromptAr.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
               speakingKey={speakingKey}
               onSpeak={speakSnippet}
               size={grade === '1AP' ? 'lg' : 'md'}
@@ -795,10 +799,20 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               }
 
               return (
+                <div key={idx} className="flex items-center gap-2">
+                    {isYoung && canSpeak(opt) && (
+                      <TapSpeakButton
+                        snippetKey={`q-${itemIndex}-opt-${idx}`}
+                        text={opt.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
+                        speakingKey={speakingKey}
+                        onSpeak={speakSnippet}
+                        size="md"
+                      />
+                    )}
                 <button
-                  key={idx}
+                  type="button"
                   onClick={() => handlePickOption(opt)}
-                  className={`p-4 rounded-2xl border text-right text-sm font-bold transition-all cursor-pointer flex items-center justify-between gap-2 shadow-xs ${
+                  className={`flex-1 min-w-0 p-4 rounded-2xl border text-right text-sm font-bold transition-all cursor-pointer flex items-center justify-between gap-2 shadow-xs ${
                     isAnswerRevealed && isCorrectOpt
                       ? 'bg-emerald-100 border-emerald-400 text-emerald-900 ring-2 ring-emerald-300'
                       : isAnswerRevealed && isThisSelected && !isCorrectOpt
@@ -807,20 +821,12 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                   }`}
                 >
                   <span className="flex items-center gap-2 min-w-0">
-                    {isYoung && (
-                      <TapSpeakButton
-                        snippetKey={`q-${itemIndex}-opt-${idx}`}
-                        text={stripArabicTashkeel(opt).replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
-                        speakingKey={speakingKey}
-                        onSpeak={speakSnippet}
-                        size="md"
-                      />
-                    )}
                     <span>{opt}</span>
                   </span>
                   {isAnswerRevealed && isCorrectOpt && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                   {isAnswerRevealed && isThisSelected && !isCorrectOpt && <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />}
                 </button>
+                </div>
               );
             })}
           </div>

@@ -37,7 +37,8 @@ test('a logged-in student opens math-5ap-division and sees rules without a premi
     route.fulfill({ status: 500, body: '{}' });
   });
 
-  await page.getByText(fullContent.titleAr, { exact: true }).click();
+  // The catalogue also names this lesson in its "next lesson" card: open the lesson card itself.
+  await page.getByRole('button', { name: fullContent.titleAr }).first().click();
   // Footer CTA is `التالي: {stepLabel}` (LessonStepFooter), not the older
   // `المرحلة الموالية:` copy. Prefer the data attribute so a future label tweak
   // does not break the premium-fetch path this spec actually guards.

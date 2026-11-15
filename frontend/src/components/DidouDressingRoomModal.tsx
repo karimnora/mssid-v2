@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import {
   X,
   Sparkles,
@@ -16,13 +16,15 @@ import {
   Info,
 } from 'lucide-react';
 import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { getDidouEnergy, getDidouEnergyAfterTreat, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 import { DidouOutfitItem, DidouOutfitId, DidouPetSpecies, DidouAvatarConfig } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
 import { AuthService } from '../services/authService';
-import { speakText, stopSpeech } from '../utils/speech';
+import { speakText, stopSpeech, useVoiceAvailable, stripNonSpokenSymbols } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
-import { Didou3DAvatar } from './Didou3DAvatar';
+import { findRecordedSpeechSequence } from '../utils/recordedSpeech';
+import { DidouPortrait } from './DidouPortrait';
 
 interface DidouDressingRoomModalProps {
   isOpen: boolean;
@@ -42,6 +44,22 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   const { authUser } = useAuth();
   const { locale, direction } = useLocaleContext();
   const isFrench = locale === 'fr';
+  const reducedMotion = useReducedMotion();
+  const voiceAvailable = useVoiceAvailable(isFrench ? 'fr-FR' : 'ar-SA');
+  const voiceReadingEnabled = useFeatureFlag('voiceReading');
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const trackedTimeout = (callback: () => void, delay: number) => {
+    const timer = setTimeout(() => { timers.current = timers.current.filter(item => item !== timer); callback(); }, delay);
+    timers.current.push(timer);
+  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+    return () => previous?.focus();
+  }, [isOpen]);
 
   const [activeTab, setActiveTab] = useState<ModalTab>('wardrobe');
   const [selectedOutfitId, setSelectedOutfitId] = useState<DidouOutfitId>(
@@ -63,6 +81,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   useEffect(() => {
     return () => {
       stopSpeech();
+      timers.current.forEach(clearTimeout);
     };
   }, []);
 
@@ -112,14 +131,14 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         ? `Espèce changée : ${species === 'eagle' ? "Aiglon de l'Atlas 🦅" : 'Fennec des Sables 🦊'}`
         : `تم تغيير الرفيق إلى: ${species === 'eagle' ? 'عقاب الأطلس الشامخ 🦅' : 'الفنك الجزائري الذكي 🦊'}`
     );
-    setTimeout(() => setFeedbackMsg(null), 3000);
+    trackedTimeout(() => setFeedbackMsg(null), 3000);
   };
 
   const handleEquip = (outfitId: DidouOutfitId) => {
     if (!unlockedOutfits.includes(outfitId)) return;
 
     setIsChangingOutfitAnim(true);
-    setTimeout(() => setIsChangingOutfitAnim(false), 900);
+    trackedTimeout(() => setIsChangingOutfitAnim(false), 900);
 
     const prevConfig = userProfile?.avatarConfig || authUser?.avatarConfig || {};
     const newConfig: DidouAvatarConfig = {
@@ -143,7 +162,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         ? `Didou a revêtu : ${selectedOutfit.nameFr} ! ✨`
         : `تم ارتداء ${selectedOutfit.nameAr} بنجاح! 🦊✨`
     );
-    setTimeout(() => setFeedbackMsg(null), 3000);
+    trackedTimeout(() => setFeedbackMsg(null), 3000);
   };
 
   const handleBuy = (outfit: DidouOutfitItem) => {
@@ -153,12 +172,12 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
           ? `Pièces insuffisantes ! Il te manque ${outfit.priceGoldCoins - currentCoins} pièces.`
           : `رصيدك غير كافٍ! تحتاج ${outfit.priceGoldCoins - currentCoins} دينار ذهبي إضافي.`
       );
-      setTimeout(() => setFeedbackMsg(null), 3000);
+      trackedTimeout(() => setFeedbackMsg(null), 3000);
       return;
     }
 
     setIsChangingOutfitAnim(true);
-    setTimeout(() => setIsChangingOutfitAnim(false), 900);
+    trackedTimeout(() => setIsChangingOutfitAnim(false), 900);
 
     const newCoins = currentCoins - outfit.priceGoldCoins;
     const newUnlocked = [...unlockedOutfits, outfit.id];
@@ -186,7 +205,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         ? `Félicitations ! Tu as débloqué ${outfit.nameFr} ! 🎉`
         : `مبروك! لقد فتحت وارتديت ${outfit.nameAr}! 🎉`
     );
-    setTimeout(() => setFeedbackMsg(null), 3000);
+    trackedTimeout(() => setFeedbackMsg(null), 3000);
   };
 
   const handleFeedTreat = (treat: typeof DIDOU_TREATS_LIST[0]) => {
@@ -196,13 +215,13 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
           ? `Pas assez de pièces ! Il te manque ${treat.priceGoldCoins - currentCoins} pièces 🪙`
           : `رصيدك غير كافٍ! تحتاج ${treat.priceGoldCoins - currentCoins} دينار ذهبي 🪙`
       );
-      setTimeout(() => setFeedbackMsg(null), 3000);
+      trackedTimeout(() => setFeedbackMsg(null), 3000);
       return;
     }
 
     setEatingFoodIcon(treat.icon);
     setIsEatingAnim(true);
-    setTimeout(() => setIsEatingAnim(false), 2200);
+    trackedTimeout(() => setIsEatingAnim(false), 2200);
 
     const newCoins = currentCoins - treat.priceGoldCoins;
     const newEnergy = getDidouEnergyAfterTreat(activeAvatarConfig, treat.energyBonus);
@@ -236,14 +255,15 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         ? `Yummy ! Didou a adoré ${treat.nameFr} (+${treat.energyBonus}% Énergie, +${treat.xpBonus} XP) ! 🌴`
         : `صحة وهنا! استمتع ديدو بـ ${treat.nameAr} (+${treat.energyBonus}% طاقة، +${treat.xpBonus} خبرة)! 🌴`
     );
-    setTimeout(() => setFeedbackMsg(null), 4000);
+    trackedTimeout(() => setFeedbackMsg(null), 4000);
   };
 
   const handlePlayDialogue = (text: string, index: number) => {
+    if (!voiceReadingEnabled) return;
     stopSpeech();
     setPlayingDialogueIndex(index);
     const langCode = isFrench ? 'fr-FR' : 'ar-SA';
-    void speakText(text, langCode, 0.95).then(() => {
+    void speakText(text, langCode, 0.95, 1, { recordedOnly: voiceAvailable !== true }).then(() => {
       setPlayingDialogueIndex(null);
     });
   };
@@ -253,565 +273,129 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
     return o.category === outfitCategory;
   });
 
-  const mainPetEmoji = activeSpecies === 'eagle' ? '🦅' : '🦊';
+  const tabs: { id: ModalTab; label: string; icon: React.ReactNode }[] = [
+    { id: 'wardrobe', label: isFrench ? 'Tenues' : 'ملابسي', icon: <Shirt /> },
+    { id: 'nutrition', label: isFrench ? 'Nourrir' : 'غذائي', icon: <Utensils /> },
+    { id: 'evolution', label: isFrench ? 'Grandir' : 'أكبر', icon: <Award /> },
+    { id: 'wisdom', label: isFrench ? 'Parler' : 'نتحدث', icon: <MessageCircle /> },
+  ];
+  const nextStage = DIDOU_STAGES.find(stage => stage.minLevel > userLevel);
+  const stageProgress = nextStage ? Math.max(0, Math.min(100, (userLevel - currentStage.minLevel) / (nextStage.minLevel - currentStage.minLevel) * 100)) : 100;
+  const previewOutfit = activeTab === 'wardrobe' ? selectedOutfitId : activeOutfitId;
 
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 kids-modal-overlay backdrop-blur-md"
-      dir={direction}
-    >
-      <motion.div
-        initial={{ scale: 0.94, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.94, opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel kids-modal-wide max-w-4xl w-full overflow-hidden flex flex-col bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-3xl shadow-2xl"
-      >
-        {/* HEADER */}
-        <div className="kids-modal-header p-4 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-between shrink-0 gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl shrink-0 shadow-inner">
-              {mainPetEmoji}
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-lg font-black truncate">
-                  {isFrench ? "Sanctuaire & Studio de Didou" : "مملكة واستوديو ديدو الافتراضي"}
-                </h2>
-                <span className="bg-white/25 px-2 py-0.5 rounded-full text-[11px] font-extrabold">
-                  {isFrench ? currentStage.nameFr : currentStage.nameAr}
-                </span>
-              </div>
-              <p className="text-xs text-white/90 font-bold truncate">
-                {isFrench
-                  ? "Personnalise, nourris et fais évoluer ton compagnon d'apprentissage"
-                  : "خصّص مظهر صديقك، أطعمه من خيرات الجزائر، وتابِع تطوره الدراسي"}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="flex items-center gap-1.5 bg-white text-amber-950 px-3 py-1.5 rounded-2xl font-black text-xs shadow-md">
-              <Coins className="w-4 h-4 text-amber-600" />
-              <span>{currentCoins} {isFrench ? 'pièces' : 'د. ذهبي'}</span>
-            </div>
-
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={isFrench ? 'Fermer' : 'إغلاق'}
-              className="w-[60px] h-[60px] rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center cursor-pointer transition-colors shrink-0"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+  return <div className="didou-studio-overlay fixed inset-0 z-[70] kids-modal-overlay flex items-center justify-center p-2 sm:p-5" dir={direction}>
+    <motion.div role="dialog" aria-modal="true" aria-labelledby="didou-studio-title" data-didou-studio
+      className="didou-studio" initial={reducedMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+      onKeyDown={event => {
+        if (event.key === 'Escape') { event.stopPropagation(); onClose(); }
+        if (event.key === 'Tab') {
+          const items = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('button:not([disabled]):not([tabindex="-1"]), [href], select, input, [tabindex="0"]'));
+          const first = items[0], last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+          else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+        }
+      }}>
+      <header className="didou-studio-header">
+        <div className="min-w-0">
+          <h2 id="didou-studio-title">{isFrench ? 'Le coin de Didou' : 'ركن ديدو'}</h2>
+          <p>{isFrench ? 'Un petit moment avec ton compagnon' : 'لحظة جميلة مع صديقك'}</p>
         </div>
-
-        {/* NAVIGATION TABS */}
-        <div className="flex items-center gap-1.5 p-2.5 bg-amber-50 dark:bg-slate-800 border-b border-amber-200 dark:border-slate-700 overflow-x-auto text-xs font-black">
-          <button
-            onClick={() => setActiveTab('wardrobe')}
-            className={`px-4 py-2 rounded-2xl flex items-center gap-2 transition-all cursor-pointer shrink-0 ${
-              activeTab === 'wardrobe'
-                ? 'bg-amber-500 text-white shadow-md'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-amber-100 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Shirt className="w-4 h-4" />
-            <span>{isFrench ? 'Garde-robe & Espèces' : 'الأزياء والألبسة 👗'}</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('nutrition')}
-            className={`px-4 py-2 rounded-2xl flex items-center gap-2 transition-all cursor-pointer shrink-0 ${
-              activeTab === 'nutrition'
-                ? 'bg-emerald-600 text-white shadow-md'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Utensils className="w-4 h-4" />
-            <span>{isFrench ? 'Nutrition & Énergie' : 'الغذاء والرعاية 🌴'}</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('evolution')}
-            className={`px-4 py-2 rounded-2xl flex items-center gap-2 transition-all cursor-pointer shrink-0 ${
-              activeTab === 'evolution'
-                ? 'bg-purple-600 text-white shadow-md'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Award className="w-4 h-4" />
-            <span>{isFrench ? 'Évolution & Amitié' : 'مراحل التطور والصداقة 🌟'}</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('wisdom')}
-            className={`px-4 py-2 rounded-2xl flex items-center gap-2 transition-all cursor-pointer shrink-0 ${
-              activeTab === 'wisdom'
-                ? 'bg-rose-500 text-white shadow-md'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-700'
-            }`}
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>{isFrench ? 'Dialogues & Sagesse' : 'حكمة وكلمات ديدو 💬'}</span>
-          </button>
+        <button ref={closeButtonRef} type="button" className="didou-icon-button" onClick={onClose} aria-label={isFrench ? 'Fermer' : 'إغلاق'}><X /></button>
+      </header>
+      <div role="tablist" aria-label={isFrench ? 'Activités de Didou' : 'أنشطة ديدو'} className="didou-studio-tabs"
+        onKeyDown={event => {
+          let index = tabs.findIndex(tab => tab.id === activeTab);
+          if (event.key === 'Home') index = 0;
+          else if (event.key === 'End') index = tabs.length - 1;
+          else if (event.key === 'ArrowRight') index = (index + (direction === 'rtl' ? -1 : 1) + tabs.length) % tabs.length;
+          else if (event.key === 'ArrowLeft') index = (index + (direction === 'rtl' ? 1 : -1) + tabs.length) % tabs.length;
+          else return;
+          event.preventDefault(); setActiveTab(tabs[index].id); document.getElementById('didou-tab-' + tabs[index].id)?.focus();
+        }}>
+        {tabs.map(tab => <button key={tab.id} id={'didou-tab-' + tab.id} type="button" role="tab" aria-selected={activeTab === tab.id}
+          aria-controls="didou-studio-panel" tabIndex={activeTab === tab.id ? 0 : -1} onClick={() => setActiveTab(tab.id)}>{tab.icon}<span>{tab.label}</span></button>)}
+      </div>
+      <div ref={scrollAreaRef} className="didou-studio-scroll" tabIndex={0} role="region" aria-label={isFrench ? 'Espace de Didou' : 'مساحة ديدو'}>
+        <div className="didou-studio-balance"><span>🪙 {currentCoins} {isFrench ? 'pièces' : 'قطعة'}</span><span>{isFrench ? 'Gagnées dans tes activités' : 'تكسبها في أنشطتك'}</span></div>
+        {feedbackMsg && <p role="status" className="didou-feedback">{feedbackMsg}</p>}
+        <div className="didou-studio-layout">
+          <aside className="didou-studio-preview">
+            <DidouPortrait species={activeSpecies} outfitId={previewOutfit} stage={currentStage.stage} size="xl"
+              label={isFrench ? 'Didou, ' + currentStage.nameFr : 'ديدو، ' + currentStage.nameAr} mood="happy"
+              isEating={isEatingAnim} eatingFoodIcon={eatingFoodIcon} isChangingOutfit={isChangingOutfitAnim} />
+            <div className="didou-preview-info">
+              <p className="didou-stage-label">{isFrench ? currentStage.nameFr : currentStage.nameAr}</p>
+              <p className="didou-small">{isFrench ? 'Niveau' : 'المستوى'} {userLevel} · ❤️ {friendshipLevel}/10</p>
+              <label className="didou-meter-label">⚡ {isFrench ? 'Énergie' : 'الطاقة'} {currentEnergy}%
+                <progress value={currentEnergy} max={100} aria-label={isFrench ? 'Énergie de Didou' : 'طاقة ديدو'} /></label>
+              {activeTab === 'wardrobe' && <>
+                <p className="font-extrabold text-sm">{isFrench ? selectedOutfit.nameFr : selectedOutfit.nameAr}</p>
+                {isEquipped ? <p className="didou-equipped"><Check className="w-4 h-4" />{isFrench ? 'Tenue portée' : 'أرتدي هذا الزي'}</p>
+                  : <button type="button" className="didou-primary-button" disabled={isChangingOutfitAnim || (!isUnlocked && currentCoins < selectedOutfit.priceGoldCoins)}
+                    onClick={() => isUnlocked ? handleEquip(selectedOutfit.id) : handleBuy(selectedOutfit)}>
+                    {isUnlocked ? (isFrench ? 'Porter cette tenue' : 'أرتدي هذا الزي') : `${isFrench ? 'Débloquer' : 'أفتح الزي'} · ${selectedOutfit.priceGoldCoins} 🪙`}
+                  </button>}
+                {!isUnlocked && currentCoins < selectedOutfit.priceGoldCoins && <p className="didou-small">{isFrench ? 'Continue tes activités pour gagner des pièces.' : 'تابع أنشطتك لتكسب قطعاً إضافية.'}</p>}
+              </>}
+            </div>
+          </aside>
+          <section role="tabpanel" id="didou-studio-panel" aria-labelledby={'didou-tab-' + activeTab} className="didou-studio-content">
+            {activeTab === 'wardrobe' && <>
+              <h3>{isFrench ? 'La garde-robe' : 'خزانة ملابسي'}</h3>
+              <div className="didou-species" role="group" aria-label={isFrench ? 'Choisir ton compagnon' : 'اختر صديقك'}>
+                <button type="button" aria-pressed={activeSpecies === 'fennec'} onClick={() => handleSpeciesChange('fennec')}>🦊 {isFrench ? 'Fennec' : 'الفنك'}</button>
+                <button type="button" aria-pressed={activeSpecies === 'eagle'} onClick={() => handleSpeciesChange('eagle')}>🦅 {isFrench ? 'Aiglon' : 'العقاب'}</button>
+              </div>
+              <div className="didou-filter-row" role="group" aria-label={isFrench ? 'Types de tenues' : 'أنواع الأزياء'}>
+                {(['all', 'clothing', 'headwear'] as const).map((category, i) => <button type="button" key={category} aria-pressed={outfitCategory === category} onClick={() => setOutfitCategory(category)}>{(isFrench ? ['Tout', 'Tenues', 'Coiffes'] : ['الكل', 'أزياء', 'قبعات'])[i]}</button>)}
+              </div>
+              <div className="didou-outfit-grid">{filteredOutfits.map(outfit => <button type="button" className="didou-outfit-choice" key={outfit.id} data-outfit={outfit.id}
+                aria-pressed={selectedOutfitId === outfit.id} onClick={() => {
+                  setSelectedOutfitId(outfit.id);
+                  if (window.matchMedia('(max-width: 639px)').matches) scrollAreaRef.current?.scrollTo?.({ top: 0, behavior: reducedMotion ? 'instant' : 'smooth' });
+                }}>
+                <span className="didou-outfit-symbol" aria-hidden="true">{outfit.icon}</span>
+                <span className="font-extrabold">{isFrench ? outfit.nameFr : outfit.nameAr}</span>
+                <span className="didou-small">{activeOutfitId === outfit.id ? (isFrench ? 'Portée ✓' : 'أرتديها ✓') : unlockedOutfits.includes(outfit.id) ? (isFrench ? 'Disponible' : 'متاح') : `${outfit.priceGoldCoins} 🪙`}</span>
+              </button>)}</div>
+            </>}
+            {activeTab === 'nutrition' && <>
+              <h3>{isFrench ? 'À table, Didou !' : 'هيا نأكل يا ديدو!'}</h3>
+              <p className="didou-description">{isFrench ? 'Choisis une gourmandise et regarde son énergie.' : 'اختر طعاماً لديدو وانظر إلى طاقته.'}</p>
+              <div className="didou-food-grid">{DIDOU_TREATS_LIST.map(treat => <article key={treat.id} className="didou-food-choice" data-treat={treat.id}>
+                <span className="didou-food-symbol" aria-hidden="true">{treat.icon}</span>
+                <h4>{isFrench ? treat.nameFr : treat.nameAr}</h4>
+                <p className="didou-small">⚡ +{treat.energyBonus}% · +{treat.xpBonus} XP</p>
+                <button type="button" className="didou-primary-button" disabled={currentCoins < treat.priceGoldCoins || isEatingAnim} onClick={() => handleFeedTreat(treat)}>
+                  {isFrench ? 'Donner' : 'أقدم'} · {treat.priceGoldCoins} 🪙
+                </button>
+              </article>)}</div>
+            </>}
+            {activeTab === 'evolution' && <>
+              <h3>{isFrench ? 'Didou grandit avec toi' : 'ديدو يكبر معك'}</h3>
+              <p className="didou-description">{nextStage ? (isFrench ? `Prochaine étape au niveau ${nextStage.minLevel}. Continue à apprendre à ton rythme.` : `المرحلة التالية في المستوى ${nextStage.minLevel}. تعلّم على مهل وبثقة.`) : (isFrench ? 'Tu as atteint la dernière étape de Didou !' : 'وصلت إلى آخر مرحلة لديدو!')}</p>
+              <progress className="didou-growth-progress" value={stageProgress} max={100} aria-label={isFrench ? 'Progression vers la prochaine étape' : 'التقدم نحو المرحلة التالية'} />
+              <ol className="didou-growth-steps">{DIDOU_STAGES.map(stage => <li key={stage.stage} data-current={stage.stage === currentStage.stage || undefined} aria-current={stage.stage === currentStage.stage ? 'step' : undefined}>
+                <span className="didou-growth-icon" aria-hidden="true">{activeSpecies === 'fennec' ? stage.iconFennec : stage.iconEagle}</span>
+                <div><h4>{isFrench ? stage.nameFr : stage.nameAr}</h4><p className="didou-small">{isFrench ? 'Niveau' : 'المستوى'} {stage.minLevel}</p></div>
+                <span className="didou-small">{stage.stage === currentStage.stage ? (isFrench ? 'Maintenant' : 'الآن') : userLevel >= stage.minLevel ? '✓' : '🔒'}</span>
+              </li>)}</ol>
+            </>}
+            {activeTab === 'wisdom' && <>
+              <h3>{isFrench ? 'Un petit mot de Didou' : 'كلمة من ديدو'}</h3>
+              <p className="didou-description">{isFrench ? 'Des encouragements à lire ou à écouter.' : 'كلمات تشجيع تقرؤها أو تسمعها.'}</p>
+              {voiceAvailable === false && !(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).some(quote => findRecordedSpeechSequence(stripNonSpokenSymbols(quote), isFrench ? 'fr-FR' : 'ar-SA')) && <p className="didou-small">{isFrench ? 'La voix n’est pas disponible sur cet appareil. Tu peux lire tous les messages.' : 'الصوت غير متاح على هذا الجهاز. يمكنك قراءة كل الرسائل.'}</p>}
+              <p className="didou-small">{isFrench ? 'Voix de synthèse de Didou.' : 'صوت ديدو مُولَّد بالذكاء الاصطناعي.'}</p>
+              <div className="didou-dialogues">{(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).map((quote, index) => <article key={index} data-speaking={playingDialogueIndex === index || undefined}>
+                <p>{quote}</p>
+                {voiceReadingEnabled && (voiceAvailable === true || findRecordedSpeechSequence(stripNonSpokenSymbols(quote), isFrench ? 'fr-FR' : 'ar-SA')) && <button type="button" className="didou-secondary-button" onClick={() => {
+                  if (playingDialogueIndex === index) { stopSpeech(); setPlayingDialogueIndex(null); } else handlePlayDialogue(quote, index);
+                }}><Volume2 className="w-4 h-4" />{playingDialogueIndex === index ? (isFrench ? 'Arrêter' : 'أوقف') : (isFrench ? 'Écouter' : 'أستمع')}</button>}
+              </article>)}</div>
+            </>}
+          </section>
         </div>
-
-        {/* BODY CONTENT BY TAB */}
-        <div className="flex-1 min-h-0 p-4 sm:p-5 overflow-y-auto">
-          {/* FEEDBACK TOAST */}
-          <AnimatePresence>
-            {feedbackMsg && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mb-4 p-3 rounded-2xl bg-amber-100 dark:bg-amber-950/80 border-2 border-amber-400 text-amber-950 dark:text-amber-200 text-xs sm:text-sm font-black text-center shadow-md"
-              >
-                {feedbackMsg}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* TAB 1: WARDROBE */}
-          {activeTab === 'wardrobe' && (
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-              {/* SPECIES SWITCHER & OUTFIT LIST (7 cols) */}
-              <div className="md:col-span-7 space-y-4">
-                {/* Species Choice */}
-                <div className="p-3 bg-amber-50 dark:bg-slate-800/60 rounded-2xl border border-amber-200 dark:border-slate-700">
-                  <div className="text-xs font-black text-slate-700 dark:text-slate-300 mb-2">
-                    {isFrench ? "Choisis l'animal compagnon :" : "اختر حيوانك الرفيق :"}
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => handleSpeciesChange('fennec')}
-                      className={`p-2.5 rounded-xl border-2 flex items-center justify-center gap-2 font-black text-xs transition-all cursor-pointer ${
-                        activeSpecies === 'fennec'
-                          ? 'border-amber-500 bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-300 shadow-sm'
-                          : 'border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                      }`}
-                    >
-                      <span className="text-xl">🦊</span>
-                      <span>{isFrench ? 'Fennec des Sables' : 'الفنك الجزائري'}</span>
-                    </button>
-
-                    <button
-                      onClick={() => handleSpeciesChange('eagle')}
-                      className={`p-2.5 rounded-xl border-2 flex items-center justify-center gap-2 font-black text-xs transition-all cursor-pointer ${
-                        activeSpecies === 'eagle'
-                          ? 'border-amber-500 bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-300 shadow-sm'
-                          : 'border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                      }`}
-                    >
-                      <span className="text-xl">🦅</span>
-                      <span>{isFrench ? "Aiglon de l'Atlas" : 'عقاب الأطلس'}</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Filters */}
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300">
-                    {isFrench ? 'Tenues & Accessoires algériens' : 'الأزياء والألبسة التراثية والعصرية'}
-                  </h3>
-                  <div className="flex items-center gap-1 text-[11px] font-bold">
-                    <button
-                      onClick={() => setOutfitCategory('all')}
-                      className={`px-2.5 py-1 rounded-xl ${outfitCategory === 'all' ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600'}`}
-                    >
-                      {isFrench ? 'Tous' : 'الكل'}
-                    </button>
-                    <button
-                      onClick={() => setOutfitCategory('clothing')}
-                      className={`px-2.5 py-1 rounded-xl ${outfitCategory === 'clothing' ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600'}`}
-                    >
-                      {isFrench ? 'Tenues' : 'أزياء'}
-                    </button>
-                    <button
-                      onClick={() => setOutfitCategory('headwear')}
-                      className={`px-2.5 py-1 rounded-xl ${outfitCategory === 'headwear' ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600'}`}
-                    >
-                      {isFrench ? 'Coiffes' : 'قبعات'}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Outfit Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto pr-1">
-                  {filteredOutfits.map((outfit) => {
-                    const unlocked = unlockedOutfits.includes(outfit.id);
-                    const equipped = activeOutfitId === outfit.id;
-                    const isSelected = selectedOutfitId === outfit.id;
-
-                    return (
-                      <button
-                        key={outfit.id}
-                        onClick={() => setSelectedOutfitId(outfit.id)}
-                        className={`p-3 rounded-2xl border-2 text-start flex items-center gap-3 transition-all cursor-pointer ${
-                          isSelected
-                            ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 shadow-sm'
-                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-amber-300'
-                        }`}
-                      >
-                        <div
-                          className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-sm"
-                          style={{ backgroundColor: `${outfit.accentColor}20`, color: outfit.accentColor }}
-                        >
-                          {outfit.icon}
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-1">
-                            <span className="font-extrabold text-xs text-slate-900 dark:text-slate-100 truncate">
-                              {isFrench ? outfit.nameFr : outfit.nameAr}
-                            </span>
-                            {equipped && (
-                              <span className="bg-emerald-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full shrink-0">
-                                {isFrench ? 'Équipé' : 'مُرتدى'}
-                              </span>
-                            )}
-                          </div>
-
-                          <div className="mt-1 text-[11px] font-bold">
-                            {unlocked ? (
-                              <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                                <Check className="w-3 h-3" /> {isFrench ? 'Débloqué' : 'متاح'}
-                              </span>
-                            ) : (
-                              <span className="text-amber-600 dark:text-amber-400 flex items-center gap-1 font-mono">
-                                <Coins className="w-3 h-3" /> {outfit.priceGoldCoins} {isFrench ? 'pièces' : 'دينار'}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* PREVIEW & ACTION PANEL (5 cols) */}
-              <div className="md:col-span-5 bg-gradient-to-b from-amber-500/10 via-orange-500/10 to-rose-500/10 rounded-3xl p-5 border-2 border-amber-300 dark:border-slate-700 flex flex-col justify-between text-center space-y-4">
-                <div className="space-y-3">
-                  <span className="bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-300 font-black text-xs px-3 py-1 rounded-full border border-amber-300 dark:border-slate-700 inline-block shadow-sm">
-                    {isFrench ? 'Aperçu en direct' : 'معاينة مباشرة للرفيق'}
-                  </span>
-
-                  {/* Large 3D Avatar Display */}
-                  <div className="relative mx-auto flex items-center justify-center p-2">
-                    <Didou3DAvatar
-                      species={activeSpecies}
-                      outfitId={selectedOutfit.id}
-                      mood={isChangingOutfitAnim ? 'celebrating' : isEatingAnim ? 'celebrating' : 'happy'}
-                      isChangingOutfit={isChangingOutfitAnim}
-                      isEating={isEatingAnim}
-                      eatingFoodIcon={eatingFoodIcon}
-                      size="lg"
-                    />
-                  </div>
-
-                  <div>
-                    <h4 className="font-black text-base text-slate-900 dark:text-slate-100">
-                      {isFrench ? selectedOutfit.nameFr : selectedOutfit.nameAr}
-                    </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 font-bold mt-1 leading-relaxed">
-                      {selectedOutfit.descriptionAr}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="space-y-2">
-                  {isEquipped ? (
-                    <div className="py-2.5 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-400 font-black rounded-2xl text-xs">
-                      ✅ {isFrench ? 'Déjà équipé sur Didou' : 'ديدو يرتدي هذا الزي حالياً'}
-                    </div>
-                  ) : isUnlocked ? (
-                    <button
-                      onClick={() => handleEquip(selectedOutfit.id)}
-                      className="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-black text-xs sm:text-sm shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>{isFrench ? 'Revêtir cette tenue' : 'ارتداء هذا الزي الآن'}</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleBuy(selectedOutfit)}
-                      disabled={currentCoins < selectedOutfit.priceGoldCoins}
-                      className={`w-full py-3 rounded-2xl font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 transition-all ${
-                        currentCoins >= selectedOutfit.priceGoldCoins
-                          ? 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white active:scale-95 cursor-pointer'
-                          : 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
-                      }`}
-                    >
-                      <Coins className="w-4 h-4" />
-                      <span>
-                        {isFrench
-                          ? `Débloquer (${selectedOutfit.priceGoldCoins} pièces)`
-                          : `فتح الزي مقابل ${selectedOutfit.priceGoldCoins} د. ذهبي`}
-                      </span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 2: NUTRITION & ENERGY */}
-          {activeTab === 'nutrition' && (
-            <div className="space-y-5">
-              {/* Energy Status Card */}
-              <div className="p-4 rounded-3xl bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-cyan-500/15 border-2 border-emerald-400/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3 text-start">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-md">
-                    ⚡
-                  </div>
-                  <div>
-                    <h3 className="font-black text-sm text-slate-900 dark:text-slate-100">
-                      {isFrench ? "Jauge d'énergie de Didou" : "مؤشر حيوية وطاقة ديدو"}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 font-bold">
-                      {isFrench
-                        ? "Nourris Didou avec des délices locaux pour maintenir son enthousiasme et gagner des bonus !"
-                        : "أطعم ديدو بتمور وفواكه ولايات الجزائر لزيادة نشاطه وربح نقاط خبرة إضافية!"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 shrink-0">
-                  <div className="w-36 h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden border border-slate-300 dark:border-slate-700">
-                    <div
-                      className="h-full bg-gradient-to-r from-emerald-400 to-green-500 rounded-full transition-all duration-500"
-                      style={{ width: `${currentEnergy}%` }}
-                    />
-                  </div>
-                  <span className="font-mono font-black text-sm text-emerald-700 dark:text-emerald-300">
-                    {currentEnergy}%
-                  </span>
-                </div>
-              </div>
-
-              {/* Treats Catalog */}
-              <div>
-                <h4 className="text-xs font-black text-slate-700 dark:text-slate-300 mb-3">
-                  {isFrench ? "Spécialités régionales d'Algérie :" : "قائمة الأغذية والخيرات الجزائرية المباركة:"}
-                </h4>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {DIDOU_TREATS_LIST.map((treat) => (
-                    <div
-                      key={treat.id}
-                      className="p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 hover:border-emerald-400 flex flex-col justify-between gap-3 shadow-sm transition-all"
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-slate-800 flex items-center justify-center text-3xl shrink-0 shadow-inner">
-                          {treat.icon}
-                        </div>
-                        <div className="min-w-0">
-                          <h5 className="font-black text-xs sm:text-sm text-slate-900 dark:text-slate-100">
-                            {isFrench ? treat.nameFr : treat.nameAr}
-                          </h5>
-                          <p className="text-[11px] text-amber-700 dark:text-amber-400 font-extrabold mt-0.5">
-                            📍 {treat.originWilayaAr}
-                          </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 font-bold mt-1 line-clamp-2 leading-relaxed">
-                            {isFrench ? treat.descriptionFr : treat.descriptionAr}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
-                        <div className="text-[11px] font-bold">
-                          <span className="text-emerald-600 font-extrabold">+{treat.energyBonus}% ⚡</span>
-                          <span className="text-purple-600 font-extrabold ml-2">+{treat.xpBonus} XP ⭐</span>
-                        </div>
-
-                        <button
-                          onClick={() => handleFeedTreat(treat)}
-                          disabled={currentCoins < treat.priceGoldCoins}
-                          className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1 shadow-sm transition-all ${
-                            currentCoins >= treat.priceGoldCoins
-                              ? 'bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer active:scale-95'
-                              : 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
-                          }`}
-                        >
-                          <Coins className="w-3.5 h-3.5" />
-                          <span>{treat.priceGoldCoins}</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 3: EVOLUTION & STAGES */}
-          {activeTab === 'evolution' && (
-            <div className="space-y-5">
-              <div className="p-4 rounded-3xl bg-gradient-to-r from-purple-500/15 via-indigo-500/15 to-blue-500/15 border-2 border-purple-400/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3 text-start">
-                  <div className="w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-3xl shadow-md">
-                    👑
-                  </div>
-                  <div>
-                    <h3 className="font-black text-sm text-slate-900 dark:text-slate-100">
-                      {isFrench ? `Stade actuel : ${currentStage.nameFr}` : `المرحلة الحالية: ${currentStage.nameAr}`}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 font-bold">
-                      {isFrench
-                        ? `Ton compagnon évolue au fil de tes leçons et exercices (Niveau ${userLevel} • ${currentXp} XP)`
-                        : `يتطور رفيقك وينمو مع تقدمك في الدروس والامتحانات (المستوى ${userLevel} • ${currentXp} نقطة خبرة)`}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2 rounded-2xl border border-purple-300 dark:border-slate-700 shadow-sm">
-                  <Heart className="w-5 h-5 text-rose-500 fill-rose-500 animate-pulse" />
-                  <div className="text-start">
-                    <div className="text-[10px] text-slate-500 font-bold">{isFrench ? 'Amitié' : 'الصداقة'}</div>
-                    <div className="text-xs font-black text-slate-800 dark:text-slate-200">{friendshipLevel} / 10 ⭐</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3 Evolution Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {DIDOU_STAGES.map((st) => {
-                  const isCurrent = currentStage.stage === st.stage;
-                  const isReached = userLevel >= st.minLevel;
-
-                  return (
-                    <div
-                      key={st.stage}
-                      className={`p-5 rounded-3xl border-2 flex flex-col justify-between gap-4 relative overflow-hidden transition-all ${
-                        isCurrent
-                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/40 shadow-lg scale-102'
-                          : isReached
-                          ? 'border-emerald-400 bg-white dark:bg-slate-900'
-                          : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 opacity-75'
-                      }`}
-                    >
-                      <div className="space-y-2 text-start">
-                        <div className="flex items-center justify-between">
-                          <span className="text-3xl">{activeSpecies === 'eagle' ? st.iconEagle : st.iconFennec}</span>
-                          <span
-                            className={`px-2.5 py-0.5 rounded-full text-[10px] font-black ${
-                              isCurrent
-                                ? 'bg-purple-600 text-white'
-                                : isReached
-                                ? 'bg-emerald-500 text-white'
-                                : 'bg-slate-200 dark:bg-slate-800 text-slate-500'
-                            }`}
-                          >
-                            {isCurrent
-                              ? (isFrench ? 'Actuel' : 'المرحلة الحالية')
-                              : isReached
-                              ? (isFrench ? 'Atteint' : 'تم الوصول')
-                              : (isFrench ? `Niveau ${st.minLevel}` : `المستوى ${st.minLevel}`)}
-                          </span>
-                        </div>
-
-                        <h4 className="font-black text-sm text-slate-900 dark:text-slate-100">
-                          {isFrench ? st.nameFr : st.nameAr}
-                        </h4>
-                        <p className="text-[11px] font-extrabold text-purple-700 dark:text-purple-300">
-                          🎖️ {isFrench ? st.badgeTitleFr : st.badgeTitleAr}
-                        </p>
-
-                        <div className="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-1">
-                          <span className="text-[10px] text-slate-500 font-bold block">
-                            {isFrench ? 'Avantages & Bonus :' : 'المزايا والمكافآت :'}
-                          </span>
-                          {(isFrench ? st.perksFr : st.perksAr).map((perk, i) => (
-                            <div key={i} className="text-[11px] font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                              <Star className="w-3 h-3 text-amber-500 shrink-0" />
-                              <span>{perk}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="pt-2 text-center">
-                        {isCurrent ? (
-                          <span className="text-xs font-black text-purple-600 dark:text-purple-300">
-                            ✨ {isFrench ? 'Forme active' : 'هيئة ديدو الحالية'}
-                          </span>
-                        ) : isReached ? (
-                          <span className="text-xs font-bold text-emerald-600">
-                            ✓ {isFrench ? 'Débloqué avec succès' : 'مكتمل بنجاح'}
-                          </span>
-                        ) : (
-                          <span className="text-xs font-bold text-slate-400">
-                            🔒 {isFrench ? `Nécessite le niveau ${st.minLevel}` : `يتطلب الوصول للمستوى ${st.minLevel}`}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* TAB 4: WISDOM & AUDIO DIALOGUES */}
-          {activeTab === 'wisdom' && (
-            <div className="space-y-4">
-              <div className="p-4 rounded-3xl bg-gradient-to-r from-rose-500/15 via-orange-500/15 to-amber-500/15 border-2 border-rose-400/50 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-md">
-                  💬
-                </div>
-                <div className="text-start">
-                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100">
-                    {isFrench ? "Paroles & Conseils d'encouragement de Didou" : "نصائح وكلمات ديدو المشجعة للأبطال"}
-                  </h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 font-bold">
-                    {isFrench
-                      ? "Clique sur n'importe quel conseil pour l'écouter avec la voix audio de Didou !"
-                      : "انقر على أي نصيحة للاستماع إليها بصوت ديدو المشجع والمبهج!"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {(isFrench ? DIDOU_DIALOGUES_FR : DIDOU_DIALOGUES_AR).map((quote, idx) => {
-                  const isPlaying = playingDialogueIndex === idx;
-
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handlePlayDialogue(quote, idx)}
-                      className={`p-4 rounded-2xl border-2 text-start flex items-start gap-3 transition-all cursor-pointer ${
-                        isPlaying
-                          ? 'border-rose-500 bg-rose-50 dark:bg-rose-950/50 shadow-md scale-101'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-amber-400'
-                      }`}
-                    >
-                      <div
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 ${
-                          isPlaying ? 'bg-rose-500 text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-slate-600'
-                        }`}
-                      >
-                        <Volume2 className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 leading-relaxed">
-                          « {quote} »
-                        </p>
-                        <span className="text-[10px] text-rose-600 dark:text-rose-400 font-extrabold mt-1 block">
-                          {isPlaying ? (isFrench ? 'Lecture en cours...' : 'جاري الاستماع...') : (isFrench ? 'Écouter la voix' : 'انقر للاستماع')}
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-      </motion.div>
-    </div>
-  );
+      </div>
+    </motion.div>
+  </div>;
 };

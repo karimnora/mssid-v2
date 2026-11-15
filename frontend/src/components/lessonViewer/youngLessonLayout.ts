@@ -279,13 +279,18 @@ export function parsePlayfulSnippet(raw: string, fallbackIndex = 0, siblingEmoji
     }
   }
 
-  let emoji = emojiMatch?.[0] ?? '';
+  // Counting pictures carry the quantity itself ("🍎🍎🍎" = 3 apples). Keeping only the first one
+  // showed a single apple under a text that says three, so every repeated run is kept whole.
+  const countedRuns = [...cleaned.matchAll(new RegExp(`(${EMOJI_RE.source})(?:\\s*\\1)+`, 'gu'))].map((m) => m[0].replace(/\s+/g, ''));
+  let emoji = countedRuns.length > 0 ? countedRuns.join(' ') : emojiMatch?.[0] ?? '';
   if (!emoji && !letterVisual) {
     const mapped = FALLBACK_EMOJI.find(([re]) => re.test(headline) || re.test(cleaned));
     emoji = mapped?.[1] ?? siblingEmoji ?? DEFAULT_TILES[fallbackIndex % DEFAULT_TILES.length];
   }
 
-  const speak = [headline, whisper].filter(Boolean).join('. ');
+  // Visual captions may be shortened; the audio must keep the authored sentence,
+  // vowel marks and punctuation so an existing recording can still match it.
+  const speak = withoutEmoji;
   return { emoji, headline, whisper, speak, letterVisual };
 }
 

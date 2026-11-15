@@ -652,7 +652,7 @@ export const MATH_3AP: CourseLesson[] = [
     subject: 'math',
     trimester: 2,
     domainAr: 'الأعداد والحساب',
-    sequenceAr: 'السلسلة 1 (تتمة): الأعداد من 10 000 إلى 99 999 (عشرات الآلاف)',
+    sequenceAr: 'السلسلة 1 (تتمة): الأعداد من 10 000 إلى 99 999 (عشرات الآلاف)',
     categoryAr: 'الرياضيات - منزلة عشرات الآلاف',
     titleAr: 'الأَعْدَادُ إِلَى 99999: عَشَرَاتُ الآلاَفِ، التَّفْكِيكُ وَالحَصْرُ',
     summaryAr: 'بعد أن اكتشف تلميذ السنة الثالثة الآلاف حتى 9999، يتوسع أكثر ليكتشف منزلة خامسة: عشرات الآلاف، ويقرأ ويكتب أعداداً من 5 أرقام مثل 45320.',
@@ -933,7 +933,7 @@ export const MATH_3AP: CourseLesson[] = [
       titleAr: '🎮 ميزان التحويلات والقياسات',
       instructionsAr: 'طابق المقدار بالوحدة المناسبة له قياسياً!',
       items: [
-        { questionOrPromptAr: 'وزن كيس تفاح', correctAnswerAr: 'الكيلوغرام (kg)', optionsAr: ['الكيلوغرام (kg)', 'السنتيمتر (cm)'], explanationAr: 'الوزن والكتلة يقاسان بالكيلوغرام والغرام.' },
+        { questionOrPromptAr: 'كتلة كيس تفاح', correctAnswerAr: 'الكيلوغرام (kg)', optionsAr: ['الكيلوغرام (kg)', 'السنتيمتر (cm)'], explanationAr: 'نقيس كتلة كيس التفاح بالكيلوغرام، وكتلة الأشياء الخفيفة بالغرام.' },
         { questionOrPromptAr: 'طول السبورة', correctAnswerAr: 'المتر (m)', optionsAr: ['المتر (m)', 'الغرام (g)'], explanationAr: 'طول السبورة يقاس بالمتر.' },
         { questionOrPromptAr: 'كمية الماء في القارورة', correctAnswerAr: 'اللتر (L)', optionsAr: ['اللتر (L)', 'الكيلوغرام (kg)'], explanationAr: 'كمية السوائل تُقاس باللتر.' }
       ],

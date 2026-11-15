@@ -60,6 +60,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [slowNetwork, setSlowNetwork] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  // Set after a failed email/password login: many first-time visitors type their details into the
+  // login tab and get "compte introuvable" — this surfaces a one-tap switch to registration that
+  // keeps what they already typed. The backend message itself stays deliberately vague (no
+  // account enumeration), so this hint is shown on any login failure.
+  const [loginFailed, setLoginFailed] = useState<boolean>(false);
 
   // 'credentials' = the normal login/register form above. 'forgot'/'reset' replace it entirely with
   // the password-recovery steps (request a code, then use it) — see handleForgotSubmit/handleResetSubmit.
@@ -99,6 +104,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       setPendingGoogleUser(null);
       setCompleteWilaya('');
       setStatusMessage(null);
+      setLoginFailed(false);
     }
   }, [isOpen, initialMode]);
 
@@ -297,12 +303,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     if (loading) return;
     setLoading(true);
     setStatusMessage(null);
+    setLoginFailed(false);
 
     try {
       if (isLogin) {
         const result = await requestAuth(() => AuthService.loginAsync(email, password));
-        
+
         if (result.error || !result.user) {
+          setLoginFailed(true);
           setStatusMessage({
             type: 'error',
             text: result.error || t('loginInvalidCredentials')
@@ -613,6 +621,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           </div>
         )}
         <form onSubmit={handleSubmit} className="kids-modal-body p-5 space-y-4">
+          {isLogin && (
+            <p className="text-xs text-[var(--kids-muted)] font-bold text-center">{t('loginFirstTimeHint')}</p>
+          )}
+
           {!isLogin && (
             <div>
               <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('fullNameLabel')}</label>
@@ -724,6 +736,20 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               }`}
             >
               {statusMessage.text}
+            </div>
+          )}
+
+          {isLogin && loginFailed && statusMessage?.type === 'error' && (
+            <div className="p-3 rounded-2xl bg-[#FFF8E7] border-2 border-[#E7E2D7] space-y-2">
+              <p className="text-sm font-bold text-[var(--kids-ink)] text-center">{t('loginFailedNoAccountHint')}</p>
+              <button
+                type="button"
+                onClick={() => { setIsLogin(false); setStatusMessage(null); setLoginFailed(false); }}
+                className="w-full hit-target rounded-2xl text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2 bg-white text-[var(--kids-grass-2)] border-2 border-[var(--kids-grass-2)]"
+              >
+                <UserPlus className="w-4 h-4" />
+                <span>{t('loginFailedCreateAccountCta')}</span>
+              </button>
             </div>
           )}
 

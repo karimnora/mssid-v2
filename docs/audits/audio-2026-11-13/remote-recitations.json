@@ -1,0 +1,29 @@
+{
+  "scope": "Four online samples only; no certification of all recitations or offline availability.",
+  "checks": [
+    {
+      "url": "https://everyayah.com/data/warsh/warsh_yassin_al_jazaery_64kbps/001001.mp3",
+      "status": 200,
+      "bytes": 84890,
+      "decoded": true
+    },
+    {
+      "url": "https://everyayah.com/data/warsh/warsh_ibrahim_aldosary_128kbps/001001.mp3",
+      "status": 200,
+      "bytes": 105324,
+      "decoded": true
+    },
+    {
+      "url": "https://everyayah.com/data/warsh/warsh_yassin_al_jazaery_64kbps/112001.mp3",
+      "status": 200,
+      "bytes": 22588,
+      "decoded": true
+    },
+    {
+      "url": "https://everyayah.com/data/warsh/warsh_ibrahim_aldosary_128kbps/112001.mp3",
+      "status": 200,
+      "bytes": 59767,
+      "decoded": true
+    }
+  ]
+}

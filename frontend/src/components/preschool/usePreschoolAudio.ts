@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { speakText, stopSpeech, useVoiceAvailable } from '../../utils/speech';
 import { findRecordedSpeech } from '../../utils/recordedSpeech';
+import { resolveRecordingUrl } from '../../utils/recordingUrl';
 
 // ─── Global mute (TTS + SFX + loops) ─────────────────────────────────────────
 const MUTE_STORAGE_KEY = 'mssid_preschool_muted';
@@ -105,7 +106,7 @@ function playRecordedClip(src: string, onFail: () => void) {
     onFail();
     return;
   }
-  const audio = new Audio(src);
+  const audio = new Audio(resolveRecordingUrl(src));
   recordedClip = audio;
   audio.onended = () => {
     if (recordedClip === audio) recordedClip = null;

@@ -1,0 +1,1754 @@
+{
+  "en": {
+    "clips": [
+      {
+        "texte": "Drag: long train, heavy stone, bird up high, house, light balloon, then the brain!",
+        "fichier": "openai-v2-bcc4367a4151b1f0.mp3",
+        "duration": 8.6,
+        "sha256": "3af797ed67779c6866e0afc3fc3d5cdae05332db350a4ba997da32a7e4869711",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:41:54.010Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-think-path-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "312168d2335f0fcd5bde45107f11088dbe94b59e6c54708e60924c18c7e51262",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.058Z"
+      },
+      {
+        "texte": "Your little mind is thinking! Bravo!",
+        "fichier": "openai-v2-7446cb3c866809a4.mp3",
+        "duration": 3.9,
+        "sha256": "2c942a36ae3030c1f558cad9ff39c9c3cb51873f303db105f8e1d37c754e1500",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:41:54.898Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-think-path-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5b13642166217bba834f5e1a69fdb4379f5c3207dc50b643c8c143a40b37fa6c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.174Z"
+      },
+      {
+        "texte": "Touch the train! The train is long, the car is short!",
+        "fichier": "openai-v2-9c8e6dacc218886f.mp3",
+        "duration": 3.95,
+        "sha256": "193a5b317ed5f6359883db76bca54c9038bd2876abdfcf188ff0890bdba414e0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:41:56.461Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-long-short-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "d1c311ba6c44d5c30c185780292dbeeb666a19aede6d026e773acd330e9408e3",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.183Z"
+      },
+      {
+        "texte": "Well done! That is a long train!",
+        "fichier": "openai-v2-9f3d78e8ab69c625.mp3",
+        "duration": 2.7,
+        "sha256": "31067d0febea8800d13bc6275d6336898570f04eff580d80f4942b512cca9227",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:41:57.634Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-long-short-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "43595b29a23bb1fd3dafcc7cca4a2e302b350ff295035fd7ec266054a41753ec",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.193Z"
+      },
+      {
+        "texte": "Touch the stone! The stone is heavy, the balloon is light!",
+        "fichier": "openai-v2-beef893bcf2db32c.mp3",
+        "duration": 4.95,
+        "sha256": "31ee16d09119dd902bf8b63ebef2a53aa3d0209b677649caf176f9558667850c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:41:58.765Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-heavy-tap-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1b4afa1dad01dfb11694e0a878450626f2e7bb8380e2e244b87bc2eeee9e05d0",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.198Z"
+      },
+      {
+        "texte": "Yes! The stone is heavy!",
+        "fichier": "openai-v2-b19d1f954d3fb3cc.mp3",
+        "duration": 2.1,
+        "sha256": "b5d18647c7f5b4879c7ac5b42317cd2d5936c7866629ffccf4225f64b7b02ca9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:00.184Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-heavy-tap-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "8c18ed60251567228d45b000dab45a4876ba4058c72e93d5177fb1dba0e8f0d5",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.206Z"
+      },
+      {
+        "texte": "Touch the ball above the line! Same ball, two places.",
+        "fichier": "openai-v2-8091c7230aff8974.mp3",
+        "duration": 4.2,
+        "sha256": "1a17244005362d543e1819cf6204d82f0c532db11b5ef51eb3ff09e2daa27ea2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:01.156Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-above-below-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "6a0bc6c508470032076f24aec51bd0e993dcd1c2bc051b7269a6655472955740",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.213Z"
+      },
+      {
+        "texte": "Yes! The ball is above!",
+        "fichier": "openai-v2-962b976e915395d1.mp3",
+        "duration": 2.45,
+        "sha256": "603da98e59680da9727a45d698993f68dea03a72b31a690eb33446ca5f3ea8e3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:02.051Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-above-below-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "441197cdda2716bb6db090e0cca8eb4f420461111815a33d3600ee28534b4db9",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.219Z"
+      },
+      {
+        "texte": "Put the stone and the car with the elephant, the balloon and the leaf with the feather!",
+        "fichier": "openai-v2-dec06cc7e1faf4f1.mp3",
+        "duration": 5.15,
+        "sha256": "c3a0f9afc8f940e7ed2e2058ad8a70fbf1987e2258201a96f04f00ce9b3e16e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:03.518Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-heavy-light-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "383ff70e3aa5de3b8f5a020b6557792ca5fa3521e398278e95e1f8750cfe01d4",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.226Z"
+      },
+      {
+        "texte": "You know heavy and light!",
+        "fichier": "openai-v2-289fe23d34c389fb.mp3",
+        "duration": 2.1,
+        "sha256": "a4632e6d4167b5b0fb9ade3ae0ee22c1c67eb72b2907763ecd9f0a5b3763f157",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:04.826Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-heavy-light-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "dbb32d7e387dc1de05d3e4057c1f276a303bd8d9c1014093cf3243c6d009619b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.230Z"
+      },
+      {
+        "texte": "Touch the ball that is INSIDE the box! Same ball, two places!",
+        "fichier": "openai-v2-66856c50474d9c38.mp3",
+        "duration": 5.95,
+        "sha256": "287f1b69f5d06bc5bac7cb17f06cfc88e103363ea36e49d99ef64163b95b08e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:06.001Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-inside-outside-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "f13b414dea8008b4e0e475fc70f4e4dfd1c63947840ea53868c2ed7ebdc008c7",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.234Z"
+      },
+      {
+        "texte": "Yes! The ball is inside the box!",
+        "fichier": "openai-v2-3f6ce5e8465b36c1.mp3",
+        "duration": 2.85,
+        "sha256": "2043757c73b1354d7be7fbb4cb43adce83fb8e1f7318113ecc849c31df34c739",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:06.858Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-inside-outside-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "3fb9ecdc890a66a87b85a261498d1939a1d92970ac3504ed6207aef0c46a9207",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.242Z"
+      },
+      {
+        "texte": "Touch the bear that is IN FRONT of the box! Same bear, two different places!",
+        "fichier": "openai-v2-2dafdc329925f9e6.mp3",
+        "duration": 5.55,
+        "sha256": "97546164e819ec80839655dbe9c326b5beb4ed14341043aaa961927f8ec4ee62",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:08.095Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-front-behind-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "b8070338fc9d09d49bce8f0befb9ee2e15c8a245830f48e1454274c23ba4dfb0",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.250Z"
+      },
+      {
+        "texte": "Yes! The bear is in front of the box!",
+        "fichier": "openai-v2-47b0460b41387c96.mp3",
+        "duration": 2.95,
+        "sha256": "f0f9abcbae448855cea819df8dea4a1cfd1532b9fbfa800cc4cb16f4c472bd39",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:09.189Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-front-behind-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1e3b809ca4937818b367823be5ccdeacd5bc4d3b8f0ebf213061048e06f53263",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.255Z"
+      },
+      {
+        "texte": "Touch the right hand! We eat and shake hands with it!",
+        "fichier": "openai-v2-9bc2d34b22723b67.mp3",
+        "duration": 3.65,
+        "sha256": "d8b6f29875962a58939f6330432f46f82baaeb49c492931d381d539af710a9d7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:10.313Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-right-left-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "a12eee7f245f3b375ec34df33ee5cc43501f47664db849692f22daffa5e9f443",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.260Z"
+      },
+      {
+        "texte": "That is the right hand! Well done!",
+        "fichier": "openai-v2-66e3be87ac3bbea9.mp3",
+        "duration": 2.5,
+        "sha256": "4549e42b610adca154205acc5b7d167eae12157be66c6502a4ef61d5a88ee2b7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:11.199Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-right-left-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "9a8e291b62765e98e5636f2b02f0c2cb2b11f63ffdb2e24042b5254a0888e00e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.264Z"
+      },
+      {
+        "texte": "Train, car, train, car, train… what is next?",
+        "fichier": "openai-v2-71b2ef8ecc8ecad5.mp3",
+        "duration": 4.8,
+        "sha256": "991da9150f5d0a68337a5f9a0d0c313da6ac846f52aab6b311ebdae74587618c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:12.416Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-pattern-colors-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "dceb658681a1942ce6e8e93078ed486fc337b471d34d357592b1ad06ca020d3b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.269Z"
+      },
+      {
+        "texte": "The car comes after the train! Well done!",
+        "fichier": "openai-v2-53e3b5bfb6f8716b.mp3",
+        "duration": 3.25,
+        "sha256": "ede392ffc4f3a2d185f64465aa1cbc451db0e016c6a553171cd76b0b48f223b8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:13.784Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-pattern-colors-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "69ffe7def6c98e2a7d421c686954ee560d6be3f544d5e34a47abf0e74950ba14",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.274Z"
+      },
+      {
+        "texte": "Flip the cards! Say: train, elephant, bird!",
+        "fichier": "openai-v2-9479ccabb269c0ed.mp3",
+        "duration": 3.85,
+        "sha256": "f3c5fad9d1c865655a1ae2a02d60550046ff0d0fd0da69e47094e404b56b9ed4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:14.897Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-memory-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "8f7abfab75ac72f1d0e56864e1068f15df4c882c0c498b9c0bfcb288bfc9024c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.279Z"
+      },
+      {
+        "texte": "Your mind is strong!",
+        "fichier": "openai-v2-ad41560fef63a044.mp3",
+        "duration": 2.1,
+        "sha256": "8e67f0b0d50f6dcee2778cf3aa51ed99417c1a49c6dde60ac35fc202b9c57c1b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:15.878Z",
+        "uses": [
+          "v1:17-logic-spatial/en/logic-memory-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "410f17a2a410c4d5439a7e421a53f947c82182f095ed2f9758700ee673de4dbe",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.283Z"
+      },
+      {
+        "texte": "Red, blue, red, blue, red… what is next?",
+        "fichier": "openai-v2-0eea280611ba561b.mp3",
+        "duration": 4.75,
+        "sha256": "a490c8e9fcf7c7d71d692f4fc4474a3d32e88e63c85013ff951ef6907526e037",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:17.102Z",
+        "uses": [
+          "v1:18-sequences/en/seq-colors-ab-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "cbb1987bac18898bdfa74bb6b5f4c51bf817ab80f4612cd93c47a0829a9c0789",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.289Z"
+      },
+      {
+        "texte": "Blue comes after red! Well done!",
+        "fichier": "openai-v2-4cc9bd0e31c9ed06.mp3",
+        "duration": 2.4,
+        "sha256": "dd93d7d8f293feaab000160de23fcbec2b2c52fbf3df41bd7fb47d1f95d13085",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:17.947Z",
+        "uses": [
+          "v1:18-sequences/en/seq-colors-ab-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "2ac7896373f2919a4b8b7c9542dbfe216e15cfaa3ed5c35402e745a5b05c4c4c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.294Z"
+      },
+      {
+        "texte": "Cat, dog, cat, dog, cat… what is next?",
+        "fichier": "openai-v2-c29775765017f0c6.mp3",
+        "duration": 5.2,
+        "sha256": "2c2e68576361041ce65d0b7e56e6afa2e69c715d5bc055489962dea04b96ce03",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:19.262Z",
+        "uses": [
+          "v1:18-sequences/en/seq-animals-ab-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "36b7064c0a17a9e11521be99f098f52471ce4875f9f55c4bf509cee9772ccfc6",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.300Z"
+      },
+      {
+        "texte": "The dog comes after the cat! Well done!",
+        "fichier": "openai-v2-c87ffe28f169160e.mp3",
+        "duration": 3.95,
+        "sha256": "0377ac936a11911cef1f97f386878e223cf5dbfe2a992cfc13755305417da7f0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:20.216Z",
+        "uses": [
+          "v1:18-sequences/en/seq-animals-ab-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "07c0cbb67242a677df239456983d494eb2b7f5e9c608537de921d17407ce3978",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.304Z"
+      },
+      {
+        "texte": "Sun, moon, sun, moon, sun… what is next?",
+        "fichier": "openai-v2-595dcd819e68800a.mp3",
+        "duration": 4.5,
+        "sha256": "ebde987c807c03d306b08a7b69c5e6b6a806665bab9526d78dc5fe5811a8e00a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:21.718Z",
+        "uses": [
+          "v1:18-sequences/en/seq-day-night-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "a7078fbfb6274f72c4878393da0ca1fab3087702953f8483298802a2765bab4c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.310Z"
+      },
+      {
+        "texte": "The moon comes after the sun! Great!",
+        "fichier": "openai-v2-176202f21a5b879a.mp3",
+        "duration": 3,
+        "sha256": "ee533e759121db1bc54c4d8f5a8d2e89f02483bf6adac69d4a63490625c05b1d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:23.051Z",
+        "uses": [
+          "v1:18-sequences/en/seq-day-night-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1f61db826811dd7769832bf6e8f4d60335cd8265757dae7e6fccf2a19ed25dde",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.315Z"
+      },
+      {
+        "texte": "Apple, banana, apple, banana, apple… what is next?",
+        "fichier": "openai-v2-d1c9af69a9c188bc.mp3",
+        "duration": 4.65,
+        "sha256": "1f6d57d043639de1938df290c89a95b42935ed7a9688d25c531e4fd63fcf83c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:24.088Z",
+        "uses": [
+          "v1:18-sequences/en/seq-fruits-ab-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "f94437ae41594a3a3d4a01cb9f7b26eb0b1bc83987d6548b015deef8de813273",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.321Z"
+      },
+      {
+        "texte": "Banana comes after the apple!",
+        "fichier": "openai-v2-6c9ddb0c5773e807.mp3",
+        "duration": 2.5,
+        "sha256": "0e2902b9c4fe2db5e7fdfe96962dd54cc7c99b2790b31d3e62e5340dc4a7acab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:25.083Z",
+        "uses": [
+          "v1:18-sequences/en/seq-fruits-ab-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "b272937370ed6f2e4966b37c97bbfd99c5c025bbfbe673de7b61bb7c4d822b8d",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.326Z"
+      },
+      {
+        "texte": "Elephant, mouse, elephant, mouse, elephant… what is next?",
+        "fichier": "openai-v2-5851e74d4e68b97d.mp3",
+        "duration": 4.6,
+        "sha256": "c7f1ee5f71764bbe3f123b6dbfe32c27afaf16ade5e665f9c4cba4947f8b6644",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:26.238Z",
+        "uses": [
+          "v1:18-sequences/en/seq-big-small-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "191d02f58915d9263d5e313bfbb64e2d29830d85e9f39360a6866fd7b658af18",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.333Z"
+      },
+      {
+        "texte": "The small mouse comes after the elephant!",
+        "fichier": "openai-v2-2dba3056fd6f0216.mp3",
+        "duration": 4.3,
+        "sha256": "b05c3fca0bd6cbb80d0d5b1b91ff35820a90e82a38eb006333756a681f0158a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:27.271Z",
+        "uses": [
+          "v1:18-sequences/en/seq-big-small-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "a162b00b0bbec4d0bea0c09cca5a57f82056dbcb471fe7f54e00cae4d15d55ed",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.340Z"
+      },
+      {
+        "texte": "Car, bus, bus, car, bus… what is next?",
+        "fichier": "openai-v2-3243352fa88c5b54.mp3",
+        "duration": 4.95,
+        "sha256": "16f4069f27289085cd9f6b4eebf39b35150088a6eb50460f6bc64d35b40a55aa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:28.585Z",
+        "uses": [
+          "v1:18-sequences/en/seq-transport-abb-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "d109d6b28901f5fcaad67e9cc3f15337656a4e7bbe3b2d222895c53d1c7defae",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.346Z"
+      },
+      {
+        "texte": "A second bus! Well done!",
+        "fichier": "openai-v2-870ede3e4d3e38d6.mp3",
+        "duration": 2.25,
+        "sha256": "8395567dddbd70ea06e2286a63943fc9c9b5320de5c54e5024741e2d3ef937b7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:29.436Z",
+        "uses": [
+          "v1:18-sequences/en/seq-transport-abb-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "57610e083879bdb9d14d698c8e1158d362428a199eeb787065e1f03a398e5222",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.351Z"
+      },
+      {
+        "texte": "Sun, cloud, rain, sun, cloud… what is next?",
+        "fichier": "openai-v2-3e214e0b245d93f9.mp3",
+        "duration": 4.95,
+        "sha256": "90579e8894771e55dbcbfb4bb91a5492f71c8f70b133fe47ffc9f3cf08215489",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:30.542Z",
+        "uses": [
+          "v1:18-sequences/en/seq-weather-abc-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "84554e20407aec66ce50349c17936627b400d817425c2140fa9e6798e41add03",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.356Z"
+      },
+      {
+        "texte": "Rain comes after the cloud! Genius!",
+        "fichier": "openai-v2-8e0438cce74eaa9f.mp3",
+        "duration": 3.05,
+        "sha256": "24396bb41d54e127c2eb344ac6d89d9c3a8327ac22102dcd90685268d9f7f34c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:31.622Z",
+        "uses": [
+          "v1:18-sequences/en/seq-weather-abc-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "a1d2732b3d3c5e04e7fd3a6666a92d3a6ace2b0dc316fd4566b43ecf8658d73e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.363Z"
+      },
+      {
+        "texte": "One, two, three… which number is next?",
+        "fichier": "openai-v2-cf7464958ffc61f1.mp3",
+        "duration": 3.35,
+        "sha256": "50cca46cfea69ab3ac43b56129f522efe0e73ac847f1e5f61416c3fd06b6e367",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:32.634Z",
+        "uses": [
+          "v1:18-sequences/en/seq-numbers-inc-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "9dc4752d5e1094a0fe5c93e26c44ec6742ff02eb291b1009296c5c6f21d419bb",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.370Z"
+      },
+      {
+        "texte": "Four! Numbers champion!",
+        "fichier": "openai-v2-dd9d5c31450f3842.mp3",
+        "duration": 2.45,
+        "sha256": "6d9a62e5572de051039237396bd1dbe22ffd4c8b52e25635042d9b7e4921f4d8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:33.511Z",
+        "uses": [
+          "v1:18-sequences/en/seq-numbers-inc-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5dfd5f25c760be6502d790dac631f2e673adf083685f14be552d24a9d396d16a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.378Z"
+      },
+      {
+        "texte": "Put the pictures in order: Dido is hungry, then couscous, then he smiles! Then tell the story to a grown-up!",
+        "fichier": "openai-v2-0730dde5c07600e1.mp3",
+        "duration": 7.7,
+        "sha256": "cdd2c561f158553f5ae217026ca4b0ea43eddd76d4756f5d9c9775dfc92d86cd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:38.707Z",
+        "uses": [
+          "v1:19-stories/en/story-couscous-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "7636d45447024d5b4ae8c9f7d6533543320de3122d9547e3551602ed805bf687",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.384Z"
+      },
+      {
+        "texte": "Well done! Now tell the story to a grown-up!",
+        "fichier": "openai-v2-b3a39a14b1b5d21c.mp3",
+        "duration": 3.2,
+        "sha256": "f500f3788f75777f403b5970a53a2cc62e6d193268af10c369f79dcb69157a65",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:39.834Z",
+        "uses": [
+          "v1:19-stories/en/story-couscous-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "709601a4a2e0f55c6bc7cce9651ba0e30bfa93eac7b0c13efe971940804d7870",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.389Z"
+      },
+      {
+        "texte": "Put the pictures in order: dirty hands, then soap, then clean hands! Then tell the story!",
+        "fichier": "openai-v2-54030282458a1782.mp3",
+        "duration": 6.5,
+        "sha256": "385ec5b3d3ecac66d53e7f80a03e142e06217c3336c2b905be2ade2ca13333fd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:41.112Z",
+        "uses": [
+          "v1:19-stories/en/story-wash-hands-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "c7215a2b62ede37879f2a15de27c758899dcd35df0543d4707cf3a568ccbcb11",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.403Z"
+      },
+      {
+        "texte": "Clean hands! Tell the story to a grown-up!",
+        "fichier": "openai-v2-4f6b13187a5081dd.mp3",
+        "duration": 3.25,
+        "sha256": "9ea315e690f678b12e006d4cc103703035e656b115aab9b254985980c2893a53",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:42.017Z",
+        "uses": [
+          "v1:19-stories/en/story-wash-hands-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1bb87ccf8478c51822d401246d85efc8a59491500b233c9b0e13cb140efa0296",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.416Z"
+      },
+      {
+        "texte": "Put the pictures in order: we wake up, then school, then a hug! Then tell the story!",
+        "fichier": "openai-v2-c5326c385fed086c.mp3",
+        "duration": 4.65,
+        "sha256": "757f3c1821189d135727a10446c662c47a537be9edfdcfc8b39afe46b451f0e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:43.318Z",
+        "uses": [
+          "v1:19-stories/en/story-school-day-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5d694ddb95a9422f56cb5c681bd459b1ef73efe95b529295c8ec37311f7ec555",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.431Z"
+      },
+      {
+        "texte": "A lovely story! Tell it to a grown-up!",
+        "fichier": "openai-v2-e7c8bf8bcdde5b45.mp3",
+        "duration": 2.55,
+        "sha256": "c5f5f86eba322fe6bcf207b40bdbff904307be35b841523704da05ea67c442c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:44.750Z",
+        "uses": [
+          "v1:19-stories/en/story-school-day-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "77cb8c6c74b29c88f3e6f2b5eb18055bead95ab20b06cdd7d6790f3d69f98122",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.436Z"
+      },
+      {
+        "texte": "Drag the pencil: face, sun, flower, house, fennec, then couscous!",
+        "fichier": "openai-v2-72d96c2b4c7dbd16.mp3",
+        "duration": 5.6,
+        "sha256": "796e3ec27adda07cb38ed99fdf0463633d0f5e985d216e38325ce6ae2f70a6c2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:04.790Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-crayon-path-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5859ba48e8ea0130c731e76c91d286478c4e80ab9a16fd2e68baa43ef7118d3e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.456Z"
+      },
+      {
+        "texte": "The drawing book is ready! Well done!",
+        "fichier": "openai-v2-9b6f32755c5e14ac.mp3",
+        "duration": 3,
+        "sha256": "41312db0da8a90b93b7b38416fbbdc1da0e43f88b690f8ad8fd667643a10080b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:05.878Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-crayon-path-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5be1efd8137a5f03b8fec0c6a03e7f8aee11a3a8f60a37c4d3a6db358ac57733",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.461Z"
+      },
+      {
+        "texte": "Pick a color and tap the face, the eyes and the mouth!",
+        "fichier": "openai-v2-90d9cecdb139db77.mp3",
+        "duration": 4.4,
+        "sha256": "08c4065b57b498a742148f4821cc75c7d2c570407dae63edf36b120cd8e9a566",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:07.067Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-face-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "f03bb267193ee931a39ac6c1f648b0d41350c956a0d231a07090638f2dc52429",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.476Z"
+      },
+      {
+        "texte": "A lovely face! You are an artist!",
+        "fichier": "openai-v2-3d374388119638d5.mp3",
+        "duration": 3.25,
+        "sha256": "de28ac9ca7f2bc2447b6a3196077fcf854e3e4a83bb2a49e62ea2680f414362a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:08.108Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-face-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "cef4ad9d487797fadc8698610d24ae21f537dd81987914d69a11db0312b1f388",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.482Z"
+      },
+      {
+        "texte": "Color the sun! Tap the circle and the rays!",
+        "fichier": "openai-v2-a5217daa4f9d2877.mp3",
+        "duration": 4.6,
+        "sha256": "d1077a64fd348379c38464792f9852b5aba61395e9cc8fa38e9c146b8f97507a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:09.313Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-sun-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "2a434f95773e88ef383dd37624605af0da00d731213994ac79816de0037e93ed",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.500Z"
+      },
+      {
+        "texte": "Your sun shines! Well done!",
+        "fichier": "openai-v2-9c76256c961ea35a.mp3",
+        "duration": 2.8,
+        "sha256": "9486645161d19c3e77ab18e144dcc17ff75339172bfaf8ba4e7f674e9605091e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:10.260Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-sun-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "43242a3dd04804890556c936cdab58885f96636822ff04947f4fc6539e1c141a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.505Z"
+      },
+      {
+        "texte": "Color the flower! The petals, the center and the stem!",
+        "fichier": "openai-v2-44c38cccd7199fa3.mp3",
+        "duration": 5,
+        "sha256": "9b1487a7a419ae626cff8d7bf465ebbeedca284842c7f21da79ecde90a20132b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:11.469Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-flower-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "0614d1d7b98db54be3390652d77a982b2be8f8ef2e91562039ac2fc6bcd59a75",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.527Z"
+      },
+      {
+        "texte": "A wonderful flower!",
+        "fichier": "openai-v2-004a20c8e8789f47.mp3",
+        "duration": 1.9,
+        "sha256": "4dddf135bdc61d56581dae5afd41253b0c484285bf9a8778b55ae415adec8655",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:12.146Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-flower-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "8b3b25d9b3ab2660c8569c4df13400c7577b819fb776e69c531a2db0de8d6957",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.532Z"
+      },
+      {
+        "texte": "Color the house! The roof, the wall, the door and the window!",
+        "fichier": "openai-v2-ca783998fc685ade.mp3",
+        "duration": 4.55,
+        "sha256": "d883197fe67e3df9f6f6a9cb9a8a1db23de480eeabe9fb74499037e2f2e16eba",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:13.804Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-house-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "f69ccfcd06523187203084b1d1e028b3d958047e14f17b78439b045690085054",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.559Z"
+      },
+      {
+        "texte": "A beautiful house!",
+        "fichier": "openai-v2-d4abc2c1e484af08.mp3",
+        "duration": 2.2,
+        "sha256": "80a47793546fc89e51cf6ddd05b2a19c92f646358b641616bbcabe8381fae627",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:14.702Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-house-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "6c4f8843f44d9890a3eb77c7612d4506b55a06b35beaaeee213fbf451554e883",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.564Z"
+      },
+      {
+        "texte": "Color the fennec! Big ears, the little fox of our Sahara!",
+        "fichier": "openai-v2-a3f3cd6e4dbc433c.mp3",
+        "duration": 4.75,
+        "sha256": "20720233f29b0a817714716477927f9426d3b4dd2393fcae1cc3bf4c815cc60d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:15.775Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-fennec-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "34e4aaf4c441e9ba853aeec17e7914f56ab5112fda8d8a8260c9eae4bd2cd657",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.586Z"
+      },
+      {
+        "texte": "A wonderful fennec!",
+        "fichier": "openai-v2-272a593545600ed8.mp3",
+        "duration": 2.25,
+        "sha256": "67ac9c43512561c5c0f3aeebda35714d34b23e793031d45067026c27b807e68c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:16.527Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-fennec-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "2777f8c6c7be1857d53635c387629a5d3230ee738b736a566229c4975678d7b4",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.593Z"
+      },
+      {
+        "texte": "Color the camel! The ship of the desert and its hump!",
+        "fichier": "openai-v2-f7c6b79d8c7f20c0.mp3",
+        "duration": 4.65,
+        "sha256": "ee002c8b2777efbc4acd65e56f049c936ca5896f555434e4edf729f09775ee29",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:17.613Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-camel-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "19e9c3268792ab3bac837f1a4e3e532e5bc73136086b1e585b3ad59303badd8a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.626Z"
+      },
+      {
+        "texte": "A strong camel!",
+        "fichier": "openai-v2-22f45209086b75bc.mp3",
+        "duration": 1.7,
+        "sha256": "57c51bb415255fdd2175b91c7030b9a1802dc32410e42f4200aa0ff348a2bf46",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:18.531Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-camel-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "be5a14b2bed8e1f59381efe21a02c26f69c4c64a6102f650e04d75042930a6ed",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.633Z"
+      },
+      {
+        "texte": "Color the couscous dish! The pot, the lid and the food!",
+        "fichier": "openai-v2-a5e0e8e3527674a0.mp3",
+        "duration": 4.85,
+        "sha256": "d0c750a7ac1abba777ff91325f14a7047df9861eaed0d12eec1832401fb356fc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:20.138Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-couscous-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "56bea83bd3865bea81506aa6145dbb4fa87acd2a7929a6e3d13e7220edebef00",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.661Z"
+      },
+      {
+        "texte": "Yum! Your dish is ready!",
+        "fichier": "openai-v2-72d75d77f641d055.mp3",
+        "duration": 2.4,
+        "sha256": "2d9d527962166e0719d6d53b9959dede57b43c766f3189bdaebf713271e544cb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:21.046Z",
+        "uses": [
+          "v1:20-art-drawing/en/art-coloring-couscous-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "cf617cca690ac587f5f1ec76a1ef89e40b29fcaa45180536ad14bddfd4f95774",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.668Z"
+      },
+      {
+        "texte": "Drag: apple, ant, fish, farm, then bee!",
+        "fichier": "openai-v2-076c402679dbbd65.mp3",
+        "duration": 4.95,
+        "sha256": "a47a0f260f3d055c689f0635dcbfc0cdd5f3df2317dfaa471d37e3dc2f6e3991",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:41.086Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-play-path-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "321ab7b03eb87f92a817387ed76acd21b5a81e1607d90271598ca1175c53172f",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.688Z"
+      },
+      {
+        "texte": "Let's play! Well done!",
+        "fichier": "openai-v2-af5234b8f2bd2f16.mp3",
+        "duration": 2.1,
+        "sha256": "bdd0b2a217a72a922a3df0c4c89f6e200ae82caf776011ace5df59cd8de48d2a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:41.933Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-play-path-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "f2a5ecfed09752727ea429c74b8d8164b9a4b3e487a4e5d093be0928b0be08c3",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.693Z"
+      },
+      {
+        "texte": "Pick a color and color the apple! The fruit, the stem and the leaf!",
+        "fichier": "openai-v2-4d73d9c3f4b7d101.mp3",
+        "duration": 5,
+        "sha256": "a02fdb0c3acca872a2099e5acc34f0962ace0ec91ff283312d6e220213b6165c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:43.087Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-color-apple-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "0ab3e59dbc8f883008ebe3b3d7ada50068678a7320d83ee969971868b12de629",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.712Z"
+      },
+      {
+        "texte": "A beautiful apple!",
+        "fichier": "openai-v2-bc7af25aac0942ef.mp3",
+        "duration": 3.25,
+        "sha256": "87730bc62094a4a5cec875fa4456833b9bbad3fae5082850bb35189307ad72bd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:44.001Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-color-apple-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "b9b145c181dcc0838540bda08466e7654290c5be33c747562badc96d508c27e9",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.718Z"
+      },
+      {
+        "texte": "Drag the ant all the way to the green leaf!",
+        "fichier": "openai-v2-015b5aad561d62c8.mp3",
+        "duration": 3.3,
+        "sha256": "54e17122084e9739e3e02ab320a8f54c2336327c47e058157cdf3f43da1df362",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:45.423Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-ant-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "640ef29f574c29d7f6f423d41451e82b0be06b54dcab44dc2ef4612b7263fdd3",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.737Z"
+      },
+      {
+        "texte": "The ant arrived!",
+        "fichier": "openai-v2-7a88d0e6e91cdac8.mp3",
+        "duration": 1.7,
+        "sha256": "e9f08f00ecc6881c46bfbb9090c490c095137f2834f69d7ae5840c68fe7092c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:46.139Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-ant-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "ecd7954a97f63f0fc021d2c77fb766b4a8876fb37419784b0dc05ae1658d206b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.742Z"
+      },
+      {
+        "texte": "Drag the fish through the sea to the shell!",
+        "fichier": "openai-v2-726c6c7880076592.mp3",
+        "duration": 2.95,
+        "sha256": "f14594e07784b789a538f150a12142e238be84a22b90d195a5e4fd38e9f6b8fd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:48.006Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-fish-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "7424b31018e9055c072feaec64397b402eb116f24502db9d9a1b4c2cec39b78b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.764Z"
+      },
+      {
+        "texte": "The fish found its shell!",
+        "fichier": "openai-v2-4d69592c0a03a4ad.mp3",
+        "duration": 2.35,
+        "sha256": "4612534ce9110cbac610752cab37e366f95617b6b6ae28e5d82c3a26cc5cc4e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:48.909Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-fish-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "4b4255bbb81b7c9d1edcca0d232d700f95b3de35bdec756257a1746e6e67c366",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.772Z"
+      },
+      {
+        "texte": "Put the sun, the tree and the house in their place!",
+        "fichier": "openai-v2-157d376dffe44cf7.mp3",
+        "duration": 4.2,
+        "sha256": "9c93897acfa43ae415df69f5583f65f8f778b588688105be3ccb79bade41ece8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:51.192Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-jigsaw-farm-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "3cbc3ed50aa5d054385e57d81fff46ff1e80254bb4b6efcc8ebc2463255c4ed0",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.803Z"
+      },
+      {
+        "texte": "The farm is complete!",
+        "fichier": "openai-v2-aaef8430114301db.mp3",
+        "duration": 2.05,
+        "sha256": "a57f45cf3211a9122330b39e75954bb7dbdea743bac7b711c6e4466bb51daabe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:52.596Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-jigsaw-farm-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "6de352df36058190813e2caf8e01add150cfed18fb18d3e38cbc729ecf35e28a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.812Z"
+      },
+      {
+        "texte": "Put the sun, the camel, the fennec and the palm in their place!",
+        "fichier": "openai-v2-44945c1e0af78232.mp3",
+        "duration": 4.9,
+        "sha256": "1ec64a28332f3e80f5a9801cb2005768bf1ce2a6dabbc44b43bc2b0a7038ab9b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:53.723Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-jigsaw-oasis-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "83717d639f4aee3f9bebd757499c1dc4f3c9916636547a9d076defaa437f62f6",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.832Z"
+      },
+      {
+        "texte": "A beautiful oasis!",
+        "fichier": "openai-v2-0b941940898fb4b5.mp3",
+        "duration": 2.5,
+        "sha256": "1984faef3bbdcaf0b136ffe4dd5852fbb1dc8edbc779ba4af5b0591730661584",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:54.562Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-jigsaw-oasis-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "64bbf3c4801283fcc7808da97767a486cb8d0f63f4262bf91870470a42b4fa8b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.840Z"
+      },
+      {
+        "texte": "Drag the car along the road all the way home!",
+        "fichier": "openai-v2-a159169f6249d480.mp3",
+        "duration": 4.05,
+        "sha256": "b49fff22b36b94be8f3c6642df67f11f14fbd23e18f07f55b02b81429bb668cd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:55.476Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-car-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "4b6a0764899eeb07373758a1c162e91dbd5d69ed766a5023a91a7128e419a150",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.866Z"
+      },
+      {
+        "texte": "The car arrived home!",
+        "fichier": "openai-v2-2070acefd5008f15.mp3",
+        "duration": 1.7,
+        "sha256": "df127349f9e8963ba4835523ffa185132b35b64dfe666a25a0b517e3f66e39cf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:56.166Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-maze-car-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "674ca3fefc3f1e36adc973ef85ad32f50dcc58b07605e40075d9b62fd46da996",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.875Z"
+      },
+      {
+        "texte": "Put the bees with the honey, and the butterflies with the flower!",
+        "fichier": "openai-v2-57d177de7c36bbcb.mp3",
+        "duration": 3.7,
+        "sha256": "19482c763e2e87eddfda4be19896bb43f70b6c5338802c970b029de6d8614ebd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:57.078Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-bees-flowers-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "56e62d13d9c4ffbf81f8f753b401e8ecade604a69d6f2997a97a47283847604c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.902Z"
+      },
+      {
+        "texte": "Everyone in their place!",
+        "fichier": "openai-v2-0f4dd57673cf6b07.mp3",
+        "duration": 2.65,
+        "sha256": "313ce29fdc3906cde0ff063e412d8bbb96ef8bd07510741cdb9eea7e4e8491ee",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:58.039Z",
+        "uses": [
+          "v1:21-creative-games/en/creative-bees-flowers-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "21d0355b04fe0729a6a72367a01563679790893398111f2b9344008ab9d326c6",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.909Z"
+      }
+    ]
+  },
+  "fr": {
+    "clips": [
+      {
+        "texte": "Mains propres ! Raconte l’histoire à maman !",
+        "fichier": "openai-v2-06543819b2bbbf11.mp3",
+        "duration": 2.85,
+        "sha256": "c9c73ea695803186c07a702574bfa91d9dd416f8f2218d8434f4ad888ade887c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:34.767Z",
+        "uses": [
+          "v1:19-stories/fr/story-wash-hands-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "c93f455cc915db8a5e62d87f021ae138a994a5098fdac7929cd6e21ffb36812e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.397Z"
+      },
+      {
+        "texte": "Range les images : on se réveille, puis l’école, puis un câlin ! Ensuite raconte l’histoire !",
+        "fichier": "openai-v2-4f0f20c94ea2ca3d.mp3",
+        "duration": 6.95,
+        "sha256": "ca2b888b6a262afd9ac0b1c25a2bdd6d83f37019ad0ca2393308af472bd0bf0f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:36.338Z",
+        "uses": [
+          "v1:19-stories/fr/story-school-day-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "e8e3e5753e705af6af807497c961fcec62ca5428f608077c731874a39d9c1a48",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.421Z"
+      },
+      {
+        "texte": "Belle histoire ! Raconte-la à papa !",
+        "fichier": "openai-v2-b317cb3af10dd46f.mp3",
+        "duration": 3.4,
+        "sha256": "9bbdf1eb683d0bf261f5a6582cedf88c2e60e5759245861254b7091c47e0c5d6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:37.329Z",
+        "uses": [
+          "v1:19-stories/fr/story-school-day-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "8f6181bafa3d6df9038298b185fc5972773af4467410ef84676a02195579251e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.426Z"
+      },
+      {
+        "texte": "Glisse le crayon : visage, soleil, fleur, maison, fennec, puis le couscous !",
+        "fichier": "openai-v2-f5f68b56c0aaf09a.mp3",
+        "duration": 7.05,
+        "sha256": "921f96b17bb6982cf3b7b98fc6876663d8fd200e2a71d5de98a9a5759f68b6a1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:46.082Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-crayon-path-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "a9e0bc1e67146fcd674cc451af8e64ab872d3b40b3c81ebd4b9a174710874f35",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.442Z"
+      },
+      {
+        "texte": "Le cahier de dessin est prêt ! Bravo !",
+        "fichier": "openai-v2-3b6ea2a198fdacbc.mp3",
+        "duration": 3.05,
+        "sha256": "3f619c6662eda239167d17bbffe657c12b5bbe4dc01a4a6bc19f7b33cc4cd30b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:47.206Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-crayon-path-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "89d6cd2470f418772df20789cff4a14162275313d29cacb948da7d617b9b307a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.450Z"
+      },
+      {
+        "texte": "Choisis une couleur et touche le visage, les yeux et la bouche !",
+        "fichier": "openai-v2-b17db69abdb6c5a8.mp3",
+        "duration": 4.65,
+        "sha256": "e6524f13f04cc4dd7eb21ecce2ccad65bf21eaeba1e319b1fb4550337c4474aa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:48.561Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-face-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "afe3605bc3c93f4db7ee3dfb170a83d2ea64d1537ba24e6846c8e48c2fb312d9",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.466Z"
+      },
+      {
+        "texte": "Un beau visage ! Tu es un artiste !",
+        "fichier": "openai-v2-4ea0dadc9d429b5a.mp3",
+        "duration": 3.2,
+        "sha256": "29ee7564687d06d46929eff633b293bf87e070e80f25911adf9d3941838b7702",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:50.015Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-face-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "e1cf9398497c009fbaf30fef47a91898bd54bbcdcb95fa6681e21668f4f9418e",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.471Z"
+      },
+      {
+        "texte": "Colorie le soleil ! Touche le rond et les rayons !",
+        "fichier": "openai-v2-b42491b6317d011c.mp3",
+        "duration": 4.3,
+        "sha256": "8b06c8ce7f62b871dc1f818006610a27a3fe39d0ae763f6eaa2c19a9546cb661",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:51.282Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-sun-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1e4b352bf6d8e74fce9a97b4925b81d774bab3409da81aa32a398f3fe82ab65d",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.489Z"
+      },
+      {
+        "texte": "Ton soleil brille ! Bravo !",
+        "fichier": "openai-v2-784867911d47a90d.mp3",
+        "duration": 2.9,
+        "sha256": "5ede76ac04ca0490471a0456b7d8777ecbb2f306b55b14eca5bec3649a550c8e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:52.293Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-sun-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "73280eb4dc783118ed95bc11ad8b2e16c960536cdd7d0749990a8f26b5e7f0a4",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.494Z"
+      },
+      {
+        "texte": "Colorie la fleur ! Les pétales, le cœur et la tige !",
+        "fichier": "openai-v2-714dfecc716c2902.mp3",
+        "duration": 4.1,
+        "sha256": "50c214b44d222b68c32f1aba324c286623f7207f02328cbe56d1d87526816cd3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:53.476Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-flower-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "1130b404cedd316f13657cd7b6ced06f83b6f5de451c8cdb8182b2d93a15e751",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.513Z"
+      },
+      {
+        "texte": "Quelle belle fleur !",
+        "fichier": "openai-v2-f04ef5d5cbf2f440.mp3",
+        "duration": 2.3,
+        "sha256": "7d6a29d09d1d262a85b3b8d0cfc6a59c516c85a495b0be8144fa2aea84962071",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:54.247Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-flower-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "50703ff85d76793f12cf78c296964b0bcdd3190f947ddf7e7886c036f2c6f2e5",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.519Z"
+      },
+      {
+        "texte": "Colorie la maison ! Le toit, le mur, la porte et la fenêtre !",
+        "fichier": "openai-v2-3da6e317e4723334.mp3",
+        "duration": 5.75,
+        "sha256": "76b39cfff0e5a95197159e712e159363dbccaa6662de0412de7bc55b76340ea4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:55.543Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-house-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5ad80caab8222493a203a06f803bf44b3e5e6727982f422e7f933e90b7d5d909",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.538Z"
+      },
+      {
+        "texte": "Une belle maison !",
+        "fichier": "openai-v2-c4e6cc1c7972ca9b.mp3",
+        "duration": 2.2,
+        "sha256": "3c39f026be596f9315cbee226d44c5a1d025e3a008c6902c8c5fa91c229bbadc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:56.492Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-house-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "970a2c8e3341483c8ab28286d68ef2266c0fa3d3190983e17c4f0e83ec286e17",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.552Z"
+      },
+      {
+        "texte": "Colorie le fennec ! Grandes oreilles, le petit renard du Sahara !",
+        "fichier": "openai-v2-c5ec4b0f7632bf74.mp3",
+        "duration": 5.75,
+        "sha256": "0bc2a7c9647fa5a1a2695c937f2793056e5ac822d51cc2b491b087f4935f5434",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:57.788Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-fennec-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "98ed2e4ed253e8ac60c7b8937f28202f9650958b2a3f84fd6900b5c877f4d3b8",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.570Z"
+      },
+      {
+        "texte": "Un superbe fennec !",
+        "fichier": "openai-v2-a0e0c6f7ca0d05a0.mp3",
+        "duration": 2.3,
+        "sha256": "eb18e5e1c400fe124829d367ddcced6f3aa30aa50581b3aba1b1ebf9d7c7a193",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:42:58.709Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-fennec-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "0b24d1ec231b673500eb7fc2e26502f1b420f7c0bdf578b310b4ffe828c2b32b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.577Z"
+      },
+      {
+        "texte": "Colorie le dromadaire ! Le vaisseau du désert et sa bosse !",
+        "fichier": "openai-v2-b1673f4b2a7c76e6.mp3",
+        "duration": 5.3,
+        "sha256": "3df7f77a0c8b30ad1d0dfbbb58bad0048bd26c31221d7b8e826b4b225584ef19",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:00.053Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-camel-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5b5fbef4fb20e1edc55a7d6587a516c485cb81e8a0cd263803c659bd6db44352",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.604Z"
+      },
+      {
+        "texte": "Un dromadaire fort !",
+        "fichier": "openai-v2-b133565de72e1747.mp3",
+        "duration": 2.95,
+        "sha256": "48f1960f611d3acd7b9f27aa8c742f677214e770ffbd74c6cf4dab13f451d714",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:00.922Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-camel-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5068b2a69d797c77618928a530b66d4b1daa3f8d1d78d99476f3f7dcd5e84f0d",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.615Z"
+      },
+      {
+        "texte": "Colorie le plat de couscous ! La marmite, le couvercle et le plat !",
+        "fichier": "openai-v2-6bde9a7bbc75a0dd.mp3",
+        "duration": 5.4,
+        "sha256": "0b0781d69504930c6ef195fd6e953f70c073a939db6e231916263e0f8adf0c8c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:02.283Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-couscous-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "13c6d799136f84a1ca52fbb2649385d88a53c818e01f7a1056e8ebec1e261c02",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.642Z"
+      },
+      {
+        "texte": "Miam ! Ton plat est prêt !",
+        "fichier": "openai-v2-183707f8560d21a6.mp3",
+        "duration": 2.4,
+        "sha256": "beaf06e3a1ef6fc08cd367e9c33f13bd835a40d0ee2c1710a9ee0c1ab9e988d7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:03.192Z",
+        "uses": [
+          "v1:20-art-drawing/fr/art-coloring-couscous-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "aaad45edde623477abf88a1829fce60739377443fd5e35e3e5bea7889a42be76",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.655Z"
+      },
+      {
+        "texte": "Glisse : pomme, fourmi, poisson, ferme, puis abeille !",
+        "fichier": "openai-v2-5c820efbc3223b48.mp3",
+        "duration": 5.75,
+        "sha256": "d7281d703009f480a8ce03156a7535a376c91b941381b8cc4bd227e1a7129a2f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:22.941Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-play-path-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "e609b08f9a82db951c4f107d2a6068f4030eef86b8423b134b30e6a3e0f6a0e9",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.674Z"
+      },
+      {
+        "texte": "On joue ! Bravo !",
+        "fichier": "openai-v2-d4fea64dd0b9139f.mp3",
+        "duration": 1.8,
+        "sha256": "c0a8689dfb6a88e471027a3236dac5897da119795893840c66c7948ea58e5177",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:24.490Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-play-path-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "09af32d0607be4a8928eddc219dc59e32199c2685ab669879b1869b050cfe140",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.680Z"
+      },
+      {
+        "texte": "Choisis une couleur et colorie la pomme ! Le fruit, la tige et la feuille !",
+        "fichier": "openai-v2-88bb01ebbbfdb91a.mp3",
+        "duration": 6.05,
+        "sha256": "94e365bdcf6a9b6ab3ce48d66973956b26f64bf4e587c5dd0596bd77912db035",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:25.853Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-color-apple-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "ec808f857ad0274d5fd6ac3a8f81a9038eb81ac580b7d8c7cda72725deec5d51",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.699Z"
+      },
+      {
+        "texte": "Une belle pomme !",
+        "fichier": "openai-v2-b82070d752929125.mp3",
+        "duration": 2.05,
+        "sha256": "551fe5ac14c17732eea7d3e00c84040f4cc9c813b2e072d9e98300947faac31b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:26.724Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-color-apple-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "4da03b01871316e8f191c73371012d5262772ac426a2172ec6190565e421e92b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.706Z"
+      },
+      {
+        "texte": "Glisse la fourmi jusqu'à la feuille verte !",
+        "fichier": "openai-v2-5a46fe2a29beb17e.mp3",
+        "duration": 3.5,
+        "sha256": "9c584f26ffe73a92eef3bb52864bf2e640e19034c23aca7bc1a9fb675ff045fc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:27.773Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-ant-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "2dbb56b2898b9b630d870f197a1271d17256eeb65c68e327da067e5cce23ad3b",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.726Z"
+      },
+      {
+        "texte": "La fourmi est arrivée !",
+        "fichier": "openai-v2-df855826e31e8faf.mp3",
+        "duration": 1.85,
+        "sha256": "c14f12b8945469527dffcd6a6fa2c022295675fe9dbbc9e514504e7dacfde8c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:28.635Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-ant-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "ac7d6f0507310b1640d498218452a72be2995cf258251499f83392e9925cb372",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.731Z"
+      },
+      {
+        "texte": "Glisse le poisson dans la mer jusqu'au coquillage !",
+        "fichier": "openai-v2-d6483176ae6c3f86.mp3",
+        "duration": 3.6,
+        "sha256": "1fbe9fdf1048eae0ac239b32c56d0b134e5f4aa6c1dd90cd0e5caf7be9f68f51",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:29.667Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-fish-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "62c76696b5cd5fa8a37234b073bd5c48200ba833f0571d598ac73b761f36f102",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.752Z"
+      },
+      {
+        "texte": "Le poisson a trouvé son coquillage !",
+        "fichier": "openai-v2-2aa199b92a96a379.mp3",
+        "duration": 3.05,
+        "sha256": "9043ba3ac8abbdefff46b419ecf8ebcea6a62b0c8023e27365395cf0ab6804e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:30.515Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-fish-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "751379a180f48ca7896c2d1fc6946b5808c690349a2e43e846a1daa3b7decc4a",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.758Z"
+      },
+      {
+        "texte": "Mets le soleil, l'arbre et la maison à leur place !",
+        "fichier": "openai-v2-fdc5e5df4072f04a.mp3",
+        "duration": 4.45,
+        "sha256": "b689fcd6052ec08a1235cec27f556c2ef3adc8a77b7ac66f6ce73f2c6f03e5c5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:31.828Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-jigsaw-farm-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "6edc7ebeacffdd939b39283eb1f9f6b650ec3de6dfee2e7e0f42b93653fbac82",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.789Z"
+      },
+      {
+        "texte": "La ferme est complète !",
+        "fichier": "openai-v2-4db29130dbb40a01.mp3",
+        "duration": 2.35,
+        "sha256": "2d466f45dffb1bca84e4f61f9ab4c77da7e0ede519cda461aba833d3e2c0ff6e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:33.130Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-jigsaw-farm-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "ec430f8eaf0b81878ed9b853917e3960c4c63cfc9e51c0d336f9bddc781228c0",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.797Z"
+      },
+      {
+        "texte": "Mets le soleil, le dromadaire, le fennec et le palmier à leur place !",
+        "fichier": "openai-v2-2f9a4a49f856e21f.mp3",
+        "duration": 4.9,
+        "sha256": "e5d1fe5c270644259667501d1b92a5e637d5fb857a71816f0983fb3fd3959300",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:34.777Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-jigsaw-oasis-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "6b33a2fc1ba456352f4a9a0b70cfa69515d8acd80815fcc73bb1c5a28358af5c",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.820Z"
+      },
+      {
+        "texte": "Une belle oasis !",
+        "fichier": "openai-v2-c28159c7c06df94e.mp3",
+        "duration": 2,
+        "sha256": "d44abf46d5ce737a6c01dac9b796bc12734960f4fd881ba45f94aa0b76e1b741",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:35.713Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-jigsaw-oasis-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "ce82c96b83c2cf7afe94f34b206aad5c1eedb4111f52aafa6857e85cf2a956c8",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.825Z"
+      },
+      {
+        "texte": "Glisse la voiture sur la route jusqu'à la maison !",
+        "fichier": "openai-v2-06e92d36869b1308.mp3",
+        "duration": 3.85,
+        "sha256": "1958af98aa3fc53a43d1eb3e6f78de893c01156ba04ce43d09002ea5a1dde712",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:36.774Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-car-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "011383d5ecb954d68c73fb43be25659d9f9bfc1e9c1468e8c9d46a33543f5f71",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.852Z"
+      },
+      {
+        "texte": "La voiture est arrivée à la maison !",
+        "fichier": "openai-v2-de886e05288cba95.mp3",
+        "duration": 2.3,
+        "sha256": "2fb9fe8d5a5c6fc27985f61ed4b3f1a351b631bd0f601a06ff0e48374ffa5937",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:37.606Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-maze-car-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "5fc7f6652cc00e441e915b40468923ce3c1627fa8b0ec8bb2e7df37a81b95edd",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.857Z"
+      },
+      {
+        "texte": "Mets les abeilles avec le miel, et les papillons avec la fleur !",
+        "fichier": "openai-v2-67d35492cd1aca15.mp3",
+        "duration": 4.6,
+        "sha256": "fed08e50e114acbaa832fbe4f216bc141d9c54eebf471a759b571643a25f2287",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:39.100Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-bees-flowers-prompt.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "e535435f8d761ee323072b2ce9ea4bd8b46f09a7c016dae5d711fac9a160face",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.882Z"
+      },
+      {
+        "texte": "Chacun à sa place !",
+        "fichier": "openai-v2-e95257ca61a690b4.mp3",
+        "duration": 2.75,
+        "sha256": "5b6586d4a26b16226402a03581f6016d830877400fdbf628770b42e9d926cd32",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-05T20:43:40.069Z",
+        "uses": [
+          "v1:21-creative-games/fr/creative-bees-flowers-success.mp3"
+        ],
+        "synthetic": true,
+        "sourceWavSha256": "151d1f2651343787322b2ca784cf5b018c9541d6d8b844e74ba2c79db293de09",
+        "reusedFrom": "v2",
+        "reusedAt": "2026-11-13T09:28:54.895Z"
+      }
+    ]
+  }
+}

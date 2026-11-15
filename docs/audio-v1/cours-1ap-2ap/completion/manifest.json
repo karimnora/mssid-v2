@@ -1,0 +1,68 @@
+{
+  "scope": "Fixed authored 1AP/2AP speech; Quran quotations excluded from generic synthesis",
+  "v2Checked": true,
+  "reused": 0,
+  "held": 11,
+  "sections": [
+    {
+      "section": "1AP-arabic",
+      "file": "1AP-arabic.json",
+      "texts": 715,
+      "characters": 17604
+    },
+    {
+      "section": "1AP-civics",
+      "file": "1AP-civics.json",
+      "texts": 222,
+      "characters": 7143
+    },
+    {
+      "section": "1AP-islamic",
+      "file": "1AP-islamic.json",
+      "texts": 231,
+      "characters": 5874
+    },
+    {
+      "section": "1AP-math",
+      "file": "1AP-math.json",
+      "texts": 502,
+      "characters": 12341
+    },
+    {
+      "section": "1AP-science",
+      "file": "1AP-science.json",
+      "texts": 266,
+      "characters": 7741
+    },
+    {
+      "section": "2AP-arabic",
+      "file": "2AP-arabic.json",
+      "texts": 383,
+      "characters": 18968
+    },
+    {
+      "section": "2AP-civics",
+      "file": "2AP-civics.json",
+      "texts": 139,
+      "characters": 8452
+    },
+    {
+      "section": "2AP-islamic",
+      "file": "2AP-islamic.json",
+      "texts": 182,
+      "characters": 9619
+    },
+    {
+      "section": "2AP-math",
+      "file": "2AP-math.json",
+      "texts": 437,
+      "characters": 22769
+    },
+    {
+      "section": "2AP-science",
+      "file": "2AP-science.json",
+      "texts": 218,
+      "characters": 10775
+    }
+  ]
+}

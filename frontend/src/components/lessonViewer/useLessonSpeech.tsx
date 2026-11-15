@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
 import { villageLessonConfig } from './villageLessonConfig';
 import { pilotVoiceFor } from './villagePilotVoices';
-import { isFeatureEnabled } from '../../featureFlags';
-import { speakText, speechLangForSubject, stopSpeech as stopSynth, useVoiceAvailable } from '../../utils/speech';
+import { useFeatureFlag } from '../../hooks/useFeatureFlag';
+import { speakText, speechLangForSubject, stopSpeech as stopSynth, stripNonSpokenSymbols, useVoiceAvailable } from '../../utils/speech';
+import { findRecordedSpeechSequence } from '../../utils/recordedSpeech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
@@ -16,10 +17,23 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   // Tamazight content is mostly Tifinagh/Latin-script amazigh — no TTS voice can read it correctly,
   // so the arabic fallback voice would just mispronounce it. Report unavailable instead of guessing.
   const isTamazight = lesson.subject === 'tamazight';
+  const voiceReading = useFeatureFlag('voiceReading');
+  const voiceReadingEnabled = voiceReading && !isTamazight;
+  // Early-grade recordings keep their existing path; upper grades need an installed TTS voice.
+  const hasEarlyGradeRecordings = grade === '1AP' || grade === '2AP';
+  // V2 village pilot lessons carry their own recorded Didou voice, even without an installed TTS voice.
+  const isVillagePilot = !!villageLessonConfig(lesson);
+  const pilotRecordingFor = (text: string) => (isVillagePilot ? pilotVoiceFor(text) : undefined);
+  const canReadAloud = voiceReadingEnabled && (hasEarlyGradeRecordings || isVillagePilot || rawVoiceAvailable === true);
   const voiceAvailable = isTamazight ? false : rawVoiceAvailable;
+  const canSpeakText = (text: string) => voiceReadingEnabled && (
+    rawVoiceAvailable === true
+    || !!pilotRecordingFor(text)
+    || (hasEarlyGradeRecordings && !!findRecordedSpeechSequence(stripNonSpokenSymbols(text), lang))
+  );
 
   const speakSnippet = (key: string, text: string) => {
-    if (!isFeatureEnabled('voiceReading') || !text || isTamazight) return;
+    if (!canReadAloud || !text || !canSpeakText(text)) return;
     if (speakingKeyRef.current === key) {
       stopSynth();
       speakingKeyRef.current = null;
@@ -28,7 +42,11 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     }
     speakingKeyRef.current = key;
     setSpeakingKey(key);
-    void speakText(text, lang, snippetRate, 1, { preferredRecording: villageLessonConfig(lesson) ? pilotVoiceFor(text) : undefined }).then(() => {
+    const preferredRecording = pilotRecordingFor(text);
+    const reading = hasEarlyGradeRecordings && rawVoiceAvailable !== true
+      ? speakText(text, lang, snippetRate, 1, { recordedOnly: true, preferredRecording })
+      : speakText(text, lang, snippetRate, 1, { preferredRecording });
+    void reading.then(() => {
       if (speakingKeyRef.current === key) {
         speakingKeyRef.current = null;
         setSpeakingKey(null);
@@ -53,6 +71,9 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
 
   return {
     isYoungGrade,
+    canReadAloud,
+    canSpeakText,
+    voiceReadingEnabled,
     isPlayful1AP,
     speakingKey,
     speakSnippet,

@@ -12,11 +12,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles, Utensils, MessageCircle, Shirt, Volume2, Award, Zap, Smile } from 'lucide-react';
 import { DidouAvatarConfig, DidouPetSpecies, DidouMood, DidouOutfitId } from '../types/ecosystem';
-import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
+import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
-import { Didou3DAvatar } from './Didou3DAvatar';
-import { DidouPortrait } from './world/DidouPortrait';
+import { DidouPortrait } from './DidouPortrait';
 import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 
 export interface DidouVirtualCompanionProps {
@@ -252,7 +251,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
   // Floating Pill vs Embedded Dashboard Card
   if (isFloating) {
     return (
-      <div className="relative inline-block select-none" dir={direction}>
+      <div className="didou-floating relative inline-block select-none" dir={direction}>
         {/* SPEECH BUBBLE */}
         <AnimatePresence>
           {speechBubble && (
@@ -374,203 +373,46 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
     );
   }
 
-  // EMBEDDED DASHBOARD COMPACT & RICH HERO CARD
-  return (
-    <div
-      data-companion-card
-      className="w-full bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-rose-500/10 border-2 border-amber-400/40 rounded-3xl p-4 sm:p-5 text-slate-900 dark:text-slate-100 shadow-xl relative overflow-hidden backdrop-blur-sm"
-      dir={direction}
-    >
-      {/* Background Subtle Pattern */}
-      <div className="absolute top-2 end-3 text-5xl sm:text-6xl opacity-10 pointer-events-none select-none">
-        {stageInfo.stage === 3 ? '👑' : stageInfo.stage === 2 ? '🎓' : '🐾'}
+  const nextStage = DIDOU_STAGES.find(stage => stage.minLevel > userLevel);
+  return <section data-companion-card className="didou-home-card" dir={direction}>
+    <div className="didou-home-heading"><span>✦ {isFrench ? 'Ton compagnon' : 'صديقك'}</span><span>❤️ {friendshipLevel}/10</span></div>
+    <div className="didou-home-intro">
+      <button type="button" className="didou-pat-button" onClick={handlePet} aria-label={isFrench ? 'Faire un câlin à Didou' : 'أربت على ديدو'}>
+        <DidouPortrait stage={stageInfo.stage} species={species} outfitId={activeOutfitId} size="lg" label={isFrench ? 'Didou' : 'ديدو'}
+          mood={isPettingAnimation ? 'celebrating' : currentMood} isEating={isEatingAnim} eatingFoodIcon={eatingFoodIcon} />
+      </button>
+      <div className="min-w-0 space-y-2">
+        <h2>{isFrench ? 'Didou grandit avec toi' : 'ديدو يكبر معك'}</h2>
+        <p className="didou-stage-label">{isFrench ? stageInfo.nameFr : stageInfo.nameAr}</p>
+        <p className="didou-small">{isFrench ? 'Niveau' : 'المستوى'} {userLevel}{nextStage ? ` · ${isFrench ? 'Prochaine étape' : 'المرحلة التالية'} : ${nextStage.minLevel}` : ' · 👑'}</p>
       </div>
-
-      {/* SPEECH BUBBLE MODAL / CALLOUT */}
-      <AnimatePresence>
-        {speechBubble && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.9 }}
-            className="mb-4 bg-white dark:bg-slate-900 text-amber-950 dark:text-amber-200 border-2 border-amber-400 rounded-2xl p-3.5 shadow-lg flex items-center justify-between gap-3 text-xs sm:text-sm font-bold"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-xl animate-bounce">💬</span>
-              <p className="leading-snug">{speechBubble}</p>
-            </div>
-            <button
-              onClick={() => { stopSpeech(); setSpeechBubble(null); }}
-              className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-bold text-xs"
-            >
-              ✕
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        {/* LEFT / AVATAR WITH STAGES & MOOD */}
-        <div className="flex items-center gap-4 min-w-0 w-full">
-          <div className="relative">
-            {/* FLOATING HEARTS ON CLICK */}
-            {floatingHearts.map((h) => (
-              <motion.div
-                key={h.id}
-                initial={{ opacity: 1, y: 0, scale: 0.5 }}
-                animate={{ opacity: 0, y: h.y - 40, scale: 1.4 }}
-                transition={{ duration: 1.2 }}
-                className="absolute -top-2 start-1/2 pointer-events-none text-rose-500 text-xl z-50"
-              >
-                ❤️
-              </motion.div>
-            ))}
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handlePet}
-              className="cursor-pointer"
-            >
-              {species === 'fennec' && activeOutfitId === 'default' ? (
-                // V2: the same Didou as the home ribbon and the journey (docs/v2-design-monde.md).
-                // Dressed-up outfits keep the wardrobe drawing until they are redrawn.
-                <motion.div
-                  animate={isPettingAnimation || isEatingAnim ? { y: [0, -10, 0], rotate: [0, -4, 4, 0] } : { y: 0, rotate: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="relative"
-                >
-                  <DidouPortrait size={96} className="world-didou-blink" />
-                  {isEatingAnim && (
-                    <span aria-hidden className="absolute -top-1 -end-1 text-2xl">{eatingFoodIcon}</span>
-                  )}
-                </motion.div>
-              ) : (
-                <Didou3DAvatar
-                  species={species}
-                  outfitId={activeOutfitId}
-                  mood={isPettingAnimation ? 'celebrating' : isEatingAnim ? 'celebrating' : currentMood}
-                  isEating={isEatingAnim}
-                  eatingFoodIcon={eatingFoodIcon}
-                  size="md"
-                />
-              )}
-            </motion.div>
-          </div>
-
-          {/* PET INFO & ENERGY GAUGE */}
-          <div data-companion-info className="space-y-1 text-start min-w-0 flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="text-base sm:text-lg font-black text-amber-900 dark:text-amber-300">
-                {isFrench ? `Didou (${species === 'eagle' ? 'Aiglon' : 'Fennec'})` : `صديقك ديدو (${species === 'eagle' ? 'عقاب الأطلس' : 'الفنك الذكي'})`}
-              </h2>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/40">
-                {isFrench ? stageInfo.nameFr : stageInfo.nameAr}
-              </span>
-            </div>
-
-            <p className="text-xs text-slate-600 dark:text-slate-300 font-bold">
-              {isFrench
-                ? `Niveau d'amitié : ${friendshipLevel}/10 ⭐ • Zèle : ${currentOutfit.nameFr}`
-                : `مستوى الصداقة: ${friendshipLevel}/10 ⭐ • الزي: ${currentOutfit.nameAr}`}
-            </p>
-
-            {/* ENERGY BAR */}
-            <div className="flex items-center gap-2 pt-1">
-              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                ⚡ {isFrench ? 'Énergie :' : 'الطاقة :'}
-              </span>
-              <div className="w-28 sm:w-36 h-3 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden border border-slate-300 dark:border-slate-700">
-                <div
-                  className={`h-full rounded-full transition-all duration-500 ${
-                    energy > 60
-                      ? 'bg-gradient-to-r from-emerald-400 to-green-500'
-                      : energy > 30
-                      ? 'bg-gradient-to-r from-amber-400 to-orange-500'
-                      : 'bg-gradient-to-r from-rose-500 to-red-600 animate-pulse'
-                  }`}
-                  style={{ width: `${energy}%` }}
-                />
-              </div>
-              <span className="text-xs font-mono font-black text-slate-700 dark:text-slate-300">{energy}%</span>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT / ACTION BUTTONS */}
-        <div className="flex items-center gap-2 flex-wrap">
-          {/* Pet / Talk Button */}
-          <button
-            onClick={triggerRandomDialogue}
-            className="px-3.5 py-2 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-950 dark:text-amber-300 border border-amber-300 dark:border-slate-700 text-xs font-extrabold shadow-sm active:scale-95 flex items-center gap-1.5"
-          >
-            <MessageCircle className="w-4 h-4 text-amber-500" />
-            <span>{isFrench ? 'Parler à Didou' : 'تحدث مع ديدو'}</span>
-          </button>
-
-          {/* Feed Button */}
-          <button
-            onClick={() => setShowTreatsMenu(!showTreatsMenu)}
-            className="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white text-xs font-extrabold shadow-md active:scale-95 flex items-center gap-1.5"
-          >
-            <Utensils className="w-4 h-4" />
-            <span>{isFrench ? 'Nourrir (Dattes/Lait)' : 'إطعام ديدو 🌴'}</span>
-          </button>
-
-          {/* Wardrobe Button */}
-          {onOpenDressingRoom && (
-            <button
-              onClick={onOpenDressingRoom}
-              className="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white text-xs font-extrabold shadow-md active:scale-95 flex items-center gap-1.5"
-            >
-              <Shirt className="w-4 h-4" />
-              <span>{isFrench ? 'Studio & Garde-robe' : 'الأزياء والتخصيص 👗'}</span>
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* TREATS POPUP DRAWER IN HERO */}
-      <AnimatePresence>
-        {showTreatsMenu && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mt-4 pt-4 border-t border-amber-400/30 overflow-hidden"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-black text-amber-900 dark:text-amber-300">
-                {isFrench ? 'Délices algériens pour recharger Didou :' : 'خيرات الجزائر لتغذية ديدو وزيادة طاقته:'}
-              </span>
-              <span className="text-xs font-black text-amber-600 dark:text-amber-400">
-                🪙 {goldCoins} {isFrench ? 'pièces' : 'دينار ذهبي'}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-2">
-              {DIDOU_TREATS_LIST.map((treat) => (
-                <button
-                  key={treat.id}
-                  onClick={() => handleFeedTreat(treat)}
-                  className="p-2.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 border border-amber-200 dark:border-slate-800 text-start flex flex-col justify-between gap-1 shadow-sm transition-all active:scale-95"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl">{treat.icon}</span>
-                    <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200 line-clamp-1">
-                      {isFrench ? treat.nameFr : treat.nameAr}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-[11px] font-bold">
-                    <span className="text-emerald-600 dark:text-emerald-400">+{treat.energyBonus}% ⚡</span>
-                    <span className="text-amber-600 dark:text-amber-400 font-mono">🪙 {treat.priceGoldCoins}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
-  );
+    <ol className="didou-home-stages" aria-label={isFrench ? 'Croissance de Didou' : 'مراحل نمو ديدو'}>
+      {DIDOU_STAGES.map(stage => <li key={stage.stage} aria-current={stage.stage === stageInfo.stage ? 'step' : undefined}>
+        <span aria-hidden="true">{stage.stage === 1 ? '🐾' : stage.stage === 2 ? '🎒' : '👑'}</span>
+        <span>{(isFrench ? ['Petit', 'Écolier', 'Sage'] : ['صغير', 'تلميذ', 'حكيم'])[stage.stage - 1]}</span>
+      </li>)}
+    </ol>
+    <label className="didou-meter-label">⚡ {isFrench ? 'Énergie' : 'الطاقة'} · {energy}%
+      <progress value={energy} max={100} aria-label={isFrench ? 'Énergie de Didou' : 'طاقة ديدو'} />
+    </label>
+    {speechBubble && <div className="didou-home-speech" role="status">
+      <p>{speechBubble}</p>
+      <button type="button" className="didou-icon-button" aria-label={isFrench ? 'Fermer le message' : 'أغلق الرسالة'} onClick={() => { stopSpeech(); setIsSpeaking(false); setSpeechBubble(null); }}>×</button>
+    </div>}
+    <div className="didou-home-actions">
+      <button type="button" className="didou-secondary-button" onClick={triggerRandomDialogue}><MessageCircle className="w-4 h-4" />{isFrench ? 'Parler à Didou' : 'أتحدث مع ديدو'}</button>
+      <button type="button" className="didou-primary-button" aria-expanded={showTreatsMenu} aria-controls="didou-home-food" onClick={() => setShowTreatsMenu(!showTreatsMenu)}><Utensils className="w-4 h-4" />{isFrench ? 'Nourrir' : 'أطعم ديدو'}</button>
+      {onOpenDressingRoom && <button type="button" className="didou-secondary-button" onClick={onOpenDressingRoom}><Shirt className="w-4 h-4" />{isFrench ? 'Sa garde-robe' : 'خزانة ديدو'}</button>}
+    </div>
+    {showTreatsMenu && <div id="didou-home-food" className="didou-home-food">
+      <p className="didou-small">🪙 {goldCoins} {isFrench ? 'pièces gagnées dans tes activités' : 'قطعة تكسبها في أنشطتك'}</p>
+      {DIDOU_TREATS_LIST.map(treat => <button type="button" key={treat.id} data-home-treat={treat.id}
+        disabled={goldCoins < treat.priceGoldCoins || isEatingAnim || !onFeed} onClick={() => handleFeedTreat(treat)}>
+        <span className="text-2xl" aria-hidden="true">{treat.icon}</span>
+        <span className="min-w-0 flex-1"><span className="block font-extrabold text-sm">{isFrench ? treat.nameFr : treat.nameAr}</span><span className="didou-small">⚡ +{treat.energyBonus}%</span></span>
+        <span className="font-bold text-sm">{treat.priceGoldCoins} 🪙</span>
+      </button>)}
+    </div>}
+  </section>;
 };

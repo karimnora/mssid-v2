@@ -37,6 +37,7 @@ import {
   suggestNextActivity,
   summarizeBilan,
   todayPlayIds,
+  withImpliedGuidedSteps,
 } from './preschoolProgress';
 
 interface PreschoolAppProps {
@@ -83,7 +84,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   const cloud=useLearningSnapshot(cloudOwner,'preschool-'+(language??'fr'),snapshotKey,()=>{
     try{return cleanLearningResults(JSON.parse(localStorage.getItem(snapshotKey)??'{}'));}catch{return {};}
   });
-  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId));
+  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId, PRESCHOOL_MODULES));
   const [playEvents, setPlayEvents] = useState(() => loadEvents(ownerId));
   const [childName, setChildName] = useState(() => loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
   const [showParentBilan, setShowParentBilan] = useState(false);
@@ -135,7 +136,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
     setActiveSpecialTool(null);
     // Unknown guest work is never silently assigned to a signed-in family.
     skipSaveRef.current = true;
-    setCompletedActivityIds(loadProgress(ownerId));
+    setCompletedActivityIds(loadProgress(ownerId, PRESCHOOL_MODULES));
     setPlayEvents(loadEvents(ownerId));
     setLoadedOwnerId(ownerId);
     setChildName(loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
@@ -270,7 +271,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
 
             setCompletedActivityIds((prev) => {
               if (prev.includes(activeActivity.id)) return prev;
-              const next = [...prev, activeActivity.id];
+              const next = withImpliedGuidedSteps([...prev, activeActivity.id], PRESCHOOL_MODULES);
               const ids = activeModule.activities.map((a) => a.id);
               const justCompleted = ids.every((id) => next.includes(id))
                 && !ids.every((id) => prev.includes(id));

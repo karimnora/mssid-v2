@@ -108,9 +108,9 @@ describe('PreschoolModulePicker — 3-door hub', () => {
     resetFeatureFlagOverride('preschoolParentBilan');
   });
 
-  it('opens the printable worksheets modal from the home banner', () => {
+  it('opens the printable worksheets modal from the parent toolbar', () => {
     renderHub();
-    fireEvent.click(screen.getByText('Imprime des fiches d’exercices papier pour ton enfant'));
+    fireEvent.click(screen.getByText('Fiches à imprimer 🖨️'));
     expect(document.querySelector('.sheet-print-modal')).toBeTruthy();
     expect(document.querySelector('[data-preschool-printable="true"]')).toBeTruthy();
   });

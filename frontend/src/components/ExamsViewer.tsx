@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
-import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { speakText, speechLangForSubject, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 
 interface ExamsViewerProps {
@@ -125,7 +125,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       return;
     }
     setSpeakingKey(key);
-    void speakText(text, 'ar-SA', 0.85).then(() => {
+    void speakText(text, /[\u0600-\u06FF]/.test(text) ? 'ar-SA' : speechLangForSubject(selectedSubject ?? 'arabic'), 0.85).then(() => {
       setSpeakingKey((prev) => (prev === key ? null : prev));
     });
   };

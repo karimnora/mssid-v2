@@ -357,6 +357,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
           })}
         </div>
       </div>
+      <p className="text-xs text-[var(--app-text-muted)] mt-3" data-synthetic-voice-notice>Voix de synthèse de Didou · صوت ديدو مُولَّد بالذكاء الاصطناعي</p>
     </div>
   );
 };

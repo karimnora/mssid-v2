@@ -248,7 +248,21 @@ export interface PreschoolVisualAssets {
   storyFrames?: PreschoolStoryFrame[];
 }
 
+export type PreschoolStoryText = Record<PreschoolLanguage, string>;
+export interface PreschoolStoryQuestion {
+  id: string;
+  prompt: PreschoolStoryText;
+  choices: { id: string; asset: string; label: PreschoolStoryText }[];
+  correctId: string;
+}
+export interface PreschoolNarratedStory {
+  questions: PreschoolStoryQuestion[];
+}
+
 export interface PreschoolActivity {
+  narratedStory?: PreschoolNarratedStory;
+  /** A preparatory counting task: one visual place for each requested object. */
+  showQuantityGuide?: boolean;
   id: string;
   domain: PreschoolDomain;
   /** e.g. 3, or 'أ' for a letter module (not used yet, reserved for future domains). */

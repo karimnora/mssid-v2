@@ -7,7 +7,7 @@ import {
   playGentleNudge,
   playSuccessChime,
 } from "../preschool/usePreschoolAudio";
-import { isGuidedPractice, isMatchingPairCorrect } from "./practiceAssessment";
+import { isFillBlankCorrect, isGuidedPractice, isMatchingPairCorrect } from "./practiceAssessment";
 
 type Exercise = NonNullable<CourseLesson["progressiveExercises"]>[number];
 
@@ -157,8 +157,11 @@ export function useLessonPractice(
         const opt = ex.options?.find((o) => o.id === answer);
         isCorrect = !!opt?.isCorrect;
       } else if (ex.type === "fill_blank") {
-        // Numbers compare by value: « 5,40 », « 5.4 » and « ٥٫٤ » are the same answer.
-        isCorrect = sameAnswer(answer, ex.fillBlankAnswerAr || "");
+        // Numbers compare by value: « 5,40 », « 5.4 » and « ٥٫٤ » are the same answer;
+        // isFillBlankCorrect adds grouped integers and Latin-sentence typography.
+        isCorrect =
+          isFillBlankCorrect(ex, String(answer ?? "")) ||
+          sameAnswer(answer, ex.fillBlankAnswerAr || "");
       } else if (ex.type === "calculation") {
         const value = parseChildNumber(answer);
         isCorrect =

@@ -1,6 +1,7 @@
 import { requiresHumanPreschoolRecording } from '../../utils/humanOnlyPreschoolSpeech';
 import { PreschoolEvidence, resolvedPlayQuality } from './preschoolEvidence';
 import { PreschoolDiscoveryScene } from './PreschoolDiscoveryArt';
+import { PreschoolNarratedStory } from './PreschoolNarratedStory';
 import React, { useEffect, useRef, useState } from 'react';
 import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -100,8 +101,11 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
     setHasWork(false);
     interactedRef.current = false;
     replayUsedRef.current = false;
-    const first = window.setTimeout(() => speak(content.promptAudio, content.promptAudioSrc), 350);
-    const skipReplay = activity.interactionType === 'quran_listen';
+    const first = window.setTimeout(() => {
+      if (activity.narratedStory && interactedRef.current) return;
+      speak(content.promptAudio, content.promptAudioSrc);
+    }, 350);
+    const skipReplay = activity.interactionType === 'quran_listen' || !!activity.narratedStory;
     const replay = skipReplay
       ? undefined
       : window.setTimeout(() => {
@@ -247,9 +251,10 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <div
           key={activity.id}
           onPointerDownCapture={() => setHasWork(true)}
-          onClickCapture={() => setHasWork(true)}
+          onClickCapture={() => { setHasWork(true); markInteracted(); }}
           className="mt-4 w-full flex items-center justify-center"
           onPointerDown={markInteracted}
+          onKeyDownCapture={markInteracted}
         >
           {showEcho && echoWord ? (
             <PreschoolWordEcho
@@ -314,7 +319,10 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
               onComplete={handleInteractionComplete}
             />
           )}
-          {activity.interactionType === 'story_order' && (
+          {activity.interactionType === 'story_order' && activity.narratedStory && (
+              <PreschoolNarratedStory key={activity.id + language} activity={activity} story={activity.narratedStory} language={language} onComplete={handleInteractionComplete} />
+            )}
+            {activity.interactionType === 'story_order' && !activity.narratedStory && (
             <PreschoolStoryOrder
               activity={activity}
               language={language}

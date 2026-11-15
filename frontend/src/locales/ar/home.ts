@@ -1,8 +1,8 @@
 // HomeView.tsx
 export const home = {
   systemBadge: 'المنظومة التعليمية الجزائرية 🇩🇿',
-  welcomeGuest: 'أهلاً بك أيها البطل في مَسِيد الجزائري 👋',
-  welcomeUser: 'أهلاً بك يا {name} في مَسِيد 👋',
+  welcomeGuest: 'أهلاً يا بطل! 👋',
+  welcomeUser: 'أهلاً يا {name}! 👋',
   guestFallbackName: 'بطل',
   platformTagline: 'المنصة الشاملة من التعليم التحضيري (براعم) حتى السنة الخامسة ابتدائي',
   preschoolCtaTitle: 'قسم التحضيري والإيقاظ (3 إلى 5 سنوات)',
@@ -33,6 +33,9 @@ export const home = {
   worldDidouListen: 'استمع إلى ديدو',
   journeyCardTitle: 'كوكب ديدو 🪐',
   journeyCardSubtitle: 'سافر مع ديدو من الصحراء إلى الفضاء، وكل محطة درس من دروسك',
+  todayTitle: 'هيا نتعلم',
+  subjectsLoading: 'نحضر موادك…',
+  subjectsUnavailable: 'لا توجد دروس متاحة لهذا المستوى حاليا.',
   heroResumeCta: '▶️ متابعة: {title}',
   heroProgressLabel: 'نحو المستوى التالي: {percent}٪',
   levelPill: 'المستوى {level}',

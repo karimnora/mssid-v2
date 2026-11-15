@@ -15,7 +15,7 @@ vi.mock('../utils/speech', async (importOriginal) => {
 });
 
 const renderHome = (
-  grade: '1AP' | '2AP' | '5AP',
+  grade: '1AP' | '2AP' | '3AP' | '5AP',
   extras?: Partial<React.ComponentProps<typeof HomeView>>,
 ) =>
   render(
@@ -33,6 +33,19 @@ const renderHome = (
   );
 
 describe('HomeView', () => {
+  it('reserves the subjects area while the catalogue loads and offers an honest empty state afterwards', () => {
+    const view = renderHome('5AP', { courseSubjects: [], isLoadingCourses: true });
+    expect(screen.getByRole('status')).toHaveTextContent('نحضر موادك');
+    expect(document.querySelectorAll('[data-subject-card]')).toHaveLength(0);
+    view.unmount();
+    renderHome('5AP', { courseSubjects: [], isLoadingCourses: false });
+    expect(screen.getByText(/لا توجد دروس متاحة/)).toBeInTheDocument();
+  });
+  it.each([false, null])('hides unavailable 3AP listening buttons (%s)', available => {
+    voiceAvailable.value = available;
+    renderHome('3AP');
+    expect(document.querySelectorAll('[data-tap-speak]')).toHaveLength(0);
+  });
   beforeEach(() => {
     setStoredLocale('ar');
     voiceAvailable.value = true;
@@ -121,7 +134,7 @@ describe('HomeView', () => {
   it('wraps the bar at 100 XP without sounding like school progress dropped', () => {
     renderHome('5AP', { xp: 100, level: 2 });
     expect(screen.getByText('نحو المستوى التالي: 0٪')).toBeInTheDocument();
-    expect(screen.getByText(/المستوى 2/)).toBeInTheDocument();
+    expect(screen.getByText(/المستوى 2/, { selector: '.home-stat' })).toBeInTheDocument();
   });
 
   it('offers resume of the last activity without hiding subject cards', () => {

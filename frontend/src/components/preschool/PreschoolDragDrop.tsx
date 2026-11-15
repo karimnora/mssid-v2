@@ -41,6 +41,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
   const [items, setItems] = useState<ItemState[]>(
     dragItems.map((item) => ({ id: item.id, asset: item.asset, dropped: false, offset: { x: 0, y: 0 } }))
   );
+  const dragged = useRef(false);
   const draggingId = useRef<string | null>(null);
   const startPos = useRef({ x: 0, y: 0 });
   const completedRef = useRef(false);
@@ -49,6 +50,10 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
   const target = activity.visualAssets.dropZoneCount || dragItems.length;
   const hasExtras = dragItems.length > target;
+  // Guided step: the target is shown and the basket stops at it. Without help, the child counts on
+  // their own: the basket accepts more than asked and "I'm done" checks the exact number.
+  const guided = !!activity.showQuantityGuide;
+  const basketFull = (prev: ItemState[]) => guided && hasExtras && prev.filter((it) => it.dropped).length >= target;
 
   const isOverDropZone = (clientX: number, clientY: number): boolean => {
     const zone = dropZoneRef.current;
@@ -65,6 +70,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
   const handlePointerDown = (e: React.PointerEvent, id: string) => {
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    dragged.current = false;
     draggingId.current = id;
     startPos.current = { x: e.clientX, y: e.clientY };
   };
@@ -74,6 +80,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
     if (!id) return;
     const dx = e.clientX - startPos.current.x;
     const dy = e.clientY - startPos.current.y;
+    if (Math.abs(dx) + Math.abs(dy) > 8) dragged.current = true;
     setItems((prev) => prev.map((it) => (it.id === id ? { ...it, offset: { x: dx, y: dy } } : it)));
   };
 
@@ -84,18 +91,26 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 
     const dropped = isOverDropZone(e.clientX, e.clientY);
     setItems((prev) => {
-      if (dropped && hasExtras) {
-        const already = prev.filter((it) => it.dropped).length;
-        if (already >= target) {
-          playGentleNudge();
-          return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
-        }
+      if (dropped && basketFull(prev)) {
+        playGentleNudge();
+        return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
       }
       return prev.map((it) => (
         it.id === id
           ? { ...it, dropped: dropped ? true : it.dropped, offset: dropped ? it.offset : { x: 0, y: 0 } }
           : it
       ));
+    });
+  };
+
+  const addToBasket = (id: string) => {
+    if (completedRef.current) return;
+    setItems(prev => {
+      if (basketFull(prev)) {
+        playGentleNudge();
+        return prev;
+      }
+      return prev.map(item => item.id === id ? { ...item, dropped: true, offset: { x: 0, y: 0 } } : item);
     });
   };
 
@@ -130,6 +145,11 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
         className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-[2rem] border-4 border-dashed border-amber-400 bg-amber-50 flex flex-col items-center justify-center p-2"
       >
         <span className="text-6xl select-none" aria-hidden="true">{activity.visualAssets.mainSvgOrImage}</span>
+        {activity.showQuantityGuide && (
+          <div aria-hidden="true" className="flex flex-wrap justify-center gap-1 max-w-36" data-quantity-guide>
+            {Array.from({ length: target }, (_, i) => <span key={i} className={`h-4 w-4 rounded-full border-2 ${i < droppedCount ? 'bg-emerald-500 border-emerald-600' : 'bg-white border-amber-400'}`} />)}
+          </div>
+        )}
         <div className="flex flex-wrap items-center justify-center gap-1 min-h-8">
           {items.filter((it) => it.dropped).map((it) => (
             <button
@@ -144,7 +164,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
           ))}
         </div>
         <span className="absolute -bottom-3 bg-emerald-500 text-white text-sm font-black px-3 py-1 rounded-full shadow">
-          <bdi dir="ltr">{droppedCount} / {target}</bdi>
+          <bdi dir="ltr">{guided ? `${droppedCount} / ${target}` : droppedCount}</bdi>
         </span>
       </div>
 
@@ -159,6 +179,9 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
             whileTap={{ scale: 1.15 }}
             className="text-5xl cursor-grab active:cursor-grabbing select-none"
             role="button"
+            tabIndex={0}
+            onClick={() => { if (!dragged.current) addToBasket(it.id); }}
+            onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); addToBasket(it.id); } }}
             aria-label={it.asset}
           >
             {it.asset}

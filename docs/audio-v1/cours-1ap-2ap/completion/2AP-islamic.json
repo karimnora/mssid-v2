@@ -1,0 +1,2417 @@
+[
+  {
+    "texte": "حِفْظُ سُورَتَيِ الفِيلِ وَالقَارِعَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْكَانُ الإِسْلَامِ: الشَّهَادَتَانِ وَالصَّلَاةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَعَلَّمُ خُطُوَاتِ الوُضُوءِ بِالتَّرْتِيبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حِفْظُ سُورَتَيْ قُرَيْشٍ وَالهُمَزَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "آدَابُ الأَكْلِ وَالشُّرْبِ وَالنَّظَافَةُ فِي الإِسْلَامِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّلَوَاتُ الخَمْسُ المَفْرُوضَةُ وَعَدَدُ رَكَعَاتِ كُلِّ صَلَاةٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "احْتِرَامُ الوَالِدَيْنِ، الصِّدْقُ، وَالتَّسَامُحُ وَالتَّحِيَّةُ فِي الإِسْلَامِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حِفْظُ سُورَتَيِ المَاعُونِ وَالعَصْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حِفْظُ سُورَةِ التَّكَاثُرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حفظ وترتيل سورتي الفيل والقارعة، وفهم فكرتهما العامة ببساطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "هل سمعت قصة أصحاب الفيل الذين أرادوا هدم الكعبة؟ من حمى البيت؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يحفظ التلميذ سورتي الفيل والقارعة مع فهم بسيط مناسب لسنه، دون إعادة سور السنة الأولى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "في السنة الثانية نحفظ سوراً جديدة. الفيل قصة حماية الكعبة. القارعة سورة نردّدها آية آية بفهم هادئ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الفِيلِ: تُذَكِّرُنَا أَنَّ اللَّهَ حَمَى الكَعْبَةَ مِنْ جَيْشِ الفِيلِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ القَارِعَةِ: تُذَكِّرُنَا بِيَوْمٍ يَحْسِبُ اللَّهُ فِيهِ أَعْمَالَ النَّاسِ بِعَدْلٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "هَاتَانِ سُورَتَانِ جَدِيدَتَانِ نَحْفَظُهُمَا بَعْدَ سُوَرِ السَّنَةِ الأُولَى (الفَاتِحَةِ وَالإِخْلَاصِ…).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "قَبْلَ القِرَاءَةِ: «أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ» ثُمَّ البَسْمَلَةُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَصْحَابُ الفِيلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "القَارِعَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "سور السنة الأولى للمراجعة السريعة في البيت، ودرس اليوم: الفيل والقارعة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الفيل: الله حمى بيته. سورة القارعة: نحفظها آية آية ونعمل الخير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "من حمى الكعبة في سورة الفيل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-surahs1"
+      }
+    ]
+  },
+  {
+    "texte": "ما السورة الثانية التي نحفظها في هذا الدرس مع الفيل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-surahs1"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نَقُولُ قَبْلَ تِلَاوَةِ السُّورَةِ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-surahs1"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الفِيلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "حِمَايَةُ الكَعْبَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَمْدُ للهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ القَارِعَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "يَوْمُ الحِسَابِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الوُضُوءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-short-surahs-1",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "التعرف على معنى الشهادتين وأهمية الصلاة كركنين أساسيين من أركان الإسلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "كم مرة يصلي المسلم في اليوم الواحد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على أول ركنين من أركان الإسلام الخمسة: الشهادتان (نطق كلمة التوحيد) والصلاة (عبادة يومية).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "أركان الإسلام خمسة أعمدة أساسية يقوم عليها دين المسلم، أول ركنين منها هما الشهادتان (الإيمان بالله ورسوله) والصلاة (عبادة يومية متكررة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّهَادَتَانِ: أن نقول ونؤمن بأن \"لا إله إلا الله، محمد رسول الله\" — وهما أول وأهم ركن من أركان الإسلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصَّلَاةُ: عبادة يومية نؤديها 5 مرات (الفجر، الظهر، العصر، المغرب، العشاء)، نتوجه فيها إلى الله بالدعاء والشكر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الصلاة، يجب أن نتوضأ (نغسل أعضاء معينة) لنكون في طهارة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّهَادَتَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصلاة تُؤدى 5 مرات في اليوم في أوقات محددة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشهادتان معاً يُشكّلان الركن الأول من أركان الإسلام الخمسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الشهادتان: الإيمان بأن لا إله إلا الله ومحمداً رسول الله. الصلاة: عبادة يومية 5 مرات، تُسبقها الطهارة بالوضوء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد الصلوات في اليوم الواحد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل قبل الصلاة لنكون طاهرين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-pillars"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الجواب الصحيح عن أول ركنين من أركان الإسلام!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "أول ركن من أركان الإسلام",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصِّيَامُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-pillars-shahada-prayer",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أداء خطوات الوضوء بالترتيب الصحيح استعداداً للصلاة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الصلاة، ماذا يفعل المسلم أولاً بالماء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ خطوات الوضوء العملية بالترتيب الصحيح، من النية والبسملة إلى غسل القدمين، استعداداً لأداء الصلاة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الوضوء هو أول خطوة نحو الصلاة، به نُطهّر أعضاءنا بالماء بترتيب معين علّمنا إياه ديننا، لنقف بين يدي الله في طهارة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَبْدَأُ بِالنِّيَّةِ وَقَوْلِ \"بِسْمِ اللهِ\"، ثم أغسل يديّ إلى الرسغين 3 مرات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَمَضْمَضُ (أُدخل الماء لفمي) وَأَسْتَنْشِقُ (أُدخله لأنفي) ثم أُخرجه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَغْسِلُ وَجْهِي كَامِلاً، ثم ذراعيّ إلى المرفقين، ثم أمسح رأسي بيدي المبللتين، ثم أغسل قدميّ إلى الكعبين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أُرَتِّبُ هذه الخطوات دون تخطي أي عضو، فالترتيب مهم في الوضوء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "النِّيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المَضْمَضَةُ وَالاسْتِنْشَاقُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل بالترتيب الثابت: اليدان، الفم والأنف، الوجه، الذراعان، الرأس، القدمان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "النية والبسملة خطوة أولى مهمة قبل أي غسل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الوضوء بالترتيب: نية وبسملة، غسل اليدين، مضمضة واستنشاق، غسل الوجه، غسل الذراعين، مسح الرأس، غسل القدمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا أقول قبل أن أبدأ الوضوء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-wudu"
+      }
+    ]
+  },
+  {
+    "texte": "ما آخر عضو نغسله في الوضوء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-wudu"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا نتوضأ قبل الصلاة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-wudu"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الخطوة الصحيحة في ترتيبها!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بعد غسل اليدين، ماذا أفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مَسْحُ الرَّأْسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t1-wudu-steps",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حفظ وترتيل سورتي قريش والهمزة، وفهم فكرتهما العامة ببساطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "هل تشكر الله على النعم التي أعطاك إياها؟ اذكر نعمة واحدة تشكر الله عليها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يحفظ التلميذ سورتي قريش والهمزة: الشكر على الأمان والغذاء، وترك السخرية من الناس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "قريش تعلّمنا الشكر على الطعام والأمان. الهمزة تعلّمنا ألا نسخر من أحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ قُرَيْشٍ: تُذَكِّرُنَا بِنِعْمَةِ الأَمَانِ وَالغِذَاءِ، فَنَعْبُدُ رَبَّ البَيْتِ وَنَشْكُرُهُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الهُمَزَةِ: تَنْهَانَا عَنِ السُّخْرِيَةِ مِنَ النَّاسِ وَالاِغْتِيَابِ، وَعَنِ التَّعَلُّقِ بِالمَالِ وَحْدَهُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَتَا النَّصْرِ وَالكَوْثَرِ مَرَّتَا مَعَنَا فِي السَّنَةِ الأُولَى: نُرَاجِعُهُمَا فِي البَيْتِ، وَدَرْسُ اليَوْمِ قُرَيْشٌ وَالهُمَزَةُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشُّكْرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الهُمَزَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "درس السنة الثانية هنا: قريش والهمزة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "قريش: نشكر الله على الطعام والأمان. الهمزة: لا نسخر ولا نغتاب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي سورة تُذكّرنا بنعمة الأمان والغذاء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-surahs2"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الهمزة تنهانا عن:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-surahs2"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يجب أن نفعل عندما نحصل على نعمة من الله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-surahs2"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل سورة بالنعمة التي تُذكّرنا بها!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ قُرَيْشٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الأَمَانُ وَالغِذَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ الهُمَزَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَرْكُ السُّخْرِيَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "جَمْعُ المَالِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-short-surahs-2",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تطبيق آداب الأكل والشرب البسيطة، وإدراك مكانة النظافة في الإسلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول قبل أن نبدأ الأكل؟ وماذا نقول بعد أن ننتهي؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ آداب الأكل والشرب في الإسلام (التسمية، الأكل باليمين، عدم الإسراف) وأهمية النظافة كجزء من الإيمان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "ديننا الحنيف علّمنا آداباً جميلة حتى في أبسط الأمور مثل الأكل والشرب، وحثّنا على النظافة لأنها جزء من إيماننا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَقُولُ \"بِسْمِ اللهِ\" قَبْلَ الأَكْلِ وَالشُّرْبِ، وَ\"الحَمْدُ لِلَّهِ\" بَعْدَهُمَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "آكُلُ وَأَشْرَبُ بِيَدِي اليُمْنَى، وَلَا أُسْرِفُ فِي الطَّعَامِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةُ خُلُقٌ إِسْلَامِيٌّ مُهِمٌّ، فَالنَّبِيُّ ﷺ عَلَّمَنَا أَنَّ \"النَّظَافَةَ مِنَ الإِيمَانِ\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّسْمِيَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِسْرَافُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل بلطف حتى تصبح عادة يومية طبيعية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "النظافة في الإسلام جزء من الإيمان، وليست مجرد عادة اجتماعية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "قبل الأكل: \"بسم الله\". بعد الأكل: \"الحمد لله\". آكل بيميني ولا أُسرف. النظافة من الإيمان.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول بعد الانتهاء من الأكل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا علّمنا النبي ﷺ عن النظافة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "بأي يد يُفضَّل أن نأكل ونشرب؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-manners"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الصحيح حسب آداب ديننا!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "قبل بدء الأكل نقول:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-manners-eating-cleanliness",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "حفظ أسماء الصلوات الخمس وعدد ركعات كل واحدة منها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "صلاة الفجر قصيرة، فيها ركعتان فقط. فكم ركعة تظن أن في صلاة الظهر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على الصلوات الخمس المفروضة بأسمائها وأوقاتها، وعلى عدد ركعات كل صلاة منها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "كل صلاة من صلواتنا الخمس لها وقتها الخاص وعدد ركعاتها الخاص، حفظتها معي منذ صغري تجعلني أؤديها بثقة وطمأنينة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "صَلَاةُ الفَجْرِ: رَكْعَتَانِ، تُؤدى في الصباح الباكر قبل شروق الشمس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "صَلَاةُ الظُّهْرِ وَالعَصْرِ وَالعِشَاءِ: أَرْبَعُ رَكَعَاتٍ لِكُلِّ وَاحِدَةٍ مِنْهَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "صَلَاةُ المَغْرِبِ: ثَلَاثُ رَكَعَاتٍ، تُؤدى بعد غروب الشمس مباشرة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّكْعَةُ: وحدة من وحدات الصلاة، فيها قيام وقراءة وركوع وسجود.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الرَّكْعَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفَرْضُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل أن ثلاث صلوات فقط لها نفس العدد: الظهر والعصر والعشاء، كل واحدة 4 ركعات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "المغرب هي الصلاة الوحيدة التي فيها 3 ركعات فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "الفجر: 2 ركعة. الظهر: 4. العصر: 4. المغرب: 3. العشاء: 4. المجموع الكلي: 17 ركعة في اليوم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد ركعات صلاة الفجر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-rakaat"
+      }
+    ]
+  },
+  {
+    "texte": "اذكر 3 صلوات لها نفس عدد الركعات (4 ركعات).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-rakaat"
+      }
+    ]
+  },
+  {
+    "texte": "كم عدد ركعات صلاة الظهر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-rakaat"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل صلاة بعدد ركعاتها الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "صَلَاةُ المَغْرِبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "3 رَكَعَاتٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "2 رَكْعَتَانِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "4 رَكَعَاتٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "صَلَاةُ الفَجْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t2-five-prayers-rakaat",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "تطبيق قيم بر الوالدين والصدق والتسامح، والتعرف على أدب إلقاء السلام.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نقول عندما نلتقي بصديق مسلم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ أهمية بر الوالدين واحترامهما، وقيمة الصدق، وآداب التسامح والتحية بين المسلمين (إلقاء السلام).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الأخلاق الجميلة جزء أساسي من ديننا: نحترم والدينا، نصدق دائماً، نسامح من أخطأ، ونُلقي السلام بابتسامة على كل من نلتقيه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "بِرُّ الوَالِدَيْنِ: طاعتهما واحترامهما ومساعدتهما، فهذا من أحب الأعمال إلى الله.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الصِّدْقُ: قول الحقيقة دائماً، حتى لو كانت صعبة، لأن الكذب خُلق سيء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "التَّحِيَّةُ الإِسْلَامِيَّةُ: نُلقي السلام بقول \"السَّلَامُ عَلَيْكُمْ\" ونرد بقول \"وَعَلَيْكُمُ السَّلَامُ\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّسَامُحُ: أن نُسامح من أخطأ في حقنا ونتقبل اعتذاره بصدر رحب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الجَارُ وَالبِيئَةُ: نُحْسِنُ إِلَى الجَارِ، نَتَعَاوَنُ، وَلَا نُفْسِدُ الحَدِيقَةَ وَالشَّارِعَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "بِرُّ الوَالِدَيْنِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّسَامُحُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "يُستحب الرد على السلام بوضوح وابتسامة، لأنه حق للمسلم على أخيه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "ديننا يحثّنا على الصدق دائماً، حتى في الأمور الصغيرة، لأن الصدق يقود إلى الخير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أحترم والديّ وأطيعهما، ألتزم بالصدق دائماً، أُلقي السلام بابتسامة، وأتسامح مع من أخطأ في حقي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نرد عندما يقول لنا شخص \"السلام عليكم\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-ethics"
+      }
+    ]
+  },
+  {
+    "texte": "أخطأ صديقك في حقك واعتذر لك. ماذا يجب أن تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-ethics"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا يجب أن أفعل عندما أُخطئ في شيء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-ethics"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الأخلاقي الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "طلبت منك أمك المساعدة في ترتيب الغرفة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُطِيعُهَا بِسُرُورٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَرْفُضُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-honesty-tolerance-parents",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حفظ وترتيل سورتي الماعون والعصر، وفهم فكرتهما العامة ببساطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "إذا رأيت طفلاً يتيماً أو فقيراً يحتاج مساعدة، ماذا يجب أن تفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يحفظ التلميذ سورتي الماعون والعصر مع فهم بسيط لمعناهما: مساعدة المحتاجين واستغلال الوقت في الخير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "سورتان قصيرتان جميلتان: الماعون تعلّمنا الرحمة بالمحتاجين، والعصر تذكّرنا بأن الوقت ثمين ويجب أن نملأه بالخير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ المَاعُونِ: تُذَكِّرُنَا بِمُسَاعَدَةِ اليَتِيمِ وَالفَقِيرِ، وَعَدَمِ إِهْمَالِ الصَّلَاةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ العَصْرِ: تُذَكِّرُنَا بِأَهَمِّيَّةِ اسْتِغْلَالِ الوَقْتِ فِي العَمَلِ الصَّالِحِ وَالصِّدْقِ وَالصَّبْرِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "كِلْتَا السُّورَتَيْنِ قَصِيرَتَانِ جِدّاً وَتُعَلِّمَانِنَا خُلُقاً جَمِيلاً نُطَبِّقُهُ فِي حَيَاتِنَا اليَوْمِيَّةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "اليَتِيمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "اسْتِغْلَالُ الوَقْتِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حتى الطفل الصغير يمكنه المساعدة بطريقته: بابتسامة، بمشاركة لعبة، أو بكلمة طيبة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "سورة الماعون: أساعد الفقير واليتيم ولا أهمل صلاتي. سورة العصر: أستغل وقتي في الخير والصدق والصبر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي سورة تحثّنا على مساعدة اليتيم والفقير؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-maunasr"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا يُقسم الله في سورة العصر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-maunasr"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا تُعلّمنا سورة العصر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-maunasr"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ المَاعُونِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُسَاعَدَةُ الفَقِيرِ وَاليَتِيمِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ العَصْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "اسْتِغْلَالُ الوَقْتِ فِي الخَيْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُسَاعَدَةُ الفَقِيرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-maun-asr",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "حفظ سورة التكاثر وترديدها آية آية مع معنى مبسّط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "هل نحتاج دائماً ألعاباً أكثر لنكون سعداء؟ بماذا نشكر الله بدل التفاخر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يحفظ التلميذ سورة التكاثر ويفهم ببساطة أن كثرة الأشياء يجب ألا تُنسينا شكر الله.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "التكاثر يعني التفاخر بالكثرة. السورة تذكّرنا بالشكر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "سُورَةُ التَّكَاثُرِ تُذَكِّرُنَا أَلَّا نَنْشَغِلَ بِكَثْرَةِ الأَشْيَاءِ عَنِ الخَيْرِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَشْكُرُ اللَّهَ عَلَى مَا نَمْلِكُ: الصِّحَّةِ، العَائِلَةِ، الطَّعَامِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "نَحْفَظُ السُّورَةَ آيَةً آيَةً كَمَا فِي المُصْحَفِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّكَاثُرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "النَّعِيمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد الحفظ: اذكر نعمة واحدة تشكر الله عليها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أحفظ التكاثر وأشكر الله بدل التفاخر بما أملك.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا تعني كلمة التكاثر هنا ببساطة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex1-isl2ap-takathur"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل بدل التفاخر بالألعاب؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "practice",
+        "key": "practice-ex2-isl2ap-takathur"
+      }
+    ]
+  },
+  {
+    "texte": "سورة التكاثر تذكّرنا بـ:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "quiz",
+        "key": "quiz-q1-isl2ap-takathur"
+      }
+    ]
+  },
+  {
+    "texte": "اختر التصرف الجميل!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "عندك ألعاب كثيرة وصديقك لا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُشَارِكُهُ وَأَشْكُرُ اللَّهَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَتَفَاخَرُ عَلَيْهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "islamic-2ap-t3-surah-takathur",
+        "grade": "2AP",
+        "subject": "islamic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  }
+]

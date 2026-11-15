@@ -7,6 +7,48 @@ vi.mock('../../components/preschool/usePreschoolAudio', () => ({ playGentleNudge
 const getLesson = (id: string) => COURSES_DATA.find(lesson => lesson.id === id)!;
 
 describe('confirmed pedagogical corrections', () => {
+  it('rejects 456 hundreds in 456789 and teaches 4567 hundreds instead', () => {
+    const lesson = getLesson('math-5ap-large-numbers');
+    const ex = lesson.progressiveExercises!.find(e => e.id === 'math-5ap-large-numbers-ex1b')!;
+    const { result } = renderHook(() => useLessonPractice(lesson, vi.fn()));
+    act(() => result.current.handlePracticeAnswerChange(ex.id, 'true'));
+    act(() => result.current.checkPracticeExercise(ex));
+    expect(result.current.practiceCorrect[ex.id]).toBe(false);
+    expect(ex.detailedCorrectionAr).toContain(String(Math.floor(456789 / 100)));
+    expect(lesson.detailedCourse!.commonMistakes![0].correctionAr).toContain('456');
+    expect(lesson.detailedCourse!.commonMistakes![0].correctionAr).not.toContain('4567 مثلاً لعدد الآلاف');
+  });
+
+  it('places the millions after units and thousands in its hint', () => {
+    const ex = getLesson('math-5ap-large-numbers').progressiveExercises!.find(e => e.id === 'math-5ap-large-numbers-ex1')!;
+    expect(ex.hintsAr.join(' ')).toContain('الثالثة');
+    expect(ex.hintsAr.join(' ')).not.toContain('الثانية');
+  });
+
+  it('asks for the complete sentence when the French correction expects a complete sentence', () => {
+    const ex = getLesson('french-5ap-projet1-monde-animal').progressiveExercises!.find(e => e.id === 'french-5ap-animal-ex6')!;
+    expect(ex.problemAr).toContain('phrase entière');
+    expect(ex.problemAr).not.toContain('uniquement');
+    const { result } = renderHook(() => useLessonPractice(getLesson('french-5ap-projet1-monde-animal'), vi.fn()));
+    act(() => result.current.handlePracticeAnswerChange(ex.id, 'L’éléphant est grand et il a de longues défenses'));
+    act(() => result.current.checkPracticeExercise(ex));
+    expect(result.current.practiceCorrect[ex.id]).toBe(true);
+  });
+
+  it.each([
+    ['english-5ap-school-ex2', 'his', true],
+    ['english-5ap-school-ex2', 'Her', false],
+    ['english-5ap-school-ex6', 'My brother has a new bike', true],
+    ['english-5ap-school-ex6', 'My brother have a new bike.', false],
+  ])('checks the targeted English skill in %s for %s', (id, answer, expected) => {
+    const lesson = getLesson('english-5ap-unit1-school-family');
+    const ex = lesson.progressiveExercises!.find(e => e.id === id)!;
+    const { result } = renderHook(() => useLessonPractice(lesson, vi.fn()));
+    act(() => result.current.handlePracticeAnswerChange(ex.id, answer));
+    act(() => result.current.checkPracticeExercise(ex));
+    expect(result.current.practiceCorrect[ex.id]).toBe(expected);
+  });
+
   it('identifies the clarified substance, not the quantity, as tamyiz in the kilogram sentence', () => {
     const lesson = getLesson('arabic-5ap-tamyiz');
     const exercise = lesson.progressiveExercises!.find(ex => ex.id === 'arabic-5ap-tamyiz-ex3')!;

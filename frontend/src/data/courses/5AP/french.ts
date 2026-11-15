@@ -232,7 +232,8 @@ export const FRENCH_5AP: CourseLesson[] = [
             level: 4,
             levelLabelAr: '🏆 Défi',
             type: 'fill_blank',
-            problemAr: 'Corrige cette phrase : « La éléphant est grand et il a de long défenses. » (récris la partie fautive uniquement : l\'article et l\'adjectif « long »)',
+            problemAr: 'Réécris la phrase entière en corrigeant les deux erreurs : « La éléphant est grand et il a de long défenses. » Vérifie l\'article devant « éléphant » et l\'accord de « long ».',
+            fillBlankComparison: 'latin_sentence',
             hintsAr: ['« éléphant » est masculin ; « défenses » est féminin pluriel.'],
             progressiveHints: [
                 { labelAr: 'Petit indice', contentAr: '« La » ne peut pas être utilisé devant un nom masculin commençant par une voyelle.' },

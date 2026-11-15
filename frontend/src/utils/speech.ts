@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { isFeatureEnabled } from '../featureFlags';
-import { findRecordedSpeech, playRecordedSpeech, stopRecordedSpeech,
+import { findRecordedSpeechSequence, playRecordedSpeech, stopRecordedSpeech,
   pauseRecordedSpeech, resumeRecordedSpeech } from './recordedSpeech';
 
 const isNative = () => Capacitor.isNativePlatform();
@@ -31,6 +31,7 @@ export function useVoiceAvailable(lang: string): boolean | null {
 
   useEffect(() => {
     let cancelled = false;
+    setAvailable(null);
     const prefix = lang.split('-')[0].toLowerCase();
 
     if (isNative()) {
@@ -51,6 +52,7 @@ export function useVoiceAvailable(lang: string): boolean | null {
       return;
     }
     let attempts = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
 
     const check = (): boolean => {
       const voices = window.speechSynthesis.getVoices();
@@ -62,15 +64,21 @@ export function useVoiceAvailable(lang: string): boolean | null {
     // Chrome commonly reports zero voices on the very first synchronous getVoices() call; poll for
     // up to ~2s as a fallback in case onvoiceschanged never fires (unreliable on some WebViews).
     const poll = () => {
-      if (cancelled || check() || attempts >= 20) return;
+      if (cancelled || check()) return;
+      if (attempts >= 20) {
+        setAvailable(false);
+        return;
+      }
       attempts += 1;
-      setTimeout(poll, 100);
+      timer = setTimeout(poll, 100);
     };
     poll();
 
-    window.speechSynthesis.onvoiceschanged = check;
+    window.speechSynthesis.addEventListener?.('voiceschanged', check);
     return () => {
       cancelled = true;
+      clearTimeout(timer);
+      window.speechSynthesis.removeEventListener?.('voiceschanged', check);
     };
   }, [lang]);
 
@@ -92,28 +100,44 @@ const NON_SPOKEN_SYMBOLS_REGEX = new RegExp(
   'gu'
 );
 
-function stripNonSpokenSymbols(text: string): string {
+export function stripNonSpokenSymbols(text: string): string {
   return text.replace(NON_SPOKEN_SYMBOLS_REGEX, ' ').replace(/\s+/g, ' ').trim();
 }
 
 export const speakText = async (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1,
-  options: { skipRecordedLookup?: boolean; recordedRate?: number; preferredRecording?: string } = {}): Promise<void> => {
+  options: { skipRecordedLookup?: boolean; recordedRate?: number; recordedOnly?: boolean; preferredRecording?: string } = {}): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
 
-  const spokenText = stripNonSpokenSymbols(text);
+  let spokenText = stripNonSpokenSymbols(text);
   if (!spokenText) {
     return Promise.resolve();
   }
 
   stopSpeech();
   const request = speechRequest;
-  const recording = options.skipRecordedLookup ? undefined : options.preferredRecording ? { src: options.preferredRecording } : findRecordedSpeech(spokenText, lang);
-  if (recording) {
-    const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
-    if (result !== 'failed' || request !== speechRequest) return;
+  // A preferred recording (V2 village pilot voice) is played whole, before any catalogue lookup.
+  const recordings = options.skipRecordedLookup
+    ? undefined
+    : options.preferredRecording
+      ? [{ src: options.preferredRecording, text: spokenText }]
+      : findRecordedSpeechSequence(spokenText, lang);
+  if (recordings) {
+    for (const [index, recording] of recordings.entries()) {
+      if (request !== speechRequest) return;
+      const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
+      if (result === 'cancelled' || request !== speechRequest) return;
+      if (result === 'failed') {
+        // Don't repeat sentences already heard if a later file fails.
+        spokenText = recordings.slice(index).map(clip => clip.text).join(' ');
+        break;
+      }
+      if (index === recordings.length - 1) return;
+    }
   }
+
+  if (options.recordedOnly) return;
 
   if (isNative()) {
     await nativeStop;

@@ -1,0 +1,1190 @@
+[
+  {
+    "texte": "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى سُوقِ الْحَيِّ. رَأَى تُفَّاحاً أَحْمَرَ. اِخْتَارَتْ أُمُّهُ التُّفَّاحَ، وَوَضَعَهُ دِيدُو فِي السَّلَّةِ. شَكَرَا الْبَائِعَ وَعَادَا إِلَى الْبَيْتِ. هُنَاكَ غَسَلَا التُّفَّاحَ قَبْلَ أَكْلِهِ.",
+    "language": "ar",
+    "uses": [
+      "story-market:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا اشْتَرَى دِيدُو مَعَ أُمِّهِ؟",
+    "language": "ar",
+    "uses": [
+      "story-market:market-q1"
+    ]
+  },
+  {
+    "texte": "تُفَّاح",
+    "language": "ar",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "كِتَاب",
+    "language": "ar",
+    "uses": [
+      "story-market:choice",
+      "story-rain:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "أَيْنَ وَضَعَ دِيدُو التُّفَّاحَ؟",
+    "language": "ar",
+    "uses": [
+      "story-market:market-q2"
+    ]
+  },
+  {
+    "texte": "سَلَّة",
+    "language": "ar",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "السَّرِير",
+    "language": "ar",
+    "uses": [
+      "story-market:choice"
+    ]
+  },
+  {
+    "texte": "زَارَ دِيدُو جَدَّتَهُ مَعَ أَبِيهِ. قَالَ لَهَا: السَّلَامُ عَلَيْكِ يَا جَدَّتِي! فَرِحَتْ بِهِ وَقَدَّمَتْ لَهُ تَمْراً. تَقَاسَمَ دِيدُو التَّمْرَ مَعَ أَبِيهِ. ثُمَّ جَلَسَا يَسْتَمِعَانِ إِلَى قِصَّةٍ تَحْكِيهَا الْجَدَّةُ.",
+    "language": "ar",
+    "uses": [
+      "story-grandma:narration"
+    ]
+  },
+  {
+    "texte": "عِنْدَ مَنْ ذَهَبَ دِيدُو؟",
+    "language": "ar",
+    "uses": [
+      "story-grandma:grandma-q1"
+    ]
+  },
+  {
+    "texte": "الْجَدَّة",
+    "language": "ar",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "الْمُعَلِّمَة",
+    "language": "ar",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "مَاذَا قَدَّمَتِ الْجَدَّةُ لِدِيدُو؟",
+    "language": "ar",
+    "uses": [
+      "story-grandma:grandma-q2"
+    ]
+  },
+  {
+    "texte": "تَمْر",
+    "language": "ar",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "كُرَة",
+    "language": "ar",
+    "uses": [
+      "story-grandma:choice",
+      "story-eid:choice",
+      "story-garden:choice",
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "ذَهَبَ دِيدُو إِلَى الشَّاطِئِ مَعَ أَبِيهِ. جَلَسَا عَلَى الرَّمْلِ. مَلَأَ دِيدُو دَلْوَهُ بِالرَّمْلِ وَبَنَى قَصْراً صَغِيراً. ظَلَّ قُرْبَ أَبِيهِ. عِنْدَ الْعَوْدَةِ، أَخَذَ دَلْوَهُ وَتَرَكَ الْمَكَانَ نَظِيفاً.",
+    "language": "ar",
+    "uses": [
+      "story-beach:narration"
+    ]
+  },
+  {
+    "texte": "أَيْنَ لَعِبَ دِيدُو؟",
+    "language": "ar",
+    "uses": [
+      "story-beach:beach-q1"
+    ]
+  },
+  {
+    "texte": "الشَّاطِئ",
+    "language": "ar",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "الْغَابَة",
+    "language": "ar",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "مَاذَا أَخَذَ دِيدُو مَعَهُ عِنْدَ الْعَوْدَةِ؟",
+    "language": "ar",
+    "uses": [
+      "story-beach:beach-q2"
+    ]
+  },
+  {
+    "texte": "دَلْوَه",
+    "language": "ar",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "سَمَكَة",
+    "language": "ar",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "فِي صَبَاحِ الْعِيدِ، لَبِسَ دِيدُو قَمِيصَهُ النَّظِيفَ. قَالَ لِعَائِلَتِهِ: عِيدٌ مُبَارَكٌ! وَضَعَتْ أُمُّهُ حَلْوَى فِي طَبَقٍ. حَمَلَ دِيدُو الطَّبَقَ مَعَ أَبِيهِ إِلَى الْجَارَةِ. فَرِحَتِ الْجَارَةُ وَشَكَرَتْهُمَا.",
+    "language": "ar",
+    "uses": [
+      "story-eid:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا لَبِسَ دِيدُو؟",
+    "language": "ar",
+    "uses": [
+      "story-eid:eid-q1"
+    ]
+  },
+  {
+    "texte": "قَمِيصَه",
+    "language": "ar",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "قُفَّازَيْن",
+    "language": "ar",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "مَاذَا قَدَّمَ دِيدُو لِلْجَارَةِ؟",
+    "language": "ar",
+    "uses": [
+      "story-eid:eid-q2"
+    ]
+  },
+  {
+    "texte": "حَلْوَى",
+    "language": "ar",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "وَضَعَ دِيدُو بَذْرَةً فِي تُرْبَةِ الْحَدِيقَةِ مَعَ جَدِّهِ. غَطَّيَاهَا بِقَلِيلٍ مِنَ التُّرَابِ. سَقَاهَا دِيدُو بِقَلِيلٍ مِنَ الْمَاءِ. بَعْدَ أَيَّامٍ، ظَهَرَتْ نَبْتَةٌ صَغِيرَةٌ. فَرِحَ دِيدُو وَاسْتَمَرَّ فِي الْعِنَايَةِ بِهَا.",
+    "language": "ar",
+    "uses": [
+      "story-garden:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا وَضَعَ دِيدُو فِي التُّرْبَةِ؟",
+    "language": "ar",
+    "uses": [
+      "story-garden:garden-q1"
+    ]
+  },
+  {
+    "texte": "بَذْرَة",
+    "language": "ar",
+    "uses": [
+      "story-garden:choice"
+    ]
+  },
+  {
+    "texte": "بِمَاذَا سَقَى دِيدُو الْبَذْرَةَ؟",
+    "language": "ar",
+    "uses": [
+      "story-garden:garden-q2"
+    ]
+  },
+  {
+    "texte": "مَاء",
+    "language": "ar",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "حَلِيب",
+    "language": "ar",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "زَارَ دِيدُو بُسْتَانَ زَيْتُونٍ مَعَ جَدِّهِ. بَسَطَ الْجَدُّ غِطَاءً تَحْتَ شَجَرَةٍ. جَمَعَا حَبَّاتِ الزَّيْتُونِ الَّتِي سَقَطَتْ عَلَيْهِ. وَضَعَ دِيدُو الزَّيْتُونَ فِي سَلَّةٍ. ثُمَّ عَادَا إِلَى الْبَيْتِ مَعاً.",
+    "language": "ar",
+    "uses": [
+      "story-olives:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا جَمَعَ دِيدُو مَعَ جَدِّهِ؟",
+    "language": "ar",
+    "uses": [
+      "story-olives:olives-q1"
+    ]
+  },
+  {
+    "texte": "زَيْتُون",
+    "language": "ar",
+    "uses": [
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "أَيْنَ وَضَعَ دِيدُو الزَّيْتُونَ؟",
+    "language": "ar",
+    "uses": [
+      "story-olives:olives-q2"
+    ]
+  },
+  {
+    "texte": "حِذَاء",
+    "language": "ar",
+    "uses": [
+      "story-olives:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "ذَهَبَ دِيدُو مَعَ عَائِلَتِهِ لِرُؤْيَةِ كُثْبَانِ الصَّحْرَاءِ. لَبِسَ قُبَّعَتَهُ وَمَشَى قُرْبَ أَبِيهِ. رَأَى الرَّمْلَ يَلْمَعُ فِي الشَّمْسِ. عِنْدَمَا عَطِشَ، أَعْطَاهُ أَبُوهُ مَاءً. جَلَسُوا مَعاً فِي الظِّلِّ لِلرَّاحَةِ.",
+    "language": "ar",
+    "uses": [
+      "story-sahara:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا لَبِسَ دِيدُو عَلَى رَأْسِهِ؟",
+    "language": "ar",
+    "uses": [
+      "story-sahara:sahara-q1"
+    ]
+  },
+  {
+    "texte": "قُبَّعَة",
+    "language": "ar",
+    "uses": [
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "مَاذَا شَرِبَ دِيدُو؟",
+    "language": "ar",
+    "uses": [
+      "story-sahara:sahara-q2"
+    ]
+  },
+  {
+    "texte": "نَظَرَ دِيدُو مِنَ النَّافِذَةِ. كَانَ الْمَطَرُ يَنْزِلُ. لَبِسَ مِعْطَفَهُ وَخَرَجَ مَعَ أُمِّهِ تَحْتَ مِظَلَّةٍ. سَمِعَ صَوْتَ الْقَطَرَاتِ عَلَيْهَا. عِنْدَمَا عَادَا، عَلَّقَ دِيدُو مِعْطَفَهُ لِيَجِفَّ.",
+    "language": "ar",
+    "uses": [
+      "story-rain:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا اسْتَعْمَلَ دِيدُو وَأُمُّهُ تَحْتَ الْمَطَرِ؟",
+    "language": "ar",
+    "uses": [
+      "story-rain:rain-q1"
+    ]
+  },
+  {
+    "texte": "مِظَلَّة",
+    "language": "ar",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "مَاذَا عَلَّقَ دِيدُو لِيَجِفَّ؟",
+    "language": "ar",
+    "uses": [
+      "story-rain:rain-q2"
+    ]
+  },
+  {
+    "texte": "مِعْطَفَه",
+    "language": "ar",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى مَكْتَبَةِ الْحَيِّ. اِخْتَارَ كِتَاباً فِيهِ صُوَرُ حَيَوَانَاتٍ. قَلَّبَ الصَّفَحَاتِ بِرِفْقٍ، وَتَحَدَّثَ بِصَوْتٍ هَادِئٍ. بَعْدَ الْقِرَاءَةِ، أَعَادَ الْكِتَابَ إِلَى الرَّفِّ بِمُسَاعَدَةِ أُمِّهِ.",
+    "language": "ar",
+    "uses": [
+      "story-library:narration"
+    ]
+  },
+  {
+    "texte": "مَاذَا اخْتَارَ دِيدُو فِي الْمَكْتَبَةِ؟",
+    "language": "ar",
+    "uses": [
+      "story-library:library-q1"
+    ]
+  },
+  {
+    "texte": "أَيْنَ أَعَادَ دِيدُو الْكِتَابَ؟",
+    "language": "ar",
+    "uses": [
+      "story-library:library-q2"
+    ]
+  },
+  {
+    "texte": "عَلَى الرَّفّ",
+    "language": "ar",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "فِي السَّلَّة",
+    "language": "ar",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "لِنُحَاوِلْ مَرَّةً أُخْرَى. اِسْتَمِعْ إِلَى السُّؤَالِ.",
+    "language": "ar",
+    "uses": [
+      "story-common:retry"
+    ]
+  },
+  {
+    "texte": "اِحْكِ القِصَّةَ بِكَلِمَاتِكَ لِشَخْصٍ مِنْ عَائِلَتِكَ.",
+    "language": "ar",
+    "uses": [
+      "story-common:retell"
+    ]
+  },
+  {
+    "texte": "أَحْسَنْتَ!",
+    "language": "ar",
+    "uses": [
+      "story-common:success"
+    ]
+  },
+  {
+    "texte": "Didou va au marché du quartier avec sa maman. Il voit des pommes rouges. Maman choisit les pommes et Didou les met dans le panier. Ils remercient le marchand et rentrent à la maison. Ils lavent les pommes avant de les manger.",
+    "language": "fr",
+    "uses": [
+      "story-market:narration"
+    ]
+  },
+  {
+    "texte": "Qu’achètent Didou et sa maman ?",
+    "language": "fr",
+    "uses": [
+      "story-market:market-q1"
+    ]
+  },
+  {
+    "texte": "Des pommes",
+    "language": "fr",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Un livre",
+    "language": "fr",
+    "uses": [
+      "story-market:choice",
+      "story-rain:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Où Didou met-il les pommes ?",
+    "language": "fr",
+    "uses": [
+      "story-market:market-q2"
+    ]
+  },
+  {
+    "texte": "Un panier",
+    "language": "fr",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "Le lit",
+    "language": "fr",
+    "uses": [
+      "story-market:choice"
+    ]
+  },
+  {
+    "texte": "Didou rend visite à sa grand-mère avec son papa. Il lui dit bonjour. Grand-mère est contente et lui offre des dattes. Didou partage les dattes avec son papa. Puis ils écoutent une histoire racontée par grand-mère.",
+    "language": "fr",
+    "uses": [
+      "story-grandma:narration"
+    ]
+  },
+  {
+    "texte": "À qui Didou rend-il visite ?",
+    "language": "fr",
+    "uses": [
+      "story-grandma:grandma-q1"
+    ]
+  },
+  {
+    "texte": "Sa grand-mère",
+    "language": "fr",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "Sa maîtresse",
+    "language": "fr",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "Que lui offre grand-mère ?",
+    "language": "fr",
+    "uses": [
+      "story-grandma:grandma-q2"
+    ]
+  },
+  {
+    "texte": "Des dattes",
+    "language": "fr",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "Un ballon",
+    "language": "fr",
+    "uses": [
+      "story-grandma:choice",
+      "story-eid:choice",
+      "story-garden:choice",
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "Didou va à la plage avec son papa. Ils s’installent sur le sable. Didou remplit son seau de sable et construit un petit château. Il reste près de son papa. En partant, il reprend son seau et laisse la plage propre.",
+    "language": "fr",
+    "uses": [
+      "story-beach:narration"
+    ]
+  },
+  {
+    "texte": "Où Didou joue-t-il ?",
+    "language": "fr",
+    "uses": [
+      "story-beach:beach-q1"
+    ]
+  },
+  {
+    "texte": "La plage",
+    "language": "fr",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "La forêt",
+    "language": "fr",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "Que reprend Didou en partant ?",
+    "language": "fr",
+    "uses": [
+      "story-beach:beach-q2"
+    ]
+  },
+  {
+    "texte": "Son seau",
+    "language": "fr",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "Un poisson",
+    "language": "fr",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "Le matin de l’Aïd, Didou met sa chemise propre. Il souhaite une bonne fête à sa famille. Maman pose des gâteaux sur une assiette. Avec son papa, Didou apporte l’assiette à leur voisine. Elle sourit et les remercie.",
+    "language": "fr",
+    "uses": [
+      "story-eid:narration"
+    ]
+  },
+  {
+    "texte": "Que met Didou ?",
+    "language": "fr",
+    "uses": [
+      "story-eid:eid-q1"
+    ]
+  },
+  {
+    "texte": "Sa chemise",
+    "language": "fr",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "Des gants",
+    "language": "fr",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "Qu’apporte Didou à la voisine ?",
+    "language": "fr",
+    "uses": [
+      "story-eid:eid-q2"
+    ]
+  },
+  {
+    "texte": "Des gâteaux",
+    "language": "fr",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "Avec son grand-père, Didou met une graine dans la terre du jardin. Ils la recouvrent d’un peu de terre. Didou verse un peu d’eau. Après plusieurs jours, une petite pousse apparaît. Didou est content et continue à prendre soin de sa plante.",
+    "language": "fr",
+    "uses": [
+      "story-garden:narration"
+    ]
+  },
+  {
+    "texte": "Que met Didou dans la terre ?",
+    "language": "fr",
+    "uses": [
+      "story-garden:garden-q1"
+    ]
+  },
+  {
+    "texte": "Une graine",
+    "language": "fr",
+    "uses": [
+      "story-garden:choice"
+    ]
+  },
+  {
+    "texte": "Avec quoi Didou arrose-t-il la graine ?",
+    "language": "fr",
+    "uses": [
+      "story-garden:garden-q2"
+    ]
+  },
+  {
+    "texte": "De l’eau",
+    "language": "fr",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Du lait",
+    "language": "fr",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Didou visite un verger d’oliviers avec son grand-père. Grand-père étale une toile sous un arbre. Ils ramassent les olives tombées sur la toile. Didou les met dans un panier. Puis ils rentrent ensemble à la maison.",
+    "language": "fr",
+    "uses": [
+      "story-olives:narration"
+    ]
+  },
+  {
+    "texte": "Que ramassent Didou et son grand-père ?",
+    "language": "fr",
+    "uses": [
+      "story-olives:olives-q1"
+    ]
+  },
+  {
+    "texte": "Des olives",
+    "language": "fr",
+    "uses": [
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "Où Didou met-il les olives ?",
+    "language": "fr",
+    "uses": [
+      "story-olives:olives-q2"
+    ]
+  },
+  {
+    "texte": "Une chaussure",
+    "language": "fr",
+    "uses": [
+      "story-olives:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Didou découvre les dunes du Sahara avec sa famille. Il porte son chapeau et marche près de son papa. Le sable brille au soleil. Quand Didou a soif, son papa lui donne de l’eau. Ils se reposent ensemble à l’ombre.",
+    "language": "fr",
+    "uses": [
+      "story-sahara:narration"
+    ]
+  },
+  {
+    "texte": "Que porte Didou sur la tête ?",
+    "language": "fr",
+    "uses": [
+      "story-sahara:sahara-q1"
+    ]
+  },
+  {
+    "texte": "Un chapeau",
+    "language": "fr",
+    "uses": [
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Que boit Didou ?",
+    "language": "fr",
+    "uses": [
+      "story-sahara:sahara-q2"
+    ]
+  },
+  {
+    "texte": "Didou regarde par la fenêtre. Il pleut. Il met son manteau et sort avec sa maman sous un parapluie. Il écoute les gouttes qui tapent dessus. En rentrant, Didou suspend son manteau pour le faire sécher.",
+    "language": "fr",
+    "uses": [
+      "story-rain:narration"
+    ]
+  },
+  {
+    "texte": "Qu’utilisent Didou et sa maman sous la pluie ?",
+    "language": "fr",
+    "uses": [
+      "story-rain:rain-q1"
+    ]
+  },
+  {
+    "texte": "Un parapluie",
+    "language": "fr",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "Que suspend Didou pour le faire sécher ?",
+    "language": "fr",
+    "uses": [
+      "story-rain:rain-q2"
+    ]
+  },
+  {
+    "texte": "Son manteau",
+    "language": "fr",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "Didou va à la bibliothèque du quartier avec sa maman. Il choisit un livre avec des images d’animaux. Il tourne doucement les pages et parle à voix basse. Après la lecture, il remet le livre sur l’étagère avec l’aide de sa maman.",
+    "language": "fr",
+    "uses": [
+      "story-library:narration"
+    ]
+  },
+  {
+    "texte": "Que choisit Didou à la bibliothèque ?",
+    "language": "fr",
+    "uses": [
+      "story-library:library-q1"
+    ]
+  },
+  {
+    "texte": "Où Didou remet-il le livre ?",
+    "language": "fr",
+    "uses": [
+      "story-library:library-q2"
+    ]
+  },
+  {
+    "texte": "Sur l’étagère",
+    "language": "fr",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Dans un panier",
+    "language": "fr",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Essayons encore. Écoute la question.",
+    "language": "fr",
+    "uses": [
+      "story-common:retry"
+    ]
+  },
+  {
+    "texte": "Raconte l’histoire avec tes mots à une personne de ta famille.",
+    "language": "fr",
+    "uses": [
+      "story-common:retell"
+    ]
+  },
+  {
+    "texte": "Bravo !",
+    "language": "fr",
+    "uses": [
+      "story-common:success"
+    ]
+  },
+  {
+    "texte": "Didou goes to the neighbourhood market with Mum. He sees red apples. Mum chooses the apples and Didou puts them in the basket. They thank the seller and go home. They wash the apples before eating them.",
+    "language": "en",
+    "uses": [
+      "story-market:narration"
+    ]
+  },
+  {
+    "texte": "What do Didou and Mum buy?",
+    "language": "en",
+    "uses": [
+      "story-market:market-q1"
+    ]
+  },
+  {
+    "texte": "Apples",
+    "language": "en",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "A book",
+    "language": "en",
+    "uses": [
+      "story-market:choice",
+      "story-rain:choice",
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Where does Didou put the apples?",
+    "language": "en",
+    "uses": [
+      "story-market:market-q2"
+    ]
+  },
+  {
+    "texte": "A basket",
+    "language": "en",
+    "uses": [
+      "story-market:choice",
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "The bed",
+    "language": "en",
+    "uses": [
+      "story-market:choice"
+    ]
+  },
+  {
+    "texte": "Didou visits Grandma with Dad. He says hello to her. Grandma is happy and offers him some dates. Didou shares the dates with Dad. Then they listen to Grandma telling a story.",
+    "language": "en",
+    "uses": [
+      "story-grandma:narration"
+    ]
+  },
+  {
+    "texte": "Who does Didou visit?",
+    "language": "en",
+    "uses": [
+      "story-grandma:grandma-q1"
+    ]
+  },
+  {
+    "texte": "His grandmother",
+    "language": "en",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "His teacher",
+    "language": "en",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "What does Grandma offer him?",
+    "language": "en",
+    "uses": [
+      "story-grandma:grandma-q2"
+    ]
+  },
+  {
+    "texte": "Dates",
+    "language": "en",
+    "uses": [
+      "story-grandma:choice"
+    ]
+  },
+  {
+    "texte": "A ball",
+    "language": "en",
+    "uses": [
+      "story-grandma:choice",
+      "story-eid:choice",
+      "story-garden:choice",
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "Didou goes to the beach with Dad. They sit on the sand. Didou fills his bucket with sand and builds a little castle. He stays near Dad. When they leave, he takes his bucket and leaves the beach clean.",
+    "language": "en",
+    "uses": [
+      "story-beach:narration"
+    ]
+  },
+  {
+    "texte": "Where does Didou play?",
+    "language": "en",
+    "uses": [
+      "story-beach:beach-q1"
+    ]
+  },
+  {
+    "texte": "The beach",
+    "language": "en",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "The forest",
+    "language": "en",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "What does Didou take when leaving?",
+    "language": "en",
+    "uses": [
+      "story-beach:beach-q2"
+    ]
+  },
+  {
+    "texte": "His bucket",
+    "language": "en",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "A fish",
+    "language": "en",
+    "uses": [
+      "story-beach:choice"
+    ]
+  },
+  {
+    "texte": "On Eid morning, Didou puts on his clean shirt. He wishes his family a happy Eid. Mum puts cakes on a plate. Didou and Dad take the plate to their neighbour. She smiles and thanks them.",
+    "language": "en",
+    "uses": [
+      "story-eid:narration"
+    ]
+  },
+  {
+    "texte": "What does Didou put on?",
+    "language": "en",
+    "uses": [
+      "story-eid:eid-q1"
+    ]
+  },
+  {
+    "texte": "His shirt",
+    "language": "en",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "Gloves",
+    "language": "en",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "What does Didou bring the neighbour?",
+    "language": "en",
+    "uses": [
+      "story-eid:eid-q2"
+    ]
+  },
+  {
+    "texte": "Cakes",
+    "language": "en",
+    "uses": [
+      "story-eid:choice"
+    ]
+  },
+  {
+    "texte": "With Grandpa, Didou puts a seed in the garden soil. They cover it with a little soil. Didou adds a little water. After several days, a small shoot appears. Didou is happy and keeps looking after his plant.",
+    "language": "en",
+    "uses": [
+      "story-garden:narration"
+    ]
+  },
+  {
+    "texte": "What does Didou put in the soil?",
+    "language": "en",
+    "uses": [
+      "story-garden:garden-q1"
+    ]
+  },
+  {
+    "texte": "A seed",
+    "language": "en",
+    "uses": [
+      "story-garden:choice"
+    ]
+  },
+  {
+    "texte": "What does Didou give the seed?",
+    "language": "en",
+    "uses": [
+      "story-garden:garden-q2"
+    ]
+  },
+  {
+    "texte": "Water",
+    "language": "en",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Milk",
+    "language": "en",
+    "uses": [
+      "story-garden:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Didou visits an olive grove with Grandpa. Grandpa spreads a cloth under a tree. They collect olives that have fallen onto the cloth. Didou puts them in a basket. Then they go home together.",
+    "language": "en",
+    "uses": [
+      "story-olives:narration"
+    ]
+  },
+  {
+    "texte": "What do Didou and Grandpa collect?",
+    "language": "en",
+    "uses": [
+      "story-olives:olives-q1"
+    ]
+  },
+  {
+    "texte": "Olives",
+    "language": "en",
+    "uses": [
+      "story-olives:choice"
+    ]
+  },
+  {
+    "texte": "Where does Didou put the olives?",
+    "language": "en",
+    "uses": [
+      "story-olives:olives-q2"
+    ]
+  },
+  {
+    "texte": "A shoe",
+    "language": "en",
+    "uses": [
+      "story-olives:choice",
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "Didou visits the Sahara dunes with his family. He wears his hat and walks near Dad. The sand shines in the sun. When Didou is thirsty, Dad gives him water. They rest together in the shade.",
+    "language": "en",
+    "uses": [
+      "story-sahara:narration"
+    ]
+  },
+  {
+    "texte": "What does Didou wear on his head?",
+    "language": "en",
+    "uses": [
+      "story-sahara:sahara-q1"
+    ]
+  },
+  {
+    "texte": "A hat",
+    "language": "en",
+    "uses": [
+      "story-sahara:choice"
+    ]
+  },
+  {
+    "texte": "What does Didou drink?",
+    "language": "en",
+    "uses": [
+      "story-sahara:sahara-q2"
+    ]
+  },
+  {
+    "texte": "Didou looks out of the window. It is raining. He puts on his coat and goes out with Mum under an umbrella. He listens to the drops tapping on it. Back home, Didou hangs up his coat to dry.",
+    "language": "en",
+    "uses": [
+      "story-rain:narration"
+    ]
+  },
+  {
+    "texte": "What do Didou and Mum use in the rain?",
+    "language": "en",
+    "uses": [
+      "story-rain:rain-q1"
+    ]
+  },
+  {
+    "texte": "An umbrella",
+    "language": "en",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "What does Didou hang up to dry?",
+    "language": "en",
+    "uses": [
+      "story-rain:rain-q2"
+    ]
+  },
+  {
+    "texte": "His coat",
+    "language": "en",
+    "uses": [
+      "story-rain:choice"
+    ]
+  },
+  {
+    "texte": "Didou goes to the neighbourhood library with Mum. He chooses a book with animal pictures. He turns the pages gently and speaks quietly. After reading, he puts the book back on the shelf with Mum’s help.",
+    "language": "en",
+    "uses": [
+      "story-library:narration"
+    ]
+  },
+  {
+    "texte": "What does Didou choose at the library?",
+    "language": "en",
+    "uses": [
+      "story-library:library-q1"
+    ]
+  },
+  {
+    "texte": "Where does Didou put the book back?",
+    "language": "en",
+    "uses": [
+      "story-library:library-q2"
+    ]
+  },
+  {
+    "texte": "On the shelf",
+    "language": "en",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "In a basket",
+    "language": "en",
+    "uses": [
+      "story-library:choice"
+    ]
+  },
+  {
+    "texte": "Let’s try again. Listen to the question.",
+    "language": "en",
+    "uses": [
+      "story-common:retry"
+    ]
+  },
+  {
+    "texte": "Tell the story in your own words to someone in your family.",
+    "language": "en",
+    "uses": [
+      "story-common:retell"
+    ]
+  },
+  {
+    "texte": "Well done!",
+    "language": "en",
+    "uses": [
+      "story-common:success"
+    ]
+  }
+]

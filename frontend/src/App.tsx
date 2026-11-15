@@ -234,7 +234,7 @@ function AppContent() {
 
   const onLessonLocked = (lesson: CourseLesson) => {
     if (isGuest) {
-      modals.openAuth('login', 'أنشئ حساباً مجانياً (يستغرق دقيقة واحدة فقط) لمتابعة هذا الدرس ومشاهدة كل الدروس الأخرى مجاناً. 🎁');
+      modals.openAuth('register', 'أنشئ حساباً مجانياً (يستغرق دقيقة واحدة فقط) لمتابعة هذا الدرس ومشاهدة كل الدروس الأخرى مجاناً. 🎁');
       return;
     }
     setLockedLesson(lesson);
@@ -246,7 +246,7 @@ function AppContent() {
     onLessonLocked,
     isGuest,
     isLabFreeForGuest,
-    onGuestBlocked: () => modals.openAuth('login', 'هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
+    onGuestBlocked: () => modals.openAuth('register','هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
   });
   const villageLessonOpen = locale === 'ar' && !!nav.selectedLesson && !!villageLessonConfig(nav.selectedLesson);
 
@@ -329,7 +329,7 @@ function AppContent() {
   const openAiTutor = () => {
     if (!enableAITutor) return;
     if (!authUser) {
-      modals.openAuth('login', '«مساعدي» متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ مع ديدو! 🦊');
+      modals.openAuth('register', '«مساعدي» متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ مع ديدو! 🦊');
       return;
     }
     modals.setIsAiModalOpen(true);
@@ -753,6 +753,7 @@ function AppContent() {
             level={progress.userProfile.level}
             avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
             courseSubjects={visibleCourseSubjects}
+            isLoadingCourses={coursesData === null}
             onSelectPole={(pole) => {
               setCourseEntrySubject(null);
               nav.handleSelectPole(pole);

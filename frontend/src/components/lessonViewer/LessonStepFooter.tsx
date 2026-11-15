@@ -63,7 +63,7 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
             المرحلة <span dir="ltr">{currentStepIndex + 1}</span> من{' '}
             <span dir="ltr">{availableSteps.length}</span>: {availableSteps[currentStepIndex]?.labelAr}
           </span>
-          <span className="text-[10px] font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
+          <span className="lesson-step-counter text-[10px] font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
             <span dir="ltr">{formatProgressCount(currentStepIndex + 1, availableSteps.length)}</span>
           </span>
         </div>

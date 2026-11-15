@@ -1,0 +1,5198 @@
+[
+  {
+    "texte": "تَثْبِيتُ الحُرُوفِ الهِجَائِيَّةِ مَعَ الحَرَكَاتِ القَصِيرَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "حُرُوفُ المَدِّ وَالتَّنْوِينُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّدَّةُ (ّ) وَكَيْفَ تُضَاعِفُ صَوْتَ الحَرْفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَسْمَاءُ الإِشَارَةِ: هَذَا، هَذِهِ، هَؤُلَاءِ (فِي مَحِيطِ العَائِلَةِ وَالمَدْرَسَةِ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "الضَّمَائِرُ البَسِيطَةُ: أَنَا، نَحْنُ، أَنْتَ، أَنْتِ، أَنْتُمَا، أَنْتُمْ، هُوَ، هِيَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "كَلِمَاتُ الزَّمَانِ وَالمَكَانِ: أَمَامَ، خَلْفَ، الآنَ، أَمْسِ، غَدًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ القَمَرِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنْوِينُ بِأَنْوَاعِهِ الثَّلَاثَةِ: ـً ـٍ ـٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "التَّاءُ المَرْبُوطَةُ (ة) وَالتَّاءُ المَفْتُوحَةُ (ت)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "قِرَاءَةُ نَصٍّ قَصِيرٍ: البِيئَةُ وَالتَّغْذِيَةُ وَاللَّعِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَدَوَاتُ الاسْتِفْهَامِ (مَنْ، كَمْ، أَيْنَ، هَلْ) وَحُرُوفُ العَطْفِ (وَ، فَـ، ثُمَّ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَقْرَأُ نَصّاً: المَدْرَسَةُ وَالعَائِلَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَقْرَأُ نَصّاً: الحَيُّ وَالصِّحَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْسَخُ وَأَكْتُبُ إِمْلَاءً قَصِيراً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "أُمَيِّزُ: الاِسْمَ، الفِعْلَ، الحَرْفَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "مُذَكَّرٌ / مُؤَنَّثٌ، مُفْرَدٌ / جَمْعٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "entry",
+        "key": "title"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة أي حرف هجائي مع حركاته الثلاث القصيرة، وتركيب كلمات بسيطة بطلاقة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انظر إلى هذه الحروف: بَ - بُ - بِ. هل يتغير شكل الحرف \"ب\"؟ ماذا يتغير إذن؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يراجع التلميذ الحروف الهجائية الـ28 مع الحركات القصيرة الثلاث (الفتحة، الضمة، الكسرة) لقراءة كلمات وجمل بسيطة بطلاقة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الحروف وحدها صامتة، لكن عندما نضع فوقها أو تحتها حركة صغيرة، تنطق بصوت واضح. الحركات الثلاث هي مفتاح القراءة السليمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الفَتْحَةُ (ــَ): علامة صغيرة مائلة فوق الحرف، صوتها \"أَ\" مثل: كَتَبَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الضَّمَّةُ (ــُ): علامة صغيرة مثل الواو فوق الحرف، صوتها \"أُ\" مثل: كُتُبٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكَسْرَةُ (ــِ): علامة صغيرة تحت الحرف، صوتها \"إِ\" مثل: كِتَابٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "كل حرف بمفرده لا معنى له، وعندما نضيف له حركة يصبح جاهزاً للنطق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر التلميذ: الضمة فوق الحرف وتشبه فاصلة صغيرة، بينما الفتحة خط مائل صغير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "كل حرف متحرك يجب أن يُنطق بصوته الكامل مع حركته، لا كحرف ساكن منفرد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "ثلاث حركات قصيرة: الفتحة (ــَ = أَ)، الضمة (ــُ = أُ)، الكسرة (ــِ = إِ). كل حرف + حركة = صوت واضح يمكن قراءته.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم الحركة الموجودة فوق حرف الباء في كلمة \"بَابٌ\" (أول حرف)؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-vowels"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ الكلمة التالية بصوت مسموع: \"سُكَّرٌ\" — ما الحركة الأولى؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-vowels"
+      }
+    ]
+  },
+  {
+    "texte": "أي حركة تُكتب تحت الحرف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-vowels"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الحركة الصحيحة لكل حرف بسرعة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كَ (صوت أَ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفَتْحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الضَّمَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "الكَسْرَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "مِ (صوت إِ)",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-letters-short-vowels",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة كلمات فيها مد بالألف أو الواو أو الياء، وكلمات منونة بالفتح أو الضم أو الكسر.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قارن بين: \"كَتَبَ\" و\"كَاتِبٌ\". أيّ كلمة صوتها أطول؟ لماذا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على حروف المد الثلاثة (الألف، الواو، الياء) التي تطيل الصوت، وعلى التنوين الذي يضيف صوت النون في آخر الكلمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "أحياناً نحتاج لإطالة الصوت قليلاً عند القراءة، وهذا ما تفعله حروف المد. وأحياناً نضيف صوت \"ن\" خفيف في آخر الكلمة، وهذا هو التنوين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المَدُّ بالألِف: عندما يأتي بعد حرف مفتوح حرف \"ا\" ساكن، يُمَدُّ الصوت (مثال: بَابٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "المَدُّ بالواو: عندما يأتي بعد حرف مضموم حرف \"و\" ساكن، يُمَدُّ الصوت (مثال: نُورٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المَدُّ بالياء: عندما يأتي بعد حرف مكسور حرف \"ي\" ساكن، يُمَدُّ الصوت (مثال: كَبِيرٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنْوِينُ: حركتان متتاليتان في آخر الكلمة (ـً ـٍ ـٌ) نضيف معهما صوت \"ن\" خفيف عند النطق (مثال: كِتَابًا، قَلَمٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "حَرْفُ المَدِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّنْوِينُ نْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "حرف المد يُطيل الصوت ضِعف الحركة العادية تقريباً، درّب الطفل على المد الصوتي بوضوح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "التنوين يُنطق دائماً وكأن هناك حرف نون ساكنة في آخر الكلمة، حتى لو لم تُكتب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "حروف المد الثلاثة: ا (بعد فتحة)، و (بعد ضمة)، ي (بعد كسرة) — تُطيل الصوت. التنوين (ـًـٍـٌ) يُضيف صوت \"ن\" خفيف آخر الكلمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي حرف مد نجده في كلمة \"دَارٌ\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-madd"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ الكلمة \"كِتَابًا\" — ما نوع الحركة في آخرها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-madd"
+      }
+    ]
+  },
+  {
+    "texte": "أي كلمة من هذه الكلمات فيها حرف مد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-madd"
+      }
+    ]
+  },
+  {
+    "texte": "رتب الحروف لتكوين كلمة فيها حرف مد!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "ن - و - ر",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "نُورٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "رُونٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-madd-tanween",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة كلمة فيها حرف مشدد بنطق صحيح يميز التضعيف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قارن بين \"عَلَمٌ\" و\"عَلَّمَ\". هل يتغير طول صوت اللام بينهما؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعرف التلميذ على علامة الشدة التي تدل على تكرار الحرف مرتين، ويقرأ كلمات بسيطة فيها حرف مشدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "أحياناً نحتاج لتكرار صوت الحرف مرتين بسرعة في كلمة واحدة، فبدل كتابة الحرف مرتين، نكتبه مرة واحدة ونضع فوقه علامة صغيرة اسمها الشدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّدَّةُ (ّ): علامة صغيرة فوق الحرف تشبه رأس الواو، تدل على تكرار الحرف مرتين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحرف المشدد يُنطق مرتين متتاليتين: الأولى ساكنة والثانية بحركتها (مثال: مُعَلِّمٌ تُنطق \"مُعَلْلِمٌ\").",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "قد تجتمع الشدة مع حركة أخرى فوق الحرف أو تحته (مثال: الشَّمْسُ فيها شين مشددة مفتوحة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الشَّدَّةُ ّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّضْعِيفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل أن الشدة تعني نطق الحرف مرتين، وليس مرة واحدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "الشدة (ّ) فوق الحرف تعني نطقه مرتين: مرة ساكنة ومرة متحركة، مثل مُعَلِّمٌ وأُمِّي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "ما اسم العلامة الموجودة فوق اللام في كلمة \"مُعَلِّمٌ\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-shadda"
+      }
+    ]
+  },
+  {
+    "texte": "كم مرة نسمع صوت الشين في كلمة \"الشَّمْسُ\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-shadda"
+      }
+    ]
+  },
+  {
+    "texte": "كيف يُنطق الحرف المشدد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-shadda"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الكلمة التي فيها حرف مشدد!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "أَيُّ كَلِمَةٍ فِيهَا شَدَّةٌ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُمِّي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-shadda",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "استعمال اسم الإشارة المناسب (هذا/هذه/هؤلاء) حسب نوع وعدد المُشار إليه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "أشر إلى معلمك وقل: \"... مُعَلِّمِي\". ثم أشر إلى معلمتك وقل: \"... مُعَلِّمَتِي\". هل الكلمة نفسها في الحالتين؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ استعمال أسماء الإشارة (هذا، هذه، هؤلاء) للإشارة إلى أفراد أسرته وأدوات مدرسته، مع إغناء رصيده اللغوي بمفردات عن العائلة والمدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "عندما نريد أن نُعرّف بشخص أو شيء قريب منا، نستعمل \"أسماء الإشارة\" — وهي تتغير حسب كون المُشار إليه مذكراً أو مؤنثاً أو جماعة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "هَذَا: نستعملها للإشارة إلى شخص أو شيء مُذَكَّرٍ مُفْرَدٍ قريب (مثال: هَذَا أَبِي).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "هَذِهِ: نستعملها للإشارة إلى شخص أو شيء مُؤَنَّثٍ مُفْرَدٍ قريب (مثال: هَذِهِ أُمِّي).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "هَؤُلَاءِ: نستعملها للإشارة إلى مجموعة من الأشخاص (مثال: هَؤُلَاءِ إِخْوَتِي).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "مفردات العائلة: أَبٌ، أُمٌّ، أَخٌ، أُخْتٌ، جَدٌّ، جَدَّةٌ. مفردات المدرسة: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ، مِحْفَظَةٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "اسْمُ الإِشَارَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "مُذَكَّرٌ / مُؤَنَّثٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الصواب: \"هذه أمي\" لأن \"أم\" اسم مؤنث.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "مع الجماعة (أكثر من اثنين) نستعمل \"هؤلاء\" وليس \"هذا\" أو \"هذه\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "هَذَا = مذكر مفرد. هَذِهِ = مؤنث مفرد. هَؤُلَاءِ = جماعة (مذكراً كانت أو مؤنثاً).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أشر إلى أخيك وقل: \"... أَخِي\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-demonstratives"
+      }
+    ]
+  },
+  {
+    "texte": "أشر إلى تلاميذ قسمك وقل: \"... تَلَامِيذُ قِسْمِي\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-demonstratives"
+      }
+    ]
+  },
+  {
+    "texte": "أي اسم إشارة نستعمله للإشارة إلى مجموعة إخوتك الثلاثة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-demonstratives"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل صورة باسم الإشارة الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "صورة جدتي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "هَذِهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "هَذَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "هَؤُلَاءِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "صورة معلمي",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-family-school-demonstratives",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "استعمال الضمير المناسب (أنا، نحن، أنتَ، أنتِ، أنتما، أنتم، هو، هي) حسب المتكلم أو المخاطَب أو الغائب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "إذا تكلمت عن نفسك، أي كلمة تستعمل؟ وإذا خاطبت صديقين معاً؟ وإذا خاطبت فريق كرة القدم كله؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ استعمال الضمائر البسيطة للتحدث عن نفسه أو مخاطبة غيره (واحداً أو اثنين أو مجموعة) أو الحديث عن شخص غائب، في سياق الحي والرياضة والصحة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الضمائر كلمات صغيرة تُغنينا عن تكرار الاسم في كل مرة. بدل أن أقول \"أحمد يلعب\" كل مرة، أقول \"هو يلعب\" إن كان أحمد معروفاً من الحديث. وعندما نخاطب أكثر من شخص، نستعمل ضميراً مختلفاً حسب العدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَنَا: أستعملها عندما أتكلم عن نفسي (المتكلم المفرد).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نَحْنُ: أستعملها عندما أتكلم عن نفسي مع آخرين (المتكلمون).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتَ / أَنْتِ: نستعملها لمخاطبة شخص واحد أمامنا، أَنْتَ للذكر وأَنْتِ للأنثى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتُمَا: نستعملها لمخاطبة اثنين معاً (ولدين، بنتين، أو ولد وبنت).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتُمْ: نستعملها لمخاطبة مجموعة (أكثر من اثنين).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "هُوَ / هِيَ: نستعملها للحديث عن شخص غائب، هُوَ للذكر وهِيَ للأنثى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-5"
+      }
+    ]
+  },
+  {
+    "texte": "المُتَكَلِّمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُخَاطَبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الغَائِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "مع البنت نستعمل \"أَنْتِ\" (بكسر التاء)، ومع الولد \"أَنْتَ\" (بفتح التاء).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "لمخاطبة اثنين نقول \"أَنْتُمَا\"، ولمخاطبة مجموعة نقول \"أَنْتُمْ\" — لا نستعمل \"أَنْتَ\" إلا لشخص واحد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "نستعمل \"هو\" للمذكر و\"هي\" للمؤنث حتى مع الحيوانات والأشياء (مثال: القطة... هي، الكلب... هو).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَنَا/نَحْنُ = المتكلم. أَنْتَ/أَنْتِ = مخاطب واحد. أَنْتُمَا = مخاطبان اثنان. أَنْتُمْ = مخاطبون مجموعة. هُوَ/هِيَ = الغائب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أنت تتحدث مع صديقتك سارة مباشرة. أي ضمير تستعمل لمخاطبتها؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-pronouns"
+      }
+    ]
+  },
+  {
+    "texte": "أنت وأصدقاؤك تلعبون معاً في الحي. أي ضمير تستعملونه للحديث عن أنفسكم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-pronouns"
+      }
+    ]
+  },
+  {
+    "texte": "تخاطب أخاك وأختك معاً وتقول لهما: \"... تَلْعَبَانِ بِجَمَالٍ\". أي ضمير تستعمل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-pronouns"
+      }
+    ]
+  },
+  {
+    "texte": "أي ضمير نستعمله للحديث عن أخت غائبة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-pronouns"
+      }
+    ]
+  },
+  {
+    "texte": "تخاطب صديقيك أحمد وياسين معاً. أي ضمير تستعمل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q2-ar2ap-pronouns"
+      }
+    ]
+  },
+  {
+    "texte": "أي ضمير للمتكلم المفرد؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-prn-2"
+      }
+    ]
+  },
+  {
+    "texte": "للمخاطبة الأنثى نستعمل:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-prn-3"
+      }
+    ]
+  },
+  {
+    "texte": "للحديث عن قطة غائبة نستعمل:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-prn-4"
+      }
+    ]
+  },
+  {
+    "texte": "ضمير الجماعة المتكلمة:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-prn-5"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل وضعية بالضمير المناسب!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "تتحدث عن أخيك وهو غير موجود",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "هُوَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "هِيَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَنَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تتحدث عن نفسك وحدك",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "نَحْنُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "تخاطب كل تلاميذ القسم معاً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتُمْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَنْتُمَا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-personal-pronouns",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "استعمال كلمات الزمان والمكان البسيطة في جمل مفيدة عن نشاطاته اليومية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا فعلت أمس؟ وماذا تفعل الآن؟ وماذا ستفعل غداً؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ كلمات تدل على الزمان (الآن، أمس، غداً) وكلمات تدل على المكان (أمام، خلف)، ويوظفها في جمل بسيطة عن يومه ومحيطه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "لكي نفهم متى حدث شيء، نستعمل كلمات الزمان. ولكي نفهم أين يوجد شيء، نستعمل كلمات المكان. هذه الكلمات تنظم كلامنا وتجعله واضحاً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "أَمْسِ: يدل على يوم مضى قبل اليوم الحالي (زمن ماضٍ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الآنَ: يدل على اللحظة الحالية التي نعيشها (زمن حاضر).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "غَدًا: يدل على اليوم الذي يأتي بعد اليوم الحالي (زمن مستقبل).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "أَمَامَ: يدل على مكان قريب نراه بوضوح. خَلْفَ: يدل على مكان لا نراه إلا بالاستدارة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "أَمْسِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الآنَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "غَدًا",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "أمس = ما مضى (وراءنا)، غداً = ما سيأتي (أمامنا) — تخيل خط الزمن يسير من اليسار لليمين.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "مع \"أمس\" نستعمل فعلاً ماضياً (لَعِبْتُ)، ومع \"غداً\" نستعمل فعلاً مستقبلياً (سَأَلْعَبُ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "أَمْسِ = الماضي، الآنَ = الحاضر، غَدًا = المستقبل. أَمَامَ وخَلْفَ تصفان مكان الأشياء بالنسبة إلينا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "اليوم الذي يأتي بعد اليوم الحالي يسمى؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-time"
+      }
+    ]
+  },
+  {
+    "texte": "كوّن جملة عن نشاط رياضي فعلته أمس.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-time"
+      }
+    ]
+  },
+  {
+    "texte": "أي كلمة تدل على يوم مضى؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-time"
+      }
+    ]
+  },
+  {
+    "texte": "رتب الكلمات على خط الزمن الصحيح!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "هذه اللحظة بالضبط",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-time-place-words",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة كلمات معرّفة بـ\"ال\" بنطق صحيح، مع التمييز بين اللام الشمسية والقمرية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ: \"الشَّمْسُ\" و\"القَمَرُ\". هل تسمع صوت اللام في الكلمتين بنفس الطريقة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ التمييز بين اللام الشمسية التي لا تُنطق واللام القمرية التي تُنطق بوضوح عند قراءة كلمات معرّفة بـ\"ال\".",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "عندما نضيف \"ال\" التعريف إلى بداية كلمة، تتصرف اللام أحياناً بشكل خاص: فهي إما تختفي في النطق (شمسية) أو تبقى واضحة (قمرية).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّامُ الشَّمْسِيَّةُ: تُكتب في الكلمة لكن لا تُنطق، والحرف الذي يليها يُنطق مشدداً (مثال: الشَّمْسُ ← تُقرأ \"أَشَّمْسُ\").",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّامُ القَمَرِيَّةُ: تُنطق بوضوح كما هي، والحرف الذي يليها يبقى عادياً دون شدة (مثال: القَمَرُ ← تُقرأ \"أَلْقَمَرُ\").",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "للتمييز بسهولة: انظر إلى الحرف بعد \"ال\" — إن كان عليه شدة فاللام شمسية، وإن لم يكن عليه شدة فاللام قمرية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّامُ الشَّمْسِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللَّامُ القَمَرِيَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل: إذا رأى شدة على الحرف بعد \"ال\"، فاللام لا تُنطق أبداً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "اللام الشمسية: تُكتب ولا تُنطق (الشَّمْسُ). اللام القمرية: تُنطق بوضوح (القَمَرُ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "في كلمة \"النَّجْمُ\"، هل نسمع صوت اللام؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-lam"
+      }
+    ]
+  },
+  {
+    "texte": "في كلمة \"القَلَمُ\"، هل نسمع صوت اللام؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-lam"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف: الدار — السماء. واشرح النطق.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-lam"
+      }
+    ]
+  },
+  {
+    "texte": "متى تكون اللام شمسية؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-lam"
+      }
+    ]
+  },
+  {
+    "texte": "لام «القمر»:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-lam-2"
+      }
+    ]
+  },
+  {
+    "texte": "لام «الشمس»:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-lam-3"
+      }
+    ]
+  },
+  {
+    "texte": "في «النور» اللام:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-lam-4"
+      }
+    ]
+  },
+  {
+    "texte": "في «الكتاب» اللام:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-lam-5"
+      }
+    ]
+  },
+  {
+    "texte": "علامة اللام الشمسية بعد أل:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-lam-6"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف كل كلمة حسب نوع اللام فيها!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "لَامٌ شَمْسِيَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "لَامٌ قَمَرِيَّةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "القِطَّةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-lam-shamsiya-qamariya",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز بين أنواع التنوين الثلاثة وقراءة كل نوع بصوته الصحيح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "اقرأ: كِتَابًا، كِتَابٌ، كِتَابٍ. هل تسمع الصوت نفسه في آخر كل كلمة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميز التلميذ بين تنوين الفتح وتنوين الضم وتنوين الكسر، ويقرأ كلمات منونة بكل نوع بنطق صحيح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "التنوين حركتان متتاليتان في آخر الكلمة، وله ثلاثة أنواع حسب شكل الحركة المكررة: فتح، ضم، وكسر — لكل واحد شكل ومكان وصوت مختلف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الفَتْحِ (ـً): حركتان فوق الحرف الأخير، صوته \"أَنْ\"، ويُكتب غالباً بألف زائدة (مثال: كِتَابًا).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الضَّمِّ (ـٌ): حركتان تشبهان واوين صغيرتين فوق الحرف الأخير، صوته \"أُنْ\" (مثال: كِتَابٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الكَسْرِ (ـٍ): حركتان تحت الحرف الأخير، صوته \"إِنْ\" (مثال: كِتَابٍ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الفَتْحِ ـً",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الضَّمِّ ـٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الكَسْرِ ـٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "كل أنواع التنوين تُنطق وكأن في آخرها نون ساكنة، حتى لو لم تُكتب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "تنوين الضم فوق الحرف (يشبه واوين)، وتنوين الكسر تحت الحرف (يشبه كسرتين).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "تنوين الفتح ـً (أَنْ) فوق الحرف مع ألف غالباً. تنوين الضم ـٌ (أُنْ) فوق الحرف. تنوين الكسر ـٍ (إِنْ) تحت الحرف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أين تُكتب علامة تنوين الكسر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-tanween3"
+      }
+    ]
+  },
+  {
+    "texte": "ما نوع التنوين في كلمة \"قَمَرًا\"؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-tanween3"
+      }
+    ]
+  },
+  {
+    "texte": "ما صوت تنوين الفتح؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-tanween3"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل كلمة بنوع التنوين فيها!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "وَلَدٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الضَّمِّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الفَتْحِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "تَنْوِينُ الكَسْرِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-tanween-three-types",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "التمييز إملائياً بين التاء المربوطة والمفتوحة في كلمات بسيطة، وكتابتهما بشكل صحيح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "قارن بين كلمتي \"مَدْرَسَةٌ\" و\"بَيْتٌ\". هل شكل التاء في آخر كل كلمة متشابه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ التمييز بين التاء المربوطة (ة) التي تُنطق هاءً عند الوقف، والتاء المفتوحة (ت) التي تبقى تاءً دائماً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "في اللغة العربية شكلان للتاء في آخر الكلمة: واحدة مستديرة عليها نقطتان (ة) وأخرى ممدودة عادية (ت). كل واحدة لها نطق مختلف عند الوقوف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "التَّاءُ المَرْبُوطَةُ (ة): تأتي غالباً في آخر الأسماء المؤنثة، وتُنطق هاءً ساكنة عند الوقوف عليها (مثال: مَدْرَسَةٌ ← تُنطق مَدْرَسَهْ عند الوقف).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّاءُ المَفْتُوحَةُ (ت): تبقى تاءً في النطق دائماً، سواء وصلنا الكلام أو وقفنا (مثال: بَيْتٌ، بِنْتٌ، أُخْتٌ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الفرق الأهم: التاء المربوطة تتحول لهاء عند الوقف، بينما المفتوحة لا تتغير أبداً.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "التَّاءُ المَرْبُوطَةُ ة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "التَّاءُ المَفْتُوحَةُ ت",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الوَقْفُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "رغم أن النطق عند الوقف يشبه الهاء، تُكتب الكلمة دائماً بالتاء المربوطة (ة) وليس بالهاء.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "هذه الكلمات جذرها الأصلي ينتهي بتاء مفتوحة ثابتة، فلا تتحول أبداً إلى (ة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "التاء المربوطة (ة) تُنطق هاءً عند الوقف، وغالباً في أسماء المؤنث. التاء المفتوحة (ت) تبقى تاءً دائماً في كل الحالات.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة \"زَهْرَةٌ\" تنتهي بأي نوع من التاء؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-taa"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب كلمة \"بنت\" — هل تاؤها مربوطة أم مفتوحة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-taa"
+      }
+    ]
+  },
+  {
+    "texte": "اكتب كلمتين: واحدة بتاء مربوطة وواحدة بمفتوحة من القسم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-taa"
+      }
+    ]
+  },
+  {
+    "texte": "التاء المربوطة تُنطق عند الوقف مثل:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-taa"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «بنت» تنتهي بـ:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-taa-2"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «مدرسة» تنتهي بـ:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-taa-3"
+      }
+    ]
+  },
+  {
+    "texte": "عند الوقف على «حديقة» نسمع تقريباً:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-taa-4"
+      }
+    ]
+  },
+  {
+    "texte": "«بيت» فيها:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-taa-5"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل بالمربوطة: شجر...",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-taa-6"
+      }
+    ]
+  },
+  {
+    "texte": "صنّف كل كلمة حسب نوع تائها!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "حَقِيبَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "تَاءٌ مَرْبُوطَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "تَاءٌ مَفْتُوحَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "صَوْتٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-taa-marbouta-maftouha",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة نص قصير بطلاقة وفهم معناه العام، مع اكتساب مفردات جديدة عن الطبيعة والتغذية واللعب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "ما هي الأشياء التي تراها في الطبيعة عندما تخرج للحديقة؟ وما طعامك المفضل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يقرأ التلميذ نصاً قصيراً وبسيطاً عن الطبيعة والتغذية الصحية واللعب، ويغني رصيده اللغوي بمفردات جديدة من هذه المحاور.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "القراءة نافذة نكتشف من خلالها العالم من حولنا. عندما نقرأ عن الطبيعة والتغذية واللعب، نتعلم كلمات جديدة ونفهم كيف نعتني بأنفسنا وبمحيطنا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "عند قراءة نص، ننظر أولاً إلى العنوان لنتوقع موضوعه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "نقرأ ببطء وبصوت واضح، ونتوقف عند علامات الترقيم (النقطة، الفاصلة).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بعد القراءة، نحاول تلخيص الفكرة العامة للنص بجملة واحدة بسيطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "مفردات مهمة: الشَّجَرَةُ، الحَدِيقَةُ، الخُضَرُ، الفَوَاكِهُ، الكُرَةُ، الأُرْجُوحَةُ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الحَدِيقَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفَوَاكِهُ الطَّازَجَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "الأُرْجُوحَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "شجع الطفل على التوقف بعد كل جملة والتفكير: \"ماذا فهمت؟\" قبل الانتقال للجملة التالية.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "ذكّر الطفل بالتوقف قليلاً عند الفاصلة، وتوقفاً أطول عند النقطة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "القراءة الجيدة: أنظر للعنوان، أقرأ ببطء ووضوح، أتوقف عند علامات الترقيم، ثم ألخص الفكرة العامة بجملة واحدة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "في النص المقروء، أين يلعب الأطفال؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-reading"
+      }
+    ]
+  },
+  {
+    "texte": "اذكر غذاءً صحياً مذكوراً في النص.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-reading"
+      }
+    ]
+  },
+  {
+    "texte": "حسب النص، بماذا يلعب الأطفال في الحديقة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-reading"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الكلمة المناسبة لكل صورة من الطبيعة أو التغذية أو اللعب!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "صورة شجرة خضراء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "صورة تفاحة حمراء",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "فَاكِهَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أُرْجُوحَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "زَهْرَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-nature-nutrition-play",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "طرح أسئلة بسيطة باستعمال أدوات الاستفهام المناسبة، وربط كلمتين أو جملتين بحرف العطف الصحيح.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "تريد أن تعرف اسم صديقك الجديد. أي كلمة سؤال تستعمل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يتعلم التلميذ استعمال أدوات الاستفهام الأساسية لطرح الأسئلة، وحروف العطف لربط الكلمات والجمل.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "لكي نطرح أسئلة واضحة، نستعمل كلمات خاصة تسمى أدوات الاستفهام. ولكي نربط أفكارنا في جملة واحدة، نستعمل حروف صغيرة تسمى حروف العطف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "مَنْ؟: نسأل بها عن شخص (مثال: مَنْ هَذَا؟ ← هَذَا أَخِي).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَيْنَ؟: نسأل بها عن مكان (مثال: أَيْنَ الكِتَابُ؟ ← الكِتَابُ عَلَى الطَّاوِلَةِ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "كَمْ؟: نسأل بها عن عدد (مثال: كَمْ عُمْرُكَ؟ ← عُمْرِي 8 سَنَوَاتٍ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "هَلْ؟: نسأل بها سؤالاً نجيب عنه بنعم أو لا (مثال: هَلْ أَنْتَ جَائِعٌ؟ ← نَعَمْ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "حُرُوفُ العَطْفِ: \"وَ\" تربط دون ترتيب زمني (تُفَّاحَةٌ وَمَوْزَةٌ)، \"فَـ\" تربط بترتيب سريع (دَخَلَ فَجَلَسَ)، \"ثُمَّ\" تربط بترتيب مع تأخير (أَكَلَ ثُمَّ نَامَ).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "أَدَاةُ الاسْتِفْهَامِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَرْفُ العَطْفِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "كَمْ للعدد فقط، مَنْ للأشخاص فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "\"فَـ\" تعني بعده مباشرة وبسرعة، بينما \"ثُمَّ\" تعني بعد فترة من الوقت.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-1"
+      }
+    ]
+  },
+  {
+    "texte": "مَنْ (شخص)، أَيْنَ (مكان)، كَمْ (عدد)، هَلْ (نعم/لا). وَ يربط، فَـ ترتب بسرعة، ثُمَّ ترتب بتأخير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أي أداة استفهام تستعملها لتسأل عن مكان محفظتك؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-question"
+      }
+    ]
+  },
+  {
+    "texte": "اربط بين \"غَسَلْتُ يَدَيَّ\" و\"أَكَلْتُ\" بحرف عطف يدل على ترتيب سريع.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-question"
+      }
+    ]
+  },
+  {
+    "texte": "أي أداة استفهام نستعملها للسؤال بنعم أو لا؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-question"
+      }
+    ]
+  },
+  {
+    "texte": "اربط كل سؤال بالأداة المناسبة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "كَمْ عُمْرُكَ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "سُؤَالٌ عَنْ عَدَدٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "سُؤَالٌ عَنْ شَخْصٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "سُؤَالٌ عَنْ مَكَانٍ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "أَيْنَ تَسْكُنُ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-question-words-conjunctions",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة نص قصير بطلاقة وفهم فكرته العامة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "يقرأ التلميذ نصاً مشكولاً من نحو أربعين كلمة عن يوم مدرسي، ويجيب عن أسئلة الفهم.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "النص القصير حكاية صغيرة. نقرأ ببطء، ثم نجيب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "نَقْرَأُ مِنَ اليَمِينِ إِلَى اليَسَارِ، وَنَتَوَقَّفُ عِنْدَ النُّقْطَةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الحَرَكَاتُ تُسَاعِدُنَا عَلَى النُّطْقِ الصَّحِيحِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بَعْدَ القِرَاءَةِ نَسْأَلُ: مَنِ الشَّخْصُ؟ أَيْنَ ذَهَبَ؟ مَاذَا فَعَلَ؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "الفِكْرَةُ العَامَّةُ هُنَا: يَوْمُ سَامِي فِي المَدْرَسَةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المِحْفَظَةُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "كل حركة تُنطق: ذَهَبَ ليست ذْهب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أقرأ النص المشكول، أفهم من/أين/ماذا، ألخص بجملة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "من سلّم على المعلمة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-read1"
+      }
+    ]
+  },
+  {
+    "texte": "أين لعب سامي مع رفاقه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-read1"
+      }
+    ]
+  },
+  {
+    "texte": "ما الفكرة العامة للنص؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-read1"
+      }
+    ]
+  },
+  {
+    "texte": "اختر حسب النص!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      },
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "لون المحفظة",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "زَرْقَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "حَمْرَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "لمن حكى سامي يومه؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "لأُمِّهِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "لِلْجَارِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t1-reading-school",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "قراءة نص 30–50 كلمة عن الحي والصحة وفهمه.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "فِي حَيِّنَا حَدِيقَةٌ صَغِيرَةٌ وَنَظِيفَةٌ. يَلْعَبُ الأَطْفَالُ بِالكُرَةِ تَحْتَ الأَشْجَارِ الكَبِيرَةِ. تَجْلِسُ لَيْلَى مَعَ جَدَّتِهَا عَلَى مَقْعَدٍ خَشَبِيٍّ. يَجْرِي أَخُوهَا عُمَرُ فِي المَمَرِّ بِسُرْعَةٍ. يَشْرَبُونَ المَاءَ البَارِدَ بَعْدَ اللَّعِبِ الطَّوِيلِ. يَقُولُ الأَبُ: نُحَافِظُ عَلَى النَّظَافَةِ وَلا نَرْمِي الأَوْرَاقَ. تَغْرُبُ الشَّمْسُ وَيَعُودُ الجَمِيعُ إِلَى البَيْتِ قَبْلَ المَغْرِبِ مَسْرُورِينَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يقرأ التلميذ نصاً مشكولاً من نحو خمس وأربعين كلمة عن الحديقة واللعب والجري وشرب الماء والنظافة في الحي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الحي حديقة، لعب، ماء، نظافة. النص يعلّمنا كلمات المكان والصحة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "النَّصُّ يَدُورُ فِي الحَدِيقَةِ فِي الحَيِّ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "عُمَرُ يَجْرِي بَعْدَ اللَّعِبِ: حَرَكَةٌ سَرِيعَةٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "بَعْدَ اللَّعِبِ الطَّوِيلِ نَشْرَبُ المَاءَ البَارِدَ: هَذَا مِنَ الصِّحَّةِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نُحَافِظُ عَلَى نَظَافَةِ الحَدِيقَةِ وَلا نَرْمِي الأَوْرَاقَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "نَعُودُ قَبْلَ المَغْرِبِ: كَلِمَةُ زَمَانٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-4"
+      }
+    ]
+  },
+  {
+    "texte": "الحَيُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المَمَرُّ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "المَغْرِبُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-2"
+      }
+    ]
+  },
+  {
+    "texte": "الحديقة هنا في الحي، ليست ساحة المدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أقرأ عن الحي: ألعب، أجري، أشرب ماءً بارداً، أحافظ على النظافة، أعود قبل المغرب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "مع من تجلس ليلى؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-read2"
+      }
+    ]
+  },
+  {
+    "texte": "من يجري في الممر بسرعة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-read2"
+      }
+    ]
+  },
+  {
+    "texte": "لماذا يشربون الماء البارد بعد اللعب الطويل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-read2"
+      }
+    ]
+  },
+  {
+    "texte": "نصيحة الأب في النص هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-read2"
+      }
+    ]
+  },
+  {
+    "texte": "بماذا يلعب الأطفال؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِالكُرَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "بِالدَّرَّاجَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "من يجري في الممر؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "عُمَرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "متى يعود الجميع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "قَبْلَ المَغْرِبِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "فِي اللَّيْلِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t2-reading-neighborhood",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نسخ جملة قصيرة دون إسقاط حرف، وإكمال إملاء بكلمة صحيحة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "انسخ: «الكِتَابُ عَلَى الطَّاوِلَةِ.» ثم أغلق عينيك: ما الكلمة التي كانت بعد «على»؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "ينسخ التلميذ جملة مشكولة ثم يملأ كلمة ناقصة كما في الإملاء المدرسي.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الكتابة الصحيحة تبدأ بالنسخ الهادئ ثم بالإملاء كلمة كلمة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "النَّسْخُ: أكتب الجملة حرفاً حرفاً من اليمين، دون تغيير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "بَعْدَ النَّسْخِ أُقَارِنُ بِالنَّمُوذَجِ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الإِمْلَاءُ: أسمع أو أتذكر الكلمة وأكتبها. في التطبيق نكمل الفراغ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "نُحَافِظُ عَلَى التَّاءِ المَرْبُوطَةِ وَالشَّدَّةِ إِنْ وُجِدَتَا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "النَّسْخُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الإِمْلَاءُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "نعدّ الحروف قبل أن نقول انتهيت.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "أنسخ ثم أراجع. في الإملاء أكتب الكلمة الناقصة بحركاتها.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "انسخ ذهنياً ثم اكتب آخر كلمة: «البَيْتُ نَظِيفٌ.»",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-dict"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل الإملاء: ذَهَبَ الوَلَدُ إِلَى ………",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-dict"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل من نص الحي: نُحَافِظُ عَلَى ………",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-dict"
+      }
+    ]
+  },
+  {
+    "texte": "ماذا نفعل بعد نسخ الجملة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-dict"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل الجملة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "فَتَحَ … البَابَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "الوَلَدُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "جَرَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "الكِتَابُ … الطَّاوِلَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "عَلَى",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "ذَهَبَ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "نُحَافِظُ عَلَى ………",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2"
+      }
+    ]
+  },
+  {
+    "texte": "النَّظَافَةِ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-copy-dictation",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-2-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "تصنيف كلمة في جملة قصيرة: اسم أو فعل أو حرف.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "في جملة «لَعِبَ الوَلَدُ فِي السَّاحَةِ»: أي كلمة تدل على العمل؟ وأيها اسم شخص؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميّز التلميذ ثلاثة أنواع من الكلمات في جملة بسيطة: اسم، فعل، حرف — دون إعراب.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الجملة كعقد: خرزات مختلفة. نتعرّف على ثلاثة أنواع فقط.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "الاِسْمُ نُسَمِّي بِهِ شَيْئاً نَعْرِفُهُ: وَلَدٌ، بِنْتٌ، شَمْسٌ، مَدْرَسَةٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفِعْلُ نَعْمَلُهُ: ذَهَبَ، قَرَأَ، جَرَى.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "الحَرْفُ لَا يَسْتَقِلُّ وَحْدَهُ: فِي، إِلَى، مِنْ، عَلَى، وَ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "فِي هَذِهِ المَرْحَلَةِ: فَقَطْ نُمَيِّزُ بَيْنَ الكَلِمَاتِ وَنُصَنِّفُهَا دُونَ إِعْرَابٍ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "الاِسْمُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "الفِعْلُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "«في» حرف. الاسم هو «الساحة».",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "اسم = نسمّي. فعل = نعمل. حرف = نربط (في، من، على، و).",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «قَلَمٌ»: اسم أم فعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-ism"
+      }
+    ]
+  },
+  {
+    "texte": "في «جَرَى القِطُّ»: ما الفعل؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-ism"
+      }
+    ]
+  },
+  {
+    "texte": "في «أكلت البنت التفاحة»: سمّ فعلاً واسماً وحرفاً إن وُجد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex3-ar2ap-ifh"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «أَكَلَ» هي:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-ism"
+      }
+    ]
+  },
+  {
+    "texte": "«كتب» اسم أم فعل أم حرف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-ifh-2"
+      }
+    ]
+  },
+  {
+    "texte": "«قلم»:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-ifh-3"
+      }
+    ]
+  },
+  {
+    "texte": "«في»:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-ifh-4"
+      }
+    ]
+  },
+  {
+    "texte": "«يلعب»:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-ifh-5"
+      }
+    ]
+  },
+  {
+    "texte": "في «جلس الولد»: ما الاسم؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-qb-ar2ap-ifh-6"
+      }
+    ]
+  },
+  {
+    "texte": "اسم، فعل، أو حرف؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  },
+  {
+    "texte": "بِنْتٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0"
+      }
+    ]
+  },
+  {
+    "texte": "اِسْمٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-0"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-1"
+      }
+    ]
+  },
+  {
+    "texte": "فِعْلٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-1"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-2"
+      }
+    ]
+  },
+  {
+    "texte": "حَرْفٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-0-opt-2"
+      },
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1-opt-0"
+      }
+    ]
+  },
+  {
+    "texte": "مِنْ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-ism-fil-harf",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-1"
+      }
+    ]
+  },
+  {
+    "texte": "تصنيف اسم مألوف حسب الجنس والعدد.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "objective"
+      }
+    ]
+  },
+  {
+    "texte": "نقول «هذا ولد» و«هذه بنت». لماذا تغيّرت كلمة الإشارة؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "explanation",
+        "key": "discovery"
+      }
+    ]
+  },
+  {
+    "texte": "يميّز التلميذ المذكر من المؤنث والمفرد من الجمع في كلمات مألوفة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "summary"
+      }
+    ]
+  },
+  {
+    "texte": "الجنس: ولد/بنت. العدد: واحد/كثير. كلمتا هذا وهذه تساعدنا.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "intro"
+      }
+    ]
+  },
+  {
+    "texte": "المُذَكَّرُ نُشِيرُ إِلَيْهِ بِـ «هَذَا». المُؤَنَّثُ بِـ «هَذِهِ».",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-0"
+      }
+    ]
+  },
+  {
+    "texte": "كَثِيرٌ مِنَ المُؤَنَّثِ يَنْتَهِي بِتَاءٍ مَرْبُوطَةٍ: مَدْرَسَةٌ، سَيَّارَةٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-1"
+      }
+    ]
+  },
+  {
+    "texte": "المُفْرَدُ وَاحِدٌ: قَلَمٌ. الجَمْعُ كَثِيرٌ: أَقْلَامٌ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-2"
+      }
+    ]
+  },
+  {
+    "texte": "لَا نَحْفَظُ كُلَّ الجُمُوعِ: نَتَعَرَّفُ عَلَى أَمْثِلَةِ القِسْمِ فَقَطْ.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "rule-3"
+      }
+    ]
+  },
+  {
+    "texte": "المُذَكَّرُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-0"
+      }
+    ]
+  },
+  {
+    "texte": "المُؤَنَّثُ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "vocab-1"
+      }
+    ]
+  },
+  {
+    "texte": "المدرسة مؤنث: هذه مدرسة.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "mistake-0"
+      }
+    ]
+  },
+  {
+    "texte": "هذا للمذكر، هذه للمؤنث. مفرد = واحد، جمع = كثير.",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "content",
+        "key": "takeaway"
+      }
+    ]
+  },
+  {
+    "texte": "أكمل: …… بِنْتٌ جَمِيلَةٌ",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex1-ar2ap-gender"
+      }
+    ]
+  },
+  {
+    "texte": "كلمة «أَوْلَادٌ»: مفرد أم جمع؟",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "practice",
+        "key": "practice-ex2-ar2ap-gender"
+      }
+    ]
+  },
+  {
+    "texte": "«أقلام» تدل على:",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "quiz",
+        "key": "quiz-q1-ar2ap-gender"
+      }
+    ]
+  },
+  {
+    "texte": "اختر الإشارة!",
+    "language": "ar",
+    "targets": [
+      {
+        "lessonId": "arabic-2ap-t3-gender-number",
+        "grade": "2AP",
+        "subject": "arabic",
+        "category": "game",
+        "key": "game-instructions"
+      }
+    ]
+  }
+]

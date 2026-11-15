@@ -2,6 +2,13 @@ import { test, expect } from '@playwright/test';
 import { COURSES_DATA } from '../src/data/coursesData';
 import { stripArabicTashkeel } from '../src/utils/textFormatter';
 
+// On a phone the lesson steps are a drop-down list (the step buttons only show from the sm breakpoint).
+async function openStep(page: import('@playwright/test').Page, label: RegExp) {
+  const picker = page.getByRole('combobox', { name: 'اختر مرحلة الدرس' });
+  const labels = await picker.locator('option').allTextContents();
+  await picker.selectOption({ label: labels.find(option => label.test(option))! });
+}
+
 const normalizeText = (text: string) => stripArabicTashkeel(text.replace(/[\u2066-\u2069]/g, '')).replace(/\s+/g, ' ').trim();
 
 for (const id of ['math-4ap-division-euclidean', 'math-4ap-division-two-digit-divisor', 'math-5ap-division']) {
@@ -18,7 +25,7 @@ for (const id of ['math-4ap-division-euclidean', 'math-4ap-division-two-digit-di
       ? { id: 1, nom: 'Test', email: 'test@example.test', role: 'ROLE_FREE', grade: lesson.grade, score: 0, badges: ['b_welcome'] } : {} }));
     await page.goto(`/lesson/${id}?g=${lesson.grade}`);
     await expect(page.locator('#lesson-active-step-container')).toBeVisible({ timeout: 45_000 });
-    await page.locator('[data-lesson-step-count]').getByRole('button', { name: /الملخص والقواعد/ }).click();
+    await openStep(page, /أتذكر القاعدة/);
     const exampleIndex = id === 'math-4ap-division-two-digit-divisor' ? 1 : 0;
     await page.getByRole('button', { name: /إظهار الحل النموذجي المفصل/ }).nth(exampleIndex).click();
     const solution = page.locator('[data-math-column="solution"]').last();
@@ -31,7 +38,7 @@ for (const id of ['math-4ap-division-euclidean', 'math-4ap-division-two-digit-di
     await page.screenshot({ path: `build/math-course-${id}-320.png` });
     // Answer one question using authored correct data and verify that the feedback is still shown.
     const question = lesson.quiz[0]; const correct = question.options.find(option => option.isCorrect)!;
-    await page.locator('[data-lesson-step-count]').getByRole('button', { name: new RegExp(`الاختبار التفاعلي \\(${lesson.quiz.length}\\)`) }).click();
+    await openStep(page, new RegExp(`أختبر نفسي \\(${lesson.quiz.length}\\)`));
     await page.getByRole('button', { name: correct.textAr, exact: false }).click();
     await expect(page.locator('[data-quiz-feedback="correct"]').first()).toBeVisible();
   });

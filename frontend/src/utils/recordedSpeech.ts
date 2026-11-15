@@ -1,11 +1,25 @@
 import { RECORDED_SPEECH_CATALOG } from '../data/recordedSpeechCatalog';
 import { recordedSpeechKey } from './recordedSpeechKey';
+import { resolveRecordingUrl } from './recordingUrl';
 
 export function findRecordedSpeech(text: string, language: string) {
   const code = language.split('-')[0];
   const catalog = Object.hasOwn(RECORDED_SPEECH_CATALOG, code) ? RECORDED_SPEECH_CATALOG[code] : undefined;
   const key = recordedSpeechKey(text);
   return catalog && Object.hasOwn(catalog, key) ? catalog[key] : undefined;
+}
+
+/** Reuse whole recorded sentences only when every part is covered. Never splice phonemes. */
+export function findRecordedSpeechSequence(text: string, language: string) {
+  const exact = findRecordedSpeech(text, language);
+  if (exact) return [{ text, ...exact }];
+  const sentences = text.trim().split(/(?<=[.!?؟])\s+/u);
+  if (sentences.length < 2) return undefined;
+  const sequence = sentences.map(sentence => {
+    const clip = findRecordedSpeech(sentence, language);
+    return clip ? { text: sentence, ...clip } : undefined;
+  });
+  return sequence.every(clip => clip !== undefined) ? sequence : undefined;
 }
 
 type PlaybackResult = 'played' | 'failed' | 'cancelled';
@@ -32,7 +46,8 @@ export function playRecordedSpeech(src: string, rate = 1): Promise<PlaybackResul
   stopRecordedSpeech();
   if (typeof Audio === 'undefined') return Promise.resolve('failed');
   return new Promise(resolve => {
-    const audio = new Audio(src);
+    const audio = new Audio(resolveRecordingUrl(src));
+    audio.crossOrigin = 'anonymous';
     audio.playbackRate = Math.min(2, Math.max(0.5, rate));
     let settled = false;
     const finish = (result: PlaybackResult) => {

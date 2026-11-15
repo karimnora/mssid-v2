@@ -9,8 +9,10 @@ import {
   progressOwnerId,
   saveActiveChildId,
   saveProgress,
+  suggestNextActivity,
   summarizeBilan,
   todayPlayIds,
+  withImpliedGuidedSteps,
 } from './preschoolProgress';
 import { PRESCHOOL_MODULES } from '../../data/preschool';
 
@@ -109,4 +111,26 @@ describe('preschool per-child progress', () => {
     expect(badgeStorageKey('child-1')).toBe('mssid_preschool_badges:child-1');
     expect(badgeStorageKey('user-7')).toBe('mssid_preschool_badges:user-7');
   });
+
+  it('counts a guided counting step as done when the child already succeeded at the ordinary task', () => {
+    const numbers = PRESCHOOL_MODULES.find(mod => mod.activities.some(act => act.id === 'num-3-guided'))!;
+    const before = numbers.activities.filter(act => !act.id.endsWith('-guided')).map(act => act.id);
+    // A child who finished the module before the guided steps existed keeps a finished module.
+    const ids = withImpliedGuidedSteps(before, PRESCHOOL_MODULES);
+    expect(numbers.activities.every(act => ids.includes(act.id))).toBe(true);
+    expect(suggestNextActivity([numbers], ids)).toBeNull();
+    // A new child still meets the guided step first.
+    expect(suggestNextActivity([numbers], ['num-0', 'num-1', 'num-2'])?.activityId).toBe('num-3-guided');
+    // Nothing is invented: an unfinished task does not mark its guided step.
+    expect(withImpliedGuidedSteps(['num-0'], PRESCHOOL_MODULES)).toEqual(['num-0']);
+  });
+  it('restores implied guidance without marking the ordinary task from guidance alone', () => {
+    saveProgress('child-1', ['num-3']);
+    expect(loadProgress('child-1', PRESCHOOL_MODULES)).toEqual(['num-3', 'num-3-guided']);
+    expect(withImpliedGuidedSteps(['num-3-guided'], PRESCHOOL_MODULES)).toEqual(['num-3-guided']);
+    const completed = withImpliedGuidedSteps(['num-3'], PRESCHOOL_MODULES);
+    expect(withImpliedGuidedSteps(completed, PRESCHOOL_MODULES)).toEqual(completed);
+    expect(loadProgress('child-2', PRESCHOOL_MODULES)).toEqual([]);
+  });
+
 });

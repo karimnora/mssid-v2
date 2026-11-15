@@ -66,6 +66,7 @@ test('a logged-in child with zero coins sees zero on home and in the companion',
   } }));
   await page.goto('/');
   await expect(page.getByText('🪙 0 pièces', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Nourrir (Dattes/Lait)', exact: true }).click();
-  await expect(page.getByText('🪙 0 pièces', { exact: true })).toHaveCount(2);
+  // The companion shows the same zero balance next to its food menu.
+  await page.getByRole('button', { name: 'Nourrir', exact: true }).click();
+  await expect(page.getByText('🪙 0 pièces gagnées dans tes activités', { exact: true })).toBeVisible();
 });

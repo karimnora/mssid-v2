@@ -141,7 +141,7 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
   // The step strip's AnimatePresence (mode="wait") mounts the quiz panel asynchronously — reading
   // the question/options right after the tab-switch click can miss it entirely.
   const answerFirstQuestionCorrectly = async () => {
-    fireEvent.click(screen.getByText('الاختبار التفاعلي (2)'));
+    fireEvent.click(screen.getByRole('button', { name: /أختبر نفسي \(2\)/ }));
     // This checks the exit guard, not animation speed: allow a cold panel mount on 2-core CI.
     await screen.findByText('كم يساوي 2+2؟', {}, { timeout: 4000 });
     fireEvent.click(screen.getByText('4'));

@@ -788,7 +788,7 @@ export const CHALLENGES_DATA: Challenge[] = [
       { questionOrPromptAr: 'دخول الهواء النقي إلى الرئتين يسمى:', correctAnswerAr: 'الشهيق', optionsAr: ['الشهيق', 'الزفير'], explanationAr: 'الشهيق هو دخول الهواء الغني بالأكسجين إلى الرئتين.' },
       { questionOrPromptAr: 'يحتاج النبات الأخضر للنمو إلى:', correctAnswerAr: 'الماء والضوء', optionsAr: ['الماء والضوء', 'الظلام فقط'], explanationAr: 'يحتاج النبات الأخضر إلى الماء وضوء الشمس ليصنع غذاءه وينمو.' },
       { questionOrPromptAr: 'الحيوان الذي يتغذى على الأعشاب يسمى:', correctAnswerAr: 'عُشبي', optionsAr: ['عُشبي', 'لاحم'], explanationAr: 'الحيوان العُشبي يتغذى على النباتات، بينما اللاحم يتغذى على حيوانات أخرى.' },
-      { questionOrPromptAr: '1 كيلوغرام يساوي:', correctAnswerAr: '1000 غرام', optionsAr: ['1000 غرام', '100 غرام'], explanationAr: '1 كيلوغرام = 1,000 غرام.' },
+      { questionOrPromptAr: '1 كيلوغرام يساوي:', correctAnswerAr: '1000 غرام', optionsAr: ['1000 غرام', '100 غرام'], explanationAr: '1 كيلوغرام = 1 000 غرام.' },
       { questionOrPromptAr: 'خروج الهواء من الرئتين يسمى:', correctAnswerAr: 'الزفير', optionsAr: ['الزفير', 'الشهيق'], explanationAr: 'الزفير هو خروج الهواء المحمل بثاني أكسيد الكربون من الرئتين.' },
     ],
   },

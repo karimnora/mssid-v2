@@ -87,7 +87,7 @@ export const ARABIC_2AP_GAPS: CourseLesson[] = [
         id: 'ex1-ar2ap-read1',
         level: 1,
         levelLabelAr: '🟢 المستوى 1 — أكتشف',
-        problemAr: 'من سلّم سامي على المعلمة؟',
+        problemAr: 'من سلّم على المعلمة؟',
         hintsAr: ['اسم الولد في أول النص.'],
         solutionAr: 'سَامِي',
         detailedCorrectionAr: 'سامي هو من ذهب إلى المدرسة وسلّم.',

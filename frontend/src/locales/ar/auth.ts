@@ -76,6 +76,9 @@ export const auth = {
   registerSubmit: 'إنشاء الحساب',
   toggleToRegister: 'ليس لديك حساب؟ قم بإنشاء حساب جديد',
   toggleToLogin: 'لديك حساب بالفعل؟ تسجيل الدخول',
+  loginFailedNoAccountHint: 'أول مرة في مسيد؟ يجب إنشاء حساب أولاً.',
+  loginFailedCreateAccountCta: 'أنشئ حساباً مجانياً',
+  loginFirstTimeHint: 'أول مرة هنا؟ اضغط على «إنشاء حساب» في الأعلى.',
 
   // --- AuthWallModal ---
   wallTitle: 'برافو يا بطل! 🌟',

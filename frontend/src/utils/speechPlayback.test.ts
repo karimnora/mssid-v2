@@ -33,8 +33,36 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe("recorded and native speech coordination", () => {
-  it("uses the existing recording before native TTS", async () => {
+describe('recorded and native speech coordination', () => {
+  it('never substitutes an unknown phone voice when a recording-only request fails', async () => {
+    const audio = makeAudio();
+    audio.play.mockRejectedValue(new Error('missing file'));
+    vi.stubGlobal('Audio', vi.fn(function () { return audio; }));
+    await speakText('هَذَا كِتَابٌ.', 'ar-SA', 0.9, 1, { recordedOnly: true });
+    expect(native.speak).not.toHaveBeenCalled();
+  });
+  it('plays two Arabic recordings in order and falls back only for the failed tail', async () => {
+    const first = makeAudio();
+    const second = makeAudio();
+    second.play.mockRejectedValue(new Error('missing second file'));
+    vi.stubGlobal('Audio', vi.fn().mockImplementationOnce(function () { return first; }).mockImplementationOnce(function () { return second; }));
+    const speaking = speakText('هَذَا كِتَابٌ. هَذَا قَلَمٌ.', 'ar-SA');
+    expect(native.speak).not.toHaveBeenCalled();
+    first.onended?.();
+    await speaking;
+    expect(native.speak).toHaveBeenCalledWith(expect.objectContaining({ text: 'هَذَا قَلَمٌ.', lang: 'ar-SA' }));
+  });
+  it('does not start a second sentence after the first recording is stopped', async () => {
+    const audio = makeAudio();
+    const createAudio = vi.fn(function () { return audio; });
+    vi.stubGlobal('Audio', createAudio);
+    const speaking = speakText('هَذَا كِتَابٌ. هَذَا قَلَمٌ.', 'ar-SA');
+    stopSpeech();
+    await speaking;
+    expect(createAudio).toHaveBeenCalledTimes(1);
+    expect(native.speak).not.toHaveBeenCalled();
+  });
+  it('uses the existing recording before native TTS', async () => {
     const audio = makeAudio();
     vi.stubGlobal(
       "Audio",
