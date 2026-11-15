@@ -22,14 +22,16 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 7. **Rien d'inventé** : pas de faux avis, de fausse progression ni de faux résultat d'essai. Les essais de Claude sont dits « simulés ».
 8. Les règles de `CLAUDE.md` restent valables : cibles de 60 px en préscolaire et 1AP, audio sur chaque consigne en 1AP et 2AP, pas de texte rouge, deux colonnes `الحل` / `العمليات`, tableau `الكلمة` / `إعرابها`, aucun prix dans l'application Android.
 
-## Phase 0 — Geler et mettre en ligne (16 au 30 novembre)
+## Phase 0 — Geler et faire tourner la V2 en local (16 au 30 novembre)
+
+**Décision de Karim (15 novembre 2026) :** la V2 se teste en local sur son PC jusqu'à ce que le produit soit fini. Aucun push de `v2`, aucun hébergement, aucun APK distribué avant cela. La mise en ligne est la tâche CX-22, en fin de phase 3.
 
 ### Codex
 
 - [ ] **CX-00 — Vérifier la fusion de la V1 dans la V2** (commit `924f059`, 15 novembre ; sauvegarde : étiquette `v2-backup-before-v1-merge-20261115`). Lancer TypeScript, la suite Vitest et le build ; corriger ce qui casse sans changer les choix de fusion décrits dans le message du commit. Refaire ensuite, sur la nouvelle carte compagnon de la V1, l'affichage du Didou 3D du monde (`world/DidouPortrait`), perdu dans la fusion. *Critère : TypeScript sans erreur, tests et build verts.*
 
-- [ ] **CX-01 — Serveur et site V2 hébergés.** Service Render V2 sur sa propre base vide, migrations V100 à V108 passées, site de test branché dessus. Karim fournit les accès. *Critère : inscription, progression et code d'activation fonctionnent sans laisser de trace dans la V1.*
-- [ ] **CX-02 — APK bêta.** Compiler `assembleBeta` (`dz.mssid.app.beta`) pour que Karim l'installe à côté de la V1. *Critère : connexion Google et compte Premium reconnus sur le téléphone.*
+- [ ] **CX-01 — Pile V2 complète en local.** Faire tourner `compose.v2.yml` (site, serveur Spring profil `v2`, PostgreSQL vide) sur le PC de Karim avec la V2 fusionnée : migrations V100 à V108 passées, site sur http://localhost:3002. Ajouter deux scripts à double-cliquer à la racine, `v2-demarrer.cmd` et `v2-arreter.cmd` (arrêt sans `-v`, les comptes de test sont gardés). Créer en local un compte administrateur et un compte Premium fictifs, et noter dans `docs/v2-tests-isoles.md` comment les recréer. *Critère : inscription, profils enfants, progression, carnet parent et activation d'un code fonctionnent, sans aucune requête vers la V1.*
+- [ ] **CX-02 — Tester sur un téléphone, en local.** Permettre, seulement quand Karim le demande, d'ouvrir le site local depuis un téléphone sur le même Wi-Fi (adresse du PC, port 3002), sans exposer le PC à Internet. *Critère : connexion, leçon et carnet parent utilisables dans Chrome Android.* L'APK bêta n'est pas possible en local (il exige un serveur HTTPS) : il passe dans CX-22.
 - [ ] **CX-03 — Étoiles des jeux par enfant.** Vérifier que `mssid_learning_games_v1` (`LearningGameEntry.tsx`) est bien séparée par enfant ; sinon, une clé par enfant avec reprise de l'ancienne. *Critère : test avec deux profils qui ne partagent aucune étoile.*
 - [ ] **CX-04 — Consentement parental** (lot A de `v2-todo-conformite-anpdp.md`) : case obligatoire non cochée à l'inscription et à la connexion Google, refus côté serveur, date et version enregistrées. Texte fourni par CL-03.
 - [ ] **CX-05 — Village ouvert aux comptes gratuits**, avec les cadenas dorés sur ce qui est Premium (aujourd'hui réservé à `isPremiumRole && designMode === 'world'`). *Critère : un compte gratuit voit le village ; aucun prix affiché.*
@@ -91,6 +93,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-17 — Essai Premium de 7 jours** : une fois par compte, lancé depuis le site, 2 sujets blancs au plus.
 - [ ] **CX-18 — Droits du parent** (lot B) : export des données, suppression complète, liens légaux en bas de page.
 - [ ] **CX-19 — Conservation** (lot C) : purge de nuit, comptes inactifs, Sentry sans données personnelles, aucun appel à une IA.
+- [ ] **CX-22 — Mise en ligne, quand Karim déclare le produit fini.** Push de `v2` (sans forcer), serveur V2 hébergé sur sa propre base vide, site de test, client Google de l'APK bêta, APK `assembleBeta` installé sur un vrai téléphone. Les réglages des tableaux de bord sont vérifiés avant le premier push (`docs/v2-tests-isoles.md`). *Critère : les parcours testés en local fonctionnent aussi en ligne et sur l'APK, sans trace dans la V1.*
 
 ## Phase 4 — Ouverture de la vente (8 février au 7 mars 2027)
 
@@ -102,7 +105,8 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 ## Ce qui dépend de Karim
 
 - [ ] Donner le feu vert aux essais simulés (CL-01) et dire à Codex que le périmètre est gelé.
-- [ ] Accès Render et client Google de l'APK bêta (CX-01, CX-02), puis installer l'APK sur un téléphone.
+- [ ] Lancer Docker Desktop avant chaque séance de test local (CX-01).
+- [ ] Le jour où le produit est fini : donner le feu vert à la mise en ligne, fournir les accès Render et le client Google de l'APK bêta (CX-22), puis installer l'APK sur un téléphone.
 - [ ] Compte ANPDP, registre des traitements, demande de transfert vers l'étranger.
 - [ ] Statut juridique (ANAE ou registre de commerce) et choix de la passerelle de paiement.
 - [ ] Trouver un enseignant relecteur de 5AP et 3 à 5 familles volontaires parmi les utilisateurs de la V1.
