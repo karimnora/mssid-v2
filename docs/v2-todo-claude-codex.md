@@ -34,14 +34,14 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [ ] **CX-01 — Pile V2 complète en local.** Faire tourner `compose.v2.yml` (site, serveur Spring profil `v2`, PostgreSQL vide) sur le PC de Karim avec la V2 fusionnée : migrations V100 à V108 passées, site sur http://localhost:3002. Ajouter deux scripts à double-cliquer à la racine, `v2-demarrer.cmd` et `v2-arreter.cmd` (arrêt sans `-v`, les comptes de test sont gardés). Créer en local un compte administrateur et un compte Premium fictifs, et noter dans `docs/v2-tests-isoles.md` comment les recréer. *Critère : inscription, profils enfants, progression, carnet parent et activation d'un code fonctionnent, sans aucune requête vers la V1.*
 - [ ] **CX-02 — Tester sur un téléphone, en local.** Permettre, seulement quand Karim le demande, d'ouvrir le site local depuis un téléphone sur le même Wi-Fi (adresse du PC, port 3002), sans exposer le PC à Internet. *Critère : connexion, leçon et carnet parent utilisables dans Chrome Android.* L'APK bêta n'est pas possible en local (il exige un serveur HTTPS) : il passe dans CX-22.
 - [ ] **CX-03 — Étoiles des jeux par enfant.** Vérifier que `mssid_learning_games_v1` (`LearningGameEntry.tsx`) est bien séparée par enfant ; sinon, une clé par enfant avec reprise de l'ancienne. *Critère : test avec deux profils qui ne partagent aucune étoile.*
-- [ ] **CX-04 — Consentement parental** (lot A de `v2-todo-conformite-anpdp.md`) : case obligatoire non cochée à l'inscription et à la connexion Google, refus côté serveur, date et version enregistrées. Texte fourni par CL-03.
+- [ ] **CX-04 — Consentement parental** (lot A de `v2-todo-conformite-anpdp.md`) : case obligatoire non cochée à l'inscription et à la connexion Google, refus côté serveur, date et version enregistrées. Textes : `docs/v2-consentement-parental.md`.
 - [ ] **CX-05 — Village ouvert aux comptes gratuits**, avec les cadenas dorés sur ce qui est Premium (aujourd'hui réservé à `isPremiumRole && designMode === 'world'`). *Critère : un compte gratuit voit le village ; aucun prix affiché.*
 
 ### Claude
 
 - [ ] **CL-01 — Essais simulés 5AP** (après le feu vert de Karim, sur la V2 lancée en local). Huit profils, rapport dans `docs/v2-essais-simules-5ap.md` : chaque blocage avec capture, gravité et correction proposée.
-- [ ] **CL-02 — L'offre en trois piliers.** Spécification et textes arabe et français : l'aventure de Didou, le suivi du parent, la réussite aux examens. Dit quelle clé de `access/entitlements.ts` va dans quel pilier. Codex l'applique en CX-06.
-- [ ] **CL-03 — Texte du consentement parental** en arabe et en français, adressé au parent, avec sa version. Nécessaire à CX-04.
+- [x] **CL-02 — L'offre en trois piliers.** Fait : `docs/v2-offre-trois-piliers.md`. Spécification et textes arabe et français : l'aventure de Didou, le suivi du parent, la réussite aux examens. Dit quelle clé de `access/entitlements.ts` va dans quel pilier. Codex l'applique en CX-06.
+- [x] **CL-03 — Texte du consentement parental** en arabe et en français, adressé au parent, avec sa version. Fait : `docs/v2-consentement-parental.md` (version `parental-consent-2026-11-v1`). Nécessaire à CX-04.
 - [ ] **CL-04 — Revue des écrans Android** à partir du code : relever tout mot lié au prix ou à l'achat, en particulier `MosaicWorkshop`, `PremiumLearningLabs` et `GardenMission`.
 
 ## Phase 1 — Parcours 5AP de référence et essais simulés (1 au 21 décembre)
@@ -55,7 +55,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 
 ### Codex
 
-- [ ] **CX-06 — Appliquer les trois piliers** (après CL-02) dans la fiche d'offre et le registre des droits, sans changer les accès.
+- [ ] **CX-06 — Appliquer les trois piliers** (`docs/v2-offre-trois-piliers.md`, section 5) dans la fiche d'offre et le registre des droits, sans changer les accès.
 - [ ] **CX-07 — Construire le parcours 5AP maths** (après CL-05). *Critère : les captures 360 × 640 et 390 × 844 correspondent à la spécification.*
 - [ ] **CX-08 — Corriger les blocages** relevés par CL-01 puis CL-08, du plus grave au moins grave. Claude rejoue l'essai après chaque correction.
 - [ ] **CX-09 — Brancher le diagnostic d'arabe 5AP** (après CL-07).
