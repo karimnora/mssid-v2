@@ -50,7 +50,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 ### Claude
 
 - [x] **CL-05 — Spécification du parcours 5AP maths** : accueil, mission du jour, leçon en cinq étapes, phrases de Didou tirées de `rulesAr` et `keyFormulas`, laboratoire lié, bilan parent. Avec les critères d'acceptation par écran. Fait : `docs/v2-spec-parcours-5ap-maths.md` (fractions et division ; 4 décisions ouvertes pour Karim).
-- [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant. En cours : `docs/v2-relecture-5ap.md` (lot 1 fractions et division relu le 15 novembre ; 4 points à corriger dans la division).
+- [ ] **CL-06 — Relecture pédagogique de la 5AP**, maths puis arabe : questions, corrigés, distracteurs, bornes du programme. Résultat dans la grille de `v2-relecture-enseignant.md`, prête pour un enseignant. En cours : `docs/v2-relecture-5ap.md` (lots 1 et 2 relus le 15 novembre : fractions, division, durées, polygones ; 13 points relevés, 12 corrigés sur `v2` le 16 novembre ; G3, la somme des angles, est à trancher avec l'enseignant). Lot 3 relu et corrigé le 16 novembre (grands nombres, opérations, mesures, angles : 21 points, 18 corrigés) ; restent M1 (décimaux dans la leçon des mesures) et A1 (angles en degrés), à décider, et O5 (métadonnée de trimestre) pour l'enseignant. Lot 4 relu et corrigé le 16 novembre (décimaux, aires, solides, proportionnalité, pourcentages, données) : deux formules clés fausses en décimaux corrigées, 18 questions de quiz ajoutées ; 3 termes à vérifier avec l'enseignant. Lot 5 relu et corrigé le 16 novembre (17 leçons d'arabe : un exercice enseignait un مفعول مطلق comme مفعول لأجله, 13 vocalisations fautives, 33 réponses à trou passées en QCM). Quiz d'arabe complétés le même jour : 67 questions, 5 par leçon (AR0). Relecture 5AP terminée côté Claude ; reste la validation par un enseignant (grille `v2-relecture-enseignant.md`) et les points à trancher (G3, A1, M1, AR13 à AR15).
 - [x] **CL-07 — Diagnostic d'arabe 5AP** : questions et barème, sur le modèle de `data/diagnostic/math5ap.ts`. Fait : `frontend/src/data/diagnostic/arabic5ap.ts` (28 questions, 2 par compétence, à faire relire par un enseignant).
 - [ ] **CL-08 — Essais simulés 4AP, 1AP et préscolaire**, un rapport par niveau.
 
@@ -69,7 +69,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [x] **CL-09 — Didou compagnon, le contenu** : pour chaque événement (bonne réponse, série, erreur, indice, fin), la pose et la phrase, au masculin et au féminin. Fait : `docs/v2-didou-phrases-lecon.md` (neutre par défaut, le profil n'a pas de genre).
 - [x] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12. Fait : `docs/v2-sac-de-didou.md`.
 - [x] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes. Fait : `docs/v2-carte-5ap.md` (le plan existant est juste, aucun changement de code).
-- [ ] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité.
+- [x] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité. Fait : `docs/v2-voix-a-enregistrer.md` et `.json` (lot 1 : 18 phrases de Didou ; lot 2 : 511 textes de quiz 1AP–2AP lus aujourd'hui par la voix du téléphone ; 2 décisions pour Karim).
 - [x] **CL-19 — Habillage « fait main » des cours, défis et exercices** (demande de Karim, 16 novembre 2026) : fond zellige, bande berbère, icônes au même trait, sans toucher aux écrans immersifs. Fait : `docs/v2-spec-habillage-cours-defis-exercices.md` et les deux motifs dans `docs/v2-habillage/`. Codex l'applique en CX-25.
 
 ### Codex
@@ -86,16 +86,17 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
   4. **Affichage statique en mode « données légères »** (fonction de CX-14) : une image fixe et légère de la planète, sans rotation animée, sans ambiance sonore ni décor animé. Les 8 mondes restent atteignables par des boutons de 60 px au moins (les flèches de rotation changent le monde affiché, sans animation). Décor de la planète d'environ 120 Ko au plus dans ce mode.
   *Critères : depuis le village, une station 5AP s'ouvre en trois taps au plus ; même parcours en français depuis l'accueil ; en mode léger, aucune animation ni son ne se lance et la planète reste utilisable ; captures en 360 × 640 et 390 × 844, en arabe et en français ; tests ciblés des fichiers modifiés.*
 
+- [ ] **CX-26 — Réponses à trou en arabe plus tolérantes** (`docs/v2-relecture-5ap.md`, point X1) : ajouter un champ facultatif `fillBlankAcceptedAr?: string[]` lu par `isFillBlankCorrect`, sans changer la comparaison exacte par défaut. Claude remplit ensuite les variantes des 154 exercices restants (4AP et 5AP). *Critère : test ciblé de `practiceAssessment` avec « سلّم » / « سلم » et « المربع » / « مربع ».*
 - [ ] **CX-25 — Appliquer l'habillage « fait main »** (`docs/v2-spec-habillage-cours-defis-exercices.md`) aux leçons en affichage classique, aux exercices et aux défis, derrière le drapeau `handmadeSkin`. Ne rien modifier dans `components/journey/`, `components/world/` ni dans la leçon ouverte dans un monde. *Critère : les six points de la section 6 de la spécification ; Claude relit les captures avant le commit.*
 
 ## Phase 3 — Offre professionnelle et conformité (5 janvier au 7 février)
 
 ### Claude
 
-- [ ] **CL-13 — Page « Premium Famille »** : plan de la page, textes arabe et français, questions fréquentes, tableau gratuit / Premium court.
-- [ ] **CL-14 — Projets de conditions de vente et de mise à jour de la politique de confidentialité**, à faire valider par un juriste avant publication Inclure les points 1 et 2 de `docs/v2-revue-android-paiement.md` (offres 3 et 12 mois, codes d'activation, reçus, aucun moyen de paiement nommé dans la version Android).
-- [ ] **CL-15 — Dossier de conformité interne** (lot E) et brouillon du registre des traitements pour Karim.
-- [ ] **CL-16 — Fiche Google Play et plaquette écoles** : textes et choix des captures, sans aucun prix sur la fiche.
+- [x] **CL-13 — Page « Premium Famille »** : plan de la page, textes arabe et français, questions fréquentes, tableau gratuit / Premium court. Fait : `docs/v2-page-premium-famille.md` (11 blocs, 9 questions ; deux réponses attendent les points de vente et CL-14 ; rien n'est publié avant le feu vert de Karim).
+- [x] **CL-14 — Projets de conditions de vente et de mise à jour de la politique de confidentialité**, à faire valider par un juriste avant publication. Fait : `docs/v2-projets-cgv-confidentialite.md` (8 questions pour le juriste, dont J1 : la loi 18-05 exige un site hébergé en Algérie en « .com.dz » ; textes arabe et français ; version Android neutre). Inclure les points 1 et 2 de `docs/v2-revue-android-paiement.md` (offres 3 et 12 mois, codes d'activation, reçus, aucun moyen de paiement nommé dans la version Android).
+- [x] **CL-15 — Dossier de conformité interne** (lot E) et brouillon du registre des traitements pour Karim. Fait : `docs/v2-dossier-conformite.md` (cartographie tirée du code, 4 traitements, procédure de fuite ; régions des prestataires et durées comptables à remplir par Karim).
+- [x] **CL-16 — Fiche Google Play et plaquette écoles** : textes et choix des captures, sans aucun prix sur la fiche. Fait : `docs/v2-fiche-play-et-plaquette-ecoles.md` (textes arabe et français dans les limites de Google, 8 captures, plaquette A4 ; 4 points à vérifier avant d'imprimer).
 
 ### Codex
 
@@ -110,7 +111,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 
 - [ ] **CX-20 — Mesure du parcours** : inscription, activité chaque semaine, carnet activé, essai, paiement ; indicateur « leçon terminée dans les 24 h ».
 - [ ] **CX-21 — Alerte au parent** le jour où l'enfant bloque, et résumé par jeu dans le carnet.
-- [ ] **CL-17 — Textes de campagne** : avant les compositions du 2e trimestre, Ramadan, e-mail du jeudi.
+- [x] **CL-17 — Textes de campagne** : avant les compositions du 2e trimestre, Ramadan, e-mail du jeudi. Fait : `docs/v2-textes-campagnes.md` (e-mails arabe et français ; envoi seulement aux parents qui l'ont accepté, à faire confirmer par le juriste).
 - [ ] **CL-18 — Essai simulé du parcours d'achat** : essai, code d'activation, reçu, fin d'abonnement et retour au gratuit.
 
 ## Ce qui dépend de Karim

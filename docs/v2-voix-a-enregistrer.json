@@ -1,0 +1,3145 @@
+{
+ "note": "CL-12 (16 novembre 2026). Textes arabes lus à voix haute aujourd'hui par la voix du téléphone, faute d'enregistrement. Voix : cedar (voix de Didou V2), comme le lot 1AP–2AP du 13 novembre. Garder le texte exactement, voyelles et ponctuation comprises : la lecture choisit l'enregistrement par correspondance exacte. Détail et ordre : docs/v2-voix-a-enregistrer.md.",
+ "lot1_didou": [
+  {
+   "cle": "step.practice",
+   "texte": "هَيَّا نَتَدَرَّبُ! نَبْدَأُ بِالمُسْتَوَى الأَوَّلِ، ثُمَّ نَصْعَدُ خُطْوَةً خُطْوَةً."
+  },
+  {
+   "cle": "step.interactive",
+   "texte": "لِنُجَرِّبْ بِأَيْدِينَا: نَنْقُرُ وَنَكْتَشِفُ."
+  },
+  {
+   "cle": "step.gameplay",
+   "texte": "هَيَّا نُجَرِّبُ التَّجْرِبَةَ مَعاً!"
+  },
+  {
+   "cle": "step.evaluation",
+   "texte": "حَانَ وَقْتُ التَّقْوِيمِ. نَقْرَأُ كُلَّ سُؤَالٍ بِهُدُوءٍ."
+  },
+  {
+   "cle": "step.quiz",
+   "texte": "آخِرُ مَرْحَلَةٍ! وَإِذَا وَقَعَ خَطَأٌ، فَأَنَا هُنَا لِلْمُسَاعَدَةِ."
+  },
+  {
+   "cle": "error.first",
+   "texte": "مُحَاوَلَةٌ جَيِّدَةٌ! نُعِيدُ قِرَاءَةَ السُّؤَالِ وَنُحَاوِلُ مَرَّةً أُخْرَى."
+  },
+  {
+   "cle": "error.first.alt",
+   "texte": "الخَطَأُ يُعَلِّمُنَا. لِنُفَكِّرْ مِنْ جَدِيدٍ."
+  },
+  {
+   "cle": "error.hint",
+   "texte": "هَذَا تَلْمِيحٌ صَغِيرٌ يُسَاعِدُنَا:"
+  },
+  {
+   "cle": "error.method",
+   "texte": "لِنَنْظُرْ إِلَى الطَّرِيقَةِ خُطْوَةً خُطْوَةً، ثُمَّ نُجَرِّبُ تَمْرِيناً شَبِيهاً."
+  },
+  {
+   "cle": "help.asked",
+   "texte": "حَسَناً، نُفَكِّرُ مَعاً."
+  },
+  {
+   "cle": "success.alone",
+   "texte": "إِجَابَةٌ صَحِيحَةٌ!"
+  },
+  {
+   "cle": "success.helped",
+   "texte": "نَجَحْنَا مَعاً! وَفِي المَرَّةِ القَادِمَةِ نُحَاوِلُ دُونَ مُسَاعَدَةٍ."
+  },
+  {
+   "cle": "streak.3",
+   "texte": "ثَلَاثُ إِجَابَاتٍ صَحِيحَةٍ مُتَتَالِيَةٍ! رَائِعٌ!"
+  },
+  {
+   "cle": "streak.5",
+   "texte": "خَمْسُ إِجَابَاتٍ صَحِيحَةٍ مُتَتَالِيَةٍ! عَمَلٌ مُمْتَازٌ!"
+  },
+  {
+   "cle": "lesson.done",
+   "texte": "أَنْهَيْنَا الدَّرْسَ! كُلُّ الإِجَابَاتِ صَحِيحَةٌ."
+  },
+  {
+   "cle": "lesson.almost",
+   "texte": "اِقْتَرَبْنَا! نُرَاجِعُ الأَسْئِلَةَ الَّتِي أَخْطَأْنَا فِيهَا، ثُمَّ نُعِيدُ."
+  },
+  {
+   "cle": "mission.done",
+   "texte": "مُهِمَّةُ اليَوْمِ تَمَّتْ! نَلْتَقِي غَداً بِمُهِمَّةٍ جَدِيدَةٍ."
+  },
+  {
+   "cle": "rule.prefix",
+   "texte": "القَاعِدَةُ:"
+  }
+ ],
+ "lot2_quiz_1ap_2ap": [
+  {
+   "texte": "\"أَنْ\"",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "\"أُنْ\"",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "\"إِنْ\"",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "\"قَسَماً\"",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "\"وَطَنِي\"",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "1 غ أثقل من 1 كغ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "1 كغ أثقل من 1 غ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "1 مئة و6 عشرات و5 وحدات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "10 كرات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "150 دج",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "27 ثمرة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "3 عشرات و 8 وحدات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "3 وحدات و 8 عشرات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "30 سم",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "300 سم",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "33 قلماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "37 ثمرة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "47 ثمرة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "53 دفتراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "57 قلماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "6 كرات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "6 مئات و1 عشرة و5 وحدات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "63 دفتراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "8 عشرات و 3 وحدات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "850 دج",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أتكلم مباشرة دون انتظار",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أرفع يدي وأنتظر دوري",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ألف",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أليف",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أليف منزلي",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَحْتَفِظُ بِهِ لِنَفْسِي",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ ثُمَّ البَسْمَلَةُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَعْتَرِفُ بِالحَقِيقَةِ وَلَا أَكْذِبُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَكْذِبُ لِأَتَجَنَّبَ اللَّوْمَ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَنْتِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أَهَمِّيَّةَ اسْتِغْلَالِ الوَقْتِ فِي العَمَلِ الصَّالِحِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "أُسَلِّمُهُ لِصَاحِبِهِ أَوْ لِلْمُعَلِّمِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "إصدار صوت",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "احتراق",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اسم",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الأسد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "البَسْمَلَةُ فَقَطْ دُونَ الاِسْتِعَاذَةِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "البَقَاءُ فِي القِسْمِ أَدْرُسُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الثانية عشرة تماماً (12:00)",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الجَمْعِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الحاء (ح)",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الحرف بعدها مشدد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الحَمْدُ لِلَّهِ رَبِّ العَالَمِينَ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الخروف",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الذئب",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الذِّئْبُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الزَّحْفِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "السادسة تماماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الشُّكْرِ عَلَى النِّعَمِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الصمت فقط",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الطَّيَرَانِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الغَنَمُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الفراغ التام",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اللَّعِبُ مَعَ رِفَاقِي",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "المشي",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "المُفْرَدِ فَقَطْ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الهاء (هـ)",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الهواء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "الولد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اليَدُ اليُسْرَى",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اليَدُ اليُمْنَى",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اهتزاز الأشياء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "بخاراً مباشرة دون ماء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "بري",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "بري كالذئب",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "بِطَاقَةُ لَعِبٍ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تاء مربوطة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تاء مفتوحة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تاء واضحة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تجمّد فوري للجليد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تذبل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تزهر أكثر",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تصبح حجراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تكاثف",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تكبر أسرع",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تنمو ضعيفة أو تموت",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "تُنْطَقُ دائماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "جلس",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "جليداً صلباً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "جماد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "جَمْعِ الأَلْعَابِ فَقَطْ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حار بارد فقط",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حجر",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حجراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حذف أل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حرف",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "حشرة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "خالد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "دائماً حتى لو كانت الوحدات فوق أكبر",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "رِحْلَةٌ إِلَى البَحْرِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "زيتاً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "سائل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "سائل كالزيت",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "سائلة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "سعيد، لأن 68 > 63",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "سين",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "شجراة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "شجرت",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "شَمْسِيَّةٌ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "شَمْسِيَّةٌ لا تُنْطَقُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "صلب",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "صلب دائماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "صلب سائل غاز",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "صلبة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "صنع الغذاء بالضوء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ظلام تام",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "على يسار 12",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "على يمين 12",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عندما تكون وحدات الأعلى أصغر من وحدات الأسفل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَ العَلَامَةِ 0",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَ حَافَّةِ المِسْطَرَةِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَمَا تُكْتَبُ بِلَوْنٍ مُخْتَلِفٍ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَمَا يَكُونُ الحَرْفُ بَعْدَهَا مُشَدَّداً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَمَا يَكُونُ العَقْرَبُ الكَبِيرُ عَلَى الرَّقْمِ 12",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "عِنْدَمَا يَكُونُ العَقْرَبُ الكَبِيرُ عَلَى الرَّقْمِ 6",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "غاز",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "غاز دائماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "غاز طبخ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "غازية",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "فتحة على اللام",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "فعل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "فعل مضارع",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "فقط لتبدو اليدان جميلتين",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "في التربة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "في المعدن",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "في الهواء فقط",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "فَقَطْ لِنَبْرُدَ فِي الحَرِّ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "قد يكون خطراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "قَمَرِيَّةٌ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "قَمَرِيَّةٌ تُنْطَقُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "كَبِيرٌ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "كَيْفِيَّةَ الوُضُوءِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لأنه بلا ظل",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لأنه نبات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لأنها تشعر بالبرد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لأنها تفقد الماء الذي تحتاجه لتبقى حية",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لإزالة الجراثيم التي قد تسبب المرض",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لا تتأثر",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لا تُكْتَبُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لا وجود لها",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لا يوجد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لون الأشياء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لَا إِلَٰهَ إِلَّا اللهُ مُحَمَّدٌ رَسُولُ اللهِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لِأَنَّ عَضَلَاتِي تَحْتَاجُ طَاقَةً وَهَوَاءً أَكْثَرَ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لِأَنَّنِي خَائِفٌ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "لِنَكُونَ فِي طَهَارَةٍ لِلْوُقُوفِ بَيْنَ يَدَيِ اللهِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ماء سائلاً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ماء في حالة غازية",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ماء وضوء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "محذوفة",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ملح",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ملح فقط",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "ملون وعديم اللون",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "من أي مكان في الطريق",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "من المَمَرِّ الرَّاجِلِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "مَاءٌ يَسِيلُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "مَرَّةً وَاحِدَةً فَقَطْ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "مَرَّتَيْنِ مُتَتَالِيَتَيْنِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "مَنْ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "مُمْتَلَكَاتٌ عَامَّةٌ يَجِبُ احْتِرَامُهَا",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نار",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نبات",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نخمن بالعين من بعيد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نضعها من نفس نقطة البداية ونقارن نهايتها",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نَرْمِي الأَوْرَاقَ عَلَى العُشْبِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نَشْكُرُ اللهَ عَلَيْهَا",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نَمْسَحُهَا دَائِماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نَنْسَاهَا بِسُرْعَةٍ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نُحَافِظُ عَلَى النَّظَافَةِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "نُقَارِنُهَا بِالنَّمُوذَجِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "هاء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "هواء فقط بلا ماء",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "هَلْ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "هَوَاءٌ يَتَحَرَّكُ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "وَثِيقَةٌ رَسْمِيَّةٌ لِلهُوِيَّةِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يبقى طولي ووزني ثابتين دائماً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يزداد طولي ووزني تدريجياً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يمكن إتلافها لأنها ليست ملكاً لأحد",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يَتَبَخَّرُ فَوْراً",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يَتَجَمَّدُ وَيَتَحَوَّلُ إِلَى جَلِيدٍ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "يَوْمُ سَامِي فِي المَدْرَسَةِ",
+   "niveau": "2AP",
+   "usage": "quiz-option",
+   "lecons": 1
+  },
+  {
+   "texte": "اليد اليمنى.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 2
+  },
+  {
+   "texte": "توحيد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 2
+  },
+  {
+   "texte": "ثلاث نقاط.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 2
+  },
+  {
+   "texte": "دعوة للعب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 2
+  },
+  {
+   "texte": "1 عشرة + 5 وحدات.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "13 أصغر من 18.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "15 ناقص 5 = 10.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "18 أكبر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "19 ثم 20.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "41 أكبر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "5 أكبر من 2.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "5 عشرات و 6 وحدات.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "6 بطنها أسفل، 9 أعلاها.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "62 أصغر من 87.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "6، 7، 8، 9.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "89 ثم 90.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أتعرّف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أتعلم في المدرسة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أربعة أضلاع للمربع، أمّا المثلث فله ثلاثة أضلاع. عُدَّ أضلاعه واحدًا واحدًا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أربعة أضلاع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أربعة فصول.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أربعة ناقص اثنان = 2.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أكل متنوع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ألف بهمزة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ألف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أنقصنا 2 من 6 فبقي 4.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أول وسط آخر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أُعْطِيَ = جَمْعٌ. 9 + 3 = 12.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "إذا تساوى طرفاهما عند المحاذاة، فلهما نفس الطول.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "اثنان زائد اثنان = 4.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "احترام الكبار.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "احترام الملك.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأب يحمي العائلة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأب يحمي عائلته.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الألف تمدّ الفتحة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأم تعتني بحنان.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الإخوة في العائلة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الباب مستطيل.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "البسملة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "البيت مسكننا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الثقل ليس الحجم: الحجر أثقل رغم صغره.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجار يسكن قريباً.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجاران 12 و 14.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجذر ثم الساق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجري حركة أسرع من المشي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجري حركة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجيم نقطتها تحت.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الرأس المدبّب نحو العدد الأصغر، والفتحة نحو الأكبر: 3 < 8.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الرجلان.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الريشة أخف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الزائد يجمع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الزاي منقوطة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشارع طريق الحي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشارع في الحي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشكر من الأدب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشم بالأنف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشمس مستديرة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الصاد والطاء بلا نقطة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الصباح.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الصدر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الصندوق فارغ، فلا توجد فيه كرات. نكتب صفرًا: 0.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الطائر يطير.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "العائلة في العيد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الفاتحة أولاً.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الفاكهة صحية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الفرح سعادة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الفَتْحَةُ فَوْقَ البَاءِ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "القراءة في الكتاب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "القلم يمر بمحاذاة الحافة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الكَسْرَةُ تَحْتُ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الماء بعد الجهد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الماء ضروري للحياة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الماء للحياة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المحاذاة أولاً ثم القلم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المحاذاة للطول، اليد للكتلة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المحافظة على الطبيعة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المعلم يشرح.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الموسيقى للاستماع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الناس.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الناقص ينقص.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "النصر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "النوم يريح الجسم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "النوم يريح.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الهندسة: خط مستقيم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "اليمين = وحدات.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "انتظار.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بداية الفلق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بداية الكوثر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بطيء وواضح.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بعد 4 يأتي 5.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بعد 6 يأتي 7.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بقدر = نفس الكمية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بقي = أنقصنا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بيانات مدرسية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بين = في الوسط.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "تحتاج سقيا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "تحية الصباح.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "تحية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ترتيل هادئ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "تنوين ضم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ثلاث عشرات.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ثلاث نجوم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "جواب الصحة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "جيم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ح بلا نقطة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حركة + نون مسموعة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حق الراحة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حماية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "حمدلة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "خ نقطة فوق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "خارج البيت.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "خضراء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "خمسة أصابع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ذ نقطة فوق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "راء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "رسول الله.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "رفق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "رمز العلم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "زاي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "سباحة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "سين بلا نقاط.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "شتاء ممطر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! 3 + 3 = 6.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الاستئذان أدب إسلامي جميل.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! البطاقة المدرسية وثيقة مهمة تعرّف بهويتي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الجذر والساق أول ما يظهر من البذرة النابتة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الرأس دائماً في أعلى الجسم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الرسول ﷺ علمنا الأكل باليمين.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الرقم 7 في خانة العشرات.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الزعانف تساعد السمكة على السباحة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الشمس ساطعة فوق في السماء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الشين لها 3 نقاط فوق أسنانها.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الصفر يدل على الفراغ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الغسل يزيل الأتربة والجراثيم غير المرئية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الفاء لها نقطة واحدة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الكوثر يعني الخير الكثير.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! اللسان هو عضو الذوق في فمنا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! المثلث له 3 أضلاع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الهلال والنجمة الحمراء في وسط علم الجزائر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الوقوف في الطابور وتحية العلم يعبران عن حبنا لوطننا الغالي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! بَابَا تبدأ بحرف الباء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! رضا الوالدين من رضا الله.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! عشرتان كاملتان = 20.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! في السنة أربعة فصول تتناوب بانتظام.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! لكل طفل الحق في أن تحميه أسرته وترعاه.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! مدرسة تبدأ بحرف الميم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! مساعدة الرفاق خُلق حميد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! نبدأ أعمالنا بالبسملة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! نرد التحية بأحسن منها أو بمثلها.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! نطلب حماية الله من كل شر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! نكتب من اليمين لليسار ونمسك القلم بثلاثة أصابع.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! وردة تبدأ بحرف الواو.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح: الفتحة تُمدّ بالألف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صفر على نقطة البداية.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صوتان مختلفان.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صورتي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صَحِيحٌ! الكَسْرَةُ تَحْتَ الحَرْفِ: بِ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ضاد منقوطة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ضاد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "طاء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "طاعة معروفة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "طعام نظيف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "علم الجزائر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "غ نقطة فوق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "فاء نقطة واحدة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "فتحتان.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "فوق السطر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "في السلة = داخل.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "قفز.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "قَلْبٌ: سُكُونٌ عَلَى اللَّامِ.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كاف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كسرة + ياء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كل يوم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كلنا.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لام وسط قلم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لام.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لطف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لكل طفل اسم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ما تراه بعينيك أمامك.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ماء وصابون.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "معاً.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ميم أول ماء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ميم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نبرّهما.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نتحرك كل يوم.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نتعلم في المدرسة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نحمد الله.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ندعو للعب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نرددهما بحب.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نزل = نقص. 11 − 4 = 7.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نشرب ماءً.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نشيد وطني.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نصدق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نظام.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نظيف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نعم، المسد والنصر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نفس العدد: يساوي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نقطة الزاي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نقطة واحدة تحت.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نقطتان فوق.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نقولها في العيد.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نكرر.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نون بلا نون مكتوبة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نون.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نُ + و = نُو.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذه أمي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذه الأقلام الثلاثة الأولى فقط. أضف إليها الأقلام الثلاثة الجديدة: 3 + 3 = 6.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذه صيغة الشهادتين.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذه لأمي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "همزة آخر الكلمة.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "همزة القطع على الألف.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "واحد وعشرون.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "واو.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "وحي.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ياء.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يتصل من الجهتين.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يطير.",
+   "niveau": "1AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "12 − 8 = 4، و 3 − 1 = 2.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "36 بين 30 و 40.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "45 - 12 = 33 (كلمة \"أعطت\" تدل على الطرح).",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "500 - 350 = 150 دج.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "57 هو ناتج الجمع 45 + 12. مريم أعطت 12 قلمًا، فنطرح: 45 - 12 = 33.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "8 عشرات و3 وحدات تساوي 83، لا 38. في 38 توجد 3 عشرات و8 وحدات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أربع مجموعات من 3.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أقلام جمع قلم.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أكل عمل: فعل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أنا = أتكلم عن نفسي وحدي.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "أنتِ للمخاطبة البنت، وأنتَ للولد.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "اثنان معاً، نستعمل \"أنتما\".",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "اسم مؤنث: شجرة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأب يطلب المحافظة على نظافة الحديقة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأخت مؤنثة وغائبة، نستعمل \"هي\".",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الأوراق الخضراء تستقبل الضوء.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الانصهار: صلب → سائل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "البخار يبرد فيصير سائلاً.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "التاء المربوطة تُقلب هاء عند الوقف.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "التبخر.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "التجمّد.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الجذور في التربة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الحيوانات البرية ليست أليفة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الخروف يربّى عند الناس.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الريح هواء متحرك.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الشين حرف شمسي، اللام مكتوبة غير منطوقة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الضوء لازم للخضرة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "العشرات متساوية (6=6)، لكن 8 > 3 في الوحدات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "القاف حرف قمري، اللام تُنطق.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "القطة مؤنثة وغائبة: هي.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الكاف حرف قمري.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الكيلوغرام وحدة أكبر بكثير من الغرام.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الماء والضوء ضروريان للنمو.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المراجعة جزء من النسخ الصحيح.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "المستطيل مثل المربع: 4 أركان قائمة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "النص يروي ذهابه وقراءته ولعبه وعودته.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "النون حرف شمسي.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الوحدات: 5+8=13 (احتفظ بـ1). العشرات: 3+2+1=6. الناتج 63.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "الولد اسم، جلس فعل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "بدون ماء تذبل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ة مستديرة = تاء مربوطة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "ت في آخر الاسم المذكر غالباً مفتوحة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "تاء ممدودة تُنطق تاءً وقفاً ووصلاً.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "جليد، ماء، بخار.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "سائل كباقي المشروبات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! \"هَلْ\" سؤال نجيب عنه بنعم أو لا.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! 15 أكبر من 12، والأعداد تكبر كلما اتجهنا نحو اليمين.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! 38 = 30 + 8.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! 615 = 600 + 10 + 5.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! أمس تدل على يوم قبل اليوم الحالي.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! البرودة الشديدة تجمّد الماء وتحوّله إلى جليد صلب.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الجهد العضلي يحتاج طاقة إضافية يوفرها القلب بضربات أسرع.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الحرف المشدد يُنطق مرتين، الأولى ساكنة والثانية متحركة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الدائرة مستديرة وليس لها زوايا ولا أضلاع مستقيمة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الشكر هو الرد المناسب على نعم الله.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الصدق خُلق مسلم دائماً حتى عند الخطأ.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الظهر أربع ركعات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! العصر تذكّرنا بقيمة الوقت.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! العقرب الكبير على 6 يعني مرور 30 دقيقة، أي \"والنصف\".",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الغنم حيوان أليف يربيه الإنسان.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الفسحة وقت مخصص للعب والراحة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الكسرة الوحيدة التي تُكتب تحت الحرف.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! اللام الشمسية لا تُنطق والحرف بعدها مشدد.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الماء أساسي لحياة النبات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! النص يذكر أن الأطفال يلعبون بالكرة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! الوضوء يُطهّرنا استعداداً للصلاة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! تنوين الفتح صوته \"أَنْ\".",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! علّمنا ديننا الأكل والشرب باليد اليمنى.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! غسل اليدين يحمينا من الجراثيم غير المرئية.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! كل صوت ينتج عن اهتزاز شيء ما.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! لأنهم أكثر من اثنين (جماعة).",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! مثل \"مدرسة\" تُنطق \"مدرسهْ\" عند التوقف.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! نشيدنا الوطني الجميل اسمه \"قسماً\".",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! هذا تصرف أمين نحو ممتلكات الآخرين.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! هذا مظهر طبيعي من مظاهر النمو.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! هذا نص الشهادتين.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! هذا يُظهر الأدب والاحترام لبقية التلاميذ.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! هو المكان الآمن المخصص لعبور المشاة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! يجب أن تبدأ من العلامة 0 لقياس دقيق.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صحيح! يستفيد منها الجميع فيجب المحافظة عليها.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "صَحِيحٌ: الاِسْتِعَاذَةُ ثُمَّ البَسْمَلَةُ قَبْلَ القِرَاءَةِ.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "على يسار 12 نجد الأعداد الأصغر منه مثل 11 و 10. العدد 15 أكبر، فهو على اليمين.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "عمل في الحاضر/المستقبل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "غاز لا نراه بسهولة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "فيها مد بالياء بعد الباء المكسورة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كل متر 100 سم: 100 + 100 + 100 = 300.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "كلا العقربين على 12 يعني منتصف النهار أو منتصف الليل تماماً.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لا تنسَ الاحتفاظ بعشرة: 5 + 8 = 13، نكتب 3 وحدات ونضيف 1 إلى العشرات: 3 + 2 + 1 = 6. الناتج 63.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لا ننشغل بالتفاخر عن الشكر.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لا يظهر معناه وحده.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "لحساب ضعف 5: 5 + 5 = 10.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نحن عندما نتحدث عن مجموعتنا.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نسمع لأن الهواء ينقل الاهتزاز.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نعم: لا نقدر أن نطرح فنستعير.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "نكتب أل ونشدد الحرف الشمسي.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذا أيضًا يساوي 83. اقرأ الرقم من اليسار: 3 في منزلة العشرات و8 في منزلة الوحدات.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "هذه أدق طريقة للمقارنة العادلة بين الأطوال.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "وثيقة دولة، ليست لعبة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يأخذ شكل الإناء.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يحافظ على شكله.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يدل على شيء ويمكن أن تدخل عليه أل.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يدل على عمل في زمن.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يزحف ببطء على الأرض.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يعيش في الطبيعة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يعيش مع الإنسان.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  },
+  {
+   "texte": "يعيش مع العائلة.",
+   "niveau": "2AP",
+   "usage": "quiz-explanation",
+   "lecons": 1
+  }
+ ]
+}
