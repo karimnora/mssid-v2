@@ -53,7 +53,7 @@ describe('PreschoolDragDrop give-among extras', () => {
     expect(onComplete).not.toHaveBeenCalled();
 
     dropApple(0);
-    expect(screen.getByText('3', { selector: 'span' })).toBeInTheDocument();
+    expect(screen.getByText('3', { selector: 'bdi' })).toBeInTheDocument();
     act(() => { vi.advanceTimersByTime(1000); });
     expect(onComplete).not.toHaveBeenCalled();
 
@@ -74,7 +74,7 @@ describe('PreschoolDragDrop give-among extras', () => {
     dropApple(0);
     dropApple(0);
     dropApple(0);
-    expect(screen.getByText('3', { selector: 'span' })).toBeInTheDocument();
+    expect(screen.getByText('3', { selector: 'bdi' })).toBeInTheDocument();
     act(() => { vi.advanceTimersByTime(1200); });
     expect(onComplete).not.toHaveBeenCalled();
     expect(screen.getByRole('button', { name: doneName })).toBeInTheDocument();

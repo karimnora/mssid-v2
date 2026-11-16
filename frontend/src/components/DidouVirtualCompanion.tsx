@@ -16,6 +16,7 @@ import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
 import { DidouPortrait } from './DidouPortrait';
+import { DidouPortrait as WorldDidouPortrait } from './world/DidouPortrait';
 import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 
 export interface DidouVirtualCompanionProps {
@@ -378,8 +379,18 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
     <div className="didou-home-heading"><span>✦ {isFrench ? 'Ton compagnon' : 'صديقك'}</span><span>❤️ {friendshipLevel}/10</span></div>
     <div className="didou-home-intro">
       <button type="button" className="didou-pat-button" onClick={handlePet} aria-label={isFrench ? 'Faire un câlin à Didou' : 'أربت على ديدو'}>
-        <DidouPortrait stage={stageInfo.stage} species={species} outfitId={activeOutfitId} size="lg" label={isFrench ? 'Didou' : 'ديدو'}
-          mood={isPettingAnimation ? 'celebrating' : currentMood} isEating={isEatingAnim} eatingFoodIcon={eatingFoodIcon} />
+        {species === 'fennec' && activeOutfitId === 'default' ? (
+          <motion.div className="relative"
+            animate={isPettingAnimation || isEatingAnim ? { y: [0, -10, 0], rotate: [0, -4, 4, 0] } : { y: 0, rotate: 0 }}
+            transition={{ duration: 0.6 }}>
+            <WorldDidouPortrait size={96} className="world-didou-blink" label={isFrench ? 'Didou' : 'ديدو'}
+              pose={isPettingAnimation || isEatingAnim || currentMood === 'celebrating' ? 'cheer' : 'talk'} />
+            {isEatingAnim && <span aria-hidden="true" className="absolute -top-1 -end-1 text-2xl">{eatingFoodIcon}</span>}
+          </motion.div>
+        ) : (
+          <DidouPortrait stage={stageInfo.stage} species={species} outfitId={activeOutfitId} size="lg" label={isFrench ? 'Didou' : 'ديدو'}
+            mood={isPettingAnimation ? 'celebrating' : currentMood} isEating={isEatingAnim} eatingFoodIcon={eatingFoodIcon} />
+        )}
       </button>
       <div className="min-w-0 space-y-2">
         <h2>{isFrench ? 'Didou grandit avec toi' : 'ديدو يكبر معك'}</h2>

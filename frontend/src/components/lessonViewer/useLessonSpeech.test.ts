@@ -46,7 +46,7 @@ describe('optional lesson reading', () => {
     const { result } = renderHook(() => useLessonSpeech({ ...lesson, grade: '3AP', subject }, '3AP'));
     expect(speakText).not.toHaveBeenCalled();
     await act(async () => result.current.speakSnippet('intro', 'Example'));
-    expect(speakText).toHaveBeenCalledWith('Example', lang, 0.9);
+    expect(speakText).toHaveBeenCalledWith('Example', lang, 0.9, 1, { preferredRecording: undefined });
   });
   it.each<PrimaryGrade>(['1AP', '2AP', '3AP', '4AP', '5AP'])('offers reading in %s', grade => {
     voiceFlag.enabled = true;
@@ -63,7 +63,7 @@ describe('optional lesson reading', () => {
     vi.mocked(speakText).mockClear();
     const { result, rerender } = renderHook(() => useLessonSpeech({ ...lesson, subject: 'french' }, '5AP'));
     await act(async () => result.current.speakSnippet('intro', 'Bonjour'));
-    expect(speakText).toHaveBeenCalledWith('Bonjour', 'fr-FR', 0.9);
+    expect(speakText).toHaveBeenCalledWith('Bonjour', 'fr-FR', 0.9, 1, { preferredRecording: undefined });
     voiceFlag.enabled = false;
     rerender();
     expect(result.current.canReadAloud).toBe(false);
