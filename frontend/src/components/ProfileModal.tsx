@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, Share2, BookOpen } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Trophy, Sparkles, Mail, Share2, BookOpen, Users } from 'lucide-react';
+import { displayAvatar } from '../utils/avatar';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Card, XPProgressBar } from './ui';
@@ -61,7 +62,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [refreshError, setRefreshError] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(userProfile.avatar || '🎓');
+  const [selectedAvatar, setSelectedAvatar] = useState(displayAvatar(userProfile.avatar));
 
   // SEC-08: soft email verification widget state — the card itself only renders while
   // authUser.emailVerified is false, and disappears reactively the moment verifyEmailCode succeeds
@@ -133,7 +134,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   }, [authUser?.nom, userProfile.name]);
 
   useEffect(() => {
-    setSelectedAvatar(userProfile.avatar || '🎓');
+    setSelectedAvatar(displayAvatar(userProfile.avatar));
   }, [userProfile.avatar]);
 
   if (!isOpen) return null;
@@ -237,9 +238,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 onClick={handleRefreshClick}
                 disabled={isRefreshing}
                 title={t('refreshFromDbTitle')}
+                aria-label={t('refreshFromDbTitle')}
                 className="kids-close cursor-pointer disabled:opacity-50"
               >
-                <Database className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
               </button>
             )}
             <button
@@ -268,6 +270,32 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               className="kids-input"
             />
           </Card>
+
+          {/* Family shortcuts first: they were lost under the badges gallery, at the very bottom. */}
+          {(onOpenParentNotebook || onSwitchChild) && (
+            <div className="grid grid-cols-2 gap-3">
+              {onOpenParentNotebook && (
+                <button
+                  type="button"
+                  onClick={() => setShowNotebookParentGate(true)}
+                  className={`${onSwitchChild ? '' : 'col-span-2 '}min-h-[64px] rounded-2xl bg-[#ECFDF5] border-2 border-[var(--kids-grass-2)] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2 px-3 shadow-[0_3px_0_#A7F3D0]`}
+                >
+                  <BookOpen className="w-5 h-5 text-[var(--kids-grass-2)] shrink-0" aria-hidden />
+                  {tMeta('parentNotebookOpen')}
+                </button>
+              )}
+              {onSwitchChild && (
+                <button
+                  type="button"
+                  onClick={() => { onSwitchChild(); onClose(); }}
+                  className={`${onOpenParentNotebook ? '' : 'col-span-2 '}min-h-[64px] rounded-2xl bg-[#FFF8E7] border-2 border-[#F5D98A] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2 px-3 shadow-[0_3px_0_#F5D98A]`}
+                >
+                  <Users className="w-5 h-5 shrink-0" aria-hidden />
+                  {tMeta('childPickerSwitch')}
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Email Verification Reminder Card — discreet, non-blocking (SEC-08) */}
           {authUser && !authUser.emailVerified && (
@@ -434,25 +462,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           {!canUseWebCheckout() && authUser && <button type="button" onClick={()=>{onClose();window.dispatchEvent(new Event(OPEN_SUBSCRIPTION_STATUS));}} className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer">
             {tSubscription('mySubscription')}
           </button>}
-          {onOpenParentNotebook && (
-            <button
-              type="button"
-              onClick={() => setShowNotebookParentGate(true)}
-              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
-            >
-              <BookOpen className="w-4 h-4 text-[var(--kids-grass-2)]" />
-              {tMeta('parentNotebookOpen')}
-            </button>
-          )}
-          {onSwitchChild && (
-            <button
-              type="button"
-              onClick={() => { onSwitchChild(); onClose(); }}
-              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer"
-            >
-              {tMeta('childPickerSwitch')}
-            </button>
-          )}
           {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
             <button
               type="button"

@@ -169,7 +169,8 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose, 
     return <p role="status" className="rounded-xl bg-emerald-50 text-slate-900 p-3">{say('Préparation des questions…', 'جارٍ تحضير الأسئلة…')}</p>;
   }
 
-  const tileClass = 'min-w-[60px] min-h-[60px] rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-start font-bold text-base';
+  // Explicit dark text: the panel also opens over the dark « world » theme, where inherited white text was unreadable on mint.
+  const tileClass = 'min-w-[60px] min-h-[60px] rounded-xl border border-emerald-300 bg-emerald-50 text-slate-900 px-4 py-3 text-start font-bold text-base';
   const earlyGrade = ['1AP', '2AP', '3AP'].includes(grade);
   const voice = (text: string, subjectTile: boolean) => void speakText(text, subjectTile && fr ? 'fr-FR' : 'ar-SA').catch(() => {});
   const tile = (id: string, label: string, select: () => void, subjectTile = false) => (

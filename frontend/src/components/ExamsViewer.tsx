@@ -97,6 +97,15 @@ const ReviseLessonButton: React.FC<{
   );
 };
 
+/** Arabic number agreement: 1 and 2 use the singular/dual, 3–10 the plural, 11+ (and decimals) the singular. */
+const countAr = (n: number, forms: { one: string; two: string; few: string; many: string }) => {
+  if (n === 1) return forms.one;
+  if (n === 2) return forms.two;
+  return `${n} ${Number.isInteger(n) && n >= 3 && n <= 10 ? forms.few : forms.many}`;
+};
+const POINTS_AR = { one: 'نقطة واحدة', two: 'نقطتان', few: 'نقاط', many: 'نقطة' };
+const EXERCISES_AR = { one: 'تمرين واحد مستقل', two: 'تمرينان مستقلان', few: 'تمارين مستقلة', many: 'تمريناً مستقلاً' };
+
 export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   grade,
   tashkeelEnabled = true,
@@ -476,7 +485,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)] text-xs font-bold text-[var(--app-text-muted)] space-y-1 text-right shrink-0">
               <div>المادة: <span className="text-[var(--app-text)] font-extrabold">{subjectInfo?.nameAr}</span></div>
               <div>المدة المحددة: <span className="text-[var(--app-text)] font-extrabold" dir="ltr">{selectedExam.durationMinutes}</span> دقيقة</div>
-              <div>المجموع الكلي: <span className="text-[var(--brand-amber-dark)] font-extrabold" dir="ltr">{selectedExam.totalPoints}</span> نقاط</div>
+              <div>المجموع الكلي: <span className="text-[var(--brand-amber-dark)] font-extrabold">{countAr(selectedExam.totalPoints, POINTS_AR)}</span></div>
             </div>
           </div>
 
@@ -484,7 +493,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           <div className="space-y-5">
             <div className="flex items-center justify-between bg-[var(--app-card-subtle)] px-4 py-2.5 rounded-xl border border-[var(--app-card-border)]">
               <h2 className="font-black text-xs sm:text-sm text-[var(--app-text)]">
-                الجزء الأول: {selectedExam.exercises.length} تمارين مستقلة ({exercisesPoints} نقاط)
+                الجزء الأول: {countAr(selectedExam.exercises.length, EXERCISES_AR)} ({countAr(exercisesPoints, POINTS_AR)})
               </h2>
               <span className="text-[11px] text-[var(--app-text-muted)] font-bold">سلالم التنقيط الرسمية</span>
             </div>
@@ -624,7 +633,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           <div className="space-y-4 pt-2">
             <div className="flex items-center justify-between bg-amber-500/15 px-4 py-2.5 rounded-xl border border-amber-400/30">
               <h2 className="font-black text-xs sm:text-sm exam-amber-banner text-amber-950">
-                الجزء الثاني: الوضعية الإدماجية المركبة ({selectedExam.problemExercise.points} نقاط)
+                الجزء الثاني: الوضعية الإدماجية المركبة ({countAr(selectedExam.problemExercise.points, POINTS_AR)})
               </h2>
               <span className="text-[11px] exam-amber-banner-sub text-amber-900 font-bold">الإنتاج والحل المركب</span>
             </div>

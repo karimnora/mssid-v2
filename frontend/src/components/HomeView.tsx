@@ -455,11 +455,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <CardBlobBackdrop />
             <div className="relative z-10 min-w-0">
               <div className="flex items-center gap-1.5">
-                <h3 className="text-[15px] font-black">استوديو لوحات الشرف والشهادات الرسمية 📜</h3>
+                <h3 className="text-[15px] font-black">{t('certificatesStudioTitle')}</h3>
                 <span className="text-[10px] bg-amber-950 text-amber-200 px-2 py-0.5 rounded-full font-black">A4</span>
               </div>
               <p className="text-[11.5px] text-amber-900 font-bold mt-0.5">
-                توليد وطباعة شهادات التقدير، الامتياز وفارس الحساب بأسماء تلاميذك
+                {t('certificatesStudioDesc')}
               </p>
             </div>
             <span className="icon3d-float relative z-10 w-[64px] h-[64px] shrink-0 grid place-items-center"><Icon3d name="trophy" className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>

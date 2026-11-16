@@ -16,6 +16,7 @@ import {
 import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
 import { clearChildSelection, profileStorageKey } from '../utils/childProfileStorage';
 import { recordLessonFailure, recordLessonSuccess, recordPracticeResult, type PracticeResult } from '../utils/competenceProgress';
+import { displayAvatar } from '../utils/avatar';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -62,7 +63,7 @@ function salvageUserProfile(raw: unknown, fallbackGrade: PrimaryGrade): UserProf
     ...base,
     name: typeof o.name === 'string' && o.name.trim() ? o.name : base.name,
     grade,
-    avatar: typeof o.avatar === 'string' && o.avatar ? o.avatar : base.avatar,
+    avatar: typeof o.avatar === 'string' && o.avatar ? displayAvatar(o.avatar) : base.avatar,
     xp,
     goldCoins: o.goldCoins === undefined ? base.goldCoins : Math.max(0, finiteNumber(o.goldCoins, 0)),
     level: Math.max(1, finiteNumber(o.level, Math.floor(xp / 100) + 1)),
@@ -280,7 +281,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
           ...prev,
           name: authUser.nom || prev.name,
           grade: isValidGrade(authUser.grade) ? authUser.grade : prev.grade,
-          avatar: authUser.avatar || prev.avatar,
+          avatar: authUser.avatar ? displayAvatar(authUser.avatar) : prev.avatar,
           xp,
           level,
           streakDays: authUser.streakDays ?? prev.streakDays,

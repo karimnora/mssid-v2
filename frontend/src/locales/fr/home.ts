@@ -54,4 +54,6 @@ export const home: typeof homeAr = {
   labWilayasDesc: 'Explore les 58 wilayas • monuments • cartes',
   labMathTitle: 'Mathématiques et calcul',
   labMathDesc: 'Opérations • géométrie • nombres',
+  certificatesStudioTitle: 'Studio des tableaux d’honneur et diplômes 📜',
+  certificatesStudioDesc: 'Créer et imprimer des diplômes d’encouragement, d’excellence et de « champion du calcul » au nom de vos élèves',
 };

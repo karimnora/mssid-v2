@@ -52,4 +52,6 @@ export const home = {
   labWilayasDesc: 'استكشف 58 ولاية • معالم • خرائط',
   labMathTitle: 'الرياضيات والحساب',
   labMathDesc: 'عمليات • هندسة • أعداد',
+  certificatesStudioTitle: 'استوديو لوحات الشرف والشهادات الرسمية 📜',
+  certificatesStudioDesc: 'توليد وطباعة شهادات التقدير، الامتياز وفارس الحساب بأسماء تلاميذك',
 };
