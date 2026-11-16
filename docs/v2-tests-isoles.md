@@ -35,9 +35,41 @@ Les tests automatisés frontend utilisent des API simulées ; un essai réel ave
 
 ## Pile complète locale et CI
 
+### Scripts Windows (CX-01)
+
+- `v2-demarrer.cmd` : démarre uniquement les images V2 déjà présentes, puis attend leur démarrage. Aucun build ni téléchargement automatique. Le site est accessible sur http://localhost:3002.
+- `v2-arreter.cmd` : arrête uniquement le projet `mssid-v2-stack`, sans `-v`. Les comptes fictifs et le volume PostgreSQL sont conservés.
+- Les scripts utilisent leur propre dossier : ils peuvent être lancés par double-clic ou depuis un autre répertoire.
+
+**État vérifié le 16 novembre 2026 :** les deux images locales sont construites et la pile fonctionne sur http://localhost:3002. Karim a explicitement autorisé ce build pour CX-01, en exception à la règle « pas de build avant CX-23 ». Les migrations V100 à V111 sont réussies. L'inscription, l'activation Premium, les profils enfants, la progression et le carnet ont été contrôlés sur la vraie pile. L'arrêt/redémarrage conserve les comptes et leurs données. Voir [le compte rendu CX-01](v2-cx-01-verification.md). Le commit local a ensuite été demandé par Karim ; la relecture croisée de Claude n'est pas consignée dans ce compte rendu.
+
+La pile utilise `backend/Dockerfile.v2`, qui compile sans lancer la suite backend (`-DskipTests`). Le Dockerfile de production est inchangé. Après autorisation du build local, la préparation des images se fait séparément avec `docker compose --env-file .env.v2.local -f compose.v2.yml build backend web`, puis le double-clic sur `v2-demarrer.cmd` démarre la pile.
+
+La configuration Nginx locale est montée en lecture seule depuis `frontend/nginx.v2.conf`. Vercel Analytics est inactif dans cette pile (`/_vercel/` répond 204) ; un script ou un style absent répond 404 au lieu de recevoir la page HTML. Les deux comptes de test créés sont `admin-v2@example.test` et `premium-v2@example.test`. Leurs mots de passe aléatoires sont dans `tmp/cx01-accounts.json`, ignoré par Git ; les scripts démarrer/arrêter ne les modifient pas.
+
+### Recréer les comptes fictifs, une fois la pile opérationnelle
+
+1. Sur http://localhost:3002, inscrire `admin-v2@example.test` et `premium-v2@example.test`, avec des mots de passe réservés aux tests. Les comptes ne sont pas précréés par les scripts.
+2. Depuis la racine du worktree V2, promouvoir uniquement le compte fictif administrateur dans la base locale :
+
+   ```powershell
+   docker compose --env-file .env.v2.local -f compose.v2.yml exec -T postgres psql -U postgres -d mssid_v2 -v ON_ERROR_STOP=1 -c "BEGIN; INSERT INTO roles(name) VALUES ('ROLE_ADMIN') ON CONFLICT(name) DO NOTHING; UPDATE users SET role_id = (SELECT id FROM roles WHERE name = 'ROLE_ADMIN') WHERE email = 'admin-v2@example.test'; COMMIT;"
+   ```
+
+   Vérifier que le résultat est `UPDATE 1`, puis reconnecter le compte administrateur.
+3. Dans l'administration locale, générer un code d'activation de test. Se connecter avec `premium-v2@example.test`, saisir ce code et vérifier le statut Premium. Cette étape vérifie le vrai parcours d'activation, sans paiement ni modification manuelle de l'abonnement.
+4. Créer deux profils enfants fictifs, enregistrer une progression, changer de profil puis revenir au premier. Contrôler la progression et le carnet parent après reconnexion et après arrêt/redémarrage de la pile.
+5. Vérifier les migrations avec la commande ci-dessous : les versions `100` à `108` doivent toutes apparaître avec `success = t`.
+
+   ```powershell
+   docker compose --env-file .env.v2.local -f compose.v2.yml exec -T postgres psql -U postgres -d mssid_v2 -v ON_ERROR_STOP=1 -c "SELECT version, description, success FROM flyway_schema_history WHERE version IN ('100','101','102','103','104','105','106','107','108') ORDER BY installed_rank;"
+   ```
+
+Ces étapes permettent de reproduire les essais sur une autre base V2. Les résultats réellement exécutés sur ce poste sont dans le compte rendu CX-01 ; le volume d'essais V2 préexistant a été conservé, sans remise à zéro. Un démarrage à vide a aussi été vérifié dans la base distincte `mssid_v2_cx01_fresh` : 28 migrations réussies jusqu'à V111, serveur sain, puis arrêt du conteneur de contrôle sans effacer les bases.
+
 `compose.v2.yml` lance un site Nginx, le backend Spring et PostgreSQL avec leur propre volume. Le site local http://localhost:3002 passe ses requêtes /api au backend de la pile : connexion et cookies utilisent ainsi la même origine. Les ports sont limités au PC local. Cette configuration HTTP ne doit pas être exposée directement sur Internet.
 
-Copier `.env.v2.example` vers `.env.v2.local` puis remplacer les deux valeurs par des secrets aléatoires. Ce fichier est ignoré par Git. Lancer depuis la racine : `docker compose --env-file .env.v2.local -f compose.v2.yml up -d --build`. Arrêter le serveur de développement 3002 et tout ancien PostgreSQL V2 5433 avant de lancer la pile. Ne pas lancer les deux fichiers Compose en même temps.
+Copier `.env.v2.example` vers `.env.v2.local` puis remplacer les deux valeurs par des secrets aléatoires. Ce fichier est ignoré par Git. Préparer les images par un build uniquement quand celui-ci est autorisé, puis utiliser `v2-demarrer.cmd`. Arrêter le serveur de développement 3002 et tout ancien PostgreSQL V2 5433 avant de lancer la pile. Ne pas lancer les deux fichiers Compose en même temps.
 
 Arrêt sans perte des comptes fictifs : `docker compose --env-file .env.v2.local -f compose.v2.yml down`. Ne pas ajouter `-v` sauf si l’on veut explicitement effacer les données de test.
 
