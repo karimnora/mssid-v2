@@ -243,3 +243,7 @@ Ces leçons existent aussi dans la V1 en production. Deux possibilités :
 2. Corriger aussi la V1 : demande un changement sur `main`, donc un déploiement en production.
 
 Avec l'accord de Karim, Claude applique lui-même ces corrections de contenu (questions, corrigés) sur `v2`, puis lance le test ciblé des examens et leçons de maths 5AP.
+
+## Correction après la relecture de Codex (16 novembre 2026)
+
+**G6 — Choix « carré / rectangle / losange » contradictoire avec la règle inclusive.** Signalé par Codex : dans `math-5ap-polygons-ex2`, la figure décrite est un carré, mais « مستطيل » et « معين » étaient déclarés faux, alors que la leçon enseigne (G1) que le carré est un rectangle particulier et un losange particulier. Un enfant qui applique la règle était pénalisé. **Corrigé** : la question demande « ما أدقّ اسم له؟ », les choix faux deviennent « مستطيل ليس مربعاً » et « معين ليس مربعاً », et la correction explique que le carré est aussi un rectangle et un losange. Recherche du même piège dans toutes les données : un seul autre cas, en 4AP (`math-4ap-geometry-lines-polygons`, « المربع » juste / « المعين » faux), corrigé de la même façon. Les deux corrections sont aussi sur la branche de report `fix/relecture-5ap`.

@@ -121,7 +121,7 @@ Version proposée : **`privacy-2026-11-v2`**, citée par la case de consentement
 
 Nous ne collectons ni le genre, ni la date de naissance, ni la photo de l'enfant. Aucun texte écrit par l'enfant n'est envoyé à un service d'intelligence artificielle.
 
-*Phrase Android, à la place des lignes « Paiement par virement » et « Code d'activation » :* « إذا اقتنيتم اشتراكاً من موقعنا، نحتفظ بالمعلومات اللازمة لتفعيله. » / « Si vous souscrivez un abonnement sur notre site, nous conservons les informations nécessaires à son activation. »
+*Phrase Android, à la place des lignes « Paiement par virement » et « Code d'activation » :* « نحتفظ بالمعلومات اللازمة لتفعيل حساب العائلة المميّزة وحفظ حالته. » / « Nous conservons les informations nécessaires à l'activation du compte Famille Premium et au suivi de son état. » *(Corrigé le 16 novembre 2026 : l'ancienne phrase parlait d'achat sur le site, ce qui revient à renvoyer vers un achat externe depuis l'application Android ; voir `v2-relecture-cx-04-cx-24.md`, R2.)*
 
 ### 3.3 Prestataires et transfert hors d'Algérie (réécrit)
 
