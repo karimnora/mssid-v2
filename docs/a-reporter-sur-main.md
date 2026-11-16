@@ -9,8 +9,29 @@ Liste tenue par Claude et Codex pendant le développement de la V2. On y note **
 3. **Une branche par lot, créée depuis `main`** (jamais depuis `v2`), dans une copie de travail séparée (`git worktree add -b fix/<sujet> ../mssid-V1-fix-<sujet> main`). Ne jamais copier un fichier entier de `v2` vers `main` : les fichiers ont divergé, on reporte le correctif seul.
 4. **Rien n'est commité, poussé ni fusionné sans Karim.** Un push sur `main` met la production à jour (Render et Vercel).
 5. Quand une ligne est reportée : passer l'état à « Prêt », noter la branche ; Karim décide du commit et du push.
+6. **Chaque commit destiné à `main` reçoit une note de risque de 1 à 5** (demande de Karim, 16 novembre 2026), inscrite dans le tableau « Commits prêts » ci-dessous avec sa justification. La note est revue après les tests : elle peut baisser si les tests ciblés passent.
 
 États : **À faire** · **Prêt** (branche prête, en attente de Karim) · **En prod** (commit sur `main`) · **Abandonné** (avec la raison).
+
+## Échelle de risque
+
+| Note | Signification | Exemples |
+|---|---|---|
+| **1** | Presque nul : aucune logique touchée, valeurs vérifiées identiques, aucun test concerné | Caractère d'espace dans des nombres, faute de frappe dans un texte |
+| **2** | Faible : textes ou petites retouches d'affichage, tests ajustés, peu de lignes | Libellé, traduction, taille d'un bouton |
+| **3** | Modéré : gros volume de données ou comportement d'exercice modifié, ou conflits réglés à la main | Report d'une relecture de leçons, QCM au lieu de réponse à trou |
+| **4** | Élevé : logique applicative partagée (progression, validation, navigation) | Règle de validation d'une leçon, écran d'accueil |
+| **5** | Très élevé : base de données, paiement, connexion, droits d'accès | Migration, abonnement, authentification — **ne passent pas par cette liste** |
+
+Avant un push, Karim choisit selon la note : 1–2 peuvent partir ensemble ; 3 après les tests ciblés ; 4 après les tests et un essai sur la V2 locale ; 5 jamais par ce circuit.
+
+## Commits prêts
+
+| Commit | Branche | Contenu | Risque | Pourquoi | Tests | Poussé |
+|---|---|---|---|---|---|---|
+| `28c14dd6` | `fix/missions-grands-nombres` | 241 nombres des missions 3AP–5AP avec l'espace insécable fine | **1** | Seul le caractère d'espace change ; valeurs vérifiées identiques par script ; aucun test ne compare ces textes | Non lancés | Non |
+| `675531b5` | `fix/textes-faible-risque` | Prénom ou surnom à l'inscription, aide pour installer la voix, en-tête de leçon traduit | **2** | 7 fichiers, 10 lignes ; 3 appels de traduction dans `LessonViewer.tsx` (clés déjà existantes) ; 4 assertions de test adaptées à l'exemple « يونس » | Non lancés | Non |
+| `1cac4f47` | `fix/relecture-5ap` | Relecture 5AP maths et arabe : erreurs corrigées, quiz à 5 questions, réponses à trou d'arabe en QCM | **3** | ~1 500 lignes de données ; 8 conflits réglés à la main ; des exercices changent de type (trou → QCM) ; données chargées et vérifiées par script (31 leçons, une bonne réponse par question), mais tests non lancés. Passe à **2** si `courseCorrections.test.ts` et les tests des cours passent | Non lancés | Non |
 
 ## Liste
 
