@@ -302,7 +302,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['math-4ap-numbers-under-100k', 'math-4ap-operations-addition-multiplication', 'math-4ap-geometry-lines-polygons'],
     exercises: [
-      { titleAr: 'التمرين الأول (1,5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-numbers-under-100k', contentAr: 'ما رقم الآلاف في 76 431؟ احصر 32 500 بين ألفين متتاليتين.', solutionAr: 'رقم الآلاف = 6. 32 000 < 32 500 < 33 000.', operationsAr: '32 000\n32 500\n33 000' },
+      { titleAr: 'التمرين الأول (1,5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-numbers-under-100k', contentAr: 'ما رقم الآلاف في 76 431؟ احصر 32 500 بين ألفين متتاليين.', solutionAr: 'رقم الآلاف = 6. 32 000 < 32 500 < 33 000.', operationsAr: '32 000\n32 500\n33 000' },
       { titleAr: 'التمرين الثاني (1,5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'احسب: 4 999 + 1 001.', solutionAr: '6 000.', operationsAr: ' 4999\n+1001\n-----\n 6000' },
       { titleAr: 'التمرين الثالث (1,5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'احسب: 250 × 8.', solutionAr: '2 000.', operationsAr: ' 250\n×  8\n-----\n 2000' },
       { titleAr: 'التمرين الرابع (1,5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'كم ضلعاً للمستطيل؟ وهل الأضلاع المتقابلة متساوية؟', solutionAr: '4 أضلاع. نعم، كل ضلعين متقابلين متساويان.' },
