@@ -9,26 +9,29 @@ import { Ar, Frame, Num, BLUE, GOLD, GREEN, INK, MUTED, ORANGE } from './svgKit'
 // 1. Large numbers: the periods are wagons of a train.
 function LargeNumbers() {
   const wagons = [
-    { label: 'المليارات', digits: ['', '', ''] },
-    { label: 'الملايين', digits: ['', '', '2'] },
-    { label: 'الآلاف', digits: ['3', '4', '0'] },
-    { label: 'الوحدات', digits: ['5', '0', '6'] },
+    { label: 'فترة المليارات', digits: ['', '', ''] },
+    { label: 'فترة الملايين', digits: ['', '', '2'] },
+    { label: 'فترة الآلاف', digits: ['3', '4', '0'] },
+    { label: 'فترة الوحدات', digits: ['5', '0', '6'] },
   ];
+  // Inside every wagon, left to right: hundreds, tens, units (م ع و, as in the place-value table).
+  const places = ['م', 'ع', 'و'];
   const colors = ['#94a3b8', '#7c3aed', BLUE, GREEN];
   return (
     <Frame label="قطار الفترات: العدد 2340506 مقسّم إلى فترات">
-      <Ar x={190} y={28} size={15}>كل فترة عربة فيها 3 خانات: مئات، عشرات، وحدات</Ar>
+      <Ar x={190} y={28} size={14}>كل فترة عربة فيها 3 خانات: مئات (م)، عشرات (ع)، وحدات (و)</Ar>
       <line x1="14" y1="150" x2="366" y2="150" stroke="#cbd5e1" strokeWidth="4" />
       {wagons.map((w, i) => {
         const x = 14 + i * 80;
         return (
           <g key={w.label}>
-            <Ar x={x + 36} y={62} size={12} fill={colors[i]}>{w.label}</Ar>
+            <Ar x={x + 36} y={62} size={11} fill={colors[i]}>{w.label}</Ar>
             <rect x={x} y={70} width={72} height={58} rx="8" fill="#fff" stroke={colors[i]} strokeWidth="3" />
             {w.digits.map((d, j) => (
               <g key={j}>
-                <rect x={x + 5 + j * 21} y={84} width={20} height={30} rx="4" fill={d ? '#f8fafc' : '#f1f5f9'} stroke="#cbd5e1" />
-                <Num x={x + 15 + j * 21} y={106} size={18} fill={d ? colors[i] : '#cbd5e1'}>{d || '·'}</Num>
+                <rect x={x + 5 + j * 21} y={78} width={20} height={30} rx="4" fill={d ? '#f8fafc' : '#f1f5f9'} stroke="#cbd5e1" />
+                <Num x={x + 15 + j * 21} y={100} size={18} fill={d ? colors[i] : '#cbd5e1'}>{d || '·'}</Num>
+                <Ar x={x + 15 + j * 21} y={122} size={10} fill={MUTED}>{places[j]}</Ar>
               </g>
             ))}
             <circle cx={x + 16} cy={140} r="9" fill="#334155" />
