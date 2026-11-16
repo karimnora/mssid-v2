@@ -66,12 +66,15 @@ describe('confirmed pedagogical corrections', () => {
     expect(exercise.detailedCorrectionAr).not.toContain('يُكْسَرُ مَا قَبْلَهُ');
   });
 
-  it('accepts the verb alone as requested in the jazm evaluation', () => {
+  it('offers the jussive form as a choice in the jazm evaluation (no exact typing of vowels)', () => {
     const lesson = getLesson('arabic-5ap-mutal-verbs-jazm-amr');
     const exercise = lesson.evaluationExercises!.find(ex => ex.id === 'arabic-5ap-mutal-irab-eval3')!;
+    expect(exercise.type).toBe('qcm');
+    const correct = exercise.options!.find(option => option.isCorrect)!;
+    expect(correct.textAr).toBe('لَمْ يَجْرِ');
     const onComplete = vi.fn();
     const { result } = renderHook(() => useLessonPractice(lesson, onComplete));
-    act(() => result.current.handlePracticeAnswerChange(exercise.id, 'يجرِ'));
+    act(() => result.current.handlePracticeAnswerChange(exercise.id, correct.id));
     act(() => result.current.checkPracticeExercise(exercise));
     expect(result.current.practiceCorrect[exercise.id]).toBe(true);
     expect(onComplete).toHaveBeenCalledWith(lesson.id, exercise.xpReward);
