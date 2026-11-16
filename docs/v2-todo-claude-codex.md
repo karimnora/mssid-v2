@@ -70,6 +70,7 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
 - [x] **CL-10 — Le sac de Didou, le contenu** : un objet par monde, liste, textes et consignes d'image (style, cadrage, fond, ce qu'il ne faut pas montrer). Codex génère les images en CX-12. Fait : `docs/v2-sac-de-didou.md`.
 - [x] **CL-11 — Carte de Didou 5AP** : quelle leçon va dans quelle station des 8 mondes. Fait : `docs/v2-carte-5ap.md` (le plan existant est juste, aucun changement de code).
 - [ ] **CL-12 — Voix à enregistrer** : liste des phrases fixes de Didou et des consignes de 1AP et 2AP, par ordre d'utilité.
+- [x] **CL-19 — Habillage « fait main » des cours, défis et exercices** (demande de Karim, 16 novembre 2026) : fond zellige, bande berbère, icônes au même trait, sans toucher aux écrans immersifs. Fait : `docs/v2-spec-habillage-cours-defis-exercices.md` et les deux motifs dans `docs/v2-habillage/`. Codex l'applique en CX-25.
 
 ### Codex
 
@@ -84,6 +85,8 @@ Ce fichier est la liste unique. Les autres `docs/v2-todo-*.md` restent la réfé
   3. **Stations 5AP : déjà reliées** (`PLAN_5AP`, vérifié en CL-11, `docs/v2-carte-5ap.md`). Il reste à vérifier sur un écran de téléphone que les 24 stations s'affichent sans chevaucher les décors ni les stations de jeux, en arabe et en français. Mondes 1 et 2 gratuits, mondes 3 à 8 avec le cadenas doré (`journeyAllWorlds`), sans prix.
   4. **Affichage statique en mode « données légères »** (fonction de CX-14) : une image fixe et légère de la planète, sans rotation animée, sans ambiance sonore ni décor animé. Les 8 mondes restent atteignables par des boutons de 60 px au moins (les flèches de rotation changent le monde affiché, sans animation). Décor de la planète d'environ 120 Ko au plus dans ce mode.
   *Critères : depuis le village, une station 5AP s'ouvre en trois taps au plus ; même parcours en français depuis l'accueil ; en mode léger, aucune animation ni son ne se lance et la planète reste utilisable ; captures en 360 × 640 et 390 × 844, en arabe et en français ; tests ciblés des fichiers modifiés.*
+
+- [ ] **CX-25 — Appliquer l'habillage « fait main »** (`docs/v2-spec-habillage-cours-defis-exercices.md`) aux leçons en affichage classique, aux exercices et aux défis, derrière le drapeau `handmadeSkin`. Ne rien modifier dans `components/journey/`, `components/world/` ni dans la leçon ouverte dans un monde. *Critère : les six points de la section 6 de la spécification ; Claude relit les captures avant le commit.*
 
 ## Phase 3 — Offre professionnelle et conformité (5 janvier au 7 février)
 
