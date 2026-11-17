@@ -623,49 +623,12 @@
  },
  {
   "file": "frontend/src/data/courses/5AP/arabic.ts",
-  "exerciseId": "arabic-5ap-kaninna-ex6",
-  "problemAr": "فِي الجُمْلَةِ «كَانَ التَّلْمِيذَ مُجْتَهِداً» خَطَأٌ إِعْرَابِيٌّ فِي حَرَكَةِ «التَّلْمِيذَ». مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
-  "fillBlankAnswerAr": "التلميذُ",
-  "fillBlankAcceptedAr": [
-   "التِّلْمِيذُ",
-   "التّلميذُ"
-  ]
- },
- {
-  "file": "frontend/src/data/courses/5AP/arabic.ts",
   "exerciseId": "arabic-5ap-kaninna-eval3",
   "problemAr": "فِي «بَاتَ الحَارِسُ سَاهِراً»، مَا اسْمُ بَاتَ؟ (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
   "fillBlankAnswerAr": "الحارس",
   "fillBlankAcceptedAr": [
    "الحارسُ",
    "الحَارِسُ"
-  ]
- },
- {
-  "file": "frontend/src/data/courses/5AP/arabic.ts",
-  "exerciseId": "arabic-5ap-passive-ex2",
-  "problemAr": "ابْنِ الفِعْلَ «فَهِمَ» لِلْمَجْهُولِ. (اُكْتُبِ الفِعْلَ فَقَطْ)",
-  "fillBlankAnswerAr": "فُهِمَ",
-  "fillBlankAcceptedAr": [
-   "فُهِم"
-  ]
- },
- {
-  "file": "frontend/src/data/courses/5AP/arabic.ts",
-  "exerciseId": "arabic-5ap-passive-ex6",
-  "problemAr": "فِي الجُمْلَةِ «تُكْرَمُ الفَائِزَاتِ» خَطَأٌ فِي حَرَكَةِ نَائِبِ الفَاعِلِ. مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
-  "fillBlankAnswerAr": "الفائزاتُ",
-  "fillBlankAcceptedAr": [
-   "الفَائِزَاتُ"
-  ]
- },
- {
-  "file": "frontend/src/data/courses/5AP/arabic.ts",
-  "exerciseId": "arabic-5ap-passive-eval3",
-  "problemAr": "ابْنِ الفِعْلَ «سَمِعَ» لِلْمَجْهُولِ. (اُكْتُبِ الفِعْلَ فَقَطْ)",
-  "fillBlankAnswerAr": "سُمِعَ",
-  "fillBlankAcceptedAr": [
-   "سُمِع"
   ]
  },
  {
