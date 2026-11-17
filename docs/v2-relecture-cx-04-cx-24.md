@@ -41,6 +41,24 @@
 | R1 | Le garde-fou `FORBIDDEN` ne contient presque que des mots français ou latins (`prix`, `achat`, `DA`…). En arabe, seul « دج » est cherché : « سعر », « ثمن », « شراء », « اشترِ », « اقتنى », « دفع » passeraient. | Ajouter `/سعر|ثمن|شراء|اشتر|اقتن|الدفع|دفعة/` (après suppression des voyelles, comme c'est déjà fait). |
 | R2 | La phrase Android de la politique de confidentialité, « إذا اقتنيتم اشتراكاً من موقعنا، نحتفظ بالمعلومات اللازمة لتفعيله », vient de mon document CL-14 (section 3.2). Elle parle d'achat sur le site : c'est un renvoi vers un achat externe, que Google Play interdit dans l'application. R1 la ferait d'ailleurs échouer. | Remplacer par : « نحتفظ بالمعلومات اللازمة لتفعيل حساب العائلة المميّزة وحفظ حالته. » Je corrige aussi CL-14 de mon côté. |
 
+## CX-05 — Village ouvert aux comptes gratuits (relu le 17 novembre)
+
+**Verdict : bon pour commit.**
+
+### Ce qui est bon
+
+- Aucun droit d'accès changé : la condition d'ouverture de l'accueil (`journeyAvailable && designMode === 'world'`) ne dépendait déjà plus du rôle. Le changement se limite au renommage `premiumPlanetHome` → `worldHome`, à un commentaire qui dit enfin la vérité et au retrait de l'import inutilisé `isPremiumRole`. Il n'est plus utilisé nulle part dans `App.tsx`.
+- Le cadenas des jeux Premium remplace le rond violet dessiné à la main par l'image du cadenas déjà utilisée sur la carte, au même centre. Les cadenas d'avancement gardent leur couleur et seul l'état `premium` reçoit la teinte dorée.
+- Les tests rendent les vrais composants : les mondes 1 et 2 et le premier jeu sont ouverts, une station Premium n'ouvre pas la leçon, un jeu verrouillé ne donne aucun niveau, et la page ne contient aucun prix.
+
+### Remarques non bloquantes
+
+| # | Constat | Suite |
+|---|---|---|
+| C1 | `App.tsx` contient à la fois CX-05 (renommage) et CX-04 (import et rendu de `<ParentalConsentPrompt />`). | Au commit, ne prendre que les blocs du renommage pour CX-05 ; les deux lignes du consentement partent avec CX-04. |
+| C2 | Le cadenas doré d'un jeu est posé directement sur la tuile colorée du jeu, sans le rond foncé qui l'entourait. Sur une tuile jaune ou orange, il peut devenir peu visible. | Contrôle visuel après la prochaine reconstruction de l'image web, avec l'accord de Karim. |
+| C3 | Le cadenas Premium et le cadenas d'avancement ont la même forme : seule la couleur les distingue. Le message affiché au toucher les différencie déjà, ce qui suffit pour un enfant. | Rien à faire. |
+
 ## Ordre proposé
 
 1. Codex corrige B1, R1 et R2, et relance les tests ciblés (`NativeNoPaymentWording`, `AuthModal.consent`, `ParentalConsentPrompt`).
