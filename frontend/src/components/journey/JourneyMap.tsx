@@ -53,7 +53,7 @@ export interface JourneyGameStation {
   worldIndex: number;
   emoji: string;
   title: string;
-  /** False: Premium pack on a free account (purple, padlock). */
+  /** False: Premium pack on a free account (golden padlock). */
   open: boolean;
   free: boolean;
   stars: number;
@@ -495,11 +495,7 @@ export function JourneyMap(props: JourneyMapProps) {
                       </text>
                     </g>
                   ) : (
-                    <g transform={`translate(${x + 50} ${y + 46})`}>
-                      <circle r="28" fill="#6b21a8" stroke="#fff" strokeWidth="5" />
-                      <rect x="-12" y="-3" width="24" height="18" rx="4" fill="#fff" />
-                      <path d="M-7 -3 V-9 A7 7 0 0 1 7 -9 V-3" stroke="#fff" strokeWidth="5" fill="none" />
-                    </g>
+                    <image data-game-premium-lock className="j-premium-lock" href={OBJECT_ART.lock} x={x + 28} y={y + 16} width="44" height="60" />
                   )}
                 </g>
               </g>
@@ -545,7 +541,7 @@ export function JourneyMap(props: JourneyMapProps) {
                     // Rendered chest (components/world/worldArt.ts), greyed until the world's lessons are done.
                     <image href={OBJECT_ART.chest} x={s.x - 42} y={s.y - 42} width="84" height="84" style={state === 'locked' || state === 'premium' ? { filter: 'grayscale(.85) brightness(1.1)' } : undefined} />
                   ) : state === 'locked' || state === 'missing' || state === 'premium' ? (
-                    <image href={OBJECT_ART.lock} x={s.x - 22} y={s.y - 30} width="44" height="60" />
+                    <image className={state === 'premium' ? 'j-premium-lock' : undefined} href={OBJECT_ART.lock} x={s.x - 22} y={s.y - 30} width="44" height="60" />
                   ) : (
                     <text x={s.x} y={s.y + 17} textAnchor="middle" fontFamily="Lalezar, Cairo, sans-serif" fontSize="50" fill="#fff" stroke="#13206b" strokeWidth="5" paintOrder="stroke">
                       {s.number}

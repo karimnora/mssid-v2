@@ -8,7 +8,6 @@ import { buildPlanetShelfGroups } from './components/journey/planetShelfGroups';
 import { ExamCountdownBanner } from './components/examPlan/ExamCountdownBanner';
 import { countdownDismissKey, examCountdown, inDaysAr, inDaysFr } from './utils/examCountdown';
 import { dailyMissionCopy, dailyMissionKey, resolveDailyMission } from './utils/dailyMission';
-import { isPremiumRole } from './access/entitlements';
 import { EmailDeepLink } from './components/EmailDeepLink';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
@@ -376,17 +375,16 @@ function AppContent() {
     setJourneyStart(start);
     setJourneyOpen(true);
   };
-  // Family Premium: « كوكب ديدو » IS the home — every return to the home lands on the planet, which
-  // carries the whole classic home in its « كل الأنشطة » sheet. Free accounts keep the classic home,
-  // with the map shortcut in the corner (JourneyMapShortcut). The family can switch to the classic
-  // interface and back at any time (utils/designMode.ts): the planet's back button, or the home switch.
+  // The village (Arabic) / planet (French) home is available to every role in world mode.
+  // Feature access is checked inside the destination; choosing this home grants no Premium rights.
+  // The family can switch back to the classic interface at any time.
   const [designMode, setDesignMode] = useDesignMode();
-  const premiumPlanetHome = journeyAvailable && designMode === 'world';
+  const worldHome = journeyAvailable && designMode === 'world';
   useEffect(() => {
-    if (!premiumPlanetHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
+    if (!worldHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
     openJourney('hub');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [premiumPlanetHome, nav.isHomeActive]);
+  }, [worldHome, nav.isHomeActive]);
   /** Replace (never pop) the /journey entry so a follow-up nav action is not undone by a late popstate. */
   const closeJourney = (after?: () => void) => {
     setJourneyOpen(false);
@@ -739,7 +737,7 @@ function AppContent() {
       />
 
       {/* The free map shortcut floats above the bottom bar: keep the last home tile clear of it. */}
-      <main data-legacy-chrome data-village-legacy-content className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? '' : undefined}>
+      <main data-legacy-chrome data-village-legacy-content className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !worldHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !worldHome && nav.isHomeActive ? '' : undefined}>
         {nav.isHomeActive ? (
           <>
           {countdown && !countdownDismissed && (
@@ -1001,10 +999,10 @@ function AppContent() {
             userProfile={progress.userProfile}
             startOn={journeyStart}
             onExit={() => {
-              if (premiumPlanetHome && journeyStart === 'hub') setDesignMode('classic');
+              if (worldHome && journeyStart === 'hub') setDesignMode('classic');
               closeJourney();
             }}
-            exitLabel={premiumPlanetHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
+            exitLabel={worldHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
             shelfGroups={planetShelfGroups}
             mission={planetMission}
             examPlanCta={countdown ? { label: locale === 'ar' ? `الاختبارات ${inDaysAr(countdown.daysLeft)}: خطة المراجعة` : `Compositions ${inDaysFr(countdown.daysLeft)} : plan de révision`, daysLeft: countdown.daysLeft, onOpen: openExamPlan } : null}
@@ -1036,7 +1034,7 @@ function AppContent() {
       {worldDesignFlag && !nav.isPreschoolActive && nav.isHomeActive && !journeyOpen && (
         <DesignModeSwitch mode={designMode} locale={locale} onChange={setDesignMode} />
       )}
-      {journeyAvailable && !premiumPlanetHome && nav.isHomeActive && !journeyOpen && (
+      {journeyAvailable && !worldHome && nav.isHomeActive && !journeyOpen && (
         <JourneyMapShortcut hasMap={journeyForGrade(nav.grade) !== null} onOpen={() => openJourney(journeyForGrade(nav.grade) ? 'map' : 'hub')} />
       )}
       <EmailDeepLink grade={nav.grade} onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} onOpenDiagnostic={() => modals.setIsDiagnosticOpen(true)} />

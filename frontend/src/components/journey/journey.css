@@ -250,6 +250,8 @@
 .j-node .j-nb { transform-box: fill-box; transform-origin: center; }
 .j-node[data-state='open'] .j-nb { animation: j-pulse 1.4s ease-in-out infinite; }
 .j-node[data-state='locked'], .j-node[data-state='missing'] { cursor: not-allowed; }
+/* Reuse the rendered lock in gold for Premium; progression locks keep their original colour. */
+.j-premium-lock { filter: sepia(1) saturate(2.4); }
 .j-node[data-shake='true'] .j-nb { animation: j-nshake .4s; }
 .j-node:focus-visible .j-hit { stroke: #ffd23f; stroke-width: 8; stroke-dasharray: 14 10; }
 @keyframes j-pulse { 50% { transform: scale(1.1); } }
