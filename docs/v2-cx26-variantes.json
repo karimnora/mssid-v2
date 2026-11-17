@@ -1,0 +1,1710 @@
+[
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "بيتي وسيارة أبي هما ملكية ....",
+  "fillBlankAnswerAr": "خاصة",
+  "fillBlankAcceptedAr": [
+   "الخاصة",
+   "الخاصه",
+   "خاصه",
+   "ملكية خاصة",
+   "ملكية خاصه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "نتوجه إلى ... لإصدار وثائق الحالة المدنية.",
+  "fillBlankAnswerAr": "البلدية",
+  "fillBlankAcceptedAr": [
+   "البلديه",
+   "بلدية",
+   "بلديه",
+   "دار البلدية",
+   "دار البلديه",
+   "مقر البلدية",
+   "مقر البلديه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "نعبر الطريق من ... المخصص للراجلين.",
+  "fillBlankAnswerAr": "الممر",
+  "fillBlankAcceptedAr": [
+   "الممر المحمي",
+   "ممر",
+   "ممر الراجلين"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "نشيد بلادنا الوطني اسمه ....",
+  "fillBlankAnswerAr": "قسماً",
+  "fillBlankAcceptedAr": [
+   "قسم",
+   "قسما"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "كلمة Agemmay تعني ....",
+  "fillBlankAnswerAr": "الأبجدية",
+  "fillBlankAcceptedAr": [
+   "أبجدية",
+   "أبجديه",
+   "ابجدية",
+   "ابجديه",
+   "الأبجدية الأمازيغية",
+   "الأبجدية الأمازيغيه",
+   "الأبجديه",
+   "الابجدية",
+   "الابجدية الامازيغية",
+   "الابجدية الامازيغيه",
+   "الابجديه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "العدد Kraḍ بالأمازيغية يعني ....",
+  "fillBlankAnswerAr": "ثلاثة",
+  "fillBlankAcceptedAr": [
+   "3",
+   "ثلاث",
+   "ثلاثه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/4apLessonEnricher.ts",
+  "exerciseId": null,
+  "problemAr": "كلمة Yemma تعني ....",
+  "fillBlankAnswerAr": "الأم",
+  "fillBlankAcceptedAr": [
+   "أمي",
+   "الام",
+   "امي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-pos-ex3",
+  "problemAr": "فِي «العِلْمُ نَافِعٌ»، مَا إِعْرَابُ «العِلْمُ»؟ (اُكْتُبْ: مبتدأ مرفوع)",
+  "fillBlankAnswerAr": "مبتدأ مرفوع",
+  "fillBlankAcceptedAr": [
+   "مبتدأ مرفوع بالضمة",
+   "مبتدأ مرفوع وعلامة رفعه الضمة",
+   "مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-fail-ex2",
+  "problemAr": "فِي «قَرَأَتْ خَدِيجَةُ الدَّرْسَ»، المَفْعُولُ بِهِ هُوَ: (اُكْتُبِ الكَلِمَةَ)",
+  "fillBlankAnswerAr": "الدرس",
+  "fillBlankAcceptedAr": [
+   "الدرسَ",
+   "الدَّرْسَ",
+   "الدّرس"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-fail-eval2",
+  "problemAr": "أَكْمِلِ الإِعْرَابَ: فِي «رَسَمَتِ البِنْتُ العَلَمَ» الفَاعِلُ هُوَ ...",
+  "fillBlankAnswerAr": "البنت",
+  "fillBlankAcceptedAr": [
+   "البنتُ",
+   "البِنْتُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-atf-ex2",
+  "problemAr": "أَكْمِلْ لِلتَّرْتِيبِ السَّرِيعِ: دَخَلَ المُعَلِّمُ ... جَلَسَ التَّلَامِيذُ. (اُكْتُبِ الحَرْفَ)",
+  "fillBlankAnswerAr": "ف",
+  "fillBlankAcceptedAr": [
+   "الفاء",
+   "فـ",
+   "فَ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-kan-ex2",
+  "problemAr": "فِي «إِنَّ النَّجَاحَ قَرِيبٌ»، اسْمُ إِنَّ هُوَ: (اُكْتُبِ الكَلِمَةَ)",
+  "fillBlankAnswerAr": "النجاح",
+  "fillBlankAcceptedAr": [
+   "النجاحَ",
+   "النَّجَاحَ",
+   "النّجاح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-sifa-ex2",
+  "problemAr": "أَكْمِلْ: رَأَيْتُ حَدِيقَةً ... (جَمِيل). اُكْتُبِ الصِّفَةَ مَنْصُوبَةً مُؤَنَّثَةً.",
+  "fillBlankAnswerAr": "جميلة",
+  "fillBlankAcceptedAr": [
+   "جميلةً",
+   "جميلةَ",
+   "جَمِيلَةً"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-mawsul-ex2",
+  "problemAr": "أَكْمِلْ: هَؤُلَاءِ التَّلَامِيذُ ... حَفِظُوا الأُنْشُودَةَ. (اُكْتُبِ الاسْمَ المَوْصُولَ)",
+  "fillBlankAnswerAr": "الذين",
+  "fillBlankAcceptedAr": [
+   "الَّذِينَ",
+   "الّذين"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-mawsul-eval2",
+  "problemAr": "أَكْمِلْ: هَؤُلَاءِ التِّلْمِيذَاتُ ... حَضَرْنَ الحَفْلَ. (اُكْتُبِ الاسْمَ المَوْصُولَ: اللواتي)",
+  "fillBlankAnswerAr": "اللواتي",
+  "fillBlankAcceptedAr": [
+   "اللائي",
+   "اللاتي",
+   "اللَّوَاتِي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-mutal-ex2",
+  "problemAr": "صَنِّفِ الفِعْلَ المُعْتَلَّ «وَعَدَ» حَسَبَ مَوْضِعِ حَرْفِ العِلَّةِ. (اُكْتُبْ نَوْعَهُ فَقَطْ)",
+  "fillBlankAnswerAr": "مثال",
+  "fillBlankAcceptedAr": [
+   "المثال",
+   "معتل الفاء",
+   "معتل مثال"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-mutal-eval2",
+  "problemAr": "صَنِّفْ «دَعَا»: (اُكْتُبْ: ناقص)",
+  "fillBlankAnswerAr": "ناقص",
+  "fillBlankAcceptedAr": [
+   "الناقص",
+   "معتل الآخر",
+   "معتل ناقص"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-conj-ex2",
+  "problemAr": "صَرِّفْ «كَتَبَ» مَعَ هُمْ فِي المُضَارِعِ. (اُكْتُبْ: يكتبون)",
+  "fillBlankAnswerAr": "يكتبون",
+  "fillBlankAcceptedAr": [
+   "يَكْتُبُونَ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-conj-eval2",
+  "problemAr": "أَمْرُ «قَالَ» مَعَ أَنْتَ: (اُكْتُبْ: قل)",
+  "fillBlankAnswerAr": "قل",
+  "fillBlankAcceptedAr": [
+   "قُلْ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-taa-ex2",
+  "problemAr": "اُكْتُبِ الكَلِمَةَ: اسْمُ مَكَانِ التَّعَلُّمِ (مَدْرَسـ...) بِالتَّاءِ المَرْبُوطَةِ.",
+  "fillBlankAnswerAr": "مدرسة",
+  "fillBlankAcceptedAr": [
+   "مدرسةٌ",
+   "مَدْرَسَة",
+   "مَدْرَسَةٌ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-taa-eval2",
+  "problemAr": "عِنْدَ الوَقْفِ عَلَى «مَدْرَسَة» نَنْطِقُ: (اُكْتُبْ: هاء)",
+  "fillBlankAnswerAr": "هاء",
+  "fillBlankAcceptedAr": [
+   "الهاء",
+   "ه",
+   "هاءً"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-hamz-ex2",
+  "problemAr": "لِمَاذَا «بِئْر» عَلَى نَبْرَةٍ؟ أَكْمِلْ: لِأَنَّ مَا قَبْلَهَا ... (اُكْتُبْ: مكسور)",
+  "fillBlankAnswerAr": "مكسور",
+  "fillBlankAcceptedAr": [
+   "الكسرة",
+   "كسرة",
+   "مكسورٌ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-hamz-eval2",
+  "problemAr": "كُرْسِيُّ هَمْزَةِ «مِئَة» هُوَ: (اُكْتُبْ: نبرة)",
+  "fillBlankAnswerAr": "نبرة",
+  "fillBlankAcceptedAr": [
+   "النبرة",
+   "على النبرة",
+   "على نبرة"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/arabic.ts",
+  "exerciseId": "ar4-prod-ex3",
+  "problemAr": "أَكْمِلْ تَوْظِيفَ كَانَ: كَانَ القِسْمُ ... (اُكْتُبْ خَبَرًا مَنْصُوبًا: نظيفا)",
+  "fillBlankAnswerAr": "نظيفا",
+  "fillBlankAcceptedAr": [
+   "نظيفاً",
+   "نظيفًا",
+   "نَظِيفاً",
+   "نَظِيفًا"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/art.ts",
+  "exerciseId": "art-4ap-t1-warm-cool-colors",
+  "problemAr": "البحر يُرسم عادة بألوان ....",
+  "fillBlankAnswerAr": "باردة",
+  "fillBlankAcceptedAr": [
+   "الألوان الباردة",
+   "الألوان البارده",
+   "الالوان الباردة",
+   "الالوان البارده",
+   "الباردة",
+   "البارده",
+   "بارده"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/art.ts",
+  "exerciseId": "art-4ap-t2-perspective-simple",
+  "problemAr": "الطريق البعيد نحو الأفق يبدو ....",
+  "fillBlankAnswerAr": "ضيقاً",
+  "fillBlankAcceptedAr": [
+   "ضيق",
+   "ضيقا",
+   "ضيقًا",
+   "ضيّقا",
+   "ضيّقاً"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/art.ts",
+  "exerciseId": "art-4ap-t3-pottery-crafts",
+  "problemAr": "الأداة الدائرية التي تساعد الحرفي على تشكيل الإناء تُسمى ....",
+  "fillBlankAnswerAr": "الدولاب",
+  "fillBlankAcceptedAr": [
+   "دولاب",
+   "دولاب الخزاف",
+   "عجلة الخزاف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "history-4ap-personal-national-eval2",
+  "problemAr": "ماذا نسمي مجموعة الأحداث التي تخص الوطن كله؟ (كلمتان: التاريخ ……)",
+  "fillBlankAnswerAr": "الوطني",
+  "fillBlankAcceptedAr": [
+   "وطني"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "history-4ap-prehistory-eval2",
+  "problemAr": "كيف نسمّي الإنسان الذي عاش قبل اختراع الكتابة؟ (إنسان ……)",
+  "fillBlankAnswerAr": "ما قبل التاريخ",
+  "fillBlankAcceptedAr": [
+   "ما قبل تاريخ",
+   "ماقبل التاريخ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "history-4ap-numidia-syphax-eval2",
+  "problemAr": "ما اسم عاصمة المملكة الماسيلية شرقاً؟ (مدينة واحدة)",
+  "fillBlankAnswerAr": "سيرتا",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "history-4ap-figures-ex2",
+  "problemAr": "ما اسم عاصمة ماسينيسا؟ (الاسم القديم لقسنطينة)",
+  "fillBlankAnswerAr": "سيرتا",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-location-eval2",
+  "problemAr": "اذكر دولة مجاورة للجزائر من الشرق. (اسم دولة)",
+  "fillBlankAnswerAr": "تونس",
+  "fillBlankAcceptedAr": [
+   "تونس وليبيا",
+   "ليبيا",
+   "ليبيا وتونس"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-map-legend-eval2",
+  "problemAr": "ماذا يخبرنا سلّم الخريطة؟ أكمل: المسافة …… على الأرض.",
+  "fillBlankAnswerAr": "الحقيقية",
+  "fillBlankAcceptedAr": [
+   "الحقيقيه",
+   "حقيقية",
+   "حقيقيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-relief-climate-eval2",
+  "problemAr": "ما اسم الإقليم الشمالي القريب من البحر؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "التل",
+  "fillBlankAcceptedAr": [
+   "الإقليم التلي",
+   "الاقليم التلي",
+   "التلي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-hydrography-eval2",
+  "problemAr": "أكمل: أطول وادٍ في الجزائر هو وادي ……",
+  "fillBlankAnswerAr": "الشلف",
+  "fillBlankAcceptedAr": [
+   "شلف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-climate-regions-eval2",
+  "problemAr": "أكمل: مناخ الجنوب الجزائري مناخ ……",
+  "fillBlankAnswerAr": "صحراوي",
+  "fillBlankAcceptedAr": [
+   "الصحراوي",
+   "جاف",
+   "صحراوي جاف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "geo-4ap-landscapes-eval2",
+  "problemAr": "في الصحراء يسكن الناس حول …… حيث الماء والنخيل.",
+  "fillBlankAnswerAr": "الواحات",
+  "fillBlankAcceptedAr": [
+   "الواحة",
+   "الواحه",
+   "واحات"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/history_geo.ts",
+  "exerciseId": "history-4ap-numidia-life-eval2",
+  "problemAr": "أكمل: اشتهر النوميديون بتربية …… وفروسيتهم.",
+  "fillBlankAnswerAr": "الخيل",
+  "fillBlankAcceptedAr": [
+   "الأحصنة",
+   "الأحصنه",
+   "الاحصنة",
+   "الاحصنه",
+   "الخيول",
+   "خيل"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-duha-shams-eval2",
+  "problemAr": "أكمل من سورة الشمس: قد أفلح من ……",
+  "fillBlankAnswerAr": "زكاها",
+  "fillBlankAcceptedAr": [
+   "زكّاها"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-alaq-balad-eval2",
+  "problemAr": "أكمل: لقد خلقنا الإنسان في ……",
+  "fillBlankAnswerAr": "كبد",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-ghashiya-layl-eval2",
+  "problemAr": "أكمل: فسنيسّره لل…… (من أعطى واتقى)",
+  "fillBlankAnswerAr": "يسرى",
+  "fillBlankAcceptedAr": [
+   "يسري"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-messengers-eval2",
+  "problemAr": "ما الكتاب الذي أُنزل على موسى عليه السلام؟",
+  "fillBlankAnswerAr": "التوراة",
+  "fillBlankAcceptedAr": [
+   "التوراه",
+   "توراة",
+   "توراه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-lastday-eval2",
+  "problemAr": "ما دار النعيم التي أعدّها الله للمؤمنين؟",
+  "fillBlankAnswerAr": "الجنة",
+  "fillBlankAcceptedAr": [
+   "الجنه",
+   "جنة",
+   "جنه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-worship-eval2",
+  "problemAr": "أكمل: يُستحب الدخول إلى المسجد بالقدم ……",
+  "fillBlankAnswerAr": "اليمنى",
+  "fillBlankAcceptedAr": [
+   "اليمني",
+   "يمنى",
+   "يمني"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-medina-badr-eval2",
+  "problemAr": "من هم أهل المدينة الذين آووا النبي ﷺ؟ (الأنص……)",
+  "fillBlankAnswerAr": "الأنصار",
+  "fillBlankAcceptedAr": [
+   "أنصار",
+   "الانصار",
+   "انصار"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-farewell-eval2",
+  "problemAr": "في أي سنة كانت حجة الوداع؟ (السنة ……)",
+  "fillBlankAnswerAr": "العاشرة",
+  "fillBlankAcceptedAr": [
+   "10",
+   "العاشرة للهجرة",
+   "العاشرة للهجره",
+   "العاشرة هجرية",
+   "العاشرة هجريه",
+   "العاشره",
+   "عاشرة",
+   "عاشره"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-ethics-eval2",
+  "problemAr": "أكمل الآية معنىً: فلا تقل لهما ……",
+  "fillBlankAnswerAr": "أف",
+  "fillBlankAcceptedAr": [
+   "أفّ",
+   "اف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/islamic.ts",
+  "exerciseId": "islamic-4ap-modesty-eval2",
+  "problemAr": "أكمل الحديث: من غشنا فليس ……",
+  "fillBlankAnswerAr": "منا",
+  "fillBlankAcceptedAr": [
+   "منّا"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/science.ts",
+  "exerciseId": "science-4ap-digestion-eval2",
+  "problemAr": "يَتِمُّ اِمْتِصَاصُ المَغَذِّيَاتِ فِي ........ الدَّقِيقِ.",
+  "fillBlankAnswerAr": "المعي",
+  "fillBlankAcceptedAr": [
+   "المعي الدقيق",
+   "معي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/science.ts",
+  "exerciseId": "science-4ap-chewing-ex2",
+  "problemAr": "يُبَلِّلُ ........ اللُّقْمَةَ فِي الفَمِ.",
+  "fillBlankAnswerAr": "اللعاب",
+  "fillBlankAcceptedAr": [
+   "لعاب"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/science.ts",
+  "exerciseId": "science-4ap-water-cycle-ex2",
+  "problemAr": "تَتَكَوَّنُ السُّحُبُ بِفِعْلِ ........ البُخَارِ عِنْدَمَا يَبْرُدُ.",
+  "fillBlankAnswerAr": "تكاثف",
+  "fillBlankAcceptedAr": [
+   "التكاثف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/science.ts",
+  "exerciseId": "science-4ap-air-combustion-ex3",
+  "problemAr": "تَنْطَفِئُ الشَّمْعَةُ تَحْتَ الكَأْسِ لِنَفَادِ ........",
+  "fillBlankAnswerAr": "الأكسجين",
+  "fillBlankAcceptedAr": [
+   "أكسجين",
+   "أوكسجين",
+   "اكسجين",
+   "الأوكسجين",
+   "الاكسجين",
+   "الاوكسجين",
+   "اوكسجين",
+   "غاز الأكسجين",
+   "غاز الاكسجين"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/4AP/science.ts",
+  "exerciseId": "science-4ap-water-states-eval2",
+  "problemAr": "ذَوَبَانُ الثَّلْجِ إِلَى مَاءٍ سَائِلٍ يُسَمَّى ........",
+  "fillBlankAnswerAr": "الانصهار",
+  "fillBlankAcceptedAr": [
+   "انصهار"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-sentence-ex2",
+  "problemAr": "حدد الفاعل في الجملة: «أزهرتِ الحديقةُ في الربيع». (اكتب الكلمة فقط بدون علامات الإعراب)",
+  "fillBlankAnswerAr": "الحديقة",
+  "fillBlankAcceptedAr": [
+   "الحديقةُ",
+   "الحَدِيقَةُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-sentence-ex6",
+  "problemAr": "في الجملة «كافأتِ المعلمةُ التلميذةَ المجتهدةَ»، من هو الفاعل؟ (اكتب الكلمة فقط)",
+  "fillBlankAnswerAr": "المعلمة",
+  "fillBlankAcceptedAr": [
+   "المعلمةُ",
+   "المعلّمة",
+   "المُعَلِّمَةُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-sentence-eval3",
+  "problemAr": "حدد الفاعل في: «طبخَتْ أمي وجبةً لذيذةً». (اكتب الكلمة فقط)",
+  "fillBlankAnswerAr": "أمي",
+  "fillBlankAcceptedAr": [
+   "أمّي",
+   "أُمِّي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-kaninna-ex2",
+  "problemAr": "فِي الجُمْلَةِ «أَصْبَحَ الطَّقْسُ مُعْتَدِلاً»، مَا هُوَ اسْمُ أَصْبَحَ؟ (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
+  "fillBlankAnswerAr": "الطقس",
+  "fillBlankAcceptedAr": [
+   "الطقسُ",
+   "الطَّقْسُ",
+   "الطّقس"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-kaninna-ex6",
+  "problemAr": "فِي الجُمْلَةِ «كَانَ التَّلْمِيذَ مُجْتَهِداً» خَطَأٌ إِعْرَابِيٌّ فِي حَرَكَةِ «التَّلْمِيذَ». مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
+  "fillBlankAnswerAr": "التلميذُ",
+  "fillBlankAcceptedAr": [
+   "التِّلْمِيذُ",
+   "التّلميذُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-kaninna-eval3",
+  "problemAr": "فِي «بَاتَ الحَارِسُ سَاهِراً»، مَا اسْمُ بَاتَ؟ (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
+  "fillBlankAnswerAr": "الحارس",
+  "fillBlankAcceptedAr": [
+   "الحارسُ",
+   "الحَارِسُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-passive-ex2",
+  "problemAr": "ابْنِ الفِعْلَ «فَهِمَ» لِلْمَجْهُولِ. (اُكْتُبِ الفِعْلَ فَقَطْ)",
+  "fillBlankAnswerAr": "فُهِمَ",
+  "fillBlankAcceptedAr": [
+   "فُهِم"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-passive-ex6",
+  "problemAr": "فِي الجُمْلَةِ «تُكْرَمُ الفَائِزَاتِ» خَطَأٌ فِي حَرَكَةِ نَائِبِ الفَاعِلِ. مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
+  "fillBlankAnswerAr": "الفائزاتُ",
+  "fillBlankAcceptedAr": [
+   "الفَائِزَاتُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-passive-eval3",
+  "problemAr": "ابْنِ الفِعْلَ «سَمِعَ» لِلْمَجْهُولِ. (اُكْتُبِ الفِعْلَ فَقَطْ)",
+  "fillBlankAnswerAr": "سُمِعَ",
+  "fillBlankAcceptedAr": [
+   "سُمِع"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-annex-ex2",
+  "problemAr": "فِي «قِطَارٌ سَرِيعٌ»، مَا هِيَ الصِّفَةُ؟ (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
+  "fillBlankAnswerAr": "سريعٌ",
+  "fillBlankAcceptedAr": [
+   "سريع",
+   "سَرِيعٌ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-annex-ex6",
+  "problemAr": "فِي الجُمْلَةِ «شَاهَدْتُ حَدِيقَةً جَمِيلٌ» خَطَأٌ فِي تَطَابُقِ الصِّفَةِ. مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
+  "fillBlankAnswerAr": "جميلةً",
+  "fillBlankAcceptedAr": [
+   "جميلة",
+   "جَمِيلَةً"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-annex-eval3",
+  "problemAr": "فِي «شَجَرَةُ الزَّيْتُونِ»، مَا هُوَ المُضَافُ إِلَيْهِ؟ (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
+  "fillBlankAnswerAr": "الزيتون",
+  "fillBlankAcceptedAr": [
+   "الزيتونِ",
+   "الزَّيْتُونِ",
+   "الزّيتون"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-hal-ex6",
+  "problemAr": "فِي الجُمْلَةِ «رَأَيْتُ أَخُوكَ فِي السُّوقِ» خَطَأٌ إِعْرَابِيٌّ. مَا الصَّوَابُ؟ (اُكْتُبِ الكَلِمَةَ مَضْبُوطَةً)",
+  "fillBlankAnswerAr": "أخاك",
+  "fillBlankAcceptedAr": [
+   "أَخَاكَ",
+   "اخاك"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-morph-ex2",
+  "problemAr": "مَا نَوْعُ الفِعْلِ المُعْتَلِّ «بَاعَ»؟ (اُكْتُبِ النَّوْعَ فَقَطْ: مثال / أجوف / ناقص)",
+  "fillBlankAnswerAr": "أجوف",
+  "fillBlankAcceptedAr": [
+   "الأجوف",
+   "معتل أجوف",
+   "معتل الوسط"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-morph-ex6",
+  "problemAr": "فِي الجُمْلَةِ «بِعْنَا الكِتَابَ» (المَقْصُودُ: أَنَا وَحْدِي)، خَطَأٌ فِي التَّصْرِيفِ. مَا الصَّوَابُ؟ (اُكْتُبِ الفِعْلَ فَقَطْ)",
+  "fillBlankAnswerAr": "بِعْتُ",
+  "fillBlankAcceptedAr": [
+   "بعت",
+   "بِعتُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/arabic.ts",
+  "exerciseId": "arabic-5ap-morph-eval3",
+  "problemAr": "صَرِّفِ الفِعْلَ «رَمَى» مَعَ ضَمِيرِ «أَنَا». (اُكْتُبِ الفِعْلَ فَقَطْ)",
+  "fillBlankAnswerAr": "رَمَيْتُ",
+  "fillBlankAcceptedAr": [
+   "رميت",
+   "رَمَيتُ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-periods-ex2",
+  "problemAr": "ما اسم المرحلة التي تلي المرحلة القديمة مباشرة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "وسيطة",
+  "fillBlankAcceptedAr": [
+   "العصور الوسطى",
+   "العصور الوسطي",
+   "المرحلة الوسيطة",
+   "المرحلة الوسيطه",
+   "الوسطى",
+   "الوسطي",
+   "الوسيطة",
+   "الوسيطه",
+   "وسطى",
+   "وسطي",
+   "وسيطه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-periods-eval3",
+  "problemAr": "ما اسم المرحلة التي تسبق المرحلة المعاصرة مباشرة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "حديثة",
+  "fillBlankAcceptedAr": [
+   "الحديثة",
+   "الحديثه",
+   "العصر الحديث",
+   "المرحلة الحديثة",
+   "المرحلة الحديثه",
+   "حديثه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-islamic-conquest-ex2",
+  "problemAr": "مَا اسْمُ المَلِكَةِ الأَمَازِيغِيَّةِ الَّتِي قَادَتْ مُقَاوَمَةً قَوِيَّةً ضِدَّ الفَتْحِ الإِسْلَامِيِّ؟ (كَلِمَةٌ وَاحِدَةٌ)",
+  "fillBlankAnswerAr": "الكاهنة",
+  "fillBlankAcceptedAr": [
+   "الكاهنه",
+   "داهية",
+   "داهيه",
+   "دهيا",
+   "ديهيا",
+   "ديهية",
+   "ديهيه",
+   "كاهنة",
+   "كاهنه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-ottoman-ex2",
+  "problemAr": "ما اسم الحاكم الأعلى للجزائر في العهد العثماني؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "داي",
+  "fillBlankAcceptedAr": [
+   "الداي",
+   "الداي حسين",
+   "داي الجزائر"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-ottoman-eval3",
+  "problemAr": "ما اسم المبلغ المالي الذي كانت تدفعه بعض الدول للجزائر لضمان سلامة سفنها؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "إتاوة",
+  "fillBlankAcceptedAr": [
+   "إتاوه",
+   "اتاوة",
+   "اتاوه",
+   "الإتاوات",
+   "الإتاوة",
+   "الإتاوه",
+   "الاتاوات",
+   "الاتاوة",
+   "الاتاوه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-resistance-ex2",
+  "problemAr": "أكمل: نزلت القوات الفرنسية بشبه جزيرة سيدي ...؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "فرج",
+  "fillBlankAcceptedAr": [
+   "سيدي فرج"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-resistance-eval3",
+  "problemAr": "ما لقب الحاكم الذي وقّع معاهدة الاستسلام سنة 1830م؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "داي",
+  "fillBlankAcceptedAr": [
+   "الداي",
+   "الداي حسين",
+   "داي الجزائر"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-natmov-ex2",
+  "problemAr": "ما الكلمة الناقصة: المنظمة ال...، التنظيم السري الذي حضّر للعمل المسلح سنة 1947م؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الخاصة",
+  "fillBlankAcceptedAr": [
+   "الخاصه",
+   "خاصة",
+   "خاصه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-natmov-eval3",
+  "problemAr": "ما الصفة التي تصف المنظمة السرية التي أسسها الوطنيون سنة 1947م؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الخاصة",
+  "fillBlankAcceptedAr": [
+   "الخاصه",
+   "خاصة",
+   "خاصه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-revolution-ex2",
+  "problemAr": "ما اسم الوثيقة التي أعلنت اندلاع الثورة وحددت أهدافها؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "بيان",
+  "fillBlankAcceptedAr": [
+   "البيان",
+   "بيان أول نوفمبر",
+   "بيان أول نوفمبر 1954",
+   "بيان اول نوفمبر",
+   "بيان اول نوفمبر 1954"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-revolution-eval3",
+  "problemAr": "ما اسم الوثيقة التي أعلنت اندلاع الثورة وحددت أهدافها؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "بيان",
+  "fillBlankAcceptedAr": [
+   "البيان",
+   "بيان أول نوفمبر",
+   "بيان أول نوفمبر 1954",
+   "بيان اول نوفمبر",
+   "بيان اول نوفمبر 1954"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-dec1960-ex2",
+  "problemAr": "مَا اسْمُ نَقْلِ القَضِيَّةِ الجَزَائِرِيَّةِ إِلَى اهْتِمَامِ المُجْتَمَعِ الدُّوَلِيِّ؟ (اُكْتُبِ المُصْطَلَحَ فَقَطْ)",
+  "fillBlankAnswerAr": "تدويل القضية",
+  "fillBlankAcceptedAr": [
+   "التدويل",
+   "تدويل",
+   "تدويل القضية الجزائرية",
+   "تدويل القضية الجزائريه",
+   "تدويل القضيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "history-5ap-dec1960-ex6",
+  "problemAr": "اُكْتُبْ كَلِمَةً وَاحِدَةً تُلَخِّصُ الأَثَرَ الأَسَاسِيَّ لِمُظَاهَرَاتِ 11 دِيسَمْبَرَ 1960 م عَلَى الصَّعِيدِ الدُّوَلِيِّ.",
+  "fillBlankAnswerAr": "التدويل",
+  "fillBlankAcceptedAr": [
+   "تدويل",
+   "تدويل القضية",
+   "تدويل القضية الجزائرية",
+   "تدويل القضية الجزائريه",
+   "تدويل القضيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-location-ex2",
+  "problemAr": "ما اسم الخط الفلكي الذي يمر بالجزائر قرب مدينة مستغانم؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "غرينتش",
+  "fillBlankAcceptedAr": [
+   "خط غرينتش",
+   "خط غرينيتش",
+   "غرينش",
+   "غرينيتش",
+   "قرينتش"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-location-eval3",
+  "problemAr": "ما اسم المدار الفلكي الذي يمر بجنوب الجزائر قرب تمنراست؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "السرطان",
+  "fillBlankAcceptedAr": [
+   "سرطان",
+   "مدار السرطان"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-relief-ex2",
+  "problemAr": "ما الصفة التي تصف الأطلس المحاذي للساحل الشمالي؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "التلي",
+  "fillBlankAcceptedAr": [
+   "الأطلس التلي",
+   "الاطلس التلي",
+   "تلي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-relief-eval3",
+  "problemAr": "ما الصفة التي تصف الأطلس الذي يفصل الهضاب العليا عن الصحراء؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الصحراوي",
+  "fillBlankAcceptedAr": [
+   "الأطلس الصحراوي",
+   "الاطلس الصحراوي",
+   "صحراوي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-population-ex2",
+  "problemAr": "أكمل: مشروع السد ____ لمكافحة التصحر وزحف الرمال. (كلمة واحدة تصف لونه)",
+  "fillBlankAnswerAr": "الأخضر",
+  "fillBlankAcceptedAr": [
+   "أخضر",
+   "اخضر",
+   "الاخضر"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/history_geo.ts",
+  "exerciseId": "geo-5ap-population-eval3",
+  "problemAr": "ما اسم المدينة التي ضربها زلزال كبير سنة 2003؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "بومرداس",
+  "fillBlankAcceptedAr": [
+   "مدينة بومرداس"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-fajr-ex2",
+  "problemAr": "أكمل: ﴿الَّذِي خَلَقَ ...﴾ (كلمة واحدة)",
+  "fillBlankAnswerAr": "فسوى",
+  "fillBlankAcceptedAr": [
+   "فسوي",
+   "فسوّى"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-fajr-eval3",
+  "problemAr": "أكمل: ﴿وَالْآخِرَةُ خَيْرٌ وَ...﴾ (كلمة واحدة)",
+  "fillBlankAnswerAr": "أبقى",
+  "fillBlankAcceptedAr": [
+   "أبقي",
+   "ابقى",
+   "ابقي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-qadar-ex2",
+  "problemAr": "ما اسم إحياء الله للموتى يوم القيامة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "البعث",
+  "fillBlankAcceptedAr": [
+   "البعث بعد الموت",
+   "بعث"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-qadar-eval3",
+  "problemAr": "ما الموقف الذي يجب أن يتخذه المسلم عند حلول نعمة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الشكر",
+  "fillBlankAcceptedAr": [
+   "الحمد",
+   "شكر",
+   "شكر الله"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hajj-ex2",
+  "problemAr": "أين يقف الحجاج يوم 9 ذي الحجة، وهو أعظم أركان الحج؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "عرفة",
+  "fillBlankAcceptedAr": [
+   "جبل عرفات",
+   "جبل عرفة",
+   "جبل عرفه",
+   "عرفات",
+   "عرفه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hajj-eval3",
+  "problemAr": "ما اسم الدوران حول الكعبة سبعة أشواط؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الطواف",
+  "fillBlankAcceptedAr": [
+   "طواف",
+   "طواف الإفاضة",
+   "طواف الإفاضه",
+   "طواف الافاضة",
+   "طواف الافاضه",
+   "طواف القدوم"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-altruism-ex2",
+  "problemAr": "أكمل الحديث: «إنَّ اللَّهَ كَتَبَ ... علَى كُلِّ شيءٍ» (كلمة واحدة)",
+  "fillBlankAnswerAr": "الإحسان",
+  "fillBlankAcceptedAr": [
+   "الاحسان"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-altruism-eval3",
+  "problemAr": "أكمل: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَ...﴾ (كلمة واحدة)",
+  "fillBlankAnswerAr": "التقوى",
+  "fillBlankAcceptedAr": [
+   "التقوي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-tayammum-ex2",
+  "problemAr": "ما اسم المادة الطاهرة (كالتراب) التي يُتيمم بها؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الصعيد",
+  "fillBlankAcceptedAr": [
+   "الصعيد الطاهر",
+   "الصعيد الطيب",
+   "صعيد"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-tayammum-eval3",
+  "problemAr": "كم ضربة يحتاجها التيمم على الصعيد الطاهر؟ (بالحروف، كلمة واحدة)",
+  "fillBlankAnswerAr": "واحدة",
+  "fillBlankAcceptedAr": [
+   "ضربة واحدة",
+   "ضربة واحده",
+   "واحده"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-farewell-ex2",
+  "problemAr": "ما اللقب الذي أطلقه النبي ﷺ على أهل مكة يوم الفتح؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الطلقاء",
+  "fillBlankAcceptedAr": [
+   "طلقاء"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-qadr-ex2",
+  "problemAr": "أكمل: ﴿لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ ...﴾ (كلمة واحدة)",
+  "fillBlankAnswerAr": "شهر",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-qadr-eval3",
+  "problemAr": "من هو «الروح» الذي يتنزل مع الملائكة في ليلة القدر؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "جبريل",
+  "fillBlankAcceptedAr": [
+   "جبرائيل",
+   "جبريل عليه السلام"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-tin-ex2",
+  "problemAr": "أكمل: ﴿إِذَا زُلْزِلَتِ الْأَرْضُ ...﴾ (كلمة واحدة)",
+  "fillBlankAnswerAr": "زلزالها",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-tin-eval3",
+  "problemAr": "بأي صفة وصف الله خلق الإنسان في سورة التين؟ (كلمتان، اكتب الكلمة الثانية فقط)",
+  "fillBlankAnswerAr": "تقويم",
+  "fillBlankAcceptedAr": [
+   "أحسن تقويم",
+   "احسن تقويم"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-adiyat-ex2",
+  "problemAr": "بأي صفة وصف الله الإنسان في سورة العاديات، وتعني نكران النعمة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الكنود",
+  "fillBlankAcceptedAr": [
+   "كنود",
+   "لكنود"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-adiyat-eval3",
+  "problemAr": "ما اسم الميزان الذي توزن فيه أعمال العباد يوم القيامة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الموازين",
+  "fillBlankAcceptedAr": [
+   "الميزان",
+   "موازين",
+   "ميزان"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-ghashiya-ex2",
+  "problemAr": "أَكْمِلِ الآيَةَ: «لَقَدْ خَلَقْنَا الْإِنسَانَ فِي ……» (سورة البلد). (اُكْتُبِ الكَلِمَةَ فَقَطْ)",
+  "fillBlankAnswerAr": "كبد",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-ghashiya-ex6",
+  "problemAr": "رَأَى تِلْمِيذٌ زَمِيلاً يَتِيماً مُحْتَاجاً فِي حَيِّهِ، فَجَمَعَ لَهُ التَّبَرُّعَاتِ مَعَ زُمَلَائِهِ. أَيَّ مَفْهُومٍ قُرْآنِيٍّ مِنْ سُورَةِ البَلَدِ يُجَسِّدُهُ هَذَا التَّصَرُّفُ؟ (اُكْتُبِ المَفْهُومَ فَقَطْ)",
+  "fillBlankAnswerAr": "اقتحام العقبة",
+  "fillBlankAcceptedAr": [
+   "اقتحام العقبه",
+   "اقتحم العقبة",
+   "اقتحم العقبه",
+   "العقبة",
+   "العقبه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-ghashiya-eval3",
+  "problemAr": "مَا اسْمُ الطَّرِيقِ المَجَازِيِّ الصَّعْبِ الَّذِي وَصَفَتْهُ سُورَةُ البَلَدِ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "العقبة",
+  "fillBlankAcceptedAr": [
+   "العقبه",
+   "عقبة",
+   "عقبه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hadith-ex2",
+  "problemAr": "أي نبي ذكره الحديث الشريف مثالاً على الأكل من عمل اليد؟ (اسم واحد)",
+  "fillBlankAnswerAr": "داود",
+  "fillBlankAcceptedAr": [
+   "داود عليه السلام",
+   "داوود"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hadith-eval3",
+  "problemAr": "ما ثاني أحب الأعمال إلى الله بعد الصلاة على وقتها؟ اكتب الكلمة الأولى من الإجابة (كلمة واحدة)",
+  "fillBlankAnswerAr": "بر",
+  "fillBlankAcceptedAr": [
+   "بر الوالدين",
+   "برّ",
+   "برّ الوالدين"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-faith-ex2",
+  "problemAr": "من هو الملك المكلف بنقل الوحي إلى الأنبياء؟ (اسم واحد)",
+  "fillBlankAnswerAr": "جبريل",
+  "fillBlankAcceptedAr": [
+   "جبرائيل",
+   "جبريل عليه السلام"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-faith-eval3",
+  "problemAr": "من الملك الموكّل بالرزق والمطر؟ (اسم واحد)",
+  "fillBlankAnswerAr": "ميكائيل",
+  "fillBlankAcceptedAr": [
+   "ميكائيل عليه السلام",
+   "ميكال",
+   "ميكاييل"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-zakat-ex2",
+  "problemAr": "ما اسم الحد الأدنى من المال الذي إذا بلغه المسلم وجبت عليه الزكاة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "النصاب",
+  "fillBlankAcceptedAr": [
+   "نصاب"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-zakat-eval3",
+  "problemAr": "ما اسم مرور سنة هجرية كاملة على المال الذي بلغ النصاب؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الحول",
+  "fillBlankAcceptedAr": [
+   "حول"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hijra-ex2",
+  "problemAr": "أين اختبأ النبي ﷺ وأبو بكر الصديق قبل استكمال طريق الهجرة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "ثور",
+  "fillBlankAcceptedAr": [
+   "الغار",
+   "غار ثور"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-hijra-eval3",
+  "problemAr": "من هم أهل المدينة الذين استقبلوا النبي ﷺ ونصروه؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "الأنصار",
+  "fillBlankAcceptedAr": [
+   "أنصار",
+   "الانصار",
+   "انصار"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-rashidun-ex2",
+  "problemAr": "بِمَاذَا لُقِّبَ عُمَرُ بْنُ الخَطَّابِ رَضِيَ اللهُ عَنْهُ؟ (اُكْتُبِ اللَّقَبَ فَقَطْ)",
+  "fillBlankAnswerAr": "الفاروق",
+  "fillBlankAcceptedAr": [
+   "فاروق"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-rashidun-ex6",
+  "problemAr": "رَأَى تِلْمِيذٌ زَمِيلاً يُعَامَلُ بِظُلْمٍ مِنْ زُمَلَائِهِ الأَقْوِيَاءِ، فَدَافَعَ عَنْهُ بِشَجَاعَةٍ رَغْمَ خَوْفِهِ. بِأَيِّ خَلِيفَةٍ رَاشِدٍ يَقْتَدِي هَذَا التِّلْمِيذُ فِي شَجَاعَتِهِ وَعِلْمِهِ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "علي بن أبي طالب",
+  "fillBlankAcceptedAr": [
+   "الإمام علي",
+   "الامام علي",
+   "علي",
+   "علي بن ابي طالب"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-rashidun-eval3",
+  "problemAr": "بِمَاذَا لُقِّبَ عُثْمَانُ بْنُ عَفَّانَ رَضِيَ اللهُ عَنْهُ؟ (اُكْتُبِ اللَّقَبَ فَقَطْ)",
+  "fillBlankAnswerAr": "ذو النورين",
+  "fillBlankAcceptedAr": []
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-ethics2-ex2",
+  "problemAr": "ماذا يملك «الشديد» الحقيقي حسب الحديث عند الغضب؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "نفسه",
+  "fillBlankAcceptedAr": [
+   "نفسَه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/islamic.ts",
+  "exerciseId": "islamic-5ap-ethics2-eval3",
+  "problemAr": "أكمل الحديث: «لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ ... عِنْدَ الْغَضَبِ» (كلمة واحدة)",
+  "fillBlankAnswerAr": "نفسه",
+  "fillBlankAcceptedAr": [
+   "نفسَه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circulation-ex2",
+  "problemAr": "ما اسم الأوعية الدموية الدقيقة جداً التي تربط الشرايين بالأوردة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "شعيرات",
+  "fillBlankAcceptedAr": [
+   "الشعيرات",
+   "الشعيرات الدموية",
+   "الشعيرات الدمويه",
+   "شعيرات دموية",
+   "شعيرات دمويه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circulation-eval3",
+  "problemAr": "ما اسم الأوعية الدقيقة جداً التي تربط الشرايين بالأوردة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "شعيرات",
+  "fillBlankAcceptedAr": [
+   "الشعيرات",
+   "الشعيرات الدموية",
+   "الشعيرات الدمويه",
+   "شعيرات دموية",
+   "شعيرات دمويه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-nutrition-ex2",
+  "problemAr": "ما اسم المرض الذي يصيب الأطفال بسبب نقص الكالسيوم وفيتامين D؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "كساح",
+  "fillBlankAcceptedAr": [
+   "الكساح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-nutrition-eval3",
+  "problemAr": "ما اسم المرض الناتج عن الإفراط في تناول السكريات والدهون مع قلة الحركة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "سمنة",
+  "fillBlankAcceptedAr": [
+   "البدانة",
+   "البدانه",
+   "السمنة",
+   "السمنه",
+   "بدانة",
+   "بدانه",
+   "سمنه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-plant-nutrition-ex2",
+  "problemAr": "ما اسم العملية التي يطرح فيها النبات بخار الماء عبر ثغور الأوراق؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "نتح",
+  "fillBlankAcceptedAr": [
+   "النتح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-plant-nutrition-eval3",
+  "problemAr": "ما اسم العملية التي يطرح فيها النبات بخار الماء عبر أوراقه؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "نتح",
+  "fillBlankAcceptedAr": [
+   "النتح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-adaptation-ex2",
+  "problemAr": "ما وصف الساق السميكة القادرة على تخزين الماء كما في الصبار؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "لحمية",
+  "fillBlankAcceptedAr": [
+   "اللحمية",
+   "اللحميه",
+   "ساق لحمية",
+   "ساق لحميه",
+   "لحميه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-adaptation-eval3",
+  "problemAr": "ما اسم العملية التي تقلل النباتات الصحراوية من حدوثها بتصغير أوراقها؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "نتح",
+  "fillBlankAcceptedAr": [
+   "النتح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circuit-ex3",
+  "problemAr": "دارة بها بطارية سليمة، مصباح سليم، وأسلاك موصولة جيداً، لكن القاطعة مفتوحة. هل يضيء المصباح؟ (أجب بـ \"نعم\" أو \"لا\")",
+  "fillBlankAnswerAr": "لا",
+  "fillBlankAcceptedAr": [
+   "لا يضيء",
+   "لا يضيئ"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circuit-ex5",
+  "problemAr": "دارة كهربائية لا يضيء مصباحها. البطارية جديدة، القاطعة مغلقة، لكن أحد الأسلاك يبدو مقطوعاً من المنتصف. ما اسم هذه الحالة؟ (دارة ...؟)",
+  "fillBlankAnswerAr": "مفتوحة",
+  "fillBlankAcceptedAr": [
+   "الدارة مفتوحة",
+   "الدارة مفتوحه",
+   "دارة مفتوحة",
+   "دارة مفتوحه",
+   "مفتوحه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circuit-eval3",
+  "problemAr": "ما اسم المادة التي تسمح بمرور التيار الكهربائي بسهولة؟",
+  "fillBlankAnswerAr": "ناقل",
+  "fillBlankAcceptedAr": [
+   "الناقل",
+   "مادة ناقلة",
+   "مادة ناقله",
+   "ناقل للكهرباء",
+   "ناقلة",
+   "ناقله"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-circuit-eval6",
+  "problemAr": "وضعتَ قطعة من العجين (الطين) بين طرفي الدارة ولم يضئ المصباح. ما التصنيف الأرجح لهذه المادة؟ (ناقل أم عازل؟)",
+  "fillBlankAnswerAr": "عازل",
+  "fillBlankAcceptedAr": [
+   "العازل",
+   "عازل للكهرباء",
+   "عازلة",
+   "عازله",
+   "مادة عازلة",
+   "مادة عازله"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-safety-ex2",
+  "problemAr": "ما اسم الجهاز الذي يقطع التيار الكهربائي عن كامل المنزل؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "قاطع",
+  "fillBlankAcceptedAr": [
+   "الفاصل",
+   "القاطع",
+   "القاطع الرئيسي",
+   "القاطع الكهربائي",
+   "قاطع التيار"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-safety-eval3",
+  "problemAr": "ما اسم الجهاز الذي يقطع التيار عن كامل المنزل؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "قاطع",
+  "fillBlankAcceptedAr": [
+   "الفاصل",
+   "القاطع",
+   "القاطع الرئيسي",
+   "القاطع الكهربائي",
+   "قاطع التيار"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-renewable-ex2",
+  "problemAr": "مَا اسْمُ الطَّاقَةِ النَّاتِجَةِ عَنْ دَوَرَانِ عَنَفَاتٍ بِفِعْلِ الرِّيَاحِ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "طاقة الرياح",
+  "fillBlankAcceptedAr": [
+   "الرياح",
+   "الطاقة الريحية",
+   "الطاقة الريحيه",
+   "الطاقة الهوائية",
+   "الطاقة الهوائيه",
+   "طاقة ريحية",
+   "طاقة ريحيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-renewable-ex6",
+  "problemAr": "مَدْرَسَةٌ فِي مِنْطَقَةٍ سَاحِلِيَّةٍ جَزَائِرِيَّةٍ تُرِيدُ تَقْلِيلَ فَاتُورَةِ الكَهْرَبَاءِ باسْتِعْمَالِ طَاقَةٍ مُتَجَدِّدَةٍ مُنَاسِبَةٍ لِلرِّيَاحِ القَوِيَّةِ فِي المِنْطَقَةِ. مَا الحَلُّ الأَنْسَبُ؟ (اُكْتُبِ المَصْدَرَ فَقَطْ)",
+  "fillBlankAnswerAr": "طاقة الرياح",
+  "fillBlankAcceptedAr": [
+   "الرياح",
+   "الطاقة الريحية",
+   "الطاقة الريحيه",
+   "الطاقة الهوائية",
+   "الطاقة الهوائيه",
+   "طاقة ريحية",
+   "طاقة ريحيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-renewable-eval3",
+  "problemAr": "مَا اسْمُ الطَّاقَةِ النَّاتِجَةِ عَنِ السُّدُودِ وَحَرَكَةِ المَاءِ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "الطاقة المائية",
+  "fillBlankAcceptedAr": [
+   "الطاقة الكهرومائية",
+   "الطاقة الكهرومائيه",
+   "الطاقة المائيه",
+   "طاقة الماء",
+   "طاقة مائية",
+   "طاقة مائيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-mixtures-ex2",
+  "problemAr": "ما اسم الطريقة التي تفصل الملح الذائب عن الماء؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "تبخير",
+  "fillBlankAcceptedAr": [
+   "التبخر",
+   "التبخير",
+   "تبخر"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-mixtures-eval3",
+  "problemAr": "ما اسم الطريقة التي تفصل الرمل عن الماء؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "ترشيح",
+  "fillBlankAcceptedAr": [
+   "الترشيح",
+   "التصفية",
+   "التصفيه",
+   "تصفية",
+   "تصفيه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-plant-repro-ex2",
+  "problemAr": "ما اسم خروج النبتة الصغيرة من البذرة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "إنبات",
+  "fillBlankAcceptedAr": [
+   "الإنبات",
+   "الانبات",
+   "انبات"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-plant-repro-eval3",
+  "problemAr": "ما اسم انتقال حبوب اللقاح بين الأزهار؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "تلقيح",
+  "fillBlankAcceptedAr": [
+   "التلقيح"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-grafting-ex2",
+  "problemAr": "مَا اسْمُ النَّبْتَةِ القَوِيَّةِ الجُذُورِ الَّتِي يُثَبَّتُ عَلَيْهَا الطُّعْمُ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "الأصل",
+  "fillBlankAcceptedAr": [
+   "أصل",
+   "اصل",
+   "الاصل",
+   "الحامل"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-grafting-ex6",
+  "problemAr": "يَمْتَلِكُ فَلَّاحٌ مِئَاتِ حَبَّاتِ البَطَاطَا الصَّغِيرَةِ وَيُرِيدُ إِنْتَاجَ مِئَاتِ نَبَاتَاتِ البَطَاطَا مِنْهَا بِسُرْعَةٍ وَدُونَ اِنْتِظَارِ إِنْبَاتِ بُذُورٍ. مَا الحَلُّ؟ (اُكْتُبِ اِسْمَ الطَّرِيقَةِ فَقَطْ)",
+  "fillBlankAnswerAr": "التكاثر بالدرنات",
+  "fillBlankAcceptedAr": [
+   "الإكثار بالدرنات",
+   "الاكثار بالدرنات",
+   "التكاثر الخضري",
+   "الدرنات",
+   "بالدرنات",
+   "تكاثر بالدرنات"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-grafting-eval3",
+  "problemAr": "مَا اسْمُ الغُصْنِ المَأْخُوذِ مِنْ نَبْتَةٍ ذَاتِ صِفَةٍ مَرْغُوبَةٍ فِي التَّطْعِيمِ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "الطعم",
+  "fillBlankAcceptedAr": [
+   "طعم"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-animal-repro-ex2",
+  "problemAr": "ما اسم خروج صغير الحيوان البيوض من البيضة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "فقس",
+  "fillBlankAcceptedAr": [
+   "التفقيس",
+   "الفقس"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-animal-repro-eval3",
+  "problemAr": "ما اسم جلوس الحيوان البيوض على بيضه لتدفئته؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "حضانة",
+  "fillBlankAcceptedAr": [
+   "التحضين",
+   "الحضانة",
+   "الحضانه",
+   "الحضن",
+   "حضانه"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-air-ex2",
+  "problemAr": "ما اسم الغاز الضروري للتنفس والاحتراق في الهواء؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "أكسجين",
+  "fillBlankAcceptedAr": [
+   "أوكسجين",
+   "اكسجين",
+   "الأكسجين",
+   "الأوكسجين",
+   "الاكسجين",
+   "الاوكسجين",
+   "اوكسجين"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-air-eval3",
+  "problemAr": "ماذا يحدث للهب الشمعة عند تغطيتها بكأس محكم يمنع دخول هواء جديد؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "ينطفئ",
+  "fillBlankAcceptedAr": [
+   "تنطفئ",
+   "تنطفئ الشمعة",
+   "تنطفئ الشمعه",
+   "تنطفىء",
+   "ينطفئ اللهب",
+   "ينطفىء",
+   "ينطفي"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-water-ex2",
+  "problemAr": "ما اسم تحوّل الماء من سائل إلى بخار بفعل الحرارة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "تبخر",
+  "fillBlankAcceptedAr": [
+   "التبخر"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-water-eval3",
+  "problemAr": "ما اسم تحوّل بخار الماء إلى قطرات سائلة عند البرودة؟ (كلمة واحدة)",
+  "fillBlankAnswerAr": "تكاثف",
+  "fillBlankAcceptedAr": [
+   "التكاثف"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-pollution-ex2",
+  "problemAr": "مَا اسْمُ تَحْوِيلِ بَقَايَا الطَّعَامِ العُضْوِيَّةِ إِلَى سَمَادٍ طَبِيعِيٍّ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "التسميد",
+  "fillBlankAcceptedAr": [
+   "التسميد العضوي",
+   "السماد العضوي",
+   "الكومبوست",
+   "تسميد"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-pollution-ex6",
+  "problemAr": "مَدْرَسَةٌ تُرِيدُ تَقْلِيلَ نُفَايَاتِهَا العُضْوِيَّةِ (بَقَايَا الوَجَبَاتِ) وَاسْتِفَادَةِ حَدِيقَتِهَا مِنْهَا. مَا الحَلُّ الأَنْسَبُ؟ (اُكْتُبِ الحَلَّ فَقَطْ)",
+  "fillBlankAnswerAr": "التسميد",
+  "fillBlankAcceptedAr": [
+   "التسميد العضوي",
+   "السماد العضوي",
+   "الكومبوست",
+   "تسميد"
+  ]
+ },
+ {
+  "file": "frontend/src/data/courses/5AP/science.ts",
+  "exerciseId": "science-5ap-pollution-eval3",
+  "problemAr": "مَا اسْمُ تَحْوِيلِ النُّفَايَاتِ إِلَى مَوَادَّ أَوَّلِيَّةٍ لِصُنْعِ مُنْتَجَاتٍ جَدِيدَةٍ؟ (اُكْتُبِ الاِسْمَ فَقَطْ)",
+  "fillBlankAnswerAr": "إعادة التدوير",
+  "fillBlankAcceptedAr": [
+   "اعادة التدوير",
+   "التدوير",
+   "الرسكلة",
+   "الرسكله",
+   "رسكلة",
+   "رسكله"
+  ]
+ }
+]
