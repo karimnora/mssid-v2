@@ -1,4 +1,5 @@
 import React from 'react';
+import { canUseWebCheckout } from '../utils/paymentPlatform';
 import { X, ShieldCheck, Lock } from 'lucide-react';
 
 interface PrivacyPolicyModalProps {
@@ -63,7 +64,9 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <li><strong className="text-slate-100">الحساب:</strong> الاسم، البريد الإلكتروني، كلمة المرور (مخزّنة مشفّرة)، المستوى الدراسي إن وُجد، وبريد الولي اختيارياً (غير متحقَّق منه).</li>
               <li><strong className="text-slate-100">التقدّم التعليمي:</strong> النقاط، الشارات، الدروس/الامتحانات/التحديات المكتملة، رصيد القطع، وإعدادات الصورة الرمزية.</li>
               <li><strong className="text-slate-100">رسائل «اتصل بنا»:</strong> الاسم والبريد ومحتوى الرسالة إن أرسلتَ نموذجاً.</li>
-              <li><strong className="text-slate-100">الاشتراك المدفوع:</strong> غير مفعّل حالياً. إن فُعّل لاحقاً قد نجمع بيانات وصل الدفع بعد تحديث هذه السياسة.</li>
+              <li>{canUseWebCheckout()
+                ? <><strong className="text-slate-100">الاشتراك المدفوع:</strong> غير مفعّل حالياً. إن فُعّل لاحقاً قد نجمع بيانات وصل الدفع بعد تحديث هذه السياسة.</>
+                : 'نحتفظ بالمعلومات اللازمة لتفعيل حساب العائلة المميّزة وحفظ حالته.'}</li>
             </ul>
           </div>
 

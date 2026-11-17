@@ -1,4 +1,6 @@
 import React from 'react';
+import { canUseWebCheckout } from '../utils/paymentPlatform';
+import { useLocaleContext } from '../context/LocaleContext';
 import { X, FileText, CreditCard, RotateCcw, UserX, Copyright, ShieldAlert, Scale, Mail } from 'lucide-react';
 
 interface TermsOfServiceModalProps {
@@ -7,6 +9,8 @@ interface TermsOfServiceModalProps {
 }
 
 export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen, onClose }) => {
+  const { locale } = useLocaleContext();
+  const webCheckout = canUseWebCheckout();
   if (!isOpen) return null;
 
   return (
@@ -35,7 +39,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
         {/* Content */}
         <div className="p-4 sm:p-6 overflow-y-auto flex-1 min-h-0 min-w-0 space-y-6 text-sm text-slate-300 leading-relaxed scrollbar-thin">
 
-          <div className="p-4 bg-blue-950/40 border border-blue-800/60 rounded-2xl flex items-start gap-3">
+          {webCheckout && <div className="p-4 bg-blue-950/40 border border-blue-800/60 rounded-2xl flex items-start gap-3">
             <Scale className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
             <div>
               <h3 className="font-bold text-blue-300 text-base mb-1">الخدمة حالياً مجانية</h3>
@@ -44,6 +48,8 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               </p>
             </div>
           </div>
+
+          }
 
           {/* Section 1 */}
           <div className="space-y-2">
@@ -70,6 +76,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
             </ul>
           </div>
 
+          {webCheckout ? <>
           {/* Section 3 — Payment */}
           <div className="space-y-2">
             <h4 className="font-bold text-white text-base flex items-center gap-2">
@@ -102,6 +109,13 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
             </p>
           </div>
 
+          </> : <section data-native-subscription-terms dir={locale === 'fr' ? 'ltr' : 'rtl'} className="space-y-2">
+            <h4 className="font-bold text-white text-base">{locale === 'fr' ? 'Mon abonnement' : 'اشتراكي'}</h4>
+            <p>{locale === 'fr'
+              ? "Certaines fonctions sont réservées aux comptes Famille Premium. L'état de votre abonnement est visible dans « Mon abonnement »."
+              : 'بعض الوظائف مخصّصة لحسابات العائلة المميّزة. يمكنكم الاطّلاع على حالة اشتراككم في «اشتراكي».'}</p>
+          </section>}
+
           {/* Section 5 — Account deletion / termination */}
           <div className="space-y-2">
             <h4 className="font-bold text-white text-base flex items-center gap-2">
@@ -111,7 +125,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               إنهاء الاستخدام وحذف الحساب
             </h4>
             <p className="text-sm text-slate-300">
-              يمكن لصاحب الحساب حذف حسابه نهائياً في أي وقت من صفحة الملف الشخصي داخل التطبيق، مما يؤدي لحذف كل بياناته المرتبطة بالحساب بشكل دائم. لا يترتب عن الحذف استرجاع تلقائي لأي اشتراك قائم؛ لطلب الاسترجاع يُرجى التواصل مع الدعم قبل الحذف (انظر البند الرابع).
+              يمكن لصاحب الحساب حذف حسابه نهائياً في أي وقت من صفحة الملف الشخصي داخل التطبيق، مما يؤدي لحذف كل بياناته المرتبطة بالحساب بشكل دائم. {webCheckout && 'لا يترتب عن الحذف استرجاع تلقائي لأي اشتراك قائم؛ لطلب الاسترجاع يُرجى التواصل مع الدعم قبل الحذف (انظر البند الرابع).'}
             </p>
           </div>
 
@@ -161,7 +175,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               التواصل
             </h4>
             <p className="text-sm text-slate-300">
-              لأي استفسار متعلق بالاشتراك أو الاسترجاع أو هذه الشروط، يُرجى التواصل عبر: <code className="bg-slate-800 px-2 py-0.5 rounded text-blue-400 font-mono">mssid.dz.app@gmail.com</code>.
+              {webCheckout ? 'لأي استفسار متعلق بالاشتراك أو الاسترجاع أو هذه الشروط، يُرجى التواصل عبر:' : 'لأي استفسار متعلق بهذه الشروط، يُرجى التواصل عبر:'} <code className="bg-slate-800 px-2 py-0.5 rounded text-blue-400 font-mono">mssid.dz.app@gmail.com</code>.
             </p>
           </div>
 
