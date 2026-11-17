@@ -79,6 +79,12 @@ public class User implements UserDetails {
     @Column(name = "parent_email")
     private String parentEmail;
 
+    @Column(name = "parental_consent_at")
+    private java.time.Instant parentalConsentAt;
+
+    @Column(name = "parental_consent_version", length = 80)
+    private String parentalConsentVersion;
+
     // Weekly report e-mail to parentEmail (V2, WeeklyReportService): one-click opt-out, and the last
     // send so that a family is never e-mailed twice in the same week.
     @Column(name = "weekly_report_opt_out", nullable = false)

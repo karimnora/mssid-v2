@@ -96,6 +96,7 @@ public class SecurityConfig {
                 // SEC-03: rate limiting still runs before JWT processing so it also protects the
                 // unauthenticated /login brute-force surface, not just already-authenticated calls.
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new dz.mssid.education.security.ParentalConsentFilter(), JwtAuthenticationFilter.class)
                 .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
 
         return http.build();

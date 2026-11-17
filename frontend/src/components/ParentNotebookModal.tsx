@@ -24,6 +24,7 @@ import { useAuth } from '../context/AuthContext';
 import { PremiumOffer } from './PremiumOffer';
 import { canAccess } from '../access/entitlements';
 import { ExamPlanPanel } from './examPlan/ExamPlanPanel';
+import { ParentalConsentNotice } from './ParentalConsentPrompt';
 
 interface ParentNotebookModalProps {
   isOpen: boolean;
@@ -203,6 +204,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
         </div>
 
         <div className="kids-modal-body p-5 space-y-5">
+          <ParentalConsentNotice />
           {onOpenDiagnostic && getDiagnosticSet(viewingGrade ?? userProfile.grade) && (
             <section data-notebook-diagnostic className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-2">
               <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">

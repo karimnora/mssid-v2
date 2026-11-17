@@ -5,6 +5,7 @@ import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from 
 import { DidouAvatarConfig } from '../types/ecosystem';
 import { springBootApi } from './springBootApi';
 import { getActiveProgressOwner, setActiveProgressOwner } from '../utils/progressOwner';
+import { PARENTAL_CONSENT_VERSION, updateParentalConsentSession, type ParentalConsentDecision } from '../utils/parentalConsent';
 
 const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
@@ -70,6 +71,7 @@ export class AuthService {
     const previousOwner=getActiveProgressOwner();
     const preserveChild=Boolean(user && currentUserState?.id===user.id && previousOwner.startsWith('user:'+user.id+':child:'));
     currentUserState = user;
+    updateParentalConsentSession(user);
     setProgressSyncOwner(user?.id ?? null);
     if(!preserveChild)setActiveProgressOwner(user?.id ?? null);
     notifyAuthListeners();
@@ -114,9 +116,9 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
   }
 }
 
-static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string, wilaya?: string): Promise<{ user: AuthUser | null; error?: string }> {
+static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string, wilaya?: string, consent?: ParentalConsentDecision): Promise<{ user: AuthUser | null; error?: string }> {
   try {
-    const response = await springBootApi.register({ nom, email, password: pass, grade, parentEmail, wilaya });
+    const response = await springBootApi.register({ nom, email, password: pass, grade, parentEmail, wilaya, ...consent });
 
     if (response.error || !response.data) {
       return {
@@ -134,12 +136,12 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
   }
 }
 
-static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | null; error?: string; profileIncomplete?: boolean }> {
+static async loginWithGoogleAsync(idToken: string, consent?: ParentalConsentDecision): Promise<{ user: AuthUser | null; error?: string; profileIncomplete?: boolean; consentRequired?: boolean }> {
   try {
-    const response = await springBootApi.loginWithGoogle(idToken);
+    const response = consent ? await springBootApi.loginWithGoogle(idToken, consent) : await springBootApi.loginWithGoogle(idToken);
 
     if (response.error || !response.data) {
-      return { user: null, error: response.error || 'Échec de la connexion avec Google.' };
+      return { user: null, error: response.error || 'Échec de la connexion avec Google.', consentRequired: response.code === 'PARENTAL_CONSENT_REQUIRED' };
     }
 
     const authUser = mapAuthResponse(response.data);
@@ -150,6 +152,17 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
   }
 }
+
+  static async acceptParentalConsent(): Promise<{ success: boolean; error?: string }> {
+    const user = this.getCurrentUser();
+    if (!user) return { success: false };
+    const response = await springBootApi.acceptParentalConsent({ parentalConsentAccepted: true, parentalConsentVersion: PARENTAL_CONSENT_VERSION });
+    if (response.error || !response.data) return { success: false, error: response.error };
+    // Ignore a late response if the parent has switched accounts in the meantime.
+    if (this.getCurrentUser()?.id !== user.id) return { success: false };
+    this.hydrateCurrentUser(mapAuthProfile(response.data, user));
+    return { success: true };
+  }
 
   /**
    * Day-based streak increment shared by every XP-granting action (addScore, addExamXp,

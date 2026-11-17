@@ -14,6 +14,7 @@ import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectId, SubjectInfo } from './types';
 import { AuthService } from './services/authService';
+import { ParentalConsentPrompt } from './components/ParentalConsentPrompt';
 import { useAuth } from './context/AuthContext';
 import { useLocaleContext } from './context/LocaleContext';
 import {
@@ -1104,6 +1105,7 @@ function AppContent() {
         onOpenExam={handleOpenExam}
       />
 
+      <ParentalConsentPrompt />
       <MobileBottomNav
         grade={nav.grade}
         selectedSubject={nav.selectedSubject}

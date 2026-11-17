@@ -61,6 +61,7 @@ describe('AuthModal Integration Tests', () => {
     fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'يونس' } });
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'password123' } });
+    fireEvent.click(screen.getByRole('checkbox'));
 
 
     const form = screen.getByPlaceholderText('example@mssid.dz').closest('form')!;

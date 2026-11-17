@@ -99,10 +99,12 @@ public class AuthController {
     @PostMapping("/google")
     public ResponseEntity<?> loginWithGoogle(@Valid @RequestBody GoogleAuthRequest request, HttpServletResponse httpResponse) {
         try {
-            AuthResponse response = authService.loginWithGoogle(request.getIdToken());
+            AuthResponse response = authService.loginWithGoogle(request.getIdToken(), request.getParentalConsentAccepted(), request.getParentalConsentVersion());
             attachAuthCookie(httpResponse, response.getToken());
             attachRefreshCookie(httpResponse, response.getRefreshToken());
             return ResponseEntity.ok(stripToken(response));
+        } catch (dz.mssid.education.service.ParentalConsentService.RequiredForGoogleRegistration e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("code", "PARENTAL_CONSENT_REQUIRED", "message", e.getMessage()));
         } catch (org.springframework.security.authentication.BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", e.getMessage()));
         } catch (IllegalStateException e) {

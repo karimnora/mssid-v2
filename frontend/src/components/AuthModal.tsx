@@ -8,6 +8,8 @@ import { WILAYAS_LIST } from '../data/wilayasData';
 import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, Lock, MapPin, Loader2 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import { ParentalConsentCheckbox } from './ParentalConsentCheckbox';
+import { PARENTAL_CONSENT_VERSION, type ParentalConsentDecision } from '../utils/parentalConsent';
 
 interface Props {
   isOpen: boolean;
@@ -48,6 +50,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
+  const [parentalConsentAccepted, setParentalConsentAccepted] = useState(false);
+  const [pendingGoogleCredential, setPendingGoogleCredential] = useState<string | null>(null);
   // Minimal parental supervision (product decision, pre-launch audit): optional, no verification —
   // never blocks registration, just lets an admin reach a parent later if genuinely needed.
   const [parentEmail, setParentEmail] = useState<string>('');
@@ -70,7 +74,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   // the password-recovery steps (request a code, then use it) — see handleForgotSubmit/handleResetSubmit.
   // 'completeProfile' replaces it once, right after a brand-new Google sign-up (see
   // handleGoogleCredential): Google does not provide the optional account wilaya. Child levels belong to child profiles.
-  const [authFlow, setAuthFlow] = useState<'credentials' | 'forgot' | 'reset' | 'completeProfile'>('credentials');
+  const [authFlow, setAuthFlow] = useState<'credentials' | 'forgot' | 'reset' | 'completeProfile' | 'googleConsent'>('credentials');
   const [resetCode, setResetCode] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [resendCooldown, setResendCooldown] = useState<number>(0);
@@ -109,6 +113,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   }, [isOpen, initialMode]);
 
   useEffect(() => {
+    setParentalConsentAccepted(false);
+    if (!isOpen) setPendingGoogleCredential(null);
+  }, [isOpen, isLogin]);
+
+  useEffect(() => {
     if (resendCooldown <= 0) return;
     const timer = setInterval(() => setResendCooldown((s) => Math.max(0, s - 1)), 1000);
     return () => clearInterval(timer);
@@ -145,17 +154,26 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
   // Sends the Google-issued ID token straight to the backend for verification — never trusts
   // anything else from the credential response, same success/error handling as handleSubmit below.
-  const handleGoogleCredential = async (response: { credential?: string }) => {
+  const handleGoogleCredential = async (response: { credential?: string }, consent?: ParentalConsentDecision) => {
     if (!response?.credential) return;
     setLoading(true);
     setStatusMessage(null);
     try {
-      const result = await requestAuth(() => AuthService.loginWithGoogleAsync(response.credential!));
+      const result = await requestAuth(() => consent
+        ? AuthService.loginWithGoogleAsync(response.credential!, consent)
+        : AuthService.loginWithGoogleAsync(response.credential!));
+      if (result.consentRequired) {
+        setPendingGoogleCredential(response.credential!);
+        setParentalConsentAccepted(false);
+        setAuthFlow('googleConsent');
+        return;
+      }
       if (result.error || !result.user) {
         setStatusMessage({ type: 'error', text: result.error || t('googleAuthErrorDefault') });
         return;
       }
       if (result.profileIncomplete) {
+        setPendingGoogleCredential(null);
         // Ask only for optional account details; each child has their own level.
         setPendingGoogleUser(result.user);
         setCompleteWilaya('');
@@ -164,6 +182,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         return;
       }
       setStatusMessage({ type: 'success', text: t('loginSuccessWelcomeBack', { name: result.user.nom }) });
+      setPendingGoogleCredential(null);
       onAuthSuccess(result.user);
       onClose();
     } finally {
@@ -301,6 +320,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (loading) return;
+    if (!isLogin && !parentalConsentAccepted) {
+      setStatusMessage({ type: 'error', text: t('consentUnchecked') });
+      return;
+    }
     setLoading(true);
     setStatusMessage(null);
     setLoginFailed(false);
@@ -325,7 +348,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         onAuthSuccess(result.user);
         onClose();
       } else {
-        const result = await requestAuth(() => AuthService.registerAsync(nom, email, password, undefined, parentEmail.trim() || undefined, wilaya || undefined));
+        const result = await requestAuth(() => AuthService.registerAsync(nom, email, password, undefined, parentEmail.trim() || undefined, wilaya || undefined,
+          { parentalConsentAccepted: true, parentalConsentVersion: PARENTAL_CONSENT_VERSION }));
 
         if (result.error || !result.user) {
           setStatusMessage({
@@ -376,6 +400,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                   ? t('titleRecovery')
                   : authFlow === 'completeProfile'
                   ? t('completeProfileTitle')
+                  : authFlow === 'googleConsent'
+                  ? t('consentGoogleTitle')
                   : isLogin ? t('login') : t('titleRegister')}
               </h2>
               <p className="text-[11px] text-white/90">{t('platformSubtitle')}</p>
@@ -555,6 +581,22 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </div>
           </form>
         )}
+
+        {authFlow === 'googleConsent' && <form className="kids-modal-body p-5 space-y-4" onSubmit={event => {
+          event.preventDefault();
+          if (parentalConsentAccepted && pendingGoogleCredential && !loading) void handleGoogleCredential(
+            { credential: pendingGoogleCredential },
+            { parentalConsentAccepted: true, parentalConsentVersion: PARENTAL_CONSENT_VERSION },
+          );
+        }}>
+          <p className="text-base leading-relaxed">{t('consentGoogleIntro')}</p>
+          <ParentalConsentCheckbox checked={parentalConsentAccepted} onChange={setParentalConsentAccepted} disabled={loading} onOpenTerms={onOpenTermsOfService} onOpenPrivacy={onOpenPrivacyPolicy} />
+          {statusMessage && <p role="alert" className="text-base font-bold text-amber-900">{statusMessage.text}</p>}
+          <button type="submit" disabled={!parentalConsentAccepted || loading} className="kids-cta min-h-[60px] disabled:opacity-40">{t('consentContinue')}</button>
+          <button type="button" disabled={loading} className="min-h-[60px] w-full text-base font-bold" onClick={() => {
+            setPendingGoogleCredential(null); setParentalConsentAccepted(false); setAuthFlow('credentials'); onClose();
+          }}>{t('consentCancel')}</button>
+        </form>}
 
         {/* Post-Google-signup: optional account wilaya, without asking for a child level. */}
         {authFlow === 'completeProfile' && (
@@ -753,34 +795,15 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </div>
           )}
 
-          {!isLogin && (onOpenPrivacyPolicy || onOpenTermsOfService) && (
-            <p className="text-xs text-[var(--kids-muted)] text-center leading-relaxed font-bold">
-              {t('termsAgreementPrefix')}{' '}
-              {onOpenTermsOfService && (
-                <button
-                  type="button"
-                  onClick={onOpenTermsOfService}
-                  className="text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
-                >
-                  {t('termsLink')}
-                </button>
-              )}
-              {onOpenTermsOfService && onOpenPrivacyPolicy && <span> {t('termsAnd')} </span>}
-              {onOpenPrivacyPolicy && (
-                <button
-                  type="button"
-                  onClick={onOpenPrivacyPolicy}
-                  className="text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
-                >
-                  {t('privacyLink')}
-                </button>
-              )}
-            </p>
-          )}
+          {!isLogin && <section className="space-y-3">
+            <h3 className="text-lg font-black">{t('consentParentTitle')}</h3>
+            <p className="text-base leading-relaxed">{t('consentParentIntro')}</p>
+            <ParentalConsentCheckbox checked={parentalConsentAccepted} onChange={setParentalConsentAccepted} disabled={loading} onOpenTerms={onOpenTermsOfService} onOpenPrivacy={onOpenPrivacyPolicy} />
+          </section>}
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || (!isLogin && !parentalConsentAccepted)}
             className="kids-cta cursor-pointer flex items-center justify-center gap-2 mt-2"
           >
             {loading ? (

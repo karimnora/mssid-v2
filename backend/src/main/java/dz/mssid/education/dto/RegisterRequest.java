@@ -7,6 +7,12 @@ import lombok.Data;
 
 @Data
 public class RegisterRequest {
+    @jakarta.validation.constraints.NotNull
+    @jakarta.validation.constraints.AssertTrue
+    private Boolean parentalConsentAccepted;
+    @NotBlank
+    private String parentalConsentVersion;
+
     @NotBlank(message = "Le nom est obligatoire")
     private String nom;
 

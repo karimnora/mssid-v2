@@ -333,7 +333,8 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
       });
       global.fetch = mockFetch;
 
-      AuthService.setCurrentUser({ id: 101, nom: 'أحمد التلميذ', email: 'free@mssid.dz', role: 'ROLE_FREE' });
+      AuthService.setCurrentUser({ id: 101, nom: 'أحمد التلميذ', email: 'free@mssid.dz', role: 'ROLE_FREE',
+        parentalConsentRequired: false, parentalConsentAt: '2026-11-16T10:00:00Z', parentalConsentVersion: 'parental-consent-2026-11-v1' });
       const newConfig = { activeOutfit: 'burnous_traditionnel' as const, unlockedOutfits: ['default', 'burnous_traditionnel'] as const, mood: 'celebrating' as const };
 
       const updated = AuthService.syncGoldCoinsAndAvatar(85, newConfig as any);

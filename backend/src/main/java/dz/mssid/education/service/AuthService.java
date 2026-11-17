@@ -63,6 +63,7 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
+        ParentalConsentService.requireAccepted(request.getParentalConsentAccepted(), request.getParentalConsentVersion());
         // 1. Vérification de l'email
         if (userRepository.existsByEmail(request.getEmail())) {
             adminAuditLogService.record(request.getEmail(), "REGISTRATION_FAILED", "USER", null,
@@ -86,6 +87,8 @@ public class AuthService {
                 .role(defaultRole)
                 .grade(request.getGrade())
                 .parentEmail(request.getParentEmail())
+                .parentalConsentAt(java.time.Instant.now())
+                .parentalConsentVersion(ParentalConsentService.CURRENT_VERSION)
                 .wilaya(request.getWilaya())
                 .createdAt(LocalDateTime.now())
                 .build();
@@ -173,6 +176,10 @@ public class AuthService {
      * just another way to end up authenticated, not a separate session mechanism.
      */
     public AuthResponse loginWithGoogle(String rawIdToken) {
+        return loginWithGoogle(rawIdToken, null, null);
+    }
+
+    public AuthResponse loginWithGoogle(String rawIdToken, Boolean consentAccepted, String consentVersion) {
         if (googleIdTokenVerifier == null) {
             throw new IllegalStateException("La connexion avec Google n'est pas configurée sur ce serveur.");
         }
@@ -214,6 +221,9 @@ public class AuthService {
                 }
                 user = userRepository.save(existingByEmail);
             } else {
+                if (!ParentalConsentService.acceptsCurrentVersion(consentAccepted, consentVersion)) {
+                    throw new ParentalConsentService.RequiredForGoogleRegistration();
+                }
                 isNewUser = true;
                 Role defaultRole = roleRepository.findByName(Role.RoleName.ROLE_FREE)
                         .orElseGet(() -> {
@@ -228,6 +238,8 @@ public class AuthService {
                         .email(email)
                         .passwordHash(passwordEncoder.encode(UUID.randomUUID().toString()))
                         .provider("GOOGLE")
+                        .parentalConsentAt(java.time.Instant.now())
+                        .parentalConsentVersion(ParentalConsentService.CURRENT_VERSION)
                         .googleId(googleId)
                         .role(defaultRole)
                         .emailVerified(googleEmailVerified)

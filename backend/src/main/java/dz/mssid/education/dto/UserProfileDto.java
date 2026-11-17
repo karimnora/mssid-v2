@@ -27,6 +27,12 @@ public class UserProfileDto {
     private Boolean gradeSet;
     /** Whether a parent e-mail is on file; the address itself is never sent back. Read-only. */
     private Boolean parentEmailSet;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private Boolean parentalConsentRequired;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private String parentalConsentAt;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private String parentalConsentVersion;
     private String wilaya;
     private String avatar;
     private Integer xp;

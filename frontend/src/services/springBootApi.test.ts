@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { springBootApi } from './springBootApi';
 import { setStoredLocale } from '../localePreference';
+import { PARENTAL_CONSENT_VERSION, updateParentalConsentSession } from '../utils/parentalConsent';
 
 describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () => {
   const originalFetch = global.fetch;
@@ -9,9 +10,13 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
     localStorage.clear();
     setStoredLocale('fr');
     vi.clearAllMocks();
+    // Request/payload mechanics here use an already-consented account; gating has its own tests.
+    updateParentalConsentSession({ id: 7, nom: 'Parent', email: 'parent@example.test', role: 'ROLE_FREE',
+      parentalConsentRequired: false, parentalConsentAt: '2026-11-16T10:00:00Z', parentalConsentVersion: PARENTAL_CONSENT_VERSION });
   });
 
   afterEach(() => {
+    updateParentalConsentSession(null);
     global.fetch = originalFetch;
     setStoredLocale('ar');
   });

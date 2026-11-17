@@ -119,6 +119,8 @@ class AuthControllerTest {
         request.setNom(nom);
         request.setEmail(email);
         request.setPassword(password);
+        request.setParentalConsentAccepted(true);
+        request.setParentalConsentVersion(dz.mssid.education.service.ParentalConsentService.CURRENT_VERSION);
         return request;
     }
 
@@ -181,6 +183,27 @@ class AuthControllerTest {
                         .content(objectMapper.writeValueAsString(registerRequest)))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("Cet email est déjà utilisé."));
+    }
+
+    @Test
+    void registerWithoutConsentIsRejectedBeforeTheService() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/register").contentType(MediaType.APPLICATION_JSON)
+                .content("{\"nom\":\"Parent\",\"email\":\"parent@example.test\",\"password\":\"password123\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(cookie().doesNotExist(AuthCookieConstants.COOKIE_NAME));
+        verifyNoInteractions(authService);
+    }
+
+    @Test
+    void newGoogleAccountRequestsConsentWithoutIssuingCookies() throws Exception {
+        when(authService.loginWithGoogle("verified-token", null, null))
+                .thenThrow(new dz.mssid.education.service.ParentalConsentService.RequiredForGoogleRegistration());
+        mockMvc.perform(post("/api/v1/auth/google").contentType(MediaType.APPLICATION_JSON)
+                .content("{\"idToken\":\"verified-token\"}"))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("PARENTAL_CONSENT_REQUIRED"))
+                .andExpect(cookie().doesNotExist(AuthCookieConstants.COOKIE_NAME))
+                .andExpect(cookie().doesNotExist(AuthCookieConstants.REFRESH_COOKIE_NAME));
     }
 
     @Test

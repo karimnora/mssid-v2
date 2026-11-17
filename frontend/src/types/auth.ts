@@ -55,6 +55,9 @@ export interface AuthUser {
   gradeSet?: boolean;
   /** Server: whether a parent e-mail is on file (the address itself is never sent back). */
   parentEmailSet?: boolean;
+  parentalConsentRequired?: boolean;
+  parentalConsentAt?: string;
+  parentalConsentVersion?: string;
   wilaya?: string;
   completedLessonIds?: string[];
   completedExamIds?: string[];

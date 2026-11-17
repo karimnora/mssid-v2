@@ -1,5 +1,6 @@
 import type { VillageSummaryEntry } from '../utils/villageSession';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
+import { isChildDataWrite, isParentalConsentPending, type ParentalConsentDecision } from '../utils/parentalConsent';
 /**
  * Service API Client Spring Boot 3.x - Mssid DZ
  * Connecteur universel prêt à l'emploi pour le backend Java Spring Boot (JWT & REST)
@@ -48,6 +49,7 @@ export interface CahierAccess {
 }
 
 export interface ApiResponse<T> {
+  code?: string;
   data?: T;
   error?: string;
   status: number;
@@ -93,7 +95,7 @@ export interface SpringBootAuthResponse {
 
 // Endpoints that must never trigger a silent refresh-and-retry: retrying auth itself would either
 // loop (refresh calling refresh) or make no sense (a failed login isn't fixed by refreshing).
-const AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH = ['/v1/auth/login', '/v1/auth/register', '/v1/auth/logout', '/v1/auth/refresh'];
+const AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH = ['/v1/auth/login', '/v1/auth/register', '/v1/auth/google', '/v1/auth/logout', '/v1/auth/refresh'];
 
 // Not a session, not a token — just "has this browser ever completed a login on this app before".
 // The HttpOnly auth cookie itself stays fully invisible to JS (SEC-01); this is only a heuristic to
@@ -216,8 +218,13 @@ public async request<T>(
   options: RequestInit = {},
   _isRetryAfterRefresh = false,
   _isRetryAfterColdStart = false
-): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
+): Promise<{ data?: T; error?: string; code?: string; status: number; headers?: Headers }> {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  if (isParentalConsentPending() && isChildDataWrite(normalizedEndpoint, options.method)) {
+    return { status: 403, code: 'PARENTAL_CONSENT_REQUIRED', error: getStoredLocale() === 'fr'
+      ? "Les nouveaux progrès ne sont pas enregistrés en ligne tant que vous n'avez pas donné votre accord."
+      : 'لا يُحفَظ التقدّمُ الجديد على الخادم ما لم تُعطوا موافقتكم.' };
+  }
   const mayRetryNetwork = ['GET', 'HEAD'].includes((options.method || 'GET').toUpperCase());
   if (typeof navigator !== 'undefined' && navigator.onLine === false) {
     return { error: networkMessage('networkOffline'), status: 0 };
@@ -303,6 +310,7 @@ public async request<T>(
 
     if (!response.ok) {
       return {
+        code: (data as any)?.code,
         error: (data as any)?.message || (data as any)?.error || `Erreur serveur (${status})`,
         status,
       };
@@ -385,7 +393,7 @@ public async request<T>(
     return res;
   }
 
-  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string; wilaya?: string }) {
+  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string; wilaya?: string } & Partial<ParentalConsentDecision>) {
     const payload = {
       nom: userData.nom,
       email: userData.email,
@@ -395,6 +403,8 @@ public async request<T>(
       grade: userData.grade,
       parentEmail: userData.parentEmail || undefined,
       wilaya: userData.wilaya || undefined,
+      parentalConsentAccepted: userData.parentalConsentAccepted,
+      parentalConsentVersion: userData.parentalConsentVersion,
     };
 
     const res = await this.request<SpringBootAuthResponse>('/v1/auth/register', {
@@ -405,15 +415,19 @@ public async request<T>(
     return res;
   }
 
-  public async loginWithGoogle(idToken: string) {
+  public async loginWithGoogle(idToken: string, consent?: ParentalConsentDecision) {
     // Same cookie-issuing flow as login()/register() — the backend verifies idToken itself
     // (GoogleIdTokenVerifier) and never trusts anything else the frontend could claim.
     const res = await this.request<SpringBootAuthResponse>('/v1/auth/google', {
       method: 'POST',
-      body: JSON.stringify({ idToken }),
+      body: JSON.stringify({ idToken, ...consent }),
     });
     if (res.data && !res.error) markHadSession();
     return res;
+  }
+
+  public async acceptParentalConsent(consent: ParentalConsentDecision) {
+    return this.request<unknown>('/v1/auth/parental-consent', { method: 'POST', body: JSON.stringify(consent) });
   }
 
   // --- Proxy IA Gemini ---

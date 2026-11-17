@@ -88,6 +88,8 @@ class AuthServiceTest {
         request.setNom(nom);
         request.setEmail(email);
         request.setPassword(password);
+        request.setParentalConsentAccepted(true);
+        request.setParentalConsentVersion(ParentalConsentService.CURRENT_VERSION);
         return request;
     }
 
@@ -126,6 +128,9 @@ class AuthServiceTest {
         assertNotNull(response.getUser());
         assertEquals("omar@mssid.dz", response.getUser().getEmail());
         assertEquals("ROLE_FREE", response.getUser().getRole());
+        assertEquals(ParentalConsentService.CURRENT_VERSION, response.getUser().getParentalConsentVersion());
+        assertNotNull(response.getUser().getParentalConsentAt());
+        assertFalse(response.getUser().getParentalConsentRequired());
 
         verify(userRepository, times(1)).save(any(User.class));
         verify(refreshTokenService, times(1)).createToken(any(User.class));
@@ -190,6 +195,21 @@ class AuthServiceTest {
         assertEquals("refresh_mock_token_login_xyz", response.getRefreshToken());
         assertEquals("Omar Testeur", response.getUser().getNom());
         assertEquals(50, response.getUser().getScore());
+        assertTrue(response.getUser().getParentalConsentRequired());
+    }
+
+    @Test
+    void registerRejectsMissingRefusedOrOutdatedConsentBeforeAnyAccountWrite() {
+        for (Boolean decision : new Boolean[] { null, false }) {
+            RegisterRequest request = registerRequest("Parent", "parent@example.test", "password123");
+            request.setParentalConsentAccepted(decision);
+            assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> authService.register(request));
+        }
+        RegisterRequest stale = registerRequest("Parent", "parent@example.test", "password123");
+        stale.setParentalConsentVersion("parental-consent-old");
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> authService.register(stale));
+        verifyNoInteractions(userRepository, roleRepository, passwordEncoder, jwtTokenProvider, refreshTokenService,
+                emailVerificationService, parentNotificationService, adminAuditLogService, authenticationManager);
     }
 
     @Test

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor, cleanup, fireEvent, act } from '@testing-library/react';
+import { render, screen, waitFor, cleanup, fireEvent, act, within } from '@testing-library/react';
 import { Capacitor } from '@capacitor/core';
 import { subscription as subscriptionAr } from '../locales/ar/subscription';
 import { subscription as subscriptionFr } from '../locales/fr/subscription';
@@ -12,6 +12,7 @@ import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
 import { TermsOfServiceModal } from './TermsOfServiceModal';
 import { PrivacyPolicyModal } from './PrivacyPolicyModal';
+import { AuthModal } from './AuthModal';
 import { GameStationSheet } from './journey/GameStationSheet';
 import { MissionBanner } from './missions/MissionBanner';
 import { DiagnosticModal } from './diagnostic/DiagnosticModal';
@@ -134,6 +135,25 @@ describe('Native app — no payment wording (Google Play)', () => {
       expect(document.querySelector('[data-premium-offer-entry]')).not.toBeNull();
       expectNeutral();
     };
+
+    it.each(['ar', 'fr'] as const)('keeps registration legal actions inside the native app (%s)', (locale) => {
+      setStoredLocale(locale);
+      const auth = render(<AuthModal isOpen initialMode="register" onClose={vi.fn()} onAuthSuccess={vi.fn()} />, { wrapper: LocaleProvider });
+      const checkbox = screen.getByRole('checkbox');
+      expect(checkbox).not.toBeChecked();
+      expect(document.querySelector('a[href="/terms.html"], a[href="/privacy.html"]')).toBeNull();
+      for (const name of locale === 'fr' ? ["conditions d'utilisation", 'politique de confidentialité'] : ['شروط الاستخدام', 'سياسة الخصوصية']) {
+        fireEvent.click(screen.getByRole('button', { name, exact: true }));
+        const legal = document.querySelector('[data-consent-legal-dialog]')!;
+        expect(legal).toBeInTheDocument();
+        expect(offending(legal.textContent ?? '')).toEqual([]);
+        expect(legal.querySelector('a[href]')).toBeNull();
+        expect(checkbox).not.toBeChecked();
+        fireEvent.click(within(legal as HTMLElement).getByRole('button', { name: 'فهمت وإغلاق' }));
+        expect(document.querySelector('[data-consent-legal-dialog]')).toBeNull();
+      }
+      auth.unmount();
+    });
 
     it.each(['ar', 'fr'] as const)('renders neutral native terms and privacy (%s)', (locale) => {
       setStoredLocale(locale);

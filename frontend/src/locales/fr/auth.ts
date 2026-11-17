@@ -1,6 +1,25 @@
 import type { auth as authAr } from '../ar/auth';
 
 export const auth: typeof authAr = {
+  consentParentTitle: 'Pour le parent',
+  consentParentIntro: 'Mssid est utilisé par des enfants. Seul un parent ou un tuteur peut créer le compte.',
+  consentStatement: "Je confirme être le représentant légal (parent ou tuteur) de l'enfant et j'accepte le traitement de ses données à des fins pédagogiques, conformément à la",
+  consentPrivacyLink: 'politique de confidentialité',
+  consentTermsPrefix: "J'accepte aussi les",
+  consentTermsLink: "conditions d'utilisation",
+  consentUnchecked: 'Cochez la case pour confirmer que vous êtes le parent ou le tuteur.',
+  consentServerRefused: "Le compte n'a pas été créé : la confirmation du parent est nécessaire.",
+  consentGoogleTitle: 'Une dernière étape pour le parent',
+  consentGoogleIntro: 'Vous vous connectez avec Google. Avant de créer le compte, confirmez que vous êtes le parent ou le tuteur.',
+  consentContinue: 'Continuer',
+  consentCancel: 'Annuler',
+  consentExistingTitle: 'Nous avons besoin de votre accord',
+  consentExistingIntro: "Pour continuer à enregistrer les progrès de votre enfant, la loi demande l'accord d'un parent ou d'un tuteur.",
+  consentAccept: "J'accepte",
+  consentLater: 'Plus tard',
+  consentPending: "Les nouveaux progrès ne sont pas enregistrés en ligne tant que vous n'avez pas donné votre accord.",
+  consentReview: 'Donner mon accord',
+  consentSaveError: "Votre accord n'a pas pu être enregistré. Veuillez réessayer.",
   // --- AuthModal ---
   errorServerUnreachable: 'Impossible de contacter le serveur. Réessaie plus tard.',
   forgotSuccessDefault: 'Si cette adresse est enregistrée chez nous, tu recevras un message avec un code de réinitialisation.',
