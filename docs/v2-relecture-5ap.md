@@ -226,6 +226,7 @@ Relu : règles, tableaux `الكلمة` / `إعرابها`, exemples, exercices,
 | AR13 | `writing-evaluation-grid` : la grille officielle algérienne compte-t-elle 3 critères (ملاءمة، انسجام، سلامة اللغة), ou 4 avec la pertinence (الوجاهة) et la perfection (الإتقان) ? `eval1` demande « combien de critères ? », réponse « trois ». |
 | AR14 | `kan-inna` : la liste des sœurs de « كان » s'arrête à « ليس » ; « ما زال » et « ما دام » sont-elles au programme de 5AP ? |
 | AR15 | `maf3ul-types` : la formule clé associe « كيف ؟ » au مفعول مطلق, alors que la leçon sur le ḥâl enseigne aussi « كيف ؟ ». Risque de confusion. |
+| IS1 | Éducation islamique 5AP, `islamic-5ap-tayammum-eval3` (relevé en préparant CX-26, `docs/v2-cx26-variantes.md`, point V4) : « كم ضربة يحتاجها التيمم؟ » attend « واحدة ». Dans le rite malékite, une frappe est obligatoire et la seconde recommandée. Le manuel de 5AP enseigne-t-il une ou deux frappes ? |
 
 Vérification : le fichier se charge sans erreur (relu par script) ; `tsc` et les tests ne sont pas lancés.
 
